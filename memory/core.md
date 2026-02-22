@@ -1,0 +1,2 @@
+- `2026-02-19 22:13` `[PREFERENCE]` Income plan preferences: wants cash-in within ~2 months, only ~5h/week available, prefers consulting/freelance or fixed monthly retainer; Taiwan internships feel low-value given prior work; big-tech LeetCode/math-heavy interview path is aversive as a primary short-term strategy.
+- `2026-02-19 23:00` `[PREFERENCE]` Google Calendar: events created by the assistant should include a clear prefix like [LLeo/OpenClaw] in the title (and optionally note 'Created by LLeo (OpenClaw)' in description).

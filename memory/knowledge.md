@@ -1,0 +1,33 @@
+- `2026-02-19 22:13` `[DECISION]` Created an income-strategy reference doc: memory/income-strategy-ref-2026-02-19.md. Summary: target cash-in ≤2 months, ~5h/week, prefer consulting/retainer over internships; avoid big-tech LeetCode path short-term; treat Taiwan work-permit status as uncertain → favor remote/consulting until confirmed.
+- `2026-02-19 23:31` `[NOTE]` Todoist API: api.todoist.com/rest/v2/* returns 410 (deprecated). Working base is https://api.todoist.com/api/v1/. Tested POST /api/v1/tasks success.
+- `2026-02-19 23:43` `[NOTE]` Created long-lived project file for income pipeline: memory/projects/income.md (offers, constraints, cadence, lead list). Use this as the source-of-truth for ongoing updates.
+- `2026-02-22 21:33` `[NOTE]` Google Calendar API: service account (little-leo-reader@little-leo-487708.iam.gserviceaccount.com) has "make changes to events" access to Leo's primary calendar (leonardofoohy@gmail.com). Script: skills/leo-diary/scripts/gcal_today.py. Scopes: calendar.readonly sufficient for reads.
+- `2026-02-22 21:33` `[NOTE]` Todoist sync upgraded: --completed-today flag added to todoist_sync.py. Uses /api/v1/tasks/completed endpoint with since= filter.
+- `2026-02-22 21:33` `[FIX]` Daily Coach cron delivery mode changed from "announce" to "none" (was failing with "Unsupported channel: whatsapp").
+- `2026-02-22 21:33` `[CLEANUP]` Removed empty "Weekly Model Refresh" cron job (was systemEvent that did nothing).
+- `2026-02-22 21:55` `[FIX]` fetch_latest_diary.py: import path bug (missing one .parent level) caused "No diary entries found" in every Daily Coach run. Fixed.
+- `2026-02-22 21:55` `[REFACTOR]` Created shared email_utils.py (reads from secrets/email_ops.env). Removed hardcoded credentials from daily_coach_v2.py and weather_scout.py.
+- `2026-02-22 21:55` `[SECURITY]` Moved email credentials from TOOLS.md (plaintext) to secrets/email_ops.env. TOOLS.md now references secrets location only.
+- `2026-02-22 21:55` `[CRON]` Added: 6 scholarship deadline reminders (2-week advance), weekly review (Sun 21:00), midday calendar scan (13:00 daily).
+- `2026-02-22 21:55` `[CLEANUP]` Removed stale tmp_diary dump (666KB). Todoist triage: 50→44 tasks (closed 6 stale, merged 3 duplicates, rescheduled 4 overdue, downgraded 7).
+- `2026-02-22 22:10` `[BUG-FIX]` daily_coach_v2.py: sleep_in field was treated as minutes-from-midnight, but actual format is HHMM (military time). Rewrote sleep parsing with parse_hhmm()/is_late_sleep(). Late sleep detection now works correctly.
+- `2026-02-22 22:10` `[BUG-FIX]` daily_coach_v2.py: mood/energy displayed as /7 but actual scale is 1-5. Fixed to /5.
+- `2026-02-22 22:10` `[BUG-FIX]` daily_coach_v2.py: used key 'sleep' instead of 'sleep_in' from read_diary.py. Fixed.
+- `2026-02-22 22:10` `[SECURITY]` Removed hardcoded passwords from scripts/test_email.py and scripts/fetch_finance_email.py. Now read from secrets/email_ops.env.
+- `2026-02-22 22:10` `[NOTE]` read_diary.py: 25 duplicate dates exist (same date, different diary entries due to cross-midnight submissions). Not a bug.
+- `2026-02-22 22:10` `[NOTE]` skills/deep-retriever is an empty git repo. skills/dist contains a packaged .skill artifact. Neither has scripts or SKILL.md.
+- `2026-02-22 22:10` `[UPDATE]` daily-scheduler/SKILL.md updated to reference Todoist API and Google Calendar instead of deprecated memory/todo.md.
+- `2026-02-22 22:24` `[DESIGN]` Memory architecture discussion: proposed 4-layer offline index (inverted index, people index, monthly digest, decision log). Honest assessment: 3/4 components need LLM to work well. 80/20 solution: enhance search_diary.py + maintain TOOLS.md + fix daily memory rumination + consider enabling memory_search with embedding key.
+- `2026-02-22 22:24` `[DESIGN]` Core principle from Leo: "日記就是記憶的源頭" — don't build parallel memory systems, leverage the Google Sheets diary directly.
+- `2026-02-22 22:24` `[UPDATE]` TOOLS.md rebuilt as comprehensive service registry. AGENTS.md updated with "check TOOLS.md before asking user for credentials" rule.
+- `2026-02-22 22:24` `[UPDATE]` Daily Coach upgraded to v3 (daily_coach_v3.py): integrates diary + sleep_calc + gcal + todoist. Cron updated to use v3.
+- `2026-02-22 22:24` `[NOTE]` New scripts created tonight: sleep_calc.py, daily_coach_v3.py, system_health.py, gcal_today.py, email_utils.py. Total: 12 scripts in leo-diary/scripts/.
+- `2026-02-22 22:24` `[NOTE]` Mood/energy scale is 1-5 (NOT 1-7 as MEMORY.md states). sleep_in/wake_up format is HHMM military time (NOT minutes from midnight).
+- `2026-02-22 22:40` `[NEW]` search_diary.py rewritten: multi-keyword AND/OR, 18-person alias expansion, regex, date range, JSON output, --stats mode.
+- `2026-02-22 22:40` `[NEW]` Tag system created: generate_tags.py (Python rules, batch backfill 304 entries), query_tags.py (person/topic/co-occurrence/timeline queries), memory/tags/*.json.
+- `2026-02-22 22:42` `[BUG-FIX]` generate_tags.py: "回家" triggered "馬來西亞" (243 false positives), "番" triggered "動畫" (9 false positives), "康" matched "健康", "老師" matched all teachers. Fixed all.
+- `2026-02-22 22:44` `[REFACTOR]` Removed daily_coach_v2.py (dead code, replaced by v3). Fixed 5 bare except: across read_diary/weather_scout/daily_coach_v3/system_health. Fixed 3 hardcoded absolute paths in build_profile/update_state/daily_coach_v2. Cleaned fetch_latest_diary.py (103→35 lines).
+- `2026-02-22 22:50` `[NEW]` daily_coach_v3.py: added check_trends() — reads tags for 7-day patterns (exercise gap, mood decline, social isolation, late sleep ratio). Pure Python, no LLM dependency.
+- `2026-02-22 22:50` `[IMPROVE]` generate_tags.py: metrics (mood/energy) now sourced from Google Sheets via read_diary.py instead of unreliable header parsing. All 304 historical tags re-enriched.
+- `2026-02-22 22:50` `[CRON]` Diary sync cron (04:15) upgraded: now includes LLM-enhanced tag extraction (people, topics, decisions, mood_note, key_event) after sync. Tags written to memory/tags/YYYY-MM-DD.json with method="llm".
+- `2026-02-22 22:55` `[ARCHITECTURE]` Design principle established: Python for deterministic logic (trends, stats, pattern detection), LLM only for natural language formatting. LLM never auto-edits primary files (MEMORY.md, TOOLS.md). Monthly memory refresh should be human-reviewed, not automated.

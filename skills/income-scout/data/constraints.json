@@ -1,0 +1,22 @@
+{
+  "time_budget_hours_per_week": 5,
+  "urgency_days": 60,
+  "location": "Taipei, Taiwan",
+  "work_permit": "student_visa_restrictions",
+  "minimum_monthly_target_twd": 10000,
+  "cash_in_timeline_days": 60,
+  "preferences": {
+    "remote": true,
+    "consulting_over_hourly": true,
+    "retainer_preferred": true,
+    "avoid": ["crypto", "gambling", "low_value_taiwan_internships"]
+  },
+  "context": {
+    "age": 28,
+    "background": "SJTU math (1y) → NTU CS → 2y work → NTU master's (EE/Telecom)",
+    "advisor": "Prof. Hung-yi Lee (李宏毅)",
+    "current_focus": "AudioMatters (first-author paper, Interspeech 2026)",
+    "ntu_ai_safety_role": "leader",
+    "languages": ["Chinese (native)", "English (fluent)", "Malay"]
+  }
+}

@@ -1,0 +1,86 @@
+# TOOLS.md - Service Registry & Tool Notes
+
+> ⚡ 這個檔案每次 session 自動載入。保持精簡但完整。
+> 最後更新：2026-02-22
+
+## 已啟用的服務
+
+### 📧 Email (SMTP)
+- **Ops 帳號：** zerotracenetwork01@gmail.com
+- **收件人：** leonardofoohy@gmail.com
+- **憑證位置：** `secrets/email_ops.env`
+- **共用模組：** `skills/leo-diary/scripts/email_utils.py`
+- **用法：** `from email_utils import send_email`
+
+### ✅ Todoist
+- **API Base：** `https://api.todoist.com/api/v1`
+- **憑證位置：** `secrets/todoist.env`（TODOIST_API_TOKEN）
+- **腳本：** `skills/leo-diary/scripts/todoist_sync.py`
+- **功能：** `--limit N`（未完成任務）、`--completed-today`（今日已完成）
+- **注意：** v2 API 已 deprecated (410)，用 v1
+
+### 📅 Google Calendar
+- **Service Account：** `little-leo-reader@little-leo-487708.iam.gserviceaccount.com`
+- **權限：** Make changes to events（Leo 主日曆）
+- **Cal ID：** `leonardofoohy@gmail.com`
+- **憑證位置：** `secrets/google-service-account.json`
+- **腳本：** `skills/leo-diary/scripts/gcal_today.py`
+- **用法：** `python3 gcal_today.py --days-ahead 0 --days-range 7`
+
+### 📝 Google Sheets (日記)
+- **Service Account：** 同上
+- **權限：** Readonly
+- **Sheet ID：** `1CRY53JyLUXdRNDtHRCJwbPMZBo7Azhpowl15-3UigWg`
+- **腳本：** `skills/leo-diary/scripts/read_diary.py`
+
+### 💬 Discord
+- **Leo User ID：** `756053339913060392`
+- **發送方式：** `message` tool（channel=discord）
+- **用途：** Todoist 提醒、日終摘要、週報、行事曆提醒
+
+### 🔑 Google OAuth (Desktop)
+- **Client Secret：** `/Users/leonardo/.openclaw/secrets/gog/client_secret.json`
+- **狀態：** 有 client_secret，但**尚未生成 token.json**（需要 OAuth 授權流程）
+- **用途：** 備用，目前用 Service Account 即可
+
+## 未啟用 / 待設定
+
+- **Gmail API：** Service Account 無權限，需另外授權
+- **memory_search：** 缺少 embedding API key（OpenAI/Voyage），語義搜尋不可用
+
+## 腳本總覽
+
+| 腳本 | 位置 | 功能 |
+|------|------|------|
+| `read_diary.py` | leo-diary/scripts/ | 讀取日記（Google Sheets 優先，CSV 備援）|
+| `todoist_sync.py` | leo-diary/scripts/ | Todoist 任務同步 |
+| `gcal_today.py` | leo-diary/scripts/ | Google Calendar 事件查詢 |
+| `daily_coach_v3.py` | leo-diary/scripts/ | 綜合教練信（日記+睡眠+行事曆+Todoist）|
+| `sleep_calc.py` | leo-diary/scripts/ | 睡眠時長與趨勢分析 |
+| `system_health.py` | leo-diary/scripts/ | 系統健檢（10 項）|
+| `email_utils.py` | leo-diary/scripts/ | 共用寄信模組 |
+| `insights.py` | leo-diary/scripts/ | 日記洞察報告 |
+| `search_diary.py` | leo-diary/scripts/ | 日記搜尋（多關鍵詞/別名/regex/日期範圍）|
+| `generate_tags.py` | leo-diary/scripts/ | 日記標籤提取（純 Python，批量回填）|
+| `query_tags.py` | leo-diary/scripts/ | 標籤查詢（人物/主題/共現/時間線）|
+| `keyword_freq.py` | leo-diary/scripts/ | 關鍵字頻率（純 Python）|
+| `weather_scout.py` | leo-diary/scripts/ | 天氣檢查+通知 |
+| `fetch_latest_diary.py` | memory/scripts/ | 拉取最新日記（供記憶反芻）|
+| `append_memory.py` | remember/scripts/ | 寫入長期記憶 |
+| `sync_diary_to_memory.py` | ~/Workspace/little-leo-tools/scripts/ | 日記同步到 memory/*.md |
+
+## Secrets 清單
+- `secrets/email_ops.env` — Email SMTP 憑證
+- `secrets/todoist.env` — Todoist API Token
+- `secrets/google-service-account.json` — Google Service Account
+- `/Users/leonardo/.openclaw/secrets/gog/client_secret.json` — Google OAuth Desktop
+
+## Cron 排程（每日）
+- 04:15 日記同步 + LLM 標籤提取
+- 08:30 早晨總覽（Todoist + Calendar + 自動設會議提醒）
+- 12:00 Daily Coach v3（email）+ 記憶反芻
+- 13:00 午間行事曆掃描
+- 22:30 Todoist 晚間回顧（Discord）
+- 23:50 日終摘要（Discord）
+- 週日 21:00 週報（Discord）
+- 週五 20:00 天氣偵察（email）

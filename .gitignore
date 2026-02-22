@@ -1,0 +1,33 @@
+# === Secrets — NEVER track ===
+secrets/
+
+# === OpenClaw internals ===
+.openclaw/
+
+# === Generated data (rebuildable) ===
+memory/tags/
+memory/*.json
+memory/finance_data/
+
+# === Daily diary files (synced from Google Sheets, rebuildable) ===
+memory/????-??-??.md
+
+# === Python ===
+*.pyc
+__pycache__/
+
+# === Skill packages (binary artifacts) ===
+*.skill
+skills/dist/
+skills/deep-retriever/
+
+# === Binary / temp files ===
+*.png
+*.ics
+*.xlsx
+
+# === Deprecated ===
+*.deprecated
+
+# === OS ===
+.DS_Store
