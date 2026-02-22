@@ -5,6 +5,14 @@
 
 ## 已啟用的服務
 
+### 🔀 Git (Version Control)
+- **Repo：** `git@github.com:leonardofhy/openclaw-workspace.git`（Private）
+- **Branch：** `main`
+- **規則：** 每次大改動後 `git add -A && git commit && git push`
+- **追蹤範圍：** scripts、config .md、skills、memory 持久筆記
+- **忽略：** `secrets/`、`memory/tags/`、`memory/????-??-??.md`、`*.json`、`.openclaw/`
+- **注意：** 不含敏感資料（.gitignore 已配置），但 MEMORY.md 含個人資訊，repo 必須保持 Private
+
 ### 📧 Email (SMTP)
 - **Ops 帳號：** zerotracenetwork01@gmail.com
 - **收件人：** leonardofoohy@gmail.com
