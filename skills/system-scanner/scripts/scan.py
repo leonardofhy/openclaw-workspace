@@ -536,14 +536,19 @@ def check_cron():
         check('Cron model versions', 'ok',
               f'{len(has_model)}/{len(enabled)} jobs have explicit model set', '', cat)
 
-    # One-time (deleteAfterRun) jobs
+    # One-time (deleteAfterRun) jobs — only flag if overdue (past scheduled time)
     dar = [j for j in jobs if j.get('deleteAfterRun')]
-    if len(dar) > 5:
+    now_ms = NOW.timestamp() * 1000
+    overdue = [j for j in dar
+               if j.get('state', {}).get('nextRunAtMs', now_ms + 1) < now_ms - 3600_000]
+    if overdue:
+        names_od = ', '.join(j.get('name', '?')[:25] for j in overdue[:3])
         check('Cron one-time jobs', 'warn',
-              f'{len(dar)} deleteAfterRun jobs pending — possibly stale',
-              'Review stale one-time jobs', cat)
+              f'{len(overdue)} overdue one-time job(s): {names_od}',
+              'Check if gateway missed them; may need to re-create', cat)
     elif dar:
-        check('Cron one-time jobs', 'ok', f'{len(dar)} one-time job(s) queued', '', cat)
+        check('Cron one-time jobs', 'ok',
+              f'{len(dar)} future one-time job(s) scheduled', '', cat)
 
     # Last run health — check for consecutive errors
     errored = [j for j in enabled
@@ -805,6 +810,11 @@ if __name__ == '__main__':
     fix_results = None
     if args.fix:
         fix_results = run_fixes()
+        # Re-scan after fixes so report reflects post-fix state
+        if fix_results:
+            results.clear()
+            _fix_queue.clear()
+            run_all(args.category)
 
     if args.json:
         crits, warns, total = print_json(fix_results)
