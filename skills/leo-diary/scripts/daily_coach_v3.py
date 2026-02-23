@@ -230,7 +230,7 @@ def build_email():
     lines.append(f"📊 **{day_label}狀態** ({last_date})")
     lines.append(f"  心情：{'⭐' * int(mood_val)}{'☆' * (5-int(mood_val))} {mood}/5")
     lines.append(f"  精力：{'⚡' * int(energy_val)}{'·' * (5-int(energy_val))} {energy}/5")
-    lines.append(f"  入睡：{si_fmt}　→　起床：{wu_fmt}　（睡了 {dur_fmt}）")
+    lines.append(f"  昨晚睡眠：{si_fmt} 入睡 → {wu_fmt} 起床（共 {dur_fmt}）")
     lines.append("")
 
     # --- Sleep Alert ---
