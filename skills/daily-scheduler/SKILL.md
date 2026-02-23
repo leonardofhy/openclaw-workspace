@@ -64,13 +64,11 @@ The JSON output gives you: current time/phase, calendar events, Todoist tasks, m
 ```
 📅 [date] 剩餘行程（[remaining_hours]h）
 
-| 時間 | 事項 | 說明 |
-|------|------|------|
-| 20:00–20:30 | 🚿 洗澡 + 休息 | |
-| 20:30–21:00 | 💊 吃藥 + 俯臥撐 + Duolingo | 順手做 |
-| 21:00–22:30 | 🔬 **AudioMatters 衝刺** | deadline 2/25 |
-| 22:30–23:00 | 📋 網管回報 + 收尾 | |
-| **23:00** | 🌙 就寢 | |
+• 20:00–20:30 🚿 洗澡 + 休息
+• 20:30–21:00 💊 吃藥 + 俯臥撐 + Duolingo（順手做）
+• 21:00–22:30 🔬 **AudioMatters 衝刺**（deadline 2/25）
+• 22:30–23:00 📋 網管回報 + 收尾
+• 23:00 🌙 就寢
 
 ⚠️ 未排入：[任何沒時間做的任務]
 ```
@@ -78,7 +76,7 @@ The JSON output gives you: current time/phase, calendar events, Todoist tasks, m
 Emoji guide: 🔬 research, 📋 admin, 💊 medication, 🚿 hygiene, 🍜 food, 💪 exercise, 🌙 sleep, ✉️ email, 📅 meeting
 
 **For `view` mode:**
-Show past items as ~~strikethrough~~ done, current as **bold**, future as normal.
+Same bullet format. Past items prefixed with ✅, current with ▶️, future as normal bullets.
 
 ## Leo-specific patterns (observed)
 
