@@ -166,7 +166,7 @@ def check_memory():
 def check_delivery_queue():
     dq = OPENCLAW_DIR / 'delivery-queue'
     if dq.exists():
-        items = list(dq.iterdir())
+        items = [f for f in dq.iterdir() if f.is_file()]
         if items:
             check('Delivery queue', 'warn', f'{len(items)} items stuck in queue', 'Check gateway logs for delivery errors')
         else:
@@ -186,7 +186,10 @@ def check_gateway_logs():
     lines = out.splitlines()
 
     errors = [l for l in lines if ' error ' in l.lower() or '[error]' in l.lower()]
-    disconnects = [l for l in lines if 'WebSocket connection closed with code 1006' in l]
+    # Only count recent disconnects (last 1 hour, log timestamps are UTC)
+    cutoff_utc = (NOW.astimezone(timezone.utc) - timedelta(hours=1)).strftime('%Y-%m-%dT%H:%M')
+    disconnects = [l for l in lines if 'WebSocket connection closed with code 1006' in l
+                   and len(l) >= 16 and l[:16] >= cutoff_utc]
     config_errors = [l for l in lines if 'INVALID_REQUEST' in l or 'invalid config' in l.lower()]
 
     if config_errors:
@@ -197,9 +200,11 @@ def check_gateway_logs():
     else:
         check('Gateway logs', 'ok', 'No errors in last 200 lines')
 
-    if disconnects:
-        check('Discord WebSocket', 'warn', f'{len(disconnects)} disconnect(s) recently',
-              'Monitor; restart gateway if it persists')
+    if len(disconnects) >= 3:
+        check('Discord WebSocket', 'warn', f'{len(disconnects)} disconnect(s) in last hour',
+              'Restart gateway: openclaw gateway restart')
+    else:
+        check('Discord WebSocket', 'ok', 'No recent disconnects')
 
 
 def check_openclaw_config():
