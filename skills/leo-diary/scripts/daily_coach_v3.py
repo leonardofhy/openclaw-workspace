@@ -206,6 +206,10 @@ def build_email():
     duration = sleep_duration_minutes(si, wu)
     dur_fmt = format_duration(duration)
 
+    # Sleep quality (1-5 scale, better mood predictor than duration)
+    sq_raw = last.get('sleep_quality', '')
+    sq_val = int(sq_raw) if sq_raw.strip().isdigit() and 1 <= int(sq_raw) <= 5 else None
+
     # Check late sleep streak
     late_streak = 0
     for e in entries[:7]:
@@ -230,7 +234,11 @@ def build_email():
     lines.append(f"📊 **{day_label}狀態** ({last_date})")
     lines.append(f"  心情：{'⭐' * int(mood_val)}{'☆' * (5-int(mood_val))} {mood}/5")
     lines.append(f"  精力：{'⚡' * int(energy_val)}{'·' * (5-int(energy_val))} {energy}/5")
-    lines.append(f"  昨晚睡眠：{si_fmt} 入睡 → {wu_fmt} 起床（共 {dur_fmt}）")
+    sleep_line = f"  昨晚睡眠：{si_fmt} 入睡 → {wu_fmt} 起床（共 {dur_fmt}）"
+    if sq_val is not None:
+        sq_stars = '★' * sq_val + '☆' * (5 - sq_val)
+        sleep_line += f"\n  睡眠品質：{sq_stars} {sq_val}/5"
+    lines.append(sleep_line)
     lines.append("")
 
     # --- Sleep Alert ---
@@ -252,7 +260,11 @@ def build_email():
 
     if duration and duration < 360:  # < 6 hours
         observations.append(f"昨晚只睡了 {dur_fmt}，今天下午可能會有睡意，記得補個短午覺。")
-    
+    elif sq_val is not None and sq_val <= 3 and duration and duration >= 360:
+        observations.append(f"睡眠時間夠但品質不佳（{sq_val}/5）。品質比時長更影響你的心情，留意今天狀態。")
+    elif sq_val is not None and sq_val >= 5 and duration and duration >= 420:
+        observations.append(f"睡眠品質滿分 + 充足時長，今天是最佳狀態日！適合衝刺重要任務。")
+
     if mood_val >= 5:
         observations.append(f"心情滿分！保持這個狀態，今天適合做核心任務。")
     elif mood_val <= 3:
