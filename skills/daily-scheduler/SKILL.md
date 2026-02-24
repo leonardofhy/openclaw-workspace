@@ -13,6 +13,23 @@ Handles three modes based on what Leo says:
 | **update** | "我剛才...", "行程有變", "接下來怎麼排" | Re-plan remaining time given new context |
 | **view** | "展示行程", "今天怎麼樣", "還有什麼" | Show current schedule status |
 
+## Step 0: Persist the schedule
+
+Every time you create or update a schedule, **save it**:
+
+```bash
+# Create or append new version
+python3 skills/daily-scheduler/scripts/save_schedule.py "schedule text here" --note "optional context"
+
+# Log completed items
+python3 skills/daily-scheduler/scripts/save_schedule.py --done "item description"
+
+# View today's schedule file
+python3 skills/daily-scheduler/scripts/save_schedule.py
+```
+
+Files are stored in `memory/schedules/YYYY-MM-DD.md` with version history + actual completion log.
+
 ## Step 1: Always fetch fresh data first
 
 ```bash
