@@ -37,6 +37,12 @@ class Status:
     quests: list      = field(default_factory=list)   # top P1 task names
     status_effects: list = field(default_factory=list)
     streak: int       = 0
+    # Weekly trends (new)
+    sleep_trend: str  = ''    # ↑ ↓ →
+    mood_trend: str   = ''
+    energy_trend: str = ''
+    research_days_7d: int = 0
+    late_sleep_7d: int = 0
 
 
 # ── data collection ───────────────────────────────────────────────────────
@@ -174,6 +180,62 @@ def build_status() -> Status:
     s.tasks_today, s.tasks_overdue, s.quests = load_todoist()
     s.streak       = compute_streak()
     s.status_effects = detect_status_effects(entry.get('diary', ''), s)
+
+    # Weekly trends
+    try:
+        from sleep_calc import analyze_sleep
+        week = analyze_sleep(7)
+        prev = analyze_sleep(14)
+        if week and prev:
+            s.late_sleep_7d = week.get('late_sleep_days', 0)
+            # Compare this week vs last week
+            w_entries = week.get('entries', [])[:7]
+            p_entries = prev.get('entries', [])[7:14]
+
+            def avg_field(entries, field):
+                vals = [e.get(field) for e in entries if e.get(field) is not None]
+                return sum(vals) / len(vals) if vals else None
+
+            def trend_arrow(current, previous):
+                if current is None or previous is None:
+                    return ''
+                diff = current - previous
+                if abs(diff) < 0.1:
+                    return '→'
+                return '↑' if diff > 0 else '↓'
+
+            w_sleep = avg_field(w_entries, 'duration_min')
+            p_sleep = avg_field(p_entries, 'duration_min')
+            s.sleep_trend = trend_arrow(w_sleep, p_sleep)
+
+            w_mood = avg_field(w_entries, 'mood')
+            p_mood = avg_field(p_entries, 'mood')
+            s.mood_trend = trend_arrow(w_mood, p_mood)
+
+            w_energy = avg_field(w_entries, 'energy')
+            p_energy = avg_field(p_entries, 'energy')
+            s.energy_trend = trend_arrow(w_energy, p_energy)
+    except Exception:
+        pass
+
+    # Research momentum from tags
+    try:
+        from datetime import date as _date
+        tags_dir = MEMORY / 'tags'
+        research_count = 0
+        for i in range(7):
+            d = (NOW.date() - timedelta(days=i)).strftime('%Y-%m-%d')
+            tag_file = tags_dir / f'{d}.json'
+            if tag_file.exists():
+                import json as _json
+                tag = _json.loads(tag_file.read_text())
+                topics = tag.get('topics', [])
+                if '研究/實驗' in topics or 'AudioMatters' in topics:
+                    research_count += 1
+        s.research_days_7d = research_count
+    except Exception:
+        pass
+
     return s
 
 
@@ -199,23 +261,23 @@ def render_discord(s: Status) -> str:
         f'🦁 Leo  ·  台大電信所碩一  ·  {date_label}',
         div,
         '',
-        f'❤️  精力   {bar(s.energy)}  {s.energy}%',
-        f'💙  心情   {bar(s.mood)}  {s.mood}%',
-        f'😴  睡眠   {s.sleep_hours}h  {stars(s.sleep_quality)}',
+        f'❤️  精力   {bar(s.energy)}  {s.energy}%' + (f' {s.energy_trend}' if s.energy_trend else ''),
+        f'💙  心情   {bar(s.mood)}  {s.mood}%' + (f' {s.mood_trend}' if s.mood_trend else ''),
+        f'😴  睡眠   {s.sleep_hours}h  {stars(s.sleep_quality)}' + (f' {s.sleep_trend}' if s.sleep_trend else ''),
         '',
     ]
 
-    lines.append(f'📋 任務   ⏳ 今日 {s.tasks_today}  ·  🔴 逾期 {s.tasks_overdue}')
-
-    if s.quests:
-        lines.append('')
-        lines.append('⚔️  主線任務')
-        for q in s.quests:
-            lines.append(f'   › {q}')
+    # Research momentum
+    if s.research_days_7d > 0:
+        r_bar = '🟩' * s.research_days_7d + '⬜' * (7 - s.research_days_7d)
+        lines.append(f'🔬  研究   {r_bar}  {s.research_days_7d}/7d')
+    lines.append(f'📋  任務   ⏳ 今日 {s.tasks_today}  ·  🔴 逾期 {s.tasks_overdue}')
 
     if s.status_effects or s.streak:
         lines.append('')
         parts = list(s.status_effects)
+        if s.late_sleep_7d >= 5:
+            parts.append(f'⚠️ 本週 {s.late_sleep_7d}/7 晚睡')
         if s.streak:
             parts.append(f'🔗 連打 {s.streak} 天')
         lines.append('🌡️  狀態   ' + '  ·  '.join(parts))
