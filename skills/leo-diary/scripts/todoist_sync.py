@@ -4,7 +4,7 @@ import os, json, requests, argparse
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
-ENV_PATH = Path('/Users/leonardo/.openclaw/workspace/secrets/todoist.env')
+ENV_PATH = Path(__file__).resolve().parent.parent.parent.parent / 'secrets' / 'todoist.env'
 API_BASE = 'https://api.todoist.com/api/v1'
 TZ_OFFSET = timedelta(hours=8)  # Asia/Taipei
 

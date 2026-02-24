@@ -80,8 +80,8 @@ def load_env(path: Path) -> dict:
             if line and not line.startswith('#') and '=' in line:
                 k, v = line.split('=', 1)
                 env[k.strip()] = v.strip().strip('"').strip("'")
-    except Exception:
-        pass
+    except (OSError, ValueError):
+        pass  # graceful degradation: missing/malformed env file
     return env
 
 
@@ -89,7 +89,7 @@ def load_json(path: Path):
     """Load a JSON file. Returns None on any error."""
     try:
         return json.loads(path.read_text())
-    except Exception:
+    except (json.JSONDecodeError, OSError):
         return None
 
 
@@ -98,7 +98,7 @@ def save_json(path: Path, data) -> bool:
     try:
         path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
         return True
-    except Exception:
+    except OSError:
         return False
 
 
@@ -560,8 +560,8 @@ def show_history(n: int = 5):
             icon = '🔴' if c else ('⚠️ ' if w else '✅')
             print(f'  {ts}  {icon}  {c} crit  {w} warn  ({e["total"]} checks)'
                   + (f'  [{fx} fixed]' if fx else ''))
-        except Exception:
-            pass
+        except (KeyError, TypeError, ValueError):
+            pass  # skip malformed history entries
     print()
 
 

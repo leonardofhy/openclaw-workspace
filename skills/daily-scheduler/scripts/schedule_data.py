@@ -13,7 +13,7 @@ Usage:
   python3 schedule_data.py
   python3 schedule_data.py --tomorrow   # include tomorrow's calendar
 """
-import json
+import json, sys
 import sys
 import argparse
 from datetime import datetime, timedelta, timezone
@@ -117,15 +117,15 @@ def get_memory_context():
     if today_tag.exists():
         try:
             context['metrics_today'] = json.loads(today_tag.read_text()).get('metrics', {})
-        except Exception:
-            pass
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"warn: failed to read today tag: {e}", file=sys.stderr)
 
     yesterday_tag = tags_dir / f'{yesterday}.json'
     if yesterday_tag.exists():
         try:
             context['metrics_yesterday'] = json.loads(yesterday_tag.read_text()).get('metrics', {})
-        except Exception:
-            pass
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"warn: failed to read yesterday tag: {e}", file=sys.stderr)
 
     return context
 

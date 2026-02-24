@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Fetch today's (or tomorrow's) Google Calendar events for Leo."""
 import json, argparse
+from pathlib import Path
 from datetime import datetime, timedelta, timezone
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
-CREDS_PATH = '/Users/leonardo/.openclaw/workspace/secrets/google-service-account.json'
+CREDS_PATH = str(Path(__file__).resolve().parent.parent.parent.parent / 'secrets' / 'google-service-account.json')
 CAL_ID = 'leonardofoohy@gmail.com'
 TZ = timezone(timedelta(hours=8))
 

@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.utils import formataddr
 from pathlib import Path
 
-ENV_PATH = Path('/Users/leonardo/.openclaw/workspace/secrets/email_ops.env')
+ENV_PATH = Path(__file__).resolve().parent.parent.parent.parent / 'secrets' / 'email_ops.env'
 
 def _load_config():
     config = {}

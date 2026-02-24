@@ -9,7 +9,7 @@ from pathlib import Path
 from datetime import datetime
 
 # Config
-CONFIG_PATH = Path('/Users/leonardo/.openclaw/workspace/memory/weather_config.json')
+CONFIG_PATH = Path(__file__).resolve().parent.parent.parent.parent / 'memory' / 'weather_config.json'
 DEFAULT_LOCATION = 'Taipei' # Coordinates: 25.0330, 121.5654
 
 # Email: use shared utility (credentials in secrets/email_ops.env)

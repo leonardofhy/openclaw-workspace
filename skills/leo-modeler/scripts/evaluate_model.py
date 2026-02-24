@@ -2,9 +2,10 @@
 import json
 from pathlib import Path
 
-PROFILE = Path('/Users/leonardo/.openclaw/workspace/memory/leo-profile.json')
-STATE = Path('/Users/leonardo/.openclaw/workspace/memory/leo-state-weekly.json')
-OUT = Path('/Users/leonardo/.openclaw/workspace/memory/leo-model-eval.md')
+_WS = Path(__file__).resolve().parent.parent.parent.parent
+PROFILE = _WS / 'memory' / 'leo-profile.json'
+STATE = _WS / 'memory' / 'leo-state-weekly.json'
+OUT = _WS / 'memory' / 'leo-model-eval.md'
 
 
 def main():

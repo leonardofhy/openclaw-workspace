@@ -6,14 +6,17 @@
 import csv
 import json
 import sys
+from pathlib import Path
 from datetime import datetime
+
+_WS = Path(__file__).resolve().parent.parent.parent.parent
 
 # Google Sheets 設定
 SHEET_ID = "1CRY53JyLUXdRNDtHRCJwbPMZBo7Azhpowl15-3UigWg"
-CREDS_PATH = "/Users/leonardo/.openclaw/workspace/secrets/google-service-account.json"
+CREDS_PATH = str(_WS / 'secrets' / 'google-service-account.json')
 
 # CSV 備援路徑
-CSV_PATH = "/Users/leonardo/Downloads/Daily Meta-Awareness Log (Responses) - MetaLog.csv"
+CSV_PATH = str(Path.home() / "Downloads" / "Daily Meta-Awareness Log (Responses) - MetaLog.csv")
 
 COLUMNS = {
     "timestamp": "Timestamp",

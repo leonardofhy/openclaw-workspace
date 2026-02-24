@@ -64,8 +64,8 @@ def main():
             for k, v in existing.items():
                 if k not in profile:
                     profile[k] = v
-        except Exception:
-            pass
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"warn: could not merge existing profile: {e}", file=sys.stderr)
 
     OUT.write_text(json.dumps(profile, ensure_ascii=False, indent=2), encoding='utf-8')
     print(f'Wrote {OUT}')
