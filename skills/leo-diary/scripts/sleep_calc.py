@@ -98,18 +98,23 @@ def analyze_sleep(days=7):
         sleep_hour = s_parsed[0] if s_parsed else None
         is_late = sleep_hour is not None and 2 <= sleep_hour < 8
         
+        sq_raw = e.get('sleep_quality', '')
+        sq_val = int(sq_raw) if str(sq_raw).strip().isdigit() and 1 <= int(sq_raw) <= 5 else None
+        
         results.append({
             'date': e.get('date', ''),
             'sleep_in': f"{s_parsed[0]:02d}:{s_parsed[1]:02d}" if s_parsed else str(si),
             'wake_up': f"{parse_hhmm(wu)[0]:02d}:{parse_hhmm(wu)[1]:02d}" if parse_hhmm(wu) else str(wu),
             'duration_min': duration,
             'duration_fmt': format_duration(duration),
+            'sleep_quality': sq_val,
             'is_late': is_late,
             'mood': e.get('mood', ''),
             'energy': e.get('energy', ''),
         })
     
     durations = [r['duration_min'] for r in results if r['duration_min'] is not None]
+    qualities = [r['sleep_quality'] for r in results if r['sleep_quality'] is not None]
     late_count = sum(1 for r in results if r['is_late'])
     
     summary = {
@@ -119,6 +124,8 @@ def analyze_sleep(days=7):
         'avg_duration_fmt': format_duration(round(statistics.mean(durations))) if durations else '?',
         'min_duration_fmt': format_duration(min(durations)) if durations else '?',
         'max_duration_fmt': format_duration(max(durations)) if durations else '?',
+        'avg_quality': round(statistics.mean(qualities), 1) if qualities else None,
+        'quality_entries': len(qualities),
         'late_sleep_days': late_count,
         'late_sleep_ratio': round(late_count / len(results), 2) if results else 0,
         'entries': results,

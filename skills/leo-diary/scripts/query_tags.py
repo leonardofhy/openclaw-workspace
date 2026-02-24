@@ -9,6 +9,8 @@
   python3 query_tags.py --late-sleep                      # 所有晚睡的日子
   python3 query_tags.py --late-sleep --recent 30          # 最近30天晚睡
   python3 query_tags.py --summary                         # 全局統計摘要
+  python3 query_tags.py --decisions                        # 決策年鑑
+  python3 query_tags.py --events --recent 30               # 最近30天事件時間軸
   python3 query_tags.py --person 智凱 --json              # JSON 輸出
   python3 query_tags.py --person 智凱 --timeline          # 互動頻率時間線
 """
@@ -134,6 +136,8 @@ def main():
     parser.add_argument("--recent", type=int, help="最近 N 天")
     parser.add_argument("--json", action="store_true", help="JSON 輸出")
     parser.add_argument("--summary", action="store_true", help="全局統計")
+    parser.add_argument("--decisions", action="store_true", help="決策年鑑")
+    parser.add_argument("--events", action="store_true", help="事件時間軸")
     parser.add_argument("--timeline", action="store_true", help="月度頻率時間線")
     parser.add_argument("--co", action="store_true", help="共現分析")
     args = parser.parse_args()
@@ -145,6 +149,35 @@ def main():
 
     if args.summary:
         print_summary(tags)
+        return
+
+    if args.decisions:
+        llm_tags = [t for t in tags if t.get('method') == 'llm']
+        decisions = []
+        for t in llm_tags:
+            for d in t.get('decisions', []):
+                if d.strip():
+                    decisions.append((t['date'], d))
+        print(f"📋 決策年鑑 — {len(decisions)} 個決策（{len(llm_tags)} 天 LLM 標籤）\n")
+        if args.person:
+            decisions = [(d, dec) for d, dec in decisions if args.person in dec]
+            print(f"  篩選：含「{args.person}」→ {len(decisions)} 個\n")
+        for date, dec in decisions:
+            print(f"  {date}  {dec}")
+        return
+
+    if args.events:
+        llm_tags = [t for t in tags if t.get('method') == 'llm']
+        print(f"📅 事件時間軸 — {len(llm_tags)} 天\n")
+        for t in llm_tags:
+            ke = t.get('key_event', '').strip()
+            if not ke:
+                continue
+            mood = t.get('metrics', {}).get('mood', '')
+            mood_str = f" [心情:{mood}]" if mood else ""
+            late = " 🌙" if t.get('late_sleep') else ""
+            print(f"  {t['date']}{mood_str}{late}")
+            print(f"    {ke}")
         return
 
     # 篩選

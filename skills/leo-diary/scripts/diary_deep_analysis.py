@@ -366,9 +366,18 @@ def section_research(entries):
 
         weeks[week_start]['total'] += 1
         topics = tag.get('topics', [])
-        if '研究/實驗' in topics or 'AudioMatters' in topics:
+        topics_lower = [t.lower() for t in topics]
+        key_event = (tag.get('key_event', '') + ' ' + ' '.join(tag.get('decisions', []))).lower()
+        is_research = '研究/實驗' in topics or 'AudioMatters' in topics
+        # AudioMatters aliases: match related keywords in key_event/decisions
+        # Only after 2025-10 when AM project started (avoid false positives from earlier work)
+        am_keywords = ['audiomatters', 'interspeech', 'benchmark', '論文', '實驗結果', '實驗數據']
+        is_am = ('AudioMatters' in topics
+                 or (dt.isoformat() >= '2025-10-01'
+                     and any(kw in key_event for kw in am_keywords)))
+        if is_research or is_am:
             weeks[week_start]['research'] += 1
-        if 'AudioMatters' in topics:
+        if is_am:
             weeks[week_start]['audiomatters'] += 1
 
     sorted_weeks = sorted(weeks.items())[-12:]
