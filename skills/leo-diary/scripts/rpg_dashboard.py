@@ -156,6 +156,21 @@ def build_status() -> Status:
         str(entry.get('sleep_in', '0')),
         str(entry.get('wake_up', '0')),
     )
+
+    # If diary is stale (not today), try sleep_calc for fresher sleep data
+    if s.date != TODAY:
+        try:
+            from sleep_calc import analyze_sleep
+            recent = analyze_sleep(1)
+            if recent and recent.get('entries'):
+                latest = recent['entries'][0]
+                if latest.get('date') == TODAY and latest.get('duration_min'):
+                    s.sleep_hours = round(latest['duration_min'] / 60, 1)
+                    if latest.get('sleep_quality'):
+                        s.sleep_quality = latest['sleep_quality'] * 20
+        except Exception:
+            pass  # sleep_calc unavailable, keep diary values
+
     s.tasks_today, s.tasks_overdue, s.quests = load_todoist()
     s.streak       = compute_streak()
     s.status_effects = detect_status_effects(entry.get('diary', ''), s)
@@ -176,9 +191,12 @@ def stars(pct: int, count: int = 5) -> str:
 
 def render_discord(s: Status) -> str:
     div = '━' * 32
+    date_label = s.date
+    if s.date != TODAY:
+        date_label += '（昨日數據）'
     lines = [
         div,
-        f'🦁 Leo  ·  台大電信所碩一  ·  {s.date}',
+        f'🦁 Leo  ·  台大電信所碩一  ·  {date_label}',
         div,
         '',
         f'❤️  精力   {bar(s.energy)}  {s.energy}%',

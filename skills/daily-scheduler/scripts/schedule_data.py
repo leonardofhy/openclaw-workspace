@@ -192,10 +192,12 @@ def format_display(data):
             t = '全天'
             t_min = 0
         end_t = ''
+        end_min = 0
         if 'T' in ev.get('end', ''):
             end_t = ev['end'].split('T')[1][:5]
+            end_min = int(end_t[:2]) * 60 + int(end_t[3:5])
         timeline.append({
-            'time': t, 'minutes': t_min, 'end': end_t,
+            'time': t, 'minutes': t_min, 'end': end_t, 'end_minutes': end_min,
             'title': ev['title'], 'location': ev.get('location', ''),
         })
 
@@ -210,7 +212,10 @@ def format_display(data):
             print(f"  ▶ {now_str}  ← 現在")
             now_printed = True
 
-        if item['minutes'] <= now_minutes:
+        end_min = item.get('end_minutes', 0)
+        if end_min and item['minutes'] <= now_minutes < end_min:
+            icon = "🔵"  # 進行中
+        elif item['minutes'] <= now_minutes and (not end_min or now_minutes >= end_min):
             icon = "✅"
         else:
             icon = "⏳"
