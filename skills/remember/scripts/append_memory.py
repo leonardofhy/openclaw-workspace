@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 # Base workspace path
-WORKSPACE = Path(os.environ.get('OPENCLAW_WORKSPACE', '/Users/leonardo/.openclaw/workspace'))
+WORKSPACE = Path(os.environ.get('OPENCLAW_WORKSPACE', str(Path(__file__).resolve().parent.parent.parent.parent)))
 MEMORY_DIR = WORKSPACE / 'memory'
 
 def main():

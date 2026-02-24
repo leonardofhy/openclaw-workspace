@@ -43,13 +43,9 @@ def pearson_r(xs, ys):
     return cov / (sx * sy)
 
 
-def section_sleep(entries):
-    """Sleep quality & duration analysis."""
+def _sleep_quality_vs_mood(entries):
+    """Sleep quality correlation table + Pearson r."""
     lines = []
-    lines.append("## 😴 睡眠分析")
-    lines.append("")
-
-    # Sleep quality vs mood
     sq_mood = []
     for e in entries:
         sq = e.get('sleep_quality', '')
@@ -61,6 +57,7 @@ def section_sleep(entries):
                 'energy': int(energy) if energy.strip().isdigit() else None
             })
 
+    r_sq = None
     if sq_mood:
         lines.append("### 睡眠品質 vs 心情")
         lines.append(f"  {'品質':6} {'天數':5} {'平均心情':8} {'平均精力':8}")
@@ -71,12 +68,15 @@ def section_sleep(entries):
                 energy_days = [d for d in days if d['energy'] is not None]
                 avg_energy = statistics.mean(d['energy'] for d in energy_days) if energy_days else 0
                 lines.append(f"  {q}/5    {len(days):5d} {avg_mood:8.2f} {avg_energy:8.2f}")
-
         r_sq = pearson_r([d['sq'] for d in sq_mood], [d['mood'] for d in sq_mood])
         if r_sq is not None:
             lines.append(f"\n  Pearson r (品質 vs 心情): {r_sq:.3f}")
+    return lines, r_sq
 
-    # Sleep duration vs mood
+
+def _sleep_duration_vs_mood(entries, r_sq):
+    """Duration buckets + Pearson r + comparison with quality."""
+    lines = []
     dur_mood = []
     for e in entries:
         dur = sleep_duration_minutes(e.get('sleep_in'), e.get('wake_up'))
@@ -92,8 +92,6 @@ def section_sleep(entries):
                 better = "品質" if abs(r_sq) > abs(r_dur) else "時長"
                 lines.append(f"  → 睡眠{better}更能預測心情")
 
-    # Duration buckets
-    if dur_mood:
         lines.append("\n### 睡眠時長 vs 心情")
         buckets = {'<5h': [], '5-6h': [], '6-7h': [], '7-8h': [], '>8h': []}
         for d in dur_mood:
@@ -103,14 +101,16 @@ def section_sleep(entries):
             elif h < 7: buckets['6-7h'].append(d)
             elif h < 8: buckets['7-8h'].append(d)
             else: buckets['>8h'].append(d)
-
         lines.append(f"  {'區間':8} {'天數':5} {'平均心情':8}")
         for bucket, days in buckets.items():
             if days:
                 avg = statistics.mean(d['mood'] for d in days)
                 lines.append(f"  {bucket:8} {len(days):5d} {avg:8.2f}")
+    return lines
 
-    # Best/worst sleep conditions
+
+def _sleep_best_worst(entries):
+    """Best/worst sleep quality × duration combinations."""
     combined = []
     for e in entries:
         dur = sleep_duration_minutes(e.get('sleep_in'), e.get('wake_up'))
@@ -119,6 +119,7 @@ def section_sleep(entries):
         if dur and sq.strip().isdigit() and mood.strip().isdigit():
             combined.append({'dur_h': dur / 60, 'sq': int(sq), 'mood': int(mood)})
 
+    lines = []
     if combined:
         best = [c for c in combined if c['sq'] >= 4 and c['dur_h'] >= 6.5]
         worst = [c for c in combined if c['sq'] <= 3 and c['dur_h'] < 6.5]
@@ -130,7 +131,16 @@ def section_sleep(entries):
         if best and worst:
             gap = statistics.mean(c['mood'] for c in best) - statistics.mean(c['mood'] for c in worst)
             lines.append(f"  差距: {gap:.2f}")
+    return lines
 
+
+def section_sleep(entries):
+    """Sleep quality & duration analysis."""
+    lines = ["## 😴 睡眠分析", ""]
+    quality_lines, r_sq = _sleep_quality_vs_mood(entries)
+    lines.extend(quality_lines)
+    lines.extend(_sleep_duration_vs_mood(entries, r_sq))
+    lines.extend(_sleep_best_worst(entries))
     lines.append("")
     return lines
 

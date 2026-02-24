@@ -178,8 +178,8 @@ def main():
     
     # Paths
     scout_dir = Path(__file__).parent.parent
-    resume_dir = Path("/Users/leonardo/Workspace/my_resume")
-    finance_report = Path("/Users/leonardo/Workspace/little-leo-tools/reports/2026-02/report.md")
+    resume_dir = Path.home() / "Workspace" / "my_resume"
+    finance_report = Path.home() / "Workspace" / "little-leo-tools" / "reports" / "2026-02" / "report.md"
     constraints_file = scout_dir / "data" / "constraints.json"
     opportunities_file = scout_dir / "data" / "opportunities.json"
     

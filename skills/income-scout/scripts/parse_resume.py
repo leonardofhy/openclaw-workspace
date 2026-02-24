@@ -145,7 +145,7 @@ def parse_resume(resume_dir: Path) -> Dict[str, Any]:
 if __name__ == "__main__":
     import sys
     
-    resume_path = Path("/Users/leonardo/Workspace/my_resume")
+    resume_path = Path.home() / "Workspace" / "my_resume"
     if len(sys.argv) > 1:
         resume_path = Path(sys.argv[1])
     

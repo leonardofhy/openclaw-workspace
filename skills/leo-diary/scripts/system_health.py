@@ -7,7 +7,7 @@ import subprocess
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-WORKSPACE = Path('/Users/leonardo/.openclaw/workspace')
+WORKSPACE = Path(__file__).resolve().parent.parent.parent.parent
 SCRIPTS_DIR = WORKSPACE / 'skills' / 'leo-diary' / 'scripts'
 SECRETS_DIR = WORKSPACE / 'secrets'
 MEMORY_DIR = WORKSPACE / 'memory'

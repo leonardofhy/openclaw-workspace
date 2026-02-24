@@ -159,58 +159,31 @@ def get_diary_data():
     return unique
 
 
-def build_email():
-    """Build the daily coach email content."""
-    now = datetime.now(TZ)
-    today_str = now.strftime('%Y-%m-%d')
-    yesterday_str = (now - timedelta(days=1)).strftime('%Y-%m-%d')
-
-    # Gather data
-    entries = get_diary_data()
-    sleep = analyze_sleep(7)
-    todoist = get_todoist_summary()
-    calendar = get_calendar_summary()
-
-    # Find latest entry
+def _parse_last_entry(entries, today_str, yesterday_str):
+    """Extract and parse the latest diary entry. Returns dict or None."""
     if not entries:
-        return None, None
-
+        return None
     last = entries[0]
     last_date = last.get('date', '')
-
     if last_date < yesterday_str:
         print(f"📅 Last diary is old ({last_date}). No coaching today.")
-        return None, None
+        return None
 
-    day_label = "今日" if last_date == today_str else "昨日"
+    def safe_float(val, default=4.0):
+        try:
+            return float(val)
+        except (ValueError, TypeError):
+            return default
 
-    # Parse mood/energy
-    mood = last.get('mood', '?')
-    energy = last.get('energy', '?')
-    try:
-        mood_val = float(mood)
-    except (ValueError, TypeError):
-        mood_val = 4.0
-    try:
-        energy_val = float(energy)
-    except (ValueError, TypeError):
-        energy_val = 4.0
-
-    # Sleep data for last night
+    mood_raw = last.get('mood', '?')
+    energy_raw = last.get('energy', '?')
     si = last.get('sleep_in', '')
     wu = last.get('wake_up', '')
     si_parsed = parse_hhmm(si)
     wu_parsed = parse_hhmm(wu)
-    si_fmt = f"{si_parsed[0]:02d}:{si_parsed[1]:02d}" if si_parsed else str(si)
-    wu_fmt = f"{wu_parsed[0]:02d}:{wu_parsed[1]:02d}" if wu_parsed else str(wu)
-    duration = sleep_duration_minutes(si, wu)
-    dur_fmt = format_duration(duration)
-
-    # Sleep quality (1-5 scale, better mood predictor than duration)
     sq_raw = last.get('sleep_quality', '')
-    sq_val = int(sq_raw) if sq_raw.strip().isdigit() and 1 <= int(sq_raw) <= 5 else None
 
-    # Check late sleep streak
+    # Late sleep streak
     late_streak = 0
     for e in entries[:7]:
         s = parse_hhmm(e.get('sleep_in', ''))
@@ -219,119 +192,168 @@ def build_email():
         else:
             break
 
-    # === Build Email ===
-    is_alert = late_streak >= 3
+    return {
+        'date': last_date,
+        'day_label': "今日" if last_date == today_str else "昨日",
+        'mood_raw': mood_raw,
+        'energy_raw': energy_raw,
+        'mood': safe_float(mood_raw),
+        'energy': safe_float(energy_raw),
+        'si_fmt': f"{si_parsed[0]:02d}:{si_parsed[1]:02d}" if si_parsed else str(si),
+        'wu_fmt': f"{wu_parsed[0]:02d}:{wu_parsed[1]:02d}" if wu_parsed else str(wu),
+        'duration': sleep_duration_minutes(si, wu),
+        'sq': int(sq_raw) if sq_raw.strip().isdigit() and 1 <= int(sq_raw) <= 5 else None,
+        'late_streak': late_streak,
+    }
 
-    if is_alert:
-        subject = f"🚨 警報！連續 {late_streak} 天晚睡 ({today_str})"
+
+def _build_status_block(ctx):
+    """Status + sleep quality section."""
+    lines = []
+    lines.append(f"📊 **{ctx['day_label']}狀態** ({ctx['date']})")
+    lines.append(f"  心情：{'⭐' * int(ctx['mood'])}{'☆' * (5-int(ctx['mood']))} {ctx['mood_raw']}/5")
+    lines.append(f"  精力：{'⚡' * int(ctx['energy'])}{'·' * (5-int(ctx['energy']))} {ctx['energy_raw']}/5")
+    dur_fmt = format_duration(ctx['duration'])
+    sleep_line = f"  昨晚睡眠：{ctx['si_fmt']} 入睡 → {ctx['wu_fmt']} 起床（共 {dur_fmt}）"
+    if ctx['sq'] is not None:
+        sq_stars = '★' * ctx['sq'] + '☆' * (5 - ctx['sq'])
+        sleep_line += f"\n  睡眠品質：{sq_stars} {ctx['sq']}/5"
+    lines.append(sleep_line)
+    return lines
+
+
+def _build_sleep_alert(ctx, sleep_stats):
+    """Late sleep warning section. Returns list of lines (may be empty)."""
+    lines = []
+    late = ctx['late_streak']
+    if late >= 3:
+        lines.append(f"🛑 **晚睡警報** — 連續 {late} 天凌晨 2 點後才睡！")
+        if sleep_stats:
+            lines.append(f"  近 7 天平均睡眠：{sleep_stats['avg_duration_fmt']}，"
+                         f"晚睡率 {sleep_stats['late_sleep_ratio']*100:.0f}%")
+        lines.append(f"  今晚目標：01:00 前上床。手機放遠一點。")
+    elif sleep_stats and sleep_stats['late_sleep_ratio'] > 0.5:
+        lines.append(f"⚠️ 近 7 天晚睡率 {sleep_stats['late_sleep_ratio']*100:.0f}%，"
+                     f"平均睡 {sleep_stats['avg_duration_fmt']}。注意作息。")
+    return lines
+
+
+def _build_observations(ctx):
+    """Coach observations based on sleep, mood, energy."""
+    obs = []
+    dur = ctx['duration']
+    sq = ctx['sq']
+    dur_fmt = format_duration(dur)
+
+    if dur and dur < 360:
+        obs.append(f"昨晚只睡了 {dur_fmt}，今天下午可能會有睡意，記得補個短午覺。")
+    elif sq is not None and sq <= 3 and dur and dur >= 360:
+        obs.append(f"睡眠時間夠但品質不佳（{sq}/5）。品質比時長更影響你的心情，留意今天狀態。")
+    elif sq is not None and sq >= 5 and dur and dur >= 420:
+        obs.append(f"睡眠品質滿分 + 充足時長，今天是最佳狀態日！適合衝刺重要任務。")
+
+    if ctx['mood'] >= 5:
+        obs.append("心情滿分！保持這個狀態，今天適合做核心任務。")
+    elif ctx['mood'] <= 3:
+        obs.append("心情偏低。今天允許自己「低空飛過」，完成一件小事就好。")
+
+    if ctx['energy'] >= 5:
+        obs.append("精力充沛，是衝刺的好時機。")
+    elif ctx['energy'] <= 3:
+        obs.append("精力偏低，優先做輕量任務，避免高消耗。")
+
+    return obs or ["平穩的一天。試著在中午前完成一件重要的事吧。"]
+
+
+def _build_calendar_block(calendar):
+    """Format calendar events."""
+    if not calendar:
+        return []
+    lines = ["📅 **今日行程**"]
+    for ev in calendar:
+        if ev['all_day']:
+            lines.append(f"  • [全天] {ev['summary']}")
+        else:
+            t = ev['start'].split('T')[1][:5] if 'T' in ev['start'] else ev['start']
+            lines.append(f"  • [{t}] {ev['summary']}")
+    return lines
+
+
+def _build_todoist_block(todoist):
+    """Format Todoist tasks."""
+    if not todoist or 'error' in todoist:
+        return []
+    lines = []
+    if todoist['today_count'] > 0:
+        lines.append(f"📋 **今日待辦** ({todoist['today_count']} 項)")
+        for t in todoist['today'][:5]:
+            lines.append(f"  □ {t}")
+        if todoist['today_count'] > 5:
+            lines.append(f"  ...及其他 {todoist['today_count']-5} 項")
+
+    if todoist['overdue_count'] > 0:
+        if lines:
+            lines.append("")
+        lines.append(f"⚠️ **過期未完成** ({todoist['overdue_count']} 項)")
+        for t in todoist['overdue'][:3]:
+            lines.append(f"  □ {t}")
+        if todoist['overdue_count'] > 3:
+            lines.append(f"  ...及其他 {todoist['overdue_count']-3} 項")
+    return lines
+
+
+def build_email():
+    """Build the daily coach email content."""
+    now = datetime.now(TZ)
+    today_str = now.strftime('%Y-%m-%d')
+    yesterday_str = (now - timedelta(days=1)).strftime('%Y-%m-%d')
+
+    # Gather data
+    entries = get_diary_data()
+    ctx = _parse_last_entry(entries, today_str, yesterday_str)
+    if ctx is None:
+        return None, None
+
+    sleep_stats = analyze_sleep(7)
+    todoist = get_todoist_summary()
+    calendar = get_calendar_summary()
+
+    # Subject
+    if ctx['late_streak'] >= 3:
+        subject = f"🚨 警報！連續 {ctx['late_streak']} 天晚睡 ({today_str})"
     else:
         subject = f"🦁 Daily Coach ({today_str})"
 
-    lines = []
-    lines.append(f"Leo，{'午' if now.hour >= 12 else '早'}安！\n")
+    # Assemble sections
+    sections = []
+    sections.append([f"Leo，{'午' if now.hour >= 12 else '早'}安！"])
+    sections.append(_build_status_block(ctx))
+    sections.append(_build_sleep_alert(ctx, sleep_stats))
 
-    # --- Status Block ---
-    lines.append(f"📊 **{day_label}狀態** ({last_date})")
-    lines.append(f"  心情：{'⭐' * int(mood_val)}{'☆' * (5-int(mood_val))} {mood}/5")
-    lines.append(f"  精力：{'⚡' * int(energy_val)}{'·' * (5-int(energy_val))} {energy}/5")
-    sleep_line = f"  昨晚睡眠：{si_fmt} 入睡 → {wu_fmt} 起床（共 {dur_fmt}）"
-    if sq_val is not None:
-        sq_stars = '★' * sq_val + '☆' * (5 - sq_val)
-        sleep_line += f"\n  睡眠品質：{sq_stars} {sq_val}/5"
-    lines.append(sleep_line)
-    lines.append("")
+    obs = _build_observations(ctx)
+    sections.append(["🦁 **教練觀察**"] + [f"  • {o}" for o in obs])
 
-    # --- Sleep Alert ---
-    if is_alert:
-        lines.append(f"🛑 **晚睡警報** — 連續 {late_streak} 天凌晨 2 點後才睡！")
-        if sleep:
-            lines.append(f"  近 7 天平均睡眠：{sleep['avg_duration_fmt']}，"
-                        f"晚睡率 {sleep['late_sleep_ratio']*100:.0f}%")
-        lines.append(f"  今晚目標：01:00 前上床。手機放遠一點。")
-        lines.append("")
-    elif sleep and sleep['late_sleep_ratio'] > 0.5:
-        lines.append(f"⚠️ 近 7 天晚睡率 {sleep['late_sleep_ratio']*100:.0f}%，"
-                    f"平均睡 {sleep['avg_duration_fmt']}。注意作息。")
-        lines.append("")
-
-    # --- Coach Observation ---
-    lines.append("🦁 **教練觀察**")
-    observations = []
-
-    if duration and duration < 360:  # < 6 hours
-        observations.append(f"昨晚只睡了 {dur_fmt}，今天下午可能會有睡意，記得補個短午覺。")
-    elif sq_val is not None and sq_val <= 3 and duration and duration >= 360:
-        observations.append(f"睡眠時間夠但品質不佳（{sq_val}/5）。品質比時長更影響你的心情，留意今天狀態。")
-    elif sq_val is not None and sq_val >= 5 and duration and duration >= 420:
-        observations.append(f"睡眠品質滿分 + 充足時長，今天是最佳狀態日！適合衝刺重要任務。")
-
-    if mood_val >= 5:
-        observations.append(f"心情滿分！保持這個狀態，今天適合做核心任務。")
-    elif mood_val <= 3:
-        observations.append(f"心情偏低。今天允許自己「低空飛過」，完成一件小事就好。")
-
-    if energy_val >= 5:
-        observations.append("精力充沛，是衝刺的好時機。")
-    elif energy_val <= 3:
-        observations.append("精力偏低，優先做輕量任務，避免高消耗。")
-
-    if not observations:
-        observations.append("平穩的一天。試著在中午前完成一件重要的事吧。")
-
-    for obs in observations:
-        lines.append(f"  • {obs}")
-    lines.append("")
-
-    # --- Trend Alerts (from tags) ---
     trends = check_trends(7)
     if trends:
-        lines.append("📈 **趨勢提醒**")
-        for t in trends:
-            lines.append(f"  • {t}")
-        lines.append("")
+        sections.append(["📈 **趨勢提醒**"] + [f"  • {t}" for t in trends])
 
-    # --- Calendar ---
-    if calendar:
-        lines.append("📅 **今日行程**")
-        for ev in calendar:
-            if ev['all_day']:
-                lines.append(f"  • [全天] {ev['summary']}")
-            else:
-                t = ev['start'].split('T')[1][:5] if 'T' in ev['start'] else ev['start']
-                lines.append(f"  • [{t}] {ev['summary']}")
-        lines.append("")
+    sections.append(_build_calendar_block(calendar))
+    sections.append(_build_todoist_block(todoist))
 
-    # --- Todoist ---
-    if todoist and 'error' not in todoist:
-        if todoist['today_count'] > 0:
-            lines.append(f"📋 **今日待辦** ({todoist['today_count']} 項)")
-            for t in todoist['today'][:5]:
-                lines.append(f"  □ {t}")
-            if todoist['today_count'] > 5:
-                lines.append(f"  ...及其他 {todoist['today_count']-5} 項")
-            lines.append("")
-
-        if todoist['overdue_count'] > 0:
-            lines.append(f"⚠️ **過期未完成** ({todoist['overdue_count']} 項)")
-            for t in todoist['overdue'][:3]:
-                lines.append(f"  □ {t}")
-            if todoist['overdue_count'] > 3:
-                lines.append(f"  ...及其他 {todoist['overdue_count']-3} 項")
-            lines.append("")
-
-    # --- Tip ---
-    lines.append("💡 **今日建議**")
-    if late_streak > 0:
-        lines.append("  今晚試著比昨天早 30 分鐘上床。短影音是最大的敵人。")
-    elif duration and duration > 480:
-        lines.append("  睡眠充足！趁狀態好，挑一件一直拖延的事，今天搞定它。")
+    # Daily tip
+    tip_lines = ["💡 **今日建議**"]
+    if ctx['late_streak'] > 0:
+        tip_lines.append("  今晚試著比昨天早 30 分鐘上床。短影音是最大的敵人。")
+    elif ctx['duration'] and ctx['duration'] > 480:
+        tip_lines.append("  睡眠充足！趁狀態好，挑一件一直拖延的事，今天搞定它。")
     else:
-        lines.append("  出門走走，曬曬太陽。動一動對調整作息和心情都有幫助。")
+        tip_lines.append("  出門走走，曬曬太陽。動一動對調整作息和心情都有幫助。")
+    sections.append(tip_lines)
 
-    lines.append("")
-    lines.append("-- Little Leo 🦁")
+    sections.append(["-- Little Leo 🦁"])
 
-    body = "\n".join(lines)
+    # Join non-empty sections with blank lines
+    body = "\n\n".join("\n".join(s) for s in sections if s)
     return subject, body
 
 
