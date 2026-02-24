@@ -149,8 +149,76 @@ def detect_status_effects(diary_text: str, s: Status) -> list[str]:
     return effects
 
 
-def build_status() -> Status:
-    """Collect all data sources and return a Status object."""
+def _avg_field(entries: list[dict], field: str) -> float | None:
+    """Average of a numeric field across entries, ignoring None/non-numeric."""
+    vals = []
+    for e in entries:
+        v = e.get(field)
+        if v is not None:
+            try:
+                vals.append(float(v))
+            except (ValueError, TypeError):
+                continue
+    return sum(vals) / len(vals) if vals else None
+
+
+def _trend_arrow(current: float | None, previous: float | None) -> str:
+    """Return ↑/↓/→ comparing current vs previous, or '' if data missing."""
+    if current is None or previous is None:
+        return ''
+    diff = current - previous
+    if abs(diff) < 0.1:
+        return '→'
+    return '↑' if diff > 0 else '↓'
+
+
+def _compute_trends(s: Status) -> None:
+    """Fill sleep/mood/energy trends + late_sleep count from sleep_calc."""
+    try:
+        from sleep_calc import analyze_sleep
+        week = analyze_sleep(7)
+        prev = analyze_sleep(14)
+        if not week or not prev:
+            return
+        s.late_sleep_7d = week.get('late_sleep_days', 0)
+
+        w_entries = week.get('entries', [])[:7]
+        p_entries = prev.get('entries', [])[7:14]
+
+        s.sleep_trend  = _trend_arrow(_avg_field(w_entries, 'duration_min'),
+                                      _avg_field(p_entries, 'duration_min'))
+        s.mood_trend   = _trend_arrow(_avg_field(w_entries, 'mood'),
+                                      _avg_field(p_entries, 'mood'))
+        s.energy_trend = _trend_arrow(_avg_field(w_entries, 'energy'),
+                                      _avg_field(p_entries, 'energy'))
+    except (ImportError, KeyError, TypeError, ZeroDivisionError) as e:
+        print(f"warn: trend computation failed: {e}", file=sys.stderr)
+
+
+def _compute_research_momentum(s: Status) -> None:
+    """Count research days in last 7 days from tag files."""
+    try:
+        tags_dir = MEMORY / 'tags'
+        research_count = 0
+        for i in range(7):
+            d = (NOW.date() - timedelta(days=i)).strftime('%Y-%m-%d')
+            tag_file = tags_dir / f'{d}.json'
+            if tag_file.exists():
+                tag = json.loads(tag_file.read_text())
+                topics = tag.get('topics', [])
+                if '研究/實驗' in topics or 'AudioMatters' in topics:
+                    research_count += 1
+        s.research_days_7d = research_count
+    except (json.JSONDecodeError, OSError) as e:
+        print(f"warn: research momentum failed: {e}", file=sys.stderr)
+
+
+def build_status(todoist_prefetch: tuple | None = None) -> Status:
+    """Collect all data sources and return a Status object.
+
+    Args:
+        todoist_prefetch: optional (tasks_today, tasks_overdue, quests) to skip API call.
+    """
     entry = load_diary_entry()
 
     s = Status()
@@ -177,64 +245,15 @@ def build_status() -> Status:
         except Exception:
             pass  # sleep_calc unavailable, keep diary values
 
-    s.tasks_today, s.tasks_overdue, s.quests = load_todoist()
+    if todoist_prefetch is not None:
+        s.tasks_today, s.tasks_overdue, s.quests = todoist_prefetch
+    else:
+        s.tasks_today, s.tasks_overdue, s.quests = load_todoist()
     s.streak       = compute_streak()
     s.status_effects = detect_status_effects(entry.get('diary', ''), s)
 
-    # Weekly trends
-    try:
-        from sleep_calc import analyze_sleep
-        week = analyze_sleep(7)
-        prev = analyze_sleep(14)
-        if week and prev:
-            s.late_sleep_7d = week.get('late_sleep_days', 0)
-            # Compare this week vs last week
-            w_entries = week.get('entries', [])[:7]
-            p_entries = prev.get('entries', [])[7:14]
-
-            def avg_field(entries, field):
-                vals = [e.get(field) for e in entries if e.get(field) is not None]
-                return sum(vals) / len(vals) if vals else None
-
-            def trend_arrow(current, previous):
-                if current is None or previous is None:
-                    return ''
-                diff = current - previous
-                if abs(diff) < 0.1:
-                    return '→'
-                return '↑' if diff > 0 else '↓'
-
-            w_sleep = avg_field(w_entries, 'duration_min')
-            p_sleep = avg_field(p_entries, 'duration_min')
-            s.sleep_trend = trend_arrow(w_sleep, p_sleep)
-
-            w_mood = avg_field(w_entries, 'mood')
-            p_mood = avg_field(p_entries, 'mood')
-            s.mood_trend = trend_arrow(w_mood, p_mood)
-
-            w_energy = avg_field(w_entries, 'energy')
-            p_energy = avg_field(p_entries, 'energy')
-            s.energy_trend = trend_arrow(w_energy, p_energy)
-    except Exception:
-        pass
-
-    # Research momentum from tags
-    try:
-        from datetime import date as _date
-        tags_dir = MEMORY / 'tags'
-        research_count = 0
-        for i in range(7):
-            d = (NOW.date() - timedelta(days=i)).strftime('%Y-%m-%d')
-            tag_file = tags_dir / f'{d}.json'
-            if tag_file.exists():
-                import json as _json
-                tag = _json.loads(tag_file.read_text())
-                topics = tag.get('topics', [])
-                if '研究/實驗' in topics or 'AudioMatters' in topics:
-                    research_count += 1
-        s.research_days_7d = research_count
-    except Exception:
-        pass
+    _compute_trends(s)
+    _compute_research_momentum(s)
 
     return s
 

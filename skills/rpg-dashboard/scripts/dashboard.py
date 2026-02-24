@@ -20,16 +20,27 @@ from common import now as _now, TZ, today_str as _today_str
 
 
 def fetch_all():
-    """Single data fetch — calendar, todoist, medication, diary."""
+    """Single data fetch — one API call per service, shared across panels."""
     from schedule_data import get_calendar, get_todoist, get_medication_schedule, get_time_info
     from rpg_dashboard import build_status
+
+    todoist_raw = get_todoist()
+
+    # Convert schedule_data todoist format → rpg_dashboard prefetch tuple
+    todoist_prefetch = None
+    if todoist_raw and 'error' not in todoist_raw:
+        today_count = len(todoist_raw.get('due_today', []))
+        overdue_count = len(todoist_raw.get('overdue', []))
+        hp = todoist_raw.get('high_priority', [])
+        quests = [t['content'][:50] for t in hp[:3]]
+        todoist_prefetch = (today_count, overdue_count, quests)
 
     data = {
         'time':       get_time_info(),
         'calendar':   get_calendar(days_range=1),
-        'todoist':    get_todoist(),
+        'todoist':    todoist_raw,
         'medication': get_medication_schedule(),
-        'status':     build_status(),  # RPG status (fetches its own todoist internally)
+        'status':     build_status(todoist_prefetch=todoist_prefetch),
     }
     return data
 
@@ -157,12 +168,24 @@ def main():
     args = parser.parse_args()
 
     show_all = not args.schedule and not args.rpg
-    data = fetch_all()
+
+    try:
+        data = fetch_all()
+    except Exception as e:
+        print(f"❌ 資料取得失敗：{e}", file=sys.stderr)
+        return
 
     if show_all or args.schedule:
-        render_schedule(data)
+        try:
+            render_schedule(data)
+        except Exception as e:
+            print(f"⚠️ 時間軸渲染失敗：{e}", file=sys.stderr)
+
     if show_all or args.rpg:
-        render_rpg(data)
+        try:
+            render_rpg(data)
+        except Exception as e:
+            print(f"⚠️ RPG 面板渲染失敗：{e}", file=sys.stderr)
 
 
 if __name__ == '__main__':
