@@ -13,22 +13,43 @@ Handles three modes based on what Leo says:
 | **update** | "我剛才...", "行程有變", "接下來怎麼排" | Re-plan remaining time given new context |
 | **view** | "展示行程", "今天怎麼樣", "還有什麼" | Show current schedule status |
 
-## Step 0: Persist the schedule
+## ⚠️ MANDATORY: File-first persistence
 
-Every time you create or update a schedule, **save it**:
+**Every schedule action MUST write to file BEFORE sending to Discord.**
 
-```bash
-# Create or append new version
-python3 skills/daily-scheduler/scripts/save_schedule.py "schedule text here" --note "optional context"
+Storage: `memory/schedules/YYYY-MM-DD.md`
 
-# Log completed items
-python3 skills/daily-scheduler/scripts/save_schedule.py --done "item description"
+### Workflow (non-negotiable order)
 
-# View today's schedule file
-python3 skills/daily-scheduler/scripts/save_schedule.py
+1. **Fetch data** (schedule_data.py)
+2. **Write file** (`Write` tool → `memory/schedules/YYYY-MM-DD.md`)
+3. **Send Discord** (`message` tool — copy from the file you just wrote)
+
+### File format
+
+```markdown
+# 📅 YYYY-MM-DD (weekday) Daily Schedule
+
+## v1 — 初版 (HH:MM)
+[schedule content]
+> optional context note
+
+## v2 — 更新 (HH:MM)
+[updated schedule]
+> reason for change
+
+## 實際紀錄
+- ✅ HH:MM item completed
+- ✅ HH:MM another item
+- 🔵 HH:MM in progress
+- ❌ HH:MM skipped/cancelled — reason
 ```
 
-Files are stored in `memory/schedules/YYYY-MM-DD.md` with version history + actual completion log.
+### Rules
+- **plan** → create file with `## v1`, append `## 實際紀錄` section
+- **update** → `Edit` to insert new `## vN` before `## 實際紀錄`
+- **log** → `Edit` to append line to `## 實際紀錄`
+- Never send Discord without writing file first. File is source of truth.
 
 ## Step 1: Always fetch fresh data first
 
