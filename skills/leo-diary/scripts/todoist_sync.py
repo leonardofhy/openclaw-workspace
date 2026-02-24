@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Todoist task sync: list active tasks and optionally today's completed tasks."""
-import os, json, requests, argparse
+import os, json, sys, requests, argparse
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
-ENV_PATH = Path(__file__).resolve().parent.parent.parent.parent / 'secrets' / 'todoist.env'
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import TZ, now as _now, SECRETS
+
+ENV_PATH = SECRETS / 'todoist.env'
 API_BASE = 'https://api.todoist.com/api/v1'
-TZ_OFFSET = timedelta(hours=8)  # Asia/Taipei
 
 
 def load_token():
@@ -30,7 +32,7 @@ def get(path, token, params=None):
 
 def get_completed_today(token):
     """Fetch tasks completed today (Asia/Taipei)."""
-    now_local = datetime.now(timezone(TZ_OFFSET))
+    now_local = _now()
     start_of_day = now_local.replace(hour=0, minute=0, second=0, microsecond=0)
     # Convert to UTC ISO for API
     since_utc = start_of_day.astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S')

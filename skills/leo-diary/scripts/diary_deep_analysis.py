@@ -17,7 +17,9 @@ from datetime import datetime, timedelta, date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
 from read_diary import load_diary
+from common import now as _now
 from sleep_calc import sleep_duration_minutes, parse_hhmm
 
 TAGS_DIR = Path(__file__).parent.parent.parent.parent / 'memory' / 'tags'
@@ -413,7 +415,7 @@ def generate_report(days=None, sections=None):
     lines = []
     period = f"最近 {days} 天" if days else f"全部 ({entries[0]['date']} → {entries[-1]['date']})"
     lines.append(f"# 📊 Leo 日記深度分析報告")
-    lines.append(f"生成時間: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    lines.append(f"生成時間: {_now().strftime('%Y-%m-%d %H:%M')}")
     lines.append(f"分析範圍: {period} ({len(entries)} 條)")
     lines.append("")
 

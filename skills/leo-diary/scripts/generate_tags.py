@@ -17,11 +17,14 @@ import glob
 import argparse
 from datetime import datetime, timedelta
 from collections import Counter
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import now as _now, MEMORY as _MEMORY, TAGS_DIR as _TAGS_DIR
 
-MEMORY_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "memory")
-TAGS_DIR = os.path.join(MEMORY_DIR, "tags")
+MEMORY_DIR = str(_MEMORY)
+TAGS_DIR = str(_TAGS_DIR)
 
 # Diary metrics cache (loaded once from Google Sheets / CSV)
 _diary_metrics_cache = None
@@ -218,7 +221,7 @@ def main():
         files = [os.path.join(MEMORY_DIR, f"{args.date}.md")]
         files = [f for f in files if os.path.exists(f)]
     elif args.recent:
-        today = datetime.now()
+        today = _now()
         dates = [(today - timedelta(days=i)).strftime("%Y-%m-%d") for i in range(args.recent)]
         files = [os.path.join(MEMORY_DIR, f"{d}.md") for d in dates]
         files = [f for f in files if os.path.exists(f)]

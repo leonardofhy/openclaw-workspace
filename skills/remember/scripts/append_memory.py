@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 import argparse
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
 
-# Base workspace path
-WORKSPACE = Path(os.environ.get('OPENCLAW_WORKSPACE', str(Path(__file__).resolve().parent.parent.parent.parent)))
-MEMORY_DIR = WORKSPACE / 'memory'
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import now as _now, WORKSPACE, MEMORY as MEMORY_DIR
 
 def main():
     parser = argparse.ArgumentParser(description="Append a memory snippet to a markdown file.")
@@ -44,7 +44,7 @@ def main():
         file_path.parent.mkdir(parents=True)
         
     # Timestamp
-    now = datetime.now().strftime('%Y-%m-%d %H:%M')
+    now = _now().strftime('%Y-%m-%d %H:%M')
     
     # Format entry
     tag_str = f" `[{args.tag.upper()}]`" if args.tag else ""

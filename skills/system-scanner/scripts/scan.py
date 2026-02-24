@@ -24,16 +24,16 @@ from pathlib import Path
 
 # ── paths ──────────────────────────────────────────────────────────────────
 
-WORKSPACE = Path(__file__).resolve().parent.parent.parent.parent
-SCRIPTS   = WORKSPACE / 'skills' / 'leo-diary' / 'scripts'
-MEMORY    = WORKSPACE / 'memory'
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import TZ, now as _now, WORKSPACE, MEMORY, SCRIPTS
+
 OPENCLAW  = Path.home() / '.openclaw'
 LOGS      = OPENCLAW / 'logs'
 CRON_JOBS = OPENCLAW / 'cron' / 'jobs.json'
 CRON_RUNS = OPENCLAW / 'cron' / 'runs'
 HISTORY   = MEMORY / 'scanner-history.jsonl'
 
-NOW = datetime.now(timezone(timedelta(hours=8)))
+NOW = _now()
 
 FORBIDDEN_MODELS = {
     'anthropic/claude-opus-4',

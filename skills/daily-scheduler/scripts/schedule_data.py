@@ -13,17 +13,16 @@ Usage:
   python3 schedule_data.py
   python3 schedule_data.py --tomorrow   # include tomorrow's calendar
 """
-import json, sys
+import json
 import sys
 import argparse
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-WORKSPACE = Path(__file__).resolve().parent.parent.parent.parent
-SCRIPTS   = WORKSPACE / 'skills' / 'leo-diary' / 'scripts'
-MEMORY    = WORKSPACE / 'memory'
-TZ        = timezone(timedelta(hours=8))
-NOW       = datetime.now(TZ)
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import TZ, now as _now, today_str, WORKSPACE, MEMORY, SECRETS, SCRIPTS
+
+NOW = _now()
 
 sys.path.insert(0, str(SCRIPTS))
 

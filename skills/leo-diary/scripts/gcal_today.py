@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Fetch today's (or tomorrow's) Google Calendar events for Leo."""
-import json, argparse
+import json, argparse, sys
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
-CREDS_PATH = str(Path(__file__).resolve().parent.parent.parent.parent / 'secrets' / 'google-service-account.json')
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import TZ, now as _now, SECRETS
+
+CREDS_PATH = str(SECRETS / 'google-service-account.json')
 CAL_ID = 'leonardofoohy@gmail.com'
-TZ = timezone(timedelta(hours=8))
 
 
 def get_events(days_ahead=0, days_range=1):
@@ -17,7 +19,7 @@ def get_events(days_ahead=0, days_range=1):
         CREDS_PATH, scopes=['https://www.googleapis.com/auth/calendar.readonly'])
     service = build('calendar', 'v3', credentials=creds)
 
-    now = datetime.now(TZ)
+    now = _now()
     base = (now + timedelta(days=days_ahead)).replace(hour=0, minute=0, second=0, microsecond=0)
     end = base + timedelta(days=days_range)
 
@@ -53,7 +55,7 @@ def main():
     args = ap.parse_args()
 
     events = get_events(args.days_ahead, args.days_range)
-    date_label = (datetime.now(TZ) + timedelta(days=args.days_ahead)).strftime('%Y-%m-%d')
+    date_label = (_now() + timedelta(days=args.days_ahead)).strftime('%Y-%m-%d')
 
     output = {
         'date': date_label,

@@ -15,12 +15,12 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import TZ, now as _now, today_str as _today_str, WORKSPACE, MEMORY
+
 SCRIPTS   = Path(__file__).parent
-WORKSPACE = SCRIPTS.parent.parent.parent
-MEMORY    = WORKSPACE / 'memory'
-TZ        = timezone(timedelta(hours=8))
-NOW       = datetime.now(TZ)
-TODAY     = NOW.strftime('%Y-%m-%d')
+NOW       = _now()
+TODAY     = _today_str()
 
 
 # ── data model ────────────────────────────────────────────────────────────

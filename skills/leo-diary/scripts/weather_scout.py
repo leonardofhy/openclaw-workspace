@@ -8,8 +8,11 @@ from email.mime.multipart import MIMEMultipart
 from pathlib import Path
 from datetime import datetime
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import now as _now, MEMORY
+
 # Config
-CONFIG_PATH = Path(__file__).resolve().parent.parent.parent.parent / 'memory' / 'weather_config.json'
+CONFIG_PATH = MEMORY / 'weather_config.json'
 DEFAULT_LOCATION = 'Taipei' # Coordinates: 25.0330, 121.5654
 
 # Email: use shared utility (credentials in secrets/email_ops.env)
@@ -75,7 +78,7 @@ def analyze_weekend(weather_data):
     # Assuming the script runs on Friday, Saturday is index 1, Sunday is index 2.
     # But let's be safer: parse dates.
     
-    today_str = datetime.now().strftime('%Y-%m-%d')
+    today_str = _now().strftime('%Y-%m-%d')
     try:
         today_idx = times.index(today_str)
     except ValueError:

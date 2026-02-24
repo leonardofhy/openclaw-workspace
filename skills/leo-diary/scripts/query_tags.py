@@ -21,14 +21,18 @@ import glob
 import argparse
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta
+from pathlib import Path
 
-TAGS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "memory", "tags")
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import now as _now, TAGS_DIR as _TAGS_DIR
+
+TAGS_DIR = str(_TAGS_DIR)
 
 
 def load_all_tags(start_date=None, end_date=None, recent_days=None) -> list[dict]:
     """載入所有標籤"""
     if recent_days:
-        start_date = (datetime.now() - timedelta(days=recent_days)).strftime("%Y-%m-%d")
+        start_date = (_now() - timedelta(days=recent_days)).strftime("%Y-%m-%d")
 
     tags = []
     for path in sorted(glob.glob(os.path.join(TAGS_DIR, "????-??-??.json"))):

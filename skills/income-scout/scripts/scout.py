@@ -9,9 +9,13 @@ Usage:
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import now as _now
 
 # Import helpers
 from parse_resume import parse_resume
@@ -55,7 +59,7 @@ def generate_markdown_report(
     """Generate markdown report."""
     
     report = f"""# Income Scout Report
-**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M')}
+**Generated:** {_now().strftime('%Y-%m-%d %H:%M')}
 
 ---
 
@@ -264,7 +268,7 @@ def main():
     else:
         # JSON output
         output_data = {
-            "generated_at": datetime.now().isoformat(),
+            "generated_at": _now().isoformat(),
             "skills": skills,
             "finance": finance,
             "constraints": constraints,

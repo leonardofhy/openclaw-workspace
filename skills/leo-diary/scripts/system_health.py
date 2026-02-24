@@ -7,11 +7,8 @@ import subprocess
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-WORKSPACE = Path(__file__).resolve().parent.parent.parent.parent
-SCRIPTS_DIR = WORKSPACE / 'skills' / 'leo-diary' / 'scripts'
-SECRETS_DIR = WORKSPACE / 'secrets'
-MEMORY_DIR = WORKSPACE / 'memory'
-TZ = timezone(timedelta(hours=8))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import TZ, now as _now, WORKSPACE, MEMORY as MEMORY_DIR, SECRETS as SECRETS_DIR, SCRIPTS as SCRIPTS_DIR
 
 sys.path.insert(0, str(SCRIPTS_DIR))
 
@@ -73,8 +70,8 @@ def check_diary():
     if not entries:
         return False
     latest = max(e.get('date', '') for e in entries)
-    today = datetime.now(TZ).strftime('%Y-%m-%d')
-    yesterday = (datetime.now(TZ) - timedelta(days=1)).strftime('%Y-%m-%d')
+    today = _now().strftime('%Y-%m-%d')
+    yesterday = (_now() - timedelta(days=1)).strftime('%Y-%m-%d')
     if latest < yesterday:
         return f"WARN: Latest diary is {latest} (>1 day old)"
     return f"{len(entries)} entries, latest: {latest}"
@@ -107,7 +104,7 @@ def check_email():
 
 def check_memory_today():
     """Check if today's memory file exists."""
-    today = datetime.now(TZ).strftime('%Y-%m-%d')
+    today = _now().strftime('%Y-%m-%d')
     f = MEMORY_DIR / f"{today}.md"
     if f.exists():
         size = f.stat().st_size
@@ -117,7 +114,7 @@ def check_memory_today():
 
 def check_memory_gaps():
     """Check for gaps in recent memory files (last 7 days)."""
-    today = datetime.now(TZ)
+    today = _now()
     missing = []
     for i in range(7):
         d = (today - timedelta(days=i)).strftime('%Y-%m-%d')
@@ -171,7 +168,7 @@ def check_no_hardcoded_creds():
 def main():
     print(f"\n🏥 Little Leo System Health Check")
     print(f"{'='*55}")
-    print(f"Time: {datetime.now(TZ).strftime('%Y-%m-%d %H:%M:%S')} (Asia/Taipei)\n")
+    print(f"Time: {_now().strftime('%Y-%m-%d %H:%M:%S')} (Asia/Taipei)\n")
 
     check("Secrets files", check_secrets)
     check("Python module imports", check_imports)

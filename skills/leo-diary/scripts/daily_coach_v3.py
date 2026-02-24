@@ -11,13 +11,12 @@ from pathlib import Path
 
 SCRIPTS = Path(__file__).parent
 sys.path.insert(0, str(SCRIPTS))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
 
 from read_diary import load_diary
 from email_utils import send_email
 from sleep_calc import analyze_sleep, format_duration, parse_hhmm, sleep_duration_minutes
-
-TZ = timezone(timedelta(hours=8))
-TAGS_DIR = SCRIPTS.parent.parent.parent / 'memory' / 'tags'
+from common import TZ, now as _now, TAGS_DIR
 
 
 def check_trends(days=7):
@@ -28,7 +27,7 @@ def check_trends(days=7):
     import glob
 
     alerts = []
-    today = datetime.now(TZ).date()
+    today = _now().date()
 
     # Load tags for [days] and [days*2] windows
     def load_window(n):
@@ -106,7 +105,7 @@ def get_todoist_summary():
         tasks = get('/tasks', token).get('results', [])
         tasks = [t for t in tasks if not t.get('completed_at')]
 
-        today = datetime.now(TZ).strftime('%Y-%m-%d')
+        today = _now().strftime('%Y-%m-%d')
         today_tasks = []
         overdue_tasks = []
 
@@ -304,7 +303,7 @@ def _build_todoist_block(todoist):
 
 def build_email():
     """Build the daily coach email content."""
-    now = datetime.now(TZ)
+    now = _now()
     today_str = now.strftime('%Y-%m-%d')
     yesterday_str = (now - timedelta(days=1)).strftime('%Y-%m-%d')
 
