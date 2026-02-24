@@ -170,10 +170,93 @@ def get_medication_schedule():
     return {'upcoming_today': upcoming, 'prescription_end': prescription_end}
 
 
+def format_display(data):
+    """Pretty-print schedule with current time marker."""
+    time_info = data['time']
+    now_str = time_info['now']
+    now_minutes = int(now_str[:2]) * 60 + int(now_str[3:5])
+
+    print(f"📅 {time_info['date']}  ⏰ 現在 {now_str}")
+    print(f"   剩餘可用時間：~{time_info['remaining_hours']}h（目標 {time_info['bedtime_target']} 前就寢）")
+    print()
+
+    # Build timeline: calendar events + medication
+    timeline = []
+    for ev in data.get('calendar', []):
+        if ev.get('error'):
+            continue
+        start = ev['start']
+        if 'T' in start:
+            t = start.split('T')[1][:5]
+            t_min = int(t[:2]) * 60 + int(t[3:5])
+        else:
+            t = '全天'
+            t_min = 0
+        end_t = ''
+        if 'T' in ev.get('end', ''):
+            end_t = ev['end'].split('T')[1][:5]
+        timeline.append({
+            'time': t, 'minutes': t_min, 'end': end_t,
+            'title': ev['title'], 'location': ev.get('location', ''),
+        })
+
+    timeline.sort(key=lambda x: x['minutes'])
+
+    # Print timeline with NOW marker
+    print("── 時間軸 ──")
+    now_printed = False
+    for item in timeline:
+        # Insert NOW marker before first future event
+        if not now_printed and item['minutes'] > now_minutes:
+            print(f"  ▶ {now_str}  ← 現在")
+            now_printed = True
+
+        if item['minutes'] <= now_minutes:
+            icon = "✅"
+        else:
+            icon = "⏳"
+
+        loc = f" @ {item['location']}" if item['location'] else ""
+        end = f"–{item['end']}" if item['end'] else ""
+        print(f"  {icon} {item['time']}{end}  {item['title']}{loc}")
+
+    if not now_printed:
+        print(f"  ▶ {now_str}  ← 現在（今日行程已結束）")
+    print()
+
+    # Todoist
+    todoist = data.get('todoist', {})
+    if todoist and 'error' not in todoist:
+        sections = [
+            ('🔴 逾期', todoist.get('overdue', [])),
+            ('📋 今日', todoist.get('due_today', [])),
+            ('⭐ 高優先', todoist.get('high_priority', [])),
+        ]
+        has_tasks = any(items for _, items in sections)
+        if has_tasks:
+            print("── 待辦 ──")
+            for label, items in sections:
+                if items:
+                    print(f"  {label}:")
+                    for t in items[:5]:
+                        p = {4: '🔴', 3: '🟡', 2: '🔵', 1: '⚪'}.get(t['priority'], '⚪')
+                        print(f"    {p} {t['content']}")
+            print()
+
+    # Medication
+    meds = data.get('medication')
+    if meds and meds.get('upcoming_today'):
+        print("── 💊 吃藥提醒 ──")
+        for s in meds['upcoming_today']:
+            print(f"  {s['time']}  {', '.join(s['drugs'])}")
+        print()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--tomorrow', action='store_true', help='Include tomorrow calendar')
     parser.add_argument('--no-memory', action='store_true', help='Skip memory context')
+    parser.add_argument('--display', action='store_true', help='Pretty-print with current time marker')
     args = parser.parse_args()
 
     days = 2 if args.tomorrow else 1
@@ -186,7 +269,10 @@ def main():
     if not args.no_memory:
         output['memory'] = get_memory_context()
 
-    print(json.dumps(output, ensure_ascii=False, indent=2))
+    if args.display:
+        format_display(output)
+    else:
+        print(json.dumps(output, ensure_ascii=False, indent=2))
 
 
 if __name__ == '__main__':
