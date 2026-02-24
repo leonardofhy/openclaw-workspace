@@ -1,41 +1,45 @@
 ---
 name: rpg-dashboard
-description: 顯示 Leo 的個人 RPG 狀態面板（精力、心情、睡眠、任務、主線任務、狀態效果）。當 Leo 問「顯示我的狀態」、「今天怎麼樣」、「status panel」、「RPG 面板」、「character sheet」時使用。
+description: 顯示 Leo 的統一儀表板（即時時間軸 + RPG 狀態面板）。當 Leo 說「dashboard」、「status」、「顯示我的狀態」、「今天怎麼樣」、「status panel」、「RPG 面板」、「character sheet」、「儀表板」時使用。
 ---
 
 # RPG Dashboard Skill
 
-Show Leo's personal status as an RPG character sheet, pulling live data from
-diary, Todoist, and memory files.
+統一儀表板：即時行程時間軸 + RPG 角色狀態面板。
 
-## When to use
+## 觸發詞
 
-Load this skill when Leo asks things like:
-- 「顯示我的狀態」/ 「show my status」
-- 「我今天怎麼樣」/ 「RPG 面板」
-- 「status panel」/ 「character sheet」
-- 「今天任務/心情/睡眠怎麼樣」
+- dashboard、status、顯示我的狀態、今天怎麼樣
+- RPG 面板、character sheet、儀表板
+- 排行程 → 改用 `daily-scheduler` skill
 
-## How to run
+## 執行方式
 
+**一鍵跑全部（推薦）：**
 ```bash
-cd /Users/leonardo/.openclaw/workspace
+bash skills/rpg-dashboard/scripts/dashboard.sh
+```
+
+**分開跑：**
+```bash
+# 只看時間軸
+python3 skills/daily-scheduler/scripts/schedule_data.py --display --no-memory
+
+# 只看 RPG 面板
 python3 skills/leo-diary/scripts/rpg_dashboard.py
 ```
 
-Output is Discord-formatted text. Copy it directly into your reply.
+## 輸出內容
 
-## Options
+### 1. 即時時間軸（schedule_data.py --display）
+- ⏰ 當前時間 + 剩餘可用小時數
+- ✅ 已過事件 vs ⏳ 未來事件
+- ▶ NOW 標記指出你在時間軸的位置
+- 💊 吃藥提醒（如有處方）
+- 📋 Todoist 待辦
 
-```bash
-python3 rpg_dashboard.py              # Discord text (default)
-python3 rpg_dashboard.py --send-email # send HTML version via email
-```
-
-## What it shows
-
-- ❤️ 精力 / 💙 心情 — from latest diary entry (1–5 scale → 0–100%)
-- 😴 睡眠 — hours + quality stars
-- 📋 任務 — today's due + overdue count from Todoist
-- ⚔️ 主線任務 — top 3 tasks by urgency (soonest due + highest priority)
-- 🌡️ 狀態效果 — auto-detected (生病/睡眠不足/論文衝刺/…) + streak
+### 2. RPG 角色面板（rpg_dashboard.py）
+- ❤️ 精力 / 💙 心情 — 最新日記 1-5 → 百分比
+- 😴 睡眠 — 時長 + 品質星級
+- ⚔️ 主線任務 — 最急的 3 個任務
+- 🌡️ 狀態效果 — 自動偵測（生病/睡眠不足/論文衝刺/連打天數）
