@@ -51,6 +51,31 @@ Storage: `memory/schedules/YYYY-MM-DD.md`
 - **log** → `Edit` to append line to `## 實際紀錄`
 - Never send Discord without writing file first. File is source of truth.
 
+## ⚠️ MANDATORY: File is source of truth
+
+**Schedule 查看/修改/生成，永遠以檔案為 source of truth：**
+- **查看** → `Read` 檔案 → 展示
+- **修改** → `Edit` 檔案 → `Read` 檔案 → 展示
+- **生成** → `Write` 檔案 → `Read` 檔案 → 展示
+
+**永遠不要從記憶中直接生成 schedule 展示給 Leo。**
+
+## Weekly Generation
+
+一次生成 7 天 schedule，每天早上刷新當日。
+
+### Fetch weekly data
+```bash
+python3 skills/daily-scheduler/scripts/weekly_data.py          # 7 days from today
+python3 skills/daily-scheduler/scripts/weekly_data.py --days 14 # 14 days
+```
+
+### Workflow
+1. Run `weekly_data.py` → get 7 days of calendar + todoist
+2. For each day without existing schedule: write `memory/schedules/YYYY-MM-DD.md` with `## v0 — 週排程草稿`
+3. For each day WITH existing schedule: skip (don't overwrite Leo's manual edits)
+4. Daily morning cron: refresh today's schedule to `## v1` with latest data
+
 ## Step 1: Always fetch fresh data first
 
 ```bash

@@ -33,3 +33,4 @@
 - `2026-02-22 22:55` `[ARCHITECTURE]` Design principle established: Python for deterministic logic (trends, stats, pattern detection), LLM only for natural language formatting. LLM never auto-edits primary files (MEMORY.md, TOOLS.md). Monthly memory refresh should be human-reviewed, not automated.
 - `2026-02-25 09:29` `[SCHOLARSHIP]` 🎓 研究所優秀僑生獎學金：每月1萬x6個月（115/2-7月），截止3/13(五)16:00。需準備：申請表(系所核章+教授簽章)、成績單+名次證明、操行成績、在學證明、研究計畫、教授推薦意見等，合併一個PDF上傳。⚠️若領取政府計畫經費獎助學金則不可申請。Due設3/11提前準備。詳情：https://gocfs.ntu.edu.tw/board/detail/sn/2232
 - `2026-02-25 12:19` `[TRAVEL]` 🇭🇰🇨🇳 港深行程（2026/3/6-3/10）：去程 HX265 16:30 TPE→18:45 HKG，回程 HX264 13:40 HKG→15:30 TPE。住宿：3/6 上環宜必思、3/7 深圳待訂、3/8-9 香港朋友家。3/7 EA Summit @ Soho House 09:00-17:30，晚上過關去深圳。馬來西亞護照香港免簽90天、中國免簽15/30天。插座與大馬相同不用轉接頭。
+- `2026-02-25 23:50` `[DECISION]` 📅 Schedule 設計原則：檔案是唯一 source of truth。查看→讀檔→展示；修改→寫檔→讀檔→展示；生成→寫檔→讀檔→展示。永遠不從記憶中直接生成 schedule 展示給 Leo。
