@@ -46,85 +46,109 @@ def fetch_all():
 
 
 def render_schedule(data):
-    """Pretty-print schedule with NOW marker and countdown."""
+    """Pretty-print schedule with NOW marker and countdown.
+
+    Priority: read from schedule file (memory/schedules/YYYY-MM-DD.md).
+    Fallback: raw calendar events (when no schedule file exists).
+    """
     time_info = data['time']
     now_str = time_info['now']
-    now_minutes = int(now_str[:2]) * 60 + int(now_str[3:5])
 
     print(f"📅 {time_info['date']}  ⏰ 現在 {now_str}")
     print(f"   剩餘可用時間：~{time_info['remaining_hours']}h（目標 {time_info['bedtime_target']} 前就寢）")
     print()
 
-    # Build timeline
-    timeline = []
-    for ev in data.get('calendar', []):
-        if ev.get('error'):
-            continue
-        start = ev['start']
-        if 'T' in start:
-            t = start.split('T')[1][:5]
-            t_min = int(t[:2]) * 60 + int(t[3:5])
-        else:
-            t = '全天'
-            t_min = 0
-        end_t = ''
-        end_min = 0
-        if 'T' in ev.get('end', ''):
-            end_t = ev['end'].split('T')[1][:5]
-            end_min = int(end_t[:2]) * 60 + int(end_t[3:5])
-        timeline.append({
-            'time': t, 'minutes': t_min, 'end': end_t, 'end_minutes': end_min,
-            'title': ev['title'], 'location': ev.get('location', ''),
-        })
-    timeline.sort(key=lambda x: x['minutes'])
+    # ── Try reading from schedule file first ──
+    schedule_rendered = False
+    try:
+        from schedule_engine import parse_schedule, render_display
+        today = _today_str()
+        schedule_path = WORKSPACE / 'memory' / 'schedules' / f'{today}.md'
+        schedule = parse_schedule(schedule_path)
+        if schedule and schedule.blocks:
+            print("── 時間軸（排程檔案）──")
+            print(render_display(schedule, now_str))
+            print()
+            schedule_rendered = True
+    except Exception as e:
+        # Import or parse failure — fall through to calendar fallback
+        import sys as _sys
+        print(f"  ⚠️ 排程檔案讀取失敗：{e}，改用行事曆", file=_sys.stderr)
 
-    # Find next upcoming event for countdown
-    next_event = None
-    active_event = None
-    for item in timeline:
-        end_min = item.get('end_minutes', 0)
-        if end_min and item['minutes'] <= now_minutes < end_min:
-            active_event = item
-        elif item['minutes'] > now_minutes and next_event is None:
-            next_event = item
+    # ── Fallback: raw calendar rendering ──
+    if not schedule_rendered:
+        now_minutes = int(now_str[:2]) * 60 + int(now_str[3:5])
 
-    # Print timeline
-    print("── 時間軸 ──")
-    now_printed = False
-    for item in timeline:
-        if not now_printed and item['minutes'] > now_minutes:
-            print(f"  ▶ {now_str}  ← 現在")
-            now_printed = True
+        # Build timeline
+        timeline = []
+        for ev in data.get('calendar', []):
+            if ev.get('error'):
+                continue
+            start = ev['start']
+            if 'T' in start:
+                t = start.split('T')[1][:5]
+                t_min = int(t[:2]) * 60 + int(t[3:5])
+            else:
+                t = '全天'
+                t_min = 0
+            end_t = ''
+            end_min = 0
+            if 'T' in ev.get('end', ''):
+                end_t = ev['end'].split('T')[1][:5]
+                end_min = int(end_t[:2]) * 60 + int(end_t[3:5])
+            timeline.append({
+                'time': t, 'minutes': t_min, 'end': end_t, 'end_minutes': end_min,
+                'title': ev['title'], 'location': ev.get('location', ''),
+            })
+        timeline.sort(key=lambda x: x['minutes'])
 
-        end_min = item.get('end_minutes', 0)
-        if end_min and item['minutes'] <= now_minutes < end_min:
-            elapsed = now_minutes - item['minutes']
-            total = end_min - item['minutes']
-            remaining = end_min - now_minutes
-            pct = int(elapsed / total * 100) if total else 0
-            icon = "🔵"
-            suffix = f"  ({remaining}m 後結束)"
-        elif item['minutes'] <= now_minutes and (not end_min or now_minutes >= end_min):
-            icon = "✅"
-            suffix = ""
-        else:
-            icon = "⏳"
-            suffix = ""
+        # Find next upcoming event for countdown
+        next_event = None
+        active_event = None
+        for item in timeline:
+            end_min = item.get('end_minutes', 0)
+            if end_min and item['minutes'] <= now_minutes < end_min:
+                active_event = item
+            elif item['minutes'] > now_minutes and next_event is None:
+                next_event = item
 
-        loc = f" @ {item['location']}" if item['location'] else ""
-        end = f"–{item['end']}" if item['end'] else ""
-        print(f"  {icon} {item['time']}{end}  {item['title']}{loc}{suffix}")
+        # Print timeline
+        print("── 時間軸（行事曆）──")
+        now_printed = False
+        for item in timeline:
+            if not now_printed and item['minutes'] > now_minutes:
+                print(f"  ▶ {now_str}  ← 現在")
+                now_printed = True
 
-    if not now_printed:
-        print(f"  ▶ {now_str}  ← 現在（今日行程已結束）")
+            end_min = item.get('end_minutes', 0)
+            if end_min and item['minutes'] <= now_minutes < end_min:
+                elapsed = now_minutes - item['minutes']
+                total = end_min - item['minutes']
+                remaining = end_min - now_minutes
+                pct = int(elapsed / total * 100) if total else 0
+                icon = "🔵"
+                suffix = f"  ({remaining}m 後結束)"
+            elif item['minutes'] <= now_minutes and (not end_min or now_minutes >= end_min):
+                icon = "✅"
+                suffix = ""
+            else:
+                icon = "⏳"
+                suffix = ""
 
-    # Next event countdown
-    if next_event:
-        delta = next_event['minutes'] - now_minutes
-        h, m = divmod(delta, 60)
-        countdown = f"{h}h{m:02d}m" if h else f"{m}m"
-        print(f"\n  ⏭️  下一個：{next_event['time']}  {next_event['title']}（{countdown} 後）")
-    print()
+            loc = f" @ {item['location']}" if item['location'] else ""
+            end = f"–{item['end']}" if item['end'] else ""
+            print(f"  {icon} {item['time']}{end}  {item['title']}{loc}{suffix}")
+
+        if not now_printed:
+            print(f"  ▶ {now_str}  ← 現在（今日行程已結束）")
+
+        # Next event countdown
+        if next_event:
+            delta = next_event['minutes'] - now_minutes
+            h, m = divmod(delta, 60)
+            countdown = f"{h}h{m:02d}m" if h else f"{m}m"
+            print(f"\n  ⏭️  下一個：{next_event['time']}  {next_event['title']}（{countdown} 後）")
+        print()
 
     # Todoist
     todoist = data.get('todoist', {})
