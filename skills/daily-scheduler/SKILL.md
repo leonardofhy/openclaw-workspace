@@ -76,6 +76,32 @@ python3 skills/daily-scheduler/scripts/weekly_data.py --days 14 # 14 days
 3. For each day WITH existing schedule: skip (don't overwrite Leo's manual edits)
 4. Daily morning cron: refresh today's schedule to `## v1` with latest data
 
+## Schedule Engine (deterministic logic)
+
+`schedule_engine.py` handles parsing, rendering, and analysis without LLM:
+
+```bash
+# View schedule with ✅/▶/⏳ markers
+python3 skills/daily-scheduler/scripts/schedule_engine.py view
+python3 skills/daily-scheduler/scripts/schedule_engine.py view --date 2026-02-27
+
+# Detect time conflicts
+python3 skills/daily-scheduler/scripts/schedule_engine.py conflicts --date 2026-02-26
+
+# Check unfinished tasks from yesterday
+python3 skills/daily-scheduler/scripts/schedule_engine.py spillover
+
+# Generate day-end review
+python3 skills/daily-scheduler/scripts/schedule_engine.py review
+
+# Debug: dump parsed schedule as JSON
+python3 skills/daily-scheduler/scripts/schedule_engine.py parse --date 2026-02-25
+```
+
+### When to use engine vs LLM
+- **Engine**: view, conflicts, spillover, parse (fast, zero tokens)
+- **LLM**: plan, update, generate weekly (needs judgment)
+
 ## Step 1: Always fetch fresh data first
 
 ```bash
