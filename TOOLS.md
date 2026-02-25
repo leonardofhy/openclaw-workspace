@@ -72,6 +72,7 @@
 | `generate_tags.py` | leo-diary/scripts/ | 日記標籤提取（純 Python，批量回填）|
 | `query_tags.py` | leo-diary/scripts/ | 標籤查詢（人物/主題/共現/時間線）|
 | `keyword_freq.py` | leo-diary/scripts/ | 關鍵字頻率（純 Python）|
+| `weekly_data.py` | daily-scheduler/scripts/ | 7天排程數據（Calendar+Todoist）|
 | `weather_scout.py` | leo-diary/scripts/ | 天氣檢查+通知 |
 | `fetch_latest_diary.py` | memory/scripts/ | 拉取最新日記（供記憶反芻）|
 | `append_memory.py` | remember/scripts/ | 寫入長期記憶 |
@@ -85,10 +86,12 @@
 
 ## Cron 排程（每日）
 - 04:15 日記同步 + LLM 標籤提取
+- **08:00 每日排程刷新**（讀取/更新 memory/schedules/YYYY-MM-DD.md，sonnet）
 - 08:30 早晨總覽（Todoist + Calendar + 自動設會議提醒）
 - 12:00 Daily Coach v3（email）+ 記憶反芻
 - 13:00 午間行事曆掃描
 - 22:30 Todoist 晚間回顧（Discord）
 - 23:50 日終摘要（Discord）
+- **週日 21:00 週排程生成**（產生下週 7 天 schedule 草稿，sonnet，Discord 通知）
 - 週日 21:00 週報（Discord）
 - 週五 20:00 天氣偵察（email）
