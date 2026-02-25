@@ -116,29 +116,35 @@ def parse_schedule(filepath: Path) -> DaySchedule | None:
     versions = re.findall(r'## v(\d+)', text)
     schedule.version = max(int(v) for v in versions) if versions else 0
 
-    # Extract blocks from latest version section
-    # Find the last ## vN section (before ## 實際紀錄)
+    # Extract blocks from ALL version sections (not just latest)
+    # This gives accurate block count for completion rate calculation
     sections = re.split(r'^## ', text, flags=re.MULTILINE)
-    latest_schedule_section = ""
-    for section in reversed(sections):
-        if section.startswith('v') and '實際紀錄' not in section:
-            latest_schedule_section = section
-            break
 
-    # Parse bullet items as blocks
+    # Collect blocks from all versions, latest version wins for duplicates
+    all_blocks = {}  # key: start_time -> TimeBlock (latest version wins)
     block_pattern = re.compile(
         r'• (\d{2}:\d{2})[–-](\d{2}:\d{2})\s+(\S+)\s+(.*?)(?:\n|$)'
     )
-    for match in block_pattern.finditer(latest_schedule_section):
-        start, end, emoji, title = match.groups()
-        title = title.strip()
-        # Remove markdown bold
-        title = re.sub(r'\*\*(.*?)\*\*', r'\1', title)
-        block = TimeBlock(
-            start=start, end=end, emoji=emoji,
-            title=title, is_fixed='📅' in emoji or '💊' in emoji or '💧' in emoji,
-        )
-        schedule.blocks.append(block)
+
+    for section in sections:
+        if not section.startswith('v'):
+            continue
+        if '已被' in section and '取代' in section:
+            continue  # Skip superseded versions like "v2 [已被 v3 取代]"
+        if '實際紀錄' in section:
+            continue
+
+        for match in block_pattern.finditer(section):
+            start, end, emoji, title = match.groups()
+            title = title.strip()
+            title = re.sub(r'\*\*(.*?)\*\*', r'\1', title)
+            block = TimeBlock(
+                start=start, end=end, emoji=emoji,
+                title=title, is_fixed='📅' in emoji or '💊' in emoji or '💧' in emoji,
+            )
+            all_blocks[start] = block  # Latest version overwrites earlier
+
+    schedule.blocks = sorted(all_blocks.values(), key=lambda b: b.start_minutes)
 
     # Parse 未排入
     unscheduled_match = re.search(r'⚠️ 未排入[：:]?\s*(.*?)(?:\n\n|\n>|\n##|$)', text, re.DOTALL)
@@ -663,6 +669,68 @@ def cmd_update(args):
     print('\n'.join(lines))
 
 
+def cmd_stats(args):
+    """Show weekly completion statistics across multiple days."""
+    days = args.days
+    today = datetime.strptime(_today_str(), '%Y-%m-%d')
+
+    total_blocks_all = 0
+    total_completed_all = 0
+    total_skipped_all = 0
+    day_stats = []
+
+    for i in range(days - 1, -1, -1):
+        d = (today - timedelta(days=i)).strftime('%Y-%m-%d')
+        filepath = SCHEDULES_DIR / f'{d}.md'
+        schedule = parse_schedule(filepath)
+
+        if not schedule or not schedule.blocks:
+            day_stats.append((d, None, None, None, False))
+            continue
+
+        blocks = len(schedule.blocks)
+        completed = len([l for l in schedule.actual_log if '✅' in l])
+        skipped = len([l for l in schedule.actual_log if '❌' in l])
+        has_log = len(schedule.actual_log) > 0
+
+        total_blocks_all += blocks
+        total_completed_all += completed
+        total_skipped_all += skipped
+        day_stats.append((d, blocks, completed, skipped, has_log))
+
+    # Render
+    print(f"📊 Schedule Stats ({days} days)")
+    print("━" * 45)
+
+    for d, blocks, completed, skipped, has_log in day_stats:
+        weekday = WEEKDAYS_ZH[datetime.strptime(d, '%Y-%m-%d').weekday()]
+        if blocks is None:
+            print(f"  {d}（{weekday}）  — 無排程")
+            continue
+        if not has_log:
+            print(f"  {d}（{weekday}）  📋 {blocks} blocks（未記錄）")
+            continue
+
+        rate = int(completed / blocks * 100) if blocks else 0
+        bar_len = 10
+        filled = min(bar_len, int(rate / 100 * bar_len))
+        bar = '█' * filled + '░' * (bar_len - filled)
+
+        status = '🎉' if rate >= 80 else '👍' if rate >= 50 else '⚠️'
+        skip_note = f'  ❌{skipped}' if skipped else ''
+        print(f"  {d}（{weekday}）  {bar} {rate:3d}% ({completed}/{blocks}) {status}{skip_note}")
+
+    print("━" * 45)
+
+    if total_blocks_all > 0:
+        overall_rate = int(total_completed_all / total_blocks_all * 100)
+        print(f"  Overall: {total_completed_all}/{total_blocks_all} ({overall_rate}%)")
+        active_days = sum(1 for _, b, _, _, hl in day_stats if b and hl)
+        print(f"  Active days: {active_days}/{days}")
+    else:
+        print("  No schedule data found")
+
+
 def main():
     parser = argparse.ArgumentParser(description='Schedule engine CLI')
     sub = parser.add_subparsers(dest='command')
@@ -687,6 +755,9 @@ def main():
     p_dayend.add_argument('--date', type=str, default=None)
     p_dayend.add_argument('--dry-run', action='store_true', help='Print without writing files')
 
+    p_stats = sub.add_parser('stats', help='Weekly completion stats')
+    p_stats.add_argument('--days', type=int, default=7, help='Number of days to look back')
+
     p_update = sub.add_parser('update', help='Generate schedule update based on current progress')
     p_update.add_argument('--date', type=str, default=None)
     p_update.add_argument('--now', type=str, default=None, help='Current time (HH:MM)')
@@ -702,7 +773,7 @@ def main():
 
     {'view': cmd_view, 'conflicts': cmd_conflicts, 'spillover': cmd_spillover,
      'review': cmd_review, 'parse': cmd_parse, 'dayend': cmd_dayend,
-     'update': cmd_update}[args.command](args)
+     'update': cmd_update, 'stats': cmd_stats}[args.command](args)
 
 
 if __name__ == '__main__':
