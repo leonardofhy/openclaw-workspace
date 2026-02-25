@@ -51,6 +51,12 @@
 - **狀態：** 有 client_secret，但**尚未生成 token.json**（需要 OAuth 授權流程）
 - **用途：** 備用，目前用 Service Account 即可
 
+### 🎤 Whisper (語音轉文字)
+- **工具：** `whisper-cli`（whisper-cpp via Homebrew）
+- **模型：** `~/.local/share/whisper-cpp/ggml-base.bin`（base, 147MB）
+- **用法：** `ffmpeg -y -i input.ogg -ar 16000 -ac 1 /tmp/voice.wav && whisper-cli -m ~/.local/share/whisper-cpp/ggml-base.bin -l zh /tmp/voice.wav`
+- **注意：** 只接受 WAV 格式，需先用 ffmpeg 轉檔。支援中文（`-l zh`）
+
 ## 未啟用 / 待設定
 
 - **Gmail API：** Service Account 無權限，需另外授權
