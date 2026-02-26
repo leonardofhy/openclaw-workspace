@@ -78,6 +78,28 @@
 > - AudioLens: "critical layer" = where attribute resolves in LALM
 > **Hypothesis**: All three independently found the same architectural transition point from different methodological angles. Testing this directly (SAE + saturation layer + critical layer on same model) = tractable experiment on MacBook.
 
+### 🧪 Experiment 0: Triple Convergence Test (Cycle #11 crystallized — 2026-02-26)
+
+**Q:** Do AudioSAE layer 6-7 transition, Beyond Transcription saturation layer, and AudioLens critical layer point to the *same* architectural feature in Whisper?
+
+**Setup (MacBook-feasible, Whisper-tiny or small):**
+1. **Saturation layer**: Run Encoder Lens on Whisper encoder — find the layer where logit lens output stabilizes (= saturation layer from Beyond Transcription). Expected: ~layer 6-7 for small model.
+2. **Norm/CKA jump**: Use `whisper_hook_demo.py` — look for the layer where CKA similarity to final layer jumps (= representation converges). Expected: ~layer 6-7.
+3. **Feature stability**: If SAE trained: compare feature stability profile per layer (from AudioSAE paper, Fig. 3). Not immediately runnable without SAE training, but CKA can proxy it.
+4. **Claim**: If all three methods point to the same transition zone → strong evidence for a universal "semantic crystallization layer" in Whisper encoder.
+
+**Minimal viable version (no SAE training needed):**
+- `whisper_hook_demo.py` already captures layer norms + CKA
+- Add: logit-lens decoder vocab projection at each layer (requires decoder embedding matrix)
+- Result: saturation curve + CKA curve on same plot → visual test of convergence hypothesis
+
+**Impact if confirmed:**
+- Novel empirical finding (all prior papers used different models/methods)
+- Directly supports "Causal AudioLens" paper: "first experiment" section
+- Conference-quality if extended to multiple models (Whisper variants + HuBERT)
+
+**Next step:** Extend `whisper_hook_demo.py` to include logit-lens projection → run → see if CKA jump and saturation layer coincide. ~2-3 hours coding.
+
 | Concept A | Paper A | ↔ | Concept B | Paper B | New Connection |
 |-----------|---------|---|-----------|---------|----------------|
 | Layer 6-7 speech transition | AudioSAE | ↔ | Saturation layer | Beyond Transcription | Same phenomenon? |

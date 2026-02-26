@@ -111,6 +111,18 @@
 | NeurIPS 2026 | ~2026-05 | Listen vs Guess (if ready) |
 | EMNLP 2026 | ~2026-06 | Audio InterpBench |
 
+## 📌 狀態更新 (2026-02-26 19:00)
+
+**AudioMatters CMT deadline passed** → Leo's focus now shifts fully to mech interp.
+
+**Immediate next steps (post-deadline):**
+1. Run `whisper_hook_demo.py` — verify toolchain works end-to-end
+2. Extend hook demo with logit-lens projection → run "Triple Convergence" experiment
+3. Read SPIRIT (arXiv:2505.13541) — safety track anchor paper
+4. Contact 智凱哥 about AudioLens codebase access
+
+**Recommended next cycle:** `build` — extend whisper_hook_demo.py with logit-lens projection to test Triple Convergence hypothesis. MacBook-feasible, ~2-3 hours.
+
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
 2. 🔧 **Deep Research**: 自主 AI agent 系統的可持續架構（已請求 2/26）
