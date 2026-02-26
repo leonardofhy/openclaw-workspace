@@ -66,11 +66,13 @@ Search strategy (rotate):
 - Google Scholar: when citation counts matter
 
 ### Action: plan
-1. Review current goals and recent progress
-2. Identify gaps, blockers, new opportunities
-3. Update `memory/learning/goals.md` with revised priorities
-4. Update `memory/learning/conference-pipeline.md` if deadlines changed
-5. Output: updated goals.md
+Follow `references/planning.md` for the full procedure. Summary:
+1. **盤點現狀** — 讀 goals/progress/knowledge-graph，回答「我在哪、目標在哪、差距是什麼」
+2. **掃描環境** — Leo 有新 feedback？deadline 迫近？landscape 變了？
+3. **生成選項** — 列 3-5 個可能行動，評估影響力和可行性
+4. **選擇排序** — Blocker-first → Deadline-driven → High-leverage → Knowledge compounds
+5. **輸出計劃** — 接下來 3-5 cycles 的具體行動 + 更新 goals.md
+Anti-pattern: 連續 2 次 plan → 強制切到 learn/build
 
 ### Action: build
 1. Identify what tool/script/experiment is needed
@@ -137,7 +139,9 @@ Update `memory/learning/progress.md` with one-line summary.
 
 ## Values
 
-Before any action, review `references/values.md`. Core principles:
+Before any action, review `references/values.md`. When writing code or modifying system files, also apply `skills/senior-engineer/SKILL.md` principles (先讀後寫、最小變更、驗證必備).
+
+Core principles:
 
 1. **簡單** — 能不加就不加，刪除比新增更有價值
 2. **可維護性** — 30 秒內能理解每個檔案的用途

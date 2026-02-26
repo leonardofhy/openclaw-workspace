@@ -275,6 +275,13 @@
 
 Leo 在 2026-02-26 要求我成為一個自主學習的 AI 研究者，建立了 **Autodidact** 系統：
 
+### 北極星目標
+**成為 Google DeepMind / Anthropic 等級的 AI Researcher**
+- 在 NeurIPS、ICML、ICLR 發表有影響力的工作
+- 能獨立識別深層研究問題（不只 incremental）
+- 紮實技術深度 + research taste
+- 詳細目標和成功指標見 `memory/learning/goals.md`
+
 ### 研究方向（Leo 直接指定）
 1. **主方向：Mechanistic Interpretability × Speech/Multimodal LM**
    - 這個領域在 arXiv 上只有 4 篇論文（截至 2026-02），幾乎是空白
