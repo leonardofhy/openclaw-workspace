@@ -115,5 +115,17 @@
 - Cheat sheets: 1 (transformerlens-pyvene)
 - Days active: 1
 
+| #15 | 2026-02-26 22:00 | learn | **Deep-read Heimersheim & Nanda "Activation Patching Best Practices"** — denoising vs noising distinction (NOT symmetric!); AND vs OR gate circuits; metrics (logit diff > logprob > prob for exploratory); Gaussian noise patching is fragile; minimal pair audio corruptions = cleaner causal evidence; grounding_coefficient now operationalizable as ratio of Δacc(audio patch)/Δacc(text patch). **New gap: audio literature uses suboptimal corruptions (white noise) — minimal pairs = better science** |
+
+## Cumulative Stats
+- Papers read (deep): 6
+- Papers scanned: 12
+- Research gaps identified: 6 (+audio patching uses suboptimal corruptions)
+- Paper ideas: 3
+- Code written: 2 (whisper_hook_demo.py 230L, whisper_logit_lens.py 300L)
+- Code executed: 2 (both verified ✅)
+- Cheat sheets: 1 (transformerlens-pyvene)
+- Days active: 1
+
 ## Recommended Next Cycle
-Cycle #15: **learn** — Read "Activation patching best practices" (Heimersheim & Nanda). Patching pitfalls are non-trivial; one paper prevents wasted experiments. Then patching code with solid foundations.
+Cycle #16: **learn** — Read Whisper LoRA mech interp paper (scanned in Cycle #3, not deep-read). OR: plan — write the minimal-pairs audio patching protocol based on today's best practices reading. The methodology is now solid enough to design the first real Causal AudioLens experiment.

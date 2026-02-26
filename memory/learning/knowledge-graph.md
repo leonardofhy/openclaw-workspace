@@ -116,6 +116,19 @@
 | 70% hallucination FPR reduction | AudioSAE | ↔ | 99% jailbreak defense | SPIRIT | Both use sparse activation intervention; sparse+interpretable (SAE) > dense (SPIRIT) |
 | Triple Convergence layer 3 (Whisper-base) | whisper_hook_demo | ↔ | Best defense = specific layer patching | SPIRIT | Does SPIRIT's optimal defense layer = Triple Convergence transition zone? |
 
+### G) Activation Patching Methodology
+- **Heimersheim & Nanda (2024)** — 🟢 DEEP READ — "How to Use and Interpret Activation Patching" [arXiv:2404.15255]
+  - KEY DISTINCTION: Denoising (clean→corrupt) tests SUFFICIENCY; Noising (corrupt→clean) tests NECESSITY — NOT symmetric!
+  - AND circuits: use noising (finds all components); OR circuits: use denoising
+  - METRICS hierarchy: logit diff > logprob > probability > accuracy (for exploratory patching)
+  - ⚠️ Gaussian noise patching (Causal Tracing) is fragile — sensitive to noise level, can be ineffective
+  - ⚠️ Backup behavior (Hydra effect): ablating key component activates backup → component looks less important than it is
+  - Path patching: isolates direct A→B connections, needed for confirmatory circuit verification
+  - AUDIO IMPLICATION: Beyond Transcription's white-noise patching = suboptimal corruption; minimal pair audio = cleaner evidence
+  - NEW GAP (Leo): all audio MI papers use suboptimal corruptions — minimal pairs would be methodologically cleaner and more publishable
+
+---
+
 ## 關鍵研究者/團隊
 - **NTU 李宏毅 lab** — AudioLens (智凱哥！Leo 主場)
 - aiOla Research (Glazer) — ASR MI, hallucination causal analysis
