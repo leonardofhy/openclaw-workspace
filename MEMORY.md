@@ -271,6 +271,42 @@
 
 ---
 
+## Autodidact System (2026-02-26 建立)
+
+Leo 在 2026-02-26 要求我成為一個自主學習的 AI 研究者，建立了 **Autodidact** 系統：
+
+### 研究方向（Leo 直接指定）
+1. **主方向：Mechanistic Interpretability × Speech/Multimodal LM**
+   - 這個領域在 arXiv 上只有 4 篇論文（截至 2026-02），幾乎是空白
+   - 核心問題：multimodal LM 如何在內部處理 speech？
+2. **次方向：AI Safety × Speech**
+   - Audio adversarial attacks 的機制、speech-based jailbreak detection
+3. **進行中：AudioMatters** — Interspeech 2026 一作
+
+### Paper Ideas（按優先級）
+1. 🥇 Mech interp of speech understanding in Omni-LLMs → NeurIPS/ICLR
+2. 🥈 SpeechLens toolkit（speech 版 Prisma）→ EMNLP Demo
+3. 🥉 Audio adversarial × mech interp = safety → Workshop
+
+### Autodidact 運作方式
+- **Skill 位置**: `skills/autodidact/SKILL.md`
+- **Cron**: 每 30 分鐘自動觸發一個學習 cycle（isolated session, sonnet）
+- **核心循環**: ORIENT → DECIDE → ACT → RECORD → REFLECT
+- **6 種行動**: learn / plan / build / reflect / skill-up / report
+- **狀態檔案**: `memory/learning/goals.md`, `progress.md`, `knowledge-graph.md`
+
+### 核心價值觀（`skills/autodidact/references/values.md`）
+1. 簡單 — 能不加就不加
+2. 可維護性 — 30 秒內能理解
+3. 透明 — Leo 永遠知道系統在做什麼
+4. 可逆性 — 容易 undo
+5. 成本意識 — 低價值 cycle 直接跳過
+6. 漸進式 — 一次只加一個
+7. 收斂 > 發散 — 每 5 cycles micro-reflect, 每天 consolidate, 每週 deep-reflect
+8. Human-in-the-loop — Leo 的判斷 > 自動化
+
+---
+
 ## Setup & Tools
 
 ### 技術環境
