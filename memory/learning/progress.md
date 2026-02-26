@@ -242,4 +242,21 @@ That's Track 3's core contribution, now even better motivated.
 1. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence hypothesis)
 2. **NNsight API check** — 5 min: simpler than pyvene for Whisper encoder interventions?
 3. **Design Triple Convergence IIT experiment** — conceptual sketch → present to Leo for approval before any build
-4. **Deep-read Zhao et al. 2601.03115** — 16 pages, emotion-sensitive neurons, high relevance to Track 3
+4. ~~Deep-read Zhao et al. 2601.03115~~ ✅ DONE cycle #25
+
+| #25 | 2026-02-27 02:30 | learn | **Deep-read Zhao et al. 2601.03115** (ESNs in LALMs, JHU/Imperial, Jan 2026) — ESNs causally validated in Qwen2.5-Omni/Kimi-Audio/Audio Flamingo 3 via SwiGLU hook + MAD/CAS selectors; cluster at layers 0, 6-8, 19-22 (matches Triple Convergence); **KEY GAP: no audio-vs-text pathway test** — their ESN deactivation never asks "is this neuron responding to audio emotion or linguistic context?" = Track 3's grounding_coefficient applied at neuron level. Also: ESNs non-additive → SAE decomposition needed → Track 2+3 intersection. |
+
+## Day 2 Rolling Stats (updated after cycle #25)
+- Papers read (deep): 10 total
+- Papers scanned: 15+
+- Research gaps identified: 10 (+ESN audio-vs-text grounding = Track 3 neuron-level application)
+- Paper ideas: 5 (+ESN grounding coefficient at neuron level; ESN via SAE feature space)
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1
+- **Must-read list: FULLY COMPLETED** ✅
+
+## Recommended First Cycles (Day 2 morning — Leo wakes up)
+1. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence hypothesis)
+2. **NNsight API check** — 5 min assessment vs pyvene for Whisper encoder interventions
+3. **Design Track 3 experiment sketch** — grounding_coefficient at ESN level (Zhao method + audio/text patching) → present to Leo before any build
+4. **Optional: brief reflect** — synthesize Zhao + Causal Abstraction + Multimodal MI Survey together

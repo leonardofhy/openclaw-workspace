@@ -61,13 +61,29 @@
   - CODE: https://github.com/mbzuai-nlp/spirit-breaking
   - LEO'S OPPORTUNITY: AudioSAE features → surgically suppress adversarial features vs SPIRIT's blind layer patching
 
-### C.1) Emotion-Sensitive Neurons in LALMs (New — Cycle #24)
-- **Zhao, Schuller, Sisman "Discovering and Causally Validating Emotion-Sensitive Neurons in LALMs" (Jan 2026)** — 🟡 ABSTRACT READ (cycle #24) [arXiv:2601.03115]
-  - Models: Qwen2.5-Omni, Kimi-Audio, Audio Flamingo 3 (3 LALMs)
-  - KEY METHODS: 4 neuron selectors (freq/entropy/magnitude/contrast); inference-time ablation + gain amplification
-  - KEY FINDINGS: ESNs causally suppress/amplify emotion class recognition; non-uniform layer clustering; cross-dataset transfer; dose-response scaling
-  - CRITICAL GAP: No test of audio pathway vs text pathway contribution to ESN activation — exactly Track 3's question
-  - LEO'S OPPORTUNITY: Patching experiment → which stream (audio or text) activates ESNs? = "Listen vs Guess" at neuron level
+### C.1) Emotion-Sensitive Neurons in LALMs (New — Cycle #24/25)
+- **Zhao, Schuller, Sisman "Discovering and Causally Validating Emotion-Sensitive Neurons in LALMs" (Jan 2026)** — 🟢 DEEP READ (Cycle #25) [arXiv:2601.03115]
+  - Authors: JHU CLSP + Imperial College London GLAM; 16 pages, 6 figures
+  - Models: Qwen2.5-Omni-7B, Kimi-Audio, Audio Flamingo 3; Benchmarks: IEMOCAP, MELD, MSP-Podcast
+  - KEY METHODS: 
+    - Attach hooks to **decoder MLP SwiGLU gates** (g = SiLU(u)); log on *correctly solved* items only
+    - 4 selectors: LAP (freq), LAPE (entropy), MAD (magnitude contrastive), CAS (top-margin)
+    - Interventions: Deactivation (zero mask = necessity test) + Steering (gain 1+α = controllability test)
+    - 3 agnostic injection strategies (label-free): 2-Pass, Mix, Union
+  - KEY FINDINGS:
+    1. ESNs causally validated: self-deactivation >> cross-deactivation consistently across 3 models/3 datasets
+    2. **Selector matters**: MAD/CAS >> LAP/LAPE for causal specificity
+    3. **Layer clustering**: ESNs non-uniformly distributed — early (layer 0), early-mid (6-8), late (19-22)
+       → **Matches Triple Convergence Hypothesis** (acoustic→semantic transition at mid layers)
+    4. Steering works: amplifying ESNs biases predictions toward target emotion (dose-response)
+    5. ESNs interact non-additively (agnostic injection weaker than targeted) → polysemanticity issue
+    6. Partial cross-dataset transfer: asymmetric, emotion-category-dependent
+  - **CRITICAL GAP** (= Track 3): Instruments decoder only; NEVER asks "does ESN fire because of audio or text input?"
+    - grounding_coefficient applied at neuron level = unique contribution Leo can make
+    - Method: find ESNs (Zhao) → for each cluster → patch audio vs patch text → gc per ESN cluster
+  - **NEW SYNTHESIS**: ESN non-additivity → SAE would decompose into monosemantic emotion features → Track 2+3 intersection
+    - "ESNs via SAE features" = cleaner causal unit than individual polysemantic neurons
+  - LEO'S OPPORTUNITY: 2 new paper ideas — (1) grounding_coefficient at ESN level, (2) ESN discovery via AudioSAE features
 
 ### C.2) LoRA Mechanistic Interpretability (Speech)
 - **"Behind the Scenes" (Ma et al., ICASSP 2026, 2509.08454)** — 🟢 DEEP READ (Cycle #16) — MI of LoRA-adapted Whisper for SER
