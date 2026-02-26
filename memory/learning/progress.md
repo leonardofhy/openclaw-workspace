@@ -79,5 +79,29 @@
 - Cheat sheets: 1 (transformerlens-pyvene)
 - Days active: 1
 
+| #12 | 2026-02-26 20:30 | build | **TOOLCHAIN VERIFIED** ✅ — ran whisper_hook_demo.py successfully. Key finding: Whisper-base has 6 layers (not 12); transition zone = layer 3 (4.2x norm jump at midpoint). CKA heatmap confirms 2 distinct clusters (acoustic layers 0-2, semantic layers 3-5). Plot saved. |
+
+## Cumulative Stats
+- Papers read (deep): 4
+- Papers scanned: 12
+- Research gaps identified: 4
+- Paper ideas: 3
+- Code written: 1 (whisper_hook_demo.py, 230 lines)
+- Code executed: 1 (toolchain verified ✅)
+- Cheat sheets: 1 (transformerlens-pyvene)
+- Days active: 1
+
+| #13 | 2026-02-26 21:00 | learn | **Deep-read SPIRIT** (EMNLP 2025, MBZUAI) — activation patching defeats audio jailbreaks (100% ASR → ~1%); key gap: no SAE-guided feature-level patching; directly connects AudioSAE steering + SPIRIT defense → "SAE-guided inference-time safety patching" synthesis. Leo's Whisper infra directly applicable. |
+
+## Cumulative Stats
+- Papers read (deep): 5
+- Papers scanned: 12
+- Research gaps identified: 5 (+SAE-guided SPIRIT extension)
+- Paper ideas: 3
+- Code written: 1 (whisper_hook_demo.py, 230 lines)
+- Code executed: 1 (toolchain verified ✅)
+- Cheat sheets: 1 (transformerlens-pyvene)
+- Days active: 1
+
 ## Recommended Next Cycle
-Cycle #12: **build** — extend `whisper_hook_demo.py` with logit-lens projection → run Triple Convergence experiment → produce CKA + saturation curve plot. Then read SPIRIT (arXiv:2505.13541) for safety track.
+Cycle #14: **build** — extend whisper_hook_demo.py with logit-lens projection (vocab projection onto Whisper post-layer-3 representations). Short (~50 lines), MacBook-feasible, empirically tests the "semantic" nature of layer 3+ representations.
