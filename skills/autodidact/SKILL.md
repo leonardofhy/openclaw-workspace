@@ -162,10 +162,20 @@ Core principles:
 
 ## Constraints
 
-- Each cycle should use < 90 seconds of compute (sonnet model)
-- Don't spam Leo — only report when there's a genuine insight
-- Prefer depth over breadth (better to deeply understand 1 paper than skim 5)
-- Always connect learning back to current goals
-- Be honest about uncertainty — flag when confidence is low
-- **ORIENT 階段如果判斷沒有高價值行動 → 跳過這個 cycle，不要為了做而做**
-- **每週至少 1 次清理：合併散亂筆記、刪過時檔案、精簡 knowledge graph**
+- Each cycle: < 90 seconds compute (sonnet), skip if no high-value action
+- Depth > breadth (1 deep read > 5 skims)
+- Always connect learning back to goals; flag uncertainty honestly
+- Don't spam Leo — report only genuine insights
+
+## Self-modification rules (see values.md §11)
+
+- ✅ Free to change: cycle notes, digest, progress, knowledge-graph
+- ⚠️ Propose only: goals priorities (direction change), SKILL.md, values.md
+- 🔒 Needs Leo: cron jobs, scripts, MEMORY.md
+
+## Budgets (see values.md §12)
+
+- memory/learning/ files: max 20
+- Single file: max 200 lines
+- Daily new files: max 2 (digest + 1 reference)
+- Weekly new crons: max 1

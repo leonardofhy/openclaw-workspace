@@ -20,6 +20,23 @@
 | Logit lens | Text interp | 觀察 token prediction 如何逐層變化 |
 | Unified instruction format | UniWhisper | 異質 tasks 統一成 instruction→answer |
 
+## 研究路徑圖（Method Transfer）
+```
+Text Mech Interp (TransformerLens, SAE)
+    ↓ transfer methods
+Vision Mech Interp (Prisma toolkit)
+    ↓ template to follow
+Speech Mech Interp ← WE ARE HERE (building)
+    ↓ apply to
+Omni-LLMs (Qwen-Audio, SALMONN, Gemini)
+```
+
+## MacBook-Feasible Experiments (no GPU needed)
+- TransformerLens on GPT-2 (CPU fine for small models)
+- Probing on pre-computed Whisper activations
+- Logit lens visualization (post-hoc, no training)
+- SAE analysis on saved activations
+
 ## 待追蹤研究者
 - Kawamura et al. (audio SSL neuron dissection, 2026)
 - Glazer et al. (mech interp ASR, IBM?, 2025)
