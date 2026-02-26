@@ -17,7 +17,7 @@
 - SAE on speaker embeddings (Titanet) — monosemantic factors [arXiv:2502.00127]
 
 ### C) Audio-Language Models（最接近 Leo）
-- **🔥 AudioLens (Yang et al., 2025, NTU 李宏毅 lab!)** — logit-lens for LALMs, attribute tracking [arXiv:2506.05140]
+- **🔥 AudioLens (智凱哥, 2025, NTU 李宏毅 lab)** — logit-lens for LALMs, attribute tracking [arXiv:2506.05140]（Leo 最近的 labmate，AudioMatters co-1st author）
 - Beyond Transcription 也涵蓋 Qwen2-Audio
 - **SPIRIT (EMNLP 2025, MBZUAI)** — activation patching 防禦 audio jailbreak [arXiv:2505.13541]
 
@@ -28,19 +28,22 @@
 ### E) Brain-to-Speech
 - Maghsoudi & Mishra (2026) — cross-mode patching, causal scrubbing [arXiv:2602.01247]
 
+### F) Neural Audio Codecs（新角度）
+- EnCodec → discrete tokens → 讓 audio MI 變成「LM-like」
+- AudioLM, MusicGen/AudioGen 都基於 codec tokens
+- MI 意義：token-level patching, SAE on residual stream 直接可用
+- 目前 MI 研究幾乎空白
+
 ## 核心方法工具箱
-| 方法 | 用途 | 工具 |
-|------|------|------|
-| Activation patching | 因果定位 | TransformerLens |
-| Logit lens / vocab projection | 逐層 attribute tracking | 自建 |
-| SAE (Sparse Autoencoder) | Feature discovery + steering | 自建 / AudioSAE |
-| Linear probing | 資訊存在性測試 | sklearn / custom |
-| Feature steering | 干預 + 控制 | SAE-based |
+→ 詳見 `skills/autodidact/references/toolbox.md`
 
 ## 關鍵研究者/團隊
-- **NTU 李宏毅 lab** — AudioLens (Leo 主場！)
-- aiOla Research (Glazer) — ASR MI
+- **NTU 李宏毅 lab** — AudioLens (智凱哥！Leo 主場)
+- aiOla Research (Glazer) — ASR MI, hallucination causal analysis
 - Huawei Noah's Ark (Aparin) — AudioSAE
 - MBZUAI — SPIRIT (audio safety)
+- Stanford (Atticus Geiger) — causal abstraction theory + pyvene
+- Neel Nanda — activation patching best practices, TransformerLens
 - Mozilla Builders — Whisper SAE tooling
 - Ellena Reid — early Whisper MI (LessWrong)
+- Yuan Gong (MIT) — AST/SSAST audio transformers

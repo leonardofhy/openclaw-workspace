@@ -18,7 +18,7 @@
 ## 當前研究方向
 
 ### 主方向：Mechanistic Interpretability × Speech/Multimodal LM
-- **為什麼選這個**: arXiv 上只有 4 篇論文，幾乎空白，先進者優勢巨大
+- **為什麼選這個**: 領域早期加速中（~20 篇相關工作），先進者優勢仍在但需加速
 - **核心問題**: Multimodal LM（Qwen-Audio, Gemini, GPT-4o）如何在內部處理 speech？
   - Speech tokens 在哪一層被轉化為語義？
   - Emotion / speaker identity / phonetics 分別在哪裡處理？
@@ -40,9 +40,10 @@
 **戰略考量：AudioLens 是李宏毅 lab 的工作 → Leo 有主場優勢**
 
 1. 🥇 **"Listen vs Guess" — AudioLens 延伸** → NeurIPS 2026 / ICLR 2027
-   - 接棒 lab 自己的 AudioLens，用 controlled counterfactuals + patching 量化「audio evidence vs language prior」
+   - 接棒智凱哥的 AudioLens，用 controlled counterfactuals + patching 量化「audio evidence vs language prior」
    - 定義 "grounding coefficient"，因果定位 failure modes (encoder vs connector vs LM)
-   - 優勢：lab 內有前人基礎、有老師指導、有 GPU
+   - **優勢：智凱哥 = AudioLens 作者 = AudioMatters 共同一作 = 每天一起吃飯的 labmate**
+   - 可直接取得 codebase、實驗 insight、合作機會
    - 預估：4-6 個月
 
 2. 🥈 **Audio InterpBench — MI 的 evaluation benchmark** → EMNLP 2026 / Interspeech
@@ -59,23 +60,36 @@
 
 ## Knowledge Gaps
 - [ ] TransformerLens activation patching 實作（month 0-2 必修）
-- [ ] SAE 訓練 + feature steering（AudioSAE 復現）
-- [ ] AudioLens 論文精讀 + 代碼復現（**lab 內部資源**）
+- [ ] **Patching pitfalls**: OOD internal states, corruption design for audio（方法論核心）
+- [ ] SAE 訓練 + feature steering + evaluation discipline（AudioSAE 復現 + SAEBench 思維）
+- [ ] AudioLens 論文精讀 + 代碼復現（**智凱哥直接問**）
 - [ ] Whisper / HuBERT encoder 逐層機制
 - [ ] Qwen2-Audio / SALMONN 架構
+- [ ] Neural audio codecs (EnCodec) — discrete tokens 讓 audio MI 變 LM-like
+- [ ] pyvene intervention library（Stanford, structured interventions）
 - [ ] ICML 2025 MI Tutorial（結構化學習路徑）
 
 ## Must-Read List（按優先級）
-1. [ ] **AudioLens** (Yang 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
+1. [ ] **AudioLens** (智凱哥 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
 2. [ ] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882]
-3. [ ] **AudioSAE** (Aparin 2026, EACL) — SAE for speech [arXiv:2602.05027]
-4. [ ] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541]
-5. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
-6. [ ] ICML 2025 MI Tutorial materials
+3. [ ] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027]
+4. [ ] **Activation patching best practices** (Heimersheim & Nanda) — 避免 pitfalls
+5. [ ] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541]
+6. [ ] **Causal abstraction** (Geiger et al.) — 因果介入的理論基礎
+7. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
+8. [ ] **SAEBench** — SAE evaluation methodology
+9. [ ] ICML 2025 MI Tutorial materials
+10. [ ] **Interspeech 2025 Tutorial** — "Interpretability for Speech Models"（結構化入門）
 
 ## 6-12 Month Ramp Plan
-- **Month 0-2**: TransformerLens 熟練 + 復現 AudioLens
-- **Month 2-4**: 在 AudioLens 基礎上設計 counterfactual experiments
+- **Month 0-2**: Foundations
+  - 精讀 AudioLens + Beyond Transcription + AudioSAE（方法細節，不只 abstract）
+  - TransformerLens + pyvene 實作（先在 text 上跑通，再遷移到 audio）
+  - Starter experiments 1-3（probing, CKA, Whisper neuron atlas）→ MacBook 可跑
+  - 理解 patching pitfalls + SAE evaluation methodology
+- **Month 2-4**: 和智凱哥合作設計 counterfactual experiments（已談好合作）
+  - Starter experiments 4-5（single-layer SAE, intervention on Speech Commands）→ 戰艦
+  - Define "clean vs corrupt" protocols for audio
 - **Month 4-8**: 跑實驗 + 寫第一篇論文
 - **Month 8-12**: 投稿 + 開始第二個方向
 
