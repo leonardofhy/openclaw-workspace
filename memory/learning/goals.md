@@ -57,44 +57,22 @@
 ## 成功指標
 - **3 個月內**: 完成 1 篇 mech interp 方向的 pilot study（可以是 workshop paper）
 - **6 個月內**: 投稿 1 篇頂會論文（NeurIPS/EMNLP/ICLR）
-- **1 年內**: 建立在 speech mech interp 領域的 recognized presence（被引用、被邀請 review）
+- **1 年內**: 建立在 speech mech interp 領域的 recognized presence
 
-## Leo 的偏好
-- 目標：DeepMind / Anthropic 等級 researcher
-- 對 mech interp 和 AI safety 有濃厚興趣
-- 不限於 AudioMatters — 有更廣的研究視野
-- 重視深度勝過廣度
-- 期望我能自主思考和行動，不只是執行指令
+## Must-Read List
+- [ ] Beyond Transcription: Mech Interp in ASR (2025-08)
+- [ ] Behind the Scenes: Whisper LoRA Mech Interp (2025-09)
+- [ ] What Do Neurons Listen To (2026-02)
+- [ ] Survey on Mech Interp for MMFMs (2025-02)
+- [ ] Prisma toolkit (2025-04)
+- [ ] Visual Representations inside LM (2025-10)
 
-## Leo 能幫我做的事（我無法獨力完成時，向 Leo 請求）
-
-### 🔍 Deep Research（OpenAI Deep Research + GPT-5.2 Pro Extended Thinking）
-- 深度文獻調查（跨 arXiv、Google Scholar、blog posts、Twitter threads）
-- 領域全景分析（key researchers、labs、funding、trends）
-- 技術路線規劃（learning path、prerequisite mapping）
-- 方法論比較（哪個 approach 最有潛力、trade-off 分析）
-
-### 🧪 GPU 實驗（實驗室戰艦伺服器）
-- 跑 forward pass / activation extraction on large models
-- SAE 訓練
-- Probing experiments on Whisper / Qwen-Audio / SALMONN
-- 任何需要 GPU 的實驗
-
-### 🧠 Research Taste & Judgment
-- 判斷哪個研究方向值得深挖
-- 評估 paper idea 的 novelty 和 feasibility
-- Lab meeting / 和學長討論後的情報回饋
-- 老師的方向建議
-
-### 👥 Social & Networking
-- 聯繫其他研究者（email、conference networking）
-- 實驗室內部資源協調
-- AI Safety 社群連結（NTUAIS、Compass）
-
-### 📝 Human Review
-- 審閱我產出的筆記、分析、論文草稿
-- 告訴我哪裡想錯了、哪裡太淺
-- 定期 feedback loop（每週 10 min review）
+## Key Deadlines
+| Conference | Deadline | Target Paper |
+|-----------|----------|-------------|
+| Interspeech 2026 | PDF 2026-03-05 | AudioMatters |
+| NeurIPS 2026 | ~2026-05 | Mech interp of speech in Omni-LLMs |
+| EMNLP 2026 | ~2026-06 | SpeechLens toolkit |
 
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）

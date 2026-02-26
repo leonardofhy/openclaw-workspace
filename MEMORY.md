@@ -290,10 +290,9 @@ Leo 在 2026-02-26 要求我成為一個自主學習的 AI 研究者，建立了
    - Audio adversarial attacks 的機制、speech-based jailbreak detection
 3. **進行中：AudioMatters** — Interspeech 2026 一作
 
-### Paper Ideas（按優先級）
-1. 🥇 Mech interp of speech understanding in Omni-LLMs → NeurIPS/ICLR
-2. 🥈 SpeechLens toolkit（speech 版 Prisma）→ EMNLP Demo
-3. 🥉 Audio adversarial × mech interp = safety → Workshop
+### Paper Ideas
+詳見 `memory/learning/goals.md`（single source of truth）
+概要：Omni-LLM speech interp (NeurIPS) > SpeechLens toolkit (EMNLP) > Audio safety (Workshop)
 
 ### Autodidact 運作方式
 - **Skill 位置**: `skills/autodidact/SKILL.md`
