@@ -35,44 +35,56 @@
 - 最終 PDF 2026-03-05
 - 投稿後 → 注意力轉向 mech interp 方向
 
-## Paper Ideas（按優先級和可行性）
-1. 🥇 **Mech interp of speech understanding in Omni-LLMs** → NeurIPS 2026 / ICLR 2027
-   - 可行性：需要 GPU（跑 forward pass + probing on Qwen-Audio/SALMONN）
-   - 預估時間：3-4 個月
-2. 🥈 **SpeechLens toolkit** → EMNLP 2026 Demo Track
-   - 可行性：主要是 engineering work，可以在 MacBook 上開發
-   - 預估時間：2 個月
-3. 🥉 **Audio adversarial × mech interp = safety** → Workshop paper
-   - 可行性：需要 adversarial audio generation + interp analysis
-   - 預估時間：1-2 個月
+## Paper Ideas（基於 2026-02-26 deep research 重新排序）
 
-## Knowledge Gaps（要填的坑）
-- [ ] TransformerLens / activation patching 實作
-- [ ] SAE 訓練和分析
-- [ ] Whisper / HuBERT encoder 逐層運作機制
-- [ ] Qwen-Audio / SALMONN 架構細節
-- [ ] Multimodal token alignment 機制
-- [ ] 頂會論文寫作技巧（structure, framing, storytelling）
+**戰略考量：AudioLens 是李宏毅 lab 的工作 → Leo 有主場優勢**
 
-## 成功指標
-- **3 個月內**: 完成 1 篇 mech interp 方向的 pilot study（可以是 workshop paper）
-- **6 個月內**: 投稿 1 篇頂會論文（NeurIPS/EMNLP/ICLR）
-- **1 年內**: 建立在 speech mech interp 領域的 recognized presence
+1. 🥇 **"Listen vs Guess" — AudioLens 延伸** → NeurIPS 2026 / ICLR 2027
+   - 接棒 lab 自己的 AudioLens，用 controlled counterfactuals + patching 量化「audio evidence vs language prior」
+   - 定義 "grounding coefficient"，因果定位 failure modes (encoder vs connector vs LM)
+   - 優勢：lab 內有前人基礎、有老師指導、有 GPU
+   - 預估：4-6 個月
 
-## Must-Read List
-- [ ] Beyond Transcription: Mech Interp in ASR (2025-08)
-- [ ] Behind the Scenes: Whisper LoRA Mech Interp (2025-09)
-- [ ] What Do Neurons Listen To (2026-02)
-- [ ] Survey on Mech Interp for MMFMs (2025-02)
-- [ ] Prisma toolkit (2025-04)
-- [ ] Visual Representations inside LM (2025-10)
+2. 🥈 **Audio InterpBench — MI 的 evaluation benchmark** → EMNLP 2026 / Interspeech
+   - 結合 AudioMatters benchmark 經驗 + MI 方法論
+   - Synthetic ground-truth tasks with known causal structure
+   - 優勢：Leo 的 evaluation 專長直接遷移
+   - 預估：3-4 個月
+
+3. 🥉 **Audio Safety via MI (SPIRIT 延伸)** → Workshop paper
+   - Benchmark of audio jailbreak styles + mechanistic defenses comparison
+   - 接棒 SPIRIT (EMNLP 2025)
+   - 優勢：AI Safety 興趣 + NTUAIS 社群
+   - 預估：2-3 個月
+
+## Knowledge Gaps
+- [ ] TransformerLens activation patching 實作（month 0-2 必修）
+- [ ] SAE 訓練 + feature steering（AudioSAE 復現）
+- [ ] AudioLens 論文精讀 + 代碼復現（**lab 內部資源**）
+- [ ] Whisper / HuBERT encoder 逐層機制
+- [ ] Qwen2-Audio / SALMONN 架構
+- [ ] ICML 2025 MI Tutorial（結構化學習路徑）
+
+## Must-Read List（按優先級）
+1. [ ] **AudioLens** (Yang 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
+2. [ ] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882]
+3. [ ] **AudioSAE** (Aparin 2026, EACL) — SAE for speech [arXiv:2602.05027]
+4. [ ] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541]
+5. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
+6. [ ] ICML 2025 MI Tutorial materials
+
+## 6-12 Month Ramp Plan
+- **Month 0-2**: TransformerLens 熟練 + 復現 AudioLens
+- **Month 2-4**: 在 AudioLens 基礎上設計 counterfactual experiments
+- **Month 4-8**: 跑實驗 + 寫第一篇論文
+- **Month 8-12**: 投稿 + 開始第二個方向
 
 ## Key Deadlines
 | Conference | Deadline | Target Paper |
 |-----------|----------|-------------|
 | Interspeech 2026 | PDF 2026-03-05 | AudioMatters |
-| NeurIPS 2026 | ~2026-05 | Mech interp of speech in Omni-LLMs |
-| EMNLP 2026 | ~2026-06 | SpeechLens toolkit |
+| NeurIPS 2026 | ~2026-05 | Listen vs Guess (if ready) |
+| EMNLP 2026 | ~2026-06 | Audio InterpBench |
 
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）

@@ -1,43 +1,46 @@
 # 🗺️ Knowledge Graph
 
-> 概念、論文、連結。Paper ideas 和 must-read list 見 goals.md（single source of truth）。
+> 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
+> Last updated: 2026-02-26 (based on deep research report)
 
-## Mech Interp × Speech（主方向）
-- 現有工作僅 4 篇（2025-08 至 2026-02）
-- 關鍵方法: activation patching, probing, SAE, logit lens
-- Vision 有 Prisma toolkit，speech 無對應
-- 相鄰: text interp (TransformerLens), vision interp (Prisma), radiology MLLM + SAE
+## Mech Interp × Speech/Audio — Field Map (2026)
 
-## Audio Evaluation（AudioMatters 相關）
-- UniWhisper: unified instruction format, 20-task, encoder-only eval
-- 現有 benchmarks 都 narrow-scoped → AudioMatters 填 cross-scenario gap
+### A) ASR / Whisper MI
+- Ellena Reid (2023, LessWrong) — 早期 Whisper MI，phoneme-like features, localized attention
+- **Glazer et al. "Beyond Transcription" (2025, aiOla)** — logit lens + patching for ASR, hallucination/repetition 因果分析 [arXiv:2508.15882]
+- Mozilla Builders (2024) — Whisper SAE (L1, TopK), phonetic/positional features
+- Open tools: whisper-interp (GitHub), whisper_logit_lens (GitHub)
 
-## 概念索引
-| 概念 | 來源 | 筆記 |
+### B) Speech Encoder SAEs
+- **AudioSAE (Aparin et al., 2026, EACL)** — SAE on Whisper/HuBERT all layers, feature steering 減少 false detection [arXiv:2602.05027]
+- Parra et al. (2025, EMNLP) — interpretable sparse features for SSL speech models
+- SAE on speaker embeddings (Titanet) — monosemantic factors [arXiv:2502.00127]
+
+### C) Audio-Language Models（最接近 Leo）
+- **🔥 AudioLens (Yang et al., 2025, NTU 李宏毅 lab!)** — logit-lens for LALMs, attribute tracking [arXiv:2506.05140]
+- Beyond Transcription 也涵蓋 Qwen2-Audio
+- **SPIRIT (EMNLP 2025, MBZUAI)** — activation patching 防禦 audio jailbreak [arXiv:2505.13541]
+
+### D) Generative Audio/Music MI
+- SMITIN (2024), Facchiano (2025), TADA! (2026) — attention steering, SAE for music concepts
+- TADA!: 少數 attention layers 控制 semantic concepts [arXiv:2602.11910]
+
+### E) Brain-to-Speech
+- Maghsoudi & Mishra (2026) — cross-mode patching, causal scrubbing [arXiv:2602.01247]
+
+## 核心方法工具箱
+| 方法 | 用途 | 工具 |
 |------|------|------|
-| Activation patching | Text mech interp | 需遷移到 speech |
-| SAE (Sparse Autoencoder) | Anthropic / Radiology MLLM | 可用於 feature discovery |
-| Logit lens | Text interp | 觀察 token prediction 如何逐層變化 |
-| Unified instruction format | UniWhisper | 異質 tasks 統一成 instruction→answer |
+| Activation patching | 因果定位 | TransformerLens |
+| Logit lens / vocab projection | 逐層 attribute tracking | 自建 |
+| SAE (Sparse Autoencoder) | Feature discovery + steering | 自建 / AudioSAE |
+| Linear probing | 資訊存在性測試 | sklearn / custom |
+| Feature steering | 干預 + 控制 | SAE-based |
 
-## 研究路徑圖（Method Transfer）
-```
-Text Mech Interp (TransformerLens, SAE)
-    ↓ transfer methods
-Vision Mech Interp (Prisma toolkit)
-    ↓ template to follow
-Speech Mech Interp ← WE ARE HERE (building)
-    ↓ apply to
-Omni-LLMs (Qwen-Audio, SALMONN, Gemini)
-```
-
-## MacBook-Feasible Experiments (no GPU needed)
-- TransformerLens on GPT-2 (CPU fine for small models)
-- Probing on pre-computed Whisper activations
-- Logit lens visualization (post-hoc, no training)
-- SAE analysis on saved activations
-
-## 待追蹤研究者
-- Kawamura et al. (audio SSL neuron dissection, 2026)
-- Glazer et al. (mech interp ASR, IBM?, 2025)
-- Sonia Joseph / Lee Sharkey (Prisma, vision interp)
+## 關鍵研究者/團隊
+- **NTU 李宏毅 lab** — AudioLens (Leo 主場！)
+- aiOla Research (Glazer) — ASR MI
+- Huawei Noah's Ark (Aparin) — AudioSAE
+- MBZUAI — SPIRIT (audio safety)
+- Mozilla Builders — Whisper SAE tooling
+- Ellena Reid — early Whisper MI (LessWrong)
