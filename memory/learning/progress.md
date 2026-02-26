@@ -278,5 +278,23 @@ That's Track 3's core contribution, now even better motivated.
 Priority queue for Leo's first session:
 1. **Present "Class-specific Neuron Grounding" experiment sketch** — AAPE + patching + grounding_coefficient on LALM; needs Leo approval before any build
 2. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence)
-3. **NNsight API check** — 5 min assessment vs pyvene
-4. **Temporal SAE gap** — note for Track 2 AudioSAEBench proposal
+3. ~~**NNsight API check**~~ ✅ DONE cycle #28 — NNsight > pyvene; use NNsight for NDIF remote access
+4. **Create venv + install nnsight** — needed before any coding session
+5. **Temporal SAE gap** — note for Track 2 AudioSAEBench proposal
+
+| #28 | 2026-02-27 04:00 | skill-up | **NNsight API assessment** — NNsight wins vs pyvene: cleaner syntax + NDIF remote execution for large models (Qwen2-Audio-7B without local GPU!). Cheat sheet updated. Used in "Behind the Scenes" paper (Whisper SER MI). arXiv scan: no new speech MI papers since cycle #24. |
+
+## Day 2 Rolling Stats (updated after cycle #28)
+- Papers read (deep): 12 total
+- Papers scanned: 16+
+- Research gaps identified: 12
+- Paper ideas: 6
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (updated with NNsight section)
+- **Must-read list: FULLY COMPLETED** ✅
+- **NNsight API check: COMPLETE** ✅ → NNsight wins, migrate scripts when creating venv
+
+## Recommended First Cycles (Day 2 morning — Leo wakes up)
+1. **Create venv + install nnsight** → `python3 -m venv ~/audio-mi-env && source activate && pip install nnsight pyvene`
+2. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence with real data)
+3. **Present "Class-specific Neuron Grounding" experiment sketch** — wait for Leo approval before any build

@@ -199,6 +199,65 @@ layer6_acts = cache["encoder_layer_6"]  # shape: [1, T, 512] for whisper-base
 
 ---
 
+## NNsight (NEW — Cycle #28, 2026-02-27)
+
+### What is NNsight?
+- Library by NDIF team (National Deep Inference Fabric)
+- Tracing context manager: define interventions **declaratively**, execute as batch
+- Works on ANY HuggingFace model (encoder, decoder, seq2seq, multimodal)
+- **KEY ADVANTAGE over pyvene: NDIF remote execution** — run large models (Qwen2-Audio-7B) on national cluster with no local GPU!
+
+### Install
+```bash
+pip install nnsight
+```
+
+### Core API Pattern
+```python
+from nnsight import LanguageModel
+
+model = LanguageModel("openai-community/gpt2", device_map="auto")
+
+# GET activations
+with model.trace("Hello world") as tracer:
+    layer3_out = model.transformer.h[3].output[0].save()
+# After context: layer3_out.value is tensor
+
+# PATCH activations (cross-prompt)
+with model.trace(clean_input) as tracer:
+    clean_act = model.transformer.h[3].output[0].save()
+
+with model.trace(corrupted_input) as tracer:
+    model.transformer.h[3].output[0][:] = clean_act.value  # patch!
+    patched_logits = model.lm_head.output.save()
+```
+
+### For Whisper Encoder
+```python
+from nnsight import LanguageModel
+
+model = LanguageModel("openai/whisper-base")
+
+with model.trace({"input_features": audio_tensor}) as tracer:
+    enc_layer3 = model.model.encoder.layers[3].output[0].save()
+    enc_final = model.model.encoder.output.last_hidden_state.save()
+```
+
+### NNsight vs pyvene: Summary
+
+| Dimension | NNsight | pyvene |
+|-----------|---------|--------|
+| Syntax | Tracing context (declarative) | Config dict + wrapped model |
+| Cross-prompt patching | ✅ built-in `.save()` | Manual management |
+| Remote execution (NDIF) | ✅ free cluster access | ❌ local only |
+| DAS | ✅ tutorial available | ✅ original source |
+| SAE/dict learning | ✅ tutorial available | Separate library |
+| Used in audio MI | ✅ "Behind the Scenes" (Ma 2026) | pyvene papers (text NLP) |
+
+**Verdict: NNsight wins for Leo's work** — NDIF enables LALM experiments (Qwen2-Audio) without GPU. Migrate scripts to NNsight when creating venv.
+
+---
+
 ## Key Resources
 
 | Resource | Link | Priority |
