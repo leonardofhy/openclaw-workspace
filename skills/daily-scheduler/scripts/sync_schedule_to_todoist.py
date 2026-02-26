@@ -36,7 +36,7 @@ SCHEDULES_DIR = WORKSPACE / 'memory' / 'schedules'
 SYNC_MARKER = '[openclaw-schedule-sync]'
 
 # Skip routine/noise blocks
-SKIP_EMOJIS = {'🍜', '🚿', '🌙', '💪'}
+SKIP_EMOJIS = {'🍜', '🚿', '🌙', '💪', '📅'}
 SKIP_KEYWORDS = {'午餐', '晚餐', '洗漱', '洗澡', '就寢', '睡眠', '離線', 'lab dinner'}
 
 
