@@ -246,17 +246,37 @@ That's Track 3's core contribution, now even better motivated.
 
 | #25 | 2026-02-27 02:30 | learn | **Deep-read Zhao et al. 2601.03115** (ESNs in LALMs, JHU/Imperial, Jan 2026) — ESNs causally validated in Qwen2.5-Omni/Kimi-Audio/Audio Flamingo 3 via SwiGLU hook + MAD/CAS selectors; cluster at layers 0, 6-8, 19-22 (matches Triple Convergence); **KEY GAP: no audio-vs-text pathway test** — their ESN deactivation never asks "is this neuron responding to audio emotion or linguistic context?" = Track 3's grounding_coefficient applied at neuron level. Also: ESNs non-additive → SAE decomposition needed → Track 2+3 intersection. |
 
-## Day 2 Rolling Stats (updated after cycle #25)
-- Papers read (deep): 10 total
+| #26 | 2026-02-27 03:00 | learn | **Deep-read Kawamura 2602.15307** (EUSIPCO 2026) — AAPE method finds class-specific neurons in M2D SSL model (12L × 3072 neurons); SSL achieves ~100% class coverage vs SL's 49%; neurons encode gender/pitch/arousal/language-family/genre across tasks; "shared responses" = polysemanticity → SAE needed to disentangle; deactivation = functional impact confirmed (necessity test). **New Gap #11: no audio-vs-text pathway test for class-specific neurons in LALMs**. Sketched "Class-specific Neuron Grounding" experiment (AAPE + patching + grounding_coefficient) = Track 2+3 synthesis. |
+
+## Day 2 Rolling Stats (updated after cycle #26)
+- Papers read (deep): 11 total
 - Papers scanned: 15+
-- Research gaps identified: 10 (+ESN audio-vs-text grounding = Track 3 neuron-level application)
-- Paper ideas: 5 (+ESN grounding coefficient at neuron level; ESN via SAE feature space)
+- Research gaps identified: 11 (+class-specific neuron grounding in LALMs unanswered)
+- Paper ideas: 6 (+Class-specific Neuron Grounding experiment design)
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1
 - **Must-read list: FULLY COMPLETED** ✅
 
 ## Recommended First Cycles (Day 2 morning — Leo wakes up)
-1. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence hypothesis)
-2. **NNsight API check** — 5 min assessment vs pyvene for Whisper encoder interventions
-3. **Design Track 3 experiment sketch** — grounding_coefficient at ESN level (Zhao method + audio/text patching) → present to Leo before any build
-4. **Optional: brief reflect** — synthesize Zhao + Causal Abstraction + Multimodal MI Survey together
+1. **Present "Class-specific Neuron Grounding" experiment sketch to Leo** — AAPE + patching + grounding_coefficient on LALM; needs Leo approval before any build
+2. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence hypothesis)
+3. **NNsight API check** — 5 min assessment vs pyvene for Whisper encoder interventions
+4. ~~deep-read Mariotte 2509.24793~~ ✅ DONE cycle #27
+
+| #27 | 2026-02-27 03:30 | learn | **Deep-read Mariotte 2509.24793** (ICASSP 2026, Univ. Le Mans) — TopK SAE on 4 audio SSL models (AST/HuBERT/WavLM/MERT); speech SSL peaks EARLY (layer 1-3) for acoustic tasks (not late like LLMs); SAEs improve disentanglement via completeness metric; **KEY GAP: mean-pooled = no temporal resolution** — nobody has done temporally-resolved SAE for audio. Scanned Plantinga SAE-PD paper. 3-paper audio SAE field now complete. **New Gap #12: temporal SAE** (when does each feature fire during utterance?) |
+
+## Day 2 Rolling Stats (final — overnight complete)
+- Papers read (deep): 12 total (+Mariotte = all planned reads complete)
+- Papers scanned: 16+ (+Plantinga PD paper)
+- Research gaps identified: 12 (+temporally-resolved SAE for audio = nobody has done this)
+- Paper ideas: 6
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1
+- **All planned reading: FULLY COMPLETED** ✅
+
+## **QUEUE DEPLETED — NEXT ACTIONS REQUIRE LEO**
+Priority queue for Leo's first session:
+1. **Present "Class-specific Neuron Grounding" experiment sketch** — AAPE + patching + grounding_coefficient on LALM; needs Leo approval before any build
+2. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence)
+3. **NNsight API check** — 5 min assessment vs pyvene
+4. **Temporal SAE gap** — note for Track 2 AudioSAEBench proposal

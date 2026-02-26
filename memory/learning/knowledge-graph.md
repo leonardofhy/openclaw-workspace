@@ -16,17 +16,29 @@
 - Open tools: whisper-interp (GitHub), whisper_logit_lens (GitHub)
 
 ### B) Speech Encoder SAEs
-- **Mariotte et al. "Sparse Autoencoders Make Audio Foundation Models more Explainable" (Sep 2025, ICASSP 2026)** — 🟡 ABSTRACT READ (cycle #24) [arXiv:2509.24793]
-  - Model: General-purpose audio SSL (singing technique classification case study)
-  - KEY FINDING: SAEs retain class info AND enhance disentanglement of vocal attributes (pitch/timbre/technique)
-  - COMPARISON: Narrower than AudioSAE (single task, no causal steering), but confirms SAE as general audio tool
-  - LINK: 2 audio SAE papers now exist → Leo's Track 2 (AudioSAEBench) = the missing evaluation/comparison layer
+- **Mariotte et al. "Sparse Autoencoders Make Audio Foundation Models more Explainable" (Sep 2025, ICASSP 2026)** — 🟢 DEEP READ (cycle #27) [arXiv:2509.24793]
+  - Models: AST (sound), HuBERT (speech), WavLM (speech), MERT (music) — 4 models, 13 layers each, D=768
+  - SAE: TopK, N=2048 (8x expansion), per-layer on VocalSet (singing technique classification, 10 classes)
+  - KEY FINDING 1 (layer info): Speech SSL peaks EARLY for acoustic tasks — HuBERT layer 3 (73%), WavLM layer 1 (72.5%); DROPS at layer 12 (55-60%). Contrast: AST stable across all layers.
+  - KEY FINDING 2 (SAE): SAE sparse codes retain task accuracy (on par with dense probes at 75-85% sparsity)
+  - KEY FINDING 3 (disentanglement): SAEs significantly improve COMPLETENESS — voice attributes (pitch, shimmer, loudness, spectral rolloff, HNR) are more independently encoded in sparse codes than in dense hidden states
+  - KEY LIMITATION: **Mean-pooled along time axis** → NO temporal information → can't ask "when during utterance does feature fire?"
+  - KEY GAP #12 (NEW): **Temporally-resolved SAE for audio** — nobody has done this. Mariotte loses time; AudioSAE has frame-level but doesn't analyze temporal patterns systematically. Knowing WHEN a sparse feature activates = direct connection to "Listen vs Guess" (which audio positions are causally critical?)
+  - CODE: https://github.com/theomariotte/sae_audio_ssl
+  - COMPARISON: Narrower than AudioSAE (single task, no causal steering), but 4 models vs AudioSAE's 2; disentanglement evaluated with completeness metric (AudioSAE doesn't use this)
+  - LINK: 3 audio SAE papers now exist (AudioSAE + Mariotte + Plantinga-PD) → enough for AudioSAEBench meta-evaluation
 
-- **Kawamura et al. "What Do Neurons Listen To?" (Feb 2026, EUSIPCO 2026)** — 🟡 ABSTRACT READ (cycle #24) [arXiv:2602.15307]
-  - First systematic neuron-level analysis of a general-purpose audio SSL model
-  - KEY FINDING: Class-specific neurons with broad coverage; shared responses across semantic + acoustic categories; causal functional impact confirmed
-  - GAP: No SAE, no pathway-level patching (audio vs text)
-  - POLYSEMANTICITY NOTE: "shared responses" = polysemanticity → SAE would disentangle → Track 2 connection
+- **Kawamura et al. "What Do Neurons Listen To?" (Feb 2026, EUSIPCO 2026)** — 🟢 DEEP READ (cycle #26) [arXiv:2602.15307]
+  - Model: M2D (Masked Modeling Duo) ViT-SSL, 12 layers × 3072 neurons. Compared with supervised ViT baseline.
+  - METHOD: AAPE (Audio Activation Probability Entropy) — adapts LAPE from NLP to audio. Three-step filter: activation rate → entropy selectivity → top class-specific activation probability.
+  - KEY FINDING 1 (RQ1): SSL achieves ~100% class coverage across ALL unseen tasks. SL only 49% for VoxCeleb1. SSL develops 2x more class-specific neurons → generalization has mechanistic basis.
+  - KEY FINDING 2 (RQ2): Neurons encode gender (cross-dataset VC1↔CREMA-D), pitch (Surge↔NSynth octave), arousal (ANG+HAP cluster), language family (Germanic vs Romance), genre acoustic similarity (classical+jazz)
+  - KEY FINDING 3 (RQ3): Deactivating class-specific neurons significantly degrades classification > random deactivation → neurons causally necessary (necessity test / noising patching)
+  - POLYSEMANTICITY: "shared responses" = same neuron fires for acoustically/semantically related classes = polysemanticity → SAE would disentangle → Track 2 (AudioSAEBench) connection
+  - GAP: No SAE decomposition; no denoising (sufficiency) patching; no audio-vs-text pathway test (model is encoder-only SSL, so no text pathway — but this gap opens up in LALMs)
+  - NEW GAP #11: In LALMs (Qwen2.5-Omni etc.), the same class-specific neuron (emotion/gender) could activate from audio cues OR text context — grounding_coefficient at neuron level = unanswered question
+  - EXPERIMENT SKETCH: AAPE on LALM → find emotion/gender neurons → test grounding_coefficient via audio+text patching → "Class-specific Neuron Grounding" paper contribution (needs Leo approval)
+  - CONVERGENCE WITH ZHAO et al. 2601.03115: Both find specialized neurons (ESNs for emotion in Zhao; class-specific neurons in Kawamura); both stop at necessity; neither does audio-vs-text pathway test → Leo can close both gaps in one paper
 
 - **AudioSAE (Aparin et al., 2026, EACL)** — 🟢 DEEP READ — SAE on all 12 layers of Whisper/HuBERT [arXiv:2602.05027]
   - KEY SETUP: TopK/BatchTopK SAE, 8x expansion (768→6144 features), all-layer coverage
