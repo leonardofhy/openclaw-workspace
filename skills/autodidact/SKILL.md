@@ -66,13 +66,21 @@ Search strategy (rotate):
 - Google Scholar: when citation counts matter
 
 ### Action: plan
-Follow `references/planning.md` for the full procedure. Summary:
-1. **盤點現狀** — 讀 goals/progress/knowledge-graph，回答「我在哪、目標在哪、差距是什麼」
-2. **掃描環境** — Leo 有新 feedback？deadline 迫近？landscape 變了？
-3. **生成選項** — 列 3-5 個可能行動，評估影響力和可行性
-4. **選擇排序** — Blocker-first → Deadline-driven → High-leverage → Knowledge compounds
-5. **輸出計劃** — 接下來 3-5 cycles 的具體行動 + 更新 goals.md
-Anti-pattern: 連續 2 次 plan → 強制切到 learn/build
+Follow `references/planning.md` for the full procedure. Inspired by Claude Code Plan Mode — **read-only first, ask before assume, propose before execute**.
+
+Three thoroughness levels:
+- **quick** (< 2 min): goals + progress → 微調下 3 cycles
+- **medium** (< 5 min): + knowledge-graph + recent cycles → 排下 5 cycles
+- **thorough** (< 10 min): full state + search → 寫完整 proposal，**等 Leo review**
+
+Core flow:
+1. **GATHER** — 只讀，按 level 載入狀態檔
+2. **DIAGNOSE** — Position / Target / Gap（各一句話）
+3. **IDENTIFY UNKNOWNS** — 分類：可自行解決 / 需 Leo 判斷 / 需外部資源
+4. **GENERATE OPTIONS** — 列 3-5 個選項，每個通過北極星檢驗
+5. **PROPOSE** — 輸出 plan proposal（不是直接執行）
+
+Anti-patterns: 連續 2 次 plan → 強制 learn/build；thorough plan 不等 Leo 就改方向
 
 ### Action: build
 1. Identify what tool/script/experiment is needed

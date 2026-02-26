@@ -1,112 +1,117 @@
-# 📋 Plan Action — Detailed Procedure
+# 📋 Plan Action — Research-First Planning
 
-> 當 DECIDE 階段選擇 "plan" 時，按以下流程執行。
+> 參考 Claude Code Plan Mode + Codex 設計：先讀、再問、再規劃、最後才執行。
+
+## 核心原則
+
+1. **Read-only first** — Plan 階段只讀不寫（除了最終輸出 plan 本身）
+2. **Ask, don't assume** — 遇到不確定的方向性問題，列出來等 Leo 判斷，不自己猜
+3. **Thoroughness scales** — 不是每次 plan 都要花 10 分鐘，按需求分級
+4. **Plan ≠ Execute** — Plan 的輸出是一份可審閱的提案，不是直接行動
 
 ## 觸發條件（任一成立）
 - goals.md 超過 7 天沒更新
-- Leo 給了新的方向 feedback
+- Leo 給了新方向 feedback
 - 遇到重大 blocker 或機會
 - 連續 5+ cycles 沒有 plan
 - 外部環境變化（新 deadline、新論文改變 landscape）
 
+## Thoroughness Levels
+
+| Level | 花費 | 適用場景 |
+|-------|------|---------|
+| **quick** (< 2 min) | 讀 goals + progress | 例行檢查，微調下一步 |
+| **medium** (< 5 min) | + knowledge-graph + 最近 5 cycles | 週中期調整，整合新資訊 |
+| **thorough** (< 10 min) | + 全部狀態檔 + 外部搜索 | 方向性大調整，新 research idea |
+
+先判斷需要哪個 level，避免每次都做 thorough。
+
 ## 流程
 
-### Phase 1: 盤點現狀 (2 min)
+### Phase 1: GATHER（只讀）
 
-讀取以下檔案，建立當前狀態的 mental model：
+按 thoroughness level 讀取狀態檔：
 
 ```
-goals.md        → 北極星 + 當前方向 + knowledge gaps
-progress.md     → 最近做了什麼、什麼在動、什麼卡住
-knowledge-graph.md → 知識結構、空白處
-conference-pipeline.md → deadline 壓力
+[quick]    goals.md + progress.md（最後 10 行）
+[medium]   + knowledge-graph.md + 最近 5 個 cycle notes
+[thorough] + conference-pipeline.md + arxiv-radar + 外部搜索
 ```
 
-回答三個問題：
-1. **我現在在哪？** — 用一段話描述當前狀態
-2. **目標在哪？** — 最近的 milestone 是什麼（3 個月內）
-3. **差距是什麼？** — 從現在到 milestone 之間缺什麼
+### Phase 2: DIAGNOSE
 
-### Phase 2: 掃描環境 (1 min)
+回答三個核心問題：
+1. **Position** — 我現在在哪？（一句話）
+2. **Target** — 最近的 milestone 是什麼？（3 個月內的具體目標）
+3. **Gap** — 從 Position 到 Target 缺什麼？（列 bullets）
 
-檢查外部變化：
-- Leo 最近有沒有新的 feedback 或方向調整？（檢查 goals.md 底部的任務隊列）
-- 有沒有新的 deadline 迫近？
-- 最近讀的論文有沒有改變 landscape？
-- 有沒有等待 Leo 處理的 request？
+### Phase 3: IDENTIFY UNKNOWNS
 
-### Phase 3: 生成選項 (2 min)
+列出你**不確定的事**。這是最關鍵的步驟 — 好的 plan 不是假裝什麼都知道，而是清楚知道什麼不知道。
 
-基於差距和環境，列出 3-5 個可能的下一步行動：
+分類：
+- **可以自己解決的** → 排進 cycle 計劃（learn / build / skill-up）
+- **需要 Leo 判斷的** → 加入「Questions for Leo」
+- **需要外部資源的** → 加入「待請求 Leo 的任務隊列」
+
+### Phase 4: GENERATE OPTIONS
+
+列出 3-5 個下一步選項：
 
 ```markdown
-| # | 行動 | 類型 | 預期產出 | 需要資源 | 影響力 |
-|---|------|------|---------|---------|-------|
-| 1 | ... | learn/build/... | ... | 時間/GPU/Leo | H/M/L |
+| # | 行動 | 類型 | 預期產出 | 所需資源 | 影響力 | 風險 |
+|---|------|------|---------|---------|--------|------|
 ```
 
-每個選項必須回答：
-- 這個行動讓我離北極星更近了嗎？
-- 投入產出比如何？
-- 有沒有依賴項（需要先做別的、需要 Leo 幫忙）？
+每個選項必須通過 **北極星檢驗**：這讓我離 DeepMind/Anthropic 等級更近嗎？
 
-### Phase 4: 選擇 + 排序 (1 min)
+### Phase 5: PROPOSE（不是 DECIDE）
 
-用這個決策框架排序：
+輸出一份 **plan proposal**，而不是直接開始執行：
 
-1. **Blocker-first** — 如果有東西卡住了後續所有工作，先解決它
-2. **Deadline-driven** — 有 deadline 的優先
-3. **High-leverage** — 一個行動能解鎖多個後續行動
-4. **Knowledge compounds** — 學習類行動在早期優先（地基要先打）
-5. **Leo's energy** — 需要 Leo 幫忙的事，考慮他的時間和狀態
-
-輸出：排序後的 **接下來 3-5 個 cycle 的行動計劃**
-
-### Phase 5: 更新檔案 (1 min)
-
-必須更新的：
-- `goals.md` — 如果方向或優先級有變化
-- `progress.md` — 記錄這次 plan 的結論
-
-視情況更新的：
-- `conference-pipeline.md` — deadline 變化
-- `knowledge-graph.md` — 新的知識結構認知
-- goals.md 底部「待請求 Leo 的任務隊列」— 新的 request
+- 如果是 **quick** level → 直接排定下 3 cycles，自行執行
+- 如果是 **medium** level → 排定下 5 cycles，有 Questions for Leo 的話等回覆
+- 如果是 **thorough** level → 寫完整 proposal，**必須等 Leo review 後才執行方向性改變**
 
 ## 輸出格式
 
 ```markdown
 # 🧠 Cycle #NN — YYYY-MM-DD HH:MM
-## Action: plan
-## Context: [為什麼現在需要 plan]
+## Action: plan [quick|medium|thorough]
+## Context: [為什麼需要 plan]
 
-## 現狀
-[一段話描述]
+## Position
+[一句話描述現狀]
 
-## 差距分析
-- 目標：[最近 milestone]
-- 缺少：[1] ... [2] ... [3] ...
+## Target (3-month milestone)
+[具體目標]
 
-## 選項評估
-| # | 行動 | 影響力 | 可行性 | 選擇 |
+## Gap Analysis
+- [1] ...
+- [2] ...
+
+## Unknowns
+### 可自行解決
+- ...
+### ❓ Questions for Leo
+- ...
+### 🔧 需要 Leo 幫忙
+- ...
+
+## Options
+| # | 行動 | 影響力 | 可行性 | 推薦 |
 |---|------|--------|--------|------|
-| 1 | ... | H | H | ✅ |
-| 2 | ... | M | H | ✅ |
-| 3 | ... | H | L (需GPU) | ⏳ 請求Leo |
 
-## 接下來 3-5 cycles 計劃
-1. Cycle N+1: [行動]
-2. Cycle N+2: [行動]
-3. Cycle N+3: [行動]
+## Proposed Plan (next N cycles)
+1. Cycle N+1: [行動] — [預期產出]
+2. Cycle N+2: ...
 
-## 待請求 Leo
-- [ ] [如果有的話]
-
-## Tags: #plan #direction
+## Tags: #plan
 ```
 
 ## Anti-patterns
-- ❌ 花 10 分鐘 plan 但沒有具體的 next action
-- ❌ Plan 完不更新 goals.md（plan 了等於沒 plan）
-- ❌ 永遠在 plan 不去 execute（連續 2 次 plan → 強制切到 learn/build）
-- ❌ 選項只有 1 個（至少列 3 個再選，避免 tunnel vision）
+- ❌ 連續 2 次 plan → 強制切到 learn/build（防止空轉）
+- ❌ thorough plan 完不等 Leo review 就改方向
+- ❌ Plan 裡只有模糊的「繼續研究」— 每個 cycle 要有具體 deliverable
+- ❌ 假裝知道答案 — 不確定就列進 Unknowns
+- ❌ 選項只有 1 個 — 至少 3 個，避免 tunnel vision
