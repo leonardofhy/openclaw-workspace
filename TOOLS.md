@@ -57,6 +57,18 @@
 - **用法：** `ffmpeg -y -i input.ogg -ar 16000 -ac 1 /tmp/voice.wav && whisper-cli -m ~/.local/share/whisper-cpp/ggml-base.bin -l zh /tmp/voice.wav`
 - **注意：** 只接受 WAV 格式，需先用 ffmpeg 轉檔。支援中文（`-l zh`）
 
+### 🛰️ Lab WSL2 SSH Tunnel（MacBook ↔ Lab）
+- **Lab Host:** `DESKTOP-Q1L6LLN`（WSL2 Ubuntu）
+- **User:** `leonardo`
+- **Jump Host:** `iso_leo`
+- **Route:** `Mac → iso_leo:2222 → WSL2:22`
+- **一條指令連線：** `ssh -J iso_leo -p 2222 leonardo@localhost`
+- **分步驟：** 先 `ssh iso_leo`，再 `ssh -p 2222 leonardo@localhost`
+- **Secrets 搬運：** `scp -o ProxyJump=iso_leo -P 2222 -r ~/.openclaw/workspace/secrets/ leonardo@localhost:~/.openclaw/workspace/`
+- **注意（Lab PATH）:** WSL2 的 OpenClaw 在 nvm 路徑，非互動 shell 需先加 PATH：
+  - `export PATH=$HOME/.nvm/versions/node/v22.22.0/bin:$PATH`
+  - 然後再跑 `openclaw gateway restart` / `openclaw gateway status`
+
 ## 未啟用 / 待設定
 
 - **Gmail API：** Service Account 無權限，需另外授權
