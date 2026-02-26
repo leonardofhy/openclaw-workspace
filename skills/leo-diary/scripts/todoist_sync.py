@@ -38,12 +38,23 @@ def get_completed_today(token):
     since_utc = start_of_day.astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S')
 
     items = []
+    since_utc_ts = start_of_day.astimezone(timezone.utc)
     try:
         data = get('/tasks/completed', token, params={
             'since': since_utc,
             'limit': 50
         })
         for item in data.get('items', []):
+            # Client-side filter: Todoist API 'since' may be imprecise
+            cat = item.get('completed_at', '')
+            if cat:
+                from datetime import datetime as _dt
+                try:
+                    completed_ts = _dt.fromisoformat(cat.replace('Z', '+00:00'))
+                    if completed_ts < since_utc_ts:
+                        continue
+                except ValueError:
+                    pass
             items.append({
                 'id': item.get('task_id'),
                 'content': item.get('content'),

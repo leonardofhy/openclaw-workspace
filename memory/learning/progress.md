@@ -127,5 +127,20 @@
 - Cheat sheets: 1 (transformerlens-pyvene)
 - Days active: 1
 
-## Recommended Next Cycle
-Cycle #16: **learn** — Read Whisper LoRA mech interp paper (scanned in Cycle #3, not deep-read). OR: plan — write the minimal-pairs audio patching protocol based on today's best practices reading. The methodology is now solid enough to design the first real Causal AudioLens experiment.
+| #16 | 2026-02-26 22:31 | learn | **Deep-read "Behind the Scenes" (Whisper LoRA MI, ICASSP 2026)** — delayed specialization: LoRA preserves early layers, commits only in deep layers; counter-directional signals suppress irrelevant ASR features; NNsight library discovered as pyvene alternative; new gap: no causal patching in either "Behind the Scenes" or AudioLens → Leo can combine Track 3 + Track 4 in one paper |
+
+## Cumulative Stats
+- Papers read (deep): 7
+- Papers scanned: 12
+- Research gaps identified: 7 (+LoRA causal patching absent in both AudioLens + Behind the Scenes)
+- Paper ideas: 3 (+Track3+4 combined paper idea)
+- Code written: 2 (whisper_hook_demo.py 230L, whisper_logit_lens.py 300L)
+- Code executed: 2 (both verified ✅)
+- Cheat sheets: 1 (transformerlens-pyvene)
+- Days active: 1
+
+## Recommended Next Session (Day 2)
+1. **Run experiments on real speech** — whisper_hook_demo.py with real .wav file to validate Triple Convergence Hypothesis (synthetic sine wave gives compressed results)
+2. **NNsight docs** — check if simpler than pyvene for encoder causal interventions
+3. **Read Causal Abstraction (Geiger et al.)** — theoretical foundation for patching; before writing pyvene code
+4. **Optional: Multimodal MI Survey (Lin 2025)** — landscape overview; lower priority than above

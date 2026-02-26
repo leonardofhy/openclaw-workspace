@@ -49,6 +49,17 @@
   - CODE: https://github.com/mbzuai-nlp/spirit-breaking
   - LEO'S OPPORTUNITY: AudioSAE features → surgically suppress adversarial features vs SPIRIT's blind layer patching
 
+### C.2) LoRA Mechanistic Interpretability (Speech)
+- **"Behind the Scenes" (Ma et al., ICASSP 2026, 2509.08454)** — 🟢 DEEP READ (Cycle #16) — MI of LoRA-adapted Whisper for SER
+  - KEY SETUP: Whisper-large-v2 + IEMOCAP 4-class SER; NNsight library; probing + logit-lens + CKA + SVD
+  - KEY FINDING 1: **Delayed Specialization** — LoRA flat/high KL in early layers, then sharp late-stage commitment at top layers. Frozen encoder = volatile/unstable emotion representation. LoRA resolves representational conflict ASR→SER
+  - KEY FINDING 2: **Forward Alignment, Backward Differentiation** — A matrix aligns with input features, B matrix differentiates for task. Deep layers: negative cosine similarity = "corrective/subtractive" signals suppress ASR-irrelevant features
+  - KEY FINDING 3: LoRA creates new representational clusters (CKA) that align with our Triple Convergence transition zone
+  - KEY GAP: No causal patching → cannot prove which LoRA components are causally necessary vs sufficient
+  - CODE: https://github.com/harryporry77/Behind-the-Scenes
+  - LEO'S OPPORTUNITY: Add patching to "Behind the Scenes" methodology → causally identify which LoRA layers matter → combine with AudioLens (Track 3 + Track 4 = one paper)
+  - NEW TOOL: NNsight library — alternative to pyvene for Whisper encoder access; check API
+
 ### D) Generative Audio/Music MI
 - SMITIN (2024), Facchiano (2025), TADA! (2026) — attention steering, SAE for music concepts
 - TADA!: 少數 attention layers 控制 semantic concepts [arXiv:2602.11910]
@@ -115,6 +126,9 @@
 | SAE feature steering (AudioSAE) | AudioSAE | ↔ | Blind activation patching (SPIRIT) | SPIRIT | **Gap → SAE-guided safety patching**: know WHICH features to suppress (not just which layers) |
 | 70% hallucination FPR reduction | AudioSAE | ↔ | 99% jailbreak defense | SPIRIT | Both use sparse activation intervention; sparse+interpretable (SAE) > dense (SPIRIT) |
 | Triple Convergence layer 3 (Whisper-base) | whisper_hook_demo | ↔ | Best defense = specific layer patching | SPIRIT | Does SPIRIT's optimal defense layer = Triple Convergence transition zone? |
+| Delayed specialization (LoRA commits at deep layers) | Behind the Scenes | ↔ | Critical layer (attribute resolves at specific depth) | AudioLens | LoRA's late commitment = mechanistic explanation for critical layer behavior? |
+| Counter-directional corrective signals in deep layers | Behind the Scenes | ↔ | Saturation layer (encoder commits to transcription) | Beyond Transcription | Both = "where the model decides" — unified by suppression mechanism |
+| No causal patching | Behind the Scenes | ↔ | No causal patching | AudioLens | **Same gap in both papers → Leo can add patching to BOTH simultaneously** |
 
 ### G) Activation Patching Methodology
 - **Heimersheim & Nanda (2024)** — 🟢 DEEP READ — "How to Use and Interpret Activation Patching" [arXiv:2404.15255]
