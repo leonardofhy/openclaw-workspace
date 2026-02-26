@@ -26,5 +26,25 @@
 - Code written: 0
 - Days active: 1
 
+| #7 | 2026-02-26 17:00 | learn | **Deep-read AudioLens** (NTU 李宏毅 lab, ASRU 2025) — Logit Lens on LALMs: LALMs query audio directly > aggregate in text tokens; critical layer correlates with accuracy; +16.3% improvement training-free; **key gap = no causal patching = Leo's opportunity** |
+
+## Cumulative Stats
+- Papers read (deep): 3
+- Papers scanned: 12
+- Research gaps identified: 4 (+AudioLens no-causal-patching gap)
+- Paper ideas: 3
+- Code written: 0
+- Days active: 1
+
+| #8 | 2026-02-26 17:31 | learn | **Deep-read AudioSAE** — SAE on all 12 layers of Whisper/HuBERT; 70% hallucination FPR reduction via feature steering; layer 6-7 = speech/acoustic transition zone; may unify with saturation layer (BeyondTranscription) and critical layer (AudioLens); speech concepts distributed (need 2000 features vs tens for text) |
+
+## Cumulative Stats
+- Papers read (deep): 4
+- Papers scanned: 12
+- Research gaps identified: 4
+- Paper ideas: 3
+- Code written: 0
+- Days active: 1
+
 ## Recommended Next Cycle
-Cycle #7: deep-read **AudioLens** (智凱哥, arXiv:2506.05140) — lab collaboration advantage, logit-lens for LALMs, most directly relevant to Leo's Track 3.
+Cycle #9: **skill-up** — TransformerLens + pyvene installation and first run on text model. 3 deep reads done; time to move from reading to doing. MacBook-feasible.
