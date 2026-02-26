@@ -187,4 +187,38 @@
 1. **NNsight API check** — 5 min vs pyvene for encoder interventions
 2. **Real speech test** — whisper_hook_demo.py with actual .wav (validates Triple Convergence)
 3. **Design Triple Convergence IIT experiment** (conceptual sketch, no code yet — needs Leo approval before build)
-4. **Multimodal MI Survey** (Lin 2025, arXiv:2502.17516)
+4. ~~Multimodal MI Survey (Lin 2025, arXiv:2502.17516)~~ ✅ DONE cycle #22
+
+| #22 | 2026-02-27 01:00 | learn | **Multimodal MI Survey (Lin 2025)** — covers CLIP/LLaVA/SD only; speech COMPLETELY ABSENT confirming Leo's white space; confirms probing→logit lens→causal tracing→SAE is the right method ladder; hallucination mitigation = the underdeveloped open problem the survey calls out = Leo's research targets it directly. Must-read list now EXHAUSTED. |
+
+## Day 2 Rolling Stats
+- Papers read (deep): 9
+- Papers scanned: 12+
+- Research gaps identified: 8 (+no speech-specific MMFM interpretability survey exists)
+- Paper ideas: 4
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1
+- **Must-read list: COMPLETED** ✅ (all 10 items done)
+
+## Recommended Next Cycles (Day 2 — when daylight returns)
+1. **Real speech test** — whisper_hook_demo.py with actual .wav (validates Triple Convergence with real data)
+2. **NNsight API check** — 5 min assessment vs pyvene for encoder interventions
+3. **Design Triple Convergence IIT experiment** — conceptual sketch, needs Leo approval before build
+4. **Optional: Search for any speech-specific MMFM interpretability survey** that may have appeared post-Lin 2025
+
+| #23 | 2026-02-27 01:30 | skip | 1:30 AM — must-read list FULLY EXHAUSTED after cycle #22; next actions (real speech test, NNsight, IIT design) require Leo participation or physical resources. Correctly skipped. |
+
+## Day 2 Rolling Stats (final overnight)
+- Papers read (deep): 9 total (7 Day 1 + 2 Day 2: Causal Abstraction + Multimodal MI Survey)
+- Papers scanned: 12+
+- Research gaps identified: 8
+- Paper ideas: 4
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1
+- **Must-read list: FULLY COMPLETED** ✅
+
+## Recommended First Cycles (Day 2 morning — Leo wakes up)
+1. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence hypothesis)
+2. **NNsight API check** — 5 min: is it simpler than pyvene for Whisper encoder interventions?
+3. **Design Triple Convergence IIT experiment** — conceptual sketch → present to Leo for approval before any build
+4. **arXiv scan (cs.SD, cs.CL)** — any new papers overnight? Keep radar fresh.
