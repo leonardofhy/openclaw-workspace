@@ -91,6 +91,8 @@
 | `query_tags.py` | leo-diary/scripts/ | 標籤查詢（人物/主題/共現/時間線）|
 | `keyword_freq.py` | leo-diary/scripts/ | 關鍵字頻率（純 Python）|
 | `weekly_data.py` | daily-scheduler/scripts/ | 7天排程數據（Calendar+Todoist）|
+| `sync_schedule_to_gcal.py` | daily-scheduler/scripts/ | 將最新 `memory/schedules/YYYY-MM-DD.md` 同步到 Google Calendar |
+| `sync_schedule_to_todoist.py` | daily-scheduler/scripts/ | 將最新 `memory/schedules/YYYY-MM-DD.md` 同步到 Todoist（支援去重） |
 | `weather_scout.py` | leo-diary/scripts/ | 天氣檢查+通知 |
 | `fetch_latest_diary.py` | memory/scripts/ | 拉取最新日記（供記憶反芻）|
 | `append_memory.py` | remember/scripts/ | 寫入長期記憶 |
@@ -105,6 +107,7 @@
 ## Cron 排程（每日）
 - 04:15 日記同步 + LLM 標籤提取
 - **08:00 每日排程刷新**（讀取/更新 memory/schedules/YYYY-MM-DD.md，sonnet）
+- **08:12 排程同步到 Google Calendar + Todoist**（從 schedule 檔案自動 upsert）
 - 08:30 早晨總覽（Todoist + Calendar + 自動設會議提醒）
 - 12:00 Daily Coach v3（email）+ 記憶反芻
 - 13:00 午間行事曆掃描

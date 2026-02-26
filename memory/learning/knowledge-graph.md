@@ -16,6 +16,18 @@
 - Open tools: whisper-interp (GitHub), whisper_logit_lens (GitHub)
 
 ### B) Speech Encoder SAEs
+- **Mariotte et al. "Sparse Autoencoders Make Audio Foundation Models more Explainable" (Sep 2025, ICASSP 2026)** — 🟡 ABSTRACT READ (cycle #24) [arXiv:2509.24793]
+  - Model: General-purpose audio SSL (singing technique classification case study)
+  - KEY FINDING: SAEs retain class info AND enhance disentanglement of vocal attributes (pitch/timbre/technique)
+  - COMPARISON: Narrower than AudioSAE (single task, no causal steering), but confirms SAE as general audio tool
+  - LINK: 2 audio SAE papers now exist → Leo's Track 2 (AudioSAEBench) = the missing evaluation/comparison layer
+
+- **Kawamura et al. "What Do Neurons Listen To?" (Feb 2026, EUSIPCO 2026)** — 🟡 ABSTRACT READ (cycle #24) [arXiv:2602.15307]
+  - First systematic neuron-level analysis of a general-purpose audio SSL model
+  - KEY FINDING: Class-specific neurons with broad coverage; shared responses across semantic + acoustic categories; causal functional impact confirmed
+  - GAP: No SAE, no pathway-level patching (audio vs text)
+  - POLYSEMANTICITY NOTE: "shared responses" = polysemanticity → SAE would disentangle → Track 2 connection
+
 - **AudioSAE (Aparin et al., 2026, EACL)** — 🟢 DEEP READ — SAE on all 12 layers of Whisper/HuBERT [arXiv:2602.05027]
   - KEY SETUP: TopK/BatchTopK SAE, 8x expansion (768→6144 features), all-layer coverage
   - KEY FINDINGS: >50% feature stability across seeds; phoneme acc 0.92/0.89; **70% hallucination FPR reduction via top-100 feature steering** (α=1, WER cost only +0.4%)
@@ -48,6 +60,14 @@
   - KEY GAP: no explanation of *where* adversarial signal lives; no SAE-guided patching
   - CODE: https://github.com/mbzuai-nlp/spirit-breaking
   - LEO'S OPPORTUNITY: AudioSAE features → surgically suppress adversarial features vs SPIRIT's blind layer patching
+
+### C.1) Emotion-Sensitive Neurons in LALMs (New — Cycle #24)
+- **Zhao, Schuller, Sisman "Discovering and Causally Validating Emotion-Sensitive Neurons in LALMs" (Jan 2026)** — 🟡 ABSTRACT READ (cycle #24) [arXiv:2601.03115]
+  - Models: Qwen2.5-Omni, Kimi-Audio, Audio Flamingo 3 (3 LALMs)
+  - KEY METHODS: 4 neuron selectors (freq/entropy/magnitude/contrast); inference-time ablation + gain amplification
+  - KEY FINDINGS: ESNs causally suppress/amplify emotion class recognition; non-uniform layer clustering; cross-dataset transfer; dose-response scaling
+  - CRITICAL GAP: No test of audio pathway vs text pathway contribution to ESN activation — exactly Track 3's question
+  - LEO'S OPPORTUNITY: Patching experiment → which stream (audio or text) activates ESNs? = "Listen vs Guess" at neuron level
 
 ### C.2) LoRA Mechanistic Interpretability (Speech)
 - **"Behind the Scenes" (Ma et al., ICASSP 2026, 2509.08454)** — 🟢 DEEP READ (Cycle #16) — MI of LoRA-adapted Whisper for SER
@@ -129,6 +149,9 @@
 | Delayed specialization (LoRA commits at deep layers) | Behind the Scenes | ↔ | Critical layer (attribute resolves at specific depth) | AudioLens | LoRA's late commitment = mechanistic explanation for critical layer behavior? |
 | Counter-directional corrective signals in deep layers | Behind the Scenes | ↔ | Saturation layer (encoder commits to transcription) | Beyond Transcription | Both = "where the model decides" — unified by suppression mechanism |
 | No causal patching | Behind the Scenes | ↔ | No causal patching | AudioLens | **Same gap in both papers → Leo can add patching to BOTH simultaneously** |
+| Emotion-sensitive neurons (ESNs) causally ablatable | Zhao 2601.03115 | ↔ | LALMs query audio tokens directly | AudioLens | **New question: are ESNs driven by audio stream or text context?** → patching experiment needed |
+| Neuron-level class-specific units | Kawamura 2602.15307 | ↔ | Polysemanticity in audio features | AudioSAE | Same phenomenon at different granularity → SAE = principled disentanglement of neuron polysemanticity |
+| SAE enhances vocal attribute disentanglement | Mariotte 2509.24793 | ↔ | SAE for speech features (all layers) | AudioSAE | Two SAE papers, no comparison/evaluation → Track 2 AudioSAEBench fills this gap |
 
 ### H) Day 1 Crystallized Paper Opportunities (2026-02-26 reflect)
 

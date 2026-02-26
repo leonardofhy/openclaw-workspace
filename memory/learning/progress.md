@@ -221,4 +221,25 @@
 1. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence hypothesis)
 2. **NNsight API check** — 5 min: is it simpler than pyvene for Whisper encoder interventions?
 3. **Design Triple Convergence IIT experiment** — conceptual sketch → present to Leo for approval before any build
-4. **arXiv scan (cs.SD, cs.CL)** — any new papers overnight? Keep radar fresh.
+4. ~~arXiv scan (cs.SD, cs.CL)~~ ✅ DONE cycle #24 — 3 new papers found
+
+| #24 | 2026-02-27 02:00 | learn | **arXiv radar scan** — 3 new papers: (1) Zhao et al. 2601.03115: emotion-sensitive neurons causally validated in LALMs (Qwen2.5-Omni/Kimi-Audio/Audio Flamingo 3) — KEY GAP: no audio-vs-text pathway test = Track 3; (2) Mariotte 2509.24793: SAE for audio SSL singing, confirms disentanglement; (3) Kawamura 2602.15307: first neuron-level dissection of general-purpose audio SSL. Field accelerating: 3 papers in 6 weeks (Feb 2026). |
+
+## Day 2 Rolling Stats (updated after cycle #24)
+- Papers read (deep): 9 total
+- Papers scanned: 15+ (3 new: 2601.03115, 2509.24793, 2602.15307)
+- Research gaps identified: 9 (+audio-vs-text pathway attribution for emotion neurons)
+- Paper ideas: 4
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1
+- **Must-read list: FULLY COMPLETED** ✅
+
+## Key Insight (Cycle #24)
+**3 papers now do causal neuron-level work on audio models — none ask "is activation caused by audio or text?"**
+That's Track 3's core contribution, now even better motivated.
+
+## Recommended Next Cycles (Day 2 morning — Leo wakes up)
+1. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence hypothesis)
+2. **NNsight API check** — 5 min: simpler than pyvene for Whisper encoder interventions?
+3. **Design Triple Convergence IIT experiment** — conceptual sketch → present to Leo for approval before any build
+4. **Deep-read Zhao et al. 2601.03115** — 16 pages, emotion-sensitive neurons, high relevance to Track 3
