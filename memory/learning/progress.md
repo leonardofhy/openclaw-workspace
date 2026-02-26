@@ -139,8 +139,20 @@
 - Cheat sheets: 1 (transformerlens-pyvene)
 - Days active: 1
 
+| #17 | 2026-02-26 23:00 | reflect | Day 1 evening wrap: cycles #12-16 assessed. Triple Convergence confirmed by 4 sources (incl. our own run). Track 3+4 combined paper crystallized. Key open: real speech test + NNsight API + Causal Abstraction |
+
+## Cumulative Stats
+- Papers read (deep): 7
+- Papers scanned: 12+
+- Research gaps identified: 7
+- Paper ideas: 4 (incl. Track 3+4 combined)
+- Code written: 2 (whisper_hook_demo.py 230L, whisper_logit_lens.py 300L)
+- Code executed: 2 (both verified ✅)
+- Cheat sheets: 1 (transformerlens-pyvene)
+- Days active: 1 (full)
+
 ## Recommended Next Session (Day 2)
 1. **Run experiments on real speech** — whisper_hook_demo.py with real .wav file to validate Triple Convergence Hypothesis (synthetic sine wave gives compressed results)
-2. **NNsight docs** — check if simpler than pyvene for encoder causal interventions
-3. **Read Causal Abstraction (Geiger et al.)** — theoretical foundation for patching; before writing pyvene code
+2. **NNsight API check** — 5-min assessment: simpler than pyvene for encoder causal interventions?
+3. **Read Causal Abstraction (Geiger et al.)** — theoretical foundation for patching; before writing pyvene/nnsight code
 4. **Optional: Multimodal MI Survey (Lin 2025)** — landscape overview; lower priority than above

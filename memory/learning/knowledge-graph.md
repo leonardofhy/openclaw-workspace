@@ -130,6 +130,16 @@
 | Counter-directional corrective signals in deep layers | Behind the Scenes | ↔ | Saturation layer (encoder commits to transcription) | Beyond Transcription | Both = "where the model decides" — unified by suppression mechanism |
 | No causal patching | Behind the Scenes | ↔ | No causal patching | AudioLens | **Same gap in both papers → Leo can add patching to BOTH simultaneously** |
 
+### H) Day 1 Crystallized Paper Opportunities (2026-02-26 reflect)
+
+1. **"Causal AudioLens"** (Track 3 anchor): AudioLens logit-lens + causal activation patching → grounding_coefficient. First paper with causal claims in LALM audio grounding. Co-author with 智凱哥.
+
+2. **"SAE-guided Inference-time Safety Patching"** (Track 5): AudioSAE feature suppression → replace SPIRIT's blind layer patching with interpretable feature-level patching. More surgical, more mechanistic.
+
+3. **"Causal AudioLens + LoRA"** (Track 3+4 combined): Both AudioLens and "Behind the Scenes" lack causal patching. One paper can add patching to BOTH — LALM grounding AND LoRA adaptation mechanism. Unified causal contribution.
+
+4. **"Audio Minimal Pairs Patching Protocol"** (Track 1 methodological): Heimersheim & Nanda validates all prior audio MI uses suboptimal corruptions (white noise). Minimal pair audio corruptions (same speaker/duration/content structure, different target attribute) = cleaner causal evidence. Methodological improvement claim → benchmark paper.
+
 ### G) Activation Patching Methodology
 - **Heimersheim & Nanda (2024)** — 🟢 DEEP READ — "How to Use and Interpret Activation Patching" [arXiv:2404.15255]
   - KEY DISTINCTION: Denoising (clean→corrupt) tests SUFFICIENCY; Noising (corrupt→clean) tests NECESSITY — NOT symmetric!

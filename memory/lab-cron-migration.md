@@ -3,6 +3,13 @@
 > 目標：把不需要 MacBook secrets 的 cron 搬到 Lab 機（24/7）
 > 狀態：待執行（等 Leo 下次到實驗室）
 
+## Step 0: 修復 Lab bot Discord 群組收訊
+```bash
+openclaw gateway restart
+```
+重啟後 Lab bot 才能自動回應 server 訊息（目前收到但無法觸發 session）。
+同時確認 `respondToBots: true` 讓兩隻 bot 能直接對話。
+
 ## Step 1: 確認 Lab 機 repo 同步
 ```bash
 cd ~/.openclaw/workspace && git pull origin main
