@@ -151,8 +151,36 @@
 - Cheat sheets: 1 (transformerlens-pyvene)
 - Days active: 1 (full)
 
+| #18 | 2026-02-26 23:30 | daily-consolidate | Added cycle #17 to digest. 17 productive cycles completed. Day 1 complete. |
+
+## Day 1 Final Stats
+- Papers read (deep): 7
+- Papers scanned: 12+
+- Research gaps identified: 7
+- Paper ideas: 4 (incl. Track 3+4 combined)
+- Code written: 2 (whisper_hook_demo.py 230L, whisper_logit_lens.py 300L)
+- Code executed: 2 (both verified ✅)
+- Cheat sheets: 1 (transformerlens-pyvene)
+- Days active: 1 (18 cycles in one day)
+
 ## Recommended Next Session (Day 2)
 1. **Run experiments on real speech** — whisper_hook_demo.py with real .wav file to validate Triple Convergence Hypothesis (synthetic sine wave gives compressed results)
 2. **NNsight API check** — 5-min assessment: simpler than pyvene for encoder causal interventions?
 3. **Read Causal Abstraction (Geiger et al.)** — theoretical foundation for patching; before writing pyvene/nnsight code
 4. **Optional: Multimodal MI Survey (Lin 2025)** — landscape overview; lower priority than above
+
+| #19 | 2026-02-27 00:00 | learn | **Deep-read Causal Abstraction (Geiger et al., arXiv:2301.04709)** — IIT = activation patching formalized; grounding_coefficient = relative IIT accuracy (theoretically grounded); SAE features = high-level causal variables; Triple Convergence IIT testable; all 10 MI methods (patching, SAE, logit lens, steering, DAS, circuits…) unified under one theory. New framing: Leo's research = validating audio representations as causal abstractions. |
+
+## Day 2 Rolling Stats
+- Papers read (deep): 8
+- Papers scanned: 12+
+- Research gaps identified: 7
+- Paper ideas: 4
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1
+
+## Recommended Next Cycles (Day 2 continued)
+1. **NNsight API check** — 5 min vs pyvene for encoder interventions
+2. **Design Triple Convergence IIT experiment** (conceptual sketch, no code yet)
+3. **Real speech test** — whisper_hook_demo.py with actual .wav
+4. **Multimodal MI Survey** (Lin 2025, arXiv:2502.17516)
