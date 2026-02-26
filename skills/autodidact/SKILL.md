@@ -45,6 +45,7 @@ Priority rules:
 - If Leo gave feedback → **plan** to integrate it
 - **Every 5th cycle → forced micro-reflect**（合併筆記、刪低價值、< 2 min）
 - Default: **learn** (knowledge compounds)
+- ⚠️ **build / skill-up 需要 Leo 明確批准**。當前階段重心 = 讀論文 + 挖掘新想法，不要自己跑去寫 code
 
 Hygiene rhythm (non-negotiable):
 - **Every 5 cycles** → micro-reflect (merge + prune)

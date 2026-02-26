@@ -116,12 +116,14 @@
 **AudioMatters CMT deadline passed** → Leo's focus now shifts fully to mech interp.
 
 **Immediate next steps (post-deadline):**
-1. Run `whisper_hook_demo.py` — verify toolchain works end-to-end
-2. Extend hook demo with logit-lens projection → run "Triple Convergence" experiment
-3. Read SPIRIT (arXiv:2505.13541) — safety track anchor paper
-4. Contact 智凱哥 about AudioLens codebase access
+1. 📖 Deep-read **AudioSAE** (arXiv:2602.05027) — Track 2 anchor paper
+2. 📖 Read **SPIRIT** (arXiv:2505.13541) — safety track anchor paper
+3. 📖 Read **Activation patching best practices** (Heimersheim & Nanda) — 避免 pitfalls
+4. 💡 每篇讀完產出 1-2 個具體 research idea（與 10 core questions 對照）
+5. Contact 智凱哥 about AudioLens codebase access
 
-**Recommended next cycle:** `build` — extend whisper_hook_demo.py with logit-lens projection to test Triple Convergence hypothesis. MacBook-feasible, ~2-3 hours.
+**⚠️ Leo 指示 (2026-02-26 21:10)：不要實作，專注挖掘新想法。**
+**Recommended next cycles:** `learn` — 連續讀 must-read list，每篇產出 ideas × questions × gaps。Build 需 Leo 明確批准。
 
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）

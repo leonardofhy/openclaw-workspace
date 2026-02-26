@@ -103,5 +103,17 @@
 - Cheat sheets: 1 (transformerlens-pyvene)
 - Days active: 1
 
+| #14 | 2026-02-26 21:30 | build | **whisper_logit_lens.py** — Logit-lens for Whisper encoder. LIS metric implemented. Key finding: synthetic audio gives compressed LIS (0.90-0.95 all layers); real speech needed to see clean transition. Token evolution confirms incoherence→language-IDs across layers. Script verified ✅ |
+
+## Cumulative Stats
+- Papers read (deep): 5
+- Papers scanned: 12
+- Research gaps identified: 5
+- Paper ideas: 3
+- Code written: 2 (whisper_hook_demo.py 230L, whisper_logit_lens.py 300L)
+- Code executed: 2 (both verified ✅)
+- Cheat sheets: 1 (transformerlens-pyvene)
+- Days active: 1
+
 ## Recommended Next Cycle
-Cycle #14: **build** — extend whisper_hook_demo.py with logit-lens projection (vocab projection onto Whisper post-layer-3 representations). Short (~50 lines), MacBook-feasible, empirically tests the "semantic" nature of layer 3+ representations.
+Cycle #15: **learn** — Read "Activation patching best practices" (Heimersheim & Nanda). Patching pitfalls are non-trivial; one paper prevents wasted experiments. Then patching code with solid foundations.
