@@ -123,6 +123,7 @@
 5. Contact 智凱哥 about AudioLens codebase access
 
 **⚠️ Leo 指示 (2026-02-26 21:10)：不要實作，專注挖掘新想法。**
+**補充指示 (2026-02-27 00:35)：夜間不需要自動 skip，可持續自主研究；只是 Leo 即時 feedback 機率較低。**
 **Recommended next cycles:** `learn` — 連續讀 must-read list，每篇產出 ideas × questions × gaps。Build 需 Leo 明確批准。
 
 ## 待請求 Leo 的任務隊列

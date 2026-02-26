@@ -29,6 +29,7 @@
 ## 5. 成本意識 (Cost-awareness)
 - 每個 cron cycle 有真實的 API 成本
 - 低價值的 cycle 應該被跳過（ORIENT 階段就判斷）
+- 夜間不是自動跳過理由；若能產出高價值 survey/整合，照常執行
 - 偏好 sonnet 等較便宜的模型做例行工作
 - 定期檢視：哪些 cron jobs 產出了真實價值？
 

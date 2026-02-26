@@ -171,6 +171,8 @@
 
 | #19 | 2026-02-27 00:00 | learn | **Deep-read Causal Abstraction (Geiger et al., arXiv:2301.04709)** — IIT = activation patching formalized; grounding_coefficient = relative IIT accuracy (theoretically grounded); SAE features = high-level causal variables; Triple Convergence IIT testable; all 10 MI methods (patching, SAE, logit lens, steering, DAS, circuits…) unified under one theory. New framing: Leo's research = validating audio representations as causal abstractions. |
 
+| #20 | 2026-02-27 00:30 | skip | 12:30 AM — late night, no high-value action (Leo inactive, toolchain stable, next real action needs real speech file or NNsight check can wait until day) |
+
 ## Day 2 Rolling Stats
 - Papers read (deep): 8
 - Papers scanned: 12+
@@ -179,8 +181,10 @@
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1
 
-## Recommended Next Cycles (Day 2 continued)
+| #21 | 2026-02-27 00:33 | skip | 12:33 AM — late night, correctly skipped. Next actions need daylight: NNsight API check, real speech test, Triple Convergence IIT experiment design. |
+
+## Recommended Next Cycles (Day 2 morning)
 1. **NNsight API check** — 5 min vs pyvene for encoder interventions
-2. **Design Triple Convergence IIT experiment** (conceptual sketch, no code yet)
-3. **Real speech test** — whisper_hook_demo.py with actual .wav
+2. **Real speech test** — whisper_hook_demo.py with actual .wav (validates Triple Convergence)
+3. **Design Triple Convergence IIT experiment** (conceptual sketch, no code yet — needs Leo approval before build)
 4. **Multimodal MI Survey** (Lin 2025, arXiv:2502.17516)
