@@ -82,7 +82,7 @@
 
 ## Must-Read List（按優先級）
 1. [ ] **AudioLens** (智凱哥 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
-2. [ ] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882]
+2. [x] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882] ✅ 2026-02-26 deep read cycle #6
 3. [ ] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027]
 4. [ ] **Activation patching best practices** (Heimersheim & Nanda) — 避免 pitfalls
 5. [ ] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541]

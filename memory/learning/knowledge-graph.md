@@ -7,7 +7,11 @@
 
 ### A) ASR / Whisper MI
 - Ellena Reid (2023, LessWrong) — 早期 Whisper MI，phoneme-like features, localized attention
-- **Glazer et al. "Beyond Transcription" (2025, aiOla)** — logit lens + patching for ASR, hallucination/repetition 因果分析 [arXiv:2508.15882]
+- **Glazer et al. "Beyond Transcription" (2025, aiOla)** — 🟢 DEEP READ — logit lens + probing + activation patching for Whisper-large-v3 + Qwen2-Audio [arXiv:2508.15882]
+  - KEY METHODS: Encoder Lens (novel), saturation layer, white-noise reference patching
+  - KEY FINDINGS: encoder encodes context (not just acoustics!), hallucination detectable from decoder residual stream (93.4% acc at layer 22), repetition = specific cross-attn heads
+  - Speaker gender probing peaks layer 25 (94.6%), accent peaks layer 22 (97%), noise peaks layer 27 (90%)
+  - DIRECT LINK to Track 3 (Listen vs Guess): saturation layer + patching sensitivity → operationalize grounding coefficient
 - Mozilla Builders (2024) — Whisper SAE (L1, TopK), phonetic/positional features
 - Open tools: whisper-interp (GitHub), whisper_logit_lens (GitHub)
 
