@@ -46,5 +46,27 @@
 - Code written: 0
 - Days active: 1
 
+| #9 | 2026-02-26 18:00 | skill-up | **TransformerLens + pyvene cheat sheet** — full API patterns, hook strategies for Whisper, 5 ordered experiments, MacBook-feasible models documented. Key insight: pyvene = right tool for audio patching (TL = decoder-only only) |
+
+## Cumulative Stats
+- Papers read (deep): 4
+- Papers scanned: 12
+- Research gaps identified: 4
+- Paper ideas: 3
+- Code written: 0
+- Cheat sheets: 1 (transformerlens-pyvene)
+- Days active: 1
+
+| #10 | 2026-02-26 18:30 | build | **whisper_hook_demo.py** — full hook demo on Whisper encoder: layer stats, CKA heatmap, layer 6 deep inspect. Synthetic audio fallback, headless safe, syntax verified. Ready to run. |
+
+## Cumulative Stats
+- Papers read (deep): 4
+- Papers scanned: 12
+- Research gaps identified: 4
+- Paper ideas: 3
+- Code written: 1 (whisper_hook_demo.py, 230 lines)
+- Cheat sheets: 1 (transformerlens-pyvene)
+- Days active: 1
+
 ## Recommended Next Cycle
-Cycle #9: **skill-up** — TransformerLens + pyvene installation and first run on text model. 3 deep reads done; time to move from reading to doing. MacBook-feasible.
+Cycle #11 (post-AudioMatters or next session): **reflect** — day wrap. Update knowledge-graph.md with the 3-paper synthesis (saturation/critical/transition layer convergence). Then Leo runs whisper_hook_demo.py to verify toolchain.

@@ -71,6 +71,20 @@
 ### Research Opportunity Crystallized (2026-02-26)
 > **"Causal AudioLens"**: Take AudioLens methodology (Logit Lens + critical layer) → add patching experiments → produce grounding_coefficient = ratio of (Δacc when audio patched) / (Δacc when text patched). This is the missing causal link in AudioLens, and it directly operationalizes Track 3 "Listen vs Guess" hypothesis.
 
+### New Synthesis Insight — Three Papers, One Phenomenon (2026-02-26 Cycle #8)
+> **Whisper layers 6-7 = semantic-acoustic transition zone**:
+> - AudioSAE: audio-level speech peaks layer 6, then drops → frame-level peaks layer 7 (phonetic encoding transition)
+> - Beyond Transcription: "saturation layer" = where encoder commits to transcription
+> - AudioLens: "critical layer" = where attribute resolves in LALM
+> **Hypothesis**: All three independently found the same architectural transition point from different methodological angles. Testing this directly (SAE + saturation layer + critical layer on same model) = tractable experiment on MacBook.
+
+| Concept A | Paper A | ↔ | Concept B | Paper B | New Connection |
+|-----------|---------|---|-----------|---------|----------------|
+| Layer 6-7 speech transition | AudioSAE | ↔ | Saturation layer | Beyond Transcription | Same phenomenon? |
+| Layer 6-7 frame-level encoding | AudioSAE | ↔ | Critical layer | AudioLens | Three papers converge |
+| Steering pipeline (suppress top-100) | AudioSAE | ↔ | White-noise patching | Beyond Transcription | Causal intervention templates |
+| Speech concepts = distributed (2000 feat) | AudioSAE | ↔ | Encoder encodes context | Beyond Transcription | Distributed = context-sensitive |
+
 ## 關鍵研究者/團隊
 - **NTU 李宏毅 lab** — AudioLens (智凱哥！Leo 主場)
 - aiOla Research (Glazer) — ASR MI, hallucination causal analysis
