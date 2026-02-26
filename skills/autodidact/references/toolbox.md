@@ -14,13 +14,13 @@
 | Feature steering/erasure | 干預是否改變行為 | WER 等 metric 是 sequence-level，可能掩蓋局部效果 | SAE-based |
 | Circuit tracing | 自動化的因果計算圖 | Audio 尚無成功案例；需先有穩定的 SAE features | Anthropic attribution graphs |
 
-## Compute Tiers
+## Compute Tiers（每 tier 要產出 artifact，不只跑實驗）
 
-| Tier | 硬體 | 能做什麼 |
-|------|------|---------|
-| 0 (CPU/MacBook) | MacBook Air | probing, CKA, dataset prep, 小 AST on ESC-50, Captum attribution |
-| 1 (single GPU) | 戰艦 1x GPU | Whisper-tiny/HuBERT-base activation extraction, 單層 SAE, pyvene interventions |
-| 2 (multi-GPU) | 戰艦 multi-GPU | 多層 SAE, end-to-end audio-LLM experiments |
+| Tier | 硬體 | 能做什麼 | 應產出的 artifact |
+|------|------|---------|------------------|
+| 0 (CPU) | MacBook Air | probing, CKA, dataset prep, attribution | 可重複 notebook + activation cache (小規模) |
+| 1 (1 GPU) | 戰艦 1x | activation extraction, 單層 SAE, pyvene patching | 可因果介入的小任務 + patching pipeline + steering demo |
+| 2 (multi-GPU) | 戰艦 multi | 多層 SAE, audio-LLM end-to-end | 跨層 feature dictionary + evaluation harness |
 
 ## 核心工具
 

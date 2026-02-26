@@ -6,14 +6,10 @@
 
 **成為 Google DeepMind / Anthropic 等級的 AI Researcher。**
 
-這意味著：
-- 在 NeurIPS、ICML、ICLR 等頂會發表有影響力的工作（被引用、被討論）
-- 能獨立識別深層的研究問題，而非只做 incremental improvement
-- 掌握紮實的技術深度（不只是讀論文，要能復現、改進、提出新方法）
-- 清晰有力的學術寫作能力
-- 具備 research taste — 知道什麼問題值得花 6 個月去解
+### Thesis-level north star
+> 建立一套可驗證的 audio 機制單元（features/circuits），並用它們在 ASR 與 audio-LLM 中同時做到：**可靠定位錯誤來源 + 可控介入改善行為（含安全/穩健性）**。
 
-這不是一年能達到的目標，但每個 cycle 都應該在往這個方向走。
+這句話串起所有方向：SAE（機制單元）、patching（可驗證）、ASR（可量化行為）、audio-LLM（融合與安全）、以及「改得動」。
 
 ## 當前研究方向
 
@@ -35,39 +31,54 @@
 - 最終 PDF 2026-03-05
 - 投稿後 → 注意力轉向 mech interp 方向
 
-## Paper Ideas（基於 2026-02-26 deep research 重新排序）
+## 5 Research Tracks（一個 thesis 的不同切面）
 
-**戰略考量：AudioLens 是李宏毅 lab 的工作 → Leo 有主場優勢**
+**戰略考量：AudioLens 是智凱哥的工作 → Leo 有主場優勢；5 tracks 都服務同一個 thesis**
 
-1. 🥇 **"Listen vs Guess" — AudioLens 延伸** → NeurIPS 2026 / ICLR 2027
-   - 接棒智凱哥的 AudioLens，用 controlled counterfactuals + patching 量化「audio evidence vs language prior」
-   - 定義 "grounding coefficient"，因果定位 failure modes (encoder vs connector vs LM)
-   - **優勢：智凱哥 = AudioLens 作者 = AudioMatters 共同一作 = 每天一起吃飯的 labmate**
-   - 可直接取得 codebase、實驗 insight、合作機會
-   - 預估：4-6 個月
+### Track 1：Audio Causal Benchmark / Protocol → community resource
+- 建立 audio 的 IOI — clean/corrupt 標準任務 + patching protocol
+- 第一篇 paper: 3-5 tasks (Speech Commands, ESC-50, 短句 ASR) × 3-5 corruptions
+- **做出來所有人引用**
 
-2. 🥈 **Audio InterpBench — MI 的 evaluation benchmark** → EMNLP 2026 / Interspeech
-   - 結合 AudioMatters benchmark 經驗 + MI 方法論
-   - Synthetic ground-truth tasks with known causal structure
-   - 優勢：Leo 的 evaluation 專長直接遷移
-   - 預估：3-4 個月
+### Track 2：AudioSAE → AudioSAEBench → 評估科學化
+- 對 Whisper/HuBERT/WavLM 做 SAE + audio-native 評估指標
+- 因果 steering/erasure 測試 + 副作用曲線
+- 延伸：feature alignment across models/languages
 
-3. 🥉 **Audio Safety via MI (SPIRIT 延伸)** → Workshop paper
-   - Benchmark of audio jailbreak styles + mechanistic defenses comparison
-   - 接棒 SPIRIT (EMNLP 2025)
-   - 優勢：AI Safety 興趣 + NTUAIS 社群
-   - 預估：2-3 個月
+### Track 3：Listen vs Guess in Audio-LLMs ⭐ 最高優先
+- 接棒智凱哥 AudioLens，用 minimal pairs + patching 量化 grounding
+- 定義 grounding coefficient（audio patching sensitivity vs context patching sensitivity）
+- **優勢：智凱哥 = AudioLens 作者 = 每天一起吃飯的 labmate，已談好合作**
 
-## Knowledge Gaps
-- [ ] TransformerLens activation patching 實作（month 0-2 必修）
-- [ ] **Patching pitfalls**: OOD internal states, corruption design for audio（方法論核心）
-- [ ] SAE 訓練 + feature steering + evaluation discipline（AudioSAE 復現 + SAEBench 思維）
-- [ ] AudioLens 論文精讀 + 代碼復現（**智凱哥直接問**）
-- [ ] Whisper / HuBERT encoder 逐層機制
-- [ ] Qwen2-Audio / SALMONN 架構
-- [ ] Neural audio codecs (EnCodec) — discrete tokens 讓 audio MI 變 LM-like
-- [ ] pyvene intervention library（Stanford, structured interventions）
-- [ ] ICML 2025 MI Tutorial（結構化學習路徑）
+### Track 4：Mechanistic Interp of Adaptation (LoRA/adapters)
+- 解釋「微調到底改了什麼機制」
+- CKA/SVD + SAE drift + patching 定位變化
+- 延伸：mechanistically guided fine-tuning
+
+### Track 5：Safety Mechanistic Defenses
+- Audio prompt injection benchmark + trigger subspace 定位
+- 最小副作用的 inference-time defense
+- 風險：負責任揭露，defense > attack
+
+## 10 Core Research Questions（autodidact 讀論文時圍繞這些問題思考）
+1. Audio 的 "clean/corrupt" 怎麼設計才只破壞你要隔離的因素？
+2. Patching 的 OOD internal state 怎麼診斷/避免？
+3. ASR 的 WER 是序列指標 — 怎麼對齊到局部機制？
+4. SAE features 能跨語言/噪聲/模型遷移嗎？用什麼 alignment？
+5. Audio SAE 評估該用什麼指標？哪些與「可因果操控」相關？
+6. 模型何時在「聽」、何時在「猜」？怎麼量化？
+7. Connector bottleneck 讓哪些信息不可逆丟失？
+8. Audio jailbreak 的 trigger subspace 在 encoder 還是 LM？
+9. Neural codec 的 codebook 分工 — 哪些對 pitch/timbre/清晰度負責？
+10. Audio 能做自動 circuit graph 嗎？前置條件是什麼？
+
+## Skill Gaps（技能層面）
+- [ ] TransformerLens + pyvene 實作
+- [ ] SAE 訓練 + evaluation discipline
+- [ ] AudioLens codebase（問智凱哥）
+- [ ] Whisper/HuBERT/WavLM 逐層機制
+- [ ] EnCodec discrete tokens 與 MI 的接口
+- [ ] Causal abstraction 理論基礎
 
 ## Must-Read List（按優先級）
 1. [ ] **AudioLens** (智凱哥 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
