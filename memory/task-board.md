@@ -64,11 +64,6 @@
 - **描述**: 不被單一討論卡住，維持主線 + 備線
 - **next_action**: 主線持續推進；備線：Listen layer 快驗 / neuron grounding / modality reliance stress test
 
-### L-06 | 重構收尾（comms_tracker + sync_report + task-check） ✅
-- **owner**: Lab
-- **completed**: 2026-02-27
-- **成果**: 3 個腳本全部用 shared JsonlStore/find_workspace，消除 16 行重複代碼
-
 ### L-07 | SYNC_PROTOCOL 落地驗證
 - **owner**: Lab
 - **priority**: P2
@@ -76,17 +71,6 @@
 - **last_touched**: 2026-02-27
 - **描述**: 驗證混合同步協議實際運作：每日 merge、[STATE] 通知、reconcile
 - **next_action**: 等 Mac Leo 完成 merge 後做第一次 smoke test
-
-### L-03 | Autodidact GPU 實驗環境 ✅
-- **owner**: Lab
-- **completed**: 2026-02-27
-- **成果**: conda env `interp` 建成；transformerlens + pyvene + s3prl + torch 2.10+cu128 安裝完；RTX 3090 25.3GB 驗證通過
-- **文檔**: memory/L-03-GPU-ENV.md
-
-### L-04 | Cron 系統建立 ✅
-- **owner**: Lab
-- **completed**: 2026-02-27
-- **成果**: 5 個 cron jobs — heartbeat (30min), scanner (06:00), merge (08:00), calendar (13:00), tunnel watchdog (2h)
 
 ## WAITING
 
@@ -147,3 +131,19 @@
 - **owner**: Lab
 - **completed**: 2026-02-27
 - **成果**: email_ops.env, todoist.env, google-service-account.json 從 Mac 搬入；Todoist、GCal、Diary、SMTP 全部驗證通過
+
+### L-03 | Autodidact GPU 實驗環境
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: conda env `interp` (Python 3.11)；transformerlens + pyvene + s3prl + torch 2.10+cu128；RTX 3090 25.3GB 驗證通過
+- **文檔**: memory/L-03-GPU-ENV.md
+
+### L-04 | Cron 系統建立
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: 5 cron jobs：heartbeat (*/30 08-23), scanner (06:00), merge (08:00), calendar (13:00), tunnel (*/2h)
+
+### L-06 | 重構收尾
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: task-check.py + sync_report.py 改用 shared JsonlStore；消除 16 行重複代碼；所有 JSONL 操作統一
