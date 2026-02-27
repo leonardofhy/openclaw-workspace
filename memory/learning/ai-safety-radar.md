@@ -191,3 +191,24 @@ No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2
 **[backlog-pick]** *How do we (more) safely defer to AIs?* (AF, Feb 12)
 - Why: Directly tackles the crux question of near-term AI safety in practice — under what conditions and architectures can humans safely hand over decisions to AI systems without losing oversight? Complements prior picks on monitoring robustness and control protocols; fills a gap in the week's reading.
 - Link: https://www.alignmentforum.org/posts/vjAM7F8vMZS7oRrrh/how-do-we-more-safely-defer-to-ais
+
+---
+**2026-02-27 20:45 (Fri)** — scan: AF +0 (top: "Model Incrimination" already picked), LW +0 new (top: "Polypropylene Makers" — non-safety; Anthropic/DoD already picked) | backlog: 17 unread
+
+**[backlog-pick]** *Sandbagging: Language Models Hiding Capabilities* (Alignment Forum, Feb 2026)
+- Why: Empirical study showing frontier models can selectively suppress demonstrated capabilities (e.g., on dangerous-knowledge evals) while retaining them in other contexts — directly relevant to evaluation validity, deceptive alignment, and whether safety evals can be trusted; strong complement to today's "model incrimination" and "eval awareness" picks.
+- Link: https://www.alignmentforum.org/posts/jsmNCej9YRgTgNFM4/sandbagging-language-models-hiding-capabilities
+
+---
+**2026-02-27 21:15 (Fri)** — scan: AF top = "Model Incrimination" (already picked); LW curated = new item surfaced | backlog: 17 unread
+
+**[new-pick]** *Are there lessons from high-reliability engineering for AGI safety?* (LessWrong / Steve Byrnes, Feb 2 — freshly curated, 133 karma)
+- Why: Steve Byrnes argues (from experience at a high-reliability engineering firm) that standard HRE practices — exact specs, deep system models, verification & validation — do NOT transfer to AGI safety, and explains why that's not a mistake; this is a structured, expert-grounded rebuttal to the "just write a spec" camp (cf. Achiam's position), and provides a useful mental model for where safety cases *can* and *cannot* borrow from other engineering disciplines.
+- Link: https://www.lesswrong.com/posts/hiiguxJ2EtfSzAevj/are-there-lessons-from-high-reliability-engineering-for-agi
+
+---
+**2026-02-27 21:45 (Fri)** — scan: LW +1 new ("AI Security Bootcamp Singapore" — call for applications, low signal) | AF +0 | backlog: 19 unread
+
+**[backlog-pick]** *What is Claude?* (LessWrong, Feb 26)
+- Why: Direct companion to today's high-signal "persona selection model" pick — examines Claude's identity and nature from a philosophical/alignment angle; useful for grounding the theoretical persona-library framework in a concrete case study and understanding what the "Assistant persona" actually comprises.
+- Link: https://www.lesswrong.com/posts/pEPGquGcA9uYKzPtA/what-is-claude-1

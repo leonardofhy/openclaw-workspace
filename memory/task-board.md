@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-02-27 19:50
+> 最後更新：2026-02-27 21:46
 
 ## 規則
 
@@ -44,8 +44,8 @@
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
 - **描述**: 用 battleship 跑 chunk sensitivity，定位可能的 listen-layer 訊號
-- **progress**: smoke run（n=4,k=3,20 samples）完成；full run 進行中（20:40 時點：`n4_chunk3` 1830 行、`n5_chunk0` 1188 行）
-- **next_action**: 待 n4/n5 完檔後跑評估並更新 `chunk_sensitivity_desta25.md` v2，產出可貼 Method/Results 的 Δ 表
+- **progress**: smoke run（n=4,k=3,20 samples）完成；full run 進行中（21:46 時點：`n4_chunk3` 3562 行、`n5_chunk0` 1188 行）；已重提 n5 任務 `job 224422`（RUNNING）
+- **next_action**: n4/n5 完檔後立即跑 evaluate 產生 `*_comprehensive_results.json`，再更新 `chunk_sensitivity_desta25.md` v2（Method/Results Δ 表）
 - **blockers**: GPU 資源排隊/同機器並行導致完成時間波動
 
 ### M-02 | 論文產出（Method v0）
