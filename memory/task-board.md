@@ -86,14 +86,10 @@
 - **next_action**: 安裝 transformerlens + pyvene + s3prl；驗證 GPU 可用
 - **deadline**: 2026-03-01
 
-### L-04 | Cron 系統建立
+### L-04 | Cron 系統建立 ✅
 - **owner**: Lab
-- **priority**: P2
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: 在 Lab 機器設定 cron jobs（heartbeat、autodidact、排程刷新等）
-- **next_action**: 參考 Mac 的 cron 設定，建立 Lab 版本
-- **deadline**: 2026-03-02
+- **completed**: 2026-02-27
+- **成果**: 5 個 cron jobs — heartbeat (30min), scanner (06:00), merge (08:00), calendar (13:00), tunnel watchdog (2h)
 
 ## WAITING
 
