@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-02-27
+> 最後更新：2026-02-27 20:56
 
 ## 規則
 
@@ -64,15 +64,14 @@
 - **描述**: 不被單一討論卡住，維持主線 + 備線
 - **next_action**: 主線持續推進；備線：Listen layer 快驗 / neuron grounding / modality reliance stress test
 
-### L-01 | 系統環境搭建
+### L-06 | 重構收尾（comms_tracker + sync_report + task-check）
 - **owner**: Lab
-- **priority**: P0
+- **priority**: P1
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
-- **描述**: WSL 環境完整搭建 — pip、Python 套件、secrets 同步
-- **next_action**: 安裝 pip + google-auth/gspread/google-api-python-client；從 Mac 搬 secrets
-- **blockers**: 需要 sudo 權限裝 pip，或找替代方案（conda/uv）
-- **deadline**: 2026-02-28
+- **描述**: 完成 senior engineer review 識別的重構項目
+- **next_action**: comms_tracker.py 改用 JsonlStore → sync_report.py 改用 → task-check.py 路徑修復
+- **deadline**: 2026-03-01
 
 ### L-02 | Bot 間通訊穩定化
 - **owner**: Lab
@@ -121,14 +120,6 @@
 - **描述**: 先前 timeout，已改每小時 + timeout 600s
 - **waiting_for**: 檢查下一輪 run 是否恢復 ok
 
-### L-05 | Secrets 同步
-- **owner**: Lab
-- **priority**: P0
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: 從 Mac 搬 secrets 到 WSL（email_ops.env, todoist.env, google-service-account.json）
-- **waiting_for**: Mac bot 或 Leo 透過 SSH tunnel 搬檔案
-- **next_action**: 確認 secrets 到位後跑 system scanner 驗證
 
 ## BLOCKED
 
@@ -154,3 +145,13 @@
 - **owner**: MacBook
 - **completed**: 2026-02-27
 - **成果**: task-ledger.md 建立（現已遷移至本檔）
+
+### L-01 | 系統環境搭建
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: pip (via get-pip.py)、google-auth/gspread/google-api-python-client 安裝完成；Python 3.12 確認可用
+
+### L-05 | Secrets 同步
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: email_ops.env, todoist.env, google-service-account.json 從 Mac 搬入；Todoist、GCal、Diary、SMTP 全部驗證通過

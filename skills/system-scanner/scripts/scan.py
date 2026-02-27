@@ -667,7 +667,7 @@ def check_tunnels():
     if platform.system() != 'Linux':
         return  # Only relevant on Lab WSL
 
-    rc, out, _ = sh(['pgrep', '-f', 'ssh.*-R.*:localhost:22'])
+    rc, out, _ = sh(['pgrep', '-f', 'ssh.*-[a-zA-Z]*R.*:localhost:22'])
     if rc == 0 and out:
         count = len(out.strip().splitlines())
         check('SSH tunnels', 'ok', f'{count} active tunnel(s)')
