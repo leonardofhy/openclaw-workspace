@@ -332,3 +332,22 @@ Priority queue for Leo's first session:
 - Experiment proposals: 2 (Triple Convergence IIT + Class-specific Neuron Grounding)
 - **Must-read list: FULLY COMPLETED** ✅
 - **Next action: Await Leo approval → begin IIT patching experiment**
+
+| #35 | 2026-02-27 08:01 | report | Morning handoff. arXiv checked — no new Feb 27 papers yet. Queue confirmed depleted. Summarized overnight work (cycles #19-34): 3 more deep reads, 2 new gaps, NNsight assessed, IIT proposal crystallized. Awaiting Leo for real speech test + experiment approval. |
+
+## Day 2 Morning Stats (after cycle #35)
+- Papers read (deep): 12 total
+- Papers scanned: 21+
+- Research gaps identified: 13
+- Paper ideas: 6
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (with NNsight)
+- Experiment proposals: 2 (ready for Leo approval)
+- **Queue: DEPLETED — awaiting Leo**
+
+## Leo's Action Queue (morning of 2026-02-27)
+1. **Real speech test** — whisper_hook_demo.py with actual .wav
+2. **Approve IIT experiment** — cycle #34 proposal (MacBook-feasible, NNsight, ~3h)
+3. **Create venv** — `python3 -m venv ~/audio-mi-env && pip install nnsight openai-whisper`
+4. **arXiv Feb 27 scan** — ~14:00 Taipei
+5. **Contact 智凱哥** about AudioLens codebase access
