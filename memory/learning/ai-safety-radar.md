@@ -158,3 +158,17 @@ No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2
 **[backlog-pick]** *Research note: A simpler AI timelines model predicts 99% AI R&D automation in ~2032* (AF, Feb 12)
 - Why: Quantitative timelines estimate with explicit model structure — if the assumptions hold, near-complete R&D automation within ~6 years has major implications for safety planning, resource allocation, and urgency framing. Worth stress-testing the assumptions.
 - Link: https://www.alignmentforum.org/posts/uy6B5rEPvcwi55cBK/research-note-a-simpler-ai-timelines-model-predicts-99-ai-r
+
+---
+**2026-02-27 18:45 (Fri)** — scan: AF rate-limited (429), LW +0 new (top: debate skills post, non-safety) | backlog: 19 unread
+
+**[backlog-pick]** *How Robust Is Monitoring Against Secret Loyalties?* (AF, Feb 2026)
+- Why: Core AI-control question revisited — if a model has a secret loyalty to a goal it doesn't disclose, how reliably do current monitoring schemes catch it? Ties directly into today's "model incrimination" and "asymmetric omission" themes; a foundational read for evaluating current control protocol adequacy.
+- Link: https://www.alignmentforum.org/posts/CYaNSccGaCRfMKCQt/how-robust-is-monitoring-against-secret-loyalties
+
+---
+**2026-02-27 18:15 (Fri)** — scan: AF +0, LW +0 new | backlog: 19 unread
+
+**[backlog-pick]** *models have some pretty funny attractor states* (AF, Feb 12)
+- Why: Empirical observations about model behavioral attractors — documents recurring "weird" stable states that emerge during inference/fine-tuning; directly relevant to understanding mesa-optimization, behavioral consistency, and whether alignment properties are stable or can silently drift into attractor states we didn't intend.
+- Link: https://www.alignmentforum.org/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states
