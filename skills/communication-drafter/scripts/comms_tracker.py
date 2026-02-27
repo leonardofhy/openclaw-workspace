@@ -10,53 +10,15 @@ Usage:
 """
 
 import argparse
-import json
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
-WORKSPACE = Path(__file__).resolve().parent.parent.parent.parent
-COMMS_DIR = WORKSPACE / "memory" / "communications"
-COMMS_FILE = COMMS_DIR / "comms.jsonl"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "shared"))
+from jsonl_store import JsonlStore
+import json
 
-
-def load_comms() -> list[dict]:
-    if not COMMS_FILE.exists():
-        return []
-    comms = []
-    for line in COMMS_FILE.read_text().strip().splitlines():
-        if line.strip():
-            try:
-                comms.append(json.loads(line))
-            except json.JSONDecodeError:
-                print(f"⚠️ Skipping malformed line", file=sys.stderr)
-    return comms
-
-
-def save_comm(comm: dict):
-    COMMS_DIR.mkdir(parents=True, exist_ok=True)
-    with open(COMMS_FILE, "a") as f:
-        f.write(json.dumps(comm, ensure_ascii=False) + "\n")
-
-
-def rewrite_all(comms: list[dict]):
-    COMMS_DIR.mkdir(parents=True, exist_ok=True)
-    with open(COMMS_FILE, "w") as f:
-        for c in comms:
-            f.write(json.dumps(c, ensure_ascii=False) + "\n")
-
-
-def next_id(comms: list[dict]) -> str:
-    if not comms:
-        return "COM-001"
-    max_num = 0
-    for c in comms:
-        try:
-            num = int(c["id"].split("-")[1])
-            max_num = max(max_num, num)
-        except (IndexError, ValueError):
-            pass
-    return f"COM-{max_num + 1:03d}"
+store = JsonlStore("memory/communications/comms.jsonl", prefix="COM")
 
 
 def now_iso() -> str:
@@ -64,36 +26,23 @@ def now_iso() -> str:
 
 
 def cmd_log(args):
-    comms = load_comms()
-    comm_id = next_id(comms)
-
     followup_date = None
     if args.followup_days:
         followup_date = (datetime.now() + timedelta(days=args.followup_days)).strftime("%Y-%m-%d")
 
-    comm = {
-        "id": comm_id,
-        "to": args.to,
-        "subject": args.subject,
-        "channel": args.channel,
-        "status": args.status,
-        "created": now_iso(),
-        "followup_date": followup_date,
-        "followup_days": args.followup_days,
-        "resolved": False,
-        "resolved_date": None,
-        "notes": args.notes,
-    }
-
-    save_comm(comm)
-    print(f"📧 Logged {comm_id}: → {args.to} | {args.subject}")
+    comm = store.append({
+        "to": args.to, "subject": args.subject, "channel": args.channel,
+        "status": args.status, "created": now_iso(),
+        "followup_date": followup_date, "followup_days": args.followup_days,
+        "resolved": False, "resolved_date": None, "notes": args.notes,
+    })
+    print(f"📧 Logged {comm['id']}: → {args.to} | {args.subject}")
     if followup_date:
         print(f"   Follow-up by: {followup_date}")
 
 
 def cmd_list(args):
-    comms = load_comms()
-
+    comms = store.load()
     if args.to:
         comms = [c for c in comms if args.to.lower() in c["to"].lower()]
     if args.status:
@@ -116,12 +65,11 @@ def cmd_list(args):
         print()
 
 
-def cmd_overdue(args):
-    comms = load_comms()
+def cmd_overdue(_args):
+    comms = store.load()
     today = datetime.now().date()
 
-    overdue = []
-    upcoming = []
+    overdue, upcoming = [], []
     for c in comms:
         if c.get("resolved") or not c.get("followup_date"):
             continue
@@ -141,7 +89,6 @@ def cmd_overdue(args):
         for c, days in overdue:
             print(f"  {c['id']} | → {c['to']} | {c['subject']} — {days} 天逾期")
         print()
-
     if upcoming:
         print(f"⚠️ Upcoming ({len(upcoming)}):\n")
         for c, days in upcoming:
@@ -149,26 +96,19 @@ def cmd_overdue(args):
 
 
 def cmd_resolve(args):
-    comms = load_comms()
-    found = False
-    for c in comms:
-        if c["id"] == args.comm_id:
-            c["resolved"] = True
-            c["resolved_date"] = now_iso()
-            if args.notes:
-                c["notes"] = (c.get("notes") or "") + f" | Resolved: {args.notes}"
-            found = True
-            break
-    if not found:
+    comm = store.find(args.comm_id)
+    if not comm:
         print(f"❌ {args.comm_id} not found", file=sys.stderr)
         sys.exit(1)
-    rewrite_all(comms)
+    updates = {"resolved": True, "resolved_date": now_iso()}
+    if args.notes:
+        updates["notes"] = (comm.get("notes") or "") + f" | Resolved: {args.notes}"
+    store.update(args.comm_id, updates)
     print(f"✅ {args.comm_id} resolved")
 
 
 def cmd_show(args):
-    comms = load_comms()
-    comm = next((c for c in comms if c["id"] == args.comm_id), None)
+    comm = store.find(args.comm_id)
     if not comm:
         print(f"❌ {args.comm_id} not found", file=sys.stderr)
         sys.exit(1)
@@ -179,45 +119,27 @@ def main():
     parser = argparse.ArgumentParser(description="Communication Tracker")
     sub = parser.add_subparsers(dest="cmd")
 
-    # log
-    p_log = sub.add_parser("log")
-    p_log.add_argument("--to", required=True, help="Recipient name")
-    p_log.add_argument("--subject", required=True, help="Subject/topic")
-    p_log.add_argument("--channel", required=True, choices=["email", "discord", "line", "signal", "in-person", "other"])
-    p_log.add_argument("--status", required=True, choices=["sent", "received", "drafted", "scheduled"])
-    p_log.add_argument("--followup-days", type=int, help="Days until follow-up needed")
-    p_log.add_argument("--notes", help="Additional notes")
+    p = sub.add_parser("log")
+    p.add_argument("--to", required=True); p.add_argument("--subject", required=True)
+    p.add_argument("--channel", required=True, choices=["email", "discord", "line", "signal", "in-person", "other"])
+    p.add_argument("--status", required=True, choices=["sent", "received", "drafted", "scheduled"])
+    p.add_argument("--followup-days", type=int); p.add_argument("--notes")
 
-    # list
-    p_list = sub.add_parser("list")
-    p_list.add_argument("--to", help="Filter by recipient")
-    p_list.add_argument("--status", choices=["sent", "received", "drafted", "scheduled"])
-    p_list.add_argument("--limit", type=int)
+    p = sub.add_parser("list")
+    p.add_argument("--to"); p.add_argument("--status", choices=["sent", "received", "drafted", "scheduled"])
+    p.add_argument("--limit", type=int)
 
-    # overdue
     sub.add_parser("overdue")
 
-    # resolve
-    p_resolve = sub.add_parser("resolve")
-    p_resolve.add_argument("comm_id")
-    p_resolve.add_argument("--notes", help="Resolution notes")
-
-    # show
-    p_show = sub.add_parser("show")
-    p_show.add_argument("comm_id")
+    p = sub.add_parser("resolve"); p.add_argument("comm_id"); p.add_argument("--notes")
+    p = sub.add_parser("show"); p.add_argument("comm_id")
 
     args = parser.parse_args()
     if not args.cmd:
-        parser.print_help()
-        sys.exit(1)
+        parser.print_help(); sys.exit(1)
 
-    {
-        "log": cmd_log,
-        "list": cmd_list,
-        "overdue": cmd_overdue,
-        "resolve": cmd_resolve,
-        "show": cmd_show,
-    }[args.cmd](args)
+    {"log": cmd_log, "list": cmd_list, "overdue": cmd_overdue,
+     "resolve": cmd_resolve, "show": cmd_show}[args.cmd](args)
 
 
 if __name__ == "__main__":

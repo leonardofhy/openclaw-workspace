@@ -12,7 +12,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-WORKSPACE = Path(__file__).resolve().parent.parent.parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "shared"))
+from jsonl_store import find_workspace
+
+WORKSPACE = find_workspace()
 TASK_BOARD = WORKSPACE / "memory" / "task-board.md"
 EXPERIMENTS = WORKSPACE / "memory" / "experiments" / "experiments.jsonl"
 
