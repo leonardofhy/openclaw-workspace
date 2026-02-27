@@ -409,16 +409,19 @@ Priority queue for Leo's first session:
 - Experiment proposals: **2** (IIT Triple Convergence + Class-specific Neuron Grounding)
 - Digests: 2 (2026-02-26 + 2026-02-27)
 
-## Leo's Action Queue (9 PM Feb 27 — UPDATED)
+## Leo's Action Queue (morning Feb 28 — UPDATED after cycle #55)
 1. **Approve IIT experiment** — Triple Convergence causal test (MacBook-feasible, NNsight, ~3h)
 2. **Real speech test** — whisper_hook_demo.py with actual .wav → validate Triple Convergence
 3. **Create venv** — `python3 -m venv ~/audio-mi-env && pip install nnsight openai-whisper`
 4. **Contact 智凱哥** about AudioLens codebase access
-5. ⭐ **Listen Layer paper** — 5 papers motivate gap; act fast (~2 papers/week field velocity)
+5. ⭐ **2-paper portfolio**: Paper A ("Listen Layer") first → Paper B (AudioSAEBench) second. Grounding Sensitivity = same metric, different granularity. See KG section H+K.
 6. ⭐ **ALME stimuli** — 57K conflict stimuli ready to use with NNsight patching
+7. **Delete dead cron job**: `提醒-SL-Weekly-Meeting` (disabled, past, error state)
 
 | #49 | 2026-02-28 01:01 | skip | Hourly cron run: state unchanged, execution-blocked confirmed, no high-value external novelty before Feb 28 arXiv batch. |
 | #50 | 2026-02-28 01:06 | reflect (meta-audit) | Leo requested 30-min self-learning + meta-awareness improvement. Applied skip-loop guard in autodidact SKILL, created `meta-awareness-board.md`, and switched cadence target back to 30-min. |
 | #51 | 2026-02-28 01:07 | reflect (meta-system) | Created `experiment-queue.md` — 6 experiments prioritized (P1-P6), each with hypothesis/method/prerequisites/output; unblock checklist for Leo (15-min to start experiments); completion rate tracker. Answers meta-board Q6 (idea→execution queue). Meta-board item #2 ✅. |
 | #52 | 2026-02-28 01:31 | reflect (cron audit) | Full 27-job cron audit. 25/27 healthy. Dead job flagged: SL meeting reminder (disabled, past, error). Sunday 21:00 congestion acceptable. Skip ratio 55% correct. Meta-board item #3 ✅. |
 | #53 | 2026-02-28 02:01 | reflect (meta-awareness) | Answered meta-board Q4 (cycle report format → 3-line standard) and Q5 (unblock protocol → 3-skip rule + unblock-request.md). Meta-board now 5/6 questions answered. Created `unblock-request.md` (PENDING). All meta-board items done except Q1 (novelty classifier = build, needs Leo). |
+| #54 | 2026-02-28 02:31 | plan | **AudioSAEBench Design Draft v0.1** — 5-category benchmark protocol: (1) Acoustic Concept Detection, (2) Disentanglement/Completeness, (3) Reconstruction Fidelity, (4) Causal Controllability, (5) **Grounding Sensitivity** (NOVEL). ALME conflict stimuli identified as perfect grounding_sensitivity test set. Comparison table vs SAEBench/AudioSAE/Mariotte/AR&D produced. Title candidate: "AudioSAEBench: Multi-Metric Evaluation of SAEs for Speech and Audio LMs". |
+| #55 | 2026-02-28 03:01 | reflect (meta-synthesis) | **2-Paper Portfolio Synthesis** — Grounding Sensitivity = same metric at different granularity: layer-level gc (Track 3 "Listen Layer") and feature-level gc (Track 2 AudioSAEBench). Recommended order: Paper A first (3h MacBook experiment) → Paper B second (community resource). KG updated: AudioSAEBench v0.1 protocol summary added (section K), paper order rewritten (section H), cross-paper connection table updated. All meta-cycles #50-55 assessed: genuine value, system improved. |
