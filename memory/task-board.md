@@ -44,9 +44,9 @@
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
 - **描述**: 用 battleship 跑 chunk sensitivity，定位可能的 listen-layer 訊號
-- **progress**: smoke run（n=4,k=3,20 samples）完成；full run n4_chunk3 已上線（job 224389），n5_chunk0 排隊（job 224390）
-- **next_action**: 收斂 n4/n5 結果並生成可貼論文的結果摘要（含 Δ vs full/none）
-- **blockers**: GPU 資源排隊時間波動
+- **progress**: smoke run（n=4,k=3,20 samples）完成；full run 進行中（20:40 時點：`n4_chunk3` 1830 行、`n5_chunk0` 1188 行）
+- **next_action**: 待 n4/n5 完檔後跑評估並更新 `chunk_sensitivity_desta25.md` v2，產出可貼 Method/Results 的 Δ 表
+- **blockers**: GPU 資源排隊/同機器並行導致完成時間波動
 
 ### M-02 | 論文產出（Method v0）
 - **owner**: MacBook

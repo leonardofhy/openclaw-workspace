@@ -179,3 +179,15 @@ No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2
 **[backlog-pick]** *Responsible Scaling Policy v3* (LessWrong / HoldenKarnofsky, Feb 24, karma: 203)
 - Why: Anthropic's updated RSP is a high-karma governance document that sets concrete capability thresholds and safety commitments for frontier model deployment; important for understanding what "responsible scaling" looks like in practice and where the current policy boundaries sit — directly relevant to AI control and near-term safety infrastructure.
 - Link: https://www.lesswrong.com/posts/responsible-scaling-policy-v3
+
+## 2026-02-27 19:45 (Fri)
+- **PICK** [Alignment Forum] "Will reward-seekers respond to distant incentives?" — Core alignment question: do reward-seeking systems generalise to act on delayed/far-future incentives? Directly relevant to goal-directedness & RLHF. https://www.alignmentforum.org/posts/8cyjgrTSxGNdghesE/will-reward-seekers-respond-to-distant-incentives
+- **PICK** [Alignment Forum] "The persona selection model" — How AI systems choose/adopt personas; implications for alignment & behavioural consistency. https://www.alignmentforum.org/posts/dfoty34sT7CSKeJNn/the-persona-selection-model
+- (Notable backlog also includes: "A minor point about instrumental convergence" [LW], "AI welfare as a demotivator for takeover" [LW], "How do we (more) safely defer to AIs?" [AF])
+
+---
+**2026-02-27 20:15 (Fri)** — scan: AF +0, LW +0 new | backlog: 18 unread
+
+**[backlog-pick]** *How do we (more) safely defer to AIs?* (AF, Feb 12)
+- Why: Directly tackles the crux question of near-term AI safety in practice — under what conditions and architectures can humans safely hand over decisions to AI systems without losing oversight? Complements prior picks on monitoring robustness and control protocols; fills a gap in the week's reading.
+- Link: https://www.alignmentforum.org/posts/vjAM7F8vMZS7oRrrh/how-do-we-more-safely-defer-to-ais
