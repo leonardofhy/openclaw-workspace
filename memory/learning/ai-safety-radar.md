@@ -95,3 +95,17 @@ Scan: AF +0, LW +1 new ("Vibe Coding is a System Design Interview" — not safet
 **[new pick]** "Are there lessons from high-reliability engineering for AGI safety?" — LessWrong, 2026-02-27
 - Why: Author (full-time AGI safety researcher, ex-engineering R&D) carefully argues *why* standard HRE practices (spec-writing, V&V, component models) don't transfer to AGI safety, while identifying what kernel of truth remains; directly relevant to methodology debates in alignment. Thoughtful steel-man of the "just use engineering best practices" camp + rebuttal.
 - Link: https://www.lesswrong.com/posts/HQTueNS4mLaGy3BBL/are-there-lessons-from-high-reliability-engineering-for-agi
+
+---
+**2026-02-27 14:15 (Fri)** — scan: AF +0, LW +1 new (non-safety: debate skills post) | backlog: 21 unread
+
+**[backlog-pick]** "How do we (more) safely defer to AIs?" — Alignment Forum, 2026-02-12
+- Why: Directly tackles corrigibility in practice — under what conditions is deferring to AI decisions actually safe, and how do we structure that safely? Core oversight/control question as autonomy increases.
+- Link: https://www.alignmentforum.org/posts/vjAM7F8vMZS7oRrrh/how-do-we-more-safely-defer-to-ais
+
+---
+**2026-02-27 14:45 (Fri)** — scan: AF rate-limited (429), LW +0 new since 14:15 | backlog: ~20 unread
+
+**[backlog-pick]** "Eliciting Latent Knowledge: Challenges and Approaches" — Alignment Forum (ARC), ongoing series
+- Why: ELK remains a foundational unsolved problem — how to get a model to report its actual beliefs rather than what it thinks the reporter wants to hear; directly relevant given today's picks on self-explanation faithfulness and monitoring robustness. Good complement to the "persona selection model" framing from earlier today.
+- Link: https://www.alignmentforum.org/tag/eliciting-latent-knowledge-elk
