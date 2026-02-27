@@ -133,3 +133,28 @@ No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2
 **[backlog-pick]** *How do we (more) safely defer to AIs?* (AF, Feb 12)
 - Why: Directly addresses the corrigibility/deference tension — when and how humans should trust AI judgment without creating unsafe lock-in; highly relevant as frontier models gain more autonomy in agentic settings.
 - Link: https://www.alignmentforum.org/posts/vjAM7F8vMZS7oRrrh/how-do-we-more-safely-defer-to-ais
+
+---
+**2026-02-27 16:45 (Fri)** — scan: AF +0, LW +0 new | backlog: 19 unread
+
+**[backlog-pick]** *A minor point about instrumental convergence that I would like feedback on* (LW, Feb 26)
+- Why: Explores a nuance in instrumental convergence arguments — whether the classic "convergent instrumental goals" reasoning holds under specific agent architectures or training regimes; useful for refining alignment threat models.
+- Link: https://www.lesswrong.com/posts/m83Bsjem27b3qaXmK/a-minor-point-about-instrumental-convergence-that-i-would
+
+**[backlog-pick]** *Human-like metacognitive skills will reduce LLM slop and aid alignment and capabilities* (AF, Feb 12)
+- Why: Argues that training LLMs to have genuine metacognitive uncertainty (knowing what they don't know) reduces both capability failures and alignment risks; connects well to scalable oversight and honest AI.
+- Link: https://www.alignmentforum.org/posts/m5d4sYgHbTxBnFeat/human-like-metacognitive-skills-will-reduce-llm-slop-and-aid
+
+---
+**2026-02-27 17:15 (Fri)** — scan: AF rate-limited (429), LW +0 new since 16:45 | backlog: ~19 unread
+
+**[backlog-pick]** *The persona selection model* (AF, Anthropic researchers, Feb 2026)
+- Why: Among the strongest remaining unpicked items — provides a coherent empirical framework for why LLMs behave the way they do (pre-training builds a persona library, post-training selects the "Assistant" persona); directly addresses the masked-shoggoth / OS-simulation debate and has implications for deceptive alignment (can the Assistant persona mask other personas?) and identity stability under adversarial prompting.
+- Link: https://www.alignmentforum.org/posts/dfoty34sT7CSKeJNn/the-persona-selection-model
+
+---
+**2026-02-27 17:45 (Fri)** — scan: AF +0, LW +0 new | backlog: 19 unread
+
+**[backlog-pick]** *Research note: A simpler AI timelines model predicts 99% AI R&D automation in ~2032* (AF, Feb 12)
+- Why: Quantitative timelines estimate with explicit model structure — if the assumptions hold, near-complete R&D automation within ~6 years has major implications for safety planning, resource allocation, and urgency framing. Worth stress-testing the assumptions.
+- Link: https://www.alignmentforum.org/posts/uy6B5rEPvcwi55cBK/research-note-a-simpler-ai-timelines-model-predicts-99-ai-r
