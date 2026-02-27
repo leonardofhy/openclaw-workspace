@@ -59,6 +59,18 @@
 - **lab-desktop 用法：** `ffmpeg -y -i input.ogg -ar 16000 -ac 1 /tmp/voice.wav && ~/miniconda3/bin/python3 -c "import whisper; m=whisper.load_model('base'); print(m.transcribe('/tmp/voice.wav', language='zh')['text'])"`
 - **注意：** 只接受 WAV 格式，需先用 ffmpeg 轉檔。支援中文
 
+### 🛰️ Lab WSL2 SSH Tunnel（MacBook ↔ Lab）
+- **Lab Host:** `DESKTOP-Q1L6LLN`（WSL2 Ubuntu）
+- **User:** `leonardo`
+- **Jump Host:** `iso_leo`
+- **Route:** `Mac → iso_leo:2222 → WSL2:22`
+- **一條指令連線：** `ssh -J iso_leo -p 2222 leonardo@localhost`
+- **分步驟：** 先 `ssh iso_leo`，再 `ssh -p 2222 leonardo@localhost`
+- **Secrets 搬運：** `scp -o ProxyJump=iso_leo -P 2222 -r ~/.openclaw/workspace/secrets/ leonardo@localhost:~/.openclaw/workspace/`
+- **注意（Lab PATH）:** WSL2 的 OpenClaw 在 nvm 路徑，非互動 shell 需先加 PATH：
+  - `export PATH=$HOME/.nvm/versions/node/v22.22.0/bin:$PATH`
+  - 然後再跑 `openclaw gateway restart` / `openclaw gateway status`
+
 ## 未啟用 / 待設定
 
 - **Gmail API：** Service Account 無權限，需另外授權
@@ -81,6 +93,8 @@
 | `query_tags.py` | leo-diary/scripts/ | 標籤查詢（人物/主題/共現/時間線）|
 | `keyword_freq.py` | leo-diary/scripts/ | 關鍵字頻率（純 Python）|
 | `weekly_data.py` | daily-scheduler/scripts/ | 7天排程數據（Calendar+Todoist）|
+| `sync_schedule_to_gcal.py` | daily-scheduler/scripts/ | 將最新 `memory/schedules/YYYY-MM-DD.md` 同步到 Google Calendar |
+| `sync_schedule_to_todoist.py` | daily-scheduler/scripts/ | 將最新 `memory/schedules/YYYY-MM-DD.md` 同步到 Todoist（支援去重） |
 | `weather_scout.py` | leo-diary/scripts/ | 天氣檢查+通知 |
 | `fetch_latest_diary.py` | memory/scripts/ | 拉取最新日記（供記憶反芻）|
 | `append_memory.py` | remember/scripts/ | 寫入長期記憶 |
@@ -95,6 +109,7 @@
 ## Cron 排程（每日）
 - 04:15 日記同步 + LLM 標籤提取
 - **08:00 每日排程刷新**（讀取/更新 memory/schedules/YYYY-MM-DD.md，sonnet）
+- **08:12 排程同步到 Google Calendar + Todoist**（從 schedule 檔案自動 upsert）
 - 08:30 早晨總覽（Todoist + Calendar + 自動設會議提醒）
 - 12:00 Daily Coach v3（email）+ 記憶反芻
 - 13:00 午間行事曆掃描

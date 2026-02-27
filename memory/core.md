@@ -1,2 +1,6 @@
 - `2026-02-19 22:13` `[PREFERENCE]` Income plan preferences: wants cash-in within ~2 months, only ~5h/week available, prefers consulting/freelance or fixed monthly retainer; Taiwan internships feel low-value given prior work; big-tech LeetCode/math-heavy interview path is aversive as a primary short-term strategy.
 - `2026-02-19 23:00` `[PREFERENCE]` Google Calendar: events created by the assistant should include a clear prefix like [LLeo/OpenClaw] in the title (and optionally note 'Created by LLeo (OpenClaw)' in description).
+- `2026-02-27 14:49` `[PREFERENCE]` Scheduling workflow preference is documented in `memory/scheduling-rules.md` (source of truth for schedule sync/order/routing rules).
+- `2026-02-27 18:18` `[PREFERENCE]` Leo expects proactive collaboration: when blocked, ask him for help early; maintain long-term tracking across multiple tasks so stalled tasks are not forgotten.
+- `2026-02-27 22:07` `[PREFERENCE]` Leo expects important long-form research inputs to be actively organized and persisted (not just kept in chat).
+- `2026-02-28 01:09` `[PREFERENCE]` Leo prefers autodidact to run every 30 minutes and include meta-awareness self-improvement (list system-level questions + apply one reversible improvement when blocked).
