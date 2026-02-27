@@ -365,20 +365,24 @@ Priority queue for Leo's first session:
 - Knowledge-graph: fully updated ✅
 - **Queue: DEPLETED — awaiting Leo approval to begin IIT patching experiment**
 
-## Day 2 Morning Cont. Stats (after cycle #37 — 10:04 AM)
-- Papers read (deep): **13 total** (+AR&D arXiv:2602.22253)
+## Day 2 Morning Cont. Stats (after cycle #38 — 11:07 AM)
+- Papers read (deep): **14 total** (+SAEBench arXiv:2503.09532)
 - Papers scanned: 22+
-- Research gaps identified: **14** (+AR&D no causal patching / no audio-vs-text test)
-- Paper ideas: 6
+- Research gaps identified: **15** (+No audio SAEBench equivalent exists)
+- Paper ideas: 7 (+AudioSAEBench with Grounding Sensitivity metric)
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1
 - Experiment proposals: 2 (ready for Leo approval)
-- **Field status: 4 AudioLLM-level MI papers now mapped; none do denoising patching**
+- **Must-read list: FULLY COMPLETED ✅** (all 10 items done, incl. SAEBench)
+- **Field status: 4 AudioLLM-level MI papers mapped; none do denoising patching**
 
-## Leo's Updated Action Queue (10:05 AM Feb 27)
+## Leo's Updated Action Queue (11:07 AM Feb 27)
 1. **Approve IIT experiment** — Experiment 1 in knowledge-graph (MacBook-feasible, NNsight, ~3h)
 2. **Real speech test** — whisper_hook_demo.py with actual .wav file → validate Triple Convergence
 3. **Create venv** — `python3 -m venv ~/audio-mi-env && source ~/audio-mi-env/bin/activate && pip install nnsight openai-whisper`
-4. **arXiv Feb 27 batch** — scan cs.SD + cs.CL at ~14:00 Taipei
+4. **arXiv Feb 27 batch** — scan cs.SD + cs.CL at ~14:00 Taipei (cycle #39 will do this)
 5. **Contact 智凱哥** about AudioLens codebase access
-6. **⭐ NEW**: Note AR&D (2602.22253) — their SAE feature maps = useful baseline for Track 3's grounding_coefficient experiments; consider building on their auto-naming pipeline
+6. **Note AR&D (2602.22253)** — their SAE feature maps = useful baseline for Track 3's grounding_coefficient experiments
+7. **⭐ NEW**: AudioSAEBench design — adopt SAEBench's 4-category multi-metric structure; add "Grounding Sensitivity" as novel audio-native metric (gc per feature); consider Matryoshka SAE for better disentanglement
+
+| #38 | 2026-02-27 11:07 | learn | **SAEBench deep read** (arXiv:2503.09532, ICML 2025) — 8-metric framework (Concept Detection, Interpretability, Reconstruction, Feature Disentanglement); Matryoshka SAE wins on disentanglement; proxy metrics ≠ practical quality. NEW GAP #15: no equivalent for audio/speech models. AudioSAEBench template identified: + novel "Grounding Sensitivity" metric (gc per feature). **Must-read list NOW FULLY COMPLETED ✅** |

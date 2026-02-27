@@ -88,7 +88,7 @@
 5. [ ] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541]
 6. [ ] **Causal abstraction** (Geiger et al.) — 因果介入的理論基礎
 7. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
-8. [ ] **SAEBench** — SAE evaluation methodology
+8. [x] **SAEBench** (Karvonen, Nanda et al., ICML 2025) — 8-metric multi-category evaluation; Matryoshka SAE wins disentanglement; proxy metrics ≠ quality; AudioSAEBench template identified; "Grounding Sensitivity" as novel metric ✅ 2026-02-27 cycle #38
 9. [ ] ICML 2025 MI Tutorial materials
 10. [ ] **Interspeech 2025 Tutorial** — "Interpretability for Speech Models"（結構化入門）
 

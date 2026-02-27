@@ -33,3 +33,11 @@ Scan: LW +6 new, AF +0. Unread backlog: 24 total.
 Scan: AF +0, LW +0. No new posts. Backlog: 22 unread items.
 **[backlog-pick]**
 - **"How eval awareness might emerge in training"** — Mechanistic account of how situational awareness about evaluations could arise naturally during training; high relevance to deceptive alignment & monitoring bypass. <https://www.lesswrong.com/posts/uRs5ebXKYLQyvJa2Q/how-eval-awareness-might-emerge-in-training-1>
+
+## 2026-02-27 10:15 (CST)
+Scan: AF +1 new, LW +1 (non-safety). 
+**[pick]**
+- **"The persona selection model"** (Alignment Forum, Anthropic researchers) — Articulates PSM: LLMs learn to simulate diverse personas during pre-training; post-training elicits the "Assistant" persona. Addresses the masked-shoggoth vs. OS-simulation debate directly, argues for anthropomorphic reasoning about AI psychology, and surveys interpretability/generalization evidence. High signal: provides a coherent empirical framework for understanding alignment-relevant AI behavior (identity stability, deceptive alignment, what post-training actually does). <https://www.alignmentforum.org/posts/dfoty34sT7CSKeJNn/the-persona-selection-model>
+
+## 2026-02-27 10:45 (CST)
+Scan: AF +0, LW +1 new ("Vibe Coding is a System Design Interview" — not safety-relevant). No new high-signal update.

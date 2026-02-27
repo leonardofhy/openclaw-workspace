@@ -239,6 +239,22 @@ IIT accuracy should peak at the layer where the representation best *causally ex
 **Links:** Extends Track 3 (Listen vs Guess) + Track 5 (Safety / Emotion robustness)
 **Priority:** Lower than Tracks 1-4; useful as supporting study or extension
 
+### J) SAEBench — Text SAE Evaluation Framework (Cycle #38)
+- **SAEBench (Karvonen, Rager, Nanda et al., ICML 2025)** — 🟢 DEEP READ [arXiv:2503.09532]
+  - 8-metric framework across 4 categories: Concept Detection, Interpretability, Reconstruction, Feature Disentanglement
+  - **Key finding**: Proxy metrics (sparsity + fidelity) do NOT reliably predict practical quality
+  - **Matryoshka SAE** underperforms on proxy metrics but WINS on feature disentanglement (grows with scale)
+  - Feature Absorption = known failure mode (high sparsity ≠ monosemanticity)
+  - 200+ SAEs benchmarked across 7 architectures
+  - **GAP #15**: No equivalent benchmark for audio/speech SAEs → AudioSAEBench fills this gap
+  - AudioSAEBench analog:
+    - Concept Detection → phoneme/emotion/accent probing
+    - Interpretability → auto-caption pipeline (AR&D-style, harder for audio)
+    - Reconstruction → CE delta on ASR at given L0
+    - Feature Disentanglement → **"Grounding Sensitivity"** (novel): gc per feature = fraction of activation from audio vs text
+  - **Grounding Sensitivity metric (NEW)**: for each SAE feature, compute grounding_coefficient via minimal pair patching. Features with gc≈1 = audio-grounded; gc≈0 = context-driven. No text-SAE equivalent. Audio-native contribution.
+  - CODE: github.com/adamkarvonen/SAEBench; Interactive: neuronpedia.org/sae-bench
+
 ### H) Crystallized Paper Opportunities (updated 2026-02-27)
 
 1. **"Causal AudioLens"** (Track 3 anchor): AudioLens logit-lens + causal activation patching → grounding_coefficient. First paper with causal claims in LALM audio grounding. Co-author with 智凱哥.
