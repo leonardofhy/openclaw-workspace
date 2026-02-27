@@ -2,7 +2,7 @@
 # merge-to-main.sh — Create a PR from current branch to main
 # Usage: ./scripts/merge-to-main.sh
 # Requires: gh CLI authenticated, git SSH access
-set -euo pipefail
+set -uo pipefail
 
 export PATH="$HOME/.local/bin:$PATH"
 

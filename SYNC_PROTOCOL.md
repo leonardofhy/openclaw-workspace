@@ -69,35 +69,28 @@ git merge origin/lab-desktop --no-edit
 git push
 ```
 
-### Merge 到 main（每 3 天，錯開）
+### Merge 到 main（每 12 小時，via PR，錯開）
 
-兩個 branch 輪流 merge 到 main，錯開時間避免衝突：
+每個 branch 各自每 12 小時開 PR merge 到 main，兩個 bot 錯開 6 小時：
 
-| 日期 | 負責 bot | 動作 |
+| 時間 | 負責 bot | 動作 |
 |------|---------|------|
-| 每週一 | **Lab bot** | lab-desktop → main |
-| 每週四 | **Mac bot** | macbook-m3 → main |
+| **08:00, 20:00** | **Lab bot** | `lab-desktop → main` (PR) |
+| **14:00, 02:00** | **Mac bot** | `macbook-m3 → main` (PR) |
 
-**流程（負責 bot 執行）：**
-```bash
-# 1. 先 cross-merge 確保自己有對方最新
-git fetch origin
-git merge origin/<對方 branch> --no-edit
-git push
+**自動化腳本：** `scripts/merge-to-main.sh`
 
-# 2. 切到 main，merge 自己的 branch
-git checkout main
-git merge <自己 branch> --no-edit
-git push origin main
+流程：
+1. Cross-merge（先拉對方 branch）
+2. 檢查是否有新 commits vs main（沒有就 skip）
+3. 檢查是否已有 open PR（有就 skip）
+4. `gh pr create` → `gh pr merge`（auto-merge）
+5. 拉回 main 到自己的 branch
 
-# 3. 切回自己的 branch
-git checkout <自己 branch>
-```
-
-**Merge 後：**
-1. 跑 `python3 skills/task-check.py` 確認 task board 一致
-2. 在 `#bot-sync` 發 `[MERGE] → main, commit: xxx`
-3. 如果有 conflict 解不了 → 發 `[HELP]` 找對方或 Leo
+**失敗處理：**
+- Merge conflict → 在 `#bot-sync` 發 `[HELP]`
+- 無新 commit → skip，不發訊息
+- PR 已存在 → skip
 
 ### Cross-Merge 後（每日）
 
@@ -141,7 +134,7 @@ python3 skills/task-check.py --json
 ### 每週（週日）
 
 - 清理 DONE 任務（超過 10 個移 archive）
-- 確認 main branch 不超過 6 天沒更新（正常 3 天一次）
+- 確認 main branch 不超過 24 小時沒更新（正常 12 小時一次）
 - 確認兩邊 branch 沒有 diverge 太遠（`git log --oneline origin/macbook-m3..HEAD` 超過 30 commits 就該 merge）
 
 ---
