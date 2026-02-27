@@ -212,3 +212,8 @@ No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2
 **[backlog-pick]** *What is Claude?* (LessWrong, Feb 26)
 - Why: Direct companion to today's high-signal "persona selection model" pick — examines Claude's identity and nature from a philosophical/alignment angle; useful for grounding the theoretical persona-library framework in a concrete case study and understanding what the "Assistant persona" actually comprises.
 - Link: https://www.lesswrong.com/posts/pEPGquGcA9uYKzPtA/what-is-claude-1
+
+## 2026-02-27 22:15 (CST)
+Scan: AF +1 new (cross-posted LW), LW non-safety only. Backlog stable.
+**[pick]**
+- **"Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior"** (MATS 9.0, Neel Nanda et al.) — Practical framework for forensically diagnosing LLM misbehavior (scheming, deception, sandbagging): CoT reading + counterfactual prompting + convergent black-box evidence; direct relevance to oversight robustness and distinguishing genuine misalignment from confusion. <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>

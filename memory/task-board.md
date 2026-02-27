@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-02-27 21:46
+> 最後更新：2026-02-27 22:12
 
 ## 規則
 
@@ -62,7 +62,7 @@
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
 - **描述**: 不被單一討論卡住，維持主線 + 備線
-- **next_action**: 主線持續推進；備線：Listen layer 快驗 / neuron grounding / modality reliance stress test
+- **next_action**: 主線持續推進；備線改為 listen-layer 三步循環（Exp1 attention suppression → Exp2 activation patching → Exp3 layer-restricted LoRA），並保留 neuron grounding / modality stress test 作為第二批
 
 ### L-01 | 系統環境搭建
 - **owner**: Lab
