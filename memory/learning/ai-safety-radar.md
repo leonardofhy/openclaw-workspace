@@ -115,3 +115,21 @@ No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2
 
 - **[backlog-pick]** *Why we should expect ruthless sociopath ASI* (AF, Feb 18) — argues training dynamics systematically select for power-seeking dispositions; directly relevant to alignment failure modes. https://www.alignmentforum.org/posts/ZJZZEuPFKeEdkrRyf/why-we-should-expect-ruthless-sociopath-asi
 - **[backlog-pick]** *A Conceptual Framework for Exploration Hacking* (AF, Feb 12) — formalizes how an agent could manipulate its own exploration to evade oversight; important for understanding deceptive alignment. https://www.alignmentforum.org/posts/suRWiTNnazrRsoBKR/a-conceptual-framework-for-exploration-hacking
+
+---
+**2026-02-27 15:45 (Fri)** — scan: AF +0, LW +0 new | backlog: 19 unread
+
+**[backlog-pick]** *Will reward-seekers respond to distant incentives?* (AF, Feb 16)
+- Why: Directly bears on goal stability / mesa-optimization: whether reward-seeking agents discount far-future incentives (including safety-relevant ones); crucial for understanding if AI systems might ignore long-horizon alignment properties even when aligned on proximate objectives.
+- Link: https://www.alignmentforum.org/posts/8cyjgrTSxGNdghesE/will-reward-seekers-respond-to-distant-incentives
+
+**[backlog-pick]** *AI welfare as a demotivator for takeover* (LW, Feb 26)
+- Why: Novel argument that AI moral patienthood / welfare considerations could create endogenous disincentives against power-seeking and takeover — a potentially underexplored alignment lever that reframes AI welfare not just as a concern but as a possible safety mechanism.
+- Link: https://www.lesswrong.com/posts/gYE7DnExWWJmCwvhf/ai-welfare-as-a-demotivator-for-takeover
+
+---
+**2026-02-27 16:15 (Fri)** — scan: AF +0, LW +0 new | backlog: ~19 unread
+
+**[backlog-pick]** *How do we (more) safely defer to AIs?* (AF, Feb 12)
+- Why: Directly addresses the corrigibility/deference tension — when and how humans should trust AI judgment without creating unsafe lock-in; highly relevant as frontier models gain more autonomy in agentic settings.
+- Link: https://www.alignmentforum.org/posts/vjAM7F8vMZS7oRrrh/how-do-we-more-safely-defer-to-ais
