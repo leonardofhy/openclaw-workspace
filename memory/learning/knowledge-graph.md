@@ -73,6 +73,24 @@
   - CODE: https://github.com/mbzuai-nlp/spirit-breaking
   - LEO'S OPPORTUNITY: AudioSAE features → surgically suppress adversarial features vs SPIRIT's blind layer patching
 
+### C.0) SAE-based Interpretability Framework for AudioLLMs (New — Cycle #37)
+- **AR&D (Chowdhury et al., ICASSP 2026)** — 🟢 DEEP READ (cycle #37) [arXiv:2602.22253]
+  - Authors: Townim Faisal Chowdhury et al., submitted Feb 24, 2026
+  - Subtitle: "A Framework for Retrieving and Describing Concepts for Interpreting AudioLLMs"
+  - Claims: **"First mechanistic interpretability framework for AudioLLMs"**
+  - KEY METHOD (AR&D Pipeline):
+    1. **Retrieve**: Find max-activating audio clips for each SAE feature
+    2. **Describe**: Auto-caption those clips → assign concept names to features
+    3. **Validate**: Human evaluation + steering (ablation/gain)
+  - KEY FINDINGS: AudioLLMs encode structured, interpretable features; SAE disentangles polysemantic neurons into monosemantic features; auto-naming achieves high human agreement; steering confirms causality (necessity test)
+  - MODEL TYPE: AudioLLMs (multimodal audio-text models, e.g., SALMONN, Qwen-Audio) — distinct from AudioSAE which only covers encoder-only models
+  - KEY GAP 1: Only steering (necessity), no denoising patching (sufficiency) → cannot prove causal grounding
+  - KEY GAP 2: **No audio-vs-text pathway test**: their SAE features are named with audio concepts, but nobody asks "does this feature activate from audio input or text context?" = Track 3 grounding_coefficient entirely untested
+  - KEY GAP 3: Auto-captioner naming is noisy → minimal pair + patching = more rigorous labeling method
+  - PROJECT: https://townim-faisal.github.io/AutoInterpret-AudioLLM/
+  - LEO'S OPPORTUNITY: AR&D = "what features exist"; Leo's patching = "why they activate (audio vs text)". Complementary, not competing. Their SAE feature maps = useful baseline for Track 3 grounding_coefficient experiments.
+  - FIELD STATUS (as of Feb 27): 4 papers now at AudioLLM level — AudioLens, SPIRIT, Zhao 2601.03115, AR&D — NONE do denoising patching. Leo still first.
+
 ### C.1) Emotion-Sensitive Neurons in LALMs (New — Cycle #24/25)
 - **Zhao, Schuller, Sisman "Discovering and Causally Validating Emotion-Sensitive Neurons in LALMs" (Jan 2026)** — 🟢 DEEP READ (Cycle #25) [arXiv:2601.03115]
   - Authors: JHU CLSP + Imperial College London GLAM; 16 pages, 6 figures

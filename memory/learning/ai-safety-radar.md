@@ -22,3 +22,14 @@ No new posts (scan: AF +0, LW +0). Backlog: 20 unread items.
 **[backlog-pick]** 2 picks from LessWrong (2026-02-26 batch):
 - **"How Robust Is Monitoring Against Secret Loyalties?"** — Core AI-control question: if a model has a secret loyalty, how well do current monitoring schemes detect it? Directly relevant to oversight robustness. <https://www.lesswrong.com/posts/CYaNSccGaCRfMKCQt/how-robust-is-monitoring-against-secret-loyalties>
 - **"A Positive Case for Faithfulness: LLM Self-Explanations Help Predict Model Behavior"** — Empirical finding that LLM self-explanations have genuine predictive power, positive signal for interpretability approaches. <https://www.lesswrong.com/posts/Y4MJRniZ6noumncKJ/a-positive-case-for-faithfulness-llm-self-explanations-help>
+
+## 2026-02-27 09:15 (CST)
+Scan: LW +6 new, AF +0. Unread backlog: 24 total.
+**[picks]**
+- **"Asymmetric Risks of Unfaithful Reasoning: Omission as the Critical Failure Mode for AI Monitoring"** — Argues omission (what the model leaves out) is the harder-to-detect and more dangerous failure mode in AI monitoring vs commission; directly relevant to oversight robustness. <https://www.lesswrong.com/posts/XkLnrPsjW6BTEn8s8/asymmetric-risks-of-unfaithful-reasoning-omission-as-the>
+- **"Anthropic: Statement from Dario Amodei on our discussions with the Department of War"** — Major governance/policy development: Anthropic engaging with US DoD; important for understanding AI safety landscape & deployment decisions. <https://www.lesswrong.com/posts/d5Lqf8nSxm6RpmmnA/anthropic-statement-from-dario-amodei-on-our-discussions>
+
+## 2026-02-27 09:45 (CST)
+Scan: AF +0, LW +0. No new posts. Backlog: 22 unread items.
+**[backlog-pick]**
+- **"How eval awareness might emerge in training"** — Mechanistic account of how situational awareness about evaluations could arise naturally during training; high relevance to deceptive alignment & monitoring bypass. <https://www.lesswrong.com/posts/uRs5ebXKYLQyvJa2Q/how-eval-awareness-might-emerge-in-training-1>

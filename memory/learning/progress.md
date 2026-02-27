@@ -335,6 +335,7 @@ Priority queue for Leo's first session:
 
 | #35 | 2026-02-27 08:01 | report | Morning handoff. arXiv checked — no new Feb 27 papers yet. Queue confirmed depleted. Summarized overnight work (cycles #19-34): 3 more deep reads, 2 new gaps, NNsight assessed, IIT proposal crystallized. Awaiting Leo for real speech test + experiment approval. |
 | #36 | 2026-02-27 09:02 | plan | Knowledge-graph tidy: added IIT Experiment 1 proposal (cycle #34), Gap #13 (EmoOmni Thinker-Talker bottleneck, cycle #30), paper ideas #5-6 (Class-specific Neuron Grounding + Temporal Audio SAE). Morning handoff finalized. Leo action queue: approve IIT experiment → real speech test → venv+nnsight. |
+| #37 | 2026-02-27 10:04 | learn | **Deep-read AR&D (Chowdhury et al., ICASSP 2026, arXiv:2602.22253)** — "first MI framework for AudioLLMs" using SAEs to disentangle polysemantic neurons + auto-concept naming. KEY GAP: no causal patching, no audio-vs-text pathway test → Track 3's grounding_coefficient still untested. Now 4 papers at AudioLLM level; none do denoising patching. Leo still first. |
 
 ## Day 2 Morning Stats (after cycle #35)
 - Papers read (deep): 12 total
@@ -363,3 +364,21 @@ Priority queue for Leo's first session:
 - Experiment proposals: 2 (IIT Triple Convergence + Class-specific Neuron Grounding)
 - Knowledge-graph: fully updated ✅
 - **Queue: DEPLETED — awaiting Leo approval to begin IIT patching experiment**
+
+## Day 2 Morning Cont. Stats (after cycle #37 — 10:04 AM)
+- Papers read (deep): **13 total** (+AR&D arXiv:2602.22253)
+- Papers scanned: 22+
+- Research gaps identified: **14** (+AR&D no causal patching / no audio-vs-text test)
+- Paper ideas: 6
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1
+- Experiment proposals: 2 (ready for Leo approval)
+- **Field status: 4 AudioLLM-level MI papers now mapped; none do denoising patching**
+
+## Leo's Updated Action Queue (10:05 AM Feb 27)
+1. **Approve IIT experiment** — Experiment 1 in knowledge-graph (MacBook-feasible, NNsight, ~3h)
+2. **Real speech test** — whisper_hook_demo.py with actual .wav file → validate Triple Convergence
+3. **Create venv** — `python3 -m venv ~/audio-mi-env && source ~/audio-mi-env/bin/activate && pip install nnsight openai-whisper`
+4. **arXiv Feb 27 batch** — scan cs.SD + cs.CL at ~14:00 Taipei
+5. **Contact 智凱哥** about AudioLens codebase access
+6. **⭐ NEW**: Note AR&D (2602.22253) — their SAE feature maps = useful baseline for Track 3's grounding_coefficient experiments; consider building on their auto-naming pipeline
