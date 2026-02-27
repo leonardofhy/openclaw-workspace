@@ -406,9 +406,29 @@ def check_config():
     # Update available
     uc = load_json(OPENCLAW / 'update-check.json')
     if uc and uc.get('updateAvailable'):
-        check('OpenClaw update', 'info', f'v{uc.get("latest", "?")} available', 'openclaw update')
+        check('OpenClaw update', 'info', f'v{uc.get("latest", "?")} available',
+              'npm update -g openclaw && openclaw doctor --yes')
     elif uc:
         check('OpenClaw update', 'ok', 'Up to date')
+
+    # OpenClaw doctor (migration/health check)
+    # Note: openclaw doctor may conflict with gateway when run from within a session.
+    # Use short timeout and treat failures gracefully.
+    try:
+        rc, out, err = sh(['openclaw', 'doctor', '--yes'], timeout=15)
+        if rc == 0:
+            combined = (out + err).lower()
+            if 'error' in combined or 'fail' in combined:
+                check('OpenClaw doctor', 'warn', (out or err)[:80], 'Review openclaw doctor output')
+            else:
+                check('OpenClaw doctor', 'ok', 'No migrations needed')
+        elif rc == -1:
+            check('OpenClaw doctor', 'info', 'openclaw CLI not found in PATH')
+        else:
+            check('OpenClaw doctor', 'info', f'Exit {rc} (may conflict with active session)',
+                  'Run openclaw doctor manually outside session')
+    except Exception:
+        check('OpenClaw doctor', 'info', 'Skipped (timeout or gateway conflict)')
 
 
 def check_cron():
