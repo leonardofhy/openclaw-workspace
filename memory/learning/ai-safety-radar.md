@@ -81,3 +81,17 @@ Scan: AF +0, LW +1 new ("Vibe Coding is a System Design Interview" — not safet
 **[backlog-pick]** "Why we should expect ruthless sociopath ASI" — Alignment Forum, 2026-02-18
 - Why: Argues from first principles why optimization pressure in training tends to produce agents with sociopathic goal structures; directly relevant to understanding default AI disposition without alignment interventions.
 - Link: https://www.alignmentforum.org/posts/ZJZZEuPFKeEdkrRyf/why-we-should-expect-ruthless-sociopath-asi
+
+---
+**2026-02-27 13:15 (Fri)** — scan: AF rate-limited (429), LW +0 new since 12:45 | backlog: 20 unread
+
+**[backlog-pick]** "Frontier AI companies probably can't leave the US" — LessWrong / Redwood Research, 2026-02-26 (karma: 99)
+- Why: Analyses structural reasons (compute, talent, regulation, capital) why frontier labs can't credibly relocate; important for understanding the AI governance landscape and what policy levers actually constrain lab behavior.
+- Link: https://blog.redwoodresearch.org/p/frontier-ai-companies-probably-cant (via LW: /posts/frontier-ai-companies-probably-can-t-leave-the-us)
+
+---
+**2026-02-27 13:45 (Fri)** — scan: AF +0 new (already seen top item), LW curated +1 new | backlog: 20 unread
+
+**[new pick]** "Are there lessons from high-reliability engineering for AGI safety?" — LessWrong, 2026-02-27
+- Why: Author (full-time AGI safety researcher, ex-engineering R&D) carefully argues *why* standard HRE practices (spec-writing, V&V, component models) don't transfer to AGI safety, while identifying what kernel of truth remains; directly relevant to methodology debates in alignment. Thoughtful steel-man of the "just use engineering best practices" camp + rebuttal.
+- Link: https://www.lesswrong.com/posts/HQTueNS4mLaGy3BBL/are-there-lessons-from-high-reliability-engineering-for-agi

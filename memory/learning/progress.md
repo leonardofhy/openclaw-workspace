@@ -376,13 +376,15 @@ Priority queue for Leo's first session:
 - **Must-read list: FULLY COMPLETED ✅** (all 10 items done, incl. SAEBench)
 - **Field status: 4 AudioLLM-level MI papers mapped; none do denoising patching**
 
-## Leo's Updated Action Queue (11:07 AM Feb 27)
+## Leo's Updated Action Queue (13:01 PM Feb 27 — after cycle #39)
 1. **Approve IIT experiment** — Experiment 1 in knowledge-graph (MacBook-feasible, NNsight, ~3h)
 2. **Real speech test** — whisper_hook_demo.py with actual .wav file → validate Triple Convergence
 3. **Create venv** — `python3 -m venv ~/audio-mi-env && source ~/audio-mi-env/bin/activate && pip install nnsight openai-whisper`
-4. **arXiv Feb 27 batch** — scan cs.SD + cs.CL at ~14:00 Taipei (cycle #39 will do this)
+4. **arXiv Feb 27 batch** — cycle #40 will scan cs.SD + cs.CL at ~14:00 Taipei
 5. **Contact 智凱哥** about AudioLens codebase access
 6. **Note AR&D (2602.22253)** — their SAE feature maps = useful baseline for Track 3's grounding_coefficient experiments
-7. **⭐ NEW**: AudioSAEBench design — adopt SAEBench's 4-category multi-metric structure; add "Grounding Sensitivity" as novel audio-native metric (gc per feature); consider Matryoshka SAE for better disentanglement
+7. **⭐ AudioSAEBench design** — adopt SAEBench's 4-category multi-metric structure; add "Grounding Sensitivity" as novel audio-native metric (gc per feature); consider Matryoshka SAE
+8. **⭐ MiSTER-E framing**: Use MoE gating weights as motivation for Track 3 — "behavior shows modality dominance varies; mechanism is unknown; we localize causally via patching"
 
 | #38 | 2026-02-27 11:07 | learn | **SAEBench deep read** (arXiv:2503.09532, ICML 2025) — 8-metric framework (Concept Detection, Interpretability, Reconstruction, Feature Disentanglement); Matryoshka SAE wins on disentanglement; proxy metrics ≠ practical quality. NEW GAP #15: no equivalent for audio/speech models. AudioSAEBench template identified: + novel "Grounding Sensitivity" metric (gc per feature). **Must-read list NOW FULLY COMPLETED ✅** |
+| #39 | 2026-02-27 13:01 | learn | **arXiv scan (Feb 26/27 batch)** — API rate-limited; scanned 2 relevant papers: MiSTER-E (2602.23300, IISc/Microsoft) uses MoE gating (g_speech vs g_text) — behaviorally measures "Listen vs Guess" at logit level but non-mechanistic; strengthens Track 3 motivation ("behavior shows modality dominance → mechanism unknown → Leo localizes causally"). SemanticVocoder (2602.23333) = generation paper, irrelevant. Feb 27 arXiv batch not yet posted (~14:00 Taipei). |
