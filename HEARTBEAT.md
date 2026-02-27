@@ -8,6 +8,11 @@
 - 讀 `memory/task-board.md` 挑 1 個任務推進
 - 推進後更新 task-board.md 的 last_touched 和 next_action
 
+### 📧 通訊追蹤（每 2 天）
+- 執行 `python3 skills/communication-drafter/scripts/comms_tracker.py overdue`
+- 如果有 🔴 逾期 follow-up，Discord 提醒 Leo
+- 如果有 ⚠️ 即將到期（2 天內），也提醒一下
+
 ### 📅 行事曆 & 任務（高優先）
 - 檢查今天剩餘行事曆事件，如果 2 小時內有事件且沒設提醒，立刻設 cron 提醒
 - 掃描 Todoist overdue 任務數量，如果 > 5 個，Discord 提醒 Leo 整理
