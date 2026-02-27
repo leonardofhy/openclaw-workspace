@@ -26,12 +26,10 @@ VALID_OWNERS = {"mac", "lab", "all"}
 
 def detect_owner() -> str:
     """Auto-detect local owner scope."""
-    # Explicit override wins.
     env_owner = (os.getenv("TASK_CHECK_OWNER") or os.getenv("TASK_OWNER") or "").strip().lower()
     if env_owner in VALID_OWNERS:
         return env_owner
 
-    # Mac runtime in this project should map to mac; Linux/WSL to lab.
     if platform.system().lower() == "darwin":
         return "mac"
 
@@ -46,6 +44,7 @@ def in_scope(task: dict, owner_scope: str) -> bool:
         return True
     return task.get("owner") == owner_scope
 
+
 def parse_tasks(text: str) -> list[dict]:
     """Parse task entries from task-board.md."""
     tasks = []
@@ -53,7 +52,6 @@ def parse_tasks(text: str) -> list[dict]:
     section = None
 
     for line in text.splitlines():
-        # Detect section headers
         if line.startswith("## ACTIVE"):
             section = "ACTIVE"
         elif line.startswith("## WAITING"):
@@ -67,7 +65,6 @@ def parse_tasks(text: str) -> list[dict]:
         elif line.startswith("## ") or line.startswith("---"):
             section = None
 
-        # Parse task header (supports T-xx, L-xx, M-xx)
         m = re.match(r"^### ([A-Z]-\d+\w?)\s*\|\s*(.+)", line)
         if m and section:
             if current:
@@ -86,7 +83,6 @@ def parse_tasks(text: str) -> list[dict]:
             continue
 
         if current and line.startswith("- **"):
-            # Parse fields
             fm = re.match(r"- \*\*(\w+)\*\*:\s*(.+)", line)
             if not fm:
                 fm = re.match(r"- \*\*(\w[\w_]*)\*\*:\s*(.+)", line)
@@ -119,7 +115,6 @@ def check(tasks: list[dict], today=None, owner_scope: str = "all") -> list[str]:
 
     scoped_tasks = [t for t in tasks if in_scope(t, owner_scope)]
 
-    # Per-owner capacity check (only the current scope unless all)
     if owner_scope == "all":
         from collections import Counter
         active_by_owner = Counter(t["owner"] for t in tasks if t["status"] == "ACTIVE")
@@ -135,7 +130,6 @@ def check(tasks: list[dict], today=None, owner_scope: str = "all") -> list[str]:
         if t["status"] == "DONE":
             continue
 
-        # Staleness
         if t["last_touched"]:
             days = (today - t["last_touched"]).days
             if t["status"] == "ACTIVE" and days >= ACTIVE_STALE_DAYS:
@@ -143,7 +137,6 @@ def check(tasks: list[dict], today=None, owner_scope: str = "all") -> list[str]:
             elif t["status"] == "WAITING" and days >= WAITING_STALE_DAYS:
                 alerts.append(f"🟡 STALE: {t['id']} {t['title']} — {days} 天沒更新")
 
-        # Deadline
         if t["deadline"]:
             days_left = (t["deadline"] - today).days
             if days_left < 0:
