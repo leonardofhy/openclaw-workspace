@@ -181,7 +181,47 @@
 | Neuron-level class-specific units | Kawamura 2602.15307 | ↔ | Polysemanticity in audio features | AudioSAE | Same phenomenon at different granularity → SAE = principled disentanglement of neuron polysemanticity |
 | SAE enhances vocal attribute disentanglement | Mariotte 2509.24793 | ↔ | SAE for speech features (all layers) | AudioSAE | Two SAE papers, no comparison/evaluation → Track 2 AudioSAEBench fills this gap |
 
-### H) Day 1 Crystallized Paper Opportunities (2026-02-26 reflect)
+### 🧪 Experiment 1: Triple Convergence IIT Test (Cycle #34 proposal — 2026-02-27)
+
+**Q:** Is the Whisper semantic crystallization layer (Triple Convergence) the same architectural location predicted by IIT theory as the peak causal abstraction point?
+
+**Formal framing (Geiger et al. 2301.04709):**  
+IIT accuracy should peak at the layer where the representation best *causally explains* the output. If Triple Convergence (~50% depth) = the causal abstraction layer, then interchange interventions at that layer should show highest IIT accuracy.
+
+**Setup (MacBook-feasible, ~3h, NNsight + Whisper-small):**
+1. Choose minimal pairs: same speaker, same duration, one attribute differs (e.g., accent A vs accent B; emotion A vs emotion B)
+2. Run denoising patching: patch layer L activations from clean input into corrupt input → measure Δacc
+3. Sweep all layers: find layer L* where Δacc is maximized (= highest causal sufficiency)
+4. Test: Does L* ≈ layer 3 in Whisper-base (Triple Convergence zone)?
+5. Compare: Do all three metrics converge at L*? (norm jump, CKA transition, logit lens saturation)
+
+**Prediction:** IIT peak at ~50% depth (layer 3 in base, layer 6-7 in large) = causal abstraction theory predicts our empirically found transition zone.
+
+**Impact if confirmed:**  
+- First paper to apply causal abstraction formalism to speech encoder
+- "Experiment 1" in "Causal AudioLens" paper
+- Sets up grounding_coefficient as IIT-grounded metric (not ad hoc)
+
+**Tools needed:** NNsight (for intervention), whisper_hook_demo.py (for CKA/norm baseline), real speech minimal pairs (.wav files)
+**Prerequisite:** Leo approval + real speech file + `pip install nnsight openai-whisper` in venv
+
+---
+
+### I) Gap #13: EmoOmni / Thinker-Talker Emotional Bottleneck (Cycle #30 — 2026-02-27)
+
+**Paper:** EmoOmni (ICML 2026 — arXiv scanned cycle #30)
+**Architecture:** Thinker-Talker dual-module design: Thinker = speech encoder → Talker = LM
+**Finding:** EmoOmni diagnoses emotion loss *behaviorally* — model performs poorly on emotion tasks
+**Gap #13 (NEW):** Nobody has mapped *where* in the Thinker-Talker architecture emotional information is lost mechanistically
+  - Is it the connector (bottleneck between encoder and LM)?
+  - Early layers of the Thinker?
+  - Early layers of the Talker after cross-attention?
+**Leo's opportunity:** Apply logit-lens + causal patching at Thinker-Talker interface → mechanistically diagnose which boundary loses emotion signal
+**Method:** Same as "Causal AudioLens" but applied to emotion attribute at the connector bottleneck
+**Links:** Extends Track 3 (Listen vs Guess) + Track 5 (Safety / Emotion robustness)
+**Priority:** Lower than Tracks 1-4; useful as supporting study or extension
+
+### H) Crystallized Paper Opportunities (updated 2026-02-27)
 
 1. **"Causal AudioLens"** (Track 3 anchor): AudioLens logit-lens + causal activation patching → grounding_coefficient. First paper with causal claims in LALM audio grounding. Co-author with 智凱哥.
 
@@ -190,6 +230,10 @@
 3. **"Causal AudioLens + LoRA"** (Track 3+4 combined): Both AudioLens and "Behind the Scenes" lack causal patching. One paper can add patching to BOTH — LALM grounding AND LoRA adaptation mechanism. Unified causal contribution.
 
 4. **"Audio Minimal Pairs Patching Protocol"** (Track 1 methodological): Heimersheim & Nanda validates all prior audio MI uses suboptimal corruptions (white noise). Minimal pair audio corruptions (same speaker/duration/content structure, different target attribute) = cleaner causal evidence. Methodological improvement claim → benchmark paper.
+
+5. **"Class-specific Neuron Grounding in LALMs"** (Track 2+3 intersection): Kawamura + Zhao both find class-specific neurons but never ask "is this neuron driven by audio or text?" Apply grounding_coefficient at ESN/class-specific neuron level. Closes the same gap two different papers left open simultaneously.
+
+6. **"Temporally-resolved Audio SAE"** (Track 2 — AudioSAEBench extension): Mariotte mean-pools along time → loses temporal info. Nobody has asked "when during an utterance does each sparse feature activate?" Temporal SAE = direct connection to "Listen vs Guess" (which positions are causally critical?). Novel contribution to AudioSAEBench.
 
 ### G) Activation Patching Methodology
 - **Heimersheim & Nanda (2024)** — 🟢 DEEP READ — "How to Use and Interpret Activation Patching" [arXiv:2404.15255]

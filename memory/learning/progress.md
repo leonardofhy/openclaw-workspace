@@ -334,6 +334,7 @@ Priority queue for Leo's first session:
 - **Next action: Await Leo approval → begin IIT patching experiment**
 
 | #35 | 2026-02-27 08:01 | report | Morning handoff. arXiv checked — no new Feb 27 papers yet. Queue confirmed depleted. Summarized overnight work (cycles #19-34): 3 more deep reads, 2 new gaps, NNsight assessed, IIT proposal crystallized. Awaiting Leo for real speech test + experiment approval. |
+| #36 | 2026-02-27 09:02 | plan | Knowledge-graph tidy: added IIT Experiment 1 proposal (cycle #34), Gap #13 (EmoOmni Thinker-Talker bottleneck, cycle #30), paper ideas #5-6 (Class-specific Neuron Grounding + Temporal Audio SAE). Morning handoff finalized. Leo action queue: approve IIT experiment → real speech test → venv+nnsight. |
 
 ## Day 2 Morning Stats (after cycle #35)
 - Papers read (deep): 12 total
@@ -345,9 +346,20 @@ Priority queue for Leo's first session:
 - Experiment proposals: 2 (ready for Leo approval)
 - **Queue: DEPLETED — awaiting Leo**
 
-## Leo's Action Queue (morning of 2026-02-27)
-1. **Real speech test** — whisper_hook_demo.py with actual .wav
-2. **Approve IIT experiment** — cycle #34 proposal (MacBook-feasible, NNsight, ~3h)
-3. **Create venv** — `python3 -m venv ~/audio-mi-env && pip install nnsight openai-whisper`
-4. **arXiv Feb 27 scan** — ~14:00 Taipei
+## Leo's Action Queue (morning of 2026-02-27) — updated cycle #36
+1. **Approve IIT experiment** — Experiment 1 in knowledge-graph (MacBook-feasible, NNsight, ~3h)
+2. **Real speech test** — whisper_hook_demo.py with actual .wav file → validate Triple Convergence
+3. **Create venv** — `python3 -m venv ~/audio-mi-env && source ~/audio-mi-env/bin/activate && pip install nnsight openai-whisper`
+4. **arXiv Feb 27 scan** — ~14:00 Taipei (will run automatically in cycle #38)
 5. **Contact 智凱哥** about AudioLens codebase access
+
+## Day 2 Final Stats (cycle #36)
+- Papers read (deep): 12 total
+- Papers scanned: 21+
+- Research gaps identified: 13
+- Paper ideas: 6 (updated knowledge-graph H section)
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (NNsight updated)
+- Experiment proposals: 2 (IIT Triple Convergence + Class-specific Neuron Grounding)
+- Knowledge-graph: fully updated ✅
+- **Queue: DEPLETED — awaiting Leo approval to begin IIT patching experiment**
