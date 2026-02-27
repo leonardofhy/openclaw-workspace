@@ -98,6 +98,17 @@ Assessment: Week 9 was strong for a first run. Skip guard now limits blocked_to_
 
 ---
 
+## Morning Relay Rule (added cycle #61, 2026-02-28 06:01)
+
+If `unblock-request.md` status = PENDING AND current time is in 06:00-09:00 window:
+→ This cycle's cron summary should **front-load the unblock request** as the first item.
+Rationale: Morning is when Leo is most likely to read cron summaries → maximum relay effectiveness.
+
+This applies to ALL morning meta-awareness cycles when execution-blocked.
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal
+- **⭐ UNBLOCK REQUEST (PENDING since 02:01 AM):** See `memory/learning/unblock-request.md` — 15 min of Leo's time unlocks all experiments
