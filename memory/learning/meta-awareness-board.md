@@ -37,4 +37,41 @@
 
 1. Build a lightweight novelty classifier for cycle outputs (new paper? new hypothesis? new artifact?)
 2. ~~Add unblock request template (when blocked > 2 cycles)~~ ✅ DONE cycle #51 → `experiment-queue.md` created with unblock checklist + execution queue
-3. Run one weekly cron audit: keep / edit / disable jobs by value
+3. ~~Run one weekly cron audit: keep / edit / disable jobs by value~~ ✅ DONE cycle #52 → audit complete, findings in 2026-02-28_cycle52.md
+
+## Q4 Answer: Cycle Report Signal/Noise (✅ cycle #53)
+
+**Problem:** Cycle reports are verbose (full notes), making it hard for Leo to see "what's new" quickly.
+
+**Applied improvement — 3-line report format:**
+```
+ACTION: [type]
+NOVELTY: [one sentence — the single most valuable new thing]
+NEXT: [one sentence — what should happen next]
+```
+
+Rule: If nothing new, report = skip notice only (2 lines max). Never repeat context already in goals/progress.
+
+**Applies to:** all cron-triggered cycle summaries going forward.
+
+## Q5 Answer: When to Proactively Request Leo Unblock (✅ cycle #53)
+
+**Problem:** System was execution-blocked for 48+ hours without explicitly flagging to Leo.
+
+**Rule (now written):**
+- After **3 consecutive execution-blocked skips** (not just 2 for meta-audit): generate an explicit unblock request message to Leo via Discord
+- Format: "I've been execution-blocked for N cycles (since [time]). Unblock needed: [top 1-2 actions]. Estimated unblock time: 15 min."
+- Trigger: write this into a flag file `memory/learning/unblock-request.md` so main session can detect and send it
+
+**Applied improvement:** Added `unblock-request.md` protocol note. Main session should check for this file and relay to Leo.
+
+## Cron Audit Findings (2026-02-28 01:31)
+
+**System health:** 25/27 jobs healthy. 2 issues found:
+- ⚠️ Dead job: `提醒-SL-Weekly-Meeting` — disabled + past deadline (Feb 26) + error state → flag for Leo to delete
+- ⚠️ Sunday 21:00 congestion: 3-4 jobs fire simultaneously (週報 + 週排程生成 + weekly-research-summary + NTUAIS reset) — acceptable, all isolated sessions
+- ✅ Skip guard working: 55% skip rate is correct (execution-blocked), meta-audit triggered after 5 consecutive skips
+
+## Flag for Leo
+- **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
+- **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal
