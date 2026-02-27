@@ -2,6 +2,12 @@
 
 ## 每次 Heartbeat 執行以下檢查（輪替，不需每次全做）：
 
+### 📋 任務看板（每次必做）
+- 執行 `python3 skills/task-check.py` 檢查 staleness 和 deadline
+- 如果有 🔴 STALE 或 OVERDUE，立刻通知 Leo 並推進任務
+- 讀 `memory/task-board.md` 挑 1 個任務推進
+- 推進後更新 task-board.md 的 last_touched 和 next_action
+
 ### 📅 行事曆 & 任務（高優先）
 - 檢查今天剩餘行事曆事件，如果 2 小時內有事件且沒設提醒，立刻設 cron 提醒
 - 掃描 Todoist overdue 任務數量，如果 > 5 個，Discord 提醒 Leo 整理
