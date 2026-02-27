@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
-"""Task Board staleness checker — run during heartbeat."""
+"""Task Board staleness checker — run during heartbeat.
 
+Usage:
+    python3 task-check.py          # human-readable output
+    python3 task-check.py --json   # structured JSON output
+"""
+
+import json as json_mod
 import re
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
 BOARD = Path(__file__).resolve().parent.parent / "memory" / "task-board.md"
-TODAY = datetime.now().date()
 ACTIVE_STALE_DAYS = 3
 WAITING_STALE_DAYS = 7
 MAX_ACTIVE = 5
@@ -74,8 +80,9 @@ def parse_tasks(text: str) -> list[dict]:
     return tasks
 
 
-def check(tasks: list[dict]) -> list[str]:
+def check(tasks: list[dict], today=None) -> list[str]:
     """Return list of alert strings."""
+    today = today or datetime.now().date()
     alerts = []
     active_count = sum(1 for t in tasks if t["status"] == "ACTIVE")
 
@@ -88,7 +95,7 @@ def check(tasks: list[dict]) -> list[str]:
 
         # Staleness
         if t["last_touched"]:
-            days = (TODAY - t["last_touched"]).days
+            days = (today - t["last_touched"]).days
             if t["status"] == "ACTIVE" and days >= ACTIVE_STALE_DAYS:
                 alerts.append(f"🔴 STALE: {t['id']} {t['title']} — {days} 天沒更新")
             elif t["status"] == "WAITING" and days >= WAITING_STALE_DAYS:
@@ -96,7 +103,7 @@ def check(tasks: list[dict]) -> list[str]:
 
         # Deadline
         if t["deadline"]:
-            days_left = (t["deadline"] - TODAY).days
+            days_left = (t["deadline"] - today).days
             if days_left < 0:
                 alerts.append(f"🔴 OVERDUE: {t['id']} {t['title']} — 逾期 {-days_left} 天")
             elif days_left <= 1:
@@ -106,24 +113,52 @@ def check(tasks: list[dict]) -> list[str]:
 
 
 def main():
+    use_json = "--json" in sys.argv
+
     if not BOARD.exists():
-        print("❌ task-board.md not found")
-        return
+        if use_json:
+            print(json_mod.dumps({"error": "task-board.md not found"}))
+        else:
+            print("❌ task-board.md not found", file=sys.stderr)
+        sys.exit(1)
 
     text = BOARD.read_text()
     tasks = parse_tasks(text)
+    today = datetime.now().date()
 
     active = [t for t in tasks if t["status"] == "ACTIVE"]
     waiting = [t for t in tasks if t["status"] == "WAITING"]
     blocked = [t for t in tasks if t["status"] == "BLOCKED"]
+    done = [t for t in tasks if t["status"] == "DONE"]
 
-    print(f"📋 Task Board: {len(active)} active, {len(waiting)} waiting, {len(blocked)} blocked")
+    alerts = check(tasks, today)
 
-    alerts = check(tasks)
-    if alerts:
-        print("\n".join(alerts))
+    if use_json:
+        print(json_mod.dumps({
+            "date": str(today),
+            "counts": {
+                "active": len(active),
+                "waiting": len(waiting),
+                "blocked": len(blocked),
+                "done": len(done),
+            },
+            "alerts": alerts,
+            "tasks": [
+                {k: (str(v) if v is not None else None)
+                 for k, v in t.items()}
+                for t in tasks if t["status"] != "DONE"
+            ],
+        }, ensure_ascii=False, indent=2))
     else:
-        print("✅ 所有任務健康，無 stale/overdue")
+        print(f"📋 Task Board: {len(active)} active, {len(waiting)} waiting, {len(blocked)} blocked")
+        if len(done) > 10:
+            print(f"⚠️ DONE 區有 {len(done)} 個任務，建議歸檔到 task-archive.md")
+        if alerts:
+            print("\n".join(alerts))
+        else:
+            print("✅ 所有任務健康，無 stale/overdue")
+
+    sys.exit(1 if alerts else 0)
 
 
 if __name__ == "__main__":
