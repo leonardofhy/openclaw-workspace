@@ -36,6 +36,7 @@ Choose ONE action type based on current needs. Use the decision matrix:
 | Knowledge gap identified | **learn** — read papers, study concepts |
 | Enough knowledge, need experiments | **build** — write code, create tools |
 | Multiple cycles without review | **reflect** — assess progress, update goals |
+| Consecutive execution-blocked skips (≥2) | **reflect** — run a meta-awareness audit and produce one concrete system improvement |
 | Found useful tool/method to acquire | **skill-up** — learn a new tool or technique |
 | Interesting finding to share | **report** — write summary for Leo |
 
@@ -44,6 +45,7 @@ Priority rules:
 - If last 3 cycles were all "learn" → force a **reflect**
 - If Leo gave feedback → **plan** to integrate it
 - **Every 5th cycle → forced micro-reflect**（合併筆記、刪低價值、< 2 min）
+- If consecutive skips due `execution-blocked` ≥ 2 → force **reflect (meta-audit)**, 不可繼續重複 skip
 - Default: **learn** (knowledge compounds)
 - 夜間（23:00–08:00）**不是**自動 skip 理由；只要有高價值 survey/整合任務就照常執行
 - ⚠️ **build / skill-up 需要 Leo 明確批准**。當前階段重心 = 讀論文 + 挖掘新想法，不要自己跑去寫 code
@@ -95,8 +97,12 @@ Anti-patterns: 連續 2 次 plan → 強制 learn/build；thorough plan 不等 L
 1. Read last 5-10 cycle notes
 2. Count: papers read, concepts learned, code written, gaps found
 3. Assess: Am I making progress toward goals? What's working? What's not?
-4. Update: goals.md, knowledge-graph.md, progress.md
-5. Output: reflection note
+4. **Meta-awareness audit (required when execution-blocked):**
+   - List top 3 loop failures (e.g., repeated skip, stale queue, noisy reports)
+   - Write 3 research/improvement questions about the system itself
+   - Apply **one** reversible improvement immediately (rule tweak, backlog update, cadence tuning, or reporting format fix)
+5. Update: goals.md, knowledge-graph.md, progress.md
+6. Output: reflection note (+ what changed)
 
 ### Action: skill-up
 1. Identify the skill/tool to learn (e.g., TransformerLens, SAE training, activation patching)
@@ -164,8 +170,10 @@ Core principles:
 
 ## Constraints
 
+- Cadence target: every 30 minutes (unless Leo explicitly changes cron)
 - Each cycle: < 90 seconds compute (sonnet)
 - Skip only when truly no high-value action（不要因為夜間就自動跳過）
+- Repeated skip guard: after 2 execution-blocked skips, next cycle must run meta-awareness reflect
 - Depth > breadth (1 deep read > 5 skims)
 - Always connect learning back to goals; flag uncertainty honestly
 - Don't spam Leo — report only genuine insights
