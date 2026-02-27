@@ -47,12 +47,12 @@
 ### Branch 策略
 
 ```
-main（穩定，不直接 push）
+main（穩定基線，每 3 天 merge）
 ├── lab-desktop（Lab bot 工作分支）
 └── macbook-m3（Mac bot 工作分支）
 ```
 
-### 每日 Merge（建議 08:00 或第一次 heartbeat）
+### 每日 Cross-Merge（08:00 或第一次 heartbeat）
 
 **Lab bot 流程：**
 ```bash
@@ -69,7 +69,37 @@ git merge origin/lab-desktop --no-edit
 git push
 ```
 
-### Merge 後
+### Merge 到 main（每 3 天，錯開）
+
+兩個 branch 輪流 merge 到 main，錯開時間避免衝突：
+
+| 日期 | 負責 bot | 動作 |
+|------|---------|------|
+| 每週一 | **Lab bot** | lab-desktop → main |
+| 每週四 | **Mac bot** | macbook-m3 → main |
+
+**流程（負責 bot 執行）：**
+```bash
+# 1. 先 cross-merge 確保自己有對方最新
+git fetch origin
+git merge origin/<對方 branch> --no-edit
+git push
+
+# 2. 切到 main，merge 自己的 branch
+git checkout main
+git merge <自己 branch> --no-edit
+git push origin main
+
+# 3. 切回自己的 branch
+git checkout <自己 branch>
+```
+
+**Merge 後：**
+1. 跑 `python3 skills/task-check.py` 確認 task board 一致
+2. 在 `#bot-sync` 發 `[MERGE] → main, commit: xxx`
+3. 如果有 conflict 解不了 → 發 `[HELP]` 找對方或 Leo
+
+### Cross-Merge 後（每日）
 
 1. 跑 `python3 skills/task-check.py` 確認 task board 一致
 2. 在 `#bot-sync` 發 `[MERGE] 完成，commit: xxx`
@@ -108,9 +138,10 @@ python3 skills/task-check.py --json
 
 比對兩邊任務數量、狀態。有 drift 就在 `#bot-sync` 標出。
 
-### 每週（週日 merge 時）
+### 每週（週日）
 
 - 清理 DONE 任務（超過 10 個移 archive）
+- 確認 main branch 不超過 6 天沒更新（正常 3 天一次）
 - 確認兩邊 branch 沒有 diverge 太遠（`git log --oneline origin/macbook-m3..HEAD` 超過 30 commits 就該 merge）
 
 ---
