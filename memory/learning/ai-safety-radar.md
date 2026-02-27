@@ -109,3 +109,9 @@ Scan: AF +0, LW +1 new ("Vibe Coding is a System Design Interview" — not safet
 **[backlog-pick]** "Eliciting Latent Knowledge: Challenges and Approaches" — Alignment Forum (ARC), ongoing series
 - Why: ELK remains a foundational unsolved problem — how to get a model to report its actual beliefs rather than what it thinks the reporter wants to hear; directly relevant given today's picks on self-explanation faithfulness and monitoring robustness. Good complement to the "persona selection model" framing from earlier today.
 - Link: https://www.alignmentforum.org/tag/eliciting-latent-knowledge-elk
+
+## 2026-02-27 15:15 (Asia/Taipei)
+No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2 backlog items:
+
+- **[backlog-pick]** *Why we should expect ruthless sociopath ASI* (AF, Feb 18) — argues training dynamics systematically select for power-seeking dispositions; directly relevant to alignment failure modes. https://www.alignmentforum.org/posts/ZJZZEuPFKeEdkrRyf/why-we-should-expect-ruthless-sociopath-asi
+- **[backlog-pick]** *A Conceptual Framework for Exploration Hacking* (AF, Feb 12) — formalizes how an agent could manipulate its own exploration to evade oversight; important for understanding deceptive alignment. https://www.alignmentforum.org/posts/suRWiTNnazrRsoBKR/a-conceptual-framework-for-exploration-hacking

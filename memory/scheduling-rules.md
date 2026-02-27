@@ -9,6 +9,11 @@ Last updated: 2026-02-27
 
 Do this directly (no extra confirmation) unless the action is risky/destructive beyond normal rescheduling.
 
+## Past-event protection (critical)
+- Never delete past events from Google Calendar when updating schedule.
+- Rescheduling should only modify **current/future** blocks unless Leo explicitly asks to clean historical entries.
+- If a sync action accidentally removed past events, restore them from `memory/schedules/YYYY-MM-DD.md` immediately.
+
 ## What goes where
 
 ### Google Calendar (time-blocked)

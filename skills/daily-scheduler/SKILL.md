@@ -171,6 +171,7 @@ Same bullet format. Past items prefixed with ✅, current with ▶️, future as
 
 - See `memory/scheduling-rules.md` for current routing and sync policy.
 - Current default order: schedule file → Google Calendar → Todoist.
+- Never delete past events during routine sync; update current/future blocks only (unless Leo explicitly requests historical cleanup).
 - Keep `memory/core.md` as pointer only; detailed scheduling policy belongs in `memory/scheduling-rules.md`.
 
 ## Leo-specific patterns (observed)
