@@ -300,3 +300,35 @@ Priority queue for Leo's first session:
 3. **Present "Class-specific Neuron Grounding" experiment sketch** — wait for Leo approval before any build
 
 | #29 | 2026-02-27 04:30 | skip | 4:30 AM — queue depleted (cycle #28 explicit). arXiv scanned only 2.5h ago (cycle #24). All planned reads complete. Next actions (real speech test, venv+nnsight, experiment design) require Leo or physical resources. Correctly skipped per cost-consciousness. |
+
+| #30 | 2026-02-27 05:00 | learn | **arXiv cs.SD Feb 26 scan** — 5 new papers; 4 irrelevant; EmoOmni (ICML 2026) yields **Gap #13**: nobody has mapped *where* in Thinker-Talker architecture emotional info is lost (connector bottleneck? early layers?) — EmoOmni diagnoses behaviorally, Leo can diagnose mechanistically via logit-lens + patching on the Thinker-Talker interface. Extends Track 3+5. |
+| #31 | 2026-02-27 05:30 | skip | Queue confirmed depleted. arXiv re-checked (mech interp speech, SAE audio, audio patching) — 0 new papers since cycle #24/30. No high-value action available without Leo or real speech file. Correctly skipped. |
+| #32 | 2026-02-27 06:00 | skip | 6:00 AM arXiv re-verified: 0 new papers in mech interp × speech or SAE × audio since cycle #24. Must-read list fully exhausted. Next actions require Leo (real speech test, venv+nnsight, experiment approval). Correctly skipped. |
+| #33 | 2026-02-27 06:30 | skip | 6:30 AM — arXiv Feb 27 submissions not yet posted (appear ~14:00 Taipei). Last scan 1.5h ago. Queue depleted. Leo wakes up ~8-9 AM. Correctly skipped — awaiting Leo's morning session for real speech test + experiment approval. |
+| #34 | 2026-02-27 07:00 | plan | **Triple Convergence IIT Experiment Proposal** — crystallized all accumulated reading into 2 concrete experiment designs ready for Leo's approval: (1) IIT causal test of saturation layer convergence (MacBook-feasible, Whisper-small, NNsight, ~3h), (2) Class-specific Neuron Grounding at ESN level (needs GPU/NDIF). Morning queue for Leo formalized. |
+
+## Day 2 Rolling Stats (updated after cycle #30)
+- Papers read (deep): 12 total
+- Papers scanned: 21+ (5 new Feb 26 batch)
+- Research gaps identified: 13 (+Thinker-Talker emotional bottleneck location unknown)
+- Paper ideas: 6
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (updated with NNsight)
+- **Must-read list: FULLY COMPLETED** ✅
+
+## Recommended Next Cycles (Day 2 morning — Leo wakes up ~8-9 AM)
+1. ~~**Design Triple Convergence IIT experiment**~~ ✅ DONE cycle #34 — proposal written, awaiting Leo approval
+2. **Real speech test** — whisper_hook_demo.py with actual .wav (validate Triple Convergence)
+3. **Create venv + install nnsight** (after Leo approves IIT experiment)
+4. **arXiv Feb 27 scan** — cs.SD + cs.CL — wait until ~14:00 Taipei when submissions appear
+
+## Day 2 Final Stats (as of cycle #34)
+- Papers read (deep): 12 total
+- Papers scanned: 21+
+- Research gaps identified: 13
+- Paper ideas: 6
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (updated with NNsight)
+- Experiment proposals: 2 (Triple Convergence IIT + Class-specific Neuron Grounding)
+- **Must-read list: FULLY COMPLETED** ✅
+- **Next action: Await Leo approval → begin IIT patching experiment**
