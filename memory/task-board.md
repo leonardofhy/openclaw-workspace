@@ -44,9 +44,9 @@
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
 - **描述**: 在 Battleship（`~/Workspace/little-leo`）固化實驗工作流
-- **progress**: SSH 可用、路徑修正到 `~/Workspace`、CPU smoke + 背景 job 可跑
-- **next_action**: 建 `run_cpu.sh` / `run_gpu.sh` / `logs/`；在 compute node 驗證 Claude Code
-- **blockers**: 叢集上 Claude Code 可用安裝路徑/模組資訊（可能需要 Leo 協助）
+- **progress**: ✅ run_cpu.sh / run_gpu.sh / run_gpu_interp.sh 完成、logs/ 建立、smoke test 通過（CPU + GPU）
+- **next_action**: 確認 Claude Code 在 compute node 可用；如需其他工具鏈告訴我
+- **files**: WORKFLOW.md（使用文檔）
 
 ### M-02 | 論文產出（Method v0）
 - **owner**: MacBook
