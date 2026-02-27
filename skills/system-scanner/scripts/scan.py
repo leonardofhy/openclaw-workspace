@@ -331,14 +331,21 @@ def check_gateway():
             else:
                 check('Gateway service', 'ok', 'Registered')
 
-    # Log health
+    # Log health — try file first, fall back to journalctl (systemd)
     log = LOGS / 'gateway.log'
-    if not log.exists():
-        check('Gateway log', 'warn', 'Log file not found')
-        return
-
-    _, out, _ = sh(['tail', '-500', str(log)])
-    lines = out.splitlines()
+    lines: list[str] = []
+    if log.exists():
+        _, out, _ = sh(['tail', '-500', str(log)])
+        lines = out.splitlines()
+    else:
+        # Try journalctl for systemd-managed gateway
+        rc, out, _ = sh(['journalctl', '--user', '-u', 'openclaw-gateway',
+                         '--since', '2 hours ago', '--no-pager', '-q'])
+        if rc == 0 and out.strip():
+            lines = out.strip().splitlines()
+        else:
+            check('Gateway log', 'warn', 'Log file not found and journalctl unavailable')
+            return
     cutoff_2h = (NOW.astimezone(timezone.utc) - timedelta(hours=2)).strftime('%Y-%m-%dT%H:%M')
 
     config_errs = [l for l in lines
