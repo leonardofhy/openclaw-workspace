@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-02-27 20:56
+> 最後更新：2026-02-28 01:10
 
 ## 規則
 
@@ -38,23 +38,24 @@
 
 ## ACTIVE
 
-### M-01 | Battleship 實驗工作流固化
-- **owner**: MacBook
-- **priority**: P1
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: 在 Battleship（`~/Workspace/little-leo`）固化實驗工作流
-- **progress**: ✅ run_cpu.sh / run_gpu.sh / run_gpu_interp.sh 完成、logs/ 建立、smoke test 通過（CPU + GPU）
-- **next_action**: 確認 Claude Code 在 compute node 可用；如需其他工具鏈告訴我
-- **files**: WORKFLOW.md（使用文檔）
-
-### M-02 | 論文產出（Method v0）
+### M-06 | DeSTA2.5 Listen-layer 快驗（A 路線）
 - **owner**: MacBook
 - **priority**: P0
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
-- **描述**: AudioMatters 論文 Method section 初稿
-- **next_action**: 交付可寫入稿件的一頁骨架 + placeholder 實驗敘事
+- **描述**: 用 battleship 跑 chunk sensitivity，定位可能的 listen-layer 訊號
+- **progress**: smoke run（n=4,k=3,20 samples）完成；full run 進行中（21:46 時點：`n4_chunk3` 3562 行、`n5_chunk0` 1188 行）；已重提 n5 任務 `job 224422`（RUNNING）
+- **next_action**: n4/n5 完檔後立即跑 evaluate 產生 `*_comprehensive_results.json`，再更新 `chunk_sensitivity_desta25.md` v2（Method/Results Δ 表）
+- **blockers**: GPU 資源排隊/同機器並行導致完成時間波動
+
+### M-02 | 論文產出（Results v0）
+- **owner**: MacBook
+- **priority**: P0
+- **created**: 2026-02-27
+- **last_touched**: 2026-02-28
+- **描述**: AudioMatters 論文 Results section 初稿（承接已完成的 Method v1 + Setup v1）
+- **progress**: Leo 回報 Method 第一版與 Setup 第一版已完成；Results v0 寫作包已補上 40 分鐘 kickoff 清單（填表→主敘事→ablation）
+- **next_action**: 早上第一個寫作時段先完成 kickoff 清單前 2 項（Table X 數字 + hardest subset），中午前交付 Main Results 四句版本
 
 ### M-03 | 研究雙軌推進
 - **owner**: MacBook
@@ -62,7 +63,7 @@
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
 - **描述**: 不被單一討論卡住，維持主線 + 備線
-- **next_action**: 主線持續推進；備線：Listen layer 快驗 / neuron grounding / modality reliance stress test
+- **next_action**: 主線持續推進；備線改為 listen-layer 三步循環（Exp1 attention suppression → Exp2 activation patching → Exp3 layer-restricted LoRA），並保留 neuron grounding / modality stress test 作為第二批
 
 ### L-08 | 財務管理（主線）
 - **owner**: Lab
@@ -121,6 +122,11 @@
 - **owner**: Lab
 - **completed**: 2026-02-27
 - **成果**: macbook-m3 merge 到 lab-desktop（+5788 行，38 commits）
+
+### M-01 | Battleship 實驗工作流固化
+- **owner**: MacBook
+- **completed**: 2026-02-27
+- **成果**: `~/Workspace/little-leo` 建置完成；交付 `run_cpu.sh` / `run_gpu.sh` / `check_jobs.sh` / `check_cli.sh` / `run_claude_once.sh` / `launch_claude_tmux.sh`；compute node 可執行 Claude Code（載入 nvm）
 
 ### M-00 | 建立多任務追蹤機制
 - **owner**: MacBook

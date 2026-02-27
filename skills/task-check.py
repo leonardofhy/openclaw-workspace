@@ -2,14 +2,19 @@
 """Task Board staleness checker — run during heartbeat.
 
 Usage:
-    python3 task-check.py          # human-readable output
-    python3 task-check.py --json   # structured JSON output
+    python3 task-check.py                 # human-readable output (auto owner)
+    python3 task-check.py --json          # structured JSON output
+    python3 task-check.py --owner mac     # force owner scope: mac|lab|all
 """
 
+import argparse
 import json as json_mod
+import os
+import platform
 import re
+import socket
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "shared"))
@@ -19,6 +24,29 @@ BOARD = find_workspace() / "memory" / "task-board.md"
 ACTIVE_STALE_DAYS = 3
 WAITING_STALE_DAYS = 7
 MAX_ACTIVE = 5
+VALID_OWNERS = {"mac", "lab", "all"}
+
+
+def detect_owner() -> str:
+    """Auto-detect local owner scope."""
+    env_owner = (os.getenv("TASK_CHECK_OWNER") or os.getenv("TASK_OWNER") or "").strip().lower()
+    if env_owner in VALID_OWNERS:
+        return env_owner
+
+    if platform.system().lower() == "darwin":
+        return "mac"
+
+    host = socket.gethostname().lower()
+    if "mac" in host or "darwin" in host:
+        return "mac"
+    return "lab"
+
+
+def in_scope(task: dict, owner_scope: str) -> bool:
+    if owner_scope == "all":
+        return True
+    return task.get("owner") == owner_scope
+
 
 def parse_tasks(text: str) -> list[dict]:
     """Parse task entries from task-board.md."""
@@ -27,7 +55,6 @@ def parse_tasks(text: str) -> list[dict]:
     section = None
 
     for line in text.splitlines():
-        # Detect section headers
         if line.startswith("## ACTIVE"):
             section = "ACTIVE"
         elif line.startswith("## WAITING"):
@@ -41,7 +68,6 @@ def parse_tasks(text: str) -> list[dict]:
         elif line.startswith("## ") or line.startswith("---"):
             section = None
 
-        # Parse task header (supports T-xx, L-xx, M-xx)
         m = re.match(r"^### ([A-Z]-\d+\w?)\s*\|\s*(.+)", line)
         if m and section:
             if current:
@@ -60,7 +86,6 @@ def parse_tasks(text: str) -> list[dict]:
             continue
 
         if current and line.startswith("- **"):
-            # Parse fields
             fm = re.match(r"- \*\*(\w+)\*\*:\s*(.+)", line)
             if not fm:
                 fm = re.match(r"- \*\*(\w[\w_]*)\*\*:\s*(.+)", line)
@@ -86,23 +111,28 @@ def parse_tasks(text: str) -> list[dict]:
     return tasks
 
 
-def check(tasks: list[dict], today=None) -> list[str]:
-    """Return list of alert strings."""
+def check(tasks: list[dict], today=None, owner_scope: str = "all") -> list[str]:
+    """Return list of alert strings (scoped by owner)."""
     today = today or datetime.now().date()
     alerts = []
 
-    # Per-owner capacity check
-    from collections import Counter
-    active_by_owner = Counter(t["owner"] for t in tasks if t["status"] == "ACTIVE")
-    for owner, count in active_by_owner.items():
-        if count > MAX_ACTIVE:
-            alerts.append(f"⚠️ {owner} ACTIVE 任務超過上限：{count}/{MAX_ACTIVE}，需要 PARK 或完成一些")
+    scoped_tasks = [t for t in tasks if in_scope(t, owner_scope)]
 
-    for t in tasks:
+    if owner_scope == "all":
+        from collections import Counter
+        active_by_owner = Counter(t["owner"] for t in tasks if t["status"] == "ACTIVE")
+        for owner, count in active_by_owner.items():
+            if count > MAX_ACTIVE:
+                alerts.append(f"⚠️ {owner} ACTIVE 任務超過上限：{count}/{MAX_ACTIVE}，需要 PARK 或完成一些")
+    else:
+        active_count = sum(1 for t in scoped_tasks if t["status"] == "ACTIVE")
+        if active_count > MAX_ACTIVE:
+            alerts.append(f"⚠️ {owner_scope} ACTIVE 任務超過上限：{active_count}/{MAX_ACTIVE}，需要 PARK 或完成一些")
+
+    for t in scoped_tasks:
         if t["status"] == "DONE":
             continue
 
-        # Staleness
         if t["last_touched"]:
             days = (today - t["last_touched"]).days
             if t["status"] == "ACTIVE" and days >= ACTIVE_STALE_DAYS:
@@ -110,7 +140,6 @@ def check(tasks: list[dict], today=None) -> list[str]:
             elif t["status"] == "WAITING" and days >= WAITING_STALE_DAYS:
                 alerts.append(f"🟡 STALE: {t['id']} {t['title']} — {days} 天沒更新")
 
-        # Deadline
         if t["deadline"]:
             days_left = (t["deadline"] - today).days
             if days_left < 0:
@@ -122,10 +151,16 @@ def check(tasks: list[dict], today=None) -> list[str]:
 
 
 def main():
-    use_json = "--json" in sys.argv
+    parser = argparse.ArgumentParser(description="Task board checker")
+    parser.add_argument("--json", action="store_true", help="Output JSON")
+    parser.add_argument("--owner", default="auto", choices=["auto", "mac", "lab", "all"],
+                        help="Owner scope for alerts")
+    args = parser.parse_args()
+
+    owner_scope = detect_owner() if args.owner == "auto" else args.owner
 
     if not BOARD.exists():
-        if use_json:
+        if args.json:
             print(json_mod.dumps({"error": "task-board.md not found"}))
         else:
             print("❌ task-board.md not found", file=sys.stderr)
@@ -135,16 +170,19 @@ def main():
     tasks = parse_tasks(text)
     today = datetime.now().date()
 
-    active = [t for t in tasks if t["status"] == "ACTIVE"]
-    waiting = [t for t in tasks if t["status"] == "WAITING"]
-    blocked = [t for t in tasks if t["status"] == "BLOCKED"]
-    done = [t for t in tasks if t["status"] == "DONE"]
+    scoped_tasks = [t for t in tasks if in_scope(t, owner_scope)]
 
-    alerts = check(tasks, today)
+    active = [t for t in scoped_tasks if t["status"] == "ACTIVE"]
+    waiting = [t for t in scoped_tasks if t["status"] == "WAITING"]
+    blocked = [t for t in scoped_tasks if t["status"] == "BLOCKED"]
+    done = [t for t in scoped_tasks if t["status"] == "DONE"]
 
-    if use_json:
+    alerts = check(tasks, today, owner_scope=owner_scope)
+
+    if args.json:
         print(json_mod.dumps({
             "date": str(today),
+            "owner_scope": owner_scope,
             "counts": {
                 "active": len(active),
                 "waiting": len(waiting),
@@ -155,11 +193,11 @@ def main():
             "tasks": [
                 {k: (str(v) if v is not None else None)
                  for k, v in t.items()}
-                for t in tasks if t["status"] != "DONE"
+                for t in scoped_tasks if t["status"] != "DONE"
             ],
         }, ensure_ascii=False, indent=2))
     else:
-        print(f"📋 Task Board: {len(active)} active, {len(waiting)} waiting, {len(blocked)} blocked")
+        print(f"📋 Task Board ({owner_scope}): {len(active)} active, {len(waiting)} waiting, {len(blocked)} blocked")
         if len(done) > 10:
             print(f"⚠️ DONE 區有 {len(done)} 個任務，建議歸檔到 task-archive.md")
         if alerts:

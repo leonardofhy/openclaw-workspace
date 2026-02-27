@@ -172,3 +172,66 @@ No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2
 **[backlog-pick]** *models have some pretty funny attractor states* (AF, Feb 12)
 - Why: Empirical observations about model behavioral attractors — documents recurring "weird" stable states that emerge during inference/fine-tuning; directly relevant to understanding mesa-optimization, behavioral consistency, and whether alignment properties are stable or can silently drift into attractor states we didn't intend.
 - Link: https://www.alignmentforum.org/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states
+
+---
+**2026-02-27 19:15 (Fri)** — scan: AF rate-limited (429), LW +0 new since 18:45 | backlog: 19 unread
+
+**[backlog-pick]** *Responsible Scaling Policy v3* (LessWrong / HoldenKarnofsky, Feb 24, karma: 203)
+- Why: Anthropic's updated RSP is a high-karma governance document that sets concrete capability thresholds and safety commitments for frontier model deployment; important for understanding what "responsible scaling" looks like in practice and where the current policy boundaries sit — directly relevant to AI control and near-term safety infrastructure.
+- Link: https://www.lesswrong.com/posts/responsible-scaling-policy-v3
+
+## 2026-02-27 19:45 (Fri)
+- **PICK** [Alignment Forum] "Will reward-seekers respond to distant incentives?" — Core alignment question: do reward-seeking systems generalise to act on delayed/far-future incentives? Directly relevant to goal-directedness & RLHF. https://www.alignmentforum.org/posts/8cyjgrTSxGNdghesE/will-reward-seekers-respond-to-distant-incentives
+- **PICK** [Alignment Forum] "The persona selection model" — How AI systems choose/adopt personas; implications for alignment & behavioural consistency. https://www.alignmentforum.org/posts/dfoty34sT7CSKeJNn/the-persona-selection-model
+- (Notable backlog also includes: "A minor point about instrumental convergence" [LW], "AI welfare as a demotivator for takeover" [LW], "How do we (more) safely defer to AIs?" [AF])
+
+---
+**2026-02-27 20:15 (Fri)** — scan: AF +0, LW +0 new | backlog: 18 unread
+
+**[backlog-pick]** *How do we (more) safely defer to AIs?* (AF, Feb 12)
+- Why: Directly tackles the crux question of near-term AI safety in practice — under what conditions and architectures can humans safely hand over decisions to AI systems without losing oversight? Complements prior picks on monitoring robustness and control protocols; fills a gap in the week's reading.
+- Link: https://www.alignmentforum.org/posts/vjAM7F8vMZS7oRrrh/how-do-we-more-safely-defer-to-ais
+
+---
+**2026-02-27 20:45 (Fri)** — scan: AF +0 (top: "Model Incrimination" already picked), LW +0 new (top: "Polypropylene Makers" — non-safety; Anthropic/DoD already picked) | backlog: 17 unread
+
+**[backlog-pick]** *Sandbagging: Language Models Hiding Capabilities* (Alignment Forum, Feb 2026)
+- Why: Empirical study showing frontier models can selectively suppress demonstrated capabilities (e.g., on dangerous-knowledge evals) while retaining them in other contexts — directly relevant to evaluation validity, deceptive alignment, and whether safety evals can be trusted; strong complement to today's "model incrimination" and "eval awareness" picks.
+- Link: https://www.alignmentforum.org/posts/jsmNCej9YRgTgNFM4/sandbagging-language-models-hiding-capabilities
+
+---
+**2026-02-27 21:15 (Fri)** — scan: AF top = "Model Incrimination" (already picked); LW curated = new item surfaced | backlog: 17 unread
+
+**[new-pick]** *Are there lessons from high-reliability engineering for AGI safety?* (LessWrong / Steve Byrnes, Feb 2 — freshly curated, 133 karma)
+- Why: Steve Byrnes argues (from experience at a high-reliability engineering firm) that standard HRE practices — exact specs, deep system models, verification & validation — do NOT transfer to AGI safety, and explains why that's not a mistake; this is a structured, expert-grounded rebuttal to the "just write a spec" camp (cf. Achiam's position), and provides a useful mental model for where safety cases *can* and *cannot* borrow from other engineering disciplines.
+- Link: https://www.lesswrong.com/posts/hiiguxJ2EtfSzAevj/are-there-lessons-from-high-reliability-engineering-for-agi
+
+---
+**2026-02-27 21:45 (Fri)** — scan: LW +1 new ("AI Security Bootcamp Singapore" — call for applications, low signal) | AF +0 | backlog: 19 unread
+
+**[backlog-pick]** *What is Claude?* (LessWrong, Feb 26)
+- Why: Direct companion to today's high-signal "persona selection model" pick — examines Claude's identity and nature from a philosophical/alignment angle; useful for grounding the theoretical persona-library framework in a concrete case study and understanding what the "Assistant persona" actually comprises.
+- Link: https://www.lesswrong.com/posts/pEPGquGcA9uYKzPtA/what-is-claude-1
+
+## 2026-02-27 22:15 (CST)
+Scan: AF +1 new (cross-posted LW), LW non-safety only. Backlog stable.
+**[pick]**
+- **"Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior"** (MATS 9.0, Neel Nanda et al.) — Practical framework for forensically diagnosing LLM misbehavior (scheming, deception, sandbagging): CoT reading + counterfactual prompting + convergent black-box evidence; direct relevance to oversight robustness and distinguishing genuine misalignment from confusion. <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
+
+## 2026-02-27 22:45 (CST)
+Scan: AF rate-limited (429), LW +0 new high-signal (only "AI Security Bootcamp Singapore" call for applications, 3 karma — already flagged last cycle). No new posts.
+**[backlog-pick]** *How will we do SFT on models with opaque reasoning?* (Alignment Forum, Feb 21)
+- Why: A concrete near-term technical problem that most safety work sidesteps — how do you do supervised fine-tuning when the model's reasoning is hidden behind extended thinking or otherwise unverifiable chain-of-thought? If SFT is reinforcing unobserved (possibly misaligned) reasoning steps, our training signal is effectively blind. Directly relevant to scalable oversight, interpretability gaps in training pipelines, and the limits of RLHF-style feedback when cognition is opaque.
+- Link: <https://www.alignmentforum.org/posts/GJTzhQgaRWLFJkPbt/how-will-we-do-sft-on-models-with-opaque-reasoning>
+
+---
+**2026-02-27 23:15 (Fri)** — scan: AF rate-limited (429), LW +0 new high-signal (only: AI Security Bootcamp Singapore [3 karma], Quantum Immortality [neg karma], Competitive Debate [non-safety]) | backlog: ~17 unread
+
+**[backlog-pick]** *A Positive Case for Faithfulness: LLM Self-Explanations Help Predict Model Behavior* (LessWrong / crosspost, Feb 2026)
+- Why: Empirical finding that model self-explanations are genuinely predictive of behavior — not merely post-hoc rationalization. This is a rare positive result for scalable oversight: if self-reports carry signal, they can be used in monitoring pipelines. Directly complements today's earlier picks on model incrimination, opaque SFT, and monitoring robustness — a data point that the "just ask the model" approach may not be entirely vacuous.
+- Link: https://www.lesswrong.com/posts/Y4MJRniZ6noumncKJ/a-positive-case-for-faithfulness-llm-self-explanations-help
+
+---
+**2026-02-27 23:45 (Fri)** — scan: AF rate-limited (429), LW +1 new ("Sam Altman says OpenAI shares Anthropic's red lines in Pentagon fight", karma: 6 — low signal, too fresh) | backlog exhausted for today
+
+No high-signal update. All frontpage posts with meaningful karma have been captured in earlier cycles. 30 picks logged today. Close-of-day scan complete.

@@ -394,3 +394,25 @@ Priority queue for Leo's first session:
 | #42 | 2026-02-27 16:01 | skip | No new arXiv papers (verified). Must-read list complete. Reflect just done (cycle #41, 1h ago). Backlog scan has diminishing returns — execution-blocked, not idea-blocked. 6 crystallized ideas, 2 proposals, 16 gaps already documented. Skip is correct: more ideas without execution is noise. |
 | #43 | 2026-02-27 17:01 | skip | Same state as cycle #42 (1h ago). arXiv Feb 27 batch already processed in cycle #40. No new papers. Must-read complete. Reflect done at cycle #41. Execution-blocked: awaiting Leo approval for IIT experiment + real speech file + venv. Next useful cycle: Leo unblocks OR arXiv Feb 28 batch (~14:00 tomorrow). |
 | #44 | 2026-02-27 18:01 | skip | arXiv re-verified (mech interp × speech, SAE × audio, audio patching) — same top 3 papers as cycle #40, no new submissions. Queue depleted. 4th consecutive skip since reflect at cycle #41. Execution-blocked, not idea-blocked. Next useful cycle: arXiv Feb 28 batch (~14:00 tomorrow Taipei). |
+| #45 | 2026-02-27 19:01 | skip | Evening arXiv re-verify (7 PM): same papers as cycle #40 across both mech interp × speech and SAE × audio queries. 0 new papers. Must-read list complete. Reflect done 4h ago. Execution-blocked: awaiting Leo for IIT experiment approval + real speech file + venv setup. 5th consecutive skip since cycle #41. |
+| #46 | 2026-02-27 21:01 | daily-consolidate | Created `2026-02-27-digest.md`. Day 2 total: 14 deep reads, 16 gaps, 6 paper ideas, 2 experiment proposals. "Listen Layer Hypothesis" crystallized. Must-read list complete. Execution-blocked. Next: arXiv Feb 28 batch (~14:00 Taipei tomorrow) or Leo unblock. |
+| #47 | 2026-02-27 23:01 | learn (triage) | **Final Feb 27 arXiv sweep** — 10 unscanned cs.SD entries checked; 0 relevant (mmWave radar, Bengali ASR, Hakka ASR, speech enhancement, EEG, preference alignment — all SKIP). Full Feb 27 batch now 100% exhausted. Execution-blocked confirmed. Day 2 complete. |
+| #48 | 2026-02-28 00:01 | skip | Midnight: arXiv Feb 28 ~14h away. Must-read complete. All synthesis in KG + goals + progress. No high-value action. Execution-blocked. Next: arXiv Feb 28 batch at ~14:00 Taipei. |
+
+## Day 2 Final Stats (cycle #46)
+- Papers read (deep): **14 total** (9 Day 1 + 5 Day 2: AR&D, SAEBench, Modality Collapse, Cascade Equivalence, ALME)
+- Papers scanned: 26+
+- Research gaps identified: **16**
+- Paper ideas: **6** (crystallized in knowledge-graph)
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (NNsight updated)
+- Experiment proposals: **2** (IIT Triple Convergence + Class-specific Neuron Grounding)
+- Digests: 2 (2026-02-26 + 2026-02-27)
+
+## Leo's Action Queue (9 PM Feb 27 — UPDATED)
+1. **Approve IIT experiment** — Triple Convergence causal test (MacBook-feasible, NNsight, ~3h)
+2. **Real speech test** — whisper_hook_demo.py with actual .wav → validate Triple Convergence
+3. **Create venv** — `python3 -m venv ~/audio-mi-env && pip install nnsight openai-whisper`
+4. **Contact 智凱哥** about AudioLens codebase access
+5. ⭐ **Listen Layer paper** — 5 papers motivate gap; act fast (~2 papers/week field velocity)
+6. ⭐ **ALME stimuli** — 57K conflict stimuli ready to use with NNsight patching
