@@ -38,15 +38,18 @@ def parse_tasks(text: str) -> list[dict]:
         elif line.startswith("## ") or line.startswith("---"):
             section = None
 
-        # Parse task header
-        m = re.match(r"^### (T-\d+)\s*\|\s*(.+)", line)
+        # Parse task header (supports T-xx, L-xx, M-xx)
+        m = re.match(r"^### ([A-Z]-\d+\w?)\s*\|\s*(.+)", line)
         if m and section:
             if current:
                 tasks.append(current)
+            tid = m.group(1)
+            owner = "lab" if tid.startswith("L-") else "mac" if tid.startswith("M-") else "unknown"
             current = {
-                "id": m.group(1),
+                "id": tid,
                 "title": m.group(2).strip(),
                 "status": section,
+                "owner": owner,
                 "last_touched": None,
                 "priority": None,
                 "deadline": None,
@@ -84,10 +87,13 @@ def check(tasks: list[dict], today=None) -> list[str]:
     """Return list of alert strings."""
     today = today or datetime.now().date()
     alerts = []
-    active_count = sum(1 for t in tasks if t["status"] == "ACTIVE")
 
-    if active_count > MAX_ACTIVE:
-        alerts.append(f"⚠️ ACTIVE 任務超過上限：{active_count}/{MAX_ACTIVE}，需要 PARK 或完成一些")
+    # Per-owner capacity check
+    from collections import Counter
+    active_by_owner = Counter(t["owner"] for t in tasks if t["status"] == "ACTIVE")
+    for owner, count in active_by_owner.items():
+        if count > MAX_ACTIVE:
+            alerts.append(f"⚠️ {owner} ACTIVE 任務超過上限：{count}/{MAX_ACTIVE}，需要 PARK 或完成一些")
 
     for t in tasks:
         if t["status"] == "DONE":
