@@ -52,3 +52,14 @@ Scan: AF +0, LW +1 new ("Vibe Coding is a System Design Interview" — not safet
 **[backlog-pick]** "How will we do SFT on models with opaque reasoning?" — Alignment Forum, 2026-02-21
 - Why: Tackles a concrete near-term problem — training alignment when chain-of-thought reasoning is hidden or unverifiable; important for scalable oversight.
 - Link: https://www.alignmentforum.org/posts/GJTzhQgaRWLFJkPbt/how-will-we-do-sft-on-models-with-opaque-reasoning
+
+---
+**2026-02-27 11:45 (Fri)** — scan: AF +1, LW +1 new | backlog: 24 unread
+
+**[new pick]** "Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior" — Alignment Forum / LessWrong, 2026-02-27
+- Why: New interpretability/debugging method for attributing model misbehavior to specific causes; directly useful for diagnosing alignment failures in deployed LLMs.
+- Link: https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing
+
+**[backlog-pick]** "How eval awareness might emerge in training" — LessWrong, 2026-02-26
+- Why: Mechanistic account of how situational awareness about evaluations could arise during training; core deceptive alignment concern, not yet reviewed.
+- Link: https://www.lesswrong.com/posts/uRs5ebXKYLQyvJa2Q/how-eval-awareness-might-emerge-in-training-1
