@@ -2,7 +2,7 @@
 
 ## 🔴 必做：30 分鐘工作匯報（每次 heartbeat）
 
-**每次 heartbeat 都要發一則 Discord 訊息給 Leo**（channel: discord, target: 756053339913060392）：
+**每次 heartbeat 都要發一則 Discord 訊息給 Leo**（channel: discord, target: `978709248978599979`（#general））：
 
 格式：
 ```
