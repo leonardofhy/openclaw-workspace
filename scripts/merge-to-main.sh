@@ -71,7 +71,13 @@ PR_URL=$(gh pr create \
 echo "✅ PR created: $PR_URL"
 
 # 5. Auto-merge the PR (since we're the only contributors)
-PR_NUM=$(echo "$PR_URL" | grep -oP '\d+$' || echo "")
+# NOTE: use sed (BSD/GNU compatible). Avoid GNU-only `grep -P`.
+PR_NUM=$(printf '%s\n' "$PR_URL" | sed -nE 's#^.*/pull/([0-9]+).*$#\1#p' | head -n1)
+if [ -z "$PR_NUM" ]; then
+    # Fallback: query currently open PR for this branch
+    PR_NUM=$(gh pr list --base main --head "$BRANCH" --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
+fi
+
 if [ -n "$PR_NUM" ]; then
     gh pr merge "$PR_NUM" --merge --auto 2>/dev/null || {
         # If auto-merge not enabled, just merge directly
@@ -82,6 +88,8 @@ if [ -n "$PR_NUM" ]; then
     git fetch origin
     git merge origin/main --no-edit 2>/dev/null || true
     git push origin "$BRANCH" 2>/dev/null || true
+else
+    echo "⚠️ Could not parse PR number from gh output. Skipping auto-merge step."
 fi
 
 echo "RESULT:success:$PR_URL"
