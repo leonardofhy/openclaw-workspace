@@ -172,3 +172,10 @@ No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2
 **[backlog-pick]** *models have some pretty funny attractor states* (AF, Feb 12)
 - Why: Empirical observations about model behavioral attractors — documents recurring "weird" stable states that emerge during inference/fine-tuning; directly relevant to understanding mesa-optimization, behavioral consistency, and whether alignment properties are stable or can silently drift into attractor states we didn't intend.
 - Link: https://www.alignmentforum.org/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states
+
+---
+**2026-02-27 19:15 (Fri)** — scan: AF rate-limited (429), LW +0 new since 18:45 | backlog: 19 unread
+
+**[backlog-pick]** *Responsible Scaling Policy v3* (LessWrong / HoldenKarnofsky, Feb 24, karma: 203)
+- Why: Anthropic's updated RSP is a high-karma governance document that sets concrete capability thresholds and safety commitments for frontier model deployment; important for understanding what "responsible scaling" looks like in practice and where the current policy boundaries sit — directly relevant to AI control and near-term safety infrastructure.
+- Link: https://www.lesswrong.com/posts/responsible-scaling-policy-v3

@@ -1,6 +1,6 @@
 # Task Ledger
 
-Last updated: 2026-02-27
+Last updated: 2026-02-27 19:34
 
 ## 運作規則（避免任務遺失）
 
@@ -12,13 +12,18 @@ Last updated: 2026-02-27
 
 ## Active / Open Loops
 
-- `T-01` Battleship 實驗工作流固化（`~/Workspace/little-leo`）
+- `T-06` Battleship 真實實驗開工（環境就緒後的第一批任務）
   - 狀態：`ACTIVE`
-  - 已完成：SSH 可用、路徑修正到 `~/Workspace`、CPU smoke + 背景 job 可跑
+  - 背景：`T-01` 環境固化已完成，現在轉入實驗產出階段
+  - 已定優先：`A`（Listen layer 快驗）
+  - 目前進度：
+    - DeSTA2.5 listen-layer 快驗 smoke run 完成（n=4, k=3, 20 samples）
+    - full run `n4_chunk3` 已上線（job 224389, RUNNING）
+    - `n5_chunk0` 已排隊（job 224390, PENDING）
   - 下一步：
-    - 建 `run_cpu.sh` / `run_gpu.sh` / `logs/`
-    - 在 compute node 驗證 Claude Code（或替代 CLI）
-  - 需要 Leo 協助（若卡住）：叢集上 Claude Code 可用安裝路徑/模組資訊
+    - 完成 smoke run 後擴到 full-run（n4 缺塊 + n5 系列）
+    - 回收 logs 給論文 Method/Results 草稿
+  - 需要 Leo 協助（若卡住）：A 路線先跑哪個模型（DeSTA2.5 / Qwen2-Audio / Voxtral）
 
 - `T-02` 論文今晚產出（Method v0）
   - 狀態：`ACTIVE`
@@ -40,6 +45,11 @@ Last updated: 2026-02-27
   - 下一步：檢查下一輪 run 是否恢復 `ok`
 
 ## Done
+
+- `T-01` Battleship 實驗工作流固化（`~/Workspace/little-leo`）
+  - 狀態：`DONE`
+  - 交付：`run_cpu.sh` / `run_gpu.sh` / `check_jobs.sh` / `check_cli.sh` / `run_claude_once.sh` / `launch_claude_tmux.sh`
+  - 驗證：GPU smoke job `224365` 成功 RUNNING；compute node 已可執行 Claude Code（載入 nvm 後）
 
 - `T-00` 建立多任務追蹤機制（本檔）
   - 狀態：`DONE`
