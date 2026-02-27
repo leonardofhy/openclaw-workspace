@@ -66,7 +66,8 @@
 
 ### 切換動作（必做）
 1. **記錄 Resume Point** — 在 task-board.md 更新 next_action（要足夠具體，下次能直接接手）
-2. **記錄 Context Dump** — 把當前進度、已知資訊、失敗嘗試寫進 memory/YYYY-MM-DD.md
+2. **更新 SESSION-STATE.md** — "Current Task" 切換到新任務（SESSION-STATE = 此刻在做什麼，task-board = 所有任務的持久狀態）
+3. **記錄 Context Dump** — 把當前進度、已知資訊、失敗嘗試寫進 memory/YYYY-MM-DD.md
 3. **選下一個任務** — 優先級：P0 > P1 > P2；同優先級選 deadline 最近的
 4. **開始新任務** — 不要花時間糾結，直接開始
 
@@ -160,6 +161,9 @@ context：[對方需要知道的背景]
 - ❌ 寫了腳本就說「系統建好了」（沒跑過腳本）
 
 **規則：要說 Done，必須附上驗證結果（命令輸出、截圖、測試結果）。**
+
+**如果 VBR 抓到你準備假報完成** → 記錄為 learning：
+`learn.py log -c gotcha -k "vbr.false_done" -s "Almost reported X as done without testing"`
 
 ## 8. Tool Migration Checklist（工具遷移）
 

@@ -1,21 +1,18 @@
 # SESSION-STATE.md — Active Working Memory
 
-> WAL (Write-Ahead Log) target. Write here BEFORE responding when critical details appear.
-> This file is your RAM — survives compaction, survives session restart.
-> Update aggressively. Stale state is worse than no state.
+> WAL target. Write here BEFORE responding when critical details appear.
+> This is your RAM — survives compaction, survives session restart.
+
+**Last Updated:** (none yet)
 
 ## Current Task
-<!-- What you're actively working on right now -->
-- **Task**: (none)
-- **Status**: idle
-- **Next step**: —
+(idle)
 
-## Active Context
-<!-- Corrections, decisions, names, values from this session -->
-<!-- Format: bullet points, newest first -->
+## Recent Context
+_Corrections, decisions, names, values — newest first._
 
 ## Pending Decisions
-<!-- Things waiting on Leo's input -->
+_Things waiting on Leo's input._
 
 ## Session Notes
-<!-- Anything that must survive compaction but doesn't fit above -->
+_Anything that must survive compaction but doesn't fit above._

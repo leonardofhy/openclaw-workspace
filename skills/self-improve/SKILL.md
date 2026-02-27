@@ -23,6 +23,7 @@ Log mistakes, corrections, and best practices so future sessions don't repeat th
 | Knowledge was outdated | `learn.py log -c knowledge_gap -s "..."` |
 | Found better approach | `learn.py log -c best_practice -s "..."` |
 | Recurring gotcha | `learn.py log -c gotcha -k "pattern.key" -s "..."` |
+| Mark issue fixed | `learn.py resolve ERR-002 -n "fixed by ..."` |
 | Check pending items | `learn.py review` |
 | Find promotion candidates | `learn.py review --promote-ready` |
 | Search past issues | `learn.py search "keyword"` |
@@ -34,23 +35,26 @@ Log mistakes, corrections, and best practices so future sessions don't repeat th
 # All commands
 python3 skills/self-improve/scripts/learn.py <command>
 
-# Log a learning
-learn.py log -c <category> -p <priority> -s "summary" [-d "details"] [-a "action"] [-k "pattern.key"]
+# Log a learning (--force skips dedup)
+learn.py log -c <category> -p <priority> -s "summary" [-d "details"] [-a "action"] [-k "pattern.key"] [--force]
 
-# Log an error
-learn.py error -s "summary" -e "error message" [-f "fix"] [--prevention "how to avoid"]
+# Log an error (--force skips dedup, -k for pattern key)
+learn.py error -s "summary" -e "error message" [-f "fix"] [--prevention "..."] [-k "pattern.key"] [--force]
 
-# Search
-learn.py search "keyword"
+# Mark as resolved (works on both LRN and ERR)
+learn.py resolve <ID> [-n "resolution notes"]
 
-# Review pending
-learn.py review [--promote-ready]
+# Search (--json for machine output)
+learn.py search "keyword" [--json]
 
-# Promote
-learn.py promote <ID> --to <AGENTS.md|SOUL.md|TOOLS.md|MEMORY.md|PROACTIVE.md|HEARTBEAT.md>
+# Review pending (--json for automation)
+learn.py review [--promote-ready] [--json]
+
+# Promote (works on both LRN and ERR)
+learn.py promote <ID> --to <AGENTS.md|SOUL.md|TOOLS.md|MEMORY.md|PROACTIVE.md|HEARTBEAT.md|SESSION-STATE.md>
 
 # Stats overview
-learn.py stats
+learn.py stats [--json]
 ```
 
 ### Categories

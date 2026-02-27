@@ -2,12 +2,13 @@
 """Self-improvement CLI — log learnings/errors, search for patterns, review, promote.
 
 Usage:
-    python3 learn.py log -c correction -p high -s "summary" [-d "details"] [-a "action"] [-k "pattern.key"]
-    python3 learn.py error -s "summary" -e "error msg" [-f "fix"] [--prevention "how to avoid"]
+    python3 learn.py log -c correction -p high -s "summary" [-d "details"] [-a "action"] [-k "pattern.key"] [--force]
+    python3 learn.py error -s "summary" -e "error msg" [-f "fix"] [--prevention "..."] [-k "pattern.key"]
+    python3 learn.py resolve <ID> [-n "resolution notes"]
     python3 learn.py search "keyword"
-    python3 learn.py review [--promote-ready]
-    python3 learn.py promote LRN-003 --to TOOLS.md
-    python3 learn.py stats
+    python3 learn.py review [--promote-ready] [--json]
+    python3 learn.py promote <ID> --to TOOLS.md
+    python3 learn.py stats [--json]
     python3 learn.py migrate-known-issues
 """
 
@@ -46,14 +47,20 @@ def find_similar(store: JsonlStore, summary: str, pattern_key: str | None = None
     """Find existing entries similar to the given summary or matching pattern_key."""
     items = store.load()
     matches = []
+    seen_ids = set()
     for item in items:
+        item_id = item.get("id", "")
         # Exact pattern_key match is strongest signal
         if pattern_key and item.get("pattern_key") == pattern_key:
-            matches.append(item)
+            if item_id not in seen_ids:
+                matches.append(item)
+                seen_ids.add(item_id)
             continue
         # Fuzzy summary match
         if similarity(item.get("summary", ""), summary) >= threshold:
-            matches.append(item)
+            if item_id not in seen_ids:
+                matches.append(item)
+                seen_ids.add(item_id)
     return matches
 
 
@@ -63,21 +70,26 @@ def cmd_log(args):
     """Log a learning entry."""
     store = JsonlStore(LEARNINGS_PATH, prefix="LRN")
 
-    # Check for similar existing entries
-    similar = find_similar(store, args.summary, args.pattern_key)
-    if similar:
-        # Bump recurrence on best match
-        best = similar[0]
-        new_recurrence = best.get("recurrence", 1) + 1
-        store.update(best["id"], {
-            "recurrence": new_recurrence,
-            "last_seen": today(),
-            "details": args.details or best.get("details", ""),
-        })
-        print(f"🔁 Bumped recurrence on {best['id']}: \"{best['summary']}\" (now {new_recurrence}x)")
-        if new_recurrence >= PROMOTION_THRESHOLD:
-            print(f"   ⚡ PROMOTION READY — recurrence >= {PROMOTION_THRESHOLD}. Run: learn.py promote {best['id']} --to <target>")
-        return
+    # Check for similar existing entries (skip if --force)
+    if not args.force:
+        similar = find_similar(store, args.summary, args.pattern_key or None)
+        if similar:
+            best = similar[0]
+            new_recurrence = best.get("recurrence", 1) + 1
+            updates = {
+                "recurrence": new_recurrence,
+                "last_seen": today(),
+            }
+            # Only overwrite details/action if new ones are provided
+            if args.details:
+                updates["details"] = args.details
+            if args.action:
+                updates["action"] = args.action
+            store.update(best["id"], updates)
+            print(f"🔁 Bumped recurrence on {best['id']}: \"{best['summary']}\" (now {new_recurrence}x)")
+            if new_recurrence >= PROMOTION_THRESHOLD:
+                print(f"   ⚡ PROMOTION READY — recurrence >= {PROMOTION_THRESHOLD}. Run: learn.py promote {best['id']} --to <target>")
+            return
 
     # New entry
     entry = {
@@ -103,25 +115,33 @@ def cmd_error(args):
     """Log an error entry."""
     store = JsonlStore(ERRORS_PATH, prefix="ERR")
 
-    # Check for similar existing errors
-    similar = find_similar(store, args.summary)
-    if similar:
-        best = similar[0]
-        new_recurrence = best.get("recurrence", 1) + 1
-        store.update(best["id"], {
-            "recurrence": new_recurrence,
-            "last_seen": today(),
-        })
-        print(f"🔁 Bumped recurrence on {best['id']}: \"{best['summary']}\" (now {new_recurrence}x)")
-        return
+    # Check for similar existing errors (skip if --force)
+    if not args.force:
+        similar = find_similar(store, args.summary, args.pattern_key or None)
+        if similar:
+            best = similar[0]
+            new_recurrence = best.get("recurrence", 1) + 1
+            updates = {
+                "recurrence": new_recurrence,
+                "last_seen": today(),
+            }
+            if args.fix:
+                updates["fix"] = args.fix
+                updates["status"] = "resolved"
+            if args.prevention:
+                updates["prevention"] = args.prevention
+            store.update(best["id"], updates)
+            print(f"🔁 Bumped recurrence on {best['id']}: \"{best['summary']}\" (now {new_recurrence}x)")
+            return
 
     entry = {
         "date": today(),
-        "status": "pending" if not args.fix else "resolved",
+        "status": "resolved" if args.fix else "pending",
         "summary": args.summary,
         "error": args.error or "",
         "fix": args.fix or "",
         "prevention": args.prevention or "",
+        "pattern_key": args.pattern_key or "",
         "recurrence": 1,
         "first_seen": today(),
         "last_seen": today(),
@@ -130,6 +150,37 @@ def cmd_error(args):
     result = store.append(entry)
     status = "resolved" if args.fix else "pending"
     print(f"✅ Logged {result['id']} ({status}): {args.summary}")
+
+
+def cmd_resolve(args):
+    """Mark an entry as resolved."""
+    entry_id = args.entry_id.upper()
+    # Determine which store
+    if entry_id.startswith("LRN"):
+        store = JsonlStore(LEARNINGS_PATH, prefix="LRN")
+    elif entry_id.startswith("ERR"):
+        store = JsonlStore(ERRORS_PATH, prefix="ERR")
+    else:
+        print(f"❌ Unknown ID prefix: {entry_id}. Expected LRN-xxx or ERR-xxx", file=sys.stderr)
+        sys.exit(1)
+
+    item = store.find(entry_id)
+    if not item:
+        print(f"❌ {entry_id} not found", file=sys.stderr)
+        sys.exit(1)
+
+    if item.get("status") == "resolved":
+        print(f"⚠️  {entry_id} is already resolved")
+        return
+
+    updates = {"status": "resolved", "last_seen": today()}
+    if args.notes:
+        if entry_id.startswith("LRN"):
+            updates["action"] = args.notes
+        else:
+            updates["fix"] = args.notes
+    store.update(entry_id, updates)
+    print(f"✅ {entry_id} marked as resolved")
 
 
 def cmd_search(args):
@@ -147,6 +198,10 @@ def cmd_search(args):
         searchable = " ".join(str(v) for v in item.values()).lower()
         if keyword in searchable:
             results.append(item)
+
+    if args.json:
+        print(json.dumps(results, ensure_ascii=False, indent=2))
+        return
 
     if not results:
         print(f"No results for \"{args.keyword}\"")
@@ -169,6 +224,23 @@ def cmd_review(args):
 
     learnings = lrn_store.load()
     errors = err_store.load()
+
+    if args.json:
+        pending_lrn = [i for i in learnings if i.get("status") == "pending"]
+        pending_err = [i for i in errors if i.get("status") == "pending"]
+        promote_candidates = [i for i in learnings
+                              if i.get("recurrence", 1) >= PROMOTION_THRESHOLD
+                              and i.get("status") != "promoted"]
+        out = {
+            "pending_learnings": len(pending_lrn),
+            "pending_errors": len(pending_err),
+            "promote_ready": len(promote_candidates),
+            "promote_candidates": [{"id": i["id"], "summary": i["summary"],
+                                     "recurrence": i.get("recurrence", 1)}
+                                    for i in promote_candidates],
+        }
+        print(json.dumps(out, ensure_ascii=False, indent=2))
+        return
 
     if args.promote_ready:
         candidates = [i for i in learnings
@@ -206,40 +278,53 @@ def cmd_review(args):
 
 
 def cmd_promote(args):
-    """Mark a learning as promoted and show what to add to target file."""
-    store = JsonlStore(LEARNINGS_PATH, prefix="LRN")
-    item = store.find(args.entry_id)
+    """Mark an entry as promoted and show what to add to target file."""
+    entry_id = args.entry_id.upper()
+
+    # Support promoting both learnings and errors
+    if entry_id.startswith("LRN"):
+        store = JsonlStore(LEARNINGS_PATH, prefix="LRN")
+    elif entry_id.startswith("ERR"):
+        store = JsonlStore(ERRORS_PATH, prefix="ERR")
+    else:
+        print(f"❌ Unknown ID prefix: {entry_id}. Expected LRN-xxx or ERR-xxx", file=sys.stderr)
+        sys.exit(1)
+
+    item = store.find(entry_id)
     if not item:
-        print(f"❌ {args.entry_id} not found", file=sys.stderr)
+        print(f"❌ {entry_id} not found", file=sys.stderr)
         sys.exit(1)
 
     if item.get("status") == "promoted":
-        print(f"⚠️  {args.entry_id} already promoted to {item.get('promoted_to')}")
+        print(f"⚠️  {entry_id} already promoted to {item.get('promoted_to')}")
         return
 
     target = args.to
     valid_targets = ("AGENTS.md", "SOUL.md", "TOOLS.md", "MEMORY.md",
-                     "PROACTIVE.md", "HEARTBEAT.md")
+                     "PROACTIVE.md", "HEARTBEAT.md", "SESSION-STATE.md")
     if target not in valid_targets:
         print(f"❌ Invalid target. Choose from: {', '.join(valid_targets)}", file=sys.stderr)
         sys.exit(1)
 
     # Update status
-    store.update(args.entry_id, {
+    store.update(entry_id, {
         "status": "promoted",
         "promoted_to": target,
     })
 
-    # Show what to add
-    print(f"✅ {args.entry_id} marked as promoted → {target}")
+    # Generate promotion text based on entry type
+    summary = item.get("summary", "")
+    if entry_id.startswith("ERR"):
+        prevention = item.get("prevention", "") or item.get("fix", "")
+        promotion_text = f"- **{summary}** — {prevention}"
+    else:
+        action = item.get("action", "") or item.get("details", "")
+        promotion_text = f"- **{summary}** — {action}"
+
+    print(f"✅ {entry_id} marked as promoted → {target}")
     print(f"\n📋 Add this to {target}:")
     print(f"---")
-    summary = item.get("summary", "")
-    action = item.get("action", "")
-    if action:
-        print(f"- **{summary}** — {action}")
-    else:
-        print(f"- **{summary}** — {item.get('details', '')}")
+    print(promotion_text)
     print(f"---")
     print(f"\n(Manually add the above to {target}, then commit.)")
 
@@ -252,18 +337,35 @@ def cmd_stats(args):
     learnings = lrn_store.load()
     errors = err_store.load()
 
-    lrn_pending = sum(1 for i in learnings if i.get("status") == "pending")
-    lrn_resolved = sum(1 for i in learnings if i.get("status") == "resolved")
-    lrn_promoted = sum(1 for i in learnings if i.get("status") == "promoted")
-    err_pending = sum(1 for i in errors if i.get("status") == "pending")
-    err_resolved = sum(1 for i in errors if i.get("status") == "resolved")
+    lrn_by_status = {}
+    for i in learnings:
+        s = i.get("status", "unknown")
+        lrn_by_status[s] = lrn_by_status.get(s, 0) + 1
+
+    err_by_status = {}
+    for i in errors:
+        s = i.get("status", "unknown")
+        err_by_status[s] = err_by_status.get(s, 0) + 1
+
     promote_ready = sum(1 for i in learnings
                         if i.get("recurrence", 1) >= PROMOTION_THRESHOLD
                         and i.get("status") != "promoted")
 
+    if args.json:
+        out = {
+            "learnings": {"total": len(learnings), "by_status": lrn_by_status},
+            "errors": {"total": len(errors), "by_status": err_by_status},
+            "promote_ready": promote_ready,
+        }
+        print(json.dumps(out, ensure_ascii=False, indent=2))
+        return
+
+    lrn_parts = ", ".join(f"{v} {k}" for k, v in sorted(lrn_by_status.items()))
+    err_parts = ", ".join(f"{v} {k}" for k, v in sorted(err_by_status.items()))
+
     print(f"📊 Self-Improvement Stats")
-    print(f"  Learnings: {len(learnings)} total ({lrn_pending} pending, {lrn_resolved} resolved, {lrn_promoted} promoted)")
-    print(f"  Errors:    {len(errors)} total ({err_pending} pending, {err_resolved} resolved)")
+    print(f"  Learnings: {len(learnings)} total ({lrn_parts})")
+    print(f"  Errors:    {len(errors)} total ({err_parts})")
     if promote_ready:
         print(f"  ⚡ {promote_ready} learning(s) ready for promotion")
 
@@ -286,6 +388,7 @@ def cmd_migrate(args):
             "error": "Manually added 'guilds' key disappears after gateway restart",
             "fix": "Use `openclaw config set channels.discord.groupPolicy open`",
             "prevention": "Always use `openclaw config set`, never edit openclaw.json directly",
+            "pattern_key": "config.direct_edit_fails",
             "recurrence": 1, "first_seen": "2026-02-27", "last_seen": "2026-02-27",
             "see_also": [],
         },
@@ -296,6 +399,7 @@ def cmd_migrate(args):
             "error": "task-board.md not found, experiments.jsonl written to wrong location",
             "fix": "Use `find_workspace()` (git rev-parse) instead of fragile `.parent` chains",
             "prevention": "New scripts: always use shared.jsonl_store.find_workspace() or verify path with print",
+            "pattern_key": "path.fragile_parent_chain",
             "recurrence": 2, "first_seen": "2026-02-27", "last_seen": "2026-02-27",
             "see_also": [],
         },
@@ -306,6 +410,7 @@ def cmd_migrate(args):
             "error": "skills/memory/SKILL.md and fetch_latest_diary.py gone",
             "fix": "Restored from git: `git show HEAD~1:path > file`",
             "prevention": "`ls` before `rm -rf`; target specific subdirectory not parent; use `trash` over `rm`",
+            "pattern_key": "safety.destructive_rm",
             "recurrence": 1, "first_seen": "2026-02-27", "last_seen": "2026-02-27",
             "see_also": [],
         },
@@ -316,6 +421,7 @@ def cmd_migrate(args):
             "error": "exec command timeout or disconnect when restarting gateway",
             "fix": "`nohup bash -c 'sleep 2 && systemctl --user restart openclaw-gateway' &`",
             "prevention": "Use nohup for gateway restart, or ask Leo to run manually",
+            "pattern_key": "gateway.restart_kills_session",
             "recurrence": 1, "first_seen": "2026-02-27", "last_seen": "2026-02-27",
             "see_also": [],
         },
@@ -345,6 +451,7 @@ def main():
     p_log.add_argument("-d", "--details", default="")
     p_log.add_argument("-a", "--action", default="")
     p_log.add_argument("-k", "--pattern-key", default="")
+    p_log.add_argument("--force", action="store_true", help="Skip dedup check, create new entry")
 
     # error
     p_err = sub.add_parser("error", help="Log an error")
@@ -352,23 +459,33 @@ def main():
     p_err.add_argument("-e", "--error", default="")
     p_err.add_argument("-f", "--fix", default="")
     p_err.add_argument("--prevention", default="")
+    p_err.add_argument("-k", "--pattern-key", default="")
+    p_err.add_argument("--force", action="store_true", help="Skip dedup check, create new entry")
+
+    # resolve
+    p_resolve = sub.add_parser("resolve", help="Mark an entry as resolved")
+    p_resolve.add_argument("entry_id", help="e.g. LRN-003 or ERR-002")
+    p_resolve.add_argument("-n", "--notes", default="", help="Resolution notes")
 
     # search
     p_search = sub.add_parser("search", help="Search learnings and errors")
     p_search.add_argument("keyword")
+    p_search.add_argument("--json", action="store_true", help="JSON output")
 
     # review
     p_review = sub.add_parser("review", help="Review pending items")
     p_review.add_argument("--promote-ready", action="store_true",
                           help="Show only items ready for promotion")
+    p_review.add_argument("--json", action="store_true", help="JSON output")
 
     # promote
-    p_promote = sub.add_parser("promote", help="Mark a learning as promoted")
-    p_promote.add_argument("entry_id", help="e.g. LRN-003")
+    p_promote = sub.add_parser("promote", help="Mark an entry as promoted")
+    p_promote.add_argument("entry_id", help="e.g. LRN-003 or ERR-002")
     p_promote.add_argument("--to", required=True, help="Target file (e.g. TOOLS.md)")
 
     # stats
-    sub.add_parser("stats", help="Show stats overview")
+    p_stats = sub.add_parser("stats", help="Show stats overview")
+    p_stats.add_argument("--json", action="store_true", help="JSON output")
 
     # migrate
     sub.add_parser("migrate-known-issues", help="Migrate known-issues.md to errors.jsonl")
@@ -377,6 +494,7 @@ def main():
     cmd_map = {
         "log": cmd_log,
         "error": cmd_error,
+        "resolve": cmd_resolve,
         "search": cmd_search,
         "review": cmd_review,
         "promote": cmd_promote,

@@ -10,14 +10,18 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 
 Before doing anything else:
 
-1. Read `SOUL.md` — this is who you are
-2. Read `USER.md` — this is who you're helping
-3. Read `SESSION-STATE.md` — your active working memory (recover context from last session)
-4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
-5. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
-6. **If `memory/working-buffer.md` status is ACTIVE**: Read it, extract important context → update SESSION-STATE.md
-7. Run `python3 skills/task-check.py` — scan task board for stale/overdue items
-8. Read `PROACTIVE.md` — your proactive agent protocol (stuck detection, task switching, unstuck)
+**Core (all sessions):**
+1. Read `SESSION-STATE.md` — check **Last Updated** timestamp. If stale (>24h), treat as empty.
+2. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+3. **If buffer ACTIVE**: Read `memory/working-buffer.md` → extract important context → update SESSION-STATE.md → set buffer to INACTIVE
+
+**Main session only** (direct chat with Leo):
+4. Read `SOUL.md`, `USER.md`
+5. Read `MEMORY.md`
+6. Run `python3 skills/task-check.py` — scan task board for stale/overdue items
+7. Read `PROACTIVE.md` — stuck detection, task switching, VBR
+
+**Cron/isolated sessions**: skip steps 4-7 (save tokens).
 
 Don't ask permission. Just do it.
 
@@ -33,18 +37,19 @@ Don't ask permission. Just do it.
 - 🔢 **Specific values** — Numbers, dates, IDs, URLs, config values
 
 **If ANY of these appear:**
-1. **STOP** — Do not start composing your response
-2. **WRITE** — Update `SESSION-STATE.md` with the detail
-3. **THEN** — Respond to your human
+1. **FIRST tool call** = Edit `SESSION-STATE.md` (update "Last Updated" timestamp + add the detail under "Recent Context")
+2. **THEN** respond to your human in the same turn
 
-The urge to respond is the enemy. The detail feels obvious in context — but context will vanish. Write first.
+**Concrete**: Your first `Edit` call in the response should target SESSION-STATE.md. Don't "plan to write it later" — context will vanish. Write first, respond second, same turn.
 
 ## 🛟 Working Buffer (Danger Zone)
 
-When context usage hits ~60% (check via `session_status`):
-1. Set `memory/working-buffer.md` status to **ACTIVE** with timestamp
-2. After EVERY exchange: append human's message summary + your response summary
-3. Keep going until compaction happens
+**When to activate**: After every ~10 exchanges in a long session, run `session_status`. If context feels large (long conversation, many tool calls), start buffering proactively. Better too early than too late.
+
+**Activation steps:**
+1. Edit `memory/working-buffer.md`: set status to **ACTIVE**, add timestamp
+2. After EVERY exchange from this point: append human's message summary + your response summary
+3. Keep going until compaction happens (buffer survives)
 
 **Format:**
 ```markdown
@@ -59,15 +64,12 @@ When context usage hits ~60% (check via `session_status`):
 
 **Auto-trigger when:** session starts with `<summary>` tag, or you detect missing context.
 
-**Recovery steps (in order):**
-1. Read `memory/working-buffer.md` — raw danger-zone exchanges
-2. Read `SESSION-STATE.md` — active task state
-3. Read today's + yesterday's `memory/YYYY-MM-DD.md`
-4. If still missing context: `memory_search` for relevant terms
-5. Extract important context from buffer → update SESSION-STATE.md
+Follow the boot flow above (steps 1-3 handle buffer + SESSION-STATE + daily notes). If still missing context after boot flow, escalate:
+4. `memory_search` for relevant terms
+5. Check `memory/knowledge.md` for technical notes
 6. Present: "Recovered from [source]. Last task was X. Continuing."
 
-**Never ask "what were we doing?" if the buffer has the conversation.**
+**Never ask "what were we doing?" if the buffer or SESSION-STATE has the answer.**
 
 ### 🔧 Before You Ask "Do We Have X?"
 
@@ -273,20 +275,13 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 
 ## 🔄 Self-Improvement
 
-When you make a mistake, get corrected, or discover something non-obvious — **log it**.
+When you make a mistake, get corrected, or discover something non-obvious — **log it** via `python3 skills/self-improve/scripts/learn.py`.
 
-**Detection triggers** (log when you notice these):
-- User corrects you → `learn.py log -c correction`
-- Command fails unexpectedly → `learn.py error`
-- Your knowledge was wrong/outdated → `learn.py log -c knowledge_gap`
-- Found a better approach after the fact → `learn.py log -c best_practice`
-- Non-obvious gotcha that'll trip you up again → `learn.py log -c gotcha -k "pattern.key"`
+Quick: `learn.py log -c correction -s "..."` | `learn.py error -s "..." -f "..."` | `learn.py resolve <ID>`
 
-**CLI**: `python3 skills/self-improve/scripts/learn.py <command>`
+Full reference: `skills/self-improve/SKILL.md` (detection triggers, categories, promotion rules).
 
-**Promotion**: When `recurrence >= 3`, promote to AGENTS.md / TOOLS.md / SOUL.md. See `skills/self-improve/SKILL.md` for full reference.
-
-**Rule**: Don't log everything. Only log things that are *non-obvious* and would save future-you time. Quick facts go to `knowledge.md` via remember skill; structured lessons go here.
+**Rule**: Only log *non-obvious* things that would save future-you time. Quick facts → `knowledge.md` (remember skill). Structured lessons → `learn.py`.
 
 ## Make It Yours
 
