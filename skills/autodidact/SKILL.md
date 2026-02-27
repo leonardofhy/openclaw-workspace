@@ -45,6 +45,8 @@ Priority rules:
 - If Leo gave feedback → **plan** to integrate it
 - **Every 5th cycle → forced micro-reflect**（合併筆記、刪低價值、< 2 min）
 - Default: **learn** (knowledge compounds)
+- 夜間（23:00–08:00）**不是**自動 skip 理由；只要有高價值 survey/整合任務就照常執行
+- ⚠️ **build / skill-up 需要 Leo 明確批准**。當前階段重心 = 讀論文 + 挖掘新想法，不要自己跑去寫 code
 
 Hygiene rhythm (non-negotiable):
 - **Every 5 cycles** → micro-reflect (merge + prune)
@@ -162,7 +164,8 @@ Core principles:
 
 ## Constraints
 
-- Each cycle: < 90 seconds compute (sonnet), skip if no high-value action
+- Each cycle: < 90 seconds compute (sonnet)
+- Skip only when truly no high-value action（不要因為夜間就自動跳過）
 - Depth > breadth (1 deep read > 5 skims)
 - Always connect learning back to goals; flag uncertainty honestly
 - Don't spam Leo — report only genuine insights

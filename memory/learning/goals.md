@@ -82,13 +82,13 @@
 
 ## Must-Read List（按優先級）
 1. [ ] **AudioLens** (智凱哥 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
-2. [ ] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882]
+2. [x] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882] ✅ 2026-02-26 deep read cycle #6
 3. [ ] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027]
 4. [ ] **Activation patching best practices** (Heimersheim & Nanda) — 避免 pitfalls
 5. [ ] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541]
 6. [ ] **Causal abstraction** (Geiger et al.) — 因果介入的理論基礎
 7. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
-8. [ ] **SAEBench** — SAE evaluation methodology
+8. [x] **SAEBench** (Karvonen, Nanda et al., ICML 2025) — 8-metric multi-category evaluation; Matryoshka SAE wins disentanglement; proxy metrics ≠ quality; AudioSAEBench template identified; "Grounding Sensitivity" as novel metric ✅ 2026-02-27 cycle #38
 9. [ ] ICML 2025 MI Tutorial materials
 10. [ ] **Interspeech 2025 Tutorial** — "Interpretability for Speech Models"（結構化入門）
 
@@ -110,6 +110,21 @@
 | Interspeech 2026 | PDF 2026-03-05 | AudioMatters |
 | NeurIPS 2026 | ~2026-05 | Listen vs Guess (if ready) |
 | EMNLP 2026 | ~2026-06 | Audio InterpBench |
+
+## 📌 狀態更新 (2026-02-26 19:00)
+
+**AudioMatters CMT deadline passed** → Leo's focus now shifts fully to mech interp.
+
+**Immediate next steps (post-deadline):**
+1. 📖 Deep-read **AudioSAE** (arXiv:2602.05027) — Track 2 anchor paper
+2. 📖 Read **SPIRIT** (arXiv:2505.13541) — safety track anchor paper
+3. 📖 Read **Activation patching best practices** (Heimersheim & Nanda) — 避免 pitfalls
+4. 💡 每篇讀完產出 1-2 個具體 research idea（與 10 core questions 對照）
+5. Contact 智凱哥 about AudioLens codebase access
+
+**⚠️ Leo 指示 (2026-02-26 21:10)：不要實作，專注挖掘新想法。**
+**補充指示 (2026-02-27 00:35)：夜間不需要自動 skip，可持續自主研究；只是 Leo 即時 feedback 機率較低。**
+**Recommended next cycles:** `learn` — 連續讀 must-read list，每篇產出 ideas × questions × gaps。Build 需 Leo 明確批准。
 
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
