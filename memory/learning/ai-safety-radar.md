@@ -217,3 +217,21 @@ No new posts this cycle (scan: AF 0 new, LW 0 new). Backlog: 21 unread. Picked 2
 Scan: AF +1 new (cross-posted LW), LW non-safety only. Backlog stable.
 **[pick]**
 - **"Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior"** (MATS 9.0, Neel Nanda et al.) — Practical framework for forensically diagnosing LLM misbehavior (scheming, deception, sandbagging): CoT reading + counterfactual prompting + convergent black-box evidence; direct relevance to oversight robustness and distinguishing genuine misalignment from confusion. <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
+
+## 2026-02-27 22:45 (CST)
+Scan: AF rate-limited (429), LW +0 new high-signal (only "AI Security Bootcamp Singapore" call for applications, 3 karma — already flagged last cycle). No new posts.
+**[backlog-pick]** *How will we do SFT on models with opaque reasoning?* (Alignment Forum, Feb 21)
+- Why: A concrete near-term technical problem that most safety work sidesteps — how do you do supervised fine-tuning when the model's reasoning is hidden behind extended thinking or otherwise unverifiable chain-of-thought? If SFT is reinforcing unobserved (possibly misaligned) reasoning steps, our training signal is effectively blind. Directly relevant to scalable oversight, interpretability gaps in training pipelines, and the limits of RLHF-style feedback when cognition is opaque.
+- Link: <https://www.alignmentforum.org/posts/GJTzhQgaRWLFJkPbt/how-will-we-do-sft-on-models-with-opaque-reasoning>
+
+---
+**2026-02-27 23:15 (Fri)** — scan: AF rate-limited (429), LW +0 new high-signal (only: AI Security Bootcamp Singapore [3 karma], Quantum Immortality [neg karma], Competitive Debate [non-safety]) | backlog: ~17 unread
+
+**[backlog-pick]** *A Positive Case for Faithfulness: LLM Self-Explanations Help Predict Model Behavior* (LessWrong / crosspost, Feb 2026)
+- Why: Empirical finding that model self-explanations are genuinely predictive of behavior — not merely post-hoc rationalization. This is a rare positive result for scalable oversight: if self-reports carry signal, they can be used in monitoring pipelines. Directly complements today's earlier picks on model incrimination, opaque SFT, and monitoring robustness — a data point that the "just ask the model" approach may not be entirely vacuous.
+- Link: https://www.lesswrong.com/posts/Y4MJRniZ6noumncKJ/a-positive-case-for-faithfulness-llm-self-explanations-help
+
+---
+**2026-02-27 23:45 (Fri)** — scan: AF rate-limited (429), LW +1 new ("Sam Altman says OpenAI shares Anthropic's red lines in Pentagon fight", karma: 6 — low signal, too fresh) | backlog exhausted for today
+
+No high-signal update. All frontpage posts with meaningful karma have been captured in earlier cycles. 30 picks logged today. Close-of-day scan complete.
