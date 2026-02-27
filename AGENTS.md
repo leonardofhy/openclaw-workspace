@@ -15,6 +15,7 @@ Before doing anything else:
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 5. Run `python3 skills/task-check.py` — scan task board for stale/overdue items
+6. Read `PROACTIVE.md` — your proactive agent protocol (stuck detection, task switching, unstuck)
 
 Don't ask permission. Just do it.
 
