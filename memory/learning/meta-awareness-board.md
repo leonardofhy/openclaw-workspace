@@ -35,7 +35,7 @@
 
 ## Next 3 Meta Cycles
 
-1. Build a lightweight novelty classifier for cycle outputs (new paper? new hypothesis? new artifact?)
+1. ~~Build a lightweight novelty classifier for cycle outputs~~ ⏸ DEFERRED — needs Leo (build), not this cycle
 2. ~~Add unblock request template (when blocked > 2 cycles)~~ ✅ DONE cycle #51 → `experiment-queue.md` created with unblock checklist + execution queue
 3. ~~Run one weekly cron audit: keep / edit / disable jobs by value~~ ✅ DONE cycle #52 → audit complete, findings in 2026-02-28_cycle52.md
 
@@ -71,6 +71,32 @@ Rule: If nothing new, report = skip notice only (2 lines max). Never repeat cont
 - ⚠️ Dead job: `提醒-SL-Weekly-Meeting` — disabled + past deadline (Feb 26) + error state → flag for Leo to delete
 - ⚠️ Sunday 21:00 congestion: 3-4 jobs fire simultaneously (週報 + 週排程生成 + weekly-research-summary + NTUAIS reset) — acceptable, all isolated sessions
 - ✅ Skip guard working: 55% skip rate is correct (execution-blocked), meta-audit triggered after 5 consecutive skips
+
+## Q7 Answer: Synthesis Threshold Rule (✅ cycle #56)
+
+**Question:** When does synthesis produce more value than continued reading?
+
+**Empirical finding:** After ~10 deep reads without an experiment, marginal paper novelty drops significantly. Synthesis cycles (#50-55) produced 5 system improvements + 1 paper framework — higher novelty/token ratio than late paper reads.
+
+**Rule (applied now):**
+> After `papers_read_since_last_experiment >= 10`, force a **reflect (synthesis)** cycle before the next learn.
+
+This is a hygiene rule (non-directional), no Leo approval needed. Already active.
+
+---
+
+## Week 9 KPI Baseline (Feb 23-28)
+
+| KPI | Week 9 Actual | Week 10 Target |
+|-----|--------------|----------------|
+| `skip_ratio` | 48% (27/56) | ≤40% |
+| `novelty_ratio` | 63% (35/56) | ≥65% |
+| `meta_fix_count` | 6 (first week, catch-up) | 1-2 |
+| `blocked_to_action_time` | ~30h (too long) | <2h (new guard) |
+
+Assessment: Week 9 was strong for a first run. Skip guard now limits blocked_to_action_time to ~1h max.
+
+---
 
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
