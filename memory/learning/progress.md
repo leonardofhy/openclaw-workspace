@@ -365,30 +365,29 @@ Priority queue for Leo's first session:
 - Knowledge-graph: fully updated ✅
 - **Queue: DEPLETED — awaiting Leo approval to begin IIT patching experiment**
 
-## Day 2 Afternoon Stats (after cycle #40 — 14:01 PM)
+## Day 2 Afternoon Stats (after cycle #41 reflect — 15:01 PM)
 - Papers read (deep): **14 total** (core reads) + 3 scanned deeply in cycle #40
 - Papers scanned: 26+ (3 new: 2602.23136, 2602.17598, 2602.11488; + 2602.18899 phonological)
-- Research gaps identified: **19** (+GMI no layer map #14, +no layer patching sweep #15, +no causal patching on conflict stimuli #16)
-- Paper ideas: 7 (+Listen Layer Hypothesis → Track 3 paper sharper title)
+- Research gaps identified: **16** (corrected: 16 unique gaps, not 19)
+- Paper ideas: 6 crystallized (knowledge-graph section H)
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1
 - Experiment proposals: 2 (ready for Leo approval)
 - **Must-read list: FULLY COMPLETED ✅** (all 10 items done, incl. SAEBench)
 - **Field status: 5 papers now characterize audio-vs-text modality question; NONE do layer-wise causal patching → Leo owns this gap**
 - **NEW SYNTHESIS: "Listen Layer Hypothesis"** — Leo's Track 3 contribution is now sharper and better motivated
+- **BOTTLENECK: Leo approval + real speech file + venv setup** — research is execution-blocked, not idea-blocked
 
-## Leo's Updated Action Queue (14:01 PM Feb 27 — after cycle #40) ⭐ UPDATED
+## Leo's Updated Action Queue (15:01 PM Feb 27 — after cycle #41 reflect) ⭐ UPDATED
 1. **Approve IIT experiment** — Experiment 1 in knowledge-graph (MacBook-feasible, NNsight, ~3h)
 2. **Real speech test** — whisper_hook_demo.py with actual .wav file → validate Triple Convergence
 3. **Create venv** — `python3 -m venv ~/audio-mi-env && source ~/audio-mi-env/bin/activate && pip install nnsight openai-whisper`
 4. **Contact 智凱哥** about AudioLens codebase access
-5. **⭐ NEW — Read Cascade Equivalence (2602.17598)** — directly overlaps Track 3; uses LEACE not patching; Qwen2-Audio diverges from cascade = your target model
-6. **⭐ NEW — Read ALME (2602.11488)** — 57K conflict stimuli benchmark; LoRA ablation localizes text dominance to LLM; consider applying causal patching to their stimuli
-7. **⭐ NEW — Note Modality Collapse theory (2602.23136)** — GMI bound provides theoretical framework for why audio info is lost in decoder; use as motivation
-8. **⭐ NEW — "Listen Layer Hypothesis"** — synthesized from 5 papers: a small set of LLM attention heads are where audio is causally consulted; Leo's layer-wise patching localizes it; sharpen Track 3 paper title: "Localizing the Listen Layer in Speech LLMs"
-9. **⭐ AudioSAEBench design** — adopt SAEBench's 4-category multi-metric structure; add "Grounding Sensitivity" as novel audio-native metric (gc per feature); consider Matryoshka SAE
-10. **⭐ MiSTER-E framing**: Use MoE gating weights as motivation for Track 3 — "behavior shows modality dominance varies; mechanism is unknown; we localize causally via patching"
+5. **⭐ "Listen Layer Hypothesis"** — synthesized from 5 papers: small set of LLM attention heads = where audio causally consulted; Leo's layer-wise patching = only method that localizes this; paper title: "Localizing the Listen Layer in Speech LLMs"
+6. **⭐ AudioSAEBench design** — adopt SAEBench's 4-category multi-metric structure; add "Grounding Sensitivity" as novel audio-native metric (gc per feature)
+7. **⭐ ALME stimuli (2602.11488)** — 57K conflict stimuli already exist; Leo's causal patching on these stimuli = clean direct experiment (no need to generate own stimuli)
 
 | #38 | 2026-02-27 11:07 | learn | **SAEBench deep read** (arXiv:2503.09532, ICML 2025) — 8-metric framework (Concept Detection, Interpretability, Reconstruction, Feature Disentanglement); Matryoshka SAE wins on disentanglement; proxy metrics ≠ practical quality. NEW GAP #15: no equivalent for audio/speech models. AudioSAEBench template identified: + novel "Grounding Sensitivity" metric (gc per feature). **Must-read list NOW FULLY COMPLETED ✅** |
 | #39 | 2026-02-27 13:01 | learn | **arXiv scan (Feb 26/27 batch)** — API rate-limited; scanned 2 relevant papers: MiSTER-E (2602.23300, IISc/Microsoft) uses MoE gating (g_speech vs g_text) — behaviorally measures "Listen vs Guess" at logit level but non-mechanistic; strengthens Track 3 motivation ("behavior shows modality dominance → mechanism unknown → Leo localizes causally"). SemanticVocoder (2602.23333) = generation paper, irrelevant. Feb 27 arXiv batch not yet posted (~14:00 Taipei). |
 | #40 | 2026-02-27 14:01 | learn | **Feb 27 arXiv batch** — 3 major Track 3 papers: (1) Modality Collapse (2602.23136): GMI theory explains why audio info is encoded but decoder can't use it — Gap #14: no layer-wise causal map; (2) Cascade Equivalence (2602.17598): LEACE erasure confirms speech LLMs are implicit ASR cascades except Qwen2-Audio — Gap #15: no layer-wise patching sweep; (3) ALME (2602.11488): 57K audio-text conflict stimuli, text dominance localizes behaviorally to LLM reasoning — Gap #16: no causal layer patching on conflict stimuli. NEW SYNTHESIS: "Listen Layer Hypothesis" — Leo's Track 3 can localize where audio representations are causally consulted in speech LLMs. Competition very active (~2 papers/week). |
+| #41 | 2026-02-27 15:01 | reflect | **Forced reflect** (4 consecutive learns). State: 13 deep reads, 16 gaps, 6 paper ideas, 2 proposals. "Listen Layer Hypothesis" crystallized as sharpest Track 3 framing. **Bottleneck = Leo unblock**: IIT experiment approval + real .wav + venv. Field velocity: ~2 papers/week; zero causal layer-patching in field; Leo's gap still open. |
