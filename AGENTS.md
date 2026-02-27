@@ -215,6 +215,23 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## 🔄 Self-Improvement
+
+When you make a mistake, get corrected, or discover something non-obvious — **log it**.
+
+**Detection triggers** (log when you notice these):
+- User corrects you → `learn.py log -c correction`
+- Command fails unexpectedly → `learn.py error`
+- Your knowledge was wrong/outdated → `learn.py log -c knowledge_gap`
+- Found a better approach after the fact → `learn.py log -c best_practice`
+- Non-obvious gotcha that'll trip you up again → `learn.py log -c gotcha -k "pattern.key"`
+
+**CLI**: `python3 skills/self-improve/scripts/learn.py <command>`
+
+**Promotion**: When `recurrence >= 3`, promote to AGENTS.md / TOOLS.md / SOUL.md. See `skills/self-improve/SKILL.md` for full reference.
+
+**Rule**: Don't log everything. Only log things that are *non-obvious* and would save future-you time. Quick facts go to `knowledge.md` via remember skill; structured lessons go here.
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.

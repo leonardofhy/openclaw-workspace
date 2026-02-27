@@ -38,6 +38,11 @@
 - 今天的 memory/YYYY-MM-DD.md 是否存在
 - MEMORY.md 是否需要更新
 
+### 🔄 Self-Improvement Review（每週一次）
+- 跑 `python3 skills/self-improve/scripts/learn.py review`
+- 有 ⚡PROMOTE 的就執行 promotion（加到對應的 .md 檔）
+- 跑 `learn.py stats` 看整體趨勢
+
 ## 規則
 - 深夜 (23:00-08:00) 不發非緊急訊息
 - 工作匯報是唯一不能省的

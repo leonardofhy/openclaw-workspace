@@ -37,8 +37,8 @@ description: >
 - 加防禦性程式碼防止復發
 
 ### Step 5: Record（記錄）
-- 寫進 `references/known-issues.md`
-- 格式見下方
+- 用 self-improve skill 記錄：`python3 skills/self-improve/scripts/learn.py error -s "..." -e "..." -f "..." --prevention "..."`
+- 舊記錄在 `references/known-issues.md`（已遷移到 `memory/learnings/errors.jsonl`）
 
 ## 跨機器除錯
 
