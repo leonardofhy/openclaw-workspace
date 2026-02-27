@@ -219,9 +219,13 @@ def check_git():
               'git add -A && git commit && git push', fix_fn=_fix)
     else:
         check('Git status', 'ok', 'Clean')
-        rc2, out2, _ = sh(['git', 'log', 'origin/main..HEAD', '--oneline'], cwd=str(WORKSPACE))
+        # Compare against current branch's upstream, not hardcoded main
+        _, branch, _ = sh(['git', 'rev-parse', '--abbrev-ref', 'HEAD'], cwd=str(WORKSPACE))
+        upstream = f'origin/{branch}' if branch else 'origin/main'
+        rc2, out2, _ = sh(['git', 'log', f'{upstream}..HEAD', '--oneline'], cwd=str(WORKSPACE))
         if rc2 == 0 and out2:
-            check('Git unpushed', 'warn', f'{len(out2.splitlines())} commit(s) ahead', 'git push',
+            check('Git unpushed', 'warn', f'{len(out2.splitlines())} commit(s) ahead of {upstream}',
+                  'git push',
                   fix_fn=lambda: sh(['git', 'push'], cwd=str(WORKSPACE))[1])
         elif rc2 == 0:
             check('Git remote sync', 'ok', 'Up to date')
@@ -289,33 +293,59 @@ def check_delivery():
 
 
 def check_gateway():
-    # LaunchAgent
-    rc, out, _ = sh(['launchctl', 'list', 'ai.openclaw.gateway'])
-    if rc != 0:
-        check('LaunchAgent', 'crit', 'ai.openclaw.gateway not loaded', 'openclaw gateway start')
-    else:
-        la = load_json(Path('/dev/stdin')) if False else {}  # can't parse from out easily
-        try:
-            la = json.loads(out) if out.startswith('{') else {}
-        except Exception:
-            la = {}
-        pid = la.get('PID', 0)
-        last_exit = la.get('LastExitStatus', 0)
-        if pid:
-            check('LaunchAgent', 'ok', f'Running (pid {pid})')
-        elif last_exit:
-            check('LaunchAgent', 'warn', f'Not running (last exit {last_exit})', 'openclaw gateway start')
+    import platform
+    is_linux = platform.system() == 'Linux'
+
+    if is_linux:
+        # systemd check (WSL / Linux)
+        rc, out, _ = sh(['systemctl', '--user', 'is-active', 'openclaw-gateway'])
+        if rc == 0 and 'active' in out:
+            check('Gateway service', 'ok', f'systemd active')
         else:
-            check('LaunchAgent', 'ok', 'Registered')
+            # Check if service is installed
+            rc2, out2, _ = sh(['systemctl', '--user', 'status', 'openclaw-gateway'])
+            if 'could not be found' in (out2 or '').lower() or 'not-found' in (out or ''):
+                check('Gateway service', 'warn', 'systemd service not installed',
+                      'openclaw gateway start')
+            else:
+                check('Gateway service', 'warn', f'Not running ({out})',
+                      'openclaw gateway start')
+    else:
+        # macOS LaunchAgent
+        rc, out, _ = sh(['launchctl', 'list', 'ai.openclaw.gateway'])
+        if rc != 0:
+            check('Gateway service', 'crit', 'ai.openclaw.gateway not loaded',
+                  'openclaw gateway start')
+        else:
+            try:
+                la = json.loads(out) if out.startswith('{') else {}
+            except Exception:
+                la = {}
+            pid = la.get('PID', 0)
+            last_exit = la.get('LastExitStatus', 0)
+            if pid:
+                check('Gateway service', 'ok', f'Running (pid {pid})')
+            elif last_exit:
+                check('Gateway service', 'warn', f'Not running (last exit {last_exit})',
+                      'openclaw gateway start')
+            else:
+                check('Gateway service', 'ok', 'Registered')
 
-    # Log health
+    # Log health — try file first, fall back to journalctl (systemd)
     log = LOGS / 'gateway.log'
-    if not log.exists():
-        check('Gateway log', 'warn', 'Log file not found')
-        return
-
-    _, out, _ = sh(['tail', '-500', str(log)])
-    lines = out.splitlines()
+    lines: list[str] = []
+    if log.exists():
+        _, out, _ = sh(['tail', '-500', str(log)])
+        lines = out.splitlines()
+    else:
+        # Try journalctl for systemd-managed gateway
+        rc, out, _ = sh(['journalctl', '--user', '-u', 'openclaw-gateway',
+                         '--since', '2 hours ago', '--no-pager', '-q'])
+        if rc == 0 and out.strip():
+            lines = out.strip().splitlines()
+        else:
+            check('Gateway log', 'warn', 'Log file not found and journalctl unavailable')
+            return
     cutoff_2h = (NOW.astimezone(timezone.utc) - timedelta(hours=2)).strftime('%Y-%m-%dT%H:%M')
 
     config_errs = [l for l in lines
@@ -376,9 +406,29 @@ def check_config():
     # Update available
     uc = load_json(OPENCLAW / 'update-check.json')
     if uc and uc.get('updateAvailable'):
-        check('OpenClaw update', 'info', f'v{uc.get("latest", "?")} available', 'openclaw update')
+        check('OpenClaw update', 'info', f'v{uc.get("latest", "?")} available',
+              'npm update -g openclaw && openclaw doctor --yes')
     elif uc:
         check('OpenClaw update', 'ok', 'Up to date')
+
+    # OpenClaw doctor (migration/health check)
+    # Note: openclaw doctor may conflict with gateway when run from within a session.
+    # Use short timeout and treat failures gracefully.
+    try:
+        rc, out, err = sh(['openclaw', 'doctor', '--yes'], timeout=15)
+        if rc == 0:
+            combined = (out + err).lower()
+            if 'error' in combined or 'fail' in combined:
+                check('OpenClaw doctor', 'warn', (out or err)[:80], 'Review openclaw doctor output')
+            else:
+                check('OpenClaw doctor', 'ok', 'No migrations needed')
+        elif rc == -1:
+            check('OpenClaw doctor', 'info', 'openclaw CLI not found in PATH')
+        else:
+            check('OpenClaw doctor', 'info', f'Exit {rc} (may conflict with active session)',
+                  'Run openclaw doctor manually outside session')
+    except Exception:
+        check('OpenClaw doctor', 'info', 'Skipped (timeout or gateway conflict)')
 
 
 def check_cron():
@@ -567,6 +617,92 @@ def show_history(n: int = 5):
 
 # ── runner ────────────────────────────────────────────────────────────────
 
+def check_tasks():
+    """Check task-board staleness and communication follow-ups."""
+    task_check = WORKSPACE / 'skills' / 'task-check.py'
+    if task_check.exists():
+        rc, out, _ = sh([sys.executable, str(task_check), '--json'], cwd=str(WORKSPACE), timeout=15)
+        if rc == 0 or rc == 1:
+            try:
+                data = json.loads(out)
+                alerts = data.get('alerts', [])
+                counts = data.get('counts', {})
+                active = counts.get('active', 0)
+                if alerts:
+                    stale = [a for a in alerts if 'STALE' in a]
+                    overdue = [a for a in alerts if 'OVERDUE' in a]
+                    if stale or overdue:
+                        check('Task board', 'warn',
+                              f'{len(stale)} stale, {len(overdue)} overdue ({active} active)',
+                              'Review memory/task-board.md')
+                    else:
+                        check('Task board', 'warn', f'{len(alerts)} alert(s) ({active} active)',
+                              'Run python3 skills/task-check.py')
+                else:
+                    check('Task board', 'ok', f'{active} active, all healthy')
+            except json.JSONDecodeError:
+                check('Task board', 'warn', 'task-check.py output not parseable')
+        else:
+            check('Task board', 'warn', 'task-check.py failed')
+    else:
+        check('Task board', 'info', 'task-check.py not found')
+
+    # Communication follow-ups
+    comms_file = MEMORY / 'communications' / 'comms.jsonl'
+    if comms_file.exists():
+        today = NOW.date()
+        overdue_count = 0
+        for line in comms_file.read_text().strip().splitlines():
+            try:
+                c = json.loads(line)
+                if c.get('resolved') or not c.get('followup_date'):
+                    continue
+                followup = datetime.strptime(c['followup_date'], '%Y-%m-%d').date()
+                if (followup - today).days < 0:
+                    overdue_count += 1
+            except (json.JSONDecodeError, KeyError, ValueError):
+                pass
+        if overdue_count:
+            check('Comms follow-ups', 'warn', f'{overdue_count} overdue follow-up(s)',
+                  'Run comms_tracker.py overdue')
+        else:
+            check('Comms follow-ups', 'ok', 'No overdue follow-ups')
+
+    # Experiments stuck in running
+    exp_file = MEMORY / 'experiments' / 'experiments.jsonl'
+    if exp_file.exists():
+        stuck = 0
+        for line in exp_file.read_text().strip().splitlines():
+            try:
+                e = json.loads(line)
+                if e.get('status') == 'running' and e.get('started'):
+                    started = datetime.fromisoformat(e['started'])
+                    if (NOW - started).total_seconds() > 24 * 3600:
+                        stuck += 1
+            except (json.JSONDecodeError, KeyError, ValueError):
+                pass
+        if stuck:
+            check('Experiments', 'warn', f'{stuck} experiment(s) running >24h',
+                  'Check exp_tracker.py list --status running')
+        else:
+            check('Experiments', 'ok', 'No stuck experiments')
+
+
+def check_tunnels():
+    """Check if SSH reverse tunnels are alive."""
+    import platform
+    if platform.system() != 'Linux':
+        return  # Only relevant on Lab WSL
+
+    rc, out, _ = sh(['pgrep', '-f', 'ssh.*-[a-zA-Z]*R.*:localhost:22'])
+    if rc == 0 and out:
+        count = len(out.strip().splitlines())
+        check('SSH tunnels', 'ok', f'{count} active tunnel(s)')
+    else:
+        check('SSH tunnels', 'warn', 'No SSH reverse tunnels found',
+              'ssh -fNR 2222:localhost:22 iso_leo && ssh -fNR 2223:localhost:22 battleship')
+
+
 ALL_CHECKS = {
     'secrets':  check_secrets,
     'todoist':  check_todoist,
@@ -582,6 +718,8 @@ ALL_CHECKS = {
     'disk':     check_disk,
     'deps':     check_deps,
     'scripts':  check_scripts,
+    'tasks':    check_tasks,
+    'tunnels':  check_tunnels,
 }
 
 

@@ -10,7 +10,6 @@ Runs a comprehensive scan of the OpenClaw workspace and reports critical issues,
 ## Usage
 
 ```bash
-cd /Users/leonardo/.openclaw/workspace
 python3 skills/system-scanner/scripts/scan.py
 ```
 
@@ -22,14 +21,16 @@ Exit code 0 = no critical issues. Exit code 1 = at least one critical issue foun
 |------|--------|
 | **Secrets** | Existence + non-empty: email_ops.env, todoist.env, google-service-account.json |
 | **APIs** | Todoist, Google Calendar, Diary (Google Sheets) connectivity |
-| **Git** | Uncommitted changes, unpushed commits |
+| **Git** | Uncommitted changes, unpushed commits (vs current branch upstream) |
 | **Memory** | 7-day coverage of daily `.md` files, MEMORY.md freshness |
 | **Delivery queue** | Stuck items in `~/.openclaw/delivery-queue` |
+| **Gateway** | Platform-aware: systemd (Linux/WSL) or LaunchAgent (macOS) |
 | **Gateway logs** | Recent errors, Discord WebSocket disconnects |
-| **OpenClaw config** | Compaction mode, contextPruning, cron model cost (warn if opus) |
+| **OpenClaw config** | Compaction mode, contextPruning, cron model cost |
 | **Disk** | Usage ≥ 75% warn, ≥ 90% critical |
-| **Sleep patterns** | Late sleep ratio and avg hours from tags data |
-| **Key scripts** | Presence of 5 core leo-diary scripts |
+| **Tasks** | task-board staleness, overdue comms follow-ups, stuck experiments |
+| **SSH tunnels** | Reverse tunnel health (Linux/WSL only) |
+| **Key scripts** | Presence of core leo-diary scripts |
 
 ## After Running
 
@@ -42,3 +43,6 @@ Exit code 0 = no critical issues. Exit code 1 = at least one critical issue foun
 
 To add a new check, add a `check_*()` function to `scan.py` and call it in `run_all()`.
 Use `check(label, status, detail, fix)` to record results.
+
+Categories: secrets, todoist, gcal, diary, smtp, git, memory,
+            delivery, gateway, config, cron, disk, deps, scripts, tasks, tunnels

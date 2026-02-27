@@ -106,7 +106,9 @@
 - `secrets/google-service-account.json` — Google Service Account
 - `/Users/leonardo/.openclaw/secrets/gog/client_secret.json` — Google OAuth Desktop
 
-## Cron 排程（每日）
+## Cron 排程
+
+### Mac Bot（原有）
 - 04:15 日記同步 + LLM 標籤提取
 - **08:00 每日排程刷新**（讀取/更新 memory/schedules/YYYY-MM-DD.md，sonnet）
 - **08:12 排程同步到 Google Calendar + Todoist**（從 schedule 檔案自動 upsert）
@@ -118,3 +120,10 @@
 - **週日 21:00 週排程生成**（產生下週 7 天 schedule 草稿，sonnet，Discord 通知）
 - 週日 21:00 週報（Discord）
 - 週五 20:00 天氣偵察（email）
+
+### Lab Bot（WSL2, 24/7）
+- ***/30 08-23 Heartbeat**（main session, g53s）— 任務看板、git 狀態、tunnel、comms 輪檢
+- **06:00 System Scanner**（isolated, g53s）— 每日健檢，🔴 時 Discord 通知 Leo
+- **08:00 Daily Merge**（isolated, g53s）— 自動 fetch + merge macbook-m3
+- **13:00 Afternoon Calendar**（isolated, g53s）— 3 小時內事件提醒
+- ***/2h Tunnel Watchdog**（isolated, g53s）— SSH 反向隧道自動修復

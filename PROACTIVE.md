@@ -24,16 +24,20 @@
 
 卡住時，按順序嘗試（不要直接問 Leo）：
 
-### Level 1: 自力救濟（30 秒）
+### Level 1: 自力救濟（嘗試 5-10 種方法）
 - 換一個方法（pip → conda → uv → --user install）
 - 搜尋文件/docs
 - 讀 error message，Google/web_fetch 搜解法
 - 檢查 TOOLS.md 是否有已知方案
+- 搜尋 learnings：`python3 skills/self-improve/scripts/learn.py search "keyword"`
+- 試 CLI、browser、web search、spawn sub-agent — 組合使用
+- **「不行」= 窮盡所有選項，不是「第一次失敗」**
 
 ### Level 2: 換個角度（1 分鐘）
 - 問自己：「這個任務的 blocker 可以繞過嗎？」
 - 能不能用現有工具達成同等效果？
 - 能不能拆成更小的子任務，先完成能做的部分？
+- 質疑 error message — workaround 通常存在
 
 ### Level 3: 問另一個 bot（#bot-sync，2 分鐘）
 - 在 Discord #bot-sync @ 另一個 bot 請求協助
@@ -62,7 +66,8 @@
 
 ### 切換動作（必做）
 1. **記錄 Resume Point** — 在 task-board.md 更新 next_action（要足夠具體，下次能直接接手）
-2. **記錄 Context Dump** — 把當前進度、已知資訊、失敗嘗試寫進 memory/YYYY-MM-DD.md
+2. **更新 SESSION-STATE.md** — "Current Task" 切換到新任務（SESSION-STATE = 此刻在做什麼，task-board = 所有任務的持久狀態）
+3. **記錄 Context Dump** — 把當前進度、已知資訊、失敗嘗試寫進 memory/YYYY-MM-DD.md
 3. **選下一個任務** — 優先級：P0 > P1 > P2；同優先級選 deadline 最近的
 4. **開始新任務** — 不要花時間糾結，直接開始
 
@@ -138,7 +143,44 @@ deadline：[時間]
 context：[對方需要知道的背景]
 ```
 
-## 7. Daily Review（每日回顧）
+## 7. VBR — Verify Before Reporting（完成前驗證）
+
+> **"Code exists" ≠ "feature works."**
+
+**觸發**：當你準備說「✅ Done」、「完成了」、「搞定」時 — **停下來**。
+
+**檢查清單：**
+1. 我實際跑過了嗎？（不是「應該可以跑」）
+2. 從使用者的角度測試了嗎？（不是從開發者角度）
+3. Edge cases 考慮了嗎？（空輸入、不存在的檔案、網路斷線）
+4. 改了底層機制，還是只改了表面文字？
+
+**常見陷阱：**
+- ❌ 改了 prompt 文字就說「更新了行為」（文字 ≠ 行為）
+- ❌ 改了 config 就說「功能啟用了」（沒驗證 config 生效）
+- ❌ 寫了腳本就說「系統建好了」（沒跑過腳本）
+
+**規則：要說 Done，必須附上驗證結果（命令輸出、截圖、測試結果）。**
+
+**如果 VBR 抓到你準備假報完成** → 記錄為 learning：
+`learn.py log -c gotcha -k "vbr.false_done" -s "Almost reported X as done without testing"`
+
+## 8. Tool Migration Checklist（工具遷移）
+
+當廢棄一個工具或切換系統時，更新**所有**引用：
+
+```bash
+# 找到所有引用
+grep -r "old-tool-name" . --include="*.md" --include="*.sh" --include="*.py" --include="*.json"
+```
+
+- [ ] Cron jobs — 所有 prompt 裡提到舊工具的
+- [ ] Scripts — `skills/*/scripts/` 裡的引用
+- [ ] Docs — TOOLS.md, HEARTBEAT.md, AGENTS.md, SKILL.md
+- [ ] Templates — config, example files
+- [ ] 驗證：舊命令應該 fail，新命令應該 work
+
+## 9. Daily Review（每日回顧）
 
 每天結束時（或最後一個 heartbeat）做：
 1. 今天推進了哪些任務？記錄到 memory/YYYY-MM-DD.md

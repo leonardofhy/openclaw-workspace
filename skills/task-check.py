@@ -17,7 +17,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-BOARD = Path(__file__).resolve().parent.parent / "memory" / "task-board.md"
+sys.path.insert(0, str(Path(__file__).resolve().parent / "shared"))
+from jsonl_store import find_workspace
+
+BOARD = find_workspace() / "memory" / "task-board.md"
 ACTIVE_STALE_DAYS = 3
 WAITING_STALE_DAYS = 7
 MAX_ACTIVE = 5

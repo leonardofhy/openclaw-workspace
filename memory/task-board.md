@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-02-28 01:13
+> 最後更新：2026-02-28 01:20
 
 ## 規則
 
@@ -42,10 +42,10 @@
 - **owner**: MacBook
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-02-27
+- **last_touched**: 2026-02-28
 - **描述**: 用 battleship 跑 chunk sensitivity，定位可能的 listen-layer 訊號
-- **progress**: smoke run（n=4,k=3,20 samples）完成；full run 進行中（21:46 時點：`n4_chunk3` 3562 行、`n5_chunk0` 1188 行）；已重提 n5 任務 `job 224422`（RUNNING）
-- **next_action**: n4/n5 完檔後立即跑 evaluate 產生 `*_comprehensive_results.json`，再更新 `chunk_sensitivity_desta25.md` v2（Method/Results Δ 表）
+- **progress**: smoke run（n=4,k=3,20 samples）完成；full run 進行中（21:46 時點：`n4_chunk3` 3562 行、`n5_chunk0` 1188 行）；已重提 n5 任務 `job 224422`（RUNNING）；夜間已把 merge-to-main 流程修穩，早上可無阻接續實驗收尾
+- **next_action**: 明早第一段先檢查 n4/n5 任務是否完成；完成則立即跑 evaluate 產生 `*_comprehensive_results.json`，並更新 `chunk_sensitivity_desta25.md` v2（Method/Results Δ 表）；未完成則 11:30 再次檢查
 - **blockers**: GPU 資源排隊/同機器並行導致完成時間波動
 
 ### M-02 | 論文產出（Results v0）
@@ -66,43 +66,23 @@
 - **progress**: 已納入 Leo 新指示：autodidact 恢復 30 分鐘 cadence，新增 meta-awareness 自我改進模式（避免 execution-blocked 連續 skip）；已建立 `meta-awareness-board.md` 與 `experiment-queue.md`
 - **next_action**: 主線持續推進；備線改為 listen-layer 三步循環（Exp1 attention suppression → Exp2 activation patching → Exp3 layer-restricted LoRA）；blocked 時優先執行 meta-audit 第 1 項（novelty classifier 草案）
 
-### L-01 | 系統環境搭建
+### L-08 | 財務管理（主線）
 - **owner**: Lab
 - **priority**: P0
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
-- **描述**: WSL 環境完整搭建 — pip、Python 套件、secrets 同步
-- **next_action**: 安裝 pip + google-auth/gspread/google-api-python-client；從 Mac 搬 secrets
-- **blockers**: 需要 sudo 權限裝 pip，或找替代方案（conda/uv）
-- **deadline**: 2026-02-28
+- **描述**: 管理 Leo 的財務：獎學金申請追蹤、收入增加策略、支出監控
+- **tracker**: memory/finance/FINANCE_TRACKER.md
+- **next_action**: 查僑委會獎學金 deadline + 台大國際傑出研究生獎學金申請時程 + 電信所 TA 空缺
+- **recurring**: 每週更新一次 FINANCE_TRACKER
 
-### L-02 | Bot 間通訊穩定化
-- **owner**: Lab
-- **priority**: P1
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: 確保 Lab bot 和 MacBook bot 能在 #bot-sync 即時對話
-- **next_action**: 確認 Mac bot 設了 allowBots=true；測試雙向自動回覆
-- **depends_on**: Mac bot 設定
-- **deadline**: 2026-02-28
-
-### L-03 | Autodidact GPU 實驗環境
-- **owner**: Lab
-- **priority**: P1
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: 在 Lab 機器（2x RTX PRO 6000）建立 Tier 1-2 實驗環境
-- **next_action**: 安裝 transformerlens + pyvene + s3prl；驗證 GPU 可用
-- **deadline**: 2026-03-01
-
-### L-04 | Cron 系統建立
+### L-07 | SYNC_PROTOCOL 落地驗證
 - **owner**: Lab
 - **priority**: P2
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
-- **描述**: 在 Lab 機器設定 cron jobs（heartbeat、autodidact、排程刷新等）
-- **next_action**: 參考 Mac 的 cron 設定，建立 Lab 版本
-- **deadline**: 2026-03-02
+- **描述**: 驗證混合同步協議實際運作：每日 merge、[STATE] 通知、reconcile
+- **next_action**: 等 Mac Leo 完成 merge 後做第一次 smoke test
 
 ## WAITING
 
@@ -123,14 +103,6 @@
 - **描述**: 先前 timeout，已改每小時 + timeout 600s
 - **waiting_for**: 檢查下一輪 run 是否恢復 ok
 
-### L-05 | Secrets 同步
-- **owner**: Lab
-- **priority**: P0
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: 從 Mac 搬 secrets 到 WSL（email_ops.env, todoist.env, google-service-account.json）
-- **waiting_for**: Mac bot 或 Leo 透過 SSH tunnel 搬檔案
-- **next_action**: 確認 secrets 到位後跑 system scanner 驗證
 
 ## BLOCKED
 
@@ -161,3 +133,34 @@
 - **owner**: MacBook
 - **completed**: 2026-02-27
 - **成果**: task-ledger.md 建立（現已遷移至本檔）
+
+### L-01 | 系統環境搭建
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: pip (via get-pip.py)、google-auth/gspread/google-api-python-client 安裝完成；Python 3.12 確認可用
+
+### L-02 | Bot 間通訊穩定化
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: allowBots=true 雙邊確認、ping/pong 測試通過、SYNC_PROTOCOL.md 建立並獲 Mac 確認
+
+### L-05 | Secrets 同步
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: email_ops.env, todoist.env, google-service-account.json 從 Mac 搬入；Todoist、GCal、Diary、SMTP 全部驗證通過
+
+### L-03 | Autodidact GPU 實驗環境
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: conda env `interp` (Python 3.11)；transformerlens + pyvene + s3prl + torch 2.10+cu128；RTX 3090 25.3GB 驗證通過
+- **文檔**: memory/L-03-GPU-ENV.md
+
+### L-04 | Cron 系統建立
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: 5 cron jobs：heartbeat (*/30 08-23), scanner (06:00), merge (08:00), calendar (13:00), tunnel (*/2h)
+
+### L-06 | 重構收尾
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: task-check.py + sync_report.py 改用 shared JsonlStore；消除 16 行重複代碼；所有 JSONL 操作統一
