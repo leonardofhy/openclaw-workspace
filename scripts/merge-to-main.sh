@@ -61,14 +61,26 @@ BODY="**Auto-generated PR** from \`$BRANCH\` → \`main\`
 $(git log --oneline origin/main.."$BRANCH" | head -20)
 \`\`\`"
 
-PR_URL=$(gh pr create \
+PR_URL=""
+PR_CREATE_OUTPUT=""
+if PR_CREATE_OUTPUT=$(gh pr create \
     --base main \
     --head "$BRANCH" \
     --title "$TITLE" \
     --body "$BODY" \
-    2>&1)
-
-echo "✅ PR created: $PR_URL"
+    2>&1); then
+    PR_URL="$PR_CREATE_OUTPUT"
+    echo "✅ PR created: $PR_URL"
+else
+    echo "⚠️ gh pr create returned non-zero: $PR_CREATE_OUTPUT"
+    PR_URL=$(gh pr list --base main --head "$BRANCH" --state open --json url --jq '.[0].url' 2>/dev/null || echo "")
+    if [ -n "$PR_URL" ]; then
+        echo "ℹ️ Found open PR for branch: $PR_URL"
+    else
+        echo "RESULT:blocked:pr_create_failed"
+        exit 1
+    fi
+fi
 
 # 5. Auto-merge the PR (since we're the only contributors)
 # NOTE: use sed (BSD/GNU compatible). Avoid GNU-only `grep -P`.
@@ -81,13 +93,19 @@ fi
 if [ -n "$PR_NUM" ]; then
     gh pr merge "$PR_NUM" --merge --auto 2>/dev/null || {
         # If auto-merge not enabled, just merge directly
-        gh pr merge "$PR_NUM" --merge 2>/dev/null || echo "⚠️ Auto-merge failed. PR needs manual merge."
+        gh pr merge "$PR_NUM" --merge 2>/dev/null || echo "⚠️ Merge command failed. PR may require manual merge."
     }
-    echo "✅ PR #$PR_NUM merged to main"
-    # Pull main back into our branch
-    git fetch origin
-    git merge origin/main --no-edit 2>/dev/null || true
-    git push origin "$BRANCH" 2>/dev/null || true
+
+    PR_STATE=$(gh pr view "$PR_NUM" --json state --jq '.state' 2>/dev/null || echo "UNKNOWN")
+    if [ "$PR_STATE" = "MERGED" ]; then
+        echo "✅ PR #$PR_NUM merged to main"
+        # Pull main back into our branch
+        git fetch origin
+        git merge origin/main --no-edit 2>/dev/null || true
+        git push origin "$BRANCH" 2>/dev/null || true
+    else
+        echo "ℹ️ PR #$PR_NUM state=$PR_STATE (not merged yet)."
+    fi
 else
     echo "⚠️ Could not parse PR number from gh output. Skipping auto-merge step."
 fi
