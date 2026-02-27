@@ -73,15 +73,13 @@
 - **next_action**: comms_tracker.py 改用 JsonlStore → sync_report.py 改用 → task-check.py 路徑修復
 - **deadline**: 2026-03-01
 
-### L-02 | Bot 間通訊穩定化
+### L-07 | SYNC_PROTOCOL 落地驗證
 - **owner**: Lab
-- **priority**: P1
+- **priority**: P2
 - **created**: 2026-02-27
 - **last_touched**: 2026-02-27
-- **描述**: 確保 Lab bot 和 MacBook bot 能在 #bot-sync 即時對話
-- **next_action**: 確認 Mac bot 設了 allowBots=true；測試雙向自動回覆
-- **depends_on**: Mac bot 設定
-- **deadline**: 2026-02-28
+- **描述**: 驗證混合同步協議實際運作：每日 merge、[STATE] 通知、reconcile
+- **next_action**: 等 Mac Leo 完成 merge 後做第一次 smoke test
 
 ### L-03 | Autodidact GPU 實驗環境
 - **owner**: Lab
@@ -150,6 +148,11 @@
 - **owner**: Lab
 - **completed**: 2026-02-27
 - **成果**: pip (via get-pip.py)、google-auth/gspread/google-api-python-client 安裝完成；Python 3.12 確認可用
+
+### L-02 | Bot 間通訊穩定化
+- **owner**: Lab
+- **completed**: 2026-02-27
+- **成果**: allowBots=true 雙邊確認、ping/pong 測試通過、SYNC_PROTOCOL.md 建立並獲 Mac 確認
 
 ### L-05 | Secrets 同步
 - **owner**: Lab
