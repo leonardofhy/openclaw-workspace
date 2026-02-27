@@ -63,3 +63,21 @@ Scan: AF +0, LW +1 new ("Vibe Coding is a System Design Interview" — not safet
 **[backlog-pick]** "How eval awareness might emerge in training" — LessWrong, 2026-02-26
 - Why: Mechanistic account of how situational awareness about evaluations could arise during training; core deceptive alignment concern, not yet reviewed.
 - Link: https://www.lesswrong.com/posts/uRs5ebXKYLQyvJa2Q/how-eval-awareness-might-emerge-in-training-1
+
+---
+**2026-02-27 12:15 (Fri)** — scan: LW +1 new | backlog: 22 unread
+
+**[new pick]** "Inference-time Generative Debates on Coding and Reasoning Tasks for Scalable Oversight" — LessWrong, 2026-02-26
+- Why: Empirical results on debate-based scalable oversight for coding/reasoning; tests whether weaker judges can evaluate stronger model outputs via adversarial debate — a key open problem.
+- Link: https://www.lesswrong.com/posts/kQCLPighFvb4ChHtu/inference-time-generative-debates-on-coding-and-reasoning
+
+**[backlog-pick]** "How will we do SFT on models with opaque reasoning?" — Alignment Forum, 2026-02-21
+- Why: Near-term concrete problem — how to train aligned behavior when chain-of-thought is hidden/unverifiable; repeated backlog priority, now marked read.
+- Link: https://www.alignmentforum.org/posts/GJTzhQgaRWLFJkPbt/how-will-we-do-sft-on-models-with-opaque-reasoning
+
+---
+**2026-02-27 12:45 (Fri)** — scan: AF +0, LW +0 new | backlog: 20 unread
+
+**[backlog-pick]** "Why we should expect ruthless sociopath ASI" — Alignment Forum, 2026-02-18
+- Why: Argues from first principles why optimization pressure in training tends to produce agents with sociopathic goal structures; directly relevant to understanding default AI disposition without alignment interventions.
+- Link: https://www.alignmentforum.org/posts/ZJZZEuPFKeEdkrRyf/why-we-should-expect-ruthless-sociopath-asi
