@@ -64,14 +64,10 @@
 - **描述**: 不被單一討論卡住，維持主線 + 備線
 - **next_action**: 主線持續推進；備線：Listen layer 快驗 / neuron grounding / modality reliance stress test
 
-### L-06 | 重構收尾（comms_tracker + sync_report + task-check）
+### L-06 | 重構收尾（comms_tracker + sync_report + task-check） ✅
 - **owner**: Lab
-- **priority**: P1
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: 完成 senior engineer review 識別的重構項目
-- **next_action**: comms_tracker.py 改用 JsonlStore → sync_report.py 改用 → task-check.py 路徑修復
-- **deadline**: 2026-03-01
+- **completed**: 2026-02-27
+- **成果**: 3 個腳本全部用 shared JsonlStore/find_workspace，消除 16 行重複代碼
 
 ### L-07 | SYNC_PROTOCOL 落地驗證
 - **owner**: Lab
