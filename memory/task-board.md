@@ -64,6 +64,16 @@
 - **描述**: 不被單一討論卡住，維持主線 + 備線
 - **next_action**: 主線持續推進；備線：Listen layer 快驗 / neuron grounding / modality reliance stress test
 
+### L-08 | 財務管理（主線）
+- **owner**: Lab
+- **priority**: P0
+- **created**: 2026-02-27
+- **last_touched**: 2026-02-27
+- **描述**: 管理 Leo 的財務：獎學金申請追蹤、收入增加策略、支出監控
+- **tracker**: memory/finance/FINANCE_TRACKER.md
+- **next_action**: 查僑委會獎學金 deadline + 台大國際傑出研究生獎學金申請時程 + 電信所 TA 空缺
+- **recurring**: 每週更新一次 FINANCE_TRACKER
+
 ### L-07 | SYNC_PROTOCOL 落地驗證
 - **owner**: Lab
 - **priority**: P2
