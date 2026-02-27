@@ -77,14 +77,11 @@
 - **描述**: 驗證混合同步協議實際運作：每日 merge、[STATE] 通知、reconcile
 - **next_action**: 等 Mac Leo 完成 merge 後做第一次 smoke test
 
-### L-03 | Autodidact GPU 實驗環境
+### L-03 | Autodidact GPU 實驗環境 ✅
 - **owner**: Lab
-- **priority**: P1
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: 在 Lab 機器（2x RTX PRO 6000）建立 Tier 1-2 實驗環境
-- **next_action**: 安裝 transformerlens + pyvene + s3prl；驗證 GPU 可用
-- **deadline**: 2026-03-01
+- **completed**: 2026-02-27
+- **成果**: conda env `interp` 建成；transformerlens + pyvene + s3prl + torch 2.10+cu128 安裝完；RTX 3090 25.3GB 驗證通過
+- **文檔**: memory/L-03-GPU-ENV.md
 
 ### L-04 | Cron 系統建立 ✅
 - **owner**: Lab
