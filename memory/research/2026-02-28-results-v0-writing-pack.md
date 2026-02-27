@@ -22,3 +22,9 @@
 - [ ] Mean±std reported where variance matters.
 - [ ] At least one negative finding explicitly discussed.
 - [ ] No puffery words without evidence (novel/clearly/obviously/significant).
+
+## 40-minute kickoff plan (first slot)
+- [ ] Fill Table X with final numbers: ours / best baseline / abs diff / relative diff.
+- [ ] Mark one hardest subset where gains shrink (for limitation sentence).
+- [ ] Draft 4-sentence Main Results paragraph directly under Table X.
+- [ ] Select one ablation with largest drop and draft 3-sentence ablation paragraph.

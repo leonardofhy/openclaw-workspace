@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-02-27 23:45
+> 最後更新：2026-02-28 00:59
 
 ## 規則
 
@@ -52,10 +52,10 @@
 - **owner**: MacBook
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-02-27
+- **last_touched**: 2026-02-28
 - **描述**: AudioMatters 論文 Results section 初稿（承接已完成的 Method v1 + Setup v1）
-- **progress**: Leo 回報 Method 第一版與 Setup 第一版已完成；已建立 Results v0 寫作包 `memory/research/2026-02-28-results-v0-writing-pack.md`
-- **next_action**: 明天先把 Table X 的關鍵數字填入寫作包模板，交付 Main Results 敘事 + 1 組關鍵 ablation 草稿
+- **progress**: Leo 回報 Method 第一版與 Setup 第一版已完成；Results v0 寫作包已補上 40 分鐘 kickoff 清單（填表→主敘事→ablation）
+- **next_action**: 早上第一個寫作時段先完成 kickoff 清單前 2 項（Table X 數字 + hardest subset），中午前交付 Main Results 四句版本
 
 ### M-03 | 研究雙軌推進
 - **owner**: MacBook
