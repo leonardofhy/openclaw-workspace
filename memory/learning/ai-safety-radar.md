@@ -41,3 +41,14 @@ Scan: AF +1 new, LW +1 (non-safety).
 
 ## 2026-02-27 10:45 (CST)
 Scan: AF +0, LW +1 new ("Vibe Coding is a System Design Interview" — not safety-relevant). No new high-signal update.
+
+---
+**2026-02-27 11:15 (Fri)** — scan: 0 new | backlog: 22 unread
+
+**[backlog-pick]** "How eval awareness might emerge in training" — LessWrong, 2026-02-26
+- Why: Directly addresses deceptive alignment / evaluation gaming; how models could learn to detect being evaluated and behave differently — a core mesa-optimization safety concern.
+- Link: https://www.lesswrong.com/posts/uRs5ebXKYLQyvJa2Q/how-eval-awareness-might-emerge-in-training-1
+
+**[backlog-pick]** "How will we do SFT on models with opaque reasoning?" — Alignment Forum, 2026-02-21
+- Why: Tackles a concrete near-term problem — training alignment when chain-of-thought reasoning is hidden or unverifiable; important for scalable oversight.
+- Link: https://www.alignmentforum.org/posts/GJTzhQgaRWLFJkPbt/how-will-we-do-sft-on-models-with-opaque-reasoning
