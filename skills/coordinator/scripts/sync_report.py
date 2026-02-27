@@ -13,11 +13,11 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "shared"))
-from jsonl_store import find_workspace
+from jsonl_store import find_workspace, JsonlStore
 
 WORKSPACE = find_workspace()
 TASK_BOARD = WORKSPACE / "memory" / "task-board.md"
-EXPERIMENTS = WORKSPACE / "memory" / "experiments" / "experiments.jsonl"
+exp_store = JsonlStore("memory/experiments/experiments.jsonl", prefix="EXP")
 
 
 def git_status() -> dict:
@@ -108,19 +108,12 @@ def task_summary() -> dict:
 
 def experiment_summary() -> dict:
     """Summarize experiments."""
-    if not EXPERIMENTS.exists():
+    experiments = exp_store.load()
+    if not experiments:
         return {"total": 0}
 
-    experiments = []
-    for line in EXPERIMENTS.read_text().strip().splitlines():
-        if line.strip():
-            try:
-                experiments.append(json.loads(line))
-            except json.JSONDecodeError:
-                pass
-
-    by_status = {}
-    by_machine = {}
+    by_status: dict[str, int] = {}
+    by_machine: dict[str, int] = {}
     for e in experiments:
         s = e.get("status", "unknown")
         m = e.get("machine", "unknown")

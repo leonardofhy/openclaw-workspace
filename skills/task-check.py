@@ -8,23 +8,14 @@ Usage:
 
 import json as json_mod
 import re
-import subprocess
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent / "shared"))
+from jsonl_store import find_workspace
 
-def _find_workspace() -> Path:
-    try:
-        return Path(subprocess.check_output(
-            ["git", "rev-parse", "--show-toplevel"],
-            text=True, stderr=subprocess.DEVNULL
-        ).strip())
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        return Path.home() / ".openclaw" / "workspace"
-
-
-BOARD = _find_workspace() / "memory" / "task-board.md"
+BOARD = find_workspace() / "memory" / "task-board.md"
 ACTIVE_STALE_DAYS = 3
 WAITING_STALE_DAYS = 7
 MAX_ACTIVE = 5
