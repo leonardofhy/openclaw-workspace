@@ -139,7 +139,42 @@ python3 skills/task-check.py --json
 
 ---
 
-## 5. 緊急情況
+## 5. Critical Change Protocol（核心檔案改動）
+
+修改以下檔案時，**必須同時做兩件事**（不可只做一件）：
+
+**觸發檔案**：`AGENTS.md`、`SOUL.md`、`HEARTBEAT.md`、`PROACTIVE.md`、`GROWTH.md`、`SYNC_PROTOCOL.md`、`BOT_RULES.md`
+
+**Step 1: Git mailbox**（guaranteed delivery）
+- 寫一條 🔴 URGENT 訊息到 `memory/mailbox/to-{對方}.md`
+- 說明改了什麼、為什麼、對方需要做什麼
+- git commit + push
+
+**Step 2: Discord @mention**（best-effort instant）
+- 在 #bot-sync @mention 對方 bot
+- 簡短說明（≤3 行）+ 指向 mailbox 詳情
+
+對方收到後：
+1. `git fetch && git merge` 拿到最新版本
+2. 讀 mailbox 訊息了解變更內容
+3. 確認自己的 boot flow 正常
+4. 回覆確認（#bot-sync reaction ✅ 或訊息）
+
+## 6. Git Mailbox（可靠通訊）
+
+**位置**：`memory/mailbox/`
+- `to-mac.md` — Lab 寫給 Mac 的訊息
+- `to-lab.md` — Mac 寫給 Lab 的訊息
+- `archive/YYYY-MM.md` — 處理完的歸檔
+
+**Boot flow**：AGENTS.md Step 2，所有 session 都讀。
+
+**規則**：
+- 寫入 = append（不要覆蓋別人的訊息）
+- 處理完 = 移到 archive + 清空 inbox
+- 不要讓 inbox 積超過 5 條未處理
+
+## 7. 緊急情況
 
 | 情境 | 處理 |
 |------|------|
