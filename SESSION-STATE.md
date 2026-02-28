@@ -25,6 +25,7 @@ Pre-compaction flush complete. Massive build session done — all core infra, 5 
 - 2026-02-28: Leo added second audio source path: /Users/leonardo/Workspace/whisper.cpp/samples
 - 2026-02-28: Leo requested running experiments on battleship via SSH config; noted existing MMAU/MMAU-Pro/MMAR benchmarks there. Work should run under ~/Workspace with a dedicated folder and git version control enabled.
 - 2026-02-28: Leo will rest for 30 minutes and requested a schedule check afterwards.
+- 2026-02-28: Leo chose option 1 — quick enable by merging ask-me-anything skill from lab-desktop into macbook-m3.
 - L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
 - QUICK_START.md partially written
 - All changes pushed to lab-desktop (latest: b822ba9)

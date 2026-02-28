@@ -345,3 +345,12 @@ No new posts since last cycle. Feed unchanged.
 **2026-02-28 15:45 (Sat)** — scan: AF +0 new, LW +0 new since 15:15 | backlog: ~21 unread
 
 No new posts. Both feeds unchanged from prior cycle. Recent backlog queue already well-stocked (ARENA material, Model Incrimination, RSP Comparison, Schelling Goodness, AI #157, 3 Challenges/Unsupervised Elicitation, Dawn of AI Scheming). No high-signal update this cycle.
+
+---
+**2026-02-28 16:15 (Sat)** — scan: AF top = "Schelling Goodness" (already picked 13:15), LW top = same | backlog: ~21 unread
+
+No new posts. Both feeds identical to 15:45 snapshot; Saturday afternoon lull.
+
+**[backlog-pick]** *The Topology of LLM Behavior* (LessWrong, Feb 28, karma grown from 11→17+ since morning)
+- Why: Informal but useful framing of LLM generation as navigation through a weighted semantic attractor landscape — alignment constraints as attractors that can be stable or fragile; complements the week's thread on behavioral stability (attractor states, persona selection, sandbagging). Karma growth throughout the day signals the community finding it worth engaging with; now worth committing a read slot.
+- Link: https://www.lesswrong.com/posts/iPmqM4qn7YnktcSus/the-topology-of-llm-behavior-1
