@@ -61,8 +61,9 @@ ELSE（什麼都沒發生，一切正常）
 - 目標：pending ≤ 3
 
 ## 頻道規則
-- **#general**（`978709248978599979`）：只發 Leo 需要看的（alerts、需要決策的事、重要進展）
-- **#bot-logs**（`1477354525378744543`）：機器日誌、routine 工作記錄、self-awareness 記錄
-- **#bot-sync**（`1476624495702966506`）：跨 bot 通訊（不變）
+- **#general**（`978709248978599979`）：**只發真正重要的事**（系統故障、需要 Leo 立刻決策、重大 milestone）。Bot 之間的通訊**不准用 #general**
+- **#bot-logs**（`1477354525378744543`）：機器日誌、routine 工作記錄、self-awareness、daily growth report
+- **#bot-sync**（`1476624495702966506`）：跨 bot 通訊、@mention、mailbox 通知
+- Bot 之間的所有互動 → **#bot-sync**（即時）或 **#bot-logs**（記錄）
 - 深夜 (23:00-08:00) 不發 #general，除非緊急
-- #bot-logs 不受時間限制
+- #bot-logs 和 #bot-sync 不受時間限制

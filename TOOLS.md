@@ -47,9 +47,9 @@
 - **發送方式：** `message` tool（channel=discord）
 - **Target 格式：** `user:756053339913060392`（DM）、`channel:ID`（頻道）
 - **頻道：**
-  - `#general`（`978709248978599979`）— 給人看的：alerts、需要 Leo 決策的事、重要進展
-  - `#bot-logs`（`1477354525378744543`）— 機器日誌：routine 工作記錄、self-awareness、heartbeat 記錄
-  - `#bot-sync`（`1476624495702966506`）— 跨 bot 通訊
+  - `#general`（`978709248978599979`）— **只發真正重要的**（系統故障、需要 Leo 決策、重大 milestone）。Bot 之間不准用
+  - `#bot-logs`（`1477354525378744543`）— 機器日誌、routine 記錄、growth report、bot 工作匯報
+  - `#bot-sync`（`1476624495702966506`）— bot 之間的即時通訊、@mention、mailbox 通知
 - **用途：** Todoist 提醒、日終摘要、週報、行事曆提醒
 
 ### 🔑 Google OAuth (Desktop)

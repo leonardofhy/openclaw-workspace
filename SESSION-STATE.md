@@ -13,6 +13,7 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - 2026-03-01: Mac Leo 完成修復（b2763a7）：mailbox.py、requireMention:false、SLA+ACK
 - 2026-03-01: Lab 正在 cross-merge macbook-m3，解 conflict 中
 - 2026-03-01: Growth report 改為每天 23:30（不是月度）
+- 2026-03-01: Leo 決定：bot 之間只用 #bot-sync + #bot-logs，#general 只留真正重要的人該看的
 - L-08 financial management ongoing; MATS EOI cron reminder set for today (3/1)
 
 ## Pending Decisions
