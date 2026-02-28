@@ -44,6 +44,7 @@
 ### 💬 Discord
 - **Leo User ID：** `756053339913060392`
 - **發送方式：** `message` tool（channel=discord）
+- **Target 格式：** `user:756053339913060392`（DM）、`channel:ID`（頻道）
 - **用途：** Todoist 提醒、日終摘要、週報、行事曆提醒
 
 ### 🔑 Google OAuth (Desktop)

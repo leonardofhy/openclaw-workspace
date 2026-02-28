@@ -370,11 +370,17 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 
 **New exercise sets directly relevant to Leo's research:**
 
-#### [1.3.1] Linear Probes
+#### [1.3.1] Linear Probes — ✅ STUDIED (cycle #89, 2026-02-28 20:01)
 - Replicates "Geometry of Truth" (Marks & Tegmark) + Apollo deception probes
 - **Sections:** Extract activations → PCA → MM vs LR probes → CAUSAL INTERVENTIONS → deception detection → attention probes
-- **Key lesson for Leo:** MM probes find MORE causally implicated directions than LR despite lower accuracy — same principle applies to DAS-gc(k) in Paper A (causal grounding > predictive)
-- **Direct transfer:** Attention probe (learned query over sequence) → "which audio frames are diagnostically important?" → directly operationalizes Listen vs Guess per audio segment
+- **Key lessons (cycle #89):**
+  - **MMProbe > LRProbe for causal interventions** — difference-of-means direction is more causally implicated despite lower classification accuracy. Apply to gc(k): use `mean(audio_condition) - mean(no_audio_condition)` not logistic regression.
+  - **PROBE_LAYER ≠ INTERVENE_LAYER** — in Geometry of Truth: PROBE=14, INTERVENE=8. For Paper A: need to sweep both separately. The layer that classifies best ≠ layer where patching has most effect.
+  - **layer_sweep_accuracy = gc(k) template** — sweep all layers, compute MM probe accuracy at each layer, plot curve → peak = "Listen Layer"
+  - **Cross-generalization matrix** — train probe on condition A, test on B; high off-diagonal = universal direction. Paper A validation: train on Speech Commands stimuli, test on ALME 57K conflict stimuli.
+  - **Attention probe (Section 5)** — single learned query over ALL sequence positions, better than last-token for sequence-level classification. Audio application: learns which audio frames are diagnostically important → new Paper B metric baseline
+  - **Causal intervention implementation:** `h_new = h - 2 * (h @ d / ||d||²) * d` (reflection through hyperplane perpendicular to probe direction)
+- **Paper A method section: now fully specified** (MMProbe for direction, layer sweep for gc(k), cross-generalization for universality, causal patching for IIT validation)
 - Colab: https://colab.research.google.com/github/callummcdougall/arena-pragmatic-interp/blob/main/chapter1_transformer_interp/exercises/part31_linear_probes/1.3.1_Linear_Probes_exercises.ipynb
 - **Estimated time:** 3-4h (any GPU; smaller models work for concept validation)
 
