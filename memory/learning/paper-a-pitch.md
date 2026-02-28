@@ -86,6 +86,7 @@ Large audio-language models (LALMs) can answer questions about audio content, bu
 | Modality Collapse (2602.23136) | Motivation: shows audio info is encoded but unused → we localize WHERE it becomes decisive. |
 | Cascade Equivalence (2602.17598) | Motivation: LEACE shows implicit cascade; we show which layers carry audio causally. |
 | SPIRIT (EMNLP 2025) | Side result: does Listen Layer = SPIRIT's best defense layer? |
+| **FCCT (Li et al. 2511.05923, AAAI 2026 Oral)** | **Closest competitor — but vision-only!** Full causal tracing in Vision-LLMs; finds MHSAs at middle layers = cross-modal aggregation point; IRI = training-free inference injection. We are the AUDIO equivalent. Cite as "we do for speech what FCCT did for vision." |
 
 ---
 

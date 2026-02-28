@@ -1,6 +1,10 @@
 # Backlog Scan List (when today's new scans are exhausted)
 
-Last updated: 2026-02-27
+Last updated: 2026-02-28
+
+## Recently Found (cycle #79, Feb 28)
+- **MMA-Bench (2511.22826, Chen et al., Nov 2025)** — MLLMs + contradicting modalities; black-box + white-box interp; behavioral "modality alignment tuning". Vision domain, SCAN only. Motivates "modality prioritization" framing for Paper A pitch. NOT a competitor (no causal layer patching, vision not speech).
+- **"When Tone and Words Disagree" (Jan 2026)** — SER acoustic-semantic conflict robustness study. Behavioral, no MI. SCAN only.
 
 ## Trigger condition
 Use this list when:

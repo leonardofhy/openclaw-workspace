@@ -14,6 +14,30 @@
 
 ---
 
+## Priority 0 — Phonological Geometry Prerequisite Check (NEW — Gap #18)
+
+**Hypothesis:** The linear phonological geometry confirmed in S3M encoders (Choi et al. 2602.18899: `[b]=[d]-[t]+[p]` works) survives through the connector into speech LLMs. This is a prerequisite for Paper A's grounding_coefficient and Paper B's TCS(F) metric to be meaningful.
+
+**Method (2-4h, partial MacBook feasible):**
+1. Reuse Choi et al. code (github.com/juice500ml/phonetic-arithmetic) to extract phonological direction vectors from Whisper-small encoder output (e.g., voicing_vector = h([d]) - h([t]))
+2. Hook connector module via NNsight on a small LALM (DeSTA2 or NDIF-accessible Qwen2-Audio)
+3. Test arithmetic in LLM residual stream: `projected_h([b]) ≈ projected_h([d]) - projected_h([t]) + projected_h([p])?`
+4. Layer-wise linear probe for voicing direction across all LLM layers
+
+**Expected outcomes:**
+- Geometry SURVIVES (cosine > 0.5): LLM has structured phonological access → supports Paper A listen layer claim
+- Geometry DEGRADES (cosine < 0.2): connector is phonological bottleneck → motivates Modality Collapse frame (2602.23136)
+- Both outcomes publishable as Figure 2 of Paper A or Category 0 prerequisite in AudioSAEBench
+
+**Prerequisites:**
+- [ ] Real speech minimal pair .wav files (or Choi et al. stimuli — public code exists)
+- [ ] NNsight venv + small LALM (DeSTA2) OR NDIF for Qwen2-Audio
+- [ ] ~2-4h
+
+**Connects to:** Paper A (prerequisite validation), Paper B (TCS(F) metric foundation), Idea #7 (Audio T-SAE phoneme priors), Gap #14 (Modality Collapse)
+
+---
+
 ## ⭐ Priority 1 — IIT Experiment: Triple Convergence Causal Test
 
 **Hypothesis:** Whisper's transition layer (~50% depth) is causally responsible for semantic crystallization, not just correlational.
@@ -122,15 +146,19 @@
 The minimal steps to unblock ALL experiments above:
 
 ```bash
+# Step 0 (NEW — Priority 0 prerequisite, Gap #18):
+git clone https://github.com/juice500ml/phonetic-arithmetic /tmp/phonetic-arithmetic
+# No GPU needed; uses Choi et al. stimuli + Whisper-small encoder only
+
 # Step 1: Create venv
 python3 -m venv ~/audio-mi-env
 source ~/audio-mi-env/bin/activate
 pip install nnsight openai-whisper torch
 
 # Step 2: Get real speech file (any option)
-# Option A: Download LibriSpeech sample
-curl -L "https://www.openslr.org/resources/12/dev-clean.tar.gz" | tar xz -C /tmp/ --strip-components=4 --wildcards "*.flac" -m 1
-# Option B: Record 5-10s yourself
+# Option A: LibriSpeech sample (1 command):
+curl -sL "https://www.openslr.org/resources/12/dev-other.tar.gz" | tar xz --strip-components=5 -C /tmp/ --wildcards "*.flac" 2>/dev/null
+# Option B: Record 5-10s English sentence → /tmp/test.wav
 # Option C: Ask Leo to drop any .wav in workspace
 
 # Step 3: Run validation
@@ -139,7 +167,7 @@ python skills/autodidact/scripts/whisper_hook_demo.py /tmp/test.wav
 # Step 4 (optional): Approve IIT experiment → start Priority 1
 ```
 
-**Expected time to unblock:** 15 minutes of Leo's time.
+**Expected time to unblock:** 15-20 minutes of Leo's time (added git clone for Priority 0).
 
 ---
 

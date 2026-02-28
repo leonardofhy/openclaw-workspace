@@ -127,6 +127,38 @@
 **新指示 (2026-02-28 01:04)：恢復 30 分鐘 cadence，自主學習要加入「meta-awareness 系統自我研究」：每輪可列出值得改進問題，並做最小可逆改善。**
 **Recommended next cycles:** `learn` + `reflect(meta-audit)` 交替，避免 execution-blocked 時連續 skip。
 
+## Paper Idea #7: Audio T-SAE (新增 2026-02-28 cycle #72)
+**"Phoneme-Aware Sparse Autoencoders for Speech Models via Temporal Contrastive Learning"**
+- Apply T-SAE (Bhalla et al., ICLR 2026 Oral, arXiv:2511.05541) to Whisper/HuBERT
+- Matryoshka partition: high-level (speaker/phoneme/emotion) + low-level (frame-level articulation)
+- Multi-scale temporal contrastive loss: SHORT (adjacent frames, phoneme-level) + LONG (utterance-level for speaker identity)
+- Evaluate with TCS(F) = within-phoneme variance / across-phoneme variance (uses MFA boundary ground truth)
+- Audio has STRONGER temporal priors than text → should work BETTER; T-SAE authors flag this gap explicitly
+- Gap #17: No audio SAE exploits temporal structure. All existing audio SAEs (AudioSAE, Mariotte, AR&D) are i.i.d. across frames.
+- Venue: INTERSPEECH 2027 or ICASSP 2027. Risk: T-SAE authors could extend first → move fast.
+- Relationship to AudioSAEBench: TCS(F) = Category 1 metric; Audio T-SAE = the model being benchmarked.
+
+## Gap #19: No Standardized Audio SAE Training Pipeline (新增 2026-02-28 cycle #87)
+- SAELens v6 (the de-facto SAE training/loading library, `decoderesearch/SAELens`) has **ZERO audio/speech pre-trained SAEs** — all 25 HuggingFace models = Gemma-scope / GPT-2 / LLaMA only
+- All 5 audio SAE papers (AudioSAE, Mariotte, AR&D, Plantinga-PD, Paek et al.) use custom one-off training code
+- **Implication for Paper B (AudioSAEBench)**: include a SAELens-compatible audio SAE training toolkit as a community contribution. This makes AudioSAEBench stronger (not just evaluation → evaluation + training pipeline) and ensures results are `pip install`-able and reproducible.
+- Connection: Leo uses SAELens training code with NNsight hooks for Whisper/HuBERT activation extraction → upload trained SAEs with `saelens` tag → field has first standardized audio SAE backbone
+
+## Gap #18: Phonological Vector Geometry Through the Connector (新增 2026-02-28 cycle #81; experiment design cycle #82)
+**"Does linear phonological structure in S3M encoders survive through the connector into speech LLMs?"**
+- Choi et al. 2602.18899 confirms: phonological features are linear, compositional, scale-continuous in S3M representations (96 languages)
+- What's unknown: Does this linear phonological geometry persist after passing through the connector into the LLM residual stream?
+- If YES: LLM has direct access to phonological feature directions → listening is phonologically structured
+- If NO: connector destroys phonological geometry → connector = modality bottleneck → supports Modality Collapse (2602.23136)
+- **Experiment (4 steps, cycle #82):**
+  1. Extract voicing_vector = h([d]) - h([t]) from Whisper-small encoder (MacBook, Choi et al. stimuli)
+  2. Hook connector via NNsight (DeSTA2 or NDIF Qwen2-Audio)
+  3. Test arithmetic in LLM layer 0: `projected_h([b]) ≈ projected_h([d]) - projected_h([t]) + projected_h([p])?`
+  4. Layer-wise probe sweep: where does voicing direction become decodable?
+- **Status:** Added as **Priority 0** in experiment-queue.md (prerequisite check before Paper A IIT experiment)
+- **Idea gate:** 🟢 GREEN — no competitors found; integrate as Figure 2 of Paper A or Category 0 of AudioSAEBench
+- Connection: Paper A (Listen Layer — prerequisite), Paper B (AudioSAEBench TCS(F) validation), Idea #7 (Audio T-SAE), Gap #14 (Modality Collapse)
+
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
 2. 🔧 **Deep Research**: 自主 AI agent 系統的可持續架構（已請求 2/26）
