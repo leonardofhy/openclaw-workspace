@@ -3,11 +3,17 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-02-28 11:20
+**Last Updated:** 2026-02-28 13:35
 
 ## Current Task
-L-08 財務管理 — 查獎學金 deadline、TA 空缺、收入策略
-Leo 說實驗不要我處理，專注其他任務
+L-08 財務管理 — 分析 GPT-5.2 PRO 搜集的 funding 資料，給 Leo 推薦
+
+## Recent Context
+- Anthropic Fellows: 確認需要 US/UK/Canada work auth，不提供 visa → Leo 不能申請
+- 新發現：UK AISI Alignment Project（全球可申請，up to £1M，summer 2026 重開）
+- LTFF rolling 可投，realistic $5k-50k for master's
+- MATS Autumn 2026 opens late April
+- 中技社 + 潘文淵 + 上海商銀 confirmed from our earlier analysis
 
 ## Recent Context
 - L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
