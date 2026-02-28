@@ -138,6 +138,15 @@
 - Venue: INTERSPEECH 2027 or ICASSP 2027. Risk: T-SAE authors could extend first → move fast.
 - Relationship to AudioSAEBench: TCS(F) = Category 1 metric; Audio T-SAE = the model being benchmarked.
 
+## Gap #18: Phonological Vector Geometry Through the Connector (新增 2026-02-28 cycle #81)
+**"Does linear phonological structure in S3M encoders survive through the connector into speech LLMs?"**
+- Choi et al. 2602.18899 confirms: phonological features are linear, compositional, scale-continuous in S3M representations (96 languages)
+- What's unknown: Does this linear phonological geometry persist after passing through the connector into the LLM residual stream?
+- If YES: LLM has direct access to phonological feature directions → listening is phonologically structured
+- If NO: connector destroys phonological geometry → connector = modality bottleneck → supports Modality Collapse (2602.23136)
+- Test: extract phonological vectors (e.g., voicing direction [d]-[t]) from S3M layer, project through connector with NNsight, test if arithmetic still holds in LLM layer 0
+- Connection: Paper A (Listen Layer), Paper B (AudioSAEBench TCS(F) validation), Idea #7 (Audio T-SAE)
+
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
 2. 🔧 **Deep Research**: 自主 AI agent 系統的可持續架構（已請求 2/26）

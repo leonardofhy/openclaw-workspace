@@ -459,18 +459,32 @@ Priority queue for Leo's first session:
 | #73 | 2026-02-28 12:01 | reflect (priority synthesis) | **7-idea portfolio priority ranking** produced — first time all ideas ranked together. Priority: A (Listen Layer) → B (AudioSAEBench) → Audio T-SAE → Neuron Grounding → LoRA+AudioLens → SAE Safety → Audio IOI. Key insight: Papers A+B share 60% infra → do together; one-line thesis linking all 7. arXiv Feb 28 batch ~14:00 → cycle #74 = learn. |
 | #74 | 2026-02-28 12:31 | learn (gap verification) | **T-SAE v2 + Audio T-SAE gap verified**: v2 updated 2026-02-25 (ICLR Oral camera-ready), text-only, no audio extension, no code repo. Gap #17 still fully open. Zero audio T-SAE papers on arXiv. Audio safety mech interp gap also open (SPIRIT still only paper). Competition risk: LOW-MEDIUM (ICLR spotlight → field awareness increases). arXiv Feb 28 batch still not posted (~14:00 Taipei). |
 
-## Day 3 Rolling Stats (after cycle #74)
+## Day 3 Rolling Stats (after cycle #80)
 - Papers read (deep): 15 total
-- Papers scanned: 28+ (T-SAE v2 re-scanned, gap verified)
+- Papers scanned: **29+** (Paek et al. 2510.23802 = 5th audio SAE paper)
 - Research gaps identified: **17** (all confirmed still open)
 - Paper ideas: **7** (all ranked in priority doc, Gap #17 competition risk: LOW-MEDIUM)
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1 (NNsight updated)
 - Experiment proposals: 2 (IIT Triple Convergence + Class-specific Neuron Grounding)
-- Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
+- Paper pitches: **2 (A: Listen Layer + B: AudioSAEBench v0.4)** — both updated
+- Audio SAE field map: **5 papers total** (AudioSAE, Mariotte, AR&D, Plantinga-PD, Paek et al.)
 - **Priority ranking: FIRST COMPLETE DRAFT** ✅ (cycle #73)
 - **Execution-blocked: awaiting Leo** (real speech + venv + IIT experiment approval)
-- **arXiv Feb 28 batch**: still not posted (~12:31 PM) → next learn cycle ~14:00 Taipei
+- **arXiv Feb 28 batch**: still delayed (15:31 PM Taipei) → next scan cycle ~18:00
+
+| #81 | 2026-02-28 16:01 | learn (deep-scan) | **Choi et al. 2602.18899 "Phonological Vector Arithmetic in S3Ms"** — phonological features are LINEAR, COMPOSITIONAL, SCALE-CONTINUOUS in S3M space (96 languages); [b]=[d]-[t]+[p] works; validates TCS(F) metric, provides minimal-pair stimuli design blueprint; **NEW Gap #18**: phonological vector geometry survives S3M encoder, but does it survive the CONNECTOR into speech LLMs? Nobody has tested. Directly supports Paper B (AudioSAEBench), Idea #7 (Audio T-SAE), Paper A (Listen Layer). |
+
+## Day 3 Rolling Stats (after cycle #81)
+- Papers read (deep): **16 total** (+Choi et al. phonological vector arithmetic)
+- Papers scanned: 29+
+- Research gaps identified: **18** (+Gap #18: phonological vector geometry through connector)
+- Paper ideas: 7
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1
+- Experiment proposals: 2
+- Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
+- **arXiv Feb 28 batch**: still delayed at 16:01 PM
 
 | #75 | 2026-02-28 13:02 | learn (idea gate — Idea #7) | **Full Idea Gate for Audio T-SAE** — 5 queries, 0 competitors, 🟢 GREEN verdict. Feasibility: PASS (GPU+MFA+T-SAE re-impl, 1-2 weeks). Value: 11/15 ✅ CONTINUE. Key finding: Audio T-SAE = Paper B's flagship model + TCS(F) metric → integrate as Paper B temporal module. New process rule: idea_gate FIRST before goals.md (time-critical: [GATE PENDING] tag). First use of idea_gate.md protocol. |
 
@@ -491,3 +505,4 @@ Priority queue for Leo's first session:
 | #77 | 2026-02-28 14:01 | learn (arXiv scan) | Feb 28 batch still posting. 2 previously-missed papers scanned: (1) TADA! (2502.xxxx, Feb 12) — activation patching on audio *diffusion* models, finds localized semantic subspace; not a competitor (music synthesis ≠ speech LLMs) but corroborates steerability feasibility. (2) Group-SAE (2601.20028, Jan 27) — group-sparse SAE decomposes CLIP vision-text embeddings by modality origin; methodological connection to Track 3 audio-vs-text pathway attribution. Both = SCAN only. All 17 gaps remain OPEN. Feb 28 batch: no new MI×speech papers. |
 | #78 | 2026-02-28 14:31 | reflect (Day 3 synthesis) | Field velocity: accelerating (~2.5 papers/week in Leo's space). All 17 gaps confirmed OPEN as of Feb 28. Paper A competitive window ~3 months before saturation risk. Audio T-SAE gap confirmed OPEN (no audio T-SAE on arXiv after T-SAE ICLR Oral camera-ready Feb 25). paper-b-pitch.md updated to v0.3 (TCS(F) Temporal Module integration confirmed in Category 1b). Unblock request PENDING 12.5h. |
 | #79 | 2026-02-28 15:01 | learn (triage + meta-awareness) | arXiv Feb 28 batch not yet posted (cs.SD/recent still shows Feb 27 max). Found 1 new adjacent paper: MMA-Bench (2511.22826, Nov 2025) — MLLMs robustness under contradicting modalities, vision domain, black-box+white-box interp; SCAN only, not a competitor, motivates "modality prioritization" framing for Paper A. Meta-awareness: backlog-scan-list.md updated with MMA-Bench note. All 17 gaps still OPEN. |
+| #80 | 2026-02-28 15:31 | learn (new paper scan) | **Paek et al. (arXiv:2510.23802, NeurIPS 2025 MI Workshop)** found — "Learning Interpretable Features in Audio Latent Spaces via SAEs"; audio generation model (DiffRhythm/EnCodec/WavTokenizer) SAE analysis; pitch/timbre/loudness linear mapping; NOT a competitor to AudioSAEBench (generation ≠ speech understanding, no causal metrics, no grounding sensitivity); audio SAE papers = now **5 total** — all 5 lack causal patching + grounding_sensitivity → Paper B gap confirmed. arXiv Feb 28 batch still delayed. All 17 gaps OPEN. |

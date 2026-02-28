@@ -331,3 +331,17 @@ No new posts. Feed identical to 14:15 snapshot.
 **[backlog-pick]** *Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior* (Alignment Forum, Feb 27)
 - Why: AF-native (researcher-grade signal) post on diagnosing *why* a model misbehaved — sits at the intersection of interpretability and safety evaluation; directly actionable for anyone building evals or trying to attribute misbehavior to training causes vs. deployment context; complements the unsupervised elicitation / scheming-detection thread already in queue.
 - Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
+
+---
+**2026-02-28 15:15 (Sat)** — scan: AF rate-limited (429), LW +0 new since 14:45 | backlog: ~22 unread
+
+No new posts since last cycle. Feed unchanged.
+
+**[backlog-pick]** *New ARENA material: 8 exercise sets on alignment science & interpretability* (LessWrong, Feb 27, CallumMcDougall, karma: 64)
+- Why: ARENA is the primary hands-on curriculum for alignment research training; 8 new exercise sets covering alignment science + interpretability represents a significant curriculum expansion — high value for anyone doing or supervising alignment research skill development; solid karma signal (64) confirms community endorsement.
+- Link: <https://www.lesswrong.com/posts/nQAN2vxv2ASjowMda/new-arena-material-8-exercise-sets-on-alignment-science-and>
+
+---
+**2026-02-28 15:45 (Sat)** — scan: AF +0 new, LW +0 new since 15:15 | backlog: ~21 unread
+
+No new posts. Both feeds unchanged from prior cycle. Recent backlog queue already well-stocked (ARENA material, Model Incrimination, RSP Comparison, Schelling Goodness, AI #157, 3 Challenges/Unsupervised Elicitation, Dawn of AI Scheming). No high-signal update this cycle.

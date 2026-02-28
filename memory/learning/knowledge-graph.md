@@ -15,6 +15,16 @@
 - Mozilla Builders (2024) — Whisper SAE (L1, TopK), phonetic/positional features
 - Open tools: whisper-interp (GitHub), whisper_logit_lens (GitHub)
 
+- **Choi et al. 2602.18899 "Phonological Vector Arithmetic in S3Ms"** (Feb 2026, ACL submission) — 🟢 DEEP-SCAN (cycle #81)
+  - 96 languages, multiple S3Ms (HuBERT/WavLM/wav2vec 2.0)
+  - KEY FINDING: phonological features are LINEAR, COMPOSITIONAL, and SCALE-CONTINUOUS in S3M space
+  - Arithmetic: [b] = [d] - [t] + [p] (voicing vector = linear, subtracts/adds cleanly)
+  - Magnitude scales with acoustic realization degree (partially voiced = intermediate position)
+  - Cross-lingual: phonological vectors universal across 96 languages
+  - Code: github.com/juice500ml/phonetic-arithmetic
+  - CONNECTIONS: (1) Validates TCS(F) metric (Paper B AudioSAEBench) — phoneme boundaries are geometrically well-defined; (2) Provides stimuli design blueprint for minimal-pair audio patching (phonological contrast pairs = principled "clean/corrupt" construction); (3) Motivates Audio T-SAE (Idea #7) — phonological features are linear = SAE-learnable; (4) Suggests cross-lingual feature alignment evaluation axis for AudioSAEBench
+  - **NEW GAP #18**: Phonological vector geometry shown in S3M encoder — does it SURVIVE through the connector into speech LLMs? Nobody has tested. If connector destroys phonological linearity → connector = bottleneck. Test: extract voicing_vector from S3M layer, project via connector with NNsight, test arithmetic in LLM layer 0.
+
 ### B) Speech Encoder SAEs
 - **Mariotte et al. "Sparse Autoencoders Make Audio Foundation Models more Explainable" (Sep 2025, ICASSP 2026)** — 🟢 DEEP READ (cycle #27) [arXiv:2509.24793]
   - Models: AST (sound), HuBERT (speech), WavLM (speech), MERT (music) — 4 models, 13 layers each, D=768
