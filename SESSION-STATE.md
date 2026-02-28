@@ -3,10 +3,17 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-02-28 01:43
+**Last Updated:** 2026-02-28 13:35
 
 ## Current Task
-Pre-compaction flush complete. Massive build session done — all core infra, 5 skills, cron, GPU env, research toolkit built.
+L-08 財務管理 — 分析 GPT-5.2 PRO 搜集的 funding 資料，給 Leo 推薦
+
+## Recent Context
+- Anthropic Fellows: 確認需要 US/UK/Canada work auth，不提供 visa → Leo 不能申請
+- 新發現：UK AISI Alignment Project（全球可申請，up to £1M，summer 2026 重開）
+- LTFF rolling 可投，realistic $5k-50k for master's
+- MATS Autumn 2026 opens late April
+- 中技社 + 潘文淵 + 上海商銀 confirmed from our earlier analysis
 
 ## Recent Context
 - [2026-02-28 14:00] Cron job `eac477f3-27d1-4f5e-9fd2-cb4e5268128a` requested merge; running `scripts/merge-to-main.sh` and reporting result to #bot-sync with format.
