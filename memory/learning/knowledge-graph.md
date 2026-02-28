@@ -198,6 +198,7 @@
 | Emotion-sensitive neurons (ESNs) causally ablatable | Zhao 2601.03115 | ↔ | LALMs query audio tokens directly | AudioLens | **New question: are ESNs driven by audio stream or text context?** → patching experiment needed |
 | Neuron-level class-specific units | Kawamura 2602.15307 | ↔ | Polysemanticity in audio features | AudioSAE | Same phenomenon at different granularity → SAE = principled disentanglement of neuron polysemanticity |
 | SAE enhances vocal attribute disentanglement | Mariotte 2509.24793 | ↔ | SAE for speech features (all layers) | AudioSAE | Two SAE papers, no comparison/evaluation → Track 2 AudioSAEBench fills this gap |
+| Layer-level gc (Listen Layer — which layer consults audio?) | Track 3 / Causal AudioLens | ↔ | Feature-level gc (AudioSAEBench — which SAE feature is audio-grounded?) | Track 2 / AudioSAEBench | **⭐ SAME METRIC at different granularity**: grounding_coefficient unifies both papers. Same stimuli (ALME), same IIT theory. Paper A validates macro; Paper B scales to micro. |
 
 ### 🧪 Experiment 1: Triple Convergence IIT Test (Cycle #34 proposal — 2026-02-27)
 
@@ -247,23 +248,73 @@ IIT accuracy should peak at the layer where the representation best *causally ex
   - Feature Absorption = known failure mode (high sparsity ≠ monosemanticity)
   - 200+ SAEs benchmarked across 7 architectures
   - **GAP #15**: No equivalent benchmark for audio/speech SAEs → AudioSAEBench fills this gap
-  - AudioSAEBench analog:
-    - Concept Detection → phoneme/emotion/accent probing
-    - Interpretability → auto-caption pipeline (AR&D-style, harder for audio)
-    - Reconstruction → CE delta on ASR at given L0
-    - Feature Disentanglement → **"Grounding Sensitivity"** (novel): gc per feature = fraction of activation from audio vs text
-  - **Grounding Sensitivity metric (NEW)**: for each SAE feature, compute grounding_coefficient via minimal pair patching. Features with gc≈1 = audio-grounded; gc≈0 = context-driven. No text-SAE equivalent. Audio-native contribution.
+  - **Grounding Sensitivity metric (NOVEL)**: for each SAE feature, compute grounding_coefficient via minimal pair patching. Features with gc≈1 = audio-grounded; gc≈0 = context-driven. No text-SAE equivalent. Audio-native contribution.
   - CODE: github.com/adamkarvonen/SAEBench; Interactive: neuronpedia.org/sae-bench
 
-### H) Crystallized Paper Opportunities (updated 2026-02-27)
+### K) AudioSAEBench Protocol Design v0.1 (Cycle #54)
 
-1. **"Causal AudioLens"** (Track 3 anchor): AudioLens logit-lens + causal activation patching → grounding_coefficient. First paper with causal claims in LALM audio grounding. Co-author with 智凱哥.
+**Full protocol:** see `memory/learning/2026-02-28_cycle54.md`
 
-2. **"SAE-guided Inference-time Safety Patching"** (Track 5): AudioSAE feature suppression → replace SPIRIT's blind layer patching with interpretable feature-level patching. More surgical, more mechanistic.
+**5 Evaluation Categories:**
+1. **Acoustic Concept Detection** — feature-level concept F1 (time-resolved; LibriSpeech/ESC-50/VocalSet)
+2. **Disentanglement / Completeness** — linear probe independence via Mariotte's completeness metric
+3. **Reconstruction Fidelity** — `task_preservation_ratio` = WER/emotion-F1 with SAE vs without SAE
+4. **Causal Controllability** — Cohen's d (ablation) + steering precision (gain); both necessity + controllability
+5. **Grounding Sensitivity (NOVEL)** — `gc(F)` per feature via ALME minimal pairs (57K stimuli); grounding histogram
 
-3. **"Causal AudioLens + LoRA"** (Track 3+4 combined): Both AudioLens and "Behind the Scenes" lack causal patching. One paper can add patching to BOTH — LALM grounding AND LoRA adaptation mechanism. Unified causal contribution.
+**Key comparison vs prior work:**
 
-4. **"Audio Minimal Pairs Patching Protocol"** (Track 1 methodological): Heimersheim & Nanda validates all prior audio MI uses suboptimal corruptions (white noise). Minimal pair audio corruptions (same speaker/duration/content structure, different target attribute) = cleaner causal evidence. Methodological improvement claim → benchmark paper.
+| Dimension | AudioSAE | Mariotte | AR&D | **AudioSAEBench** |
+|-----------|----------|----------|------|-------------------|
+| Multi-metric | ❌ | ❌ | ❌ | ✅ (5 categories) |
+| Grounding Sensitivity | ❌ | ❌ | ❌ | ✅ **NOVEL** |
+| Temporal resolution | partial | ❌ | ❌ | ✅ (per-timestep) |
+| Causal controllability | ✅ | ❌ | ✅ | ✅ (both tests) |
+
+**Models:** Whisper-base/small (MacBook-feasible) → Whisper-large-v3, HuBERT, WavLM → Qwen2-Audio-7B via NDIF
+**Stimuli:** LibriSpeech + IEMOCAP + ESC-50 + VocalSet + ALME conflict pairs (arXiv:2602.11488)
+**Title:** "AudioSAEBench: Multi-Metric Evaluation of SAEs for Speech and Audio Language Models"
+**Venue:** NeurIPS 2026 Datasets & Benchmarks OR INTERSPEECH 2027
+**Timing risk:** AR&D (Chowdhury et al.) has partial overlap → move fast on defining Grounding Sensitivity
+
+**Grounding Sensitivity metric (NOVEL — KEY contribution):**
+For feature F with concept C (e.g., "speaker emotion = sad"):
+- Create minimal pair: (audio=C, text=neutral) vs (audio=neutral, text=C)
+- `gc(F)` = act(audio=C, text=neutral) / [act(audio=C, text=neutral) + act(audio=neutral, text=C)]
+- `gc=1.0` → pure audio grounding; `gc=0.0` → pure text prediction
+- ALME 57K conflict stimuli = perfect off-the-shelf test set for this
+- **No text-SAE benchmark has an equivalent metric** — audio-native unique contribution
+
+**Connection to Listen Layer (Track 3):**
+> Grounding Sensitivity at FEATURE level (AudioSAEBench) is the same metric as grounding_coefficient at LAYER level (Listen Layer / Causal AudioLens). Same theoretical foundation (IIT/Causal Abstraction), same stimuli (ALME), different granularity. Paper A validates the layer-level metric; Paper B scales it to features. Run Paper A first.
+
+**Collaboration opportunities:**
+- AR&D authors (concept labeling pipeline) — potential co-author for Category 1
+- AudioSAE authors (Aparin et al.) — baseline SAE infrastructure
+
+### H) Crystallized Paper Opportunities (updated 2026-02-28)
+
+**⭐ RECOMMENDED EXECUTION ORDER (cycle #55 synthesis):**
+> Paper A (Track 3, fast) → Paper B (Track 2, community resource)  
+> Reason: Paper A's grounding_coefficient IS Paper B's Category 5 (Grounding Sensitivity). Validate at layer level first; scale to feature level second.
+
+1. **"Localizing the Listen Layer in Speech LLMs"** ⭐ (Track 3 anchor, EXECUTE FIRST)
+   - AudioLens logit-lens + causal activation patching → layer-level grounding_coefficient
+   - Use ALME conflict stimuli (57K pairs, already built) — no need to generate own stimuli
+   - Find layer L* where audio causal contribution peaks = "Listen Layer"
+   - First paper with causal claims in LALM audio grounding
+   - Co-author with 智凱哥; ~3h MacBook experiment to start
+   - **Previous title candidate**: "Causal AudioLens"
+
+2. **"AudioSAEBench: Multi-Metric Evaluation of SAEs for Speech and Audio LMs"** ⭐ (Track 2, EXECUTE SECOND)
+   - Full protocol in KG section K; 5-category benchmark (Grounding Sensitivity = NOVEL)
+   - Builds on Paper A's validated grounding_coefficient method (scales to feature level)
+   - Larger scope: multiple SAE baselines + GPU for Qwen2-Audio
+   - Venue: NeurIPS 2026 D&B or INTERSPEECH 2027
+
+3. **"SAE-guided Inference-time Safety Patching"** (Track 5): AudioSAE feature suppression → replace SPIRIT's blind layer patching with interpretable feature-level patching. More surgical, more mechanistic.
+
+4. **"Causal AudioLens + LoRA"** (Track 3+4 combined): Both AudioLens and "Behind the Scenes" lack causal patching. One paper can add patching to BOTH — LALM grounding AND LoRA adaptation mechanism. Unified causal contribution.
 
 5. **"Class-specific Neuron Grounding in LALMs"** (Track 2+3 intersection): Kawamura + Zhao both find class-specific neurons but never ask "is this neuron driven by audio or text?" Apply grounding_coefficient at ESN/class-specific neuron level. Closes the same gap two different papers left open simultaneously.
 
