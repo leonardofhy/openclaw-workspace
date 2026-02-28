@@ -398,7 +398,13 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - Model diffing exercises (compare two models' representations)
 - CKA is the basis (already used in whisper_hook_demo.py)
 
-**New library discovered:** `SAELens` — production library for loading pre-trained SAEs (used throughout SAE Circuits exercises). Check before writing custom SAE training code: https://github.com/jbloomAus/SAELens
+**SAELens v6 — fully mapped (cycle #87):**
+- Repo: `decoderesearch/SAELens` (formerly `jbloomAus/SAELens`); `pip install sae-lens`
+- Pre-trained SAE registry: **ZERO audio/speech SAEs** — all 25 models = Gemma-scope variants + GPT-2 + LLaMA
+- Works with NNsight: `sae.encode(acts_tensor)` takes any PyTorch tensor from NNsight hook
+- **Gap #19**: No standardized audio SAE training pipeline. SAELens training code = correct backbone for AudioSAEBench; trained SAEs can be uploaded with `saelens` tag → community adoption
+- Transcoders available for Gemma 2-2B (for ARENA [1.4.2] exercise)
+- Leo's workflow: NNsight hook → Whisper activations → SAELens trainer → save → `SAE.load_from_disk()`
 
 **Recommended study path (pre-experiment):**
 ```

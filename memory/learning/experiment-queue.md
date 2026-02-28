@@ -146,15 +146,19 @@
 The minimal steps to unblock ALL experiments above:
 
 ```bash
+# Step 0 (NEW — Priority 0 prerequisite, Gap #18):
+git clone https://github.com/juice500ml/phonetic-arithmetic /tmp/phonetic-arithmetic
+# No GPU needed; uses Choi et al. stimuli + Whisper-small encoder only
+
 # Step 1: Create venv
 python3 -m venv ~/audio-mi-env
 source ~/audio-mi-env/bin/activate
 pip install nnsight openai-whisper torch
 
 # Step 2: Get real speech file (any option)
-# Option A: Download LibriSpeech sample
-curl -L "https://www.openslr.org/resources/12/dev-clean.tar.gz" | tar xz -C /tmp/ --strip-components=4 --wildcards "*.flac" -m 1
-# Option B: Record 5-10s yourself
+# Option A: LibriSpeech sample (1 command):
+curl -sL "https://www.openslr.org/resources/12/dev-other.tar.gz" | tar xz --strip-components=5 -C /tmp/ --wildcards "*.flac" 2>/dev/null
+# Option B: Record 5-10s English sentence → /tmp/test.wav
 # Option C: Ask Leo to drop any .wav in workspace
 
 # Step 3: Run validation
@@ -163,7 +167,7 @@ python skills/autodidact/scripts/whisper_hook_demo.py /tmp/test.wav
 # Step 4 (optional): Approve IIT experiment → start Priority 1
 ```
 
-**Expected time to unblock:** 15 minutes of Leo's time.
+**Expected time to unblock:** 15-20 minutes of Leo's time (added git clone for Priority 0).
 
 ---
 

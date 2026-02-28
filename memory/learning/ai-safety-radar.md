@@ -395,3 +395,13 @@ No new posts. Saturday evening quiet continues.
 - **Emergent Misalignment** → LoRA exercises = Track 4 foundation
 - **Recommendation:** Leo should do ARENA "Linear Probes" + "Attribution Graphs" exercises BEFORE first NNsight/pyvene experiment. 2-4 day investment = higher quality experiments.
 - URL: https://learn.arena.education/ (branch: `alignment-science`, merging to main this Sunday)
+
+---
+**2026-02-28 18:45 (Sat)** — scan: AF rate-limited (429), LW +0 new (top: "Schelling Goodness", 04:25 UTC, unchanged) | backlog: ~21 unread
+
+No new posts. Both feeds flat since morning; all high-signal items from this week already picked (Schelling Goodness, ARENA material, Dario DoW statement, Zvi DoW responds, Sam Altman red lines, RSP comparison, AI #157). No further picks warranted this cycle.
+
+---
+**2026-02-28 19:15 (Sat)** — scan: AF +0 new, LW +0 new | backlog: ~19 unread (2 formally marked read)
+
+No new posts. Backlog housekeeping: marked articles [37] "The Topology of LLM Behavior" and [40] "Side by Side Comparison of RSP Versions" as read in blogwatcher — both had been verbally picked in earlier cycles (18:01, 18:45) but not formally marked. No new high-signal items this cycle.

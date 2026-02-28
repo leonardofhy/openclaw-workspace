@@ -138,6 +138,12 @@
 - Venue: INTERSPEECH 2027 or ICASSP 2027. Risk: T-SAE authors could extend first → move fast.
 - Relationship to AudioSAEBench: TCS(F) = Category 1 metric; Audio T-SAE = the model being benchmarked.
 
+## Gap #19: No Standardized Audio SAE Training Pipeline (新增 2026-02-28 cycle #87)
+- SAELens v6 (the de-facto SAE training/loading library, `decoderesearch/SAELens`) has **ZERO audio/speech pre-trained SAEs** — all 25 HuggingFace models = Gemma-scope / GPT-2 / LLaMA only
+- All 5 audio SAE papers (AudioSAE, Mariotte, AR&D, Plantinga-PD, Paek et al.) use custom one-off training code
+- **Implication for Paper B (AudioSAEBench)**: include a SAELens-compatible audio SAE training toolkit as a community contribution. This makes AudioSAEBench stronger (not just evaluation → evaluation + training pipeline) and ensures results are `pip install`-able and reproducible.
+- Connection: Leo uses SAELens training code with NNsight hooks for Whisper/HuBERT activation extraction → upload trained SAEs with `saelens` tag → field has first standardized audio SAE backbone
+
 ## Gap #18: Phonological Vector Geometry Through the Connector (新增 2026-02-28 cycle #81; experiment design cycle #82)
 **"Does linear phonological structure in S3M encoders survive through the connector into speech LLMs?"**
 - Choi et al. 2602.18899 confirms: phonological features are linear, compositional, scale-continuous in S3M representations (96 languages)
