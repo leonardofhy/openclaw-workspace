@@ -81,6 +81,10 @@ updated_at: 2026-03-01T12:00+08:00
 - Parse corrections into atomic ops.
 - Apply parseable ones in one pass.
 - Ambiguous items go to `## Inbox` (never silently guessed).
+- MVP script available:
+  ```bash
+  python3 skills/daily-scheduler/scripts/bulk_correct_v2.py --date YYYY-MM-DD --text "13:00-14:00 xxx; 14:10-15:00 yyy"
+  ```
 
 5) **Close Day**
 - Finalize ACTUAL and set `day_state: closed`.

@@ -32,6 +32,7 @@ from common import TZ, today_str as _today_str, WORKSPACE, SECRETS
 CAL_ID = 'leonardofoohy@gmail.com'
 CREDS_PATH = SECRETS / 'google-service-account.json'
 SCHEDULES_DIR = WORKSPACE / 'memory' / 'schedules'
+META_DIR = SCHEDULES_DIR / '.meta'
 MANAGED_TAG = 'daily-scheduler/v2'
 
 # Legacy parser skip rules (kept for backward compatibility)
@@ -224,6 +225,46 @@ def _event_description(date_str: str, block: Block, source_file: Path) -> str:
     )
 
 
+def _payload_hash(body: dict) -> str:
+    stable = json.dumps(body, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
+    return hashlib.sha1(stable.encode('utf-8')).hexdigest()
+
+
+def _meta_path(date_str: str) -> Path:
+    return META_DIR / f'{date_str}.json'
+
+
+def _load_meta(date_str: str) -> dict:
+    path = _meta_path(date_str)
+    if not path.exists():
+        return {
+            'schema': 'daily-scheduler/meta-v2',
+            'date': date_str,
+            'gcal': {'events': {}},
+        }
+    try:
+        data = json.loads(path.read_text())
+        if not isinstance(data, dict):
+            raise ValueError('meta root must be object')
+    except Exception:
+        # Corrupt meta should not block sync; start fresh with minimal skeleton.
+        data = {'schema': 'daily-scheduler/meta-v2', 'date': date_str, 'gcal': {'events': {}}}
+
+    data.setdefault('schema', 'daily-scheduler/meta-v2')
+    data.setdefault('date', date_str)
+    data.setdefault('gcal', {})
+    data['gcal'].setdefault('events', {})
+    return data
+
+
+def _save_meta(date_str: str, data: dict) -> None:
+    path = _meta_path(date_str)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix('.json.tmp')
+    tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2))
+    tmp.replace(path)
+
+
 def sync(date_str: str, dry_run: bool = False) -> dict:
     schedule_file = SCHEDULES_DIR / f'{date_str}.md'
     if not schedule_file.exists():
@@ -262,7 +303,10 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
         if uid:
             managed_existing[uid] = e
 
-    actions = {'create': [], 'update': [], 'kept': [], 'skipped': [], 'delete': []}
+    meta = _load_meta(date_str)
+    meta_events: dict = meta.setdefault('gcal', {}).setdefault('events', {})
+
+    actions = {'create': [], 'update': [], 'kept': [], 'skipped': [], 'delete': [], 'warnings': []}
 
     for block in blocks:
         body = {
@@ -271,29 +315,61 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
             'start': {'dateTime': block.start_dt.isoformat(), 'timeZone': 'Asia/Taipei'},
             'end': {'dateTime': block.end_dt.isoformat(), 'timeZone': 'Asia/Taipei'},
         }
+        new_hash = _payload_hash(body)
 
-        existing_event = managed_existing.get(block.uid)
+        meta_row = meta_events.setdefault(block.uid, {
+            'gcal_event_id': None,
+            'last_synced_hash': None,
+            'locked': False,
+            'changed_by_user': False,
+            'managed': True,
+        })
+
+        existing_event = None
+
+        # Prefer meta-linked event id first, with uid safety check.
+        meta_event_id = meta_row.get('gcal_event_id')
+        if meta_event_id:
+            try:
+                e = service.events().get(calendarId=CAL_ID, eventId=meta_event_id).execute()
+                if _is_managed_event(e) and _extract_uid(e) == block.uid:
+                    existing_event = e
+                else:
+                    actions['warnings'].append({'uid': block.uid, 'reason': 'meta_event_uid_mismatch'})
+            except Exception:
+                actions['warnings'].append({'uid': block.uid, 'reason': 'meta_event_not_found'})
+
+        # Fallback by uid scan result.
+        if existing_event is None:
+            existing_event = managed_existing.get(block.uid)
+
+        if meta_row.get('locked') and not meta_row.get('changed_by_user') and existing_event is not None:
+            actions['skipped'].append({'uid': block.uid, 'reason': 'locked_no_user_change'})
+            continue
+
         if existing_event:
-            changed = (
-                existing_event.get('summary') != body['summary'] or
-                (existing_event.get('description') or '') != body['description'] or
-                existing_event.get('start', {}).get('dateTime') != body['start']['dateTime'] or
-                existing_event.get('end', {}).get('dateTime') != body['end']['dateTime']
-            )
-            if changed:
+            if meta_row.get('last_synced_hash') == new_hash:
+                actions['kept'].append(block.uid)
+            else:
                 actions['update'].append(block.uid)
                 if not dry_run:
-                    service.events().update(
+                    updated = service.events().update(
                         calendarId=CAL_ID,
                         eventId=existing_event['id'],
                         body=body,
                     ).execute()
-            else:
-                actions['kept'].append(block.uid)
+                    meta_row['gcal_event_id'] = updated.get('id')
+                    meta_row['last_synced_hash'] = new_hash
+                    meta_row['managed'] = True
+                    meta_row['changed_by_user'] = False
         else:
             actions['create'].append(block.uid)
             if not dry_run:
-                service.events().insert(calendarId=CAL_ID, body=body).execute()
+                created = service.events().insert(calendarId=CAL_ID, body=body).execute()
+                meta_row['gcal_event_id'] = created.get('id')
+                meta_row['last_synced_hash'] = new_hash
+                meta_row['managed'] = True
+                meta_row['changed_by_user'] = False
 
     # Phase-1 safety: do not delete managed events automatically.
     # We report potential orphans for visibility only.
@@ -302,10 +378,14 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
         if uid not in desired_uids:
             actions['skipped'].append({'uid': uid, 'reason': 'orphan_not_deleted_phase1'})
 
+    if not dry_run:
+        _save_meta(date_str, meta)
+
     return {
         'date': date_str,
         'schedule_file': str(schedule_file),
         'source_mode': source_mode,
+        'meta_file': str(_meta_path(date_str)),
         'parsed_blocks': [
             {
                 'uid': b.uid,
