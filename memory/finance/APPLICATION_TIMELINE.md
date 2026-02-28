@@ -13,6 +13,7 @@
 - [ ] 🔴 **Leo 面對面問彤恩姐/系辦**：
   - 114-2 TA 空缺？（A 類獎勵金 ~6-8k/月）
   - B/E 類獎勵金什麼時候開放？研究獎助生能不能領？
+  - **中技社「系所推薦 1 位」** — 電信所的內部遴選流程是什麼？截止日？
 - [ ] 🟡 **開始寫 LTFF research proposal 大綱**（rolling basis，不急但越早投越好）
 
 ### 第 2 週（3/8-14）
@@ -49,23 +50,28 @@
 - [ ] 🟡 **投 LTFF proposal**（如果 3 月初稿完成）
 
 ### 第 2-3 週（4/8-21）
-- [ ] 🟡 **查 MATS Autumn 2026**（通常 late April 開放）
-  - 確認 stipend、時間、是否需要 on-site
-- [ ] 🟡 **查 UK AISI Alignment Project**（如果 summer 2026 有 call for proposals）
+- [ ] 🟡 **準備 MATS Autumn 2026 申請**（late April 開放！）
+  - ✅ 已確認：stipend USD $15,000/12wk、Berkeley in-person（或 London）、國際生可申請
+  - 準備 research statement（MI × Speech/Multimodal LM）
+  - 考慮：是否能離開台灣 3 個月（碩二上 2026/9-12）
+- [ ] 🟡 **查 Coefficient Technical AI Safety RFP** 是否仍開放
+- [ ] 🟡 定期刷 UK AISI grants page（目前不收件）
 
 ### 第 4 週（4/22-30）
 - [ ] 🔴 **4/30 MOE Taiwan Scholarship 截止**（如果確認可申請）
-- [ ] 🟡 **MATS 申請開放後立刻投**
+- [ ] 🔴 **MATS Autumn 2026 申請開放**（late April）→ 立刻投！
 
 ---
 
 ## 🗓️ 5 月 — Interspeech 結果 & Grant 追蹤
 
 - [ ] 🟡 Interspeech 2026 通知結果（通常 5 月）
-  - 接受 → 立刻申請 **student travel grant**
+  - 接受 → 立刻申請 **student travel grant**（2025 參考 deadline 6/6，需 paper + acceptance + CV + 推薦信）
   - 接受 → 更新 CV，用在所有後續獎學金申請
+  - **會議日期：2026/09/27 – 10/01**
 - [ ] 🟡 追蹤 LTFF 進度
 - [ ] 🟡 查 **AI Safety Camp** summer session
+- [ ] 🟡 MATS Summer 2026 結果公布（early April 通知）→ 如果 Autumn 已投，追蹤
 
 ---
 
@@ -75,14 +81,18 @@
 - [ ] ⏰ **6/1 中技社準備開始**（cron `3e505e31` 會提醒）
 
 ### 全月
-- [ ] 🔴 **準備中技社申請材料**：
-  - [ ] 研究計畫書（highlight Interspeech 成果）
-  - [ ] 向李宏毅老師要系所推薦信
+- [ ] 🔴 **準備中技社申請材料**（研究計畫書 = 評審 60%！）：
+  - [ ] 1 頁 executive summary：MI × Speech/Multimodal LM + AI Safety
+  - [ ] 研究論文摘要及初步成果（highlight Interspeech）
+  - [ ] 論文著作集
+  - [ ] 績優事蹟條列（開源、NTUAIS、TA/RA、社群貢獻）
+  - [ ] 向李宏毅老師要**指導教授推薦函**（需簽章）
+  - [ ] **系所推薦表**（需系所用印）→ 確認電信所內部截止日！
   - [ ] 成績單（含碩一成績）
-  - [ ] Interspeech 論文（如已接受）
+  - [ ] 在台修讀證明（需簽章/用印）
   - [ ] 中技社線上報名系統註冊（確認流程）
 - [ ] 🟢 準備潘文淵材料（9 月用）
-- [ ] 🟢 查 Interspeech 2026 travel grant deadline
+- [ ] 🟢 查 Interspeech 2026 travel grant deadline（2025 參考：deadline 6/6）
 
 ---
 

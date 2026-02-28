@@ -1,8 +1,10 @@
 # 🎓 Leo 獎學金完整分析
 
 > 建立：2026-02-28
-> 資料來源：台大僑輔組獎助學金一覽表 (gocfs.ntu.edu.tw)、中技社、潘文淵基金會、DuckDuckGo 搜索
+> **最後更新：2026-02-28 15:00（整合 GPT-5.2 PRO 搜索結果）**
+> 資料來源：台大僑輔組 (gocfs.ntu.edu.tw)、中技社官網 PDF、MATS、UK AISI、EA Forum、TECO Malaysia
 > 篩選條件：馬來西亞華人僑生 ✕ 台大電信所碩士 ✕ 研究獎助生身份
+> 原始搜索結果：`memory/finance/GPT52PRO_RESEARCH_RAW.md`
 
 ## Leo 的申請 Profile
 
@@ -31,21 +33,28 @@ Leo 的研究獎助生來自國科會計畫 = **政府計畫補助**。因此：
 
 ### ⭐⭐⭐ Tier 1：高金額、高機率
 
-#### 1. 中技社 境外生研究獎學金
-- **金額**：TWD 150,000（一次性）
-- **資格**：國內指定大學理工碩博境外生
+#### 1. 中技社 境外生研究獎學金 ⭐⭐⭐
+- **金額**：TWD 150,000（一次性）；2024 年 27 名、2025 年 24 名獲獎
+- **資格**：指定大學理工碩博境外生，**GPA ≥ 80 分**
 - **申請**：7/1 線上報名～9/10 書面截止
-- **需要**：系所推薦、研究計畫書、成績單
+- **⚠️ 每系所限推薦 1 位**（電信所內部會先篩選！）
+- **⚠️ 所內截止日可能早於 9/10**（清大電機所是 8/18）→ 6 月先問系辦
 - **衝突**：❌ 不衝突（民間基金會）
-- **Leo 優勢**：Interspeech 2026 一作、李宏毅實驗室、AI/Speech 研究
-- **準備提醒**：6/1 cron 已設 ✅
-- **勝率**：⭐⭐⭐ 高（有論文產出 = 強力加分）
+- **評審權重**：成績 10% / **研究計畫書 60%** / 優異表現 30%
+- **必要文件**：申請表(師生簽章)、在台修讀證明(用印)、成績單、研究論文摘要及初步成果、論文著作集、指導教授推薦函(簽章)、績優事蹟、系所推薦表(用印)
+- **官方 PDF**：<https://ctci.org.tw/media/10588/2025年中技社科技獎學金申請細則-境外研究獎學金及境外生活助學金pdf.pdf>
+- **Leo 優勢**：Interspeech 2026 一作、李宏毅實驗室、研究計畫(60%)完美對齊
+- **準備提醒**：6/1 cron ✅、6/28 報名開放提醒 ✅、9/5 書面截止提醒 ✅
+- **勝率**：⭐⭐⭐ 高
 
 #### 2. 中技社 境外生生活助學金
-- **金額**：TWD 100,000（一次性）
-- **資格**：同上（可和研究獎學金分開申請或同時）
+- **金額**：TWD 100,000（一次性）；2024 年 12 名、2025 年 12 名獲獎
+- **資格**：同上，**GPA ≥ 75 分**；**可與研究獎學金同時申請** ✅（官方明寫）
+- **⚠️ 每系所限推薦 1 位**
 - **申請**：同上 7/1～9/10
 - **衝突**：❌ 不衝突（民間基金會）
+- **評審權重**：成績/論文/優異表現 30% / **經濟資助必要性 70%**
+- **額外文件**：生活收支說明、已獲政府/學校獎助項目表、家境證明
 - **勝率**：⭐⭐⭐ 高
 
 #### 3. 潘文淵獎學金
@@ -164,52 +173,52 @@ Leo 的研究獎助生來自國科會計畫 = **政府計畫補助**。因此：
 
 ## 🤖 AI Safety 領域 Funding
 
-### ⭐⭐⭐ 1. Anthropic Fellows Program 2026 🔥🔥🔥
-- **金額**：USD $3,850/週 × 16 週 = **~USD $61,600（約 TWD 1,900,000）**
-- **另含**：$15k/月 compute 額度 + Anthropic 研究員 mentor
-- **時間**：4 個月（May 2026 或 July 2026 cohort）
-- **研究方向**：scalable oversight, adversarial robustness, **mechanistic interpretability** ← Leo 的主方向！
-- **資格**：不需 PhD、不需 ML 經驗、不需發表論文。需要 Python、研究動機、快速學習能力
-- **產出**：>80% 的 fellows 產出論文；>40% 後來加入 Anthropic 全職
-- **申請**：https://job-boards.greenhouse.io/anthropic/jobs/5023394008
-- **⚠️ Leo 需確認**：是否需要在美國/英國/加拿大 on-site（stipend 分 USD/GBP/CAD 三種）
-- **Leo 優勢**：
-  - Mechanistic Interpretability × Speech = 極度稀缺交叉方向
-  - Interspeech 2026 一作 = 研究執行力證明
-  - NTUAIS 領導 = AI Safety 動機真實
-  - 李宏毅 Lab = 強推薦信
-- **勝率**：⭐⭐⭐ 高（方向完美匹配，有成果背書）
-- **影響**：如果拿到 = 人生軌跡級改變（錢 + Anthropic 人脈 + 潛在 full-time offer）
+### ~~⭐⭐⭐ 1. Anthropic Fellows Program 2026~~ ❌ 不能申請
+- **原因**：需要 US/UK/Canada work authorization，不提供 visa → Leo 不符合
+- 金額本來是 $3,850/wk × 16wk = ~$61.6k，但 visa 門檻無法繞過
 
-### ⭐⭐ 2. LTFF (Long-Term Future Fund) / EA Funds
+### ⭐⭐⭐ 2. MATS Autumn 2026（Anthropic Fellows 最佳替代）
+- **金額**：USD $15,000 stipend（完成 12 週）+ 來回交通/住宿/餐食
+  - Neel Nanda 5 週 exploration phase: ~USD $4,200（按比例）
+- **地點**：**Berkeley in-person**（部分 mentor 在 London）；無法拿美簽可走 London
+- **國際學生**：✅ 明確可申請（US & non-US citizens）
+- **申請**：**Late April 2026 開放**（<https://matsprogram.org/apply>）
+- **Summer 2026 已截止**（deadline 1/18，結果 early April）
+- **網站**：<https://matsprogram.org/program/summer-2026>
+- **Leo 優勢**：MI × Speech 完美匹配 Neel Nanda 方向；有 Interspeech 一作
+- **⚠️ 注意**：需要離開台灣 ~3 個月（可能與碩士課程衝突）
+- **勝率**：⭐⭐⭐ 高（方向匹配 + 有研究成果）
+
+### ⭐⭐ 3. LTFF (Long-Term Future Fund) / EA Funds
 - **金額**：USD $5,000-100,000（依項目而定）
 - **類型**：個人 grant，支持 AI Safety 研究
-- **申請**：Rolling basis（隨時可投）— https://funds.effectivealtruism.org/funds/far-future
-- **適合**：資助 Leo 的 interpretability × speech 研究
-- **Leo 優勢**：有具體研究項目、有 NTUAIS 組織經驗
-- **行動**：寫一份 2 頁 research proposal 投 LTFF
+- **申請**：Quarterly rounds（Q1 2025 deadline 是 2/15，結果 3/31，撥款 4/30）
+- **網站**：<https://funds.effectivealtruism.org/funds/far-future>
+- **碩士生可投**：只要有清楚 project proposal + deliverables
+- **行動**：等下一個 round 公告，寫 2 頁 research proposal
 
-### ⭐⭐ 3. MATS (ML Alignment Theory Scholars)
-- **金額**：有 stipend（金額依 cohort）
-- **類型**：10 週研究 program，有 mentor
-- **時間**：通常 summer/winter，需查 2026 schedule
-- **網站**：https://www.matsprogram.org/
-- **適合**：和 Anthropic Fellows 類似但時間更短
+### ⭐⭐ 4. Coefficient — Technical AI Safety RFP 🆕
+- **金額**：~USD $40M 總池（含 API credits、seed funding、各種規模）
+- **類型**：Technical AI Safety 研究 RFP
+- **網站**：<https://coefficientgiving.org/funds/navigating-transformative-ai/request-for-proposals-technical-ai-safety-research/>
+- **狀態**：需確認是否仍開放、碩士生是否可投
 
-### ⭐ 4. AI Safety Camp
+### ⭐ 5. AI Safety Camp
 - **金額**：Travel + accommodation funded
 - **類型**：1-2 週研究 camp
 - **適合**：networking + 短期研究衝刺
 
-### ⭐ 5. Pathfinder (已申請)
+### ⭐ 6. Pathfinder (已申請)
 - **狀態**：COM-002，已寄 follow-up email 2/20，等 3/13 回覆
 - **金額**：待確認
 
-### 6. 其他潛在來源
-- **Open Philanthropy** — 大型 AI Safety grants（通常給機構，但也有個人）
-- **Centre for AI Safety (CAIS)** — Compute grants for safety research
-- **Survival and Flourishing Fund (SFF)** — Existential risk grants
-- **GovAI (Oxford)** — Summer fellowship
+### 7. 其他（已確認狀態）
+- **UK AISI** — 目前 **NOT accepting applications**；Alignment Project 已資助 60 個 projects (£27m)；需盯 <https://www.aisi.gov.uk/grants> 等下一輪
+- **CAIS Compute** — ❌ 只限 Schmidt Sciences grant holders（<https://safe.ai/work/compute-cluster>）
+- **Open Philanthropy** — 未找到明確的個人申請入口，通常偏機構
+- **SFF** — $5k-$5M range，需查最新 round
+- **80,000 Hours Job Board** — <https://jobs.80000hours.org/>，搜 alignment/interpretability/safety
+- **aisafety.com/funding** — 🆕 funding 彙整入口（Manifund、Foresight Nodes 等）：<https://www.aisafety.com/funding>
 
 ---
 
@@ -219,20 +228,25 @@ Leo 的研究獎助生來自國科會計畫 = **政府計畫補助**。因此：
 - **金額**：學費減免 + 每月生活費（碩士 TWD 20,000/月）
 - **申請期間**：**2026/2/1～4/30（現在開放中！）**
 - **管道**：透過駐馬來西亞台北經濟文化辦事處
-- **⚠️ 關鍵問題**：此獎學金通常給「新入學」學生。Leo 已在學，**需確認已在學碩士生是否能申請**
-- **需要**：TOCFL Band B 以上（Leo 中文母語級應該沒問題）、推薦信、研究計畫
-- **如果可以申請**：20k/月 = 直接解決 burn rate 問題
-- **行動**：**本週聯繫駐馬辦事處 (teco.education@gmail.com) 確認在學生資格**
+- **TECO 馬來西亞公告確認**：<https://www.roc-taiwan.org/my/post/19303.html>
+- **⚠️ 關鍵問題**：通常給「新入學」學生。Leo 已在學，**需確認在學碩士生是否能申請**
+- **需要**：TOCFL Band B 以上（Leo 中文母語級沒問題）、推薦信、研究計畫
+- **行動**：**本週 email teco.education@gmail.com 確認**
 
-### ⭐ 2. MARA Graduate Excellence Programme (GrEP)
-- **類型**：可轉換貸款（成績好可免還）
-- **⚠️ 限制**：MARA 主要服務 Bumiputera 群體，華人申請者機率極低
-- **結論**：大概率不適用，但可確認
+### ⭐ 2. 陳鴻珠教育基金（新山留台同學會）🆕
+- **金額**：最高 RM 5,000（~TWD 35,000）
+- **申請**：約 1 月初 & 5 月下旬
+- **網站**：<https://jbtaiwanalumni.org/scholarships/>
+- **限制**：清寒華裔子弟，需確認是否適用在台研究生
 
-### ⭐ 3. 馬來西亞華人社團獎學金
-- **來源**：各州中華大會堂、馬來西亞留台聯總、華教基金會
-- **金額**：通常 RM 1,000-5,000（約 TWD 7,000-35,000）
-- **行動**：查留台聯總（https://faatum.com.my/）是否有碩士生獎學金
+### ⭐ 3. 留台聯總 FAATUM
+- **網站**：<https://www.faatum.com.my/tag/台灣獎學金/>
+- **狀態**：主要是轉載/彙整台灣端獎學金資訊，**未找到自辦碩士獎學金**
+- **行動**：直接聯繫 FAATUM 確認
+
+### ❌ 4. 各州中華大會堂、華教基金會、林連玉基金
+- **狀態**：搜索未找到官方碩士獎學金辦法頁
+- **MARA GrEP**：限 Bumiputera，華人基本不適用
 
 ---
 
