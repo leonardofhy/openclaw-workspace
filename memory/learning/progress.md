@@ -486,3 +486,5 @@ Priority queue for Leo's first session:
 - Idea gate reports: **1** (Audio T-SAE = first full gate run)
 - **Execution-blocked: awaiting Leo** (real speech + venv + IIT experiment approval)
 - **arXiv Feb 28 batch**: ~14:00 Taipei → cycle #76 = learn (arXiv scan)
+
+| #76 | 2026-02-28 13:31 | learn (arXiv scan) | Feb 28 batch not yet posted. Unscanned Feb 27 entries (2602.22266 WaveSSM, 2602.22522 Hakka ASR) = both SKIP. 4 gap queries = 0 results. All 17 gaps confirmed OPEN. No competitors. Next: arXiv ~14:00. |

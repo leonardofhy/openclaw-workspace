@@ -293,3 +293,16 @@ No high-signal update. *The Topology of LLM Behavior* still at karma 17 (unchang
 - **"The Dawn of AI Scheming"** (LW, Feb 27, karma: 13, tags: Deceptive Alignment / AI Control / Threat Models) — Survey/threat-model piece on AI scheming; low-ish karma but the tag cluster (deceptive alignment + AI evaluations + coherence arguments) signals conceptually important content for understanding how scheming could arise and be detected. <https://www.lesswrong.com/posts/4rZbyJN8KjM9LHwh8/the-dawn-of-ai-scheming>
 
 **[watching]** *The Topology of LLM Behavior* — still at karma 17 (flat for 3+ hours); may be settling. Dropping from active watch; will promote if karma spikes above 25.
+
+---
+**2026-02-28 13:15 (Sat)** — scan: AF +1 new, LW +10 new | backlog: 30 unread (post-scan)
+
+Filtered non-safety noise (marked read): Jhana 0, Mindscapes & Mind Palaces, Lithium/Alzheimer's linkpost, The tick in my back, Ball+Gravity preference, AI Security Bootcamp Singapore.
+
+**[new pick]** *Schelling Goodness, and Shared Morality as a Goal* (AF + LW crosspost, Feb 28, karma: early)
+- Why: Alignment Forum provenance signals researcher-level content; Schelling coordination as a foundation for shared morality is directly relevant to multi-stakeholder value alignment — how to find stable convergence points across agents/humans with different values, a key challenge for scalable alignment.
+- Links: AF: <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal> | LW: <https://www.lesswrong.com/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
+
+**[backlog-pick]** *AI #157: Burn the Boats* (Zvi Mowshowitz, LessWrong, Feb 26)
+- Why: Zvi's weekly digest — this edition covers the Anthropic/DoD standoff week; high-signal synthesis of the governance crisis, red-line dynamics, and broader lab positioning; good map of what actually happened that week in condensed form.
+- Link: <https://www.lesswrong.com/posts/zC3Rtrj6RXwEde9h6/ai-157-burn-the-boats>
