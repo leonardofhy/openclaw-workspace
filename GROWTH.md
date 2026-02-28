@@ -95,10 +95,11 @@
 }
 ```
 
-**月度 Growth Report**（每月 1 號 cron）：
-1. 和上月比較每個指標
-2. 標出 🟢 改善 / 🔴 退步 / ⚪ 持平
-3. 發到 #general（這個 Leo 該看）
+**每日 Growth Report**（每天 23:30 cron）：
+1. 更新 growth-metrics.json 當月累計數字
+2. 和昨天比較，標出 🟢 改善 / 🔴 退步 / ⚪ 持平
+3. 常規 → #bot-logs（3 行摘要）
+4. 有顯著變化（新 error、退步、milestone）→ #general
 
 ## Graduation System（知識畢業制）
 

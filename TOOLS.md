@@ -133,4 +133,4 @@
 - **08:00 Daily Merge**（isolated, g53s）— 自動 fetch + merge macbook-m3
 - **13:00 Afternoon Calendar**（isolated, g53s）— 3 小時內事件提醒
 - ***/2h Tunnel Watchdog**（isolated, g53s）— SSH 反向隧道自動修復
-- **每月 1 號 09:00 Growth Report**（isolated, sonnet）— 月度成長量化報告 → #general
+- **23:30 Daily Growth Report**（isolated, g53s）— 每日成長量化，常規→#bot-logs，異常→#general
