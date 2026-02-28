@@ -284,3 +284,12 @@ No high-signal update.
 **2026-02-28 12:15 (Sat)** — scan: AF rate-limited (429), LW +0 new safety-relevant posts since 03:15 UTC (only new: "Jhana 0" [meditation, karma: 2], "Mindscapes and Mind Palaces" [karma: 1]) | backlog: ~16 unread
 
 No high-signal update. *The Topology of LLM Behavior* still at karma 17 (unchanged since 09:15); holding in watch queue pending karma growth before committing a read slot.
+
+---
+**2026-02-28 12:45 (Sat)** — scan: AF rate-limited (429), LW +1 new since 04:15 UTC ("Schelling Goodness, and Shared Morality as a Goal", karma: 9, Rationality tag — not safety-core, too early to commit) | backlog: ~16 unread
+
+**[backlog-picks]**
+- **"3 Challenges and 2 Hopes for the Safety of Unsupervised Elicitation"** (LW, Feb 27, karma: 19, MATS Program / Scalable Oversight) — Addresses the core problem of eliciting aligned behavior without reliable human supervision; MATS provenance + scalable oversight tag makes this directly relevant to the unsupervised-elicitation bottleneck where safety research needs to go. <https://www.lesswrong.com/posts/DKLrdLLxm5kLJbr7G/3-challenges-and-2-hopes-for-the-safety-of-unsupervised>
+- **"The Dawn of AI Scheming"** (LW, Feb 27, karma: 13, tags: Deceptive Alignment / AI Control / Threat Models) — Survey/threat-model piece on AI scheming; low-ish karma but the tag cluster (deceptive alignment + AI evaluations + coherence arguments) signals conceptually important content for understanding how scheming could arise and be detected. <https://www.lesswrong.com/posts/4rZbyJN8KjM9LHwh8/the-dawn-of-ai-scheming>
+
+**[watching]** *The Topology of LLM Behavior* — still at karma 17 (flat for 3+ hours); may be settling. Dropping from active watch; will promote if karma spikes above 25.

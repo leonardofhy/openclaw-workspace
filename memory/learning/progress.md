@@ -457,16 +457,32 @@ Priority queue for Leo's first session:
 - **arXiv Feb 28 batch**: not yet posted (~14:00 Taipei) → next scan cycle ~14:00
 
 | #73 | 2026-02-28 12:01 | reflect (priority synthesis) | **7-idea portfolio priority ranking** produced — first time all ideas ranked together. Priority: A (Listen Layer) → B (AudioSAEBench) → Audio T-SAE → Neuron Grounding → LoRA+AudioLens → SAE Safety → Audio IOI. Key insight: Papers A+B share 60% infra → do together; one-line thesis linking all 7. arXiv Feb 28 batch ~14:00 → cycle #74 = learn. |
+| #74 | 2026-02-28 12:31 | learn (gap verification) | **T-SAE v2 + Audio T-SAE gap verified**: v2 updated 2026-02-25 (ICLR Oral camera-ready), text-only, no audio extension, no code repo. Gap #17 still fully open. Zero audio T-SAE papers on arXiv. Audio safety mech interp gap also open (SPIRIT still only paper). Competition risk: LOW-MEDIUM (ICLR spotlight → field awareness increases). arXiv Feb 28 batch still not posted (~14:00 Taipei). |
 
-## Day 3 Rolling Stats (after cycle #73)
+## Day 3 Rolling Stats (after cycle #74)
 - Papers read (deep): 15 total
-- Papers scanned: 27+
-- Research gaps identified: 17
-- Paper ideas: **7** (all ranked in priority doc)
+- Papers scanned: 28+ (T-SAE v2 re-scanned, gap verified)
+- Research gaps identified: **17** (all confirmed still open)
+- Paper ideas: **7** (all ranked in priority doc, Gap #17 competition risk: LOW-MEDIUM)
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1 (NNsight updated)
 - Experiment proposals: 2 (IIT Triple Convergence + Class-specific Neuron Grounding)
 - Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
 - **Priority ranking: FIRST COMPLETE DRAFT** ✅ (cycle #73)
 - **Execution-blocked: awaiting Leo** (real speech + venv + IIT experiment approval)
-- **arXiv Feb 28 batch**: expected ~14:00 Taipei → cycle #74
+- **arXiv Feb 28 batch**: still not posted (~12:31 PM) → next learn cycle ~14:00 Taipei
+
+| #75 | 2026-02-28 13:02 | learn (idea gate — Idea #7) | **Full Idea Gate for Audio T-SAE** — 5 queries, 0 competitors, 🟢 GREEN verdict. Feasibility: PASS (GPU+MFA+T-SAE re-impl, 1-2 weeks). Value: 11/15 ✅ CONTINUE. Key finding: Audio T-SAE = Paper B's flagship model + TCS(F) metric → integrate as Paper B temporal module. New process rule: idea_gate FIRST before goals.md (time-critical: [GATE PENDING] tag). First use of idea_gate.md protocol. |
+
+## Day 3 Rolling Stats (after cycle #75)
+- Papers read (deep): 15 total
+- Papers scanned: 28+ (5 search queries across 3 angles, all 0 results)
+- Research gaps identified: **17** (all confirmed still open)
+- Paper ideas: **7** (Idea #7 now gate-validated ✅ GREEN)
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (NNsight updated)
+- Experiment proposals: 2 (IIT Triple Convergence + Class-specific Neuron Grounding)
+- Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
+- Idea gate reports: **1** (Audio T-SAE = first full gate run)
+- **Execution-blocked: awaiting Leo** (real speech + venv + IIT experiment approval)
+- **arXiv Feb 28 batch**: ~14:00 Taipei → cycle #76 = learn (arXiv scan)

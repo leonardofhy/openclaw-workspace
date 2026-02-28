@@ -108,6 +108,18 @@ This applies to ALL morning meta-awareness cycles when execution-blocked.
 
 ---
 
+## Idea Gate Process Rule (added cycle #75, 2026-02-28 13:02)
+
+**Problem:** Research Idea #7 was added to goals.md (cycle #72) before going through idea_gate.md. Gate was run retroactively (cycle #75). Low-ROI ideas anchored in goals.md are hard to prune.
+
+**Rule (now active):**
+> New paper ideas → run `idea_gate.md` FIRST → add to goals.md only if 🟢 GREEN or 🟡 YELLOW (with reframe note).
+> **Exception (time-critical):** If idea discovered during arXiv scan → note in progress.md with `[GATE PENDING]` tag → complete gate within next 2 cycles.
+
+**Why this works:** Gate takes ~25 minutes; prevents low-value ideas from accumulating in goals.md and polluting the portfolio.
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal
