@@ -488,3 +488,4 @@ Priority queue for Leo's first session:
 - **arXiv Feb 28 batch**: ~14:00 Taipei → cycle #76 = learn (arXiv scan)
 
 | #76 | 2026-02-28 13:31 | learn (arXiv scan) | Feb 28 batch not yet posted. Unscanned Feb 27 entries (2602.22266 WaveSSM, 2602.22522 Hakka ASR) = both SKIP. 4 gap queries = 0 results. All 17 gaps confirmed OPEN. No competitors. Next: arXiv ~14:00. |
+| #77 | 2026-02-28 14:01 | learn (arXiv scan) | Feb 28 batch still posting. 2 previously-missed papers scanned: (1) TADA! (2502.xxxx, Feb 12) — activation patching on audio *diffusion* models, finds localized semantic subspace; not a competitor (music synthesis ≠ speech LLMs) but corroborates steerability feasibility. (2) Group-SAE (2601.20028, Jan 27) — group-sparse SAE decomposes CLIP vision-text embeddings by modality origin; methodological connection to Track 3 audio-vs-text pathway attribution. Both = SCAN only. All 17 gaps remain OPEN. Feb 28 batch: no new MI×speech papers. |

@@ -306,3 +306,8 @@ Filtered non-safety noise (marked read): Jhana 0, Mindscapes & Mind Palaces, Lit
 **[backlog-pick]** *AI #157: Burn the Boats* (Zvi Mowshowitz, LessWrong, Feb 26)
 - Why: Zvi's weekly digest — this edition covers the Anthropic/DoD standoff week; high-signal synthesis of the governance crisis, red-line dynamics, and broader lab positioning; good map of what actually happened that week in condensed form.
 - Link: <https://www.lesswrong.com/posts/zC3Rtrj6RXwEde9h6/ai-157-burn-the-boats>
+
+---
+**2026-02-28 13:45 (Sat)** — scan: AF rate-limited (429), LW +0 new since 05:15 UTC | backlog: ~14 unread
+
+No high-signal update. All visible RSS items already covered; recent backlog picks fresh (Schelling Goodness, AI #157, 3 Challenges/Unsupervised Elicitation, Dawn of AI Scheming). Holding queue until next cycle.
