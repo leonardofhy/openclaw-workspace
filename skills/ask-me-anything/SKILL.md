@@ -1,6 +1,6 @@
 ---
 name: ask-me-anything
-description: Identify knowledge gaps during task execution and formulate questions for Leo to research via powerful AI models (GPT-5.2 PRO, etc.). Use when you encounter missing information, need to verify assumptions, need external data that can't be fetched directly, or want to proactively identify blind spots in a plan. Also use when Leo says "有什麼要問的", "AMA", "你有問題嗎", "需要我查什麼".
+description: Identify knowledge gaps during task execution and formulate questions for Leo to research via his AI tools (deep research, advanced LLMs, web search, etc.). Use when you encounter missing information, need to verify assumptions, need external data that can't be fetched directly, or want to proactively identify blind spots in a plan. Also use when Leo says "有什麼要問的", "AMA", "你有問題嗎", "需要我查什麼".
 ---
 
 # Ask Me Anything (AMA)
