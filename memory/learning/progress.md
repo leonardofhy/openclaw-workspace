@@ -488,7 +488,7 @@ Priority queue for Leo's first session:
 - Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
 - **arXiv Feb 28 batch**: still delayed at 16:31 PM
 
-## Day 3 Final Stats (after cycle #89 — 20:01 PM)
+## Day 3 Final Stats (after cycle #91 — 21:01 PM)
 - Papers read (deep): 16 total
 - Papers scanned: 29+
 - Research gaps identified: **19** (+Gap #19: no standardized audio SAE training pipeline in SAELens ecosystem)
@@ -496,10 +496,12 @@ Priority queue for Leo's first session:
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1 (NNsight + SAELens)
 - ARENA chapters studied: 1 ([1.3.1] Linear Probes ✅)
+- Pre-digests: **2** (Circuit Tracing Methods + Biology — cycles #90+#91)
 - Experiment proposals: 3
 - Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench v0.4)
 - **Paper A method section**: fully specified (MMProbe direction, gc(k) layer sweep, cross-generalization, IIT causal patching)
 - **SAELens v6 fully mapped**: ZERO audio SAEs on HuggingFace; gap confirmed = Paper B strategic addition
+- **CLT attribution graphs**: NNsight patching confirmed as superior choice for Paper A; circuit-tracer = follow-up only
 - **arXiv weekend batch**: none (Saturday — next expected Monday ~14:00 Taipei)
 
 | #75 | 2026-02-28 13:02 | learn (idea gate — Idea #7) | **Full Idea Gate for Audio T-SAE** — 5 queries, 0 competitors, 🟢 GREEN verdict. Feasibility: PASS (GPU+MFA+T-SAE re-impl, 1-2 weeks). Value: 11/15 ✅ CONTINUE. Key finding: Audio T-SAE = Paper B's flagship model + TCS(F) metric → integrate as Paper B temporal module. New process rule: idea_gate FIRST before goals.md (time-critical: [GATE PENDING] tag). First use of idea_gate.md protocol. |
@@ -530,3 +532,5 @@ Priority queue for Leo's first session:
 | #88 | 2026-02-28 19:31 | reflect (meta-awareness + study bridge) | 3 loop failures fixed: ARENA not bridged to Day-1 plan, unblock checklist missing Gap #18 step, meta-board Q9 opened. **Applied**: updated experiment-queue unblock checklist (added `git clone phonetic-arithmetic`), created Leo's Day-1 Session Plan (5 blocks, 2-3h), Q9 (ARENA integration rule) added to meta-board. Last meta cycle today — next: arXiv Monday batch OR Leo unblock. |
 | #89 | 2026-02-28 20:01 | skill-up (ARENA [1.3.1] Linear Probes) | **ARENA Linear Probes curriculum study** — core Sections 1-3 fully read. KEY INSIGHTS: (1) MMProbe (difference-of-means) > LRProbe for CAUSAL interventions — the causally implicated direction ≠ maximally discriminative direction; (2) PROBE_LAYER ≠ INTERVENE_LAYER — need to sweep both; (3) layer_sweep_accuracy = exact template for gc(k) Paper A curve; (4) Attention probe (Section 5) = new AudioSAEBench methodology tool for audio token positions; (5) cross-generalization matrix validates universal "Listen Direction". Paper A method section now fully specified. |
 | #90 | 2026-02-28 20:31 | learn (Circuit Tracing pre-digest) | **Anthropic Circuit Tracing / Attribution Graphs** (transformer-circuits.pub/2025) deep-read. KEY INSIGHTS: (1) CLT features + attribution graphs = layer-wise linear causal map; (2) `circuit-tracer` (`pip install`) works for decoder-only models; (3) LIMITATION: attention patterns frozen → misses cross-attention (crucial for audio-LLMs!); (4) NNsight patching remains correct tool for Paper A Listen Layer sweep; circuit-tracer = follow-up for LM backbone analysis; (5) gc(F) can be redefined as edge-weight fraction from audio frames vs text tokens in attribution graph; (6) Q9 meta-board answered: pre-digest Anthropic primary sources when blocked + meta-board saturated + arXiv empty. |
+| #91 | 2026-02-28 21:01 | learn (pre-digest) | **Anthropic "Biology of LLM"** (biology.html) — companion to Methods paper. KEY: ~25% attribution graph success rate (realistic, not a silver bullet); multilingual circuits → Gap #18 connector test; refusal mechanism (finetuning aggregation) → Track 5 audio safety; CoT faithfulness → AudioSAEBench Category 4 Causal Controllability; NNsight patching confirmed as better choice than CLT for Paper A (sparser features + distributed audio representations). Pre-digest pair (#90+#91) gives Leo ~50% ARENA [1.4.2] headstart. |
+| #92 | 2026-02-28 21:31 | reflect (synthesis) | **Paper A v0.2 method upgrade** — integrated 5 methodology improvements from cycles #83-91: (1) gc(k) = DAS IIT accuracy (pyvene RotatedSpaceIntervention, theoretically grounded); (2) MMProbe diff-of-means for causal direction (not LR probe); (3) PROBE_LAYER ≠ INTERVENE_LAYER sweep pattern; (4) NNsight confirmed > CLT for audio-LLMs (cross-attention constraint); (5) phonological minimal pairs (Choi et al.) as Phase 1 stimuli — doubles as Gap #18 experiment. paper-a-pitch.md updated to v0.2. |

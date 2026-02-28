@@ -1,8 +1,16 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.1 | Created: 2026-02-28 04:01 (cycle #57)
+> Version: 0.2 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-02-28 21:31 (cycle #92)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v0.2 Upgrades (cycles #83-91)
+1. **gc(k) = DAS-grounded IIT accuracy** (not just ratio) — provably theoretically founded (pyvene, Wu et al.)
+2. **MMProbe for direction extraction** — diff-of-means > LR probe for causal interventions (ARENA [1.3.1])
+3. **PROBE_LAYER ≠ INTERVENE_LAYER** — must sweep both independently (standard practice, now explicit)
+4. **NNsight confirmed > CLT** — circuit-tracer cannot handle cross-attention (audio-LLMs); NNsight correct primary tool
+5. **Phonological minimal pairs as Phase 1 stimuli** — Choi et al. 2602.18899 phonological contrasts = principled clean/corrupt pairs (Gap #18 = Priority 0 pre-experiment, doubles as Paper A Phase 1 stimuli)
+6. **25% success rate baseline** — attribution-graph-level mechanistic claims are hard (~25% per Anthropic Biology); Paper A frames as layer-level localization (coarser, higher success rate) NOT full circuit enumeration
 
 ---
 
@@ -31,34 +39,48 @@ Large audio-language models (LALMs) can answer questions about audio content, bu
 
 ---
 
-## Method (3-Phase)
+## Method (3-Phase) — v0.2
 
 ### Phase 1: Whisper-small IIT sweep (MacBook, ~3h)
-1. Minimal pairs from LibriSpeech: same speaker, alternate attribute (accent A vs B; noise level low vs high)
+**Stimuli:** Choi et al. phonological minimal pairs (voicing contrasts [b]/[d]/[p]/[t]) — from `phonetic-arithmetic` repo
+- These are principled "clean/corrupt" pairs (same phonetic content, minimal phonological change)
+- ALSO serves as Gap #18 pre-experiment: tests whether phonological geometry survives encoder → connector → LLM
+
+**Method:**
+1. Extract `voicing_vector` from Whisper-small encoder (diff-of-means across [b]-vs-[p] pairs = **MMProbe**)
+   - MMProbe: direction = mean([b] activations) − mean([p] activations) at probe_layer
+   - NOT LR probe: LR probe finds discriminative direction which may be orthogonal to causal direction
 2. NNsight denoising patching: for each encoder layer L:
    - Take hidden state h_L from clean input
-   - Patch into corrupt input at layer L, measure WER recovery (Δacc)
-3. Plot Δacc vs L → find L* (= "Listen Layer" in encoder)
-4. Verify: Does L* ≈ layer 3 in Whisper-base (Triple Convergence zone)?
-5. Run CKA + norm comparison → confirm correlational + causal methods agree
+   - Apply DAS rotation (pyvene `RotatedSpaceIntervention`) around MMProbe direction at layer L
+   - Patch into corrupt input at layer L, measure task recovery (accuracy or probability)
+3. **gc(L) = DAS IIT accuracy at layer L** — not just correlation; provably measures causal role of audio representation
+4. Plot gc(L) vs L → find L* (= encoder "Listen Layer")
+5. Verify: L* ≈ layer 3 in Whisper-base/small (Triple Convergence zone)
 
-**Expected result:** Sharp causal peak at ~50% depth (layer 3/base, 3-4/small, 6-7/large)
+**Expected result:** Sharp gc(L) peak at ~50% depth (L* ≈ layer 3/base, 3-4/small, 6-7/large)
+
+**Note on PROBE_LAYER vs INTERVENE_LAYER:**
+- Sweep both independently: probe_layer = layer where MMProbe is extracted; intervene_layer = layer where patch is applied
+- Standard practice: probe at L-1, intervene at L (sliding window)
 
 ### Phase 2: Qwen2-Audio-7B grounding_coefficient (NDIF/GPU)
 1. Use ALME 57K audio-text conflict stimuli (Li et al. 2025, arXiv:2602.11488) — already built
-2. Two-sweep denoising patching on Qwen2-Audio-7B:
-   - Sweep A: patch audio-stream hidden states layer by layer → Δacc(audio)
-   - Sweep B: patch text-context hidden states layer by layer → Δacc(text)
-3. Compute gc(L) = Δacc_audio(L) / [Δacc_audio(L) + Δacc_text(L)]
-4. Find LLM Listen Layer L* where gc peaks → this is the "where audio gets consulted" layer
+2. Two-sweep denoising patching on Qwen2-Audio-7B via NNsight (NOT circuit-tracer — cross-attention not supported by CLT):
+   - Sweep A: patch audio-stream hidden states layer by layer → gc_audio(L) = IIT accuracy (audio as causal model)
+   - Sweep B: patch text-context hidden states layer by layer → gc_text(L) = IIT accuracy (text as causal model)
+3. Compute gc(L) = gc_audio(L) / [gc_audio(L) + gc_text(L)] — normalized grounding coefficient
+4. Find LALM Listen Layer L* where gc peaks → "where audio representations are causally consulted"
 
-**Expected result:** Sharp gc peak in mid-to-late LLM layers (hypothesis: layers 16-22 based on Zhao et al. ESN clustering)
+**Expected result:** Sharp gc peak in layers 16-22 (based on Zhao et al. ESN clustering)
 
-### Phase 3: Listen Layer dynamics
-1. Fine-tuning experiment (LoRA-SER on Whisper-large-v2): Does Listen Layer shift after LoRA adaptation?
-   - Connects to "Behind the Scenes" delayed specialization: if LoRA commits at deep layers, gc peak should shift right
-2. Failure mode analysis: In AudioLens "failure mode" cases (gc drops mid-layer then recovers), do our gc curves show the same non-monotonicity?
-3. Attention head attribution: Which attention heads at L* are responsible? (standard attention knockout)
+**Circuit-tracer secondary analysis (optional):** gc(F) as edge-weight fraction from audio frames in attribution graph — valid for LM backbone text analysis ONLY; cannot handle cross-attention
+
+### Phase 3: Listen Layer dynamics (extensions)
+1. Fine-tuning: LoRA-SER on Whisper-large-v2 — does L* shift after adaptation?
+   - "Behind the Scenes" delayed specialization predicts L* shift rightward after LoRA
+2. Failure mode: In AudioLens failure cases (gc drops then recovers), do our gc curves show same non-monotonicity?
+3. Attention head attribution: top-5 "listen heads" at L* (standard attention knockout)
 
 ---
 

@@ -419,3 +419,13 @@ No new posts on primary feeds. EA Forum auxiliary scan surfaced one notable item
 **[backlog-pick]** *Pete Hegseth declares Anthropic a supply-chain risk* (EA Forum, Feb 27, karma: 53)
 - Why: The formal designation — not just a threat — of Anthropic as a supply-chain risk by the DoD Secretary is a concrete governance escalation beyond what was captured in earlier picks (Zvi's breakdown described this as a threatened consequence of the standoff, not an accomplished fact); closes the loop on the week's Anthropic/DoD arc and sets the actual regulatory posture going into the weekend; high karma confirms community weight.
 - Link: <https://forum.effectivealtruism.org/posts/pete-hegseth-declares-anthropic-a-supply-chain-risk>
+
+---
+**2026-02-28 20:45 (Sat)** — scan: AF rate-limited (429), LW top = "Schelling Goodness" (04:25 UTC, unchanged) | backlog: ~19 unread
+
+No new posts. Saturday evening quiet continues. All high-signal items from this week already picked and logged. No further picks warranted this cycle.
+
+---
+**2026-02-28 21:15 (Sat)** — scan: AF rate-limited (429), LW top = "Schelling Goodness" (04:25 UTC Feb 28, unchanged) | EA Forum top = "Pete Hegseth/Anthropic supply-chain risk" (Feb 27, already picked) | backlog: ~19 unread
+
+No new posts. Both feeds identical to prior cycles; Saturday night quiet. All high-signal items from this week already picked and logged (Schelling Goodness, ARENA material, Model Incrimination, DoW coverage series, RSP comparison, Sam Altman red lines, Pete Hegseth/supply-chain risk). No further picks warranted this cycle.
