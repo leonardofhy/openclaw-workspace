@@ -155,6 +155,44 @@ Before running Phase 1 or 2 experiments, verify these 5 DAS assumptions hold:
 
 ---
 
+## Statistical Significance Protocol (Q15 — cycle #104, 2026-03-01)
+
+**For gc(L) claims in Paper A:**
+
+> **Use bootstrap 95% CI over stimulus pairs.** Declare L* the Listen Layer if:
+> 1. CI at L* does NOT overlap with CIs at L*±1, L*±2 (local peak condition)
+> 2. Lower CI bound at L* > gc(baseline_layer) + 0.05 (above floor condition)
+
+**Implementation (sketch):**
+```python
+for layer_L in range(num_layers):
+    gc_boot = [compute_DAS_IIA(np.random.choice(pairs, len(pairs), replace=True), L=layer_L) for _ in range(1000)]
+    gc_ci[layer_L] = np.percentile(gc_boot, [2.5, 97.5])
+```
+
+**Why not permutation test:** Shuffling audio/text labels breaks the causal structure DAS is trained on → wrong null hypothesis.
+**Why not effect size threshold:** Ad hoc, not defensible to reviewers.
+
+---
+
+## Figure 3 Prediction: 2D IIA Heatmap Shape (Q16 — cycle #104)
+
+**Prediction for the PROBE_LAYER × INTERVENE_LAYER heatmap (A4 assumption check in Method):**
+
+If the Listen Layer hypothesis is correct, the 2D heatmap should show a **"lower-triangular stripe"**:
+- High IIA where: intervene_layer ≈ L* AND probe_layer ≤ L* (can only extract causal direction before it's written)
+- Low IIA where: probe_layer > intervene_layer (can't probe what hasn't been computed)
+- The stripe is vertical near L*, truncated above the diagonal
+
+**Alternative patterns and their interpretations:**
+- High IIA everywhere → causal variable is globally distributed (supports Modality Collapse)
+- High IIA only on diagonal → local causal variables at each layer (supports delayed specialization)
+- "Lower-triangular stripe" → Listen Layer hypothesis ✓
+
+**This converts A4 from a risk to check into a testable prediction for Paper A Figure 3.** State the prediction in the methods section; confirm or falsify in results.
+
+---
+
 ## Open Questions for Leo
 
 1. Should we scope to encoder-only (Whisper) or include full LALM (Qwen2-Audio)? Encoder = faster paper; LALM = bigger impact.

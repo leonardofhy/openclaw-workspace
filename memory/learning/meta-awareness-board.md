@@ -224,16 +224,31 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Q15: WER Sensitivity Threshold for gc(L) Significance (OPEN)
+## Q15: WER Sensitivity Threshold for gc(L) Significance (✅ CLOSED — cycle #104, 2026-03-01 03:31)
 
-**Question:** What is the principled α-level (significance threshold) for declaring gc(L) "significant" in the IIA plot? Paper A needs this for claim precision.
+**Question:** What is the principled α-level for declaring gc(L) "significant" in the IIA plot?
 
-**Candidates:**
-- Bootstrap resampling: resample patching pairs → compute gc(L) distribution → 95% CI
-- Permutation test: shuffle audio/text labels → null distribution → p < 0.05
-- Effect size threshold: gc(L) > 0.1 above baseline (simple, less principled)
+**Answer:** Bootstrap 95% CI over stimulus pairs.
+- Permutation test: ❌ WRONG null (shuffled stimuli break DAS causal structure)
+- Effect size threshold: ❌ AD HOC (not defensible)
+- Bootstrap: ✅ CORRECT — variability comes from stimulus selection; 95% CI at each layer; declare L* significant if CI at L* doesn't overlap CIs at L*±2 AND lower CI bound > baseline + 0.05
 
-**Status:** OPEN — leave for active session with Leo or post-unblock. Not blocking experiments.
+**Applied to:** paper-a-pitch.md "Statistical Significance Protocol" section added.
+
+---
+
+## Q16: Expected Shape of 2D IIA Heatmap (PROBE_LAYER × INTERVENE_LAYER) (opened cycle #104)
+
+**Question:** When Paper A sweeps both probe_layer and intervene_layer independently (required by A4), what shape should the 2D heatmap have IF the Listen Layer hypothesis is correct?
+
+**Answer (theoretical prediction):**
+- Predicted shape: "lower-triangular stripe" — high IIA where intervene_layer ≈ L* AND probe_layer ≤ L*
+- Alternative shapes: globally high (Modality Collapse), diagonal-only (delayed specialization)
+- This converts A4 (risk) into a **testable prediction for Paper A Figure 3** — state before running, confirm in results
+
+**Applied to:** paper-a-pitch.md "Figure 3 Prediction" section added.
+
+**Status:** ✅ CLOSED — prediction formalized, no further action needed until experiment run.
 
 ---
 
