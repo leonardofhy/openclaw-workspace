@@ -265,6 +265,30 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
+---
+
+## Q18: DAS Rotation Constraint Problem (✅ CLOSED cycle #106, 2026-03-01 04:31)
+
+**Question:** Does unconstrained DAS rotation risk finding a spurious subspace that inflates gc(k) at a wrong layer?
+
+**Answer:**
+- **Risk is real**: DAS W learned by gradient descent could pick up audio confounds (e.g., energy level) if ALME stimuli don't control acoustic quality
+- **Guard 1**: Use ALME stimuli with matched acoustic quality (content conflict only)
+- **Guard 2**: Cross-generalization test (already in Paper A as A3 risk mitigation)
+- **Guard 3 (NEW)**: Phonological init ablation — initialize W with top-k PCA directions from Choi et al. Gap #18 geometry. If gc(k) with phono-init > random-init, validates the phonological subspace is the causally relevant one; if similar, the rotation converges regardless = extra robustness.
+
+**Applied improvement:**
+- experiment-queue.md Priority 0: step 5 added (extract PCA directions + use as DAS initializer)
+- Paper A Table 1: "Phono Init vs Random Init DAS" ablation column to be added at next Leo session
+
+**Status:** ✅ CLOSED
+
+---
+
+## Meta-board Status: 18/18 Qs answered (active, continue opening new Qs)
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal
