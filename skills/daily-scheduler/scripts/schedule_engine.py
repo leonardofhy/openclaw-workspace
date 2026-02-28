@@ -28,6 +28,7 @@ import argparse
 from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta
 from pathlib import Path
+import shutil
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
 from common import TZ, now as _now, today_str as _today_str, WORKSPACE, MEMORY
@@ -49,6 +50,25 @@ EMOJI_MAP = {
     'travel':     '🚶',
     'buffer':     '☕',
 }
+
+
+def write_with_archive_atomic(path: Path, content: str) -> Path | None:
+    """Write file via temp+rename and archive previous version if it exists.
+
+    Returns archive path when backup was created, else None.
+    """
+    archive_path = None
+    if path.exists():
+        archive_dir = SCHEDULES_DIR / '.archive' / path.stem
+        archive_dir.mkdir(parents=True, exist_ok=True)
+        ts = _now().strftime('%Y%m%dT%H%M%S')
+        archive_path = archive_dir / f'{ts}.md'
+        shutil.copy2(path, archive_path)
+
+    tmp_path = path.with_suffix(path.suffix + '.tmp')
+    tmp_path.write_text(content)
+    tmp_path.replace(path)
+    return archive_path
 
 
 # ── Data Model ──
@@ -472,10 +492,14 @@ def cmd_dayend(args):
         print("\n[dry-run] 未寫入任何文件")
         return
 
-    today_path.write_text(new_today_text)
+    today_archive = write_with_archive_atomic(today_path, new_today_text)
+    if today_archive:
+        print(f"🗂️ 備份：{today_archive}")
     print(f"✅ 已寫入 {today_path.name}")
     if new_tomorrow_text is not None:
-        tomorrow_path.write_text(new_tomorrow_text)
+        tomorrow_archive = write_with_archive_atomic(tomorrow_path, new_tomorrow_text)
+        if tomorrow_archive:
+            print(f"🗂️ 備份：{tomorrow_archive}")
         print(f"✅ 已更新 {tomorrow_path.name}")
 
 
