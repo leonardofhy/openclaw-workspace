@@ -429,3 +429,15 @@ No new posts. Saturday evening quiet continues. All high-signal items from this 
 **2026-02-28 21:15 (Sat)** — scan: AF rate-limited (429), LW top = "Schelling Goodness" (04:25 UTC Feb 28, unchanged) | EA Forum top = "Pete Hegseth/Anthropic supply-chain risk" (Feb 27, already picked) | backlog: ~19 unread
 
 No new posts. Both feeds identical to prior cycles; Saturday night quiet. All high-signal items from this week already picked and logged (Schelling Goodness, ARENA material, Model Incrimination, DoW coverage series, RSP comparison, Sam Altman red lines, Pete Hegseth/supply-chain risk). No further picks warranted this cycle.
+
+---
+**2026-02-28 22:15 (Sat)** — scan: AF rate-limited (429), LW top = "Schelling Goodness" (04:25 UTC, unchanged) | EA Forum top = "OpenAI from Non-profit to deal with the U.S. Department of War" (already picked 21:45) | backlog: ~19 unread
+
+No new posts. Both feeds identical to 21:45 cycle; Saturday night quiet continues. All high-signal items from this week logged. No further picks warranted this cycle.
+
+---
+**2026-02-28 21:45 (Sat)** — scan: AF rate-limited (429), LW top = "Schelling Goodness" (04:25 UTC, unchanged) | EA Forum: +1 new post not previously logged
+
+**[new-pick]** *OpenAI from Non-profit to deal with the U.S. Department of War* (EA Forum, Feb 28, score: 5.4)
+- Why: Completes the week's DoW arc — where previous picks covered Anthropic's standoff and Sam Altman's solidarity statement, this captures OpenAI actually finalizing its corporate structure conversion *and* signing the Pentagon deal simultaneously; the combination of for-profit conversion + military contract in the same moment is the governance data point that closes the week's narrative arc on AI/DoD alignment.
+- Link: <https://forum.effectivealtruism.org/posts/zYEkakZiRAbgxfDxQ/openai-from-non-profit-to-deal-with-the-u-s-department-of>

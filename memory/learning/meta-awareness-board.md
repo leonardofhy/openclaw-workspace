@@ -147,8 +147,29 @@ This applies to ALL morning meta-awareness cycles when execution-blocked.
 
 ---
 
+---
+
+## Q10: Audio SAE Feature Visualization (✅ CLOSED cycle #94, 2026-02-28 22:31)
+
+**Problem:** `sae_vis` (standard SAE dashboard library) is text-only — shows logit tokens, not spectrograms.
+Audio SAE feature dashboards need: waveform clips + spectrogram highlights for top-activating examples.
+
+**Options:**
+1. Fork `sae_vis` → add `librosa.display.specshow` renderer (~100 LoC) — cleanest, build-requires Leo approval
+2. Generate PNG spectrograms with librosa → manual upload to Neuronpedia — works today, no new code
+3. Pitch to Neuronpedia/sae_vis maintainers as community feature request — zero effort, high leverage
+
+**Resolution:**
+- Option 2 (librosa PNG) = MVP for Paper B. No approval needed. Do this.
+- Option 3 (community pitch to Callum McDougall) = parallel, zero effort.
+- Option 1 = NOT a blocker; defer.
+**Status:** ✅ CLOSED — all 10 Qs answered. System meta-board SATURATED. No new Qs until Leo unblock + first experiment run.
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal
 - **⭐ UNBLOCK REQUEST (PENDING since 02:01 AM):** See `memory/learning/unblock-request.md` — 15-20 min of Leo's time unlocks all experiments
 - **📋 DAY-1 PLAN READY:** `memory/learning/2026-02-28_cycle88.md` — step-by-step session plan to start experiments immediately
+- **🎨 Q10:** Audio SAE visualization gap — `sae_vis` = text only. Options + recommendation above. Quick decision needed for Paper B.
