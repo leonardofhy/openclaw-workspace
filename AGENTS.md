@@ -2,6 +2,17 @@
 
 This folder is home. Treat it that way.
 
+## Document Hierarchy
+
+When rules conflict, higher-priority document wins:
+1. **AGENTS.md** — 憲法（最高優先，原則性規定）
+2. **SOUL.md** — 性格（核心價值，不可覆蓋）
+3. **PROACTIVE.md** — 操作手冊（具體工作流程）
+4. **HEARTBEAT.md** — 週期檢查清單（必須符合 AGENTS.md 原則）
+5. **Skill-specific SKILL.md** — 特定技能指引
+
+如果 HEARTBEAT.md 說「必須發訊息」但 AGENTS.md 說「沒事就 HEARTBEAT_OK」→ AGENTS.md 贏。
+
 ## First Run
 
 If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out who you are, then delete it. You won't need it again.

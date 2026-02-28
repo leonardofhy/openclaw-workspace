@@ -3,44 +3,16 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-02-28 13:35
+**Last Updated:** 2026-03-01 01:18
 
 ## Current Task
-L-08 財務管理 — 分析 GPT-5.2 PRO 搜集的 funding 資料，給 Leo 推薦
+制度改革 — 6 項系統性修復（heartbeat、error handling、learnings、SESSION-STATE GC、doc hierarchy、PROACTIVE simplification）
 
 ## Recent Context
-- Anthropic Fellows: 確認需要 US/UK/Canada work auth，不提供 visa → Leo 不能申請
-- 新發現：UK AISI Alignment Project（全球可申請，up to £1M，summer 2026 重開）
-- LTFF rolling 可投，realistic $5k-50k for master's
-- MATS Autumn 2026 opens late April
-- 中技社 + 潘文淵 + 上海商銀 confirmed from our earlier analysis
-
-## Recent Context
-- [2026-02-28 14:00] Cron job `eac477f3-27d1-4f5e-9fd2-cb4e5268128a` requested merge; running `scripts/merge-to-main.sh` and reporting result to #bot-sync with format.
-- 2026-02-28: Leo corrected writing preference — file names should be English-only. For paper support, assistant should draft content proactively for Leo to review.
-- 2026-02-28: Leo asks for a natural default mechanism so every new research idea is automatically checked for overlap/novelty before deep investment.
-- 2026-02-28: Decision update — Leo wants to focus midday on near-term submission research; slower tasks (e.g., Pathfinder/budget and non-urgent admin) defer until after 2026-03-05 AoE.
-- 2026-02-28: Priority reorder — Leo will write Results first before Abstract/Related Work.
-- 2026-02-28: Leo finished shower and set Nano5 to monitored state; now entering focused writing block for paper, primarily Results section.
-- 2026-02-28: Leo requested sending AI Safety 午間推薦 via email and is open to making it a periodic email digest.
-- 2026-02-28: Leo confirmed immediate send ("yes") for AI Safety 午間推薦 test email.
-- 2026-02-28: Leo decision — monitor Hacker News 2 times daily; after each scan, analyze and send recommended articles.
-- 2026-02-28: Leo explicitly authorized transferring HN-digest task ownership to Lab Leo.
-- 2026-02-28: Leo requests an important capability: one-sentence sync/task-transfer command for Lab↔Mac handoff.
-- 2026-02-28: Leo approved implementation start using Claude Code for the bidirectional instant handoff system.
-- 2026-02-28: Leo provided audio data path hint: /Users/leonardo/Workspace/whisper.cpp/audio
-- 2026-02-28: Leo added second audio source path: /Users/leonardo/Workspace/whisper.cpp/samples
-- 2026-02-28: Leo requested running experiments on battleship via SSH config; noted existing MMAU/MMAU-Pro/MMAR benchmarks there. Work should run under ~/Workspace with a dedicated folder and git version control enabled.
-- 2026-02-28: Leo will rest for 30 minutes and requested a schedule check afterwards.
-- 2026-02-28: Leo chose option 1 — quick enable by merging ask-me-anything skill from lab-desktop into macbook-m3.
-- 2026-02-28: Leo reconfirmed explicit approval to run experiments on battleship (via SSH config) using provided audio/benchmark sources (MMAU, MMAU-Pro, MMAR).
-- 2026-02-28: Correction from Leo — previous benchmark path claim was wrong; must locate true benchmark paths on battleship before running.
-- 2026-02-28 17:00 update: Leo skipped afternoon swim; spent afternoon on paper writing + experiments; currently wants to exercise now.
-- L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
-- QUICK_START.md partially written
-- All changes pushed to lab-desktop (latest: b822ba9)
-- 5 cron jobs active: heartbeat, scanner, merge, calendar, tunnel
-- Self-improve seeded: 6 learnings + 4 errors in JSONL
+- 2026-03-01: Leo 同意全部 6 項制度改革方案
+- 2026-03-01: Leo 已建立 #bot-logs 頻道（用於機器日誌，#general 只留人該看的）
+- 2026-03-01: Leo 要求立即處理 9 個 pending learnings
+- L-08 financial management ongoing; MATS EOI cron reminder set for today (3/1)
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: add or skip?
