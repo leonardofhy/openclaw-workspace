@@ -3,15 +3,15 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 01:18
+**Last Updated:** 2026-03-01 01:50
 
 ## Current Task
-制度改革 — 6 項系統性修復（heartbeat、error handling、learnings、SESSION-STATE GC、doc hierarchy、PROACTIVE simplification）
+成長保障系統 — 制度改革第二階段：讓成長機制真正 work，不只是擺設
 
 ## Recent Context
-- 2026-03-01: Leo 同意全部 6 項制度改革方案
-- 2026-03-01: Leo 已建立 #bot-logs 頻道（用於機器日誌，#general 只留人該看的）
-- 2026-03-01: Leo 要求立即處理 9 個 pending learnings
+- 2026-03-01: 制度改革 phase 1 完成（6 項修復，commit 48619d6）
+- 2026-03-01: Leo 問「你現在會不會定期成長？」→ 我誠實回答：機制有了但沒通電
+- 2026-03-01: Leo 說「請繼續完善，到底怎麼才能實際保障成長？」→ 現在設計 + 實作
 - L-08 financial management ongoing; MATS EOI cron reminder set for today (3/1)
 
 ## Pending Decisions
