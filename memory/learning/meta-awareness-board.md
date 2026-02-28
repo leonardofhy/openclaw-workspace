@@ -285,7 +285,42 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 18/18 Qs answered (active, continue opening new Qs)
+## Q19: Gold-plating paper-a-pitch.md Before Leo Reviews (✅ CLOSED cycle #107, 2026-03-01 05:01)
+
+**Question:** Cycles #104-106 each added new sections to paper-a-pitch.md (Significance Protocol, Figure 3 Prediction, Table 1 ablation). Leo hasn't reviewed since cycle #57/92. Is this a failure mode?
+
+**Answer:** YES — this is the "pitch-bloat" anti-pattern.
+- paper-a-pitch.md should stay ≤ 1.5 pages (go/no-go decision tool)
+- Experiment design details (significance tests, figure predictions, ablation tables) → `experiment-queue.md` PRIMARY, pitch appendix SECONDARY
+
+**Rule applied:** From cycle #108: new experiment design details → experiment-queue.md first, pitch appendix only for brief pointers.
+
+**Note:** Q15+Q16 already in pitch = leave (no regression). Rule applies going forward.
+
+**Status:** ✅ CLOSED
+
+---
+
+## Q20: Sunday Morning Handoff Readiness (✅ CLOSED cycle #108, 2026-03-01 05:31)
+
+**Question:** After 38h execution-blocked and 107 cycles of preparation, is the handoff actually navigable for Leo, or is useful info scattered across too many files?
+
+**Audit result:** 4 files cover everything (unblock-request.md → paper-a-pitch.md → paper-b-pitch.md → experiment-queue.md). BUT: no single "START HERE" index file existed — Leo would need to know which files to read in which order.
+
+**Applied improvement:** Created `memory/learning/SUNDAY-BRIEF.md`:
+- 3-sentence situation summary
+- 4-file reading list with estimated times
+- 5-step copy-paste unblock commands
+- 3 decisions for Leo (IIT approve / NeurIPS venue / contact 智凱哥)
+- What happens autonomously after unblock
+
+**Rule generalization:** After every extended (>12h) execution-blocked period, write a `BRIEF.md` before the predicted Leo-wakeup window. Not a replacement for detailed docs — a navigation index.
+
+**Status:** ✅ CLOSED
+
+---
+
+## Meta-board Status: 20/20 Qs answered (active, continue opening new Qs)
 
 ---
 
