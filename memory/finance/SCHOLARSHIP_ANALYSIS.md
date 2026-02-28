@@ -160,8 +160,96 @@ Leo 的研究獎助生來自國科會計畫 = **政府計畫補助**。因此：
 
 ---
 
-## 🔑 最重要的 3 個行動
+---
 
-1. **6 月準備中技社**（25 萬，最高 ROI，機率最高）
-2. **9 月投潘文淵 + 上海商銀**（7 萬，低成本申請）
-3. **3 月先向僑輔組確認衝突規則**（解鎖更多選項的關鍵）
+## 🤖 AI Safety 領域 Funding
+
+### ⭐⭐⭐ 1. Anthropic Fellows Program 2026 🔥🔥🔥
+- **金額**：USD $3,850/週 × 16 週 = **~USD $61,600（約 TWD 1,900,000）**
+- **另含**：$15k/月 compute 額度 + Anthropic 研究員 mentor
+- **時間**：4 個月（May 2026 或 July 2026 cohort）
+- **研究方向**：scalable oversight, adversarial robustness, **mechanistic interpretability** ← Leo 的主方向！
+- **資格**：不需 PhD、不需 ML 經驗、不需發表論文。需要 Python、研究動機、快速學習能力
+- **產出**：>80% 的 fellows 產出論文；>40% 後來加入 Anthropic 全職
+- **申請**：https://job-boards.greenhouse.io/anthropic/jobs/5023394008
+- **⚠️ Leo 需確認**：是否需要在美國/英國/加拿大 on-site（stipend 分 USD/GBP/CAD 三種）
+- **Leo 優勢**：
+  - Mechanistic Interpretability × Speech = 極度稀缺交叉方向
+  - Interspeech 2026 一作 = 研究執行力證明
+  - NTUAIS 領導 = AI Safety 動機真實
+  - 李宏毅 Lab = 強推薦信
+- **勝率**：⭐⭐⭐ 高（方向完美匹配，有成果背書）
+- **影響**：如果拿到 = 人生軌跡級改變（錢 + Anthropic 人脈 + 潛在 full-time offer）
+
+### ⭐⭐ 2. LTFF (Long-Term Future Fund) / EA Funds
+- **金額**：USD $5,000-100,000（依項目而定）
+- **類型**：個人 grant，支持 AI Safety 研究
+- **申請**：Rolling basis（隨時可投）— https://funds.effectivealtruism.org/funds/far-future
+- **適合**：資助 Leo 的 interpretability × speech 研究
+- **Leo 優勢**：有具體研究項目、有 NTUAIS 組織經驗
+- **行動**：寫一份 2 頁 research proposal 投 LTFF
+
+### ⭐⭐ 3. MATS (ML Alignment Theory Scholars)
+- **金額**：有 stipend（金額依 cohort）
+- **類型**：10 週研究 program，有 mentor
+- **時間**：通常 summer/winter，需查 2026 schedule
+- **網站**：https://www.matsprogram.org/
+- **適合**：和 Anthropic Fellows 類似但時間更短
+
+### ⭐ 4. AI Safety Camp
+- **金額**：Travel + accommodation funded
+- **類型**：1-2 週研究 camp
+- **適合**：networking + 短期研究衝刺
+
+### ⭐ 5. Pathfinder (已申請)
+- **狀態**：COM-002，已寄 follow-up email 2/20，等 3/13 回覆
+- **金額**：待確認
+
+### 6. 其他潛在來源
+- **Open Philanthropy** — 大型 AI Safety grants（通常給機構，但也有個人）
+- **Centre for AI Safety (CAIS)** — Compute grants for safety research
+- **Survival and Flourishing Fund (SFF)** — Existential risk grants
+- **GovAI (Oxford)** — Summer fellowship
+
+---
+
+## 🇲🇾 Malaysian-specific Funding
+
+### ⭐⭐ 1. MOE Taiwan Scholarship 2026
+- **金額**：學費減免 + 每月生活費（碩士 TWD 20,000/月）
+- **申請期間**：**2026/2/1～4/30（現在開放中！）**
+- **管道**：透過駐馬來西亞台北經濟文化辦事處
+- **⚠️ 關鍵問題**：此獎學金通常給「新入學」學生。Leo 已在學，**需確認已在學碩士生是否能申請**
+- **需要**：TOCFL Band B 以上（Leo 中文母語級應該沒問題）、推薦信、研究計畫
+- **如果可以申請**：20k/月 = 直接解決 burn rate 問題
+- **行動**：**本週聯繫駐馬辦事處 (teco.education@gmail.com) 確認在學生資格**
+
+### ⭐ 2. MARA Graduate Excellence Programme (GrEP)
+- **類型**：可轉換貸款（成績好可免還）
+- **⚠️ 限制**：MARA 主要服務 Bumiputera 群體，華人申請者機率極低
+- **結論**：大概率不適用，但可確認
+
+### ⭐ 3. 馬來西亞華人社團獎學金
+- **來源**：各州中華大會堂、馬來西亞留台聯總、華教基金會
+- **金額**：通常 RM 1,000-5,000（約 TWD 7,000-35,000）
+- **行動**：查留台聯總（https://faatum.com.my/）是否有碩士生獎學金
+
+---
+
+## 🔑 更新後的優先行動清單
+
+### 🔴 緊急（本週）
+1. **查 Anthropic Fellows 申請 deadline**（May cohort 可能很快截止）
+2. **Email teco.education@gmail.com** 確認 MOE Taiwan Scholarship 在學生資格
+3. **問彤恩姐** TA 空缺
+
+### 🟡 本月（3 月）
+4. **投 Anthropic Fellows Program**（如果 deadline 允許）
+5. **寫 2 頁 research proposal** 投 LTFF（rolling basis）
+6. **向僑輔組確認**各獎學金衝突規則
+7. **查 MATS 2026 schedule**
+
+### 🟢 中期（6-9 月）
+8. 中技社 研究獎學金 + 生活助學金
+9. 潘文淵 + 上海商銀
+10. 台大續讀獎勵金（如確認資格）
