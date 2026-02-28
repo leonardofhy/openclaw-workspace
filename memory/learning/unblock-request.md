@@ -34,6 +34,23 @@ python skills/autodidact/scripts/whisper_hook_demo.py /path/to/speech.wav
 1. **P3: Real speech test** — 5 min, validates Triple Convergence Hypothesis
 2. **P1: Triple Convergence IIT** — ~3h MacBook experiment, localizes causal layer
 
+## Also Ready for Leo Review (created overnight, not yet seen)
+
+- 📄 `memory/learning/paper-a-pitch.md` — "Localizing the Listen Layer in Speech LLMs" (1-page pitch, abstract draft, 4 experiments, venue comparison)
+- 📄 `memory/learning/paper-b-pitch.md` — "AudioSAEBench" (5-category benchmark, novel `gc(F)` metric, MVP scope, execution roadmap)
+
+## ⭐ NEW (cycle #86, 18:31 PM): ARENA Study Recommendation
+
+**Before running the IIT experiment, strongly recommend:**
+1. **ARENA [1.3.1] Linear Probes** (3-4h, any GPU/Colab free) — teaches causal patching with probe directions = the exact methodology needed for Paper A DAS-gc(k)
+2. **ARENA [1.4.2] SAE Circuits sections 1-2** (2-3h, GPT-2 only) — teaches attribution graphs; `circuit-tracer` library may be the direct tool for Paper A Listen Layer localization
+
+**Colab links:**
+- Linear Probes: https://colab.research.google.com/github/callummcdougall/arena-pragmatic-interp/blob/main/chapter1_transformer_interp/exercises/part31_linear_probes/1.3.1_Linear_Probes_exercises.ipynb
+- SAE Circuits: https://colab.research.google.com/github/callummcdougall/arena-pragmatic-interp/blob/main/chapter1_transformer_interp/exercises/part42_sae_circuits/1.4.2_SAE_Circuits_exercises.ipynb
+
+This adds ~1 day to start but saves ~6h of experimental debugging. Worth it if Leo has a weekend afternoon.
+
 ## Reference
 
 Full queue: `memory/learning/experiment-queue.md`

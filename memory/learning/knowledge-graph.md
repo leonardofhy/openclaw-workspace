@@ -15,6 +15,16 @@
 - Mozilla Builders (2024) — Whisper SAE (L1, TopK), phonetic/positional features
 - Open tools: whisper-interp (GitHub), whisper_logit_lens (GitHub)
 
+- **Choi et al. 2602.18899 "Phonological Vector Arithmetic in S3Ms"** (Feb 2026, ACL submission) — 🟢 DEEP-SCAN (cycle #81)
+  - 96 languages, multiple S3Ms (HuBERT/WavLM/wav2vec 2.0)
+  - KEY FINDING: phonological features are LINEAR, COMPOSITIONAL, and SCALE-CONTINUOUS in S3M space
+  - Arithmetic: [b] = [d] - [t] + [p] (voicing vector = linear, subtracts/adds cleanly)
+  - Magnitude scales with acoustic realization degree (partially voiced = intermediate position)
+  - Cross-lingual: phonological vectors universal across 96 languages
+  - Code: github.com/juice500ml/phonetic-arithmetic
+  - CONNECTIONS: (1) Validates TCS(F) metric (Paper B AudioSAEBench) — phoneme boundaries are geometrically well-defined; (2) Provides stimuli design blueprint for minimal-pair audio patching (phonological contrast pairs = principled "clean/corrupt" construction); (3) Motivates Audio T-SAE (Idea #7) — phonological features are linear = SAE-learnable; (4) Suggests cross-lingual feature alignment evaluation axis for AudioSAEBench
+  - **NEW GAP #18**: Phonological vector geometry shown in S3M encoder — does it SURVIVE through the connector into speech LLMs? Nobody has tested. If connector destroys phonological linearity → connector = bottleneck. Test: extract voicing_vector from S3M layer, project via connector with NNsight, test arithmetic in LLM layer 0.
+
 ### B) Speech Encoder SAEs
 - **Mariotte et al. "Sparse Autoencoders Make Audio Foundation Models more Explainable" (Sep 2025, ICASSP 2026)** — 🟢 DEEP READ (cycle #27) [arXiv:2509.24793]
   - Models: AST (sound), HuBERT (speech), WavLM (speech), MERT (music) — 4 models, 13 layers each, D=768
@@ -50,6 +60,24 @@
   - CODE: https://github.com/audiosae/audiosae_demo
 - Parra et al. (2025, EMNLP) — interpretable sparse features for SSL speech models
 - SAE on speaker embeddings (Titanet) — monosemantic factors [arXiv:2502.00127]
+- **T-SAE (Bhalla et al., Oct 2025, Harvard/MIT)** — 🟢 DEEP READ (cycle #71) — Temporal SAEs [arXiv:2511.05541]
+  - **Venue: ICLR 2026 Oral** ⭐ — landmark paper; code: https://github.com/AI4LIFE-GROUP/temporal-saes
+  - **Core problem**: Standard SAEs treat tokens as i.i.d. → recover token-specific, NOISY, LOCAL syntactic artifacts ("sentence ending", "capitalized first word") instead of HIGH-LEVEL semantic concepts.
+  - **Key insight**: Language has two structure types: (1) high-level / global (semantic = "discussion of plant biology") — evolves SMOOTHLY over tokens; (2) low-level / local (syntactic = "plural noun") — specific to individual positions.
+  - **Method**: Partition SAE features into high-level (20%) and low-level (80%), Matryoshka-style. Add **temporal contrastive loss** on high-level features between ADJACENT TOKENS `(z_t, z_{t-1})`. Positives = same sequence; negatives = different sequences. Prevents smoothness collapse.
+  - **Loss**: `ℒ = ℒ_matryoshka + α*ℒ_contrastive`, α=1.0
+  - **Key results**: T-SAE high-level features cluster by TOPIC and SEQUENCE IDENTITY; low-level features cluster by PART-OF-SPEECH (correctly disentangled); reconstruction quality maintained; safety case study: detects jailbreak concepts more reliably.
+  - **Authors explicitly note**: limitation applies to "language *and other sequential modalities*" — pointing at audio without doing it.
+  - **Audio transfer hypothesis**: Audio has STRONGER temporal structure than text:
+    - Phoneme spans ~5-10 frames at 20ms → adjacent frames within phoneme should share high-level feature
+    - T-SAE adjacent-token contrastive = PERFECT prior for phoneme-level feature discovery
+    - Speaker identity / emotion / accent = long-range consistency → long-range contrastive variant
+    - AudioSAE + Mariotte both have the i.i.d. token problem; T-SAE fixes it
+  - **Experiment sketch (Audio T-SAE)**: Train on Whisper-small layer 3-5 activations (LibriSpeech). Contrastive pairs = (frame_t, frame_{t-1}) same utterance; negatives = different utterances. Hypothesis: high-level features should segment at phoneme boundaries; probe high-level for phoneme identity → should be better than standard SAE.
+  - **NEW SYNTHESIS (cycle #71)**:
+    - **New metric for AudioSAEBench**: `TCS(F)` = Temporal Coherence Score = within-phoneme variance / across-phoneme variance of feature F activations. T-SAE should score higher than standard SAE. Adds a SECOND novel metric to Paper B alongside `gc(F)` (Grounding Sensitivity).
+    - **Triangulation for Paper A**: T-SAE temporal coherence as PROXY for audio vs text processing layer. If a layer's SAE features are coherent at PHONEME timescale → "listening"; if coherent at TEXT TOKEN timescale → "guessing". Non-causal validation complement to grounding_coefficient.
+  - **Connection to Gap #12** (Mariotte loses temporal info via mean-pooling): T-SAE = direct methodological solution. Answers when each feature fires during utterance = direct proxy for "which audio positions causally matter."
 
 ### C) Audio-Language Models（最接近 Leo）
 - **🔥 AudioLens (Neo Ho, Yi-Jyun Lee, Hung-yi Lee 2025, NTU → ASRU 2025)** — 🟢 DEEP READ — logit-lens on LALMs (DeSTA2, Qwen-Audio, Qwen2-Audio); auditory attribute perception [arXiv:2506.05140]
@@ -319,6 +347,7 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 5. **"Class-specific Neuron Grounding in LALMs"** (Track 2+3 intersection): Kawamura + Zhao both find class-specific neurons but never ask "is this neuron driven by audio or text?" Apply grounding_coefficient at ESN/class-specific neuron level. Closes the same gap two different papers left open simultaneously.
 
 6. **"Temporally-resolved Audio SAE"** (Track 2 — AudioSAEBench extension): Mariotte mean-pools along time → loses temporal info. Nobody has asked "when during an utterance does each sparse feature activate?" Temporal SAE = direct connection to "Listen vs Guess" (which positions are causally critical?). Novel contribution to AudioSAEBench.
+   - **Methodology found (cycle #70)**: Bhalla et al. "Temporal SAEs" (arXiv:2511.05541, Harvard/MIT, Oct 2025) — T-SAE adds contrastive loss on adjacent tokens to enforce temporal smoothness → recovers semantic concepts without supervision. Audio has STRONGER temporal structure than text (phoneme durations are fixed; formants smooth within phoneme, change at boundaries). T-SAE should work better on audio than text. Direct method backbone for this paper idea.
 
 ### G) Activation Patching Methodology
 - **Heimersheim & Nanda (2024)** — 🟢 DEEP READ — "How to Use and Interpret Activation Patching" [arXiv:2404.15255]
@@ -333,13 +362,66 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 
 ---
 
+### L) ARENA Curriculum — Pre-Experiment Skill-Up Path (Cycle #86 — 2026-02-28)
+
+**Source:** ARENA 3.0, branch `alignment-science` (merging to main ~Mar 1, 2026)
+**Repo:** https://github.com/callummcdougall/ARENA_3.0 (branch: `alignment-science`)
+**Updated exercises:** Feb 27, 2026 (karma 65 on LessWrong by CallumMcDougall)
+
+**New exercise sets directly relevant to Leo's research:**
+
+#### [1.3.1] Linear Probes
+- Replicates "Geometry of Truth" (Marks & Tegmark) + Apollo deception probes
+- **Sections:** Extract activations → PCA → MM vs LR probes → CAUSAL INTERVENTIONS → deception detection → attention probes
+- **Key lesson for Leo:** MM probes find MORE causally implicated directions than LR despite lower accuracy — same principle applies to DAS-gc(k) in Paper A (causal grounding > predictive)
+- **Direct transfer:** Attention probe (learned query over sequence) → "which audio frames are diagnostically important?" → directly operationalizes Listen vs Guess per audio segment
+- Colab: https://colab.research.google.com/github/callummcdougall/arena-pragmatic-interp/blob/main/chapter1_transformer_interp/exercises/part31_linear_probes/1.3.1_Linear_Probes_exercises.ipynb
+- **Estimated time:** 3-4h (any GPU; smaller models work for concept validation)
+
+#### [1.4.2] SAE Circuits (Attribution Graphs)
+- Replaces old "Function Vectors" exercise with full attribution graph pipeline
+- **Section 1:** Latent-to-latent, token-to-latent, latent-to-logit GRADIENTS → linear proxy for SAE feature circuits
+- **Section 2:** TRANSCODERS — variant of SAEs that reconstruct MLP computation (not just activations); blind case study using only weights
+- **Section 3:** ATTRIBUTION GRAPHS from scratch (Gemma 3-1B + GemmaScope 2 transcoders); Anthropic's full circuit-tracing methodology; builds Neumann series pruning
+- **Section 4:** `circuit-tracer` library — Dallas/Austin two-hop recall; feature swapping; generation with interventions
+- **Papers:** "Circuit Tracing" (Anthropic 2025) + "Transcoders Find Interpretable LLM Feature Circuits" (Dunefsky et al., 2024)
+- **Key discovery for Leo:** `circuit-tracer` = possible direct tool for Paper A Listen Layer localization. Replace text token embeddings → audio frame embeddings in the attribution graph to localize "Listen Layer"
+- Colab: https://colab.research.google.com/github/callummcdougall/arena-pragmatic-interp/blob/main/chapter1_transformer_interp/exercises/part42_sae_circuits/1.4.2_SAE_Circuits_exercises.ipynb
+- **Estimated time:** 4-6h (Colab Pro for sections 3-4; sections 1-2 need only GPT-2)
+
+#### [4.1] Emergent Misalignment
+- LoRA fine-tune mechanistic analysis using TransformerLens + SAEs
+- **Direct relevance:** "What does fine-tuning change mechanistically?" = Track 4's research question
+- **Methods:** Model organisms, autoraters, behavioral evaluation
+
+#### [1.3.4] Activation Oracles
+- Model diffing exercises (compare two models' representations)
+- CKA is the basis (already used in whisper_hook_demo.py)
+
+**SAELens v6 — fully mapped (cycle #87):**
+- Repo: `decoderesearch/SAELens` (formerly `jbloomAus/SAELens`); `pip install sae-lens`
+- Pre-trained SAE registry: **ZERO audio/speech SAEs** — all 25 models = Gemma-scope variants + GPT-2 + LLaMA
+- Works with NNsight: `sae.encode(acts_tensor)` takes any PyTorch tensor from NNsight hook
+- **Gap #19**: No standardized audio SAE training pipeline. SAELens training code = correct backbone for AudioSAEBench; trained SAEs can be uploaded with `saelens` tag → community adoption
+- Transcoders available for Gemma 2-2B (for ARENA [1.4.2] exercise)
+- Leo's workflow: NNsight hook → Whisper activations → SAELens trainer → save → `SAE.load_from_disk()`
+
+**Recommended study path (pre-experiment):**
+```
+1. [1.3.1] Linear Probes   (3-4h) → methodology backbone for Paper A DAS-gc(k)
+2. [1.4.2] SAE Circuits    (4-6h, sections 1-2 first) → circuit-tracer = direct tool for Track 1
+3. Run IIT experiment (Priority 1 in experiment-queue.md)
+```
+**Estimated net savings:** ~6h of experimental debugging avoided by understanding methodology first.
+
 ## 關鍵研究者/團隊
 - **NTU 李宏毅 lab** — AudioLens (智凱哥！Leo 主場)
 - aiOla Research (Glazer) — ASR MI, hallucination causal analysis
 - Huawei Noah's Ark (Aparin) — AudioSAE
 - MBZUAI — SPIRIT (audio safety)
-- Stanford (Atticus Geiger) — causal abstraction theory + pyvene
+- Stanford (Atticus Geiger) — causal abstraction theory + pyvene; **DAS (Distributed Alignment Search)** = learns optimal linear subspace alignment per layer via IIT training loss; upgrade from vanilla patching → gc(k) = IIT accuracy at layer k = theoretically grounded grounding_coefficient; pyvene wraps any PyTorch model, ~50 lines for full DAS sweep; `pip install pyvene` (add to venv checklist)
 - Neel Nanda — activation patching best practices, TransformerLens
 - Mozilla Builders — Whisper SAE tooling
 - Ellena Reid — early Whisper MI (LessWrong)
 - Yuan Gong (MIT) — AST/SSAST audio transformers
+- CallumMcDougall — ARENA curriculum (circuit-tracer, SAE Circuits, Linear Probes — best hands-on MI learning resource)

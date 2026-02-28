@@ -20,6 +20,12 @@ python3 skills/coordinator/scripts/sync_report.py
 
 # 生成同步報告（JSON）
 python3 skills/coordinator/scripts/sync_report.py --json
+
+# 一句話移交任務（自動寫入 memory/task-board.md）
+python3 skills/coordinator/scripts/one_liner_handoff.py "移交給lab：HN雙時段推薦，每天13:30與20:30，各3-5篇，含why+link+action"
+
+# 先預覽不寫檔
+python3 skills/coordinator/scripts/one_liner_handoff.py --dry-run "handoff to mac: merge lab-desktop and publish sync report"
 ```
 
 ## 協作模型

@@ -108,7 +108,41 @@ This applies to ALL morning meta-awareness cycles when execution-blocked.
 
 ---
 
+## Idea Gate Process Rule (added cycle #75, 2026-02-28 13:02)
+
+**Problem:** Research Idea #7 was added to goals.md (cycle #72) before going through idea_gate.md. Gate was run retroactively (cycle #75). Low-ROI ideas anchored in goals.md are hard to prune.
+
+**Rule (now active):**
+> New paper ideas → run `idea_gate.md` FIRST → add to goals.md only if 🟢 GREEN or 🟡 YELLOW (with reframe note).
+> **Exception (time-critical):** If idea discovered during arXiv scan → note in progress.md with `[GATE PENDING]` tag → complete gate within next 2 cycles.
+
+**Why this works:** Gate takes ~25 minutes; prevents low-value ideas from accumulating in goals.md and polluting the portfolio.
+
+---
+
+## Q9 Answer: ARENA Integration Rule (identified cycle #88, 2026-02-28 19:31)
+
+**Problem:** ARENA curriculum is mapped (cycle #86: Linear Probes [1.3.1] → SAE Circuits [1.4.2] → IIT), but no rule for *when* to do ARENA exercises vs reading papers. ARENA requires browser (cron = headless) → only Leo can run exercises, not autodidact directly.
+
+**Proposed rule (not yet applied — needs confirmation that ARENA is accessible):**
+> When execution-blocked AND meta-board saturated AND arXiv batch ≥4h away:
+> → Autodidact reads the ARENA exercise *description* (text-only from website) and pre-digests key concepts
+> → Does NOT implement code (no execution env); instead: writes "pre-digest" note so Leo can start exercises 30% faster
+> → Priority: [1.3.1] Linear Probes first (DAS/gc(k) backbone), then [1.4.2] SAE Circuits
+
+**Status:** Q9 OPEN — waiting for confirmation this is useful to Leo.
+
+---
+
+## Day-1 Session Plan (created cycle #88 — 2026-02-28 19:31)
+
+**Canonical reference:** `memory/learning/2026-02-28_cycle88.md` → "Leo's Day-1 Unblock Session Plan" section.
+**TL;DR:** 5 blocks, ~2-3h total: venv (15min) → real speech test (10min) → ARENA Linear Probes (30min) → Priority 0 experiment Gap #18 (60min) → Paper pitches review (20min).
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal
-- **⭐ UNBLOCK REQUEST (PENDING since 02:01 AM):** See `memory/learning/unblock-request.md` — 15 min of Leo's time unlocks all experiments
+- **⭐ UNBLOCK REQUEST (PENDING since 02:01 AM):** See `memory/learning/unblock-request.md` — 15-20 min of Leo's time unlocks all experiments
+- **📋 DAY-1 PLAN READY:** `memory/learning/2026-02-28_cycle88.md` — step-by-step session plan to start experiments immediately

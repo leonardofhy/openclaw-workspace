@@ -1,6 +1,6 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 0.1 | Created: 2026-02-28 04:31 (cycle #58)
+> Version: 0.5 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-02-28 16:01 (cycle #81)
 > Status: Draft — for Leo's review. Not finalized.
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H
@@ -15,10 +15,11 @@
 
 ## The Problem (Why This Paper Needs to Exist)
 
-Three audio SAE papers exist (AudioSAE, Mariotte, AR&D), but they're incomparable:
+Five audio SAE papers now exist (AudioSAE, Mariotte, AR&D, Plantinga-PD, Paek et al.), but they're incomparable:
 - AudioSAE evaluates hallucination steering, ignores disentanglement
 - Mariotte evaluates disentanglement completeness, ignores causal steering
 - AR&D evaluates concept recovery, ignores grounding
+- Paek et al. (NeurIPS 2025 MI Workshop, arXiv:2510.23802) evaluate audio generation latents (music), no causal metrics
 
 No audio SAE paper answers: **"Is this feature actually responding to the audio, or to the transcription?"**
 
@@ -39,13 +40,17 @@ We introduce **AudioSAEBench**, a multi-metric evaluation framework that unifies
 
 We benchmark 12+ SAEs across Whisper-base/small/large, HuBERT, WavLM, and Qwen2-Audio-7B. We find that proxy metrics (sparsity + reconstruction) do not reliably predict Grounding Sensitivity — echoing SAEBench's finding for text, and motivating multi-metric evaluation as the standard.
 
+> **Field update (cycle #80, 2026-02-28):** 5 audio SAE papers now identified (AudioSAE, Mariotte, AR&D, Plantinga-PD, Paek et al. NeurIPS 2025 MI Workshop). Paek et al. focus on audio *generation* model latents (music synthesis) — no overlap with speech understanding. None of the 5 papers has causal patching OR grounding sensitivity. AudioSAEBench gap confirmed broader than initially mapped.
+
+> **TCS(F) metric validation (cycle #81):** Choi et al. 2602.18899 ("Phonological Vector Arithmetic in S3Ms", ACL submission, 96 languages) confirms that phonological features are LINEAR, COMPOSITIONAL, and SCALE-CONTINUOUS in S3M representation space. This directly validates the TCS(F) = Temporal Coherence Score metric: phoneme boundaries are geometrically well-defined, MFA-alignable, and stable across languages. Citation anchor for Category 1b (Acoustic Concept Detection, temporal dimension). Additionally, Choi et al. provides the STIMULI DESIGN BLUEPRINT for minimal-pair audio patching (phonological contrast pairs are an instance of the "minimal pair" principle from Heimersheim & Nanda). Cross-lingual stability of phonological vectors opens a new AudioSAEBench evaluation axis: "Cross-Lingual Feature Alignment" (do SAE features discovered on English align to Mandarin via phonological vector arithmetic?).
+
 ---
 
 ## Why This Paper Wins
 
 | Claim | Evidence |
 |-------|----------|
-| **Only multi-metric audio SAE benchmark** | AudioSAE = 2 metrics; Mariotte = 1; AR&D = 1. Nobody combines all. |
+| **Only multi-metric audio SAE benchmark** | 5 audio SAE papers exist (AudioSAE, Mariotte, AR&D, Plantinga-PD, Paek et al.) — all single-dimension, incomparable. Nobody combines all. |
 | **Novel metric (Grounding Sensitivity)** | No text SAE paper has audio-vs-text attribution at feature level. Zero competitors. |
 | **Uses existing stimuli** | ALME 57K conflict pairs already exist; no need to generate. |
 | **Timely** | SAEBench (text) = ICML 2025; audio gap = open NOW. AR&D (partial overlap) just appeared Feb 24 2026 — move fast. |
@@ -62,7 +67,8 @@ We benchmark 12+ SAEs across Whisper-base/small/large, HuBERT, WavLM, and Qwen2-
 - **Metric:** Feature-level concept F1 (max-activation features per concept class; time-resolved)
 - **Stimuli:** LibriSpeech (ASR), IEMOCAP (emotion), ESC-50 (sound events), VocalSet (singing technique)
 - **Baseline:** Best existing: AR&D (concept naming + retrieval), AudioSAE (phoneme acc 0.92)
-- **Novel contribution:** Time-resolved (per-timestep) feature activation — who fires WHEN?
+- **Novel contribution (1a):** Time-resolved (per-timestep) feature activation — who fires WHEN?
+- **Novel contribution (1b — NEW cycle #71):** `TCS(F)` = **Temporal Coherence Score** = within-phoneme feature variance / across-phoneme boundary variance. T-SAE (Bhalla et al. ICLR 2026, arXiv:2511.05541) provides the method backbone: contrastive loss on adjacent frames → discovers phoneme-level features without labels. TCS(F) evaluates this: if T-SAE's high-level features have low within-phoneme variance and high across-boundary variance → high TCS = temporally coherent. Standard SAE should score low. **Second novel metric** alongside gc(F), purely audio-native (no text equivalent).
 
 ### Category 2: Disentanglement & Completeness
 - **Question:** Are SAE features more independently encoding concepts than raw hidden states?

@@ -235,3 +235,173 @@ Scan: AF rate-limited (429), LW +0 new high-signal (only "AI Security Bootcamp S
 **2026-02-27 23:45 (Fri)** — scan: AF rate-limited (429), LW +1 new ("Sam Altman says OpenAI shares Anthropic's red lines in Pentagon fight", karma: 6 — low signal, too fresh) | backlog exhausted for today
 
 No high-signal update. All frontpage posts with meaningful karma have been captured in earlier cycles. 30 picks logged today. Close-of-day scan complete.
+
+---
+**2026-02-28 09:15 (Sat)** — scan: AF rate-limited (429), LW +2 new since yesterday (Feb 28 00:36+) | backlog: ~17 unread
+
+**[new pick]** *Anthropic and the DoW: Anthropic Responds* (Zvi, LessWrong, Feb 27 20:50, karma: 41)
+- Why: Zvi's breakdown of the live Anthropic/DoD standoff — DoD gave Anthropic a 5pm-Friday ultimatum for "unfettered access" or face DPA invocation / supply chain risk designation; Zvi assesses the governance dynamics and what Anthropic's response reveals about where AI safety red lines meet national security pressure. Direct follow-up to Dario's statement (already picked); important for understanding how safety commitments hold under coercive government pressure.
+- Link: https://www.lesswrong.com/posts/ppj7v4sSCbJjLye3D/anthropic-and-the-dow-anthropic-responds
+
+**[new — low karma, noted]** *The Topology of LLM Behavior* (LW, Feb 28, karma: 11)
+- Why: Informal mental model framing LLM generation as a weighted random walk through a semantic attractor landscape — alignment constraints as attractors; low-karma but potentially useful intuition for thinking about behavioral stability and drift. Watch karma.
+- Link: https://www.lesswrong.com/posts/iPmqM4qn7YnktcSus/the-topology-of-llm-behavior-1
+
+---
+**2026-02-28 09:45 (Sat)** — scan: LW new since 09:15; AF rate-limited (429)
+
+**[new picks]**
+- **"Sam Altman says OpenAI shares Anthropic's red lines in Pentagon fight"** (LW, Feb 27, karma: 74 ↑ from ~6 overnight) — karma surge signals community weight; reports OpenAI and Anthropic aligned on refusing DoD "unfettered access" demands, a concrete governance moment: two leading labs holding the same safety red line under DPA pressure. Direct follow-up to Dario's statement + Zvi's breakdown (both previously picked). <https://www.lesswrong.com/posts/sam-altman-says-openai-shares-anthropic-s-red-lines-in>
+- **"New ARENA material: 8 exercise sets on alignment science & interpretability"** (LW / Callum McDougall, Feb 27, karma: 46) — ARENA published 8 new problem sets covering alignment science + interpretability; high practical value for anyone building technical alignment skills or evaluating the current training-ground state of the field. <https://www.lesswrong.com/posts/new-arena-material-8-exercise-sets-on-alignment-science-and>
+
+---
+**2026-02-28 10:15 (Sat)** — scan: AF rate-limited (429), LW +3 new since 09:45 (all low-karma: Mindscapes/Mind Palaces [1], Coherent Care/abramdemski [15], RSP Versions [7]) | no new high-signal posts
+
+**[backlog-pick]** *Side by Side Comparison of RSP Versions* (LessWrong / Corm, Feb 27, karma: 7)
+- Why: Direct comparison of how Responsible Scaling Policy versions have evolved; useful for tracking concrete safety commitment drift over time and understanding which thresholds/trigger conditions have changed across labs — relevant to governance and accountability tracking, especially amid the current Anthropic/DoD red-lines standoff.
+- Link: <https://www.lesswrong.com/posts/side-by-side-comparison-of-rsp-versions>
+
+---
+**2026-02-28 10:45 (Sat)** — scan: AF rate-limited (429), LW no new posts since 10:15 (most recent: Mindscapes/Mind Palaces 01:04 UTC, karma: 1 — non-safety). All high-signal items from today already picked.
+
+No high-signal update.
+
+---
+**2026-02-28 11:15 (Sat)** — scan: AF rate-limited (429), LW 0 new posts since 10:45 (confirmed via API after 02:45 UTC). All high-signal items for today already picked.
+
+No high-signal update.
+
+---
+**2026-02-28 11:45 (Sat)** — scan: AF rate-limited (429), LW 0 new posts since 03:15 UTC | backlog: ~17 unread
+
+**[backlog-pick]** *Coherent Care* (abramdemski, LessWrong, Feb 27, karma: 18)
+- Why: abramdemski (MIRI / decision theory) on "coherent care" — likely concerns what it means for an agent to have consistent, well-formed preferences / values that constitute genuine caring rather than proxy optimization; directly relevant to goal-structure alignment and the difference between satisfying human preferences and an AI that actually *cares* about good outcomes. Steady karma growth signals community endorsement.
+- Link: https://www.lesswrong.com/posts/coherent-care (title-based; confirm URL on read)
+
+**[watching]** *The Topology of LLM Behavior* (LW, Feb 28) — karma grew to 17 (from 11 at 09:15); still worth monitoring before reading.
+
+---
+**2026-02-28 12:15 (Sat)** — scan: AF rate-limited (429), LW +0 new safety-relevant posts since 03:15 UTC (only new: "Jhana 0" [meditation, karma: 2], "Mindscapes and Mind Palaces" [karma: 1]) | backlog: ~16 unread
+
+No high-signal update. *The Topology of LLM Behavior* still at karma 17 (unchanged since 09:15); holding in watch queue pending karma growth before committing a read slot.
+
+---
+**2026-02-28 12:45 (Sat)** — scan: AF rate-limited (429), LW +1 new since 04:15 UTC ("Schelling Goodness, and Shared Morality as a Goal", karma: 9, Rationality tag — not safety-core, too early to commit) | backlog: ~16 unread
+
+**[backlog-picks]**
+- **"3 Challenges and 2 Hopes for the Safety of Unsupervised Elicitation"** (LW, Feb 27, karma: 19, MATS Program / Scalable Oversight) — Addresses the core problem of eliciting aligned behavior without reliable human supervision; MATS provenance + scalable oversight tag makes this directly relevant to the unsupervised-elicitation bottleneck where safety research needs to go. <https://www.lesswrong.com/posts/DKLrdLLxm5kLJbr7G/3-challenges-and-2-hopes-for-the-safety-of-unsupervised>
+- **"The Dawn of AI Scheming"** (LW, Feb 27, karma: 13, tags: Deceptive Alignment / AI Control / Threat Models) — Survey/threat-model piece on AI scheming; low-ish karma but the tag cluster (deceptive alignment + AI evaluations + coherence arguments) signals conceptually important content for understanding how scheming could arise and be detected. <https://www.lesswrong.com/posts/4rZbyJN8KjM9LHwh8/the-dawn-of-ai-scheming>
+
+**[watching]** *The Topology of LLM Behavior* — still at karma 17 (flat for 3+ hours); may be settling. Dropping from active watch; will promote if karma spikes above 25.
+
+---
+**2026-02-28 13:15 (Sat)** — scan: AF +1 new, LW +10 new | backlog: 30 unread (post-scan)
+
+Filtered non-safety noise (marked read): Jhana 0, Mindscapes & Mind Palaces, Lithium/Alzheimer's linkpost, The tick in my back, Ball+Gravity preference, AI Security Bootcamp Singapore.
+
+**[new pick]** *Schelling Goodness, and Shared Morality as a Goal* (AF + LW crosspost, Feb 28, karma: early)
+- Why: Alignment Forum provenance signals researcher-level content; Schelling coordination as a foundation for shared morality is directly relevant to multi-stakeholder value alignment — how to find stable convergence points across agents/humans with different values, a key challenge for scalable alignment.
+- Links: AF: <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal> | LW: <https://www.lesswrong.com/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
+
+**[backlog-pick]** *AI #157: Burn the Boats* (Zvi Mowshowitz, LessWrong, Feb 26)
+- Why: Zvi's weekly digest — this edition covers the Anthropic/DoD standoff week; high-signal synthesis of the governance crisis, red-line dynamics, and broader lab positioning; good map of what actually happened that week in condensed form.
+- Link: <https://www.lesswrong.com/posts/zC3Rtrj6RXwEde9h6/ai-157-burn-the-boats>
+
+---
+**2026-02-28 13:45 (Sat)** — scan: AF rate-limited (429), LW +0 new since 05:15 UTC | backlog: ~14 unread
+
+No high-signal update. All visible RSS items already covered; recent backlog picks fresh (Schelling Goodness, AI #157, 3 Challenges/Unsupervised Elicitation, Dawn of AI Scheming). Holding queue until next cycle.
+
+---
+**2026-02-28 14:15 (Sat)** — scan: AF +0 new, LW +0 new | backlog: 24 unread
+
+No new posts. All 10 feed items already in db.
+
+**[backlog-pick]** *Side by Side Comparison of RSP Versions* (LessWrong, Feb 27)
+- Why: Direct analytical comparison of Responsible Scaling Policy versions across labs — highest-signal policy-tracking content in the current backlog; tracks how safety commitments are evolving (or weakening) as labs update their RSPs over time.
+- Link: <https://www.lesswrong.com/posts/aKpXgbJKvoeJ7Ler8/side-by-side-comparison-of-rsp-versions>
+
+**[watching]** *Anthropic and the DoW: Anthropic Responds* (LW, Feb 27) — governance/policy angle on the Anthropic-DoD standoff; holding as context companion to AI #157 already picked.
+
+---
+**2026-02-28 14:45 (Sat)** — scan: AF +0 new, LW +0 new since 14:15 | backlog: ~23 unread
+
+No new posts. Feed identical to 14:15 snapshot.
+
+**[backlog-pick]** *Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior* (Alignment Forum, Feb 27)
+- Why: AF-native (researcher-grade signal) post on diagnosing *why* a model misbehaved — sits at the intersection of interpretability and safety evaluation; directly actionable for anyone building evals or trying to attribute misbehavior to training causes vs. deployment context; complements the unsupervised elicitation / scheming-detection thread already in queue.
+- Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
+
+---
+**2026-02-28 15:15 (Sat)** — scan: AF rate-limited (429), LW +0 new since 14:45 | backlog: ~22 unread
+
+No new posts since last cycle. Feed unchanged.
+
+**[backlog-pick]** *New ARENA material: 8 exercise sets on alignment science & interpretability* (LessWrong, Feb 27, CallumMcDougall, karma: 64)
+- Why: ARENA is the primary hands-on curriculum for alignment research training; 8 new exercise sets covering alignment science + interpretability represents a significant curriculum expansion — high value for anyone doing or supervising alignment research skill development; solid karma signal (64) confirms community endorsement.
+- Link: <https://www.lesswrong.com/posts/nQAN2vxv2ASjowMda/new-arena-material-8-exercise-sets-on-alignment-science-and>
+
+---
+**2026-02-28 15:45 (Sat)** — scan: AF +0 new, LW +0 new since 15:15 | backlog: ~21 unread
+
+No new posts. Both feeds unchanged from prior cycle. Recent backlog queue already well-stocked (ARENA material, Model Incrimination, RSP Comparison, Schelling Goodness, AI #157, 3 Challenges/Unsupervised Elicitation, Dawn of AI Scheming). No high-signal update this cycle.
+
+---
+**2026-02-28 16:15 (Sat)** — scan: AF top = "Schelling Goodness" (already picked 13:15), LW top = same | backlog: ~21 unread
+
+No new posts. Both feeds identical to 15:45 snapshot; Saturday afternoon lull.
+
+**[backlog-pick]** *The Topology of LLM Behavior* (LessWrong, Feb 28, karma grown from 11→17+ since morning)
+- Why: Informal but useful framing of LLM generation as navigation through a weighted semantic attractor landscape — alignment constraints as attractors that can be stable or fragile; complements the week's thread on behavioral stability (attractor states, persona selection, sandbagging). Karma growth throughout the day signals the community finding it worth engaging with; now worth committing a read slot.
+- Link: https://www.lesswrong.com/posts/iPmqM4qn7YnktcSus/the-topology-of-llm-behavior-1
+
+---
+**2026-02-28 17:15 (Sat)** — scan: AF +0 new, LW +0 new | backlog: ~21 unread
+
+No new posts. Saturday evening quiet continues. Feeds flat since morning.
+
+**[backlog-pick]** *Side by Side Comparison of RSP Versions* (LessWrong, Feb 27)
+- Why: Systematic diff of Anthropic's Responsible Scaling Policy revisions over time — directly useful for understanding how red lines and commitments have evolved, especially timely given the ongoing Anthropic/DoD controversy dominating this week's feed; policy tracking anchor.
+- Link: <https://www.lesswrong.com/posts/aKpXgbJKvoeJ7Ler8/side-by-side-comparison-of-rsp-versions>
+
+---
+**2026-02-28 16:45 (Sat)** — scan: AF rate-limited (429), LW +0 new since 16:15 | backlog: ~21 unread
+
+No new posts. Both feeds unchanged from 16:15 cycle; Saturday afternoon quiet continues.
+
+**[backlog-pick]** *Sam Altman says OpenAI shares Anthropic's red lines in Pentagon fight* (LessWrong, Feb 27, karma: 76)
+- Why: Direct governance signal — Altman publicly aligning OpenAI with Anthropic's autonomous weapons red lines in the DoD standoff; closes the loop on the Dario/DoW statement already in the watching queue and reveals industry-level coordination on the "no lethal autonomy" norm; high karma + AI Governance/Autonomous Weapons tags confirm community signal weight.
+- Link: <https://www.lesswrong.com/posts/sam-altman-says-openai-shares-anthropic-s-red-lines-in>
+
+---
+**2026-02-28 17:45 (Sat)** — scan: AF +0 new (top: "Schelling Goodness"), LW +0 new | backlog: ~21 unread
+
+No new posts. Both feeds identical to earlier Saturday cycles; Saturday evening quiet. All top LW/AF items this week already picked (Schelling Goodness, Model Incrimination, ARENA material, DoW coverage, RSP comparison, Sam Altman red lines, Frontier AI can't leave US). Backlog well-stocked — no further picks warranted this cycle.
+
+---
+**2026-02-28 18:15 (Sat)** — scan: AF top = "Schelling Goodness" (unchanged), LW top = same | backlog: ~21 unread
+
+No new posts. Both feeds flat since morning; Saturday evening quiet continues. No backlog pick — well-stocked from earlier cycles today (RSP comparison, Sam Altman red lines, Topology of LLM Behavior, ARENA material). No further picks warranted this cycle.
+
+---
+**2026-02-28 18:01 (Sat)** — scan: AF +0 new, LW +0 new | backlog: ~21 unread (unchanged)
+
+No new posts. Saturday evening quiet continues.
+
+**[portfolio connection note — cycle #85]** 
+*New ARENA material* (Feb 27, karma: 65) = highest-value actionable item this week for Leo specifically:
+- **Linear Probes** → directly teaches probing for Paper B AudioSAEBench
+- **Attribution Graphs** → `circuit-tracer` library = hands-on circuit analysis (Track 1 + Paper A methodology)
+- **Emergent Misalignment** → LoRA exercises = Track 4 foundation
+- **Recommendation:** Leo should do ARENA "Linear Probes" + "Attribution Graphs" exercises BEFORE first NNsight/pyvene experiment. 2-4 day investment = higher quality experiments.
+- URL: https://learn.arena.education/ (branch: `alignment-science`, merging to main this Sunday)
+
+---
+**2026-02-28 18:45 (Sat)** — scan: AF rate-limited (429), LW +0 new (top: "Schelling Goodness", 04:25 UTC, unchanged) | backlog: ~21 unread
+
+No new posts. Both feeds flat since morning; all high-signal items from this week already picked (Schelling Goodness, ARENA material, Dario DoW statement, Zvi DoW responds, Sam Altman red lines, RSP comparison, AI #157). No further picks warranted this cycle.
+
+---
+**2026-02-28 19:15 (Sat)** — scan: AF +0 new, LW +0 new | backlog: ~19 unread (2 formally marked read)
+
+No new posts. Backlog housekeeping: marked articles [37] "The Topology of LLM Behavior" and [40] "Side by Side Comparison of RSP Versions" as read in blogwatcher — both had been verbally picked in earlier cycles (18:01, 18:45) but not formally marked. No new high-signal items this cycle.

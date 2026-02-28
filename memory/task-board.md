@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-02-28 01:20
+> 最後更新：2026-02-28 13:53
 
 ## 規則
 
@@ -83,6 +83,16 @@
 - **last_touched**: 2026-02-27
 - **描述**: 驗證混合同步協議實際運作：每日 merge、[STATE] 通知、reconcile
 - **next_action**: 等 Mac Leo 完成 merge 後做第一次 smoke test
+
+### L-09 | HN 雙時段推薦（移交自 Mac）
+- **owner**: Lab
+- **priority**: P1
+- **created**: 2026-02-28
+- **last_touched**: 2026-02-28
+- **描述**: 每天 2 次閱讀 Hacker News，分析後推送 Leo 感興趣文章
+- **schedule**: 13:30、20:30（Asia/Taipei）
+- **output_format**: 每次 3-5 篇；每篇含 why it matters + link + action（略讀/深讀）
+- **next_action**: 於 Lab 端建立固定流程，先完成今天 20:30 推送並在 #bot-sync 回報接手狀態
 
 ## WAITING
 
