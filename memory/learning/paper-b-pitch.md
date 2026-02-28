@@ -1,6 +1,6 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 0.1 | Created: 2026-02-28 04:31 (cycle #58)
+> Version: 0.2 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-02-28 11:01 (cycle #71)
 > Status: Draft — for Leo's review. Not finalized.
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H
@@ -62,7 +62,8 @@ We benchmark 12+ SAEs across Whisper-base/small/large, HuBERT, WavLM, and Qwen2-
 - **Metric:** Feature-level concept F1 (max-activation features per concept class; time-resolved)
 - **Stimuli:** LibriSpeech (ASR), IEMOCAP (emotion), ESC-50 (sound events), VocalSet (singing technique)
 - **Baseline:** Best existing: AR&D (concept naming + retrieval), AudioSAE (phoneme acc 0.92)
-- **Novel contribution:** Time-resolved (per-timestep) feature activation — who fires WHEN?
+- **Novel contribution (1a):** Time-resolved (per-timestep) feature activation — who fires WHEN?
+- **Novel contribution (1b — NEW cycle #71):** `TCS(F)` = **Temporal Coherence Score** = within-phoneme feature variance / across-phoneme boundary variance. T-SAE (Bhalla et al. ICLR 2026, arXiv:2511.05541) provides the method backbone: contrastive loss on adjacent frames → discovers phoneme-level features without labels. TCS(F) evaluates this: if T-SAE's high-level features have low within-phoneme variance and high across-boundary variance → high TCS = temporally coherent. Standard SAE should score low. **Second novel metric** alongside gc(F), purely audio-native (no text equivalent).
 
 ### Category 2: Disentanglement & Completeness
 - **Question:** Are SAE features more independently encoding concepts than raw hidden states?

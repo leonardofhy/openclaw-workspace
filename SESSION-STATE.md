@@ -9,6 +9,7 @@
 Pre-compaction flush complete. Massive build session done — all core infra, 5 skills, cron, GPU env, research toolkit built.
 
 ## Recent Context
+- 2026-02-28: Leo corrected writing preference — file names should be English-only. For paper support, assistant should draft content proactively for Leo to review.
 - L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
 - QUICK_START.md partially written
 - All changes pushed to lab-desktop (latest: b822ba9)

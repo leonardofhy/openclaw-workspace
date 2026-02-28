@@ -50,6 +50,24 @@
   - CODE: https://github.com/audiosae/audiosae_demo
 - Parra et al. (2025, EMNLP) — interpretable sparse features for SSL speech models
 - SAE on speaker embeddings (Titanet) — monosemantic factors [arXiv:2502.00127]
+- **T-SAE (Bhalla et al., Oct 2025, Harvard/MIT)** — 🟢 DEEP READ (cycle #71) — Temporal SAEs [arXiv:2511.05541]
+  - **Venue: ICLR 2026 Oral** ⭐ — landmark paper; code: https://github.com/AI4LIFE-GROUP/temporal-saes
+  - **Core problem**: Standard SAEs treat tokens as i.i.d. → recover token-specific, NOISY, LOCAL syntactic artifacts ("sentence ending", "capitalized first word") instead of HIGH-LEVEL semantic concepts.
+  - **Key insight**: Language has two structure types: (1) high-level / global (semantic = "discussion of plant biology") — evolves SMOOTHLY over tokens; (2) low-level / local (syntactic = "plural noun") — specific to individual positions.
+  - **Method**: Partition SAE features into high-level (20%) and low-level (80%), Matryoshka-style. Add **temporal contrastive loss** on high-level features between ADJACENT TOKENS `(z_t, z_{t-1})`. Positives = same sequence; negatives = different sequences. Prevents smoothness collapse.
+  - **Loss**: `ℒ = ℒ_matryoshka + α*ℒ_contrastive`, α=1.0
+  - **Key results**: T-SAE high-level features cluster by TOPIC and SEQUENCE IDENTITY; low-level features cluster by PART-OF-SPEECH (correctly disentangled); reconstruction quality maintained; safety case study: detects jailbreak concepts more reliably.
+  - **Authors explicitly note**: limitation applies to "language *and other sequential modalities*" — pointing at audio without doing it.
+  - **Audio transfer hypothesis**: Audio has STRONGER temporal structure than text:
+    - Phoneme spans ~5-10 frames at 20ms → adjacent frames within phoneme should share high-level feature
+    - T-SAE adjacent-token contrastive = PERFECT prior for phoneme-level feature discovery
+    - Speaker identity / emotion / accent = long-range consistency → long-range contrastive variant
+    - AudioSAE + Mariotte both have the i.i.d. token problem; T-SAE fixes it
+  - **Experiment sketch (Audio T-SAE)**: Train on Whisper-small layer 3-5 activations (LibriSpeech). Contrastive pairs = (frame_t, frame_{t-1}) same utterance; negatives = different utterances. Hypothesis: high-level features should segment at phoneme boundaries; probe high-level for phoneme identity → should be better than standard SAE.
+  - **NEW SYNTHESIS (cycle #71)**:
+    - **New metric for AudioSAEBench**: `TCS(F)` = Temporal Coherence Score = within-phoneme variance / across-phoneme variance of feature F activations. T-SAE should score higher than standard SAE. Adds a SECOND novel metric to Paper B alongside `gc(F)` (Grounding Sensitivity).
+    - **Triangulation for Paper A**: T-SAE temporal coherence as PROXY for audio vs text processing layer. If a layer's SAE features are coherent at PHONEME timescale → "listening"; if coherent at TEXT TOKEN timescale → "guessing". Non-causal validation complement to grounding_coefficient.
+  - **Connection to Gap #12** (Mariotte loses temporal info via mean-pooling): T-SAE = direct methodological solution. Answers when each feature fires during utterance = direct proxy for "which audio positions causally matter."
 
 ### C) Audio-Language Models（最接近 Leo）
 - **🔥 AudioLens (Neo Ho, Yi-Jyun Lee, Hung-yi Lee 2025, NTU → ASRU 2025)** — 🟢 DEEP READ — logit-lens on LALMs (DeSTA2, Qwen-Audio, Qwen2-Audio); auditory attribute perception [arXiv:2506.05140]
@@ -319,6 +337,7 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 5. **"Class-specific Neuron Grounding in LALMs"** (Track 2+3 intersection): Kawamura + Zhao both find class-specific neurons but never ask "is this neuron driven by audio or text?" Apply grounding_coefficient at ESN/class-specific neuron level. Closes the same gap two different papers left open simultaneously.
 
 6. **"Temporally-resolved Audio SAE"** (Track 2 — AudioSAEBench extension): Mariotte mean-pools along time → loses temporal info. Nobody has asked "when during an utterance does each sparse feature activate?" Temporal SAE = direct connection to "Listen vs Guess" (which positions are causally critical?). Novel contribution to AudioSAEBench.
+   - **Methodology found (cycle #70)**: Bhalla et al. "Temporal SAEs" (arXiv:2511.05541, Harvard/MIT, Oct 2025) — T-SAE adds contrastive loss on adjacent tokens to enforce temporal smoothness → recovers semantic concepts without supervision. Audio has STRONGER temporal structure than text (phoneme durations are fixed; formants smooth within phoneme, change at boundaries). T-SAE should work better on audio than text. Direct method backbone for this paper idea.
 
 ### G) Activation Patching Methodology
 - **Heimersheim & Nanda (2024)** — 🟢 DEEP READ — "How to Use and Interpret Activation Patching" [arXiv:2404.15255]

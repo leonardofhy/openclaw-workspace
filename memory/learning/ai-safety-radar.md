@@ -260,3 +260,13 @@ No high-signal update. All frontpage posts with meaningful karma have been captu
 **[backlog-pick]** *Side by Side Comparison of RSP Versions* (LessWrong / Corm, Feb 27, karma: 7)
 - Why: Direct comparison of how Responsible Scaling Policy versions have evolved; useful for tracking concrete safety commitment drift over time and understanding which thresholds/trigger conditions have changed across labs — relevant to governance and accountability tracking, especially amid the current Anthropic/DoD red-lines standoff.
 - Link: <https://www.lesswrong.com/posts/side-by-side-comparison-of-rsp-versions>
+
+---
+**2026-02-28 10:45 (Sat)** — scan: AF rate-limited (429), LW no new posts since 10:15 (most recent: Mindscapes/Mind Palaces 01:04 UTC, karma: 1 — non-safety). All high-signal items from today already picked.
+
+No high-signal update.
+
+---
+**2026-02-28 11:15 (Sat)** — scan: AF rate-limited (429), LW 0 new posts since 10:45 (confirmed via API after 02:45 UTC). All high-signal items for today already picked.
+
+No high-signal update.
