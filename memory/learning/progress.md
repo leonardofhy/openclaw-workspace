@@ -475,16 +475,18 @@ Priority queue for Leo's first session:
 
 | #81 | 2026-02-28 16:01 | learn (deep-scan) | **Choi et al. 2602.18899 "Phonological Vector Arithmetic in S3Ms"** — phonological features are LINEAR, COMPOSITIONAL, SCALE-CONTINUOUS in S3M space (96 languages); [b]=[d]-[t]+[p] works; validates TCS(F) metric, provides minimal-pair stimuli design blueprint; **NEW Gap #18**: phonological vector geometry survives S3M encoder, but does it survive the CONNECTOR into speech LLMs? Nobody has tested. Directly supports Paper B (AudioSAEBench), Idea #7 (Audio T-SAE), Paper A (Listen Layer). |
 
-## Day 3 Rolling Stats (after cycle #81)
+| #82 | 2026-02-28 16:32 | reflect (meta-synthesis) | **Gap #18 experimental design** — phonological geometry through connector: 4-step experiment (vector extraction → connector hook → arithmetic test → layer-wise probe); MacBook partial feasible (S3M step) + NNsight/NDIF for LALM step; 🟢 GREEN idea gate; added as **Priority 0** in experiment-queue.md (prerequisite for Paper A grounding_coefficient + Paper B TCS(F)); arXiv Feb 28 batch still not posted at 16:31 PM (unusual delay). |
+
+## Day 3 Rolling Stats (after cycle #82)
 - Papers read (deep): **16 total** (+Choi et al. phonological vector arithmetic)
 - Papers scanned: 29+
 - Research gaps identified: **18** (+Gap #18: phonological vector geometry through connector)
 - Paper ideas: 7
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1
-- Experiment proposals: 2
+- Experiment proposals: **3** (IIT Triple Convergence + Class-specific Neuron Grounding + **Gap #18 Phonological Geometry**)
 - Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
-- **arXiv Feb 28 batch**: still delayed at 16:01 PM
+- **arXiv Feb 28 batch**: still delayed at 16:31 PM
 
 | #75 | 2026-02-28 13:02 | learn (idea gate — Idea #7) | **Full Idea Gate for Audio T-SAE** — 5 queries, 0 competitors, 🟢 GREEN verdict. Feasibility: PASS (GPU+MFA+T-SAE re-impl, 1-2 weeks). Value: 11/15 ✅ CONTINUE. Key finding: Audio T-SAE = Paper B's flagship model + TCS(F) metric → integrate as Paper B temporal module. New process rule: idea_gate FIRST before goals.md (time-critical: [GATE PENDING] tag). First use of idea_gate.md protocol. |
 

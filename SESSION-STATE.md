@@ -33,6 +33,8 @@ L-08 財務管理 — 分析 GPT-5.2 PRO 搜集的 funding 資料，給 Leo 推�
 - 2026-02-28: Leo requested running experiments on battleship via SSH config; noted existing MMAU/MMAU-Pro/MMAR benchmarks there. Work should run under ~/Workspace with a dedicated folder and git version control enabled.
 - 2026-02-28: Leo will rest for 30 minutes and requested a schedule check afterwards.
 - 2026-02-28: Leo chose option 1 — quick enable by merging ask-me-anything skill from lab-desktop into macbook-m3.
+- 2026-02-28: Leo reconfirmed explicit approval to run experiments on battleship (via SSH config) using provided audio/benchmark sources (MMAU, MMAU-Pro, MMAR).
+- 2026-02-28: Correction from Leo — previous benchmark path claim was wrong; must locate true benchmark paths on battleship before running.
 - L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
 - QUICK_START.md partially written
 - All changes pushed to lab-desktop (latest: b822ba9)
