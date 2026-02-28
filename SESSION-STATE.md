@@ -6,7 +6,7 @@
 **Last Updated:** 2026-03-01 02:15
 
 ## Current Task
-Cross-merge macbook-m3 + mailbox 啟用驗證
+Senior engineer review + coordinator upgrade prompt + research integration
 
 ## Recent Context
 - 2026-03-01: 制度改革完成（6 項修復 + 成長保障系統 + mailbox）
@@ -14,6 +14,7 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - 2026-03-01: Lab 正在 cross-merge macbook-m3，解 conflict 中
 - 2026-03-01: Growth report 改為每天 23:30（不是月度）
 - 2026-03-01: Leo 決定：bot 之間只用 #bot-sync + #bot-logs，#general 只留真正重要的人該看的
+- 2026-03-01: Leo 提供 listen-layer audit deep research：8 篇最相關論文 + novelty=Yellow + 1-week MVP plan + reviewer objections。存 `memory/learning/research/listen-layer-audit-deep-research-2026-03.md`
 - L-08 financial management ongoing; MATS EOI cron reminder set for today (3/1)
 
 ## Pending Decisions
