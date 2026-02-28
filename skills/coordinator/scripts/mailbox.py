@@ -97,23 +97,30 @@ def _git_pull(quiet: bool = False) -> bool:
 
 
 def _git_push(msg_id: str, action: str) -> bool:
-    """Add, commit, and push messages.jsonl."""
-    jsonl_path = str(WORKSPACE / MAILBOX_REL)
+    """Stage all changes (including merge artifacts), commit, push, and print hash."""
     try:
+        # Stage all changes — catches merge commits and any dirty files
         subprocess.run(
-            ["git", "add", jsonl_path],
+            ["git", "add", "-A"],
             cwd=WORKSPACE, capture_output=True, timeout=10,
         )
-        subprocess.run(
+        commit_result = subprocess.run(
             ["git", "commit", "-m", f"mailbox: {msg_id} {action}"],
             cwd=WORKSPACE, capture_output=True, text=True, timeout=10,
         )
+        # Get commit hash (even if commit was no-op after merge)
+        hash_result = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=WORKSPACE, capture_output=True, text=True, timeout=5,
+        )
+        commit_hash = hash_result.stdout.strip() if hash_result.returncode == 0 else "???"
+
         result = subprocess.run(
             ["git", "push"],
             cwd=WORKSPACE, capture_output=True, text=True, timeout=15,
         )
         if result.returncode == 0:
-            print(f"📤 git push ok", file=sys.stderr)
+            print(f"📤 git push ok ({commit_hash})", file=sys.stderr)
             return True
         else:
             print(f"⚠️ git push failed: {result.stderr.strip()}", file=sys.stderr)
@@ -131,6 +138,10 @@ def _discord_mention(recipient: str, msg_id: str, title: str, body: str) -> str:
 
 
 def cmd_send(args: argparse.Namespace) -> int:
+    if args.sender == args.receiver:
+        print("ERROR: cannot send to self", file=sys.stderr)
+        return 1
+
     if args.sync:
         _git_pull(quiet=True)
 
@@ -177,9 +188,18 @@ def cmd_list(args: argparse.Namespace) -> int:
     return 0
 
 
-def _update_with_sync(msg_id: str, updates: dict, action: str, sync: bool) -> int:
+def _update_with_sync(msg_id: str, updates: dict, action: str, sync: bool,
+                      required_status: str | None = None) -> int:
     if sync:
         _git_pull(quiet=True)
+
+    # Check current status before updating
+    if required_status:
+        current = store.find(msg_id)
+        if current and current.get("status") != required_status:
+            print(f"ERROR: {msg_id} is '{current.get('status')}', expected '{required_status}'. "
+                  f"Use --force to override.", file=sys.stderr)
+            return 1
 
     out = store.update(msg_id, updates)
     if out is None:
@@ -194,11 +214,15 @@ def _update_with_sync(msg_id: str, updates: dict, action: str, sync: bool) -> in
 
 
 def cmd_ack(args: argparse.Namespace) -> int:
-    return _update_with_sync(args.id, {"status": "acked", "acked_at": now_iso()}, "ack", args.sync)
+    required = None if args.force else "open"
+    return _update_with_sync(args.id, {"status": "acked", "acked_at": now_iso()},
+                             "ack", args.sync, required_status=required)
 
 
 def cmd_done(args: argparse.Namespace) -> int:
-    return _update_with_sync(args.id, {"status": "done", "done_at": now_iso()}, "done", args.sync)
+    required = None if args.force else "acked"
+    return _update_with_sync(args.id, {"status": "done", "done_at": now_iso()},
+                             "done", args.sync, required_status=required)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -224,10 +248,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     a = sub.add_parser("ack", help="ack mailbox message")
     a.add_argument("id")
+    a.add_argument("--force", action="store_true", help="Skip status check")
     a.set_defaults(func=cmd_ack)
 
     d = sub.add_parser("done", help="mark mailbox message done")
     d.add_argument("id")
+    d.add_argument("--force", action="store_true", help="Skip status check")
     d.set_defaults(func=cmd_done)
 
     return p
