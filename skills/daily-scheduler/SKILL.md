@@ -83,7 +83,14 @@ updated_at: 2026-03-01T12:00+08:00
 - Ambiguous items go to `## Inbox` (never silently guessed).
 - MVP script available:
   ```bash
+  # insert
   python3 skills/daily-scheduler/scripts/bulk_correct_v2.py --date YYYY-MM-DD --text "13:00-14:00 xxx; 14:10-15:00 yyy"
+  # adjust by uid
+  python3 skills/daily-scheduler/scripts/bulk_correct_v2.py --date YYYY-MM-DD --text "adjust A-xxxx to 14:00-15:10"
+  # split by uid
+  python3 skills/daily-scheduler/scripts/bulk_correct_v2.py --date YYYY-MM-DD --text "split A-xxxx at 15:30"
+  # merge two uids
+  python3 skills/daily-scheduler/scripts/bulk_correct_v2.py --date YYYY-MM-DD --text "merge A-1,A-2 as Focus Block"
   ```
 
 5) **Close Day**

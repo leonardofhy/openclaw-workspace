@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 04:22
+**Last Updated:** 2026-03-01 04:33
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
@@ -22,6 +22,8 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - 2026-03-01 04:11: implementation started. Updated `skills/daily-scheduler/SKILL.md` to v2 contract, upgraded `sync_schedule_to_gcal.py` to ACTUAL(v2)-first + legacy fallback + uid-managed marker + cross-midnight normalization + create/update-only(no delete), and added v2 migration checklist to `memory/scheduling-rules.md`.
 - 2026-03-01 04:18: Leo requested immediate execution of next steps; proceeding with `.meta` persistence + sync mapping + minimal deterministic bulk-correction implementation.
 - 2026-03-01 04:22: implemented `.meta` support in gcal sync (event-id + hash + lock fields, atomic meta write), and added `bulk_correct_v2.py` MVP (deterministic multi-statement parse -> ACTUAL Timeline, unresolved -> Inbox, archive+atomic write).
+- 2026-03-01 04:29: Leo approved next step to upgrade bulk correction from append-only to deterministic adjust/split/merge over existing ACTUAL blocks.
+- 2026-03-01 04:33: upgraded `bulk_correct_v2.py` to support deterministic `adjust/split/merge/insert` operations on ACTUAL timeline with unresolved->Inbox fallback; verified with dry-run test case (ops applied: adjust=1 split=1 merge=1).
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: add or skip?
