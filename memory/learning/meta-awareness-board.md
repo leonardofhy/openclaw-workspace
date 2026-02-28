@@ -207,6 +207,49 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
+## Q14: DAS gc(k) Assumption Risks (✅ CLOSED cycle #102, 2026-03-01 02:31)
+
+**Question:** Does the DAS upgrade to gc(k) introduce new failure modes for Paper A?
+
+**Audit:** 5 assumptions tested. All manageable:
+- A1 (linearity): MEDIUM risk — Gap #18 pre-test validates; Whisper-only claim safe regardless
+- A2 (binary): LOW risk — ALME stimuli binary by design
+- A3 (right subspace): MEDIUM risk — cross-generalization 80/20 split guards this
+- A4 (causal ≠ probe-easy): MEDIUM risk — 2D probe×intervene sweep resolves
+- A5 (DAS > vanilla): LOW risk — disagreement is a finding, not a failure
+
+**Applied improvement:** Risk checklist added to paper-a-pitch.md as "Known Risks" section.
+
+**Status:** ✅ CLOSED
+
+---
+
+## Q15: WER Sensitivity Threshold for gc(L) Significance (OPEN)
+
+**Question:** What is the principled α-level (significance threshold) for declaring gc(L) "significant" in the IIA plot? Paper A needs this for claim precision.
+
+**Candidates:**
+- Bootstrap resampling: resample patching pairs → compute gc(L) distribution → 95% CI
+- Permutation test: shuffle audio/text labels → null distribution → p < 0.05
+- Effect size threshold: gc(L) > 0.1 above baseline (simple, less principled)
+
+**Status:** OPEN — leave for active session with Leo or post-unblock. Not blocking experiments.
+
+---
+
+## Weekend (Cycle #96-102) KPI
+
+| KPI | Actual | Target |
+|-----|--------|--------|
+| `novelty_ratio` | 71% (5/7) | ≥65% |
+| `skip_ratio` | 29% (2/7) | ≤40% |
+| `meta_fix_count` | 4 (Weekend Protocol + pre-flight + Gap#18 design + DAS risk table) | 1-2 |
+| `blocked_to_action_time` | ~0h (Weekend Protocol prevents idle) | <2h |
+
+**Assessment:** Best weekend performance yet. Weekend Protocol rule working correctly.
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal

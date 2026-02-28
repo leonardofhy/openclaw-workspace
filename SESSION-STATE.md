@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 02:15
+**Last Updated:** 2026-03-01 02:38
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
@@ -14,6 +14,7 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - 2026-03-01: Lab 正在 cross-merge macbook-m3，解 conflict 中
 - 2026-03-01: Growth report 改為每天 23:30（不是月度）
 - L-08 financial management ongoing; MATS EOI cron reminder set for today (3/1)
+- Leo clarified target sync payload example: DAS risk review done, Paper A gc(k) risks controllable, Known Risks checklist added to paper-a-pitch.md, weekend effective output 71%, and next unblock is 15 min (venv + .wav + Priority 0 approval).
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: add or skip?
