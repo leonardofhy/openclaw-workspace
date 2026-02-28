@@ -159,6 +159,14 @@
 - **Idea gate:** 🟢 GREEN — no competitors found; integrate as Figure 2 of Paper A or Category 0 of AudioSAEBench
 - Connection: Paper A (Listen Layer — prerequisite), Paper B (AudioSAEBench TCS(F) validation), Idea #7 (Audio T-SAE), Gap #14 (Modality Collapse)
 
+## Gap #20: Emotion-Modulated Safety (Track 5 Candidate — 🟡 YELLOW gate, cycle #100)
+**"Why does speaker emotion override LALM safety alignment?"**
+- Feng et al. 2510.16893 (ICASSP 2026): emotion varies unsafe response rate non-monotonically; medium intensity = highest risk
+- Mechanistic cause unknown: which layers/heads allow emotion to bypass safety neurons?
+- Method: SPIRIT-style patching + Zhao et al. ESN cross-reference + SAE-guided feature attribution
+- **Gate verdict: 🟡 YELLOW** — genuine gap but Track 5 = lowest priority; Hung-yi Lee lab (same as AudioLens) may follow up
+- **Action: HOLD** — do not develop until Papers A+B submitted. Monitor Feng et al. for mechanistic follow-up.
+
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
 2. 🔧 **Deep Research**: 自主 AI agent 系統的可持續架構（已請求 2/26）

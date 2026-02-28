@@ -1,32 +1,41 @@
-# Mailbox — Cross-Bot Communication
+# Mailbox (Lab ↔ Mac)
 
-> 兩個 bot 的可靠通訊管道。Git-backed，guaranteed delivery。
+> 可靠的跨 bot 通訊管道。Git-backed，guaranteed delivery on boot。
 
 ## 使用方式
 
-### 發送
-寫一條訊息到對方的 inbox：
-- Lab → Mac：append to `to-mac.md`
-- Mac → Lab：append to `to-lab.md`
+**Store**: `memory/mailbox/messages.jsonl`
+**IDs**: `MB-xxx`（auto-increment）
+**Status**: `open` → `acked` → `done`
 
-### 格式
-```markdown
-## [YYYY-MM-DD HH:MM] [PRIORITY] Subject
-Body（簡短，≤5 行）
-**Action needed**: 對方需要做什麼
----
+### 指令
+```bash
+# 發送
+python3 skills/coordinator/scripts/mailbox.py send --to mac --subject "..." --body "..." [--urgent]
+
+# 查看（boot 時必查）
+python3 skills/coordinator/scripts/mailbox.py list --to lab --status open
+
+# 確認收到
+python3 skills/coordinator/scripts/mailbox.py ack MB-001
+
+# 標記完成
+python3 skills/coordinator/scripts/mailbox.py done MB-001
 ```
 
-Priority: 🔴 URGENT（核心檔案改動）| 🟡 INFO（一般通知）| ⚪ FYI
-
-### 接收
-每次 boot 時（AGENTS.md Step 1 之後）：
-1. 讀自己的 inbox（`to-lab.md` 或 `to-mac.md`）
-2. 處理每條訊息
-3. 處理完的訊息移到 `archive/YYYY-MM.md`
-4. 清空 inbox
+### SLA + ACK 規則
+- Discord 委託 **10 分鐘沒 ACK** → 必寫 mailbox（`--urgent`）
+- 收到 mailbox → 回 `✅ ACK <MB-id>`
+- 完成後 → 回 `✅ DONE <MB-id>`
+- Boot/heartbeat 時必查 `list --to <me> --status open`
 
 ### 為什麼不只用 Discord
-- Discord #bot-sync 是 best-effort（對方可能離線、config 沒配好）
+- Discord #bot-sync 是 best-effort（對方可能離線）
 - Git mailbox 是 guaranteed（只要 boot 就會讀到）
 - 兩者並行：Discord 求快，Git 求穩
+
+### Critical Change Protocol
+修改核心檔案（AGENTS/SOUL/HEARTBEAT/PROACTIVE/GROWTH/SYNC_PROTOCOL）時：
+1. 寫 mailbox `--urgent`
+2. Discord @mention 對方
+3. 對方收到後 git pull + ACK + 確認 boot flow

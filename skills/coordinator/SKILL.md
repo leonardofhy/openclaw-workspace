@@ -26,6 +26,12 @@ python3 skills/coordinator/scripts/one_liner_handoff.py "移交給lab：HN雙時
 
 # 先預覽不寫檔
 python3 skills/coordinator/scripts/one_liner_handoff.py --dry-run "handoff to mac: merge lab-desktop and publish sync report"
+
+# Mailbox 保底（guaranteed delivery）
+python3 skills/coordinator/scripts/mailbox.py send --from lab --to mac --title "L-09" --body "接手 HN digest" --task-id L-09 --urgent
+python3 skills/coordinator/scripts/mailbox.py list --to mac --status open
+python3 skills/coordinator/scripts/mailbox.py ack MB-001
+python3 skills/coordinator/scripts/mailbox.py done MB-001
 ```
 
 ## 協作模型

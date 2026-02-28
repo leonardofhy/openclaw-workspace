@@ -3,19 +3,16 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 01:50
+**Last Updated:** 2026-03-01 02:15
 
 ## Current Task
-成長保障系統 — 制度改革第二階段：讓成長機制真正 work，不只是擺設
+Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
-- 2026-03-01: 制度改革 phase 1 完成（6 項修復，commit 48619d6）
-- 2026-03-01: Leo 問「你現在會不會定期成長？」→ 我誠實回答：機制有了但沒通電
-- 2026-03-01: Leo 說「請繼續完善，到底怎麼才能實際保障成長？」→ 成長保障系統已建
-- 2026-03-01: Leo 決定 growth report 改為每天一次（月度太久，feedback loop 太慢）
-- 2026-03-01: Leo 指出 bot-sync 斷層：Lab 發了通知但 Mac Leo 不會讀取也不會回覆
-- 2026-03-01: Mac Leo 已完成修復（b2763a7）：mailbox.py、requireMention:false、SLA+ACK 協議
-- 2026-03-01: Lab 需要 pull macbook-m3 最新，啟用 mailbox.py，遵守 SLA+ACK
+- 2026-03-01: 制度改革完成（6 項修復 + 成長保障系統 + mailbox）
+- 2026-03-01: Mac Leo 完成修復（b2763a7）：mailbox.py、requireMention:false、SLA+ACK
+- 2026-03-01: Lab 正在 cross-merge macbook-m3，解 conflict 中
+- 2026-03-01: Growth report 改為每天 23:30（不是月度）
 - L-08 financial management ongoing; MATS EOI cron reminder set for today (3/1)
 
 ## Pending Decisions
@@ -23,6 +20,5 @@
 - 彤恩姐 scholarship conflict confirmation (僑生獎學金 vs 研究獎助生)
 
 ## Session Notes
-- This was a 12+ hour build session covering 8 tasks + 3 skill integrations + senior review
-- Boot flow, WAL, VBR, working buffer all coded into AGENTS.md
-- Next priorities: L-07 verification, copy toolkit to Battleship, help Mac with M-02/M-03
+- Commits today: 48619d6 (制度改革), 2b60d0a (成長系統), d5930bc (daily growth), 8672bfd (mailbox), ce9ec63 (WAL)
+- Cross-merging macbook-m3 b2763a7 now

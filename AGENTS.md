@@ -23,7 +23,7 @@ Before doing anything else:
 
 **Core (all sessions):**
 1. Read `SESSION-STATE.md` — check **Last Updated** timestamp. If stale (>24h), treat as empty.
-2. **Mailbox check**: Read `memory/mailbox/to-{me}.md` — if messages exist, process them first (git pull if needed, then handle). Archive processed messages.
+2. **Mailbox check**: run `python3 skills/coordinator/scripts/mailbox.py list --to <mac|lab> --status open`; ACK urgent items immediately, process pending messages (git pull if needed).
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **Growth Injection**（≤30 秒，不可跳過）:
    a. Read `memory/anti-patterns.md` — 絕對不做清單

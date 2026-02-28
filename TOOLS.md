@@ -45,6 +45,7 @@
 - **Leo User ID：** `756053339913060392`
 - **Guild ID：** `978709246462013450`
 - **發送方式：** `message` tool（channel=discord）
+- **Target 格式：** `user:756053339913060392`（DM）、`channel:ID`（頻道）
 - **頻道：**
   - `#general`（`978709248978599979`）— 給人看的：alerts、需要 Leo 決策的事、重要進展
   - `#bot-logs`（`1477354525378744543`）— 機器日誌：routine 工作記錄、self-awareness、heartbeat 記錄
