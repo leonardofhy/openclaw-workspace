@@ -10,6 +10,9 @@ Pre-compaction flush complete. Massive build session done — all core infra, 5 
 
 ## Recent Context
 - 2026-02-28: Leo corrected writing preference — file names should be English-only. For paper support, assistant should draft content proactively for Leo to review.
+- 2026-02-28: Leo asks for a natural default mechanism so every new research idea is automatically checked for overlap/novelty before deep investment.
+- 2026-02-28: Decision update — Leo wants to focus midday on near-term submission research; slower tasks (e.g., Pathfinder/budget and non-urgent admin) defer until after 2026-03-05 AoE.
+- 2026-02-28: Priority reorder — Leo will write Results first before Abstract/Related Work.
 - L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
 - QUICK_START.md partially written
 - All changes pushed to lab-desktop (latest: b822ba9)

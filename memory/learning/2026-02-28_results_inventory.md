@@ -125,7 +125,30 @@ Status: **Assistant-drafted v1 for Leo review**
 2. Confirm final figure/table count for 4-page constraint.
 3. Decide venue framing language (Interspeech-style concise vs NeurIPS-style broader mechanism framing).
 
-Once you fill numbers, I can immediately generate:
-- Abstract v0 (~150 words)
-- Results paragraph v0 (camera-ready style)
-- Figure captions v0 (all figures/tables in one pass)
+## 7) Abstract v0 (~150 words, ready for number fill)
+
+Large audio-language models can answer questions about speech content, yet it remains unclear where audio evidence becomes causally decisive during inference. Prior studies characterize audio-vs-text dominance behaviorally, but do not localize the network depth at which audio representations are actually consulted. We propose **Listen Layer localization**, a layer-wise denoising activation patching framework, and quantify audio reliance with a **grounding coefficient** computed on audio-text conflict stimuli. Across Whisper-small and Qwen2-Audio-7B, we observe a sharp grounding peak at mid-depth layers, indicating that audio causality is concentrated in a narrow depth band rather than distributed uniformly. Intervening at this peak layer improves conflict-resolution accuracy by **[X]** absolute points (**[Y]%** relative) over non-peak interventions, while robustness checks across patching variants preserve the same localization pattern. These findings provide causal evidence for a localized Listen Layer and offer a practical target for analysis, adaptation, and safety interventions in speech LLMs.
+
+---
+
+## 8) Results paragraph v0 (paper-style)
+
+Figure 2 shows that grounding coefficient values are low in early layers, rise sharply in the middle of the network, and then decline toward deeper layers, yielding a clear single-peak profile. This pattern indicates that audio evidence is not consumed uniformly across depth, but becomes causally decisive within a narrow layer band. Consistent with this interpretation, Table 1 shows that denoising interventions at the peak layer improve audio-text conflict resolution substantially more than interventions at non-peak layers, confirming that the identified layer is functionally privileged. Table 2 further shows that this localization is stable across intervention variants, including patching window and masking strategy, suggesting that the effect is not an artifact of one specific intervention design. Finally, cross-model comparison (Figure 3) reveals similar normalized peak positions in Whisper-small and Qwen2-Audio-7B, supporting the generality of the Listen Layer hypothesis.
+
+---
+
+## 9) Figure/Table captions v0
+
+- **Figure 1.** Overview of Listen Layer localization. We construct audio-text conflict inputs and perform layer-wise denoising activation patching to measure where audio evidence causally changes model decisions.
+
+- **Figure 2.** Grounding coefficient over depth. A sharp mid-depth peak identifies the Listen Layer, where audio representations have maximal causal influence.
+
+- **Figure 3.** Cross-model normalized localization. Peak grounding layers align in relative depth across Whisper-small and Qwen2-Audio-7B.
+
+- **Figure 4.** Failure-case grounding profiles. Text-dominant failures exhibit attenuated or shifted grounding peaks compared with successful audio-grounded cases.
+
+- **Table 1.** Main conflict-resolution performance. Intervening at the Listen Layer yields the strongest improvement in audio-grounded decision accuracy.
+
+- **Table 2.** Robustness to intervention design. Listen Layer localization remains stable across patching variants and masking strategies.
+
+- **Table 3.** Compute profile and runtime. We report practical cost from lightweight Whisper validation to large-model Qwen2-Audio analysis.

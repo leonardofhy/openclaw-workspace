@@ -270,3 +270,17 @@ No high-signal update.
 **2026-02-28 11:15 (Sat)** — scan: AF rate-limited (429), LW 0 new posts since 10:45 (confirmed via API after 02:45 UTC). All high-signal items for today already picked.
 
 No high-signal update.
+
+---
+**2026-02-28 11:45 (Sat)** — scan: AF rate-limited (429), LW 0 new posts since 03:15 UTC | backlog: ~17 unread
+
+**[backlog-pick]** *Coherent Care* (abramdemski, LessWrong, Feb 27, karma: 18)
+- Why: abramdemski (MIRI / decision theory) on "coherent care" — likely concerns what it means for an agent to have consistent, well-formed preferences / values that constitute genuine caring rather than proxy optimization; directly relevant to goal-structure alignment and the difference between satisfying human preferences and an AI that actually *cares* about good outcomes. Steady karma growth signals community endorsement.
+- Link: https://www.lesswrong.com/posts/coherent-care (title-based; confirm URL on read)
+
+**[watching]** *The Topology of LLM Behavior* (LW, Feb 28) — karma grew to 17 (from 11 at 09:15); still worth monitoring before reading.
+
+---
+**2026-02-28 12:15 (Sat)** — scan: AF rate-limited (429), LW +0 new safety-relevant posts since 03:15 UTC (only new: "Jhana 0" [meditation, karma: 2], "Mindscapes and Mind Palaces" [karma: 1]) | backlog: ~16 unread
+
+No high-signal update. *The Topology of LLM Behavior* still at karma 17 (unchanged since 09:15); holding in watch queue pending karma growth before committing a read slot.

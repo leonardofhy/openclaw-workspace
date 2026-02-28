@@ -127,6 +127,17 @@
 **新指示 (2026-02-28 01:04)：恢復 30 分鐘 cadence，自主學習要加入「meta-awareness 系統自我研究」：每輪可列出值得改進問題，並做最小可逆改善。**
 **Recommended next cycles:** `learn` + `reflect(meta-audit)` 交替，避免 execution-blocked 時連續 skip。
 
+## Paper Idea #7: Audio T-SAE (新增 2026-02-28 cycle #72)
+**"Phoneme-Aware Sparse Autoencoders for Speech Models via Temporal Contrastive Learning"**
+- Apply T-SAE (Bhalla et al., ICLR 2026 Oral, arXiv:2511.05541) to Whisper/HuBERT
+- Matryoshka partition: high-level (speaker/phoneme/emotion) + low-level (frame-level articulation)
+- Multi-scale temporal contrastive loss: SHORT (adjacent frames, phoneme-level) + LONG (utterance-level for speaker identity)
+- Evaluate with TCS(F) = within-phoneme variance / across-phoneme variance (uses MFA boundary ground truth)
+- Audio has STRONGER temporal priors than text → should work BETTER; T-SAE authors flag this gap explicitly
+- Gap #17: No audio SAE exploits temporal structure. All existing audio SAEs (AudioSAE, Mariotte, AR&D) are i.i.d. across frames.
+- Venue: INTERSPEECH 2027 or ICASSP 2027. Risk: T-SAE authors could extend first → move fast.
+- Relationship to AudioSAEBench: TCS(F) = Category 1 metric; Audio T-SAE = the model being benchmarked.
+
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
 2. 🔧 **Deep Research**: 自主 AI agent 系統的可持續架構（已請求 2/26）

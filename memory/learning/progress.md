@@ -441,3 +441,32 @@ Priority queue for Leo's first session:
 | #69 | 2026-02-28 10:01 | skip (verified) | FCCT citation trail traced (4 citing papers: all vision/GUI/NLP — zero speech). Confirms no hidden speech competitor. arXiv Feb 28 batch re-verified: still empty at 10:01 AM (expected ~14:00 Taipei). Execution-blocked 18h. Meta-board saturated. unblock-request PENDING 8h. Next high-value cycle: arXiv Feb 28 batch at ~14:00 Taipei. |
 | #70 | 2026-02-28 10:31 | learn (triage) | cs.SD (18) + cs.CL (127) RSS scanned. 0 new papers in Leo's space. **KEY FIND: T-SAE (arXiv:2511.05541, Harvard/MIT, Oct 2025)** — Temporal SAEs add contrastive loss for adjacent-token consistency → recovers smoother semantic concepts. Direct methodology for Gap #12 (temporal audio SAE): T-SAE approach should work even better on audio (stronger temporal structure than text → phoneme-level features). Adds concrete method backbone to Track 2 AudioSAEBench. |
 | #71 | 2026-02-28 11:01 | learn (deep-read) | **T-SAE deep read** (Bhalla et al., **ICLR 2026 Oral**, arXiv:2511.05541) — Full architecture: Matryoshka partitioning (high-level 20% + low-level 80%) + temporal contrastive loss on adjacent tokens. Results: high-level features cluster by TOPIC/SEQUENCE (semantic); low-level by POS (syntactic); reconstruction maintained; safety jailbreak detection improved. **Audio transfer hypothesis**: phoneme structure (5-10 frames, smooth within boundary) = stronger temporal signal than text → T-SAE should work BETTER on audio. **Two new metrics for Paper B (AudioSAEBench)**: (1) TCS(F) = Temporal Coherence Score (within-phoneme var / across-phoneme var); (2) gc(F) already planned. **Triangulation for Paper A**: T-SAE coherence at PHONEME timescale = non-causal proxy for "listening" layer (complements grounding_coefficient). Authors explicitly call out "other sequential modalities" gap — audio extension is open and motivated. |
+| #72 | 2026-02-28 11:31 | learn (synthesis) | **Audio T-SAE = standalone paper idea** (Research Idea #7). arXiv confirmed: no audio T-SAE paper exists. Synthesized: T-SAE architecture + multi-scale contrastive loss (short=phoneme, long=utterance speaker) + MFA boundary ground truth = STRONGER application than text. **Gap #17 formalized**: all 3 audio SAE papers (AudioSAE, Mariotte, AR&D) treat frames i.i.d. → miss phoneme-level concepts. TCS(F) metric + phoneme probe comparison = publishable. Title: "Phoneme-Aware SAEs for Speech via Temporal Contrastive Learning". Venue: INTERSPEECH 2027 or ICASSP 2027. goals.md updated with Idea #7. |
+
+## Day 3 Rolling Stats (after cycle #72)
+- Papers read (deep): 15 total (14 Day1-2 + T-SAE Day3)
+- Papers scanned: 27+ (T-SAE citation trail + arXiv temporal SAE queries)
+- Research gaps identified: **17** (+Gap #17: no temporally-structured audio SAE)
+- Paper ideas: **7** (+Audio T-SAE = "Phoneme-Aware SAEs for Speech")
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (NNsight updated)
+- Experiment proposals: 2 (IIT Triple Convergence + Class-specific Neuron Grounding)
+- Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
+- **Must-read list: FULLY COMPLETED** ✅
+- **Execution-blocked: awaiting Leo** (real speech + venv + IIT experiment approval)
+- **arXiv Feb 28 batch**: not yet posted (~14:00 Taipei) → next scan cycle ~14:00
+
+| #73 | 2026-02-28 12:01 | reflect (priority synthesis) | **7-idea portfolio priority ranking** produced — first time all ideas ranked together. Priority: A (Listen Layer) → B (AudioSAEBench) → Audio T-SAE → Neuron Grounding → LoRA+AudioLens → SAE Safety → Audio IOI. Key insight: Papers A+B share 60% infra → do together; one-line thesis linking all 7. arXiv Feb 28 batch ~14:00 → cycle #74 = learn. |
+
+## Day 3 Rolling Stats (after cycle #73)
+- Papers read (deep): 15 total
+- Papers scanned: 27+
+- Research gaps identified: 17
+- Paper ideas: **7** (all ranked in priority doc)
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (NNsight updated)
+- Experiment proposals: 2 (IIT Triple Convergence + Class-specific Neuron Grounding)
+- Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
+- **Priority ranking: FIRST COMPLETE DRAFT** ✅ (cycle #73)
+- **Execution-blocked: awaiting Leo** (real speech + venv + IIT experiment approval)
+- **arXiv Feb 28 batch**: expected ~14:00 Taipei → cycle #74
