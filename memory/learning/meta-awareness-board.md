@@ -167,6 +167,46 @@ Audio SAE feature dashboards need: waveform clips + spectrogram highlights for t
 
 ---
 
+---
+
+## Weekend Protocol Rule (added cycle #98, 2026-03-01 00:31)
+
+**Problem:** arXiv weekend gap + execution-blocked → system shuts down entirely (3+ consecutive skips). Guard bypass via "meta-board saturated" argument observed in cycle #97.
+
+**Rule (now active):**
+> When arXiv weekend gap AND execution-blocked: instead of skip, pick ONE from:
+> (a) **Citation trail** — Semantic Scholar/Google Scholar trace on one of the 7 paper ideas (who is citing AudioLens? FCCT? T-SAE?)
+> (b) **Foundational paper read** — read a paper directly (NNsight paper, DAS paper, original IIT paper) that supports experiments but isn't on arXiv daily feed
+> (c) **Pre-flight design doc** — write exact stimuli list + pseudocode skeleton for one experiment awaiting Leo
+
+Skip is only valid during weekend gap if ALL three alternatives have been exhausted this weekend. Track which were done in cycle note.
+
+**Guard bypass prevention:**
+> The 2-skip → force-reflect guard CANNOT be bypassed by "meta-board saturated" argument. If all 10 Qs answered, open NEW questions (Q11+). The guard's intent = prevent stale thinking, not just fill the board.
+
+---
+
+## Q11–Q13 (opened cycle #98, 2026-03-01)
+
+**Q11: Weekend Fallback Protocol** — ✅ ANSWERED above (Weekend Protocol rule)
+
+**Q12: Paper A Competitive Timeline**
+- FCCT (AAAI 2026 Oral) = closest competitor: cross-modal causal tracing in vision-LLMs
+- Competitor clock: first speech extension ~Sept-Dec 2026 (6-9 months post-FCCT)
+- Leo's window: NeurIPS 2026 May deadline → ~2 months ahead of competitor clock IF experiments start March 2026
+- **Monitor**: FCCT authors (Li et al.) + any new papers citing FCCT + "speech" in abstract
+- Action: Added FCCT author watch note to this board
+
+**Q13: Foundational MI Speech Papers Pre-2025**
+- Ellena Reid (2023, LessWrong) + Mozilla Builders (2024) = only pre-2025 speech MI work
+- No peer-reviewed speech MI before mid-2025 → field started Year 1 = 2025, Leo is entering Year 2 = 2026
+- Foundational backlog is NOT a risk (field didn't exist). Field velocity is the key variable.
+- ✅ CLOSED — non-issue
+
+**Status:** Q11 ✅ | Q12 partial (monitor ongoing) | Q13 ✅
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal
