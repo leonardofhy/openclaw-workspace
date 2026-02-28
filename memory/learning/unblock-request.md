@@ -34,6 +34,11 @@ python skills/autodidact/scripts/whisper_hook_demo.py /path/to/speech.wav
 1. **P3: Real speech test** — 5 min, validates Triple Convergence Hypothesis
 2. **P1: Triple Convergence IIT** — ~3h MacBook experiment, localizes causal layer
 
+## Also Ready for Leo Review (created overnight, not yet seen)
+
+- 📄 `memory/learning/paper-a-pitch.md` — "Localizing the Listen Layer in Speech LLMs" (1-page pitch, abstract draft, 4 experiments, venue comparison)
+- 📄 `memory/learning/paper-b-pitch.md` — "AudioSAEBench" (5-category benchmark, novel `gc(F)` metric, MVP scope, execution roadmap)
+
 ## Reference
 
 Full queue: `memory/learning/experiment-queue.md`

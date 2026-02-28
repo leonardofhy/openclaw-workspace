@@ -235,3 +235,14 @@ Scan: AF rate-limited (429), LW +0 new high-signal (only "AI Security Bootcamp S
 **2026-02-27 23:45 (Fri)** — scan: AF rate-limited (429), LW +1 new ("Sam Altman says OpenAI shares Anthropic's red lines in Pentagon fight", karma: 6 — low signal, too fresh) | backlog exhausted for today
 
 No high-signal update. All frontpage posts with meaningful karma have been captured in earlier cycles. 30 picks logged today. Close-of-day scan complete.
+
+---
+**2026-02-28 09:15 (Sat)** — scan: AF rate-limited (429), LW +2 new since yesterday (Feb 28 00:36+) | backlog: ~17 unread
+
+**[new pick]** *Anthropic and the DoW: Anthropic Responds* (Zvi, LessWrong, Feb 27 20:50, karma: 41)
+- Why: Zvi's breakdown of the live Anthropic/DoD standoff — DoD gave Anthropic a 5pm-Friday ultimatum for "unfettered access" or face DPA invocation / supply chain risk designation; Zvi assesses the governance dynamics and what Anthropic's response reveals about where AI safety red lines meet national security pressure. Direct follow-up to Dario's statement (already picked); important for understanding how safety commitments hold under coercive government pressure.
+- Link: https://www.lesswrong.com/posts/ppj7v4sSCbJjLye3D/anthropic-and-the-dow-anthropic-responds
+
+**[new — low karma, noted]** *The Topology of LLM Behavior* (LW, Feb 28, karma: 11)
+- Why: Informal mental model framing LLM generation as a weighted random walk through a semantic attractor landscape — alignment constraints as attractors; low-karma but potentially useful intuition for thinking about behavioral stability and drift. Watch karma.
+- Link: https://www.lesswrong.com/posts/iPmqM4qn7YnktcSus/the-topology-of-llm-behavior-1
