@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 03:28
+**Last Updated:** 2026-03-01 04:11
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
@@ -18,6 +18,8 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - Leo shared a comprehensive AI Safety × NLP/Speech paper-scout report (last 12 months) and asked me to read/save it for planning.
 - Leo approved autonomous exploration: I should explore first and iterate ideas proactively before presenting refined directions.
 - Leo sent a second expanded AI Safety × NLP/Speech scout report (with must-read list, gaps, novelty map, and many links) for me to integrate into idea iteration.
+- Leo provided a full daily-scheduler v2 architecture spec: PLAN vs ACTUAL separation, canonical ACTUAL timeline, cross-midnight ownership by start date, conflict-safe GCal sync (uid+managed tag), deterministic bulk-correction mode, validation+atomic writes, .meta/.archive layout, 15 test cases, and phased rollout/rollback plan.
+- 2026-03-01 04:11: implementation started. Updated `skills/daily-scheduler/SKILL.md` to v2 contract, upgraded `sync_schedule_to_gcal.py` to ACTUAL(v2)-first + legacy fallback + uid-managed marker + cross-midnight normalization + create/update-only(no delete), and added v2 migration checklist to `memory/scheduling-rules.md`.
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: add or skip?

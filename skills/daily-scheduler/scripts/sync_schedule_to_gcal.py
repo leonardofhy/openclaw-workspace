@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
-"""Sync latest daily schedule blocks to Google Calendar.
+"""Conflict-safe Google Calendar sync for daily-scheduler.
 
-Source of truth:
-  memory/schedules/YYYY-MM-DD.md (latest vN section only)
-
-Behavior:
-- Parse latest schedule version block (## vN ...)
-- Convert actionable time blocks to calendar events
-- Upsert events with stable slot keys
-- Remove stale synced events not in latest schedule
+Phase-1 behavior (compatibility-first):
+- Prefer syncing ACTUAL(v2) timeline blocks: `## ACTUAL` -> `### Timeline`
+- Fallback to legacy latest `## vN` bullets when ACTUAL(v2) is absent
+- Create / update only (NO delete)
+- Cross-midnight-safe normalization (prevents timeRangeEmpty)
+- Managed-event safety: only update events with matching managed marker + uid
 
 Usage:
-  python3 sync_schedule_to_gcal.py --date 2026-02-27
-  python3 sync_schedule_to_gcal.py --date 2026-02-27 --dry-run
+  python3 sync_schedule_to_gcal.py --date 2026-03-01
+  python3 sync_schedule_to_gcal.py --date 2026-03-01 --dry-run
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -33,77 +32,196 @@ from common import TZ, today_str as _today_str, WORKSPACE, SECRETS
 CAL_ID = 'leonardofoohy@gmail.com'
 CREDS_PATH = SECRETS / 'google-service-account.json'
 SCHEDULES_DIR = WORKSPACE / 'memory' / 'schedules'
-SYNC_MARKER = '[openclaw-schedule-sync]'
+MANAGED_TAG = 'daily-scheduler/v2'
 
-# Skip routine blocks to avoid calendar noise
+# Legacy parser skip rules (kept for backward compatibility)
 SKIP_EMOJIS = {'🍜', '🚿', '🌙', '💪', '📅'}
 SKIP_KEYWORDS = {'午餐', '晚餐', '洗漱', '洗澡', '就寢', '睡眠', '離線', 'lab dinner'}
 
 
 @dataclass
 class Block:
-    start: str
-    end: str
-    emoji: str
+    uid: str
+    start_dt: datetime
+    end_dt: datetime
     title: str
+    status: str = 'done'
+    precision_start: str = 'exact'  # exact|approx|inferred
+    precision_end: str = 'exact'
 
     @property
-    def slot(self) -> str:
-        return f"{self.start}-{self.end}"
+    def approx(self) -> bool:
+        return self.precision_start != 'exact' or self.precision_end != 'exact'
+
+
+# --------------------------
+# Parsing helpers
+# --------------------------
+
+def _extract_actual_timeline_section(md_text: str) -> str:
+    m_actual = re.search(r'^##\s+ACTUAL\s*\n(.*?)(?=^##\s+|\Z)', md_text, flags=re.M | re.S)
+    if not m_actual:
+        return ''
+    actual_body = m_actual.group(1)
+    m_timeline = re.search(r'^###\s+Timeline\s*\n(.*?)(?=^###\s+|\Z)', actual_body, flags=re.M | re.S)
+    return m_timeline.group(1) if m_timeline else ''
+
+
+def _parse_meta_object(meta_text: str) -> dict:
+    """Best-effort parse for `{uid:A-..., ps:approx, status:done}` style."""
+    out: dict[str, str] = {}
+    if not meta_text:
+        return out
+    body = meta_text.strip().strip('{}').strip()
+    if not body:
+        return out
+    for part in re.split(r'\s*,\s*', body):
+        if ':' not in part:
+            continue
+        k, v = part.split(':', 1)
+        out[k.strip()] = v.strip().strip('"\'')
+    return out
+
+
+def _mint_uid(date_str: str, title: str, start_label: str, line_no: int) -> str:
+    raw = f'{date_str}|{start_label}|{title}|{line_no}'
+    digest = hashlib.sha1(raw.encode('utf-8')).hexdigest()[:10]
+    return f'A-{digest}'
+
+
+def _normalize_range(date_str: str, start_hhmm: str, end_hhmm: str, plus_1d: bool) -> tuple[datetime, datetime]:
+    d = datetime.strptime(date_str, '%Y-%m-%d').replace(tzinfo=TZ)
+
+    sh, sm = map(int, start_hhmm.split(':'))
+    eh, em = map(int, end_hhmm.split(':'))
+
+    start_dt = d.replace(hour=sh, minute=sm, second=0, microsecond=0)
+    end_dt = d.replace(hour=eh, minute=em, second=0, microsecond=0)
+
+    # Explicit +1d wins
+    if plus_1d:
+        end_dt += timedelta(days=1)
+    # Implicit cross-midnight protection
+    elif end_dt <= start_dt:
+        end_dt += timedelta(days=1)
+
+    # Final guard against empty/negative ranges
+    if end_dt <= start_dt:
+        end_dt = start_dt + timedelta(minutes=1)
+
+    return start_dt, end_dt
+
+
+def _parse_actual_blocks(md_text: str, date_str: str) -> list[Block]:
+    timeline = _extract_actual_timeline_section(md_text)
+    if not timeline:
+        return []
+
+    blocks: list[Block] = []
+    # Example:
+    # - [A] 23:45-01:30(+1d) Debugging {uid:A-1, ps:exact, pe:exact, status:done}
+    pat = re.compile(
+        r'^\s*-\s*\[A\]\s*'
+        r'(~?)(\d{2}:\d{2})\s*[–-]\s*(~?)(\d{2}:\d{2})(\(\+1d\))?\s+'
+        r'(.+?)\s*'
+        r'(\{.*\})?\s*$',
+        flags=re.M,
+    )
+
+    for i, m in enumerate(pat.finditer(timeline), start=1):
+        s_approx_mark, start_hhmm, e_approx_mark, end_hhmm, plus_1d_raw, title, meta_raw = m.groups()
+        meta = _parse_meta_object(meta_raw or '')
+
+        uid = meta.get('uid') or _mint_uid(date_str, title.strip(), start_hhmm, i)
+        ps = meta.get('ps', 'approx' if s_approx_mark else 'exact')
+        pe = meta.get('pe', 'approx' if e_approx_mark else 'exact')
+        status = meta.get('status', 'done')
+
+        if status in {'skipped', 'cancelled', 'superseded'}:
+            continue
+
+        start_dt, end_dt = _normalize_range(
+            date_str=date_str,
+            start_hhmm=start_hhmm,
+            end_hhmm=end_hhmm,
+            plus_1d=bool(plus_1d_raw),
+        )
+
+        blocks.append(
+            Block(
+                uid=uid,
+                start_dt=start_dt,
+                end_dt=end_dt,
+                title=title.strip(),
+                status=status,
+                precision_start=ps,
+                precision_end=pe,
+            )
+        )
+
+    return blocks
 
 
 def _parse_latest_version_section(md_text: str) -> str:
-    # capture each vN section body until next ##
     matches = list(re.finditer(r'^## v\d+[^\n]*\n(.*?)(?=^## |\Z)', md_text, flags=re.M | re.S))
     if not matches:
         return ''
     return matches[-1].group(1)
 
 
-def _parse_blocks(section_text: str) -> list[Block]:
-    blocks: list[Block] = []
+def _parse_legacy_blocks(md_text: str, date_str: str) -> list[Block]:
+    section = _parse_latest_version_section(md_text)
+    if not section:
+        return []
+
     pattern = re.compile(r'^\s*•\s*(\d{2}:\d{2})[–-](\d{2}:\d{2})\s+(\S+)\s+(.*)$', re.M)
-    for m in pattern.finditer(section_text):
+    blocks: list[Block] = []
+    for i, m in enumerate(pattern.finditer(section), start=1):
         start, end, emoji, title = m.groups()
         title = re.sub(r'\*\*(.*?)\*\*', r'\1', title).strip()
         lower_title = title.lower()
+
         if emoji in SKIP_EMOJIS:
             continue
         if any(k in title for k in SKIP_KEYWORDS) or any(k in lower_title for k in SKIP_KEYWORDS):
             continue
-        blocks.append(Block(start=start, end=end, emoji=emoji, title=title))
+
+        start_dt, end_dt = _normalize_range(date_str, start, end, plus_1d=False)
+        uid = _mint_uid(date_str, f'{emoji} {title}', start, i)
+        blocks.append(Block(uid=uid, start_dt=start_dt, end_dt=end_dt, title=f'{emoji} {title}'))
+
     return blocks
 
 
-def _to_dt(date_str: str, hhmm: str) -> datetime:
-    h, m = map(int, hhmm.split(':'))
-    d = datetime.strptime(date_str, '%Y-%m-%d').replace(tzinfo=TZ)
-    return d.replace(hour=h, minute=m, second=0, microsecond=0)
+# --------------------------
+# Google Calendar helpers
+# --------------------------
+
+def _extract_uid(event: dict) -> str | None:
+    desc = event.get('description') or ''
+    m = re.search(r'^daily-scheduler uid=([A-Za-z0-9._-]+)$', desc, flags=re.M)
+    return m.group(1) if m else None
+
+
+def _is_managed_event(event: dict) -> bool:
+    desc = event.get('description') or ''
+    return MANAGED_TAG in desc
 
 
 def _event_summary(block: Block) -> str:
-    # keep concise summary in calendar
-    return f"{block.emoji} {block.title}"
+    prefix = '≈ ' if block.approx else ''
+    return f'{prefix}{block.title}'
 
 
 def _event_description(date_str: str, block: Block, source_file: Path) -> str:
     return (
-        f"{SYNC_MARKER}\n"
-        f"date={date_str}\n"
-        f"slot={block.slot}\n"
-        f"source={source_file}\n"
+        f'{MANAGED_TAG}\n'
+        f'daily-scheduler uid={block.uid}\n'
+        f'date={date_str}\n'
+        f'source={source_file}\n'
+        f'precision_start={block.precision_start}\n'
+        f'precision_end={block.precision_end}\n'
     )
-
-
-def _extract_slot(event: dict) -> str | None:
-    desc = event.get('description') or ''
-    m = re.search(r'^slot=(\d{2}:\d{2}-\d{2}:\d{2})$', desc, flags=re.M)
-    return m.group(1) if m else None
-
-
-def _is_synced_event(event: dict) -> bool:
-    desc = event.get('description') or ''
-    return SYNC_MARKER in desc
 
 
 def sync(date_str: str, dry_run: bool = False) -> dict:
@@ -112,19 +230,21 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
         raise FileNotFoundError(f'schedule file not found: {schedule_file}')
 
     text = schedule_file.read_text()
-    latest_section = _parse_latest_version_section(text)
-    if not latest_section:
-        raise RuntimeError('no vN schedule section found')
 
-    blocks = _parse_blocks(latest_section)
+    blocks = _parse_actual_blocks(text, date_str)
+    source_mode = 'actual_v2'
+    if not blocks:
+        # Phase-1 fallback for legacy files
+        blocks = _parse_legacy_blocks(text, date_str)
+        source_mode = 'legacy_vN_fallback'
 
     creds = Credentials.from_service_account_file(
         str(CREDS_PATH), scopes=['https://www.googleapis.com/auth/calendar']
     )
     service = build('calendar', 'v3', credentials=creds)
 
-    day_start = datetime.strptime(date_str, '%Y-%m-%d').replace(tzinfo=TZ)
-    day_end = day_start + timedelta(days=1)
+    day_start = datetime.strptime(date_str, '%Y-%m-%d').replace(tzinfo=TZ) - timedelta(days=1)
+    day_end = day_start + timedelta(days=3)
 
     existing = service.events().list(
         calendarId=CAL_ID,
@@ -134,23 +254,25 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
         orderBy='startTime'
     ).execute().get('items', [])
 
-    synced_existing = { _extract_slot(e): e for e in existing if _is_synced_event(e) and _extract_slot(e) }
-    target_slots = { b.slot: b for b in blocks }
+    managed_existing: dict[str, dict] = {}
+    for e in existing:
+        if not _is_managed_event(e):
+            continue
+        uid = _extract_uid(e)
+        if uid:
+            managed_existing[uid] = e
 
-    actions = {'create': [], 'update': [], 'delete': [], 'kept': []}
+    actions = {'create': [], 'update': [], 'kept': [], 'skipped': [], 'delete': []}
 
-    # upsert targets
-    for slot, block in target_slots.items():
-        start_dt = _to_dt(date_str, block.start)
-        end_dt = _to_dt(date_str, block.end)
+    for block in blocks:
         body = {
             'summary': _event_summary(block),
             'description': _event_description(date_str, block, schedule_file),
-            'start': {'dateTime': start_dt.isoformat(), 'timeZone': 'Asia/Taipei'},
-            'end': {'dateTime': end_dt.isoformat(), 'timeZone': 'Asia/Taipei'},
+            'start': {'dateTime': block.start_dt.isoformat(), 'timeZone': 'Asia/Taipei'},
+            'end': {'dateTime': block.end_dt.isoformat(), 'timeZone': 'Asia/Taipei'},
         }
 
-        existing_event = synced_existing.get(slot)
+        existing_event = managed_existing.get(block.uid)
         if existing_event:
             changed = (
                 existing_event.get('summary') != body['summary'] or
@@ -159,31 +281,43 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
                 existing_event.get('end', {}).get('dateTime') != body['end']['dateTime']
             )
             if changed:
-                actions['update'].append(slot)
+                actions['update'].append(block.uid)
                 if not dry_run:
                     service.events().update(
                         calendarId=CAL_ID,
                         eventId=existing_event['id'],
-                        body=body
+                        body=body,
                     ).execute()
             else:
-                actions['kept'].append(slot)
+                actions['kept'].append(block.uid)
         else:
-            actions['create'].append(slot)
+            actions['create'].append(block.uid)
             if not dry_run:
                 service.events().insert(calendarId=CAL_ID, body=body).execute()
 
-    # delete stale synced events
-    for slot, event in synced_existing.items():
-        if slot not in target_slots:
-            actions['delete'].append(slot)
-            if not dry_run:
-                service.events().delete(calendarId=CAL_ID, eventId=event['id']).execute()
+    # Phase-1 safety: do not delete managed events automatically.
+    # We report potential orphans for visibility only.
+    desired_uids = {b.uid for b in blocks}
+    for uid in managed_existing:
+        if uid not in desired_uids:
+            actions['skipped'].append({'uid': uid, 'reason': 'orphan_not_deleted_phase1'})
 
     return {
         'date': date_str,
         'schedule_file': str(schedule_file),
-        'parsed_blocks': [vars(b) for b in blocks],
+        'source_mode': source_mode,
+        'parsed_blocks': [
+            {
+                'uid': b.uid,
+                'start': b.start_dt.isoformat(),
+                'end': b.end_dt.isoformat(),
+                'title': b.title,
+                'status': b.status,
+                'ps': b.precision_start,
+                'pe': b.precision_end,
+            }
+            for b in blocks
+        ],
         'actions': actions,
         'dry_run': dry_run,
     }
