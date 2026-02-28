@@ -1,6 +1,6 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 0.2 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-02-28 11:01 (cycle #71)
+> Version: 0.3 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-02-28 14:31 (cycle #78)
 > Status: Draft — for Leo's review. Not finalized.
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H

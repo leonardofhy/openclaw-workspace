@@ -311,3 +311,23 @@ Filtered non-safety noise (marked read): Jhana 0, Mindscapes & Mind Palaces, Lit
 **2026-02-28 13:45 (Sat)** — scan: AF rate-limited (429), LW +0 new since 05:15 UTC | backlog: ~14 unread
 
 No high-signal update. All visible RSS items already covered; recent backlog picks fresh (Schelling Goodness, AI #157, 3 Challenges/Unsupervised Elicitation, Dawn of AI Scheming). Holding queue until next cycle.
+
+---
+**2026-02-28 14:15 (Sat)** — scan: AF +0 new, LW +0 new | backlog: 24 unread
+
+No new posts. All 10 feed items already in db.
+
+**[backlog-pick]** *Side by Side Comparison of RSP Versions* (LessWrong, Feb 27)
+- Why: Direct analytical comparison of Responsible Scaling Policy versions across labs — highest-signal policy-tracking content in the current backlog; tracks how safety commitments are evolving (or weakening) as labs update their RSPs over time.
+- Link: <https://www.lesswrong.com/posts/aKpXgbJKvoeJ7Ler8/side-by-side-comparison-of-rsp-versions>
+
+**[watching]** *Anthropic and the DoW: Anthropic Responds* (LW, Feb 27) — governance/policy angle on the Anthropic-DoD standoff; holding as context companion to AI #157 already picked.
+
+---
+**2026-02-28 14:45 (Sat)** — scan: AF +0 new, LW +0 new since 14:15 | backlog: ~23 unread
+
+No new posts. Feed identical to 14:15 snapshot.
+
+**[backlog-pick]** *Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior* (Alignment Forum, Feb 27)
+- Why: AF-native (researcher-grade signal) post on diagnosing *why* a model misbehaved — sits at the intersection of interpretability and safety evaluation; directly actionable for anyone building evals or trying to attribute misbehavior to training causes vs. deployment context; complements the unsupervised elicitation / scheming-detection thread already in queue.
+- Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>

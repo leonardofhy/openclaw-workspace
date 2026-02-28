@@ -21,6 +21,10 @@ Pre-compaction flush complete. Massive build session done — all core infra, 5 
 - 2026-02-28: Leo explicitly authorized transferring HN-digest task ownership to Lab Leo.
 - 2026-02-28: Leo requests an important capability: one-sentence sync/task-transfer command for Lab↔Mac handoff.
 - 2026-02-28: Leo approved implementation start using Claude Code for the bidirectional instant handoff system.
+- 2026-02-28: Leo provided audio data path hint: /Users/leonardo/Workspace/whisper.cpp/audio
+- 2026-02-28: Leo added second audio source path: /Users/leonardo/Workspace/whisper.cpp/samples
+- 2026-02-28: Leo requested running experiments on battleship via SSH config; noted existing MMAU/MMAU-Pro/MMAR benchmarks there. Work should run under ~/Workspace with a dedicated folder and git version control enabled.
+- 2026-02-28: Leo will rest for 30 minutes and requested a schedule check afterwards.
 - L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
 - QUICK_START.md partially written
 - All changes pushed to lab-desktop (latest: b822ba9)
