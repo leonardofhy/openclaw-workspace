@@ -367,7 +367,7 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - aiOla Research (Glazer) — ASR MI, hallucination causal analysis
 - Huawei Noah's Ark (Aparin) — AudioSAE
 - MBZUAI — SPIRIT (audio safety)
-- Stanford (Atticus Geiger) — causal abstraction theory + pyvene
+- Stanford (Atticus Geiger) — causal abstraction theory + pyvene; **DAS (Distributed Alignment Search)** = learns optimal linear subspace alignment per layer via IIT training loss; upgrade from vanilla patching → gc(k) = IIT accuracy at layer k = theoretically grounded grounding_coefficient; pyvene wraps any PyTorch model, ~50 lines for full DAS sweep; `pip install pyvene` (add to venv checklist)
 - Neel Nanda — activation patching best practices, TransformerLens
 - Mozilla Builders — Whisper SAE tooling
 - Ellena Reid — early Whisper MI (LessWrong)

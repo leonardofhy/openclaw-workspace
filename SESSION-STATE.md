@@ -35,6 +35,7 @@ L-08 財務管理 — 分析 GPT-5.2 PRO 搜集的 funding 資料，給 Leo 推�
 - 2026-02-28: Leo chose option 1 — quick enable by merging ask-me-anything skill from lab-desktop into macbook-m3.
 - 2026-02-28: Leo reconfirmed explicit approval to run experiments on battleship (via SSH config) using provided audio/benchmark sources (MMAU, MMAU-Pro, MMAR).
 - 2026-02-28: Correction from Leo — previous benchmark path claim was wrong; must locate true benchmark paths on battleship before running.
+- 2026-02-28 17:00 update: Leo skipped afternoon swim; spent afternoon on paper writing + experiments; currently wants to exercise now.
 - L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
 - QUICK_START.md partially written
 - All changes pushed to lab-desktop (latest: b822ba9)

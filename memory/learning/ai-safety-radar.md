@@ -354,3 +354,21 @@ No new posts. Both feeds identical to 15:45 snapshot; Saturday afternoon lull.
 **[backlog-pick]** *The Topology of LLM Behavior* (LessWrong, Feb 28, karma grown from 11→17+ since morning)
 - Why: Informal but useful framing of LLM generation as navigation through a weighted semantic attractor landscape — alignment constraints as attractors that can be stable or fragile; complements the week's thread on behavioral stability (attractor states, persona selection, sandbagging). Karma growth throughout the day signals the community finding it worth engaging with; now worth committing a read slot.
 - Link: https://www.lesswrong.com/posts/iPmqM4qn7YnktcSus/the-topology-of-llm-behavior-1
+
+---
+**2026-02-28 17:15 (Sat)** — scan: AF +0 new, LW +0 new | backlog: ~21 unread
+
+No new posts. Saturday evening quiet continues. Feeds flat since morning.
+
+**[backlog-pick]** *Side by Side Comparison of RSP Versions* (LessWrong, Feb 27)
+- Why: Systematic diff of Anthropic's Responsible Scaling Policy revisions over time — directly useful for understanding how red lines and commitments have evolved, especially timely given the ongoing Anthropic/DoD controversy dominating this week's feed; policy tracking anchor.
+- Link: <https://www.lesswrong.com/posts/aKpXgbJKvoeJ7Ler8/side-by-side-comparison-of-rsp-versions>
+
+---
+**2026-02-28 16:45 (Sat)** — scan: AF rate-limited (429), LW +0 new since 16:15 | backlog: ~21 unread
+
+No new posts. Both feeds unchanged from 16:15 cycle; Saturday afternoon quiet continues.
+
+**[backlog-pick]** *Sam Altman says OpenAI shares Anthropic's red lines in Pentagon fight* (LessWrong, Feb 27, karma: 76)
+- Why: Direct governance signal — Altman publicly aligning OpenAI with Anthropic's autonomous weapons red lines in the DoD standoff; closes the loop on the Dario/DoW statement already in the watching queue and reveals industry-level coordination on the "no lethal autonomy" norm; high karma + AI Governance/Autonomous Weapons tags confirm community signal weight.
+- Link: <https://www.lesswrong.com/posts/sam-altman-says-openai-shares-anthropic-s-red-lines-in>
