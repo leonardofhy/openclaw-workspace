@@ -120,17 +120,23 @@ This applies to ALL morning meta-awareness cycles when execution-blocked.
 
 ---
 
-## Q9 Answer: ARENA Integration Rule (identified cycle #88, 2026-02-28 19:31)
+## Q9 Answer: ARENA Integration Rule (✅ CLOSED cycle #90, 2026-02-28 20:31)
 
 **Problem:** ARENA curriculum is mapped (cycle #86: Linear Probes [1.3.1] → SAE Circuits [1.4.2] → IIT), but no rule for *when* to do ARENA exercises vs reading papers. ARENA requires browser (cron = headless) → only Leo can run exercises, not autodidact directly.
 
-**Proposed rule (not yet applied — needs confirmation that ARENA is accessible):**
+**Rule (now active):**
 > When execution-blocked AND meta-board saturated AND arXiv batch ≥4h away:
-> → Autodidact reads the ARENA exercise *description* (text-only from website) and pre-digests key concepts
-> → Does NOT implement code (no execution env); instead: writes "pre-digest" note so Leo can start exercises 30% faster
-> → Priority: [1.3.1] Linear Probes first (DAS/gc(k) backbone), then [1.4.2] SAE Circuits
+> → Fetch primary source papers behind ARENA exercises (transformer-circuits.pub, arXiv)
+> → Write pre-digest note (30% headstart for Leo to begin exercises faster)
+> → Do NOT implement code; write "pre-digest" in cycle note
 
-**Status:** Q9 OPEN — waiting for confirmation this is useful to Leo.
+**Applied cycle #90:**
+- ARENA [1.4.2] SAE Circuits pre-digest written from Anthropic Circuit Tracing paper
+- Key finding: circuit-tracer = decoder-only only → attention patterns frozen → misses cross-attention
+- For Audio-LLMs: NNsight patching for Paper A Listen Layer; circuit-tracer for LM backbone follow-up
+- Next pre-digest candidate: neuronpedia.org for SAE feature visualization (Paper B)
+
+**Status:** Q9 ✅ CLOSED — rule applied, pre-digest written. Meta-board now 7/7 Qs answered.
 
 ---
 

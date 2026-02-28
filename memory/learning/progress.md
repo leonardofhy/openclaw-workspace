@@ -488,15 +488,17 @@ Priority queue for Leo's first session:
 - Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
 - **arXiv Feb 28 batch**: still delayed at 16:31 PM
 
-## Day 3 Final Stats (after cycle #87 — 19:01 PM)
+## Day 3 Final Stats (after cycle #89 — 20:01 PM)
 - Papers read (deep): 16 total
 - Papers scanned: 29+
 - Research gaps identified: **19** (+Gap #19: no standardized audio SAE training pipeline in SAELens ecosystem)
 - Paper ideas: 7 (all gate-validated)
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1 (NNsight + SAELens)
+- ARENA chapters studied: 1 ([1.3.1] Linear Probes ✅)
 - Experiment proposals: 3
 - Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench v0.4)
+- **Paper A method section**: fully specified (MMProbe direction, gc(k) layer sweep, cross-generalization, IIT causal patching)
 - **SAELens v6 fully mapped**: ZERO audio SAEs on HuggingFace; gap confirmed = Paper B strategic addition
 - **arXiv weekend batch**: none (Saturday — next expected Monday ~14:00 Taipei)
 
@@ -526,3 +528,5 @@ Priority queue for Leo's first session:
 | #86 | 2026-02-28 18:31 | skill-up (ARENA curriculum mapping) | Mapped ARENA `alignment-science` branch (confirmed live) to Leo's research portfolio. Key finds: [1.3.1] Linear Probes (causal patching with probe directions → DAS-gc(k) methodology backbone) + [1.4.2] SAE Circuits (builds attribution graphs from scratch + `circuit-tracer` library = Track 1 Audio IOI direct tool). Optimal study path: Linear Probes → SAE Circuits → IIT experiment. circuit-tracer = possible direct implementation tool for Paper A Listen Layer. SAELens library identified for pre-trained SAE loading. |
 | #87 | 2026-02-28 19:01 | learn (SAELens tool recon) | **SAELens v6 fully mapped** — `pip install sae-lens`, works with NNsight. **CRITICAL: ZERO audio/speech SAEs on HuggingFace with `saelens` tag** (25 models scanned = all Gemma/GPT-2/LLaMA). New Gap #19: no standardized audio SAE training pipeline. Implication: Paper B (AudioSAEBench) can include SAELens-backed audio SAE training toolkit as community contribution → stronger paper + `pip install`-able reproducibility. |
 | #88 | 2026-02-28 19:31 | reflect (meta-awareness + study bridge) | 3 loop failures fixed: ARENA not bridged to Day-1 plan, unblock checklist missing Gap #18 step, meta-board Q9 opened. **Applied**: updated experiment-queue unblock checklist (added `git clone phonetic-arithmetic`), created Leo's Day-1 Session Plan (5 blocks, 2-3h), Q9 (ARENA integration rule) added to meta-board. Last meta cycle today — next: arXiv Monday batch OR Leo unblock. |
+| #89 | 2026-02-28 20:01 | skill-up (ARENA [1.3.1] Linear Probes) | **ARENA Linear Probes curriculum study** — core Sections 1-3 fully read. KEY INSIGHTS: (1) MMProbe (difference-of-means) > LRProbe for CAUSAL interventions — the causally implicated direction ≠ maximally discriminative direction; (2) PROBE_LAYER ≠ INTERVENE_LAYER — need to sweep both; (3) layer_sweep_accuracy = exact template for gc(k) Paper A curve; (4) Attention probe (Section 5) = new AudioSAEBench methodology tool for audio token positions; (5) cross-generalization matrix validates universal "Listen Direction". Paper A method section now fully specified. |
+| #90 | 2026-02-28 20:31 | learn (Circuit Tracing pre-digest) | **Anthropic Circuit Tracing / Attribution Graphs** (transformer-circuits.pub/2025) deep-read. KEY INSIGHTS: (1) CLT features + attribution graphs = layer-wise linear causal map; (2) `circuit-tracer` (`pip install`) works for decoder-only models; (3) LIMITATION: attention patterns frozen → misses cross-attention (crucial for audio-LLMs!); (4) NNsight patching remains correct tool for Paper A Listen Layer sweep; circuit-tracer = follow-up for LM backbone analysis; (5) gc(F) can be redefined as edge-weight fraction from audio frames vs text tokens in attribution graph; (6) Q9 meta-board answered: pre-digest Anthropic primary sources when blocked + meta-board saturated + arXiv empty. |

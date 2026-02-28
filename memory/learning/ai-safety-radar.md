@@ -405,3 +405,17 @@ No new posts. Both feeds flat since morning; all high-signal items from this wee
 **2026-02-28 19:15 (Sat)** — scan: AF +0 new, LW +0 new | backlog: ~19 unread (2 formally marked read)
 
 No new posts. Backlog housekeeping: marked articles [37] "The Topology of LLM Behavior" and [40] "Side by Side Comparison of RSP Versions" as read in blogwatcher — both had been verbally picked in earlier cycles (18:01, 18:45) but not formally marked. No new high-signal items this cycle.
+
+---
+**2026-02-28 19:45 (Sat)** — scan: AF rate-limited (429), LW top = "Schelling Goodness" (04:25 UTC, unchanged) | backlog: ~19 unread
+
+No new high-signal updates. Both feeds flat since morning; Saturday evening quiet continues. All notable items from this week already picked and logged (Schelling Goodness, ARENA material, DoW series, RSP comparison, Sam Altman red lines). No further picks warranted — backlog well-stocked from today's earlier cycles.
+
+---
+**2026-02-28 20:15 (Sat)** — scan: AF rate-limited (429), LW +0 new since 05:50 UTC (13:50 CST; last LW post was "How can rationalists perform exceptionally well?", karma: -4 — non-safety) | backlog: ~19 unread
+
+No new posts on primary feeds. EA Forum auxiliary scan surfaced one notable item not yet formally captured:
+
+**[backlog-pick]** *Pete Hegseth declares Anthropic a supply-chain risk* (EA Forum, Feb 27, karma: 53)
+- Why: The formal designation — not just a threat — of Anthropic as a supply-chain risk by the DoD Secretary is a concrete governance escalation beyond what was captured in earlier picks (Zvi's breakdown described this as a threatened consequence of the standoff, not an accomplished fact); closes the loop on the week's Anthropic/DoD arc and sets the actual regulatory posture going into the weekend; high karma confirms community weight.
+- Link: <https://forum.effectivealtruism.org/posts/pete-hegseth-declares-anthropic-a-supply-chain-risk>
