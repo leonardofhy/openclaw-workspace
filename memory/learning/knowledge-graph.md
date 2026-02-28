@@ -362,6 +362,52 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 
 ---
 
+### L) ARENA Curriculum — Pre-Experiment Skill-Up Path (Cycle #86 — 2026-02-28)
+
+**Source:** ARENA 3.0, branch `alignment-science` (merging to main ~Mar 1, 2026)
+**Repo:** https://github.com/callummcdougall/ARENA_3.0 (branch: `alignment-science`)
+**Updated exercises:** Feb 27, 2026 (karma 65 on LessWrong by CallumMcDougall)
+
+**New exercise sets directly relevant to Leo's research:**
+
+#### [1.3.1] Linear Probes
+- Replicates "Geometry of Truth" (Marks & Tegmark) + Apollo deception probes
+- **Sections:** Extract activations → PCA → MM vs LR probes → CAUSAL INTERVENTIONS → deception detection → attention probes
+- **Key lesson for Leo:** MM probes find MORE causally implicated directions than LR despite lower accuracy — same principle applies to DAS-gc(k) in Paper A (causal grounding > predictive)
+- **Direct transfer:** Attention probe (learned query over sequence) → "which audio frames are diagnostically important?" → directly operationalizes Listen vs Guess per audio segment
+- Colab: https://colab.research.google.com/github/callummcdougall/arena-pragmatic-interp/blob/main/chapter1_transformer_interp/exercises/part31_linear_probes/1.3.1_Linear_Probes_exercises.ipynb
+- **Estimated time:** 3-4h (any GPU; smaller models work for concept validation)
+
+#### [1.4.2] SAE Circuits (Attribution Graphs)
+- Replaces old "Function Vectors" exercise with full attribution graph pipeline
+- **Section 1:** Latent-to-latent, token-to-latent, latent-to-logit GRADIENTS → linear proxy for SAE feature circuits
+- **Section 2:** TRANSCODERS — variant of SAEs that reconstruct MLP computation (not just activations); blind case study using only weights
+- **Section 3:** ATTRIBUTION GRAPHS from scratch (Gemma 3-1B + GemmaScope 2 transcoders); Anthropic's full circuit-tracing methodology; builds Neumann series pruning
+- **Section 4:** `circuit-tracer` library — Dallas/Austin two-hop recall; feature swapping; generation with interventions
+- **Papers:** "Circuit Tracing" (Anthropic 2025) + "Transcoders Find Interpretable LLM Feature Circuits" (Dunefsky et al., 2024)
+- **Key discovery for Leo:** `circuit-tracer` = possible direct tool for Paper A Listen Layer localization. Replace text token embeddings → audio frame embeddings in the attribution graph to localize "Listen Layer"
+- Colab: https://colab.research.google.com/github/callummcdougall/arena-pragmatic-interp/blob/main/chapter1_transformer_interp/exercises/part42_sae_circuits/1.4.2_SAE_Circuits_exercises.ipynb
+- **Estimated time:** 4-6h (Colab Pro for sections 3-4; sections 1-2 need only GPT-2)
+
+#### [4.1] Emergent Misalignment
+- LoRA fine-tune mechanistic analysis using TransformerLens + SAEs
+- **Direct relevance:** "What does fine-tuning change mechanistically?" = Track 4's research question
+- **Methods:** Model organisms, autoraters, behavioral evaluation
+
+#### [1.3.4] Activation Oracles
+- Model diffing exercises (compare two models' representations)
+- CKA is the basis (already used in whisper_hook_demo.py)
+
+**New library discovered:** `SAELens` — production library for loading pre-trained SAEs (used throughout SAE Circuits exercises). Check before writing custom SAE training code: https://github.com/jbloomAus/SAELens
+
+**Recommended study path (pre-experiment):**
+```
+1. [1.3.1] Linear Probes   (3-4h) → methodology backbone for Paper A DAS-gc(k)
+2. [1.4.2] SAE Circuits    (4-6h, sections 1-2 first) → circuit-tracer = direct tool for Track 1
+3. Run IIT experiment (Priority 1 in experiment-queue.md)
+```
+**Estimated net savings:** ~6h of experimental debugging avoided by understanding methodology first.
+
 ## 關鍵研究者/團隊
 - **NTU 李宏毅 lab** — AudioLens (智凱哥！Leo 主場)
 - aiOla Research (Glazer) — ASR MI, hallucination causal analysis
@@ -372,3 +418,4 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - Mozilla Builders — Whisper SAE tooling
 - Ellena Reid — early Whisper MI (LessWrong)
 - Yuan Gong (MIT) — AST/SSAST audio transformers
+- CallumMcDougall — ARENA curriculum (circuit-tracer, SAE Circuits, Linear Probes — best hands-on MI learning resource)

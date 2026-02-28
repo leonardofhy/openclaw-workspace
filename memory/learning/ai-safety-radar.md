@@ -372,3 +372,26 @@ No new posts. Both feeds unchanged from 16:15 cycle; Saturday afternoon quiet co
 **[backlog-pick]** *Sam Altman says OpenAI shares Anthropic's red lines in Pentagon fight* (LessWrong, Feb 27, karma: 76)
 - Why: Direct governance signal — Altman publicly aligning OpenAI with Anthropic's autonomous weapons red lines in the DoD standoff; closes the loop on the Dario/DoW statement already in the watching queue and reveals industry-level coordination on the "no lethal autonomy" norm; high karma + AI Governance/Autonomous Weapons tags confirm community signal weight.
 - Link: <https://www.lesswrong.com/posts/sam-altman-says-openai-shares-anthropic-s-red-lines-in>
+
+---
+**2026-02-28 17:45 (Sat)** — scan: AF +0 new (top: "Schelling Goodness"), LW +0 new | backlog: ~21 unread
+
+No new posts. Both feeds identical to earlier Saturday cycles; Saturday evening quiet. All top LW/AF items this week already picked (Schelling Goodness, Model Incrimination, ARENA material, DoW coverage, RSP comparison, Sam Altman red lines, Frontier AI can't leave US). Backlog well-stocked — no further picks warranted this cycle.
+
+---
+**2026-02-28 18:15 (Sat)** — scan: AF top = "Schelling Goodness" (unchanged), LW top = same | backlog: ~21 unread
+
+No new posts. Both feeds flat since morning; Saturday evening quiet continues. No backlog pick — well-stocked from earlier cycles today (RSP comparison, Sam Altman red lines, Topology of LLM Behavior, ARENA material). No further picks warranted this cycle.
+
+---
+**2026-02-28 18:01 (Sat)** — scan: AF +0 new, LW +0 new | backlog: ~21 unread (unchanged)
+
+No new posts. Saturday evening quiet continues.
+
+**[portfolio connection note — cycle #85]** 
+*New ARENA material* (Feb 27, karma: 65) = highest-value actionable item this week for Leo specifically:
+- **Linear Probes** → directly teaches probing for Paper B AudioSAEBench
+- **Attribution Graphs** → `circuit-tracer` library = hands-on circuit analysis (Track 1 + Paper A methodology)
+- **Emergent Misalignment** → LoRA exercises = Track 4 foundation
+- **Recommendation:** Leo should do ARENA "Linear Probes" + "Attribution Graphs" exercises BEFORE first NNsight/pyvene experiment. 2-4 day investment = higher quality experiments.
+- URL: https://learn.arena.education/ (branch: `alignment-science`, merging to main this Sunday)
