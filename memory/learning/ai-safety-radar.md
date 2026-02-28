@@ -246,3 +246,17 @@ No high-signal update. All frontpage posts with meaningful karma have been captu
 **[new — low karma, noted]** *The Topology of LLM Behavior* (LW, Feb 28, karma: 11)
 - Why: Informal mental model framing LLM generation as a weighted random walk through a semantic attractor landscape — alignment constraints as attractors; low-karma but potentially useful intuition for thinking about behavioral stability and drift. Watch karma.
 - Link: https://www.lesswrong.com/posts/iPmqM4qn7YnktcSus/the-topology-of-llm-behavior-1
+
+---
+**2026-02-28 09:45 (Sat)** — scan: LW new since 09:15; AF rate-limited (429)
+
+**[new picks]**
+- **"Sam Altman says OpenAI shares Anthropic's red lines in Pentagon fight"** (LW, Feb 27, karma: 74 ↑ from ~6 overnight) — karma surge signals community weight; reports OpenAI and Anthropic aligned on refusing DoD "unfettered access" demands, a concrete governance moment: two leading labs holding the same safety red line under DPA pressure. Direct follow-up to Dario's statement + Zvi's breakdown (both previously picked). <https://www.lesswrong.com/posts/sam-altman-says-openai-shares-anthropic-s-red-lines-in>
+- **"New ARENA material: 8 exercise sets on alignment science & interpretability"** (LW / Callum McDougall, Feb 27, karma: 46) — ARENA published 8 new problem sets covering alignment science + interpretability; high practical value for anyone building technical alignment skills or evaluating the current training-ground state of the field. <https://www.lesswrong.com/posts/new-arena-material-8-exercise-sets-on-alignment-science-and>
+
+---
+**2026-02-28 10:15 (Sat)** — scan: AF rate-limited (429), LW +3 new since 09:45 (all low-karma: Mindscapes/Mind Palaces [1], Coherent Care/abramdemski [15], RSP Versions [7]) | no new high-signal posts
+
+**[backlog-pick]** *Side by Side Comparison of RSP Versions* (LessWrong / Corm, Feb 27, karma: 7)
+- Why: Direct comparison of how Responsible Scaling Policy versions have evolved; useful for tracking concrete safety commitment drift over time and understanding which thresholds/trigger conditions have changed across labs — relevant to governance and accountability tracking, especially amid the current Anthropic/DoD red-lines standoff.
+- Link: <https://www.lesswrong.com/posts/side-by-side-comparison-of-rsp-versions>
