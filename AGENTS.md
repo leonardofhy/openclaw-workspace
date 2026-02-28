@@ -14,14 +14,15 @@ Before doing anything else:
 1. Read `SESSION-STATE.md` — check **Last Updated** timestamp. If stale (>24h), treat as empty.
 2. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 3. **If buffer ACTIVE**: Read `memory/working-buffer.md` → extract important context → update SESSION-STATE.md → set buffer to INACTIVE
+4. **Mailbox check (cross-bot fallback)**: run `python3 skills/coordinator/scripts/mailbox.py list --to <mac|lab> --status open`; ACK urgent items immediately and summarize to Leo if action needed.
 
 **Main session only** (direct chat with Leo):
-4. Read `SOUL.md`, `USER.md`
-5. Read `MEMORY.md`
-6. Run `python3 skills/task-check.py` — scan task board for stale/overdue items
-7. Read `PROACTIVE.md` — stuck detection, task switching, VBR
+5. Read `SOUL.md`, `USER.md`
+6. Read `MEMORY.md`
+7. Run `python3 skills/task-check.py` — scan task board for stale/overdue items
+8. Read `PROACTIVE.md` — stuck detection, task switching, VBR
 
-**Cron/isolated sessions**: skip steps 4-7 (save tokens).
+**Cron/isolated sessions**: skip steps 5-8 (save tokens).
 
 Don't ask permission. Just do it.
 

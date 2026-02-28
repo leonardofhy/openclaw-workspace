@@ -38,6 +38,7 @@ L-08 財務管理 — 分析 GPT-5.2 PRO 搜集的 funding 資料，給 Leo 推�
 - 2026-02-28 17:00 update: Leo skipped afternoon swim; spent afternoon on paper writing + experiments; currently wants to exercise now.
 - 2026-03-01: Leo provided detailed corrections for 2/28 actual timeline and asked to update both true schedule record and Google Calendar accordingly.
 - 2026-03-01: Leo approved starting immediate fix for cross-bot comms reliability (Discord @mention + Git mailbox + ACK/SLA).
+- 2026-03-01: Leo asked to execute all remaining comms tasks now: mailbox mechanism, boot-time mailbox read protocol, and SLA+ACK fallback in sync protocol.
 - L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
 - QUICK_START.md partially written
 - All changes pushed to lab-desktop (latest: b822ba9)
