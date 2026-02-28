@@ -3,10 +3,11 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-02-28 06:00
+**Last Updated:** 2026-02-28 11:20
 
 ## Current Task
-Pre-compaction flush complete. Massive build session done — all core infra, 5 skills, cron, GPU env, research toolkit built.
+L-08 財務管理 — 查獎學金 deadline、TA 空缺、收入策略
+Leo 說實驗不要我處理，專注其他任務
 
 ## Recent Context
 - L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
