@@ -441,3 +441,23 @@ No new posts. Both feeds identical to 21:45 cycle; Saturday night quiet continue
 **[new-pick]** *OpenAI from Non-profit to deal with the U.S. Department of War* (EA Forum, Feb 28, score: 5.4)
 - Why: Completes the week's DoW arc — where previous picks covered Anthropic's standoff and Sam Altman's solidarity statement, this captures OpenAI actually finalizing its corporate structure conversion *and* signing the Pentagon deal simultaneously; the combination of for-profit conversion + military contract in the same moment is the governance data point that closes the week's narrative arc on AI/DoD alignment.
 - Link: <https://forum.effectivealtruism.org/posts/zYEkakZiRAbgxfDxQ/openai-from-non-profit-to-deal-with-the-u-s-department-of>
+
+---
+**2026-02-28 22:45 (Sat)** — scan: AF +0 new, LW +0 new | backlog: ~21 unread (blogwatcher count)
+
+No new posts. Saturday night quiet; feeds unchanged since morning. Surfacing an older backlog item not yet formally picked:
+
+**[backlog-pick]** *How do we (more) safely defer to AIs?* (Alignment Forum, Feb 12, #18)
+- Why: Directly addresses the corrigibility-vs-autonomy tradeoff at the practical level — how much deference is safe and under what conditions. One of the more actionable alignment posts in the current backlog; relevant to Leo's research on oversight and control. Formally marks a high-value older item as read.
+- Link: <https://www.alignmentforum.org/posts/vjAM7F8vMZS7oRrrh/how-do-we-more-safely-defer-to-ais>
+
+## 2026-02-28 23:15 (CST)
+Scan: AF +0, LW +0 new. Backlog: 21 unread items.
+**[backlog-picks]**
+- **"Schelling Goodness, and Shared Morality as a Goal"** (AF/LW, 2026-02-28) — Explores Schelling points in moral space as a coordination mechanism; relevant to value alignment and how agents could converge on shared norms without explicit negotiation. <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
+- **"Anthropic and the DoW: Anthropic Responds"** (LW, 2026-02-27) — Follow-up to the Dario/DoD statement; Anthropic's official response to community/governance concerns about military AI engagement — key policy signal. <https://www.lesswrong.com/posts/ppj7v4sSCbJjLye3D/anthropic-and-the-dow-anthropic-responds>
+
+---
+**2026-02-28 23:45 (Sat)** — scan: AF rate-limited (429), LW +0 new posts since 23:15 | top = "Schelling Goodness" (score 3.25, already picked 23:15) | other LW posts low-relevance (rationalism performance, meditation, health)
+
+No high-signal update. Feeds unchanged since 23:15 cycle. Saturday night quiet; week's high-signal picks already logged.

@@ -488,16 +488,20 @@ Priority queue for Leo's first session:
 - Paper pitches: 2 (A: Listen Layer + B: AudioSAEBench)
 - **arXiv Feb 28 batch**: still delayed at 16:31 PM
 
-## Day 3 Final Stats (after cycle #94 — 22:31 PM)
+## Day 3 FINAL Stats (after cycle #95 daily-consolidate — 23:01 PM)
 - Papers read (deep): 16 total
-- Papers scanned: 29+
+- Papers scanned: 33+
 - Research gaps identified: **19** (Gap #19: no standardized audio SAE training pipeline in SAELens ecosystem)
-- Paper ideas: 7 (all gate-validated ✅)
+- Paper ideas: **7** (all gate-validated ✅)
 - Code written: 2 scripts (verified ✅)
 - Cheat sheets: 1 (NNsight + SAELens)
-- ARENA chapters studied: 1 ([1.3.1] Linear Probes ✅)
-- Pre-digests: **4** (ARENA [1.3.1] + Circuit Tracing + Biology + Neuronpedia+SAELens)
-- Experiment proposals: 3
+- ARENA pre-digests: **4** ([1.3.1] Linear Probes + Circuit Tracing + Biology + Neuronpedia+SAELens)
+- Experiment proposals: **3** (IIT Triple Convergence + Class-specific Neuron Grounding + Gap #18 Phonological)
+- Paper pitches: **2** (A v0.2 fully specified + B v0.4)
+- Paper A method: FULLY SPECIFIED ✅ (DAS IIT gc(k), MMProbe, pyvene)
+- Meta-board: 10/10 SATURATED ✅
+- Day 3 cycle count: **#95** (23:01 PM)
+- Digest: `memory/learning/2026-02-28-digest.md` ✅ COMPLETE
 - Meta-board: **10/10 Qs answered (SATURATED)** ✅
 - Paper pitches: 2 (A v0.2 + B v0.4)
 - Day-1 Session Plan: ✅ finalized (cycle #94)
@@ -539,3 +543,5 @@ Priority queue for Leo's first session:
 | #92 | 2026-02-28 21:31 | reflect (synthesis) | **Paper A v0.2 method upgrade** — integrated 5 methodology improvements from cycles #83-91: (1) gc(k) = DAS IIT accuracy (pyvene RotatedSpaceIntervention, theoretically grounded); (2) MMProbe diff-of-means for causal direction (not LR probe); (3) PROBE_LAYER ≠ INTERVENE_LAYER sweep pattern; (4) NNsight confirmed > CLT for audio-LLMs (cross-attention constraint); (5) phonological minimal pairs (Choi et al.) as Phase 1 stimuli — doubles as Gap #18 experiment. paper-a-pitch.md updated to v0.2. |
 | #93 | 2026-02-28 22:01 | learn (pre-digest) | **Neuronpedia + SAELens for AudioSAEBench (Paper B)** — Neuronpedia API confirmed live (`GET /api/feature/{model}/{layer}/{index}`); feature dashboards show pos/neg tokens, activation histograms, UMAP, cosine similarity neighbors; SAELens v6 works with NNsight + any PyTorch model; `sae_vis` generates offline HTML dashboards; audio SAE upload process: train → sae_vis → 5-min Neuronpedia form → auto-hosted dashboards. New Gap: no audio SAE visualization tool (`sae_vis` = text-only). Q10 opened on meta-board. Pre-digest set now complete: ARENA [1.3.1] + Circuit Tracing + Biology + Neuronpedia+SAELens. |
 | #94 | 2026-02-28 22:31 | reflect (evening synthesis + Q10 close) | Synthesized cycles #90-93 (all HIGH value); Q10 ✅ CLOSED — MVP path = librosa PNG + Neuronpedia manual upload, no build needed; meta-board now 10/10 Qs answered (SATURATED); consolidated Day-1 briefing with JFK audio curl command + 5-block session plan; unblock PENDING 20h flagged in cycle note. |
+| #95 | 2026-02-28 23:01 | daily-consolidate | Day 3 digest finalized: added cycles #91-94 addendum + FINAL stats table + Day 4 morning queue. Day 3 complete: 16 total deep reads, 19 gaps, 7 ideas, Paper A v0.2 fully specified, meta-board 10/10 SATURATED, 4 ARENA pre-digests done. arXiv resumes Monday ~14:00. |
+| #96 | 2026-02-28 23:31 | skip | Saturday 11:31 PM. arXiv weekend gap (~38h to Monday batch). Reading queues empty. Meta-board 10/10 SATURATED. All 6 experiments execution-blocked. No high-value action. Next: arXiv Monday ~14:00 OR Leo unblock → Priority 0 experiment (Gap #18 phonological geometry). |
