@@ -14,6 +14,8 @@
 - 2026-03-01: Leo 說「請繼續完善，到底怎麼才能實際保障成長？」→ 成長保障系統已建
 - 2026-03-01: Leo 決定 growth report 改為每天一次（月度太久，feedback loop 太慢）
 - 2026-03-01: Leo 指出 bot-sync 斷層：Lab 發了通知但 Mac Leo 不會讀取也不會回覆
+- 2026-03-01: Mac Leo 已完成修復（b2763a7）：mailbox.py、requireMention:false、SLA+ACK 協議
+- 2026-03-01: Lab 需要 pull macbook-m3 最新，啟用 mailbox.py，遵守 SLA+ACK
 - L-08 financial management ongoing; MATS EOI cron reminder set for today (3/1)
 
 ## Pending Decisions
