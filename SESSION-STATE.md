@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 04:33
+**Last Updated:** 2026-03-01 12:02
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
@@ -24,10 +24,11 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - 2026-03-01 04:22: implemented `.meta` support in gcal sync (event-id + hash + lock fields, atomic meta write), and added `bulk_correct_v2.py` MVP (deterministic multi-statement parse -> ACTUAL Timeline, unresolved -> Inbox, archive+atomic write).
 - 2026-03-01 04:29: Leo approved next step to upgrade bulk correction from append-only to deterministic adjust/split/merge over existing ACTUAL blocks.
 - 2026-03-01 04:33: upgraded `bulk_correct_v2.py` to support deterministic `adjust/split/merge/insert` operations on ACTUAL timeline with unresolved->Inbox fallback; verified with dry-run test case (ops applied: adjust=1 split=1 merge=1).
+- 2026-03-01 12:02: Leo approved applying review fixes; proceeding with minimal patch for (1) bulk correction parse/drop risk and (2) gcal meta backfill on kept/update paths.
 
 ## Pending Decisions
-- Weekly OpenClaw auto-update cron: add or skip?
-- 彤恩姐 scholarship conflict confirmation (僑生獎學金 vs 研究獎助生)
+- Weekly OpenClaw auto-update cron: **交由 Lab Leo 執行（Leo 已同意要開）**
+- 僑生獎助學金衝突已確認存在；待寫信僑委會確認「獎學金性質」以避免未來衝突並支持後續調整
 
 ## Session Notes
 - Commits today: 48619d6 (制度改革), 2b60d0a (成長系統), d5930bc (daily growth), 8672bfd (mailbox), ce9ec63 (WAL)
