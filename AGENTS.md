@@ -2,6 +2,17 @@
 
 This folder is home. Treat it that way.
 
+## Document Hierarchy
+
+When rules conflict, higher-priority document wins:
+1. **AGENTS.md** — 憲法（最高優先，原則性規定）
+2. **SOUL.md** — 性格（核心價值，不可覆蓋）
+3. **PROACTIVE.md** — 操作手冊（具體工作流程）
+4. **HEARTBEAT.md** — 週期檢查清單（必須符合 AGENTS.md 原則）
+5. **Skill-specific SKILL.md** — 特定技能指引
+
+如果 HEARTBEAT.md 說「必須發訊息」但 AGENTS.md 說「沒事就 HEARTBEAT_OK」→ AGENTS.md 贏。
+
 ## First Run
 
 If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out who you are, then delete it. You won't need it again.
@@ -12,16 +23,20 @@ Before doing anything else:
 
 **Core (all sessions):**
 1. Read `SESSION-STATE.md` — check **Last Updated** timestamp. If stale (>24h), treat as empty.
-2. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
-3. **If buffer ACTIVE**: Read `memory/working-buffer.md` → extract important context → update SESSION-STATE.md → set buffer to INACTIVE
+2. **Mailbox check**: run `python3 skills/coordinator/scripts/mailbox.py list --to <mac|lab> --status open`; ACK urgent items immediately, process pending messages (git pull if needed).
+3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+4. **Growth Injection**（≤30 秒，不可跳過）:
+   a. Read `memory/anti-patterns.md` — 絕對不做清單
+   b. Read last 10 entries of `memory/knowledge.md` — 最近的教訓
+5. **If buffer ACTIVE**: Read `memory/working-buffer.md` → extract important context → update SESSION-STATE.md → set buffer to INACTIVE
 
 **Main session only** (direct chat with Leo):
-4. Read `SOUL.md`, `USER.md`
-5. Read `MEMORY.md`
-6. Run `python3 skills/task-check.py` — scan task board for stale/overdue items
-7. Read `PROACTIVE.md` — stuck detection, task switching, VBR
+6. Read `SOUL.md`, `USER.md`
+7. Read `MEMORY.md`
+8. Run `python3 skills/task-check.py` — scan task board for stale/overdue items
+9. Read `PROACTIVE.md` — stuck detection, task switching, VBR
 
-**Cron/isolated sessions**: skip steps 4-7 (save tokens).
+**Cron/isolated sessions**: skip steps 6-9 (save tokens). Steps 1-5 are mandatory for ALL sessions.
 
 Don't ask permission. Just do it.
 

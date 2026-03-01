@@ -33,5 +33,15 @@ Use both Calendar and Todoist when:
 - High-priority tasks must happen today
 - Deadline-sensitive work benefits from both a time block and persistent reminder
 
+## v2 Migration Checklist (PLAN vs ACTUAL)
+- [ ] Add `## PLAN` / `## ACTUAL` canonical sections to new day files.
+- [ ] Treat ACTUAL as sync source; PLAN never syncs to calendar.
+- [ ] Attach managed marker + uid to every synced GCal event.
+- [ ] Enable cross-midnight normalization (`(+1d)` and end>start invariant).
+- [ ] Keep sync in create/update-only mode during early rollout.
+- [ ] Introduce `.meta/YYYY-MM-DD.json` for uid/event-id/lock/hash mapping.
+- [ ] Introduce `.archive/YYYY-MM-DD/` backup before each write.
+- [ ] Enable deletion only after uid-safe reconciliation is validated.
+
 ## Note
 `memory/core.md` should keep only a short pointer to this file, not full operational detail.

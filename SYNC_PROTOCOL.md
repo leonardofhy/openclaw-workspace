@@ -3,12 +3,13 @@
 > 兩個 bot 的共識文件。更動需雙方確認。
 > 生效日：2026-02-27
 
-## 架構：混合同步
+## 架構：混合同步（Hybrid with delivery guarantees）
 
 ```
-即時通知 ──→ Discord #bot-sync（秒級）
-持久化   ──→ Git merge（每日）
-衝突預防 ──→ Namespace 隔離（L- / M-）
+即時通知（best effort） ──→ Discord #bot-sync @mention（秒級）
+保底投遞（guaranteed）   ──→ Git mailbox（memory/mailbox/messages.jsonl）
+持久同步                ──→ Git merge（每日）
+衝突預防                ──→ Namespace 隔離（L- / M-）
 ```
 
 ---
@@ -39,6 +40,37 @@
 
 - 遵守 BOT_RULES.md：**3 來回 / 30 分鐘**
 - 批量更新時合併成一條（不要連發 5 條 [STATE]）
+
+### SLA + ACK（必須）
+
+對每一個委託訊息（`📤 委託 ...`）：
+
+1. **先走 Discord @mention**（即時）
+2. 接收方 **10 分鐘內需回 ACK**：
+   - `✅ ACK <task-id> | accepted | ETA ...`
+3. 若 10 分鐘未收到 ACK：
+   - 發送方必須寫入 Git mailbox（`--urgent`）
+   - 並在 #bot-sync 補一條 fallback 通知
+4. 接收方 boot/session start 時必查 mailbox open items，並回：
+   - `✅ ACK <MB-id>/<task-id>`
+   - 完成後 `✅ DONE <MB-id>/<task-id>`
+
+### Mailbox CLI（標準）
+
+```bash
+# 送出保底訊息
+python3 skills/coordinator/scripts/mailbox.py send \
+  --from lab --to mac --title "L-09 handoff" --body "..." --task-id L-09 --urgent
+
+# 開機/開 session 必查
+python3 skills/coordinator/scripts/mailbox.py list --to mac --status open
+
+# 接收後立即 ack
+python3 skills/coordinator/scripts/mailbox.py ack MB-001
+
+# 完成後關單
+python3 skills/coordinator/scripts/mailbox.py done MB-001
+```
 
 ---
 
@@ -139,7 +171,42 @@ python3 skills/task-check.py --json
 
 ---
 
-## 5. 緊急情況
+## 5. Critical Change Protocol（核心檔案改動）
+
+修改以下檔案時，**必須同時做兩件事**（不可只做一件）：
+
+**觸發檔案**：`AGENTS.md`、`SOUL.md`、`HEARTBEAT.md`、`PROACTIVE.md`、`GROWTH.md`、`SYNC_PROTOCOL.md`、`BOT_RULES.md`
+
+**Step 1: Git mailbox**（guaranteed delivery）
+- 寫一條 🔴 URGENT 訊息到 `memory/mailbox/to-{對方}.md`
+- 說明改了什麼、為什麼、對方需要做什麼
+- git commit + push
+
+**Step 2: Discord @mention**（best-effort instant）
+- 在 #bot-sync @mention 對方 bot
+- 簡短說明（≤3 行）+ 指向 mailbox 詳情
+
+對方收到後：
+1. `git fetch && git merge` 拿到最新版本
+2. 讀 mailbox 訊息了解變更內容
+3. 確認自己的 boot flow 正常
+4. 回覆確認（#bot-sync reaction ✅ 或訊息）
+
+## 6. Git Mailbox（可靠通訊）
+
+**位置**：`memory/mailbox/`
+- `to-mac.md` — Lab 寫給 Mac 的訊息
+- `to-lab.md` — Mac 寫給 Lab 的訊息
+- `archive/YYYY-MM.md` — 處理完的歸檔
+
+**Boot flow**：AGENTS.md Step 2，所有 session 都讀。
+
+**規則**：
+- 寫入 = append（不要覆蓋別人的訊息）
+- 處理完 = 移到 archive + 清空 inbox
+- 不要讓 inbox 積超過 5 條未處理
+
+## 7. 緊急情況
 
 | 情境 | 處理 |
 |------|------|

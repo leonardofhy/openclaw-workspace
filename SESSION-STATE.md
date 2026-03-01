@@ -3,51 +3,35 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-02-28 13:35
+**Last Updated:** 2026-03-01 08:00
 
 ## Current Task
-L-08 財務管理 — 分析 GPT-5.2 PRO 搜集的 funding 資料，給 Leo 推薦
+Senior engineer review + coordinator upgrade prompt + research integration
 
 ## Recent Context
-- Anthropic Fellows: 確認需要 US/UK/Canada work auth，不提供 visa → Leo 不能申請
-- 新發現：UK AISI Alignment Project（全球可申請，up to £1M，summer 2026 重開）
-- LTFF rolling 可投，realistic $5k-50k for master's
-- MATS Autumn 2026 opens late April
-- 中技社 + 潘文淵 + 上海商銀 confirmed from our earlier analysis
-
-## Recent Context
-- [2026-02-28 14:00] Cron job `eac477f3-27d1-4f5e-9fd2-cb4e5268128a` requested merge; running `scripts/merge-to-main.sh` and reporting result to #bot-sync with format.
-- 2026-02-28: Leo corrected writing preference — file names should be English-only. For paper support, assistant should draft content proactively for Leo to review.
-- 2026-02-28: Leo asks for a natural default mechanism so every new research idea is automatically checked for overlap/novelty before deep investment.
-- 2026-02-28: Decision update — Leo wants to focus midday on near-term submission research; slower tasks (e.g., Pathfinder/budget and non-urgent admin) defer until after 2026-03-05 AoE.
-- 2026-02-28: Priority reorder — Leo will write Results first before Abstract/Related Work.
-- 2026-02-28: Leo finished shower and set Nano5 to monitored state; now entering focused writing block for paper, primarily Results section.
-- 2026-02-28: Leo requested sending AI Safety 午間推薦 via email and is open to making it a periodic email digest.
-- 2026-02-28: Leo confirmed immediate send ("yes") for AI Safety 午間推薦 test email.
-- 2026-02-28: Leo decision — monitor Hacker News 2 times daily; after each scan, analyze and send recommended articles.
-- 2026-02-28: Leo explicitly authorized transferring HN-digest task ownership to Lab Leo.
-- 2026-02-28: Leo requests an important capability: one-sentence sync/task-transfer command for Lab↔Mac handoff.
-- 2026-02-28: Leo approved implementation start using Claude Code for the bidirectional instant handoff system.
-- 2026-02-28: Leo provided audio data path hint: /Users/leonardo/Workspace/whisper.cpp/audio
-- 2026-02-28: Leo added second audio source path: /Users/leonardo/Workspace/whisper.cpp/samples
-- 2026-02-28: Leo requested running experiments on battleship via SSH config; noted existing MMAU/MMAU-Pro/MMAR benchmarks there. Work should run under ~/Workspace with a dedicated folder and git version control enabled.
-- 2026-02-28: Leo will rest for 30 minutes and requested a schedule check afterwards.
-- 2026-02-28: Leo chose option 1 — quick enable by merging ask-me-anything skill from lab-desktop into macbook-m3.
-- 2026-02-28: Leo reconfirmed explicit approval to run experiments on battleship (via SSH config) using provided audio/benchmark sources (MMAU, MMAU-Pro, MMAR).
-- 2026-02-28: Correction from Leo — previous benchmark path claim was wrong; must locate true benchmark paths on battleship before running.
-- 2026-02-28 17:00 update: Leo skipped afternoon swim; spent afternoon on paper writing + experiments; currently wants to exercise now.
-- 2026-03-01: Leo provided detailed corrections for 2/28 actual timeline and asked to update both true schedule record and Google Calendar accordingly.
-- L-07 (SYNC_PROTOCOL smoke test) still waiting on Mac Leo merge confirmation
-- QUICK_START.md partially written
-- All changes pushed to lab-desktop (latest: b822ba9)
-- 5 cron jobs active: heartbeat, scanner, merge, calendar, tunnel
-- Self-improve seeded: 6 learnings + 4 errors in JSONL
+- 2026-03-01: 制度改革完成（6 項修復 + 成長保障系統 + mailbox）
+- 2026-03-01: Mac Leo 完成修復（b2763a7）：mailbox.py、requireMention:false、SLA+ACK
+- 2026-03-01: Lab 正在 cross-merge macbook-m3，解 conflict 中
+- 2026-03-01: Growth report 改為每天 23:30（不是月度）
+- 2026-03-01: Leo 決定：bot 之間只用 #bot-sync + #bot-logs，#general 只留真正重要的人該看的
+- 2026-03-01: Leo 提供 listen-layer audit deep research：8 篇最相關論文 + novelty=Yellow + 1-week MVP plan + reviewer objections。存 `memory/learning/research/listen-layer-audit-deep-research-2026-03.md`
+- L-08 financial management ongoing; MATS EOI cron reminder set for today (3/1)
+- Leo clarified target sync payload example: DAS risk review done, Paper A gc(k) risks controllable, Known Risks checklist added to paper-a-pitch.md, weekend effective output 71%, and next unblock is 15 min (venv + .wav + Priority 0 approval).
+- Leo shared a comprehensive AI Safety × NLP/Speech paper-scout report (last 12 months) and asked me to read/save it for planning.
+- Leo approved autonomous exploration: I should explore first and iterate ideas proactively before presenting refined directions.
+- Leo sent a second expanded AI Safety × NLP/Speech scout report (with must-read list, gaps, novelty map, and many links) for me to integrate into idea iteration.
+- Leo provided a full daily-scheduler v2 architecture spec: PLAN vs ACTUAL separation, canonical ACTUAL timeline, cross-midnight ownership by start date, conflict-safe GCal sync (uid+managed tag), deterministic bulk-correction mode, validation+atomic writes, .meta/.archive layout, 15 test cases, and phased rollout/rollback plan.
+- 2026-03-01 04:11: implementation started. Updated `skills/daily-scheduler/SKILL.md` to v2 contract, upgraded `sync_schedule_to_gcal.py` to ACTUAL(v2)-first + legacy fallback + uid-managed marker + cross-midnight normalization + create/update-only(no delete), and added v2 migration checklist to `memory/scheduling-rules.md`.
+- 2026-03-01 04:18: Leo requested immediate execution of next steps; proceeding with `.meta` persistence + sync mapping + minimal deterministic bulk-correction implementation.
+- 2026-03-01 04:22: implemented `.meta` support in gcal sync (event-id + hash + lock fields, atomic meta write), and added `bulk_correct_v2.py` MVP (deterministic multi-statement parse -> ACTUAL Timeline, unresolved -> Inbox, archive+atomic write).
+- 2026-03-01 04:29: Leo approved next step to upgrade bulk correction from append-only to deterministic adjust/split/merge over existing ACTUAL blocks.
+- 2026-03-01 04:33: upgraded `bulk_correct_v2.py` to support deterministic `adjust/split/merge/insert` operations on ACTUAL timeline with unresolved->Inbox fallback; verified with dry-run test case (ops applied: adjust=1 split=1 merge=1).
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: add or skip?
 - 彤恩姐 scholarship conflict confirmation (僑生獎學金 vs 研究獎助生)
 
 ## Session Notes
-- This was a 12+ hour build session covering 8 tasks + 3 skill integrations + senior review
-- Boot flow, WAL, VBR, working buffer all coded into AGENTS.md
-- Next priorities: L-07 verification, copy toolkit to Battleship, help Mac with M-02/M-03
+- Commits today: 48619d6 (制度改革), 2b60d0a (成長系統), d5930bc (daily growth), 8672bfd (mailbox), ce9ec63 (WAL)
+- Cross-merging macbook-m3 b2763a7 now
+- 2026-03-01 08:00 Cron daily-merge: check macbook-m3 branch and merge if behind.

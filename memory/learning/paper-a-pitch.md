@@ -135,6 +135,64 @@ Large audio-language models (LALMs) can answer questions about audio content, bu
 
 ---
 
+## Known Risks (DAS gc(k) Assumption Checklist)
+> Added: cycle #102 (2026-03-01 meta-awareness audit)
+
+Before running Phase 1 or 2 experiments, verify these 5 DAS assumptions hold:
+
+| # | Assumption | Risk | Mitigation |
+|---|-----------|------|------------|
+| A1 | Audio grounding is linearly encodable in residual stream | MEDIUM | Gap #18 pre-test validates linearity; Whisper-only claim safe even if connector is non-linear |
+| A2 | Listen/guess variable is binary (not graded) | LOW | ALME 57K stimuli are binary conflict pairs by design |
+| A3 | DAS learns the RIGHT subspace (not spurious correlate) | MEDIUM | 80/20 train/test split on stimuli; cross-generalization held-out test = Paper A Figure 3 |
+| A4 | IIA peak layer = causal (not just easy probe layer) | MEDIUM | Sweep PROBE_LAYER and INTERVENE_LAYER independently; report 2D heatmap |
+| A5 | DAS-IIA > vanilla patching | LOW | If they disagree, DAS wins (theory) — disagreement = a finding |
+
+**Contingency plan:** If Gap #18 fails (connector destroys phonological geometry → A1 violated for LALM):
+- Scope Phase 2 claims to "encoder-internal grounding" (Whisper)
+- Reframe LALM experiment as "Listen Layer vs Guess Layer in encoder-decoded context"
+- Paper A still publishable; weaker claim but more honest
+
+---
+
+## Statistical Significance Protocol (Q15 — cycle #104, 2026-03-01)
+
+**For gc(L) claims in Paper A:**
+
+> **Use bootstrap 95% CI over stimulus pairs.** Declare L* the Listen Layer if:
+> 1. CI at L* does NOT overlap with CIs at L*±1, L*±2 (local peak condition)
+> 2. Lower CI bound at L* > gc(baseline_layer) + 0.05 (above floor condition)
+
+**Implementation (sketch):**
+```python
+for layer_L in range(num_layers):
+    gc_boot = [compute_DAS_IIA(np.random.choice(pairs, len(pairs), replace=True), L=layer_L) for _ in range(1000)]
+    gc_ci[layer_L] = np.percentile(gc_boot, [2.5, 97.5])
+```
+
+**Why not permutation test:** Shuffling audio/text labels breaks the causal structure DAS is trained on → wrong null hypothesis.
+**Why not effect size threshold:** Ad hoc, not defensible to reviewers.
+
+---
+
+## Figure 3 Prediction: 2D IIA Heatmap Shape (Q16 — cycle #104)
+
+**Prediction for the PROBE_LAYER × INTERVENE_LAYER heatmap (A4 assumption check in Method):**
+
+If the Listen Layer hypothesis is correct, the 2D heatmap should show a **"lower-triangular stripe"**:
+- High IIA where: intervene_layer ≈ L* AND probe_layer ≤ L* (can only extract causal direction before it's written)
+- Low IIA where: probe_layer > intervene_layer (can't probe what hasn't been computed)
+- The stripe is vertical near L*, truncated above the diagonal
+
+**Alternative patterns and their interpretations:**
+- High IIA everywhere → causal variable is globally distributed (supports Modality Collapse)
+- High IIA only on diagonal → local causal variables at each layer (supports delayed specialization)
+- "Lower-triangular stripe" → Listen Layer hypothesis ✓
+
+**This converts A4 from a risk to check into a testable prediction for Paper A Figure 3.** State the prediction in the methods section; confirm or falsify in results.
+
+---
+
 ## Open Questions for Leo
 
 1. Should we scope to encoder-only (Whisper) or include full LALM (Qwen2-Audio)? Encoder = faster paper; LALM = bigger impact.
