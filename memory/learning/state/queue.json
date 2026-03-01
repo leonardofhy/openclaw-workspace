@@ -142,12 +142,13 @@
       "type": "build",
       "track": "T3",
       "title": "Paper A related-work grid targeting reviewer objections",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Comparison table: our method vs FCCT vs SPIRIT vs ALMGuard",
       "created": "2026-03-01",
-      "due": null
+      "due": null,
+      "completed": "2026-03-01"
     },
     {
       "id": "Q013",
