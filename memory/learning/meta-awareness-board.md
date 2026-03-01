@@ -320,7 +320,30 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 20/20 Qs answered (active, continue opening new Qs)
+## Meta-board Status: 20/20 Qs answered + Q22 open
+
+---
+
+## Q22: Do Cron Cycle Reports Actually Reach Leo? (opened cycle #113, 2026-03-01 08:01)
+
+**Question:** Q4 (cycle #53) established a 3-line cycle report format (ACTION/NOVELTY/NEXT) for Leo's benefit. But: do cron summaries actually get read by Leo directly, or does Leo only engage with main-session highlights?
+
+**Hypothesis:** Cycle reports may primarily serve future-autodidact context recovery (compaction survival), not Leo's direct reading. If true, the format should optimize for context richness, not brevity.
+
+**Action needed:** Ask Leo in 1 sentence: "Do you read individual autodidact cron summaries, or only main-session highlights?"
+- If Leo reads directly → keep 3-line format (signal/noise priority)
+- If Leo reads only highlights → extend format slightly for context recovery value
+
+**Status:** 🔵 OPEN — awaiting Leo's 5-second answer.
+
+---
+
+## Q21: Conditional Cadence Rule Decision (PENDING Leo approval — cycle #112)
+
+**Proposal:** 2h intervals when ALL 3 hold: (1) arXiv weekend gap, (2) execution-blocked, (3) meta-board saturated.
+**Estimated savings:** ~$0.25/dead-zone period.
+**Self-modification rule:** Requires Leo approval before applying.
+**Decision memo:** See `memory/learning/2026-03-01_cycle112.md` for full cost analysis.
 
 ---
 
