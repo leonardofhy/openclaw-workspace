@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "phase": "converge",
+  "phase_since": "2026-03-01",
+  "phase_exit_criteria": {
+    "converge_to_execute": [
+      "eval_harness_exists_T3",
+      "experiment_spec_ready_T3",
+      "leo_approved_gpu_or_cpu_experiment"
+    ]
+  },
+  "active_tracks": [
+    {
+      "id": "T3",
+      "name": "Listen vs Guess (Paper A)",
+      "status": "converge",
+      "objective": "Build gc(k) evaluation harness + run first causal patching experiment",
+      "definition_of_done": "CPU eval harness passing on toy data; experiment spec reviewed by Leo"
+    },
+    {
+      "id": "T5",
+      "name": "Listen-Layer Audit (Paper C / MATS)",
+      "status": "converge",
+      "objective": "Build audio jailbreak detection prototype + MATS research task proposal",
+      "definition_of_done": "MVP safety probe script running on CPU; MATS proposal draft ready"
+    }
+  ],
+  "budgets": {
+    "learn_remaining_today": 3,
+    "build_remaining_today": 4,
+    "reflect_remaining_today": 1,
+    "budget_reset_date": "2026-03-01"
+  },
+  "stats": {
+    "total_cycles": 115,
+    "total_skips": 38,
+    "papers_read_deep": 16,
+    "papers_scanned": 33,
+    "research_gaps": 19,
+    "paper_ideas": 7,
+    "paper_pitches": 2,
+    "code_artifacts": 2,
+    "system_improvements": 6,
+    "days_active": 4
+  },
+  "last_cycle": {
+    "id": "c-20260301-1045",
+    "action": "skip",
+    "summary": "Principled skip — arXiv weekend gap, execution blocked 43h"
+  },
+  "last_gc": null,
+  "self_improve_tickets": []
+}

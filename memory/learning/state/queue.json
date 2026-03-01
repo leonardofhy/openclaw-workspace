@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "max_tasks": 25,
+  "tasks": [
+    {
+      "id": "Q001",
+      "type": "experiment",
+      "track": "T3",
+      "title": "Gap #18: Phonological geometry through connector",
+      "status": "blocked",
+      "priority": 0,
+      "blocked_by": "Leo approval (real speech .wav + venv setup)",
+      "definition_of_done": "Cosine similarity of voicing vector before/after connector measured",
+      "created": "2026-02-28",
+      "due": null
+    },
+    {
+      "id": "Q002",
+      "type": "experiment",
+      "track": "T3",
+      "title": "IIT experiment: Triple Convergence Causal Test",
+      "status": "blocked",
+      "priority": 1,
+      "blocked_by": "Leo approval + real speech .wav + venv",
+      "definition_of_done": "Layer-wise causal contribution plot produced",
+      "created": "2026-02-28",
+      "due": null
+    },
+    {
+      "id": "Q003",
+      "type": "experiment",
+      "track": "T3",
+      "title": "Listen Layer Paper: ALME conflict patching on Qwen2-Audio",
+      "status": "blocked",
+      "priority": 2,
+      "blocked_by": "GPU access (Qwen2-Audio-7B) + NDIF or Battleship",
+      "definition_of_done": "Listen Layer localized for Qwen2-Audio",
+      "created": "2026-02-28",
+      "due": null
+    },
+    {
+      "id": "Q004",
+      "type": "experiment",
+      "track": "T3",
+      "title": "Real speech validation of whisper_hook_demo.py",
+      "status": "blocked",
+      "priority": 3,
+      "blocked_by": "Real speech .wav file",
+      "definition_of_done": "CKA cluster separation confirmed with real speech",
+      "created": "2026-02-28",
+      "due": null
+    },
+    {
+      "id": "Q005",
+      "type": "build",
+      "track": "T3",
+      "title": "gc(k) eval harness scaffold (CPU-only, Tier 0)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Python script that takes model + stimuli + layer range → gc(k) curve (mock data OK)",
+      "created": "2026-03-01",
+      "due": null
+    },
+    {
+      "id": "Q006",
+      "type": "build",
+      "track": "T5",
+      "title": "Listen-Layer Audit MVP scaffold (CPU-only, Tier 0)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Python script that takes LALM + audio stimuli → per-layer safety score skeleton",
+      "created": "2026-03-01",
+      "due": null
+    },
+    {
+      "id": "Q007",
+      "type": "build",
+      "track": "T5",
+      "title": "MATS Research Task proposal draft",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "2-page proposal: hypothesis, method, expected results, timeline",
+      "created": "2026-03-01",
+      "due": "2026-04-30"
+    },
+    {
+      "id": "Q008",
+      "type": "read",
+      "track": "T5",
+      "title": "Deep-read SPIRIT (EMNLP 2025) — Tier 0 priority",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Structured notes with method details + connection to gc(k)",
+      "created": "2026-03-01",
+      "due": null
+    },
+    {
+      "id": "Q009",
+      "type": "read",
+      "track": "T5",
+      "title": "Deep-read SACRED-Bench + SALMONN-Guard — Tier 0",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Attack taxonomy mapped; defense mechanism compared to gc(k)",
+      "created": "2026-03-01",
+      "due": null
+    },
+    {
+      "id": "Q010",
+      "type": "read",
+      "track": "T5",
+      "title": "Deep-read ALMGuard (NeurIPS 2025) — Tier 0",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Safety shortcut localization method documented; comparison to listen-layer audit",
+      "created": "2026-03-01",
+      "due": null
+    },
+    {
+      "id": "Q011",
+      "type": "read",
+      "track": "T5",
+      "title": "Deep-read JALMBench (ICLR 2026) — Tier 1",
+      "status": "ready",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Attack-defense matrix extracted; benchmark coverage gaps identified",
+      "created": "2026-03-01",
+      "due": null
+    },
+    {
+      "id": "Q012",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A related-work grid targeting reviewer objections",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Comparison table: our method vs FCCT vs SPIRIT vs ALMGuard",
+      "created": "2026-03-01",
+      "due": null
+    },
+    {
+      "id": "Q013",
+      "type": "design",
+      "track": "T2",
+      "title": "AudioSAEBench evaluation framework design (Tier 0)",
+      "status": "ready",
+      "priority": 4,
+      "blocked_by": null,
+      "definition_of_done": "8 SAEBench metrics mapped to audio equivalents; protocol document",
+      "created": "2026-02-28",
+      "due": null
+    }
+  ]
+}
