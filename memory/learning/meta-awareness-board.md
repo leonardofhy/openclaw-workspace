@@ -377,7 +377,23 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 24/24 Qs answered ✅ (count-saturated, cycle #125)
+## Q26: Weekend Depletion Signal (✅ CLOSED cycle #129, 2026-03-01 16:01)
+
+**Problem:** Meta-burst 4h pause (Q23) was gameable — "genuine Q" claims could bypass it even when the weekend meta-budget was exhausted. Resulted in Q24/Q25 being added late (cycles #120-125) to retroactively fix anti-patterns.
+
+**Rule (now active):**
+> When `meta-board_Qs_added_this_weekend == 0` AND `skip_count_since_last_real_learn >= 5` → declare **"Meta Budget Spent."**
+> From this point: ONLY do arXiv checks (1 query per cycle) or principled skips. No new meta-reflects until arXiv Monday batch OR Leo unblocks.
+
+**Why this is harder than Q23:** "0 new Qs this weekend" is not gameable by "genuine Q" claims — it requires an actually new Q to have been added. The 4h pause still applies normally; this rule activates when the budget is spent AND the pause has already expired.
+
+**Applied cycle #129:** Meta Budget SPENT for weekend March 1 (0 new Qs since cycle #125, >3h ago, skip count >= 5). Next cycles: arXiv check + principled skip only.
+
+**Status:** ✅ CLOSED [INFERRED — validate at next weekend]
+
+---
+
+## Meta-board Status: 25/25 Qs answered ✅ (count-saturated, cycle #129)
 
 ---
 

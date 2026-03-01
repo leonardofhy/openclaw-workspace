@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 16:02
+**Last Updated:** 2026-03-01 16:08
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
@@ -30,6 +30,7 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - Preference update: Leo wants me to handle things autonomously first (少打擾、先自己處理) and only escalate when a true decision or blocker exists.
 - Status update from Leo: back to work now; morning was mostly experiment monitoring/handling; afternoon focus should be paper writing.
 - Leo confirmed he returned to work on time after the 30-minute break reminder.
+- 2026-03-01 16:08: Leo requested「刷新一下」in #general; executing a quick gateway refresh/restart now.
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: **交由 Lab Leo 執行（Leo 已同意要開）**

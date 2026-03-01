@@ -539,3 +539,25 @@ No high-signal update. All three feeds fully static through Sunday afternoon; no
 **2026-03-01 15:45 (Sun)** — scan: LW top = "Persona Parasitology" (already picked 15:15) | AF top = "Are there lessons from high-reliability engineering for AGI safety?" (already picked 09:15) | EA Forum top = "The best cause will disappoint you" (Feb 11 — old, unchanged)
 
 No high-signal update. All three feeds static since 15:15; no new posts across AF/LW/EA Forum this cycle.
+
+---
+**2026-03-01 16:15 (Sun)** — scan: LW new top = "Petapixel cameras won't exist soon" (score=4.7, not safety-relevant) + "My personal apology to Eliezer Yudkowsky…" (score=1.8, personal reflections piece — no novel technical content) | LW curated top = "Persona Parasitology" (already picked 15:15) | AF rate-limited | no new safety-relevant posts since 15:45 cycle
+
+No high-signal update. Sunday afternoon feeds remain static; no new AI safety posts across AF/LW since last cycle.
+
+---
+**2026-03-01 16:45 (Sun)** — scan: LW **+1 new** ("Tools to generate realistic prompts help surprisingly little with Petri audit realism", 08:18Z = 16:18 Taipei, Karma: 4) | AF rate-limited (429) | EA Forum unchanged
+
+**[new-pick]** *"Tools to generate realistic prompts help surprisingly little with Petri audit realism"* (LessWrong, Mar 1, 2026, Anthropic Fellows Program — Connor Kissane, Monte M, Fabien Roger)
+- Why: Directly addresses the "evaluation awareness" problem — a core threat to AI safety evaluations. Shows that even with better synthetic prompt generators (trained to be indistinguishable from real WildChat data), Petri-style automated audits don't gain realistic full-transcript structure; bottleneck is higher-level features (harmful scenario setup, unnatural multi-turn flow). Empirical methodology result from Anthropic insiders; has code. Low karma now (fresh post) but substantive — relevant to anyone thinking about how to trust AI eval results.
+- Link: <https://www.lesswrong.com/posts/jdoDvKGLbaaJWnDpE/tools-to-generate-realistic-prompts-help-surprisingly-little>
+
+---
+**2026-03-01 17:15 (Sun)** — scan: LW recent top = "Tools to generate realistic prompts…" (already picked 16:45, Karma now 4) + "Petapixel cameras won't exist soon" (not safety-relevant) + "Here's to the Polypropylene Makers" (Feb 27, off-topic) | LW curated top = "Persona Parasitology" (already picked 15:15) | AF rate-limited (429) | no new safety-relevant posts since 16:45 cycle
+
+No high-signal update. All three feeds static through Sunday evening; no new AI safety posts across LW/AF/EA Forum this cycle. Today's picks (Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism) remain the complete weekend reading list.
+
+---
+**2026-03-01 17:45 (Sun)** — scan: LW new top = "Tools to generate realistic prompts…" (already picked 16:45, Karma now 3.5) + "Petapixel cameras…" + "Burying a Changeling…" (metaphysics/fiction, not safety-relevant) | LW curated = "Persona Parasitology" (already picked) | AF rate-limited / empty | no new safety-relevant posts since 16:45 cycle
+
+No high-signal update. Sunday evening feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle.
