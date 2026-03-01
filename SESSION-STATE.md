@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 16:08
+**Last Updated:** 2026-03-01 18:44
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
@@ -31,6 +31,9 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - Status update from Leo: back to work now; morning was mostly experiment monitoring/handling; afternoon focus should be paper writing.
 - Leo confirmed he returned to work on time after the 30-minute break reminder.
 - 2026-03-01 16:08: Leo requested「刷新一下」in #general; executing a quick gateway refresh/restart now.
+- Naming preference update: this bot should be called "mac leo" and the other bot "lab leo"; Leo has already changed avatars for both and asks when names propagate.
+- Leo observed: avatar updates propagate quickly, but renaming bot in Discord Developer Portal often does NOT sync reliably (practical behavior note).
+- Leo decisions (latest): (1) approved, (2) confirmed to lock target at NeurIPS 2026, (3) defer until Interspeech 2026 final paper update is finished (3/5 AoE), (4) no objections.
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: **交由 Lab Leo 執行（Leo 已同意要開）**

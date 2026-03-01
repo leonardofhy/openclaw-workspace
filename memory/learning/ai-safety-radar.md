@@ -561,3 +561,13 @@ No high-signal update. All three feeds static through Sunday evening; no new AI 
 **2026-03-01 17:45 (Sun)** — scan: LW new top = "Tools to generate realistic prompts…" (already picked 16:45, Karma now 3.5) + "Petapixel cameras…" + "Burying a Changeling…" (metaphysics/fiction, not safety-relevant) | LW curated = "Persona Parasitology" (already picked) | AF rate-limited / empty | no new safety-relevant posts since 16:45 cycle
 
 No high-signal update. Sunday evening feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle.
+
+---
+**2026-03-01 18:15 (Sun)** — scan: LW new = "Tools to generate realistic prompts…" (already picked 16:45, Karma 3.1) + "My personal apology to Eliezer Yudkowsky…" (personal reflections, score 0.8, no novel technical content) | LW curated = "Persona Parasitology" (already picked 15:15) | AF rate-limited (429)
+
+No high-signal update. Sunday feeds remain static; no new safety-relevant posts since last cycle.
+
+---
+**2026-03-01 18:45 (Sun)** — scan: LW top = "Tools to generate realistic prompts…" (already picked 16:45, Karma 2.7) + "My personal apology to Eliezer…" (score 0.8, personal reflections) + "Petapixel cameras…" (not safety-relevant) | AF = "Schelling Goodness" (already picked) + "Model Incrimination" (already picked multiple times) | EA Forum unchanged
+
+No high-signal update. Sunday evening feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
