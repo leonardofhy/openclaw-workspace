@@ -320,7 +320,34 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 21/21 Qs answered ✅ FULLY SATURATED (cycle #114)
+## Meta-Burst Limit Rule (added cycle #115, 2026-03-01 09:01)
+
+**Pattern identified:** "Rapid Q Open/Close" — Qs opened and closed within 30-60 min, some without sufficient validation.
+
+**Rule (now active):**
+> When closing a meta-Q, tag it as **[OBSERVED]** (direct empirical evidence) or **[INFERRED]** (reasoning/extrapolation). INFERRED closures should include: "validate at first real experiment run."
+> Minimum 2-cycle holding period before closure unless evidence is [OBSERVED].
+
+- Q22: [OBSERVED] ✅ (direct: this cron arrives live) — rapid closure justified
+- Q15: [INFERRED] — add note to validate at first experiment run
+
+---
+
+## Q23: Count-Saturation vs Real Saturation (✅ CLOSED cycle #115, 2026-03-01 09:01)
+
+**Question:** Is "21/21 SATURATED" a real stopping condition, or a counting artifact?
+
+**Analysis:**
+- 21/21 Qs closed ≠ no new questions worth asking; it means no new questions are currently visible
+- Real saturation = system generating no questions; count-saturation = all opened Qs answered
+- When execution-blocked + arXiv-gap + meta-burst ≥ 6 cycles: count-saturation is correct and healthy
+- Rule: saturation → pause meta-cycles for ≥4h OR until Leo unblocks OR arXiv batch arrives
+
+**Status:** ✅ CLOSED (count-saturation is valid; 4h pause rule applied)
+
+---
+
+## Meta-board Status: 22/22 Qs answered ✅ (count-saturated, cycle #115)
 
 ---
 

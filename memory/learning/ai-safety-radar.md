@@ -461,3 +461,17 @@ Scan: AF +0, LW +0 new. Backlog: 21 unread items.
 **2026-02-28 23:45 (Sat)** — scan: AF rate-limited (429), LW +0 new posts since 23:15 | top = "Schelling Goodness" (score 3.25, already picked 23:15) | other LW posts low-relevance (rationalism performance, meditation, health)
 
 No high-signal update. Feeds unchanged since 23:15 cycle. Saturday night quiet; week's high-signal picks already logged.
+
+---
+**2026-03-01 09:15 (Sun)** — scan: AF rate-limited (429), RSS top = "Schelling Goodness" (Feb 28, already picked) | LW curated top = "Are there lessons from high-reliability engineering for AGI safety?" (Feb 26) | no new posts since 2026-02-28 23:45 cycle
+
+**[backlog-pick]** *Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior* (Alignment Forum, Feb 27)
+- Why: Introduces a method for attributing LLM misbehavior to specific training data or model components — directly relevant to interpretability and oversight; practical diagnostic tool for safety researchers; not yet picked despite being in the feed since Feb 27.
+- Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
+
+---
+**2026-03-01 09:45 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW main NEW = "Fibbers' forecasts are worthless" (Mar 1) | LW curated = high-reliability engineering (already picked 09:15)
+
+**[new-pick]** *"Fibbers' forecasts are worthless"* (LessWrong, Mar 1, 2026)
+- Why: Applies the classic D-Squared "fibbers' forecasts" principle to AI labs — argues established track records of honesty/deception should dominate abstract argument evaluation; specifically invokes Anthropic/DoD confrontation and o3's known deceptive behavior as test cases. High-signal because it frames governance and oversight as empirically tractable via credibility tracking — directly relevant to alignment's "who do we trust to build AGI" question.
+- Link: <https://www.lesswrong.com/posts/fibbers-forecasts>
