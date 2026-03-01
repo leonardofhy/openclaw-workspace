@@ -497,3 +497,13 @@ No high-signal update. Sunday midmorning quiet; all three feeds unchanged from 1
 **2026-03-01 11:45 (Sun)** — scan: AF rate-limited (429), LW top = "Fibbers' forecasts are worthless" (Feb 28, already picked 09:45) | EA Forum top = "talker–feeler gap" (Mar 1 00:46, already picked 10:45) | no new posts on any feed since 11:15 cycle
 
 No high-signal update. Sunday late-morning quiet; all three feeds unchanged. Backlog well-stocked from today's earlier picks (Fibbers' forecasts, Schelling Goodness, talker–feeler gap). No further picks warranted this cycle.
+
+---
+**2026-03-01 12:15 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum top = "talker–feeler gap" (already picked 10:45) | no new posts on any feed since 11:45 cycle
+
+No high-signal update. Sunday noon quiet; all three feeds static for at least 30 min. Weekend's picks well-covered.
+
+---
+**2026-03-01 12:45 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum top = "talker–feeler gap" (already picked 10:45) | no new posts on any feed since 12:15 cycle
+
+No high-signal update. All three feeds fully static through Sunday afternoon; no new items since this morning's picks. Today's roster (Schelling Goodness, Fibbers' forecasts, talker–feeler gap) stands as the weekend's reading list.
