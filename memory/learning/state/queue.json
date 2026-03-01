@@ -94,12 +94,13 @@
       "type": "read",
       "track": "T5",
       "title": "Deep-read SPIRIT (EMNLP 2025) — Tier 0 priority",
-      "status": "ready",
+      "status": "done",
       "priority": 0,
       "blocked_by": null,
       "definition_of_done": "Structured notes with method details + connection to gc(k)",
       "created": "2026-03-01",
-      "due": null
+      "due": null,
+      "completed": "2026-03-01"
     },
     {
       "id": "Q009",
