@@ -68,8 +68,16 @@ def find_cycle_files(cycles_dir):
         if fname.endswith('.md'):
             fpath = os.path.join(cycles_dir, fname)
             mtime = os.path.getmtime(fpath)
-            # Extract date from filename pattern: YYYY-MM-DD_cycleNN.md or c-YYYYMMDD-HHMM.md
-            date_str = fname[:10] if len(fname) >= 10 and fname[4] == '-' else None
+            # Extract date from filename patterns:
+            #   Legacy: YYYY-MM-DD_cycleNN.md (fname[4] == '-')
+            #   v2:     c-YYYYMMDD-HHMM.md   (fname[0] == 'c', date at fname[2:10])
+            if len(fname) >= 10 and fname[4] == '-':
+                date_str = fname[:10]  # YYYY-MM-DD
+            elif fname.startswith('c-') and len(fname) >= 10:
+                raw = fname[2:10]  # YYYYMMDD
+                date_str = f"{raw[:4]}-{raw[4:6]}-{raw[6:8]}" if len(raw) == 8 and raw.isdigit() else None
+            else:
+                date_str = None
             results.append((fpath, date_str, mtime))
     return results
 
@@ -87,8 +95,11 @@ def find_legacy_cycle_files(learning_dir):
 def main():
     parser = argparse.ArgumentParser(description='Autodidact GC')
     parser.add_argument('--apply', action='store_true', help='Actually delete/consolidate')
-    parser.add_argument('--validate', action='store_true', help='Only check caps')
+    parser.add_argument('--validate', action='store_true', help='Only check caps, no changes')
     args = parser.parse_args()
+
+    if args.validate:
+        args.apply = False  # validate mode = read-only
 
     ws = find_workspace()
     learning_dir = os.path.join(ws, 'memory', 'learning')

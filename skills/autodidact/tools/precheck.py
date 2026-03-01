@@ -63,14 +63,8 @@ def main():
                     return
             except ValueError:
                 pass
-
-        # Check if fallback tasks exist and are ready
-        fallback_ids = set(blockers.get('fallback_tasks', []))
-        fallback_ready = [t for t in queue.get('tasks', [])
-                          if t['id'] in fallback_ids and t.get('status') == 'ready']
-        if fallback_ready:
-            print(f"RUN {len(fallback_ready)} fallback tasks available despite block")
-            return
+        # Note: fallback tasks are already caught by Check 1 (READY tasks).
+        # No separate fallback check needed here.
 
     # --- Check 3: New news digest? ---
     news_dir = os.path.join(ws, 'memory', 'learning', 'news')

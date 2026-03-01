@@ -42,7 +42,6 @@ def load_queue():
         return {"version": 1, "max_tasks": MAX_TASKS, "tasks": []}
 
 def save_queue(data):
-    import tempfile
     p = queue_path()
     tmp = p + '.tmp'
     with open(tmp, 'w') as f:

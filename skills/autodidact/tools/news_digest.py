@@ -35,17 +35,22 @@ def main():
                         help='Add high-relevance items to autodidact queue')
     parser.add_argument('--min-relevance', type=int, default=7,
                         help='Minimum relevance score to include (default: 7)')
+    parser.add_argument('--file', help='Read scored items from file instead of stdin')
     args = parser.parse_args()
 
     ws = find_workspace()
     news_dir = os.path.join(ws, 'memory', 'learning', 'news')
     os.makedirs(news_dir, exist_ok=True)
 
-    # Read scored items from stdin
+    # Read scored items from file or stdin
     try:
-        items = json.load(sys.stdin)
-    except json.JSONDecodeError as e:
-        print(f"ERROR: Invalid JSON input: {e}", file=sys.stderr)
+        if args.file:
+            with open(args.file) as f:
+                items = json.load(f)
+        else:
+            items = json.load(sys.stdin)
+    except (json.JSONDecodeError, FileNotFoundError) as e:
+        print(f"ERROR: Invalid input: {e}", file=sys.stderr)
         sys.exit(1)
 
     if not isinstance(items, list):

@@ -100,7 +100,7 @@ Update `memory/learning/state/active.json`:
 
 ## Constraints
 
-- Each cycle: < 90 seconds compute
+- Each cycle: aim for < 90 seconds compute (cron hard timeout: 300s)
 - Boot context: < 500 lines (enforced by file structure)
 - Max 25 tasks in queue.json
 - Cycle files GC'd after 48h (gc.py runs daily)

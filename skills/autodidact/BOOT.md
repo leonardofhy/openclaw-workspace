@@ -43,13 +43,13 @@ The `phase` field in active.json controls behavior. Three phases:
 
 ## Quotas (per day, enforced in active.json budgets)
 
-| Phase    | learn max | build min | reflect max |
-|----------|-----------|-----------|-------------|
-| explore  | 6         | 2         | 2           |
-| converge | 3         | 4         | 1           |
-| execute  | 1         | 6         | 1           |
+| Phase    | learn budget | build budget | reflect budget |
+|----------|-------------|-------------|---------------|
+| explore  | 6           | 4           | 2             |
+| converge | 3           | 6           | 1             |
+| execute  | 1           | 8           | 1             |
 
-If a quota is violated, DECIDE must pick the deficit action type next.
+Budgets are **caps** (max allowed per day). The decision matrix priority (build > learn > plan > reflect > skip) ensures build gets done first. When a budget hits 0, that action type is blocked for the day.
 
 ## Decision Matrix
 
