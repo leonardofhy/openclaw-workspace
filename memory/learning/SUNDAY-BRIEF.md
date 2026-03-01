@@ -77,4 +77,12 @@ Once Leo runs the 5 steps above and approves the IIT experiment:
 
 ---
 
-*Created by autodidact cycle #108. Delete or rename this file after Leo reviews it.*
+## Optional: One Quick Decision (Q21 — 1 line)
+
+After you read this brief, cycle #112 (7:31 AM) has one small decision ready:
+> **Approve conditional cadence rule?** (2h intervals during dead zones: weekend arXiv gap + execution-blocked + meta-board saturated — all 3 simultaneously). Saves ~$0.25/dead-zone period. Resumes 30-min immediately when any condition lifts.
+> Full cost analysis in: `memory/learning/2026-03-01_cycle112.md`
+
+---
+
+*Created by autodidact cycle #108. Updated by cycle #112. Delete or rename this file after Leo reviews it.*
