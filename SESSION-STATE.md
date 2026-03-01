@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 04:33
+**Last Updated:** 2026-03-01 08:00
 
 ## Current Task
 Senior engineer review + coordinator upgrade prompt + research integration
@@ -34,3 +34,4 @@ Senior engineer review + coordinator upgrade prompt + research integration
 ## Session Notes
 - Commits today: 48619d6 (制度改革), 2b60d0a (成長系統), d5930bc (daily growth), 8672bfd (mailbox), ce9ec63 (WAL)
 - Cross-merging macbook-m3 b2763a7 now
+- 2026-03-01 08:00 Cron daily-merge: check macbook-m3 branch and merge if behind.
