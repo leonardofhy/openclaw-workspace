@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 20:00
+**Last Updated:** 2026-03-02 03:04
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
@@ -38,6 +38,7 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - Critical bug detail: audio-reliance chunking assumption was full-duration/N, but Qwen implementation caps max audio duration at 30s; this likely distorts retention metrics and impacts the paper's core contribution.
 - Preliminary model audit from Leo (GPT-5.2 Pro-assisted): Qwen2-Audio-7B likely has Whisper 30s hard limit; Qwen2.5-Omni default processor shows 300s chunk_length; Qwen3-Omni uses AuT (not Whisper, long-form support); Phi-4-MM not Whisper and supports longer audio; Voxtral uses Whisper with long-form chunking support; Audio-Flamingo-3 uses 30s windows but supports up to 10 min/sample (longer truncated). Waiting for Leo's next instruction before finalizing impact scope.
 - Leo reviewer-perspective concern: if paper hard-caps all Qwen audio to 30s despite native long-audio support, reviewers will question methodology fairness and validity.
+- Reminder request: when free tomorrow, reply to Evan about potential AI research collaboration / feedback; no rush because current days are busy.
 - New reminder request: after this thread, remind Leo to build a simple personal relationship-network database; source data should be extracted from diary entries and organized by specific target persons.
 - Evening status: Leo has finished dinner, returned home, and plans a 30-minute shower block now.
 
