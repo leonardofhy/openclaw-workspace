@@ -475,3 +475,25 @@ No high-signal update. Feeds unchanged since 23:15 cycle. Saturday night quiet; 
 **[new-pick]** *"Fibbers' forecasts are worthless"* (LessWrong, Mar 1, 2026)
 - Why: Applies the classic D-Squared "fibbers' forecasts" principle to AI labs — argues established track records of honesty/deception should dominate abstract argument evaluation; specifically invokes Anthropic/DoD confrontation and o3's known deceptive behavior as test cases. High-signal because it frames governance and oversight as empirically tractable via credibility tracking — directly relevant to alignment's "who do we trust to build AGI" question.
 - Link: <https://www.lesswrong.com/posts/fibbers-forecasts>
+
+---
+**2026-03-01 10:15 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | no new posts on either feed since 09:45 cycle
+
+No high-signal update. Sunday morning quiet; feeds unchanged from last cycle.
+
+---
+**2026-03-01 10:45 (Sun)** — scan: AF rate-limited (429), LW +0 new (top = "Fibbers' forecasts", Feb 28, already picked) | EA Forum +1 new | backlog: ~19 unread
+
+**[new-pick]** *"The 'talker–feeler gap': AI valence may be unknowable"* (EA Forum, Mar 1 00:46 UTC, score: 5.8)
+- Why: Directly addresses a hard epistemological problem in AI welfare — the gap between an AI *reporting* valence (positive/negative experience) and actually *having* it, and argues this gap may be fundamentally unresolvable. Connects to ELK-type problems applied to consciousness; relevant to AI moral patienthood debates and why standard behavioral/verbal evidence can't settle AI sentience. High-karma, today's first Mar 1 post worth reading.
+- Link: <https://forum.effectivealtruism.org/posts/talker-feeler-gap-ai-valence-unknowable>
+
+---
+**2026-03-01 11:15 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum top = "talker–feeler gap" (already picked 10:45) | no new posts on any feed since last cycle
+
+No high-signal update. Sunday midmorning quiet; all three feeds unchanged from 10:45 cycle. All high-signal posts from this weekend already logged.
+
+---
+**2026-03-01 11:45 (Sun)** — scan: AF rate-limited (429), LW top = "Fibbers' forecasts are worthless" (Feb 28, already picked 09:45) | EA Forum top = "talker–feeler gap" (Mar 1 00:46, already picked 10:45) | no new posts on any feed since 11:15 cycle
+
+No high-signal update. Sunday late-morning quiet; all three feeds unchanged. Backlog well-stocked from today's earlier picks (Fibbers' forecasts, Schelling Goodness, talker–feeler gap). No further picks warranted this cycle.

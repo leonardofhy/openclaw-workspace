@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 12:02
+**Last Updated:** 2026-03-01 12:06
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
@@ -25,6 +25,7 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - 2026-03-01 04:29: Leo approved next step to upgrade bulk correction from append-only to deterministic adjust/split/merge over existing ACTUAL blocks.
 - 2026-03-01 04:33: upgraded `bulk_correct_v2.py` to support deterministic `adjust/split/merge/insert` operations on ACTUAL timeline with unresolved->Inbox fallback; verified with dry-run test case (ops applied: adjust=1 split=1 merge=1).
 - 2026-03-01 12:02: Leo approved applying review fixes; proceeding with minimal patch for (1) bulk correction parse/drop risk and (2) gcal meta backfill on kept/update paths.
+- Leo correction (2026-03-01 noon): woke around 10:50 (not earlier blocks), Project Parallax this morning only lasted ~10 min and only confirmed next meeting time; morning also spent syncing/tracking experiment progress; requested reminder to fill When2Meet form today.
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: **交由 Lab Leo 執行（Leo 已同意要開）**
