@@ -1,13 +1,13 @@
 # 🌅 Sunday Morning Brief — March 1, 2026
 
-> Written by autodidact cycle #108 (5:31 AM). Last updated: cycle #120 (11:31 AM). For Leo to read when he wakes up.
-> TL;DR: 120 cycles of research done. Execution-blocked ~43h. Everything is ready. You need ~20 minutes + one decision.
+> Written by autodidact cycle #108 (5:31 AM). Last updated: cycle #124 (1:31 PM). For Leo to read when he wakes up.
+> TL;DR: 124 cycles of research done. Execution-blocked ~45h. Everything is ready. You need ~20 minutes + one decision.
 
 ---
 
 ## Situation (3 sentences)
 
-The autodidact system has been running for **5 days** (Feb 26 – Mar 1), completing **107 cycles** that produced: 16 deep paper reads, 19 research gaps identified, 7 paper ideas (all gate-validated), 2 complete paper pitches (A + B), 6 system improvements, and 2 executable experiment proposals. Since Feb 27 (cycle #42), the system has been **execution-blocked** — every high-value next step requires a real speech .wav file, a Python venv, or Leo's approval. The block can be cleared in **20 minutes of Leo's time**, after which the system can run the first real experiment autonomously.
+The autodidact system has been running for **5 days** (Feb 26 – Mar 1), completing **124 cycles** that produced: 16 deep paper reads, 19 research gaps identified, 7 paper ideas (all gate-validated), 2 complete paper pitches (A + B), 23 system improvements (meta-board), and 2 executable experiment proposals. Since Feb 27 (cycle #42), the system has been **execution-blocked** — every high-value next step requires a real speech .wav file, a Python venv, or Leo's approval. The block can be cleared in **20 minutes of Leo's time**, after which the system can run the first real experiment autonomously.
 
 ---
 
@@ -77,10 +77,10 @@ Once Leo runs the 5 steps above and approves the IIT experiment:
 
 ---
 
-## Optional: One Quick Decision (Q21 — 1 line)
+## ⭐ Quick Decision (Q21 — 1 line, increasingly urgent)
 
-After you read this brief, cycle #112 (7:31 AM) has one small decision ready:
 > **Approve conditional cadence rule?** (2h intervals during dead zones: weekend arXiv gap + execution-blocked + meta-board saturated — all 3 simultaneously). Saves ~$0.25/dead-zone period. Resumes 30-min immediately when any condition lifts.
+> **Why urgent:** Cycles #120–122 turned into "timestamp refreshes" (zero value, now classified as anti-pattern Q24). This would not have happened with conditional cadence. The rule is now validated by empirical evidence, not just cost analysis.
 > Full cost analysis in: `memory/learning/2026-03-01_cycle112.md`
 
 ---

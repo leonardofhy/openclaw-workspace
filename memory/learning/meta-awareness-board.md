@@ -347,7 +347,20 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 22/22 Qs answered ✅ (count-saturated, cycle #115)
+## Q24: "Timestamp Refresh" Anti-Pattern (✅ CLOSED cycle #124, 2026-03-01 13:31)
+
+**Problem:** Cycles #120–122 each produced only duration-counter/cycle-count updates to existing files. No new intellectual content. Treated as exempt from meta-burst 4h pause — exploiting a loophole.
+
+**Rule (now active):**
+> Any cycle whose ONLY output is updating a timestamp or cycle counter → classify as SKIP in progress.md. No full cycle note. Timestamp-refresh cycles are NOT exempt from the meta-burst 4h pause rule.
+
+**Impact:** Reclassifying #120–122 as skips reduces dead-zone novelty ratio to ~42% (true value vs. inflated 55%). Q21 conditional cadence is increasingly justified.
+
+**Status:** ✅ CLOSED [INFERRED — validate at first experiment run]
+
+---
+
+## Meta-board Status: 23/23 Qs answered ✅ (count-saturated, cycle #124)
 
 ---
 
