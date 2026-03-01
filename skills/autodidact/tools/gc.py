@@ -154,14 +154,11 @@ def main():
     # Check both legacy location and new cycles/ dir
     all_cycles = find_cycle_files(cycles_dir) + find_legacy_cycle_files(learning_dir)
 
-    # Use filename date (not mtime) to determine age — git operations update mtime
+    # Use filename date to determine age — git operations update mtime
+    # Keep only files from today and yesterday (strict 2-day window)
     today_str = now.strftime('%Y-%m-%d')
-    yesterday = (now - timedelta(hours=CYCLE_MAX_AGE_HOURS)).strftime('%Y-%m-%d')
-    recent_dates = {today_str, yesterday}
-    # Also keep files with dates within 48h window
-    for i in range(3):  # today, yesterday, day before yesterday
-        d = (now - timedelta(days=i)).strftime('%Y-%m-%d')
-        recent_dates.add(d)
+    yesterday_str = (now - timedelta(days=1)).strftime('%Y-%m-%d')
+    recent_dates = {today_str, yesterday_str}
 
     old_cycles = [(p, d, m) for p, d, m in all_cycles if d and d not in recent_dates]
     recent_cycles = [(p, d, m) for p, d, m in all_cycles if not d or d in recent_dates]

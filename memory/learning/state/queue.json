@@ -81,12 +81,13 @@
       "type": "build",
       "track": "T5",
       "title": "MATS Research Task proposal draft",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "2-page proposal: hypothesis, method, expected results, timeline",
       "created": "2026-03-01",
-      "due": "2026-04-30"
+      "due": "2026-04-30",
+      "completed": "2026-03-01"
     },
     {
       "id": "Q008",
@@ -189,36 +190,39 @@
       "type": "read",
       "track": "T3",
       "title": "News: Why Did My Model Do That? Model Incrimination for Diagnosing",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-",
       "created": "2026-03-01",
-      "due": null
+      "due": null,
+      "completed": "2026-03-01"
     },
     {
       "id": "Q017",
       "type": "read",
       "track": "T3",
       "title": "News: How will we do SFT on models with opaque reasoning?",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/GJTzhQgaRWLFJkPbt/how-will-we-do-sft-on-mod",
       "created": "2026-03-01",
-      "due": null
+      "due": null,
+      "completed": "2026-03-01"
     },
     {
       "id": "Q018",
       "type": "read",
       "track": "T5",
       "title": "News: The Science of Detecting LLM-Generated Text",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights. Source: https://dl.acm.org/doi/10.1145/3624725",
       "created": "2026-03-01",
-      "due": null
+      "due": null,
+      "completed": "2026-03-01"
     }
   ]
 }

@@ -95,8 +95,15 @@ def main():
         tasks = queue.get('tasks', [])
         max_num = max((int(t['id'][1:]) for t in tasks if t['id'].startswith('Q') and t['id'][1:].isdigit()), default=0)
 
+        # Deduplicate: check existing task titles to avoid adding the same article twice
+        existing_titles = {t.get('title', '').lower() for t in tasks}
+
         added = 0
         for item in relevant[:3]:  # Max 3 items per day
+            candidate_title = f"News: {item['title'][:60]}"
+            if candidate_title.lower() in existing_titles:
+                print(f"Skipped (duplicate): {candidate_title}", file=sys.stderr)
+                continue
             if len(tasks) >= 25:
                 print("Queue full (25), skipping remaining items", file=sys.stderr)
                 break
