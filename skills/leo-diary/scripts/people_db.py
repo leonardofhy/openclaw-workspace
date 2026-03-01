@@ -505,6 +505,121 @@ def cmd_delete(args):
         print(f"🗑️ 刪除 {p['name']} ({p['id']}) + {event_count} 筆事件")
 
 
+def cmd_profile(args):
+    """Generate a human-readable profile markdown for a person."""
+    people = _load_jsonl(PEOPLE_FILE)
+    p = find_person(people, args.name)
+    if not p:
+        print(f"❌ 找不到: {args.name}", file=sys.stderr)
+        sys.exit(1)
+
+    events = _load_jsonl(EVENTS_FILE)
+    person_events = sorted(
+        [e for e in events if e.get("person_id") == p["id"]],
+        key=lambda e: e.get("date", ""),
+    )
+
+    # Compute stats
+    from collections import Counter
+    type_counts = Counter(e.get("type", "") for e in person_events)
+    sentiment_counts = Counter(e.get("sentiment", "") for e in person_events)
+    months_active = sorted(set(e["date"][:7] for e in person_events if e.get("date")))
+
+    # Find milestones
+    milestones = [e for e in person_events if e.get("type") == "milestone"]
+
+    # Build markdown
+    lines = []
+    lines.append(f"# 👤 {p['name']}")
+    lines.append("")
+    if p.get("aliases"):
+        lines.append(f"**別名**: {', '.join(p['aliases'])}")
+    lines.append(f"**關係**: {p.get('relationship', '-')}")
+    if p.get("context"):
+        lines.append(f"**背景**: {p['context']}")
+    if p.get("first_met"):
+        lines.append(f"**初識**: {p['first_met']}")
+    lines.append(f"**信任**: {p.get('trust', 5)}/10 | **親近**: {p.get('closeness', 5)}/10")
+    if p.get("tags"):
+        lines.append(f"**標籤**: {', '.join(p['tags'])}")
+    if p.get("notes"):
+        lines.append(f"\n> {p['notes']}")
+    lines.append("")
+
+    # Stats
+    lines.append("## 📊 互動統計")
+    lines.append(f"- 總互動: {len(person_events)} 次")
+    if person_events:
+        lines.append(f"- 時間跨度: {person_events[0]['date']} ~ {person_events[-1]['date']}")
+    lines.append(f"- 活躍月份: {len(months_active)} 個月")
+    if type_counts:
+        top_types = ", ".join(f"{t}({c})" for t, c in type_counts.most_common(3))
+        lines.append(f"- 主要互動類型: {top_types}")
+    pos = sentiment_counts.get("positive", 0)
+    neg = sentiment_counts.get("negative", 0)
+    total_s = pos + neg + sentiment_counts.get("mixed", 0) + sentiment_counts.get("neutral", 0)
+    if total_s > 0:
+        lines.append(f"- 情緒: {pos*100//total_s}% 正面, {neg*100//total_s}% 負面")
+    lines.append("")
+
+    # Milestones
+    if milestones:
+        lines.append("## 🏆 重要里程碑")
+        for m in milestones:
+            lines.append(f"- **{m['date']}**: {m.get('summary', '')}")
+        lines.append("")
+
+    # Timeline (grouped by month, max 3 per month)
+    lines.append("## 📅 互動時間軸")
+    current_month = ""
+    month_count = 0
+    for e in person_events:
+        month = e["date"][:7]
+        if month != current_month:
+            current_month = month
+            month_count = 0
+            lines.append(f"\n### {month}")
+
+        month_count += 1
+        if month_count > 5:
+            if month_count == 6:
+                remaining = sum(1 for ee in person_events if ee["date"][:7] == month) - 5
+                lines.append(f"- *...還有 {remaining} 筆*")
+            continue
+
+        icon = {"meeting": "🤝", "chat": "💬", "meal": "🍽️", "conflict": "⚡",
+                "favor": "🎁", "milestone": "🏆", "work": "💻", "social": "🎉",
+                "interaction": "▪️"}.get(e.get("type", ""), "▪️")
+        lines.append(f"- {e['date']} {icon} {e.get('summary', '')[:80]}")
+
+    lines.append("")
+
+    # Next steps
+    if p.get("next_steps"):
+        lines.append("## 🎯 下一步")
+        for s in p["next_steps"]:
+            lines.append(f"- {s}")
+        lines.append("")
+
+    lines.append(f"---\n_Generated: {datetime.now(TZ).strftime('%Y-%m-%d %H:%M')}_")
+
+    content = "\n".join(lines)
+
+    # Save
+    if args.output:
+        out_path = Path(args.output)
+    else:
+        out_dir = PEOPLE_DIR / "profiles"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        safe_name = p["name"].replace(" ", "_")
+        out_path = out_dir / f"{p['id']}-{safe_name}.md"
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(content)
+    print(f"💾 Profile saved: {out_path}")
+    print(content)
+
+
 def cmd_stats(args):
     people = _load_jsonl(PEOPLE_FILE)
     events = _load_jsonl(EVENTS_FILE)
@@ -616,6 +731,11 @@ def main():
     p_del.add_argument("target", help="人名 或 事件 ID (E001)")
     p_del.add_argument("--confirm", action="store_true", help="跳過確認")
 
+    # profile
+    p_prof = sub.add_parser("profile", help="生成人物 profile markdown")
+    p_prof.add_argument("name")
+    p_prof.add_argument("--output", default=None, help="輸出路徑（預設 memory/people/profiles/）")
+
     # stats
     sub.add_parser("stats", help="統計概覽")
 
@@ -634,6 +754,7 @@ def main():
         "import-scan": cmd_import_scan,
         "timeline": cmd_timeline,
         "delete": cmd_delete,
+        "profile": cmd_profile,
         "stats": cmd_stats,
     }[args.command](args)
 
