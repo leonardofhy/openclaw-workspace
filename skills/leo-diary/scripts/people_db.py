@@ -31,7 +31,19 @@ PEOPLE_FILE = PEOPLE_DIR / "people.jsonl"
 EVENTS_FILE = PEOPLE_DIR / "events.jsonl"
 SEARCH_SCRIPT = WORKSPACE / "skills" / "leo-diary" / "scripts" / "search_diary.py"
 
-# --- JSONL helpers ---
+# Valid ranges for numeric fields
+TRUST_RANGE = (1, 10)
+CLOSENESS_RANGE = (1, 10)
+
+# Reuse shared JSONL module
+sys.path.insert(0, str(WORKSPACE / "skills" / "shared"))
+try:
+    from jsonl_store import JsonlStore
+    _has_shared = True
+except ImportError:
+    _has_shared = False
+
+# --- JSONL helpers (fallback if shared module unavailable) ---
 
 def _load_jsonl(path: Path) -> list[dict]:
     if not path.exists():
@@ -48,8 +60,19 @@ def _load_jsonl(path: Path) -> list[dict]:
 
 
 def _save_jsonl(path: Path, items: list[dict]):
+    """Atomic rewrite via tempfile (matches shared/jsonl_store.py pattern)."""
+    import tempfile, os
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("\n".join(json.dumps(i, ensure_ascii=False) for i in items) + "\n")
+    content = "\n".join(json.dumps(i, ensure_ascii=False) for i in items) + "\n"
+    fd, tmp = tempfile.mkstemp(dir=path.parent, suffix=".tmp")
+    try:
+        os.write(fd, content.encode("utf-8"))
+        os.close(fd)
+        os.replace(tmp, path)
+    except:
+        os.close(fd) if not os.get_inheritable(fd) else None
+        os.unlink(tmp)
+        raise
 
 
 def _append_jsonl(path: Path, item: dict):
@@ -84,26 +107,43 @@ def find_person(people: list[dict], name: str) -> dict | None:
     return None
 
 
+def _validate_range(value: int | None, name: str, lo: int, hi: int) -> int | None:
+    """Validate numeric field is in range. Returns value or raises."""
+    if value is None:
+        return None
+    if not (lo <= value <= hi):
+        print(f"❌ {name} 必須在 {lo}-{hi} 之間，收到: {value}", file=sys.stderr)
+        sys.exit(1)
+    return value
+
+
 def cmd_add(args):
+    if not args.name or not args.name.strip():
+        print("❌ 名字不能為空", file=sys.stderr)
+        sys.exit(1)
+
+    trust = _validate_range(args.trust, "trust", *TRUST_RANGE)
+    closeness = _validate_range(args.closeness, "closeness", *CLOSENESS_RANGE)
+
     people = _load_jsonl(PEOPLE_FILE)
     existing = find_person(people, args.name)
     if existing:
         print(f"⚠️  {args.name} 已存在 (ID: {existing['id']}). 用 update 修改。")
-        return
+        sys.exit(1)
 
-    aliases = [a.strip() for a in args.aliases.split(",")] if args.aliases else []
-    tags = [t.strip() for t in args.tags.split(",")] if args.tags else []
+    aliases = [a.strip() for a in args.aliases.split(",") if a.strip()] if args.aliases else []
+    tags = [t.strip() for t in args.tags.split(",") if t.strip()] if args.tags else []
     now = datetime.now(TZ).strftime("%Y-%m-%d")
 
     person = {
         "id": _next_id(people, "P"),
-        "name": args.name,
+        "name": args.name.strip(),
         "aliases": aliases,
         "relationship": args.rel or "",
         "context": args.context or "",
         "first_met": args.first_met or "",
-        "trust": args.trust if args.trust is not None else 5,
-        "closeness": args.closeness if args.closeness is not None else 5,
+        "trust": trust if trust is not None else 5,
+        "closeness": closeness if closeness is not None else 5,
         "tags": tags,
         "notes": args.notes or "",
         "next_steps": [],
@@ -111,15 +151,18 @@ def cmd_add(args):
         "updated_at": now,
     }
     _append_jsonl(PEOPLE_FILE, person)
-    print(f"✅ Added {person['id']}: {args.name}")
+    print(f"✅ Added {person['id']}: {person['name']}")
 
 
 def cmd_update(args):
+    _validate_range(args.trust, "trust", *TRUST_RANGE)
+    _validate_range(args.closeness, "closeness", *CLOSENESS_RANGE)
+
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
     if not p:
-        print(f"❌ 找不到: {args.name}")
-        return
+        print(f"❌ 找不到: {args.name}", file=sys.stderr)
+        sys.exit(1)
 
     if args.trust is not None:
         p["trust"] = args.trust
@@ -147,8 +190,8 @@ def cmd_log(args):
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
     if not p:
-        print(f"❌ 找不到: {args.name}. 先用 add 新增。")
-        return
+        print(f"❌ 找不到: {args.name}. 先用 add 新增。", file=sys.stderr)
+        sys.exit(1)
 
     events = _load_jsonl(EVENTS_FILE)
     now = datetime.now(TZ).strftime("%Y-%m-%d")
@@ -172,8 +215,8 @@ def cmd_show(args):
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
     if not p:
-        print(f"❌ 找不到: {args.name}")
-        return
+        print(f"❌ 找不到: {args.name}", file=sys.stderr)
+        sys.exit(1)
 
     events = _load_jsonl(EVENTS_FILE)
     person_events = sorted(
@@ -328,13 +371,13 @@ def cmd_import_scan(args):
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
     if not p:
-        print(f"❌ 找不到: {args.name}. 先用 add 新增。")
-        return
+        print(f"❌ 找不到: {args.name}. 先用 add 新增。", file=sys.stderr)
+        sys.exit(1)
 
     scan_path = Path(args.file)
     if not scan_path.exists():
-        print(f"❌ 檔案不存在: {args.file}")
-        return
+        print(f"❌ 檔案不存在: {args.file}", file=sys.stderr)
+        sys.exit(1)
 
     data = json.loads(scan_path.read_text())
     entries = data.get("entries", [])
@@ -343,15 +386,18 @@ def cmd_import_scan(args):
         return
 
     events = _load_jsonl(EVENTS_FILE)
-    existing_dates = {e["date"] for e in events if e.get("person_id") == p["id"]}
+    # Dedup by (person_id, date, summary_prefix) — allows multiple events per day
+    # but blocks exact re-imports
+    existing_keys = set()
+    for e in events:
+        if e.get("person_id") == p["id"]:
+            key = (e["date"], e.get("summary", "")[:40])
+            existing_keys.add(key)
 
     imported = 0
     skipped = 0
     for entry in entries:
         date = entry.get("date", "")
-        if date in existing_dates:
-            skipped += 1
-            continue
 
         # Only import entries that have been annotated with summary
         summary = entry.get("summary", "")
@@ -363,6 +409,12 @@ def cmd_import_scan(args):
             else:
                 skipped += 1
                 continue
+
+        # Check dedup key
+        dedup_key = (date, summary[:40])
+        if dedup_key in existing_keys:
+            skipped += 1
+            continue
 
         event = {
             "id": _next_id(events, "E"),
@@ -386,8 +438,8 @@ def cmd_timeline(args):
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
     if not p:
-        print(f"❌ 找不到: {args.name}")
-        return
+        print(f"❌ 找不到: {args.name}", file=sys.stderr)
+        sys.exit(1)
 
     events = _load_jsonl(EVENTS_FILE)
     person_events = sorted(
@@ -414,6 +466,43 @@ def cmd_timeline(args):
         sent = {"positive": "+", "negative": "-", "mixed": "±", "neutral": ""}.get(
             e.get("sentiment", ""), "")
         print(f"  {e['date']} {icon} {e.get('summary','')[:60]} {sent}")
+
+
+def cmd_delete(args):
+    """Delete a person (and their events) or a single event by ID."""
+    target = args.target.strip()
+
+    if target.startswith("E") and target[1:].isdigit():
+        # Delete a single event
+        events = _load_jsonl(EVENTS_FILE)
+        before = len(events)
+        events = [e for e in events if e.get("id") != target]
+        if len(events) == before:
+            print(f"❌ 找不到事件: {target}", file=sys.stderr)
+            sys.exit(1)
+        _save_jsonl(EVENTS_FILE, events)
+        print(f"🗑️ 刪除事件 {target}")
+    else:
+        # Delete a person + their events
+        people = _load_jsonl(PEOPLE_FILE)
+        p = find_person(people, target)
+        if not p:
+            print(f"❌ 找不到: {target}", file=sys.stderr)
+            sys.exit(1)
+
+        events = _load_jsonl(EVENTS_FILE)
+        event_count = sum(1 for e in events if e.get("person_id") == p["id"])
+
+        if not args.confirm:
+            print(f"⚠️  即將刪除 {p['name']} ({p['id']}) 及其 {event_count} 筆事件")
+            print(f"   加 --confirm 確認刪除")
+            return
+
+        people = [pp for pp in people if pp.get("id") != p["id"]]
+        events = [e for e in events if e.get("person_id") != p["id"]]
+        _save_jsonl(PEOPLE_FILE, people)
+        _save_jsonl(EVENTS_FILE, events)
+        print(f"🗑️ 刪除 {p['name']} ({p['id']}) + {event_count} 筆事件")
 
 
 def cmd_stats(args):
@@ -522,6 +611,11 @@ def main():
     p_tl = sub.add_parser("timeline", help="顯示互動時間軸")
     p_tl.add_argument("name")
 
+    # delete
+    p_del = sub.add_parser("delete", help="刪除人物或事件")
+    p_del.add_argument("target", help="人名 或 事件 ID (E001)")
+    p_del.add_argument("--confirm", action="store_true", help="跳過確認")
+
     # stats
     sub.add_parser("stats", help="統計概覽")
 
@@ -539,6 +633,7 @@ def main():
         "scan": cmd_scan,
         "import-scan": cmd_import_scan,
         "timeline": cmd_timeline,
+        "delete": cmd_delete,
         "stats": cmd_stats,
     }[args.command](args)
 
