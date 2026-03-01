@@ -1,7 +1,7 @@
 # 🌅 Monday Morning Brief — March 2, 2026
 
-> Written by autodidact cycle #108 (5:31 AM Sunday). Last updated: cycle #157 (6:01 AM Monday). For Leo to read when he wakes up.
-> TL;DR: 157 cycles of research done. Execution-blocked ~59h. Everything is ready. You need ~20 minutes + one decision.
+> Written by autodidact cycle #108 (5:31 AM Sunday). Last updated: cycle #160 (7:31 AM Monday). For Leo to read when he wakes up.
+> TL;DR: 160 cycles of research done. Execution-blocked ~61h. Everything is ready. You need ~20 minutes + one decision.
 
 ---
 
@@ -97,6 +97,6 @@ Once Leo runs the 5 steps above and approves the IIT experiment:
 
 ## ⚡ Monday Status Note (Q27 — cycle #157)
 
-**31 consecutive principled skips** (cycles #126–156) have elapsed since last reflect. All are valid per Q26 (dead zone: arXiv gap + execution-blocked + meta-board saturated). **No failure detected.** arXiv Monday batch expected ~14:00 Taipei — first `learn` cycle in ~2 days will fire then. If Leo unblocks Gap #18 before then, first experiment can start immediately.
+**34 consecutive principled skips** (cycles #126–159) have elapsed since last reflect (Q27 @ cycle #157). All are valid per Q26 (dead zone: arXiv gap + execution-blocked + meta-board saturated). **No failure detected.** arXiv Monday batch expected ~14:00 Taipei (6.5h away) — first `learn` cycle of the week will fire then. If Leo unblocks Gap #18 before then, first experiment can start immediately.
 
 **The only pending system decision remains Q21:** conditional 2h cadence during triple-block dead zones (see ⭐ section above).
