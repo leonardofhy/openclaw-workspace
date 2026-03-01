@@ -134,11 +134,12 @@
       "track": "T5",
       "title": "Deep-read JALMBench (ICLR 2026) — Tier 1",
       "status": "ready",
-      "priority": 3,
+      "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Attack-defense matrix extracted; benchmark coverage gaps identified",
       "created": "2026-03-01",
-      "due": null
+      "due": null,
+      "notes": " [Leo chose: read JALMBench before scaffolding AudioSAEBench Tier 0, to avoid eval corpus rework]"
     },
     {
       "id": "Q012",
@@ -158,12 +159,13 @@
       "type": "design",
       "track": "T2",
       "title": "AudioSAEBench evaluation framework design (Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 4,
       "blocked_by": null,
       "definition_of_done": "8 SAEBench metrics mapped to audio equivalents; protocol document",
       "created": "2026-02-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-01"
     },
     {
       "id": "Q014",
