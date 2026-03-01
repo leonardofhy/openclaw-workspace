@@ -26,15 +26,15 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 2,
+    "learn_remaining_today": 1,
     "build_remaining_today": 3,
     "reflect_remaining_today": 1,
     "budget_reset_date": "2026-03-01"
   },
   "stats": {
-    "total_cycles": 116,
+    "total_cycles": 117,
     "total_skips": 38,
-    "papers_read_deep": 17,
+    "papers_read_deep": 18,
     "papers_scanned": 33,
     "research_gaps": 19,
     "paper_ideas": 7,
@@ -44,9 +44,9 @@
     "days_active": 4
   },
   "last_cycle": {
-    "id": "c-20260301-1515",
+    "id": "c-20260301-1545",
     "action": "learn",
-    "summary": "Deep-read SPIRIT (EMNLP 2025): sensitivity-based patching lacks causal grounding; gc(L) is the principled layer selector; Q008 done"
+    "summary": "Deep-read SACRED-Bench+SALMONN-Guard: 3 black-box audio attack types (SSO/SAO/MSD), 66% ASR even on Gemini 2.5 Pro; SACRED is ideal eval benchmark for listen-layer probe; Q009 done"
   },
   "last_gc": "2026-03-01T14:19:30.007894+08:00",
   "self_improve_tickets": []
