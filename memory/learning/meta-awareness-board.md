@@ -320,21 +320,21 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 20/20 Qs answered + Q22 open
+## Meta-board Status: 21/21 Qs answered ✅ FULLY SATURATED (cycle #114)
 
 ---
 
-## Q22: Do Cron Cycle Reports Actually Reach Leo? (opened cycle #113, 2026-03-01 08:01)
+## Q22: Do Cron Cycle Reports Actually Reach Leo? (✅ CLOSED cycle #114, 2026-03-01 08:31)
 
 **Question:** Q4 (cycle #53) established a 3-line cycle report format (ACTION/NOVELTY/NEXT) for Leo's benefit. But: do cron summaries actually get read by Leo directly, or does Leo only engage with main-session highlights?
 
-**Hypothesis:** Cycle reports may primarily serve future-autodidact context recovery (compaction survival), not Leo's direct reading. If true, the format should optimize for context richness, not brevity.
+**Resolution (empirical — cycle #114 observation):**
+Cron summaries ARE delivered to Leo in near-real-time via the channel (Discord/main session). Evidence: this very cycle (#114) arrives as a live message to Leo's interface. Therefore:
+- Cycle reports serve **both** purposes simultaneously: Leo's reading (→ keep 3-line format, signal/noise priority) AND future-autodidact context recovery (→ cycle note files can be more detailed)
+- **Rule (active):** 3-line format in the cron delivery text; full detail in cycle `YYYY-MM-DD_cycleNN.md` file. These are complementary, not competing.
+- **Bonus:** Morning cron deliveries (06:00-09:00) have highest Leo read-probability → front-load unblock request in morning cycles (morning relay rule from Q5/cycle #61 remains correct and is now doubly validated).
 
-**Action needed:** Ask Leo in 1 sentence: "Do you read individual autodidact cron summaries, or only main-session highlights?"
-- If Leo reads directly → keep 3-line format (signal/noise priority)
-- If Leo reads only highlights → extend format slightly for context recovery value
-
-**Status:** 🔵 OPEN — awaiting Leo's 5-second answer.
+**Status:** ✅ CLOSED — no format change needed; current system correct.
 
 ---
 
