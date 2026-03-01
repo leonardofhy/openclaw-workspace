@@ -158,6 +158,30 @@
       "definition_of_done": "8 SAEBench metrics mapped to audio equivalents; protocol document",
       "created": "2026-02-28",
       "due": null
+    },
+    {
+      "id": "Q014",
+      "type": "read",
+      "track": "T5",
+      "title": "News: Why Did My Model Do That? Model Incrimination for Diagnosing",
+      "status": "ready",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/wQtj4sYzCbhF7pFiC/why-did-my-model-do-that-",
+      "created": "2026-03-01",
+      "due": null
+    },
+    {
+      "id": "Q015",
+      "type": "read",
+      "track": "T3",
+      "title": "News: The persona selection model",
+      "status": "ready",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/ZwZgLgJn9YhJJFf5m/the-persona-selection-mod",
+      "created": "2026-03-01",
+      "due": null
     }
   ]
 }
