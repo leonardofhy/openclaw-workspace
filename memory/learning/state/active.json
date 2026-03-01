@@ -27,26 +27,26 @@
   ],
   "budgets": {
     "learn_remaining_today": 3,
-    "build_remaining_today": 4,
+    "build_remaining_today": 3,
     "reflect_remaining_today": 1,
     "budget_reset_date": "2026-03-01"
   },
   "stats": {
-    "total_cycles": 115,
+    "total_cycles": 116,
     "total_skips": 38,
     "papers_read_deep": 16,
     "papers_scanned": 33,
     "research_gaps": 19,
     "paper_ideas": 7,
     "paper_pitches": 2,
-    "code_artifacts": 2,
+    "code_artifacts": 3,
     "system_improvements": 6,
     "days_active": 4
   },
   "last_cycle": {
-    "id": "c-20260301-1045",
-    "action": "skip",
-    "summary": "Principled skip — arXiv weekend gap, execution blocked 43h"
+    "id": "c-20260301-1315",
+    "action": "build",
+    "summary": "Built gc_eval.py — gc(k) causal-patching harness with mock+real modes; Q005 completed"
   },
   "last_gc": "2026-03-01T11:53:22.346681+08:00",
   "self_improve_tickets": []

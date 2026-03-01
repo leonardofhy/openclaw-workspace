@@ -72,7 +72,20 @@ def main():
             print(f"RUN {len(fallback_ready)} fallback tasks available despite block")
             return
 
-    # --- Check 3: GC overdue? ---
+    # --- Check 3: New news digest? ---
+    news_dir = os.path.join(ws, 'memory', 'learning', 'news')
+    if os.path.isdir(news_dir):
+        today = now.strftime('%Y-%m-%d')
+        today_digest = os.path.join(news_dir, f'{today}.md')
+        if os.path.exists(today_digest):
+            # Check if any queue tasks reference this digest (already processed)
+            news_tasks = [t for t in queue.get('tasks', [])
+                          if t.get('title', '').startswith('News:') and t.get('created') == today]
+            if not news_tasks:
+                print(f"RUN new news digest found for {today}")
+                return
+
+    # --- Check 4: GC overdue? ---
     last_gc = active.get('last_gc')
     if not last_gc:
         # Never GC'd — check if there are cycle files to clean
@@ -89,13 +102,13 @@ def main():
         except ValueError:
             pass
 
-    # --- Check 4: Budget reset needed? ---
+    # --- Check 5: Budget reset needed? ---
     reset_date = active.get('budgets', {}).get('budget_reset_date')
     if reset_date and reset_date != now.strftime('%Y-%m-%d'):
         print("RUN new day — budget reset needed")
         return
 
-    # --- Check 5: Forced run every 6 hours (anti-false-negative) ---
+    # --- Check 6: Forced run every 6 hours (anti-false-negative) ---
     last_cycle = active.get('last_cycle', {})
     last_id = last_cycle.get('id', '')
     if last_id:

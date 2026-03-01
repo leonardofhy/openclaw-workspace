@@ -55,12 +55,13 @@
       "type": "build",
       "track": "T3",
       "title": "gc(k) eval harness scaffold (CPU-only, Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Python script that takes model + stimuli + layer range → gc(k) curve (mock data OK)",
       "created": "2026-03-01",
-      "due": null
+      "due": null,
+      "completed": "2026-03-01"
     },
     {
       "id": "Q006",
