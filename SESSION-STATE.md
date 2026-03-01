@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 18:44
+**Last Updated:** 2026-03-01 19:31
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
@@ -34,6 +34,11 @@ Cross-merge macbook-m3 + mailbox 啟用驗證
 - Naming preference update: this bot should be called "mac leo" and the other bot "lab leo"; Leo has already changed avatars for both and asks when names propagate.
 - Leo observed: avatar updates propagate quickly, but renaming bot in Discord Developer Portal often does NOT sync reliably (practical behavior note).
 - Leo decisions (latest): (1) approved, (2) confirmed to lock target at NeurIPS 2026, (3) defer until Interspeech 2026 final paper update is finished (3/5 AoE), (4) no objections.
+- Leo reported acute anxiety trigger: discovered a major issue in the research currently being rushed for Interspeech submission.
+- Critical bug detail: audio-reliance chunking assumption was full-duration/N, but Qwen implementation caps max audio duration at 30s; this likely distorts retention metrics and impacts the paper's core contribution.
+- Preliminary model audit from Leo (GPT-5.2 Pro-assisted): Qwen2-Audio-7B likely has Whisper 30s hard limit; Qwen2.5-Omni default processor shows 300s chunk_length; Qwen3-Omni uses AuT (not Whisper, long-form support); Phi-4-MM not Whisper and supports longer audio; Voxtral uses Whisper with long-form chunking support; Audio-Flamingo-3 uses 30s windows but supports up to 10 min/sample (longer truncated). Waiting for Leo's next instruction before finalizing impact scope.
+- Leo reviewer-perspective concern: if paper hard-caps all Qwen audio to 30s despite native long-audio support, reviewers will question methodology fairness and validity.
+- New reminder request: after this thread, remind Leo to build a simple personal relationship-network database; source data should be extracted from diary entries and organized by specific target persons.
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: **交由 Lab Leo 執行（Leo 已同意要開）**
