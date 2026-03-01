@@ -68,12 +68,13 @@
       "type": "build",
       "track": "T5",
       "title": "Listen-Layer Audit MVP scaffold (CPU-only, Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Python script that takes LALM + audio stimuli → per-layer safety score skeleton",
       "created": "2026-03-01",
-      "due": null
+      "due": null,
+      "completed": "2026-03-01"
     },
     {
       "id": "Q007",
