@@ -23,6 +23,7 @@
 2. Hook connector module via NNsight on a small LALM (DeSTA2 or NDIF-accessible Qwen2-Audio)
 3. Test arithmetic in LLM residual stream: `projected_h([b]) ≈ projected_h([d]) - projected_h([t]) + projected_h([p])?`
 4. Layer-wise linear probe for voicing direction across all LLM layers
+5. **[NEW — cycle #106 Q18]** Extract top-k PCA directions of phonological subspace → use as DAS rotation initializer in Paper A IIT experiment ("Phono Init vs Random Init" ablation)
 
 **Expected outcomes:**
 - Geometry SURVIVES (cosine > 0.5): LLM has structured phonological access → supports Paper A listen layer claim

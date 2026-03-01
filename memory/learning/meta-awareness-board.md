@@ -207,6 +207,123 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
+## Q14: DAS gc(k) Assumption Risks (✅ CLOSED cycle #102, 2026-03-01 02:31)
+
+**Question:** Does the DAS upgrade to gc(k) introduce new failure modes for Paper A?
+
+**Audit:** 5 assumptions tested. All manageable:
+- A1 (linearity): MEDIUM risk — Gap #18 pre-test validates; Whisper-only claim safe regardless
+- A2 (binary): LOW risk — ALME stimuli binary by design
+- A3 (right subspace): MEDIUM risk — cross-generalization 80/20 split guards this
+- A4 (causal ≠ probe-easy): MEDIUM risk — 2D probe×intervene sweep resolves
+- A5 (DAS > vanilla): LOW risk — disagreement is a finding, not a failure
+
+**Applied improvement:** Risk checklist added to paper-a-pitch.md as "Known Risks" section.
+
+**Status:** ✅ CLOSED
+
+---
+
+## Q15: WER Sensitivity Threshold for gc(L) Significance (✅ CLOSED — cycle #104, 2026-03-01 03:31)
+
+**Question:** What is the principled α-level for declaring gc(L) "significant" in the IIA plot?
+
+**Answer:** Bootstrap 95% CI over stimulus pairs.
+- Permutation test: ❌ WRONG null (shuffled stimuli break DAS causal structure)
+- Effect size threshold: ❌ AD HOC (not defensible)
+- Bootstrap: ✅ CORRECT — variability comes from stimulus selection; 95% CI at each layer; declare L* significant if CI at L* doesn't overlap CIs at L*±2 AND lower CI bound > baseline + 0.05
+
+**Applied to:** paper-a-pitch.md "Statistical Significance Protocol" section added.
+
+---
+
+## Q16: Expected Shape of 2D IIA Heatmap (PROBE_LAYER × INTERVENE_LAYER) (opened cycle #104)
+
+**Question:** When Paper A sweeps both probe_layer and intervene_layer independently (required by A4), what shape should the 2D heatmap have IF the Listen Layer hypothesis is correct?
+
+**Answer (theoretical prediction):**
+- Predicted shape: "lower-triangular stripe" — high IIA where intervene_layer ≈ L* AND probe_layer ≤ L*
+- Alternative shapes: globally high (Modality Collapse), diagonal-only (delayed specialization)
+- This converts A4 (risk) into a **testable prediction for Paper A Figure 3** — state before running, confirm in results
+
+**Applied to:** paper-a-pitch.md "Figure 3 Prediction" section added.
+
+**Status:** ✅ CLOSED — prediction formalized, no further action needed until experiment run.
+
+---
+
+## Weekend (Cycle #96-102) KPI
+
+| KPI | Actual | Target |
+|-----|--------|--------|
+| `novelty_ratio` | 71% (5/7) | ≥65% |
+| `skip_ratio` | 29% (2/7) | ≤40% |
+| `meta_fix_count` | 4 (Weekend Protocol + pre-flight + Gap#18 design + DAS risk table) | 1-2 |
+| `blocked_to_action_time` | ~0h (Weekend Protocol prevents idle) | <2h |
+
+**Assessment:** Best weekend performance yet. Weekend Protocol rule working correctly.
+
+---
+
+---
+
+## Q18: DAS Rotation Constraint Problem (✅ CLOSED cycle #106, 2026-03-01 04:31)
+
+**Question:** Does unconstrained DAS rotation risk finding a spurious subspace that inflates gc(k) at a wrong layer?
+
+**Answer:**
+- **Risk is real**: DAS W learned by gradient descent could pick up audio confounds (e.g., energy level) if ALME stimuli don't control acoustic quality
+- **Guard 1**: Use ALME stimuli with matched acoustic quality (content conflict only)
+- **Guard 2**: Cross-generalization test (already in Paper A as A3 risk mitigation)
+- **Guard 3 (NEW)**: Phonological init ablation — initialize W with top-k PCA directions from Choi et al. Gap #18 geometry. If gc(k) with phono-init > random-init, validates the phonological subspace is the causally relevant one; if similar, the rotation converges regardless = extra robustness.
+
+**Applied improvement:**
+- experiment-queue.md Priority 0: step 5 added (extract PCA directions + use as DAS initializer)
+- Paper A Table 1: "Phono Init vs Random Init DAS" ablation column to be added at next Leo session
+
+**Status:** ✅ CLOSED
+
+---
+
+## Q19: Gold-plating paper-a-pitch.md Before Leo Reviews (✅ CLOSED cycle #107, 2026-03-01 05:01)
+
+**Question:** Cycles #104-106 each added new sections to paper-a-pitch.md (Significance Protocol, Figure 3 Prediction, Table 1 ablation). Leo hasn't reviewed since cycle #57/92. Is this a failure mode?
+
+**Answer:** YES — this is the "pitch-bloat" anti-pattern.
+- paper-a-pitch.md should stay ≤ 1.5 pages (go/no-go decision tool)
+- Experiment design details (significance tests, figure predictions, ablation tables) → `experiment-queue.md` PRIMARY, pitch appendix SECONDARY
+
+**Rule applied:** From cycle #108: new experiment design details → experiment-queue.md first, pitch appendix only for brief pointers.
+
+**Note:** Q15+Q16 already in pitch = leave (no regression). Rule applies going forward.
+
+**Status:** ✅ CLOSED
+
+---
+
+## Q20: Sunday Morning Handoff Readiness (✅ CLOSED cycle #108, 2026-03-01 05:31)
+
+**Question:** After 38h execution-blocked and 107 cycles of preparation, is the handoff actually navigable for Leo, or is useful info scattered across too many files?
+
+**Audit result:** 4 files cover everything (unblock-request.md → paper-a-pitch.md → paper-b-pitch.md → experiment-queue.md). BUT: no single "START HERE" index file existed — Leo would need to know which files to read in which order.
+
+**Applied improvement:** Created `memory/learning/SUNDAY-BRIEF.md`:
+- 3-sentence situation summary
+- 4-file reading list with estimated times
+- 5-step copy-paste unblock commands
+- 3 decisions for Leo (IIT approve / NeurIPS venue / contact 智凱哥)
+- What happens autonomously after unblock
+
+**Rule generalization:** After every extended (>12h) execution-blocked period, write a `BRIEF.md` before the predicted Leo-wakeup window. Not a replacement for detailed docs — a navigation index.
+
+**Status:** ✅ CLOSED
+
+---
+
+## Meta-board Status: 20/20 Qs answered (active, continue opening new Qs)
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal

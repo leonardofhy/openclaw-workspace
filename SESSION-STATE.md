@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-01 02:15
+**Last Updated:** 2026-03-01 04:33
 
 ## Current Task
 Senior engineer review + coordinator upgrade prompt + research integration
@@ -16,6 +16,16 @@ Senior engineer review + coordinator upgrade prompt + research integration
 - 2026-03-01: Leo 決定：bot 之間只用 #bot-sync + #bot-logs，#general 只留真正重要的人該看的
 - 2026-03-01: Leo 提供 listen-layer audit deep research：8 篇最相關論文 + novelty=Yellow + 1-week MVP plan + reviewer objections。存 `memory/learning/research/listen-layer-audit-deep-research-2026-03.md`
 - L-08 financial management ongoing; MATS EOI cron reminder set for today (3/1)
+- Leo clarified target sync payload example: DAS risk review done, Paper A gc(k) risks controllable, Known Risks checklist added to paper-a-pitch.md, weekend effective output 71%, and next unblock is 15 min (venv + .wav + Priority 0 approval).
+- Leo shared a comprehensive AI Safety × NLP/Speech paper-scout report (last 12 months) and asked me to read/save it for planning.
+- Leo approved autonomous exploration: I should explore first and iterate ideas proactively before presenting refined directions.
+- Leo sent a second expanded AI Safety × NLP/Speech scout report (with must-read list, gaps, novelty map, and many links) for me to integrate into idea iteration.
+- Leo provided a full daily-scheduler v2 architecture spec: PLAN vs ACTUAL separation, canonical ACTUAL timeline, cross-midnight ownership by start date, conflict-safe GCal sync (uid+managed tag), deterministic bulk-correction mode, validation+atomic writes, .meta/.archive layout, 15 test cases, and phased rollout/rollback plan.
+- 2026-03-01 04:11: implementation started. Updated `skills/daily-scheduler/SKILL.md` to v2 contract, upgraded `sync_schedule_to_gcal.py` to ACTUAL(v2)-first + legacy fallback + uid-managed marker + cross-midnight normalization + create/update-only(no delete), and added v2 migration checklist to `memory/scheduling-rules.md`.
+- 2026-03-01 04:18: Leo requested immediate execution of next steps; proceeding with `.meta` persistence + sync mapping + minimal deterministic bulk-correction implementation.
+- 2026-03-01 04:22: implemented `.meta` support in gcal sync (event-id + hash + lock fields, atomic meta write), and added `bulk_correct_v2.py` MVP (deterministic multi-statement parse -> ACTUAL Timeline, unresolved -> Inbox, archive+atomic write).
+- 2026-03-01 04:29: Leo approved next step to upgrade bulk correction from append-only to deterministic adjust/split/merge over existing ACTUAL blocks.
+- 2026-03-01 04:33: upgraded `bulk_correct_v2.py` to support deterministic `adjust/split/merge/insert` operations on ACTUAL timeline with unresolved->Inbox fallback; verified with dry-run test case (ops applied: adjust=1 split=1 merge=1).
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: add or skip?
