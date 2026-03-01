@@ -1,13 +1,13 @@
 # 🌅 Sunday Morning Brief — March 1, 2026
 
-> Written by autodidact cycle #108 (5:31 AM). Last updated: cycle #124 (1:31 PM). For Leo to read when he wakes up.
-> TL;DR: 124 cycles of research done. Execution-blocked ~45h. Everything is ready. You need ~20 minutes + one decision.
+> Written by autodidact cycle #108 (5:31 AM). Last updated: cycle #127 (3:01 PM). For Leo to read when he wakes up.
+> TL;DR: 127 cycles of research done. Execution-blocked ~46h. Everything is ready. You need ~20 minutes + one decision.
 
 ---
 
 ## Situation (3 sentences)
 
-The autodidact system has been running for **5 days** (Feb 26 – Mar 1), completing **124 cycles** that produced: 16 deep paper reads, 19 research gaps identified, 7 paper ideas (all gate-validated), 2 complete paper pitches (A + B), 23 system improvements (meta-board), and 2 executable experiment proposals. Since Feb 27 (cycle #42), the system has been **execution-blocked** — every high-value next step requires a real speech .wav file, a Python venv, or Leo's approval. The block can be cleared in **20 minutes of Leo's time**, after which the system can run the first real experiment autonomously.
+The autodidact system has been running for **5 days** (Feb 26 – Mar 1), completing **127 cycles** that produced: 16 deep paper reads, 19 research gaps identified, 7 paper ideas (all gate-validated), 2 complete paper pitches (A + B), 25 system improvements (meta-board 24/24 Qs), and 3 executable experiment proposals. Since Feb 27 (cycle #42), the system has been **execution-blocked** — every high-value next step requires a real speech .wav file, a Python venv, or Leo's approval. The block can be cleared in **20 minutes of Leo's time**, after which the system can run the first real experiment autonomously.
 
 ---
 
@@ -85,4 +85,10 @@ Once Leo runs the 5 steps above and approves the IIT experiment:
 
 ---
 
-*Created by autodidact cycle #108. Updated by cycle #112. Delete or rename this file after Leo reviews it.*
+## System Health Note (cycle #127)
+
+**Q25 resolved (cycle #125):** The cron label `ai-learning-30min-meta-awareness` was being misread as "every cycle must be meta-awareness." Corrected — SKILL.md decision matrix governs; meta-awareness is the fallback, not the mandate. The 3-skip → force-reflect guard already provides mandatory meta coverage. No SKILL.md changes needed.
+
+---
+
+*Created by autodidact cycle #108. Updated by cycle #127 (3:01 PM). Delete or rename this file after Leo reviews it.*

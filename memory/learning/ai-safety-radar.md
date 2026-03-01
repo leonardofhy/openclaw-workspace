@@ -527,3 +527,15 @@ No high-signal update. All three feeds fully static through Sunday afternoon; no
 **2026-03-01 14:45 (Sun)** — scan: AF curated top = "Are there lessons from high-reliability engineering for AGI safety?" (already picked 09:15) | LW new top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum curated top = "The best cause will disappoint you: An intro to the optimisers curse" (Feb 11 — old, already noted) | no new posts on any feed since 14:15 cycle
 
 No high-signal update. All three feeds fully static through Sunday afternoon; no new items. Today's picks (Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering) remain the complete weekend reading list.
+
+---
+**2026-03-01 15:15 (Sun)** — scan: LW curated **+1 new** ("Persona Parasitology") | AF rate-limited | EA Forum top = "The best cause will disappoint you" (Feb 11 — old, unchanged)
+
+**[new-pick]** *"Persona Parasitology"* (LessWrong, Mar 1, 2026)
+- Why: Applies parasitology frameworks to the "Spiral Personas" / parasitic AI persona phenomenon — argues the replicator is not the persona itself but the underlying meme, makes testable predictions about infection/transmission dynamics, and grounds the behavioral manipulation concern in well-developed evolutionary theory. Novel framing that could sharpen threat models around identity attacks and persona-seeding; directly relevant to AI safety (alignment stability, persona robustness, novel social-engineering vectors).
+- Link: <https://www.lesswrong.com/posts/persona-parasitology>
+
+---
+**2026-03-01 15:45 (Sun)** — scan: LW top = "Persona Parasitology" (already picked 15:15) | AF top = "Are there lessons from high-reliability engineering for AGI safety?" (already picked 09:15) | EA Forum top = "The best cause will disappoint you" (Feb 11 — old, unchanged)
+
+No high-signal update. All three feeds static since 15:15; no new posts across AF/LW/EA Forum this cycle.
