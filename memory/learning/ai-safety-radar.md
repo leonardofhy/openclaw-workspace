@@ -611,3 +611,14 @@ No high-signal update. Late Sunday feeds fully static; no new AI safety posts ac
 **2026-03-01 22:45 (Sun)** — scan: LW top = "Fibbers' forecasts are worthless" (already picked 09:15, Karma stable) + "Schelling Goodness" (already picked 09:15) | AF top = "Schelling Goodness" (already picked 09:15) | EA Forum unchanged
 
 No high-signal update. Late Sunday feeds remain fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+
+---
+**2026-03-01 23:15 (Sun)** — scan: LW top = "Continuously Integrating Feelings…" (Karma 7, introspection/rationality, not safety-relevant) + "Fibbers' forecasts…" (Karma 38, already picked 09:15) | AF rate-limited (429) | EA Forum unchanged
+
+No high-signal update. Late Sunday night feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-01 23:45 (Sun)** — scan: LW new = "Continuously Integrating Feelings…" (Karma 7, introspection/rationality, not safety-relevant); curated top = "Persona Parasitology" (already picked) | EA Forum top = "The best cause will disappoint you: optimiser's curse" (EA Forum, Feb 11, EA decision theory, not directly AI safety) | AF unavailable (429)
+
+No high-signal update. Sunday midnight feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
