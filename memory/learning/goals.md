@@ -1,5 +1,7 @@
 # 🎯 Autodidact Goals
 
+> ⚠️ **CANONICAL STATE NOW IN**: `state/active.json` (phase, tracks, objectives) + `skills/autodidact/BOOT.md` (north star, rules)
+> This file kept as detailed reference. Do NOT boot-load in v2 cycles.
 > Last updated: 2026-02-26 14:45 by Leo (direct feedback)
 
 ## 北極星 (North Star)

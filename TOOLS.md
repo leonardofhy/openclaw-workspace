@@ -129,7 +129,8 @@
 
 ### Lab Bot（WSL2, 24/7）
 - ***/30 08-23 Heartbeat**（main session, g53s）— 沉默優先；有 alert 才通知 #general
-- **:15/:45 08-23 Autodidact**（isolated, sonnet）— 自主學習 cycle：讀論文、挖 gap、反思
+- **:15/:45 08-23 Autodidact**（isolated, sonnet, 300s timeout）— v2：precheck gate → phase-aware cycle
+- **14:00 News Scout** `366e373d`（isolated, g53s, 180s timeout）— HN + Alignment Forum 掃描 → LLM 相關度評分 → 加入 autodidact queue
 - **06:00 System Scanner**（isolated, g53s）— 每日健檢，🔴 時 Discord 通知 Leo
 - **08:00 Daily Merge**（isolated, g53s）— 自動 fetch + merge macbook-m3
 - **13:00 Afternoon Calendar**（isolated, g53s）— 3 小時內事件提醒
