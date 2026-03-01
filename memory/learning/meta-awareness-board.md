@@ -360,7 +360,24 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 23/23 Qs answered ✅ (count-saturated, cycle #124)
+## Q25: Cron Label Mismatch — "meta-awareness" Baked In (✅ CLOSED cycle #125, 2026-03-01 14:01)
+
+**Problem:** Cron label `ai-learning-30min-meta-awareness` was being interpreted as "every cycle must be type:reflect(meta-awareness)" — creating Q-farming pressure and conflicting with SKILL.md's action-type decision matrix.
+
+**Root cause:** Leo's instruction "每輪可列出值得改進問題" = permissive CAN, not mandatory MUST. The cron tag turned it into a constraint.
+
+**Rule (now active):**
+> `meta-awareness` cron tag = "meta-awareness is encouraged," NOT "every cycle = reflect(meta-awareness)."
+> When a higher-value action exists (new arXiv, synthesis, citation trail), execute that action. Meta-awareness is the fallback when nothing higher-value is available — per SKILL.md decision matrix which was already correct.
+> The 3-skip → force-reflect(meta-audit) guard ALREADY provides the mandatory meta-awareness trigger.
+
+**Applied:** No SKILL.md change needed (already correct). No cron label change (Leo approval required; interpretation fix suffices).
+
+**Status:** ✅ CLOSED [INFERRED — validate at next arXiv Monday batch when `learn` is clearly correct]
+
+---
+
+## Meta-board Status: 24/24 Qs answered ✅ (count-saturated, cycle #125)
 
 ---
 

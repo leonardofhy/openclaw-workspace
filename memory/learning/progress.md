@@ -573,3 +573,5 @@ Priority queue for Leo's first session:
 | #122 | 2026-03-01 12:31 | reflect (meta-awareness — Q21 conditional cadence recommendation crystallized, arXiv verified no new papers, meta-burst pause expires ~13:01) |
 | #123 | 2026-03-01 13:01 | learn (competitive intelligence) — FCCT: 0 speech citations (4 citations all vision/NLP); arXiv fresh check: 0 new speech MI papers; all 19 gaps OPEN; Leo's Paper A window still clear; meta-burst pause expired, clean action taken |
 | #124 | 2026-03-01 13:31 | reflect (meta-awareness) — Q24: "Timestamp Refresh" anti-pattern named and ruled; cycles #120-122 reclassified as skips; true dead-zone novelty ratio = 42% (below 65%); Q21 conditional cadence now empirically justified; meta-board 23/23 ✅ |
+| #125 | 2026-03-01 14:01 | reflect (meta-awareness) — **Q25: Cron Label Mismatch** — `meta-awareness` tag ≠ locked action type; arXiv cs.SD March 2026: 0 papers (Sunday gap confirmed); all 19 gaps OPEN; meta-board 24/24 ✅ |
+| #126 | 2026-03-01 14:31 | skip (principled) — arXiv weekend gap (~8.5h to Monday batch), execution-blocked 45h, meta-board 24/24 SATURATED, all queues empty; Q24+Q25 both confirmed correct skip |

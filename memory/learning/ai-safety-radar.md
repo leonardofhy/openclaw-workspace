@@ -517,3 +517,13 @@ No high-signal update. All three feeds static; Sunday afternoon quiet. Weekend's
 **2026-03-01 13:45 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum top = "talker–feeler gap" (already picked 10:45) | no new posts on any feed since 13:15 cycle
 
 No high-signal update. All three feeds static through early Sunday afternoon; no new items across AF/LW/EA Forum. Today's roster stands.
+
+---
+**2026-03-01 14:15 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW curated top = "Are there lessons from high-reliability engineering for AGI safety?" (already picked 09:15) | EA Forum curated top = "The best cause will disappoint you: An intro to the optimisers curse" (Feb 11 — old, not new) | no new posts on any feed since 13:45 cycle
+
+No high-signal update. All three feeds fully static through Sunday afternoon; no new items. Weekend reading list (Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering) remains complete.
+
+---
+**2026-03-01 14:45 (Sun)** — scan: AF curated top = "Are there lessons from high-reliability engineering for AGI safety?" (already picked 09:15) | LW new top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum curated top = "The best cause will disappoint you: An intro to the optimisers curse" (Feb 11 — old, already noted) | no new posts on any feed since 14:15 cycle
+
+No high-signal update. All three feeds fully static through Sunday afternoon; no new items. Today's picks (Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering) remain the complete weekend reading list.
