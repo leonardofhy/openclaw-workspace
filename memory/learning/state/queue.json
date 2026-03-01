@@ -229,6 +229,18 @@
       "created": "2026-03-01",
       "due": null,
       "completed": "2026-03-01"
+    },
+    {
+      "id": "Q019",
+      "type": "build",
+      "track": "T3",
+      "title": "Write T3 experiment spec doc (Tier 0): stimuli design, layer range, gc(k) threshold hypothesis, success metric",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Markdown doc: hypothesis, stimuli (synthetic phoneme pairs), layer range, gc(k) threshold, expected output, eval criteria — ready for Leo review",
+      "created": "2026-03-01",
+      "due": null
     }
   ]
 }

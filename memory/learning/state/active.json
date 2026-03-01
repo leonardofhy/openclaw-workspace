@@ -28,11 +28,11 @@
   "budgets": {
     "learn_remaining_today": 0,
     "build_remaining_today": 1,
-    "reflect_remaining_today": 1,
+    "reflect_remaining_today": 0,
     "budget_reset_date": "2026-03-01"
   },
   "stats": {
-    "total_cycles": 118,
+    "total_cycles": 119,
     "total_skips": 38,
     "papers_read_deep": 19,
     "papers_scanned": 33,
@@ -44,9 +44,9 @@
     "days_active": 4
   },
   "last_cycle": {
-    "id": "c-20260301-1815",
-    "action": "build",
-    "summary": "Built 20-test unit suite for gc_eval.py (mock mode); all 20 passing — T3 DoD eval harness confirmed on toy data"
+    "id": "c-20260301-1845",
+    "action": "reflect",
+    "summary": "Build milestone reflect: T3 DoD confirmed; added Q019 (experiment spec doc) as unlock artifact for converge\u2192execute"
   },
   "last_gc": "2026-03-01T14:19:30.007894+08:00",
   "self_improve_tickets": []
