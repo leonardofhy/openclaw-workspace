@@ -108,8 +108,24 @@ Large audio-language models (LALMs) can answer questions about audio content, bu
 
 ## Connections to Related Work
 
+#### 🆕 4-Paper Comparison Table: "Where Does Audio/Visual Info Flow?" (v0.4, cycle #169)
+
+> Use this as the core related-work paragraph / Table 1 in the paper.
+
+| Paper | Modality | Method | Causal? | Grounded Metric? |
+|-------|----------|--------|---------|-----------------|
+| **Liu et al. 2025 (UW)** | Vision | KV-token flow analysis in LLaVA/Qwen2.5-VL | ❌ (observational) | ❌ |
+| **FCCT (Li et al. AAAI 2026 Oral, 2511.05923)** | Vision | Causal tracing, MHSA middle layers | ✅ (vanilla patching) | ❌ (no theory) |
+| **AudioLens (智凱哥, ASRU 2025)** | Speech | Logit lens on LALMs | ❌ (observational) | ❌ |
+| **Leo's Paper A** | Speech | DAS-IIT gc(k), interchange interventions | ✅✅ (theoretically grounded) | ✅ (IIT accuracy) |
+
+**Narrative**: "Prior work in vision has characterized *where* visual information is processed either observationally (Liu et al. 2025) or with vanilla causal tracing (FCCT). In speech, AudioLens applies the logit lens but does not intervene. We provide the first *causally grounded* localization in speech LLMs, combining speech-specific stimuli with DAS-IIT interchange interventions (gc = IIT accuracy, Geiger et al. 2023). This is the speech analog of Liu et al. 2025 with the theoretical rigor of causal abstraction."
+
+#### Full Related Work Table
+
 | Paper | Relationship |
 |-------|-------------|
+| **Liu et al. 2025 (UW)** | **[v0.4 NEW] Closest vision analog** — KV-token flow observational study. We are the causal speech version. |
 | AudioLens (智凱哥, 2025) | Our causal extension. Same observational setup; we add intervention. Co-author opportunity. |
 | ALME (Li et al. 2025, arXiv:2602.11488) | We use their 57K stimuli. No need to reproduce. |
 | Causal Abstraction (Geiger et al.) | Theoretical foundation. gc = IIT accuracy. Cite prominently. |
@@ -117,7 +133,8 @@ Large audio-language models (LALMs) can answer questions about audio content, bu
 | Modality Collapse (2602.23136) | Motivation: shows audio info is encoded but unused → we localize WHERE it becomes decisive. |
 | Cascade Equivalence (2602.17598) | Motivation: LEACE shows implicit cascade; we show which layers carry audio causally. |
 | SPIRIT (EMNLP 2025) | Side result: does Listen Layer = SPIRIT's best defense layer? |
-| **FCCT (Li et al. 2511.05923, AAAI 2026 Oral)** | **Closest competitor — but vision-only!** Full causal tracing in Vision-LLMs; finds MHSAs at middle layers = cross-modal aggregation point; IRI = training-free inference injection. We are the AUDIO equivalent. Cite as "we do for speech what FCCT did for vision." |
+| **FCCT (Li et al. 2511.05923, AAAI 2026 Oral)** | **Closest vision competitor** — causal tracing in VLMs; finds MHSAs at middle layers; IRI injection. We are the AUDIO equivalent WITH IIT grounding. |
+| **DashengTokenizer (arXiv:2602.23765)** | **[v0.4 NEW] Motivation cite** — "one layer sufficient for 22 audio tasks" = behavioral evidence that information concentrates at a specific depth (= Listen Layer Hypothesis). Cite in Abstract/Intro. |
 
 ---
 
