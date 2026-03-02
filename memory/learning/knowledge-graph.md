@@ -587,6 +587,7 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - Huawei Noah's Ark (Aparin) — AudioSAE
 - MBZUAI — SPIRIT (audio safety)
 - Stanford (Atticus Geiger) — causal abstraction theory + pyvene; **DAS (Distributed Alignment Search)** = learns optimal linear subspace alignment per layer via IIT training loss; upgrade from vanilla patching → gc(k) = IIT accuracy at layer k = theoretically grounded grounding_coefficient; pyvene wraps any PyTorch model, ~50 lines for full DAS sweep; `pip install pyvene` (add to venv checklist)
+- **Heimersheim & Nanda "How to Use and Interpret Activation Patching" (2024, arXiv:2404.15255)** — 🟢 DEEP READ (cycle #178) — practitioner tutorial: noising vs denoising (AND/OR gate diagnostic), Hydra effect (0.7x backup compensation), no-minimality caveat, corruption design = trace exactly what changes, metric suite (logit-diff best default), path patching for direct composition test, attribution patching (AtP) = fast gradient approximation. **AUDIO ADAPTATIONS:** speech = likely OR-dominant (distributed) → denoising preferred; top-k aggregate patching for Hydra; per-phoneme logprob + SAE feature activation as audio metrics; corruption = phonological minimal pairs not waveform noise.
 - Neel Nanda — activation patching best practices, TransformerLens
 - Mozilla Builders — Whisper SAE tooling
 - Ellena Reid — early Whisper MI (LessWrong)

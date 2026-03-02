@@ -684,3 +684,13 @@ No high-signal update. Monday afternoon feeds fully static. Today's complete pic
 **2026-03-02 15:15 (Mon)** — scan: LW +1 new (since 14:45) | AF rate-limited (429) | EA Forum: no new safety posts (top = Cornell networking, anti-fascism/EAG discourse, all non-safety)
 
 **[new-pick]** *How to Design Environments for Understanding Model Motives* (LessWrong, Kroiz, Singh, Rajamanoharan, **Neel Nanda** — MATS 9.0; pub 15:14 Taipei, karma 12, Frontpage) — Methodological paper on building environments that distinguish *benign vs. malign motivations* (scheming vs. confusion) behind bad model actions; distills 5 design principles from iterating 20+ environments; directly addresses the model-incrimination problem central to scalable oversight and deceptive alignment detection. High-signal: Neel Nanda-advised, interpretability-tagged, fills a concrete tooling gap for inner-alignment evaluation. <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
+
+---
+**2026-03-02 15:45 (Mon)** — scan: LW +1 new since 15:15 ("If 'bad guys' don't pause, do you?" by Remmelt, pub 15:24, short discussion-prompt, below pick threshold) | AF rate-limited (429), same frontpage as 15:15 | No new high-signal posts on either forum
+
+No high-signal update. Monday late-afternoon feeds nearly static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 16:15 (Mon)** — scan: LW new-visible since 15:45 = "If 'bad guys' don't pause, do you?" (Remmelt, karma 11, now 16:15 Taipei — still below threshold: short discussion prompt, advocacy-adjacent, no technical content) | AF rate-limited (429/Vercel firewall) — same frontpage as all prior cycles today | No EA Forum safety posts
+
+No high-signal update. Monday late-afternoon feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).

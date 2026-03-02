@@ -756,6 +756,44 @@ Priority queue for Leo's first session:
 
 ## Recommended Next Cycles (Day 4 → continued)
 1. ~~**#176** → knowledge-graph consolidation~~ ✅ DONE
-2. **#177** → AudioSAE deep read (arXiv:2602.05027) — must-read list priority (EACL 2026 full paper)
-3. **#178** → reflect/synthesis — update Paper B pitch with AudioSAE insights
-4. **#179+** → Tuesday arXiv batch if timing aligns OR continue must-read list
+2. ~~**#177** → AudioSAE deep read~~ ✅ DONE — Gap #22 identified (causal utility vs consistency); RAVEL added to must-read list
+3. **#178** → Heimersheim & Nanda "Activation patching best practices" (⬆️ elevated priority; Gap #22 connection to causal patching)
+4. **#179** → SPIRIT deep read OR Paper B pitch update with AudioSAE + Gap #22 insights
+5. **#180+** → Tuesday arXiv batch if timing aligns
+
+| #177 | 2026-03-02 16:01 | learn (AudioSAE full deep read) | **AudioSAE (EACL 2026) fully mapped**: Layer 6-7 transition zone confirmed (consistent with Beyond Transcription); phoneme features at layer 12 (92% Whisper, 89% HuBERT); hallucination steering 70% FPR reduction; EEG correlation = novel validation path; KEY GAP FOUND: no causal utility validation + no SAELens compatibility → confirms Gap #19 + NEW Gap #22 (consistent features ≠ causal features); RAVEL added to must-read list. |
+
+## Day 4 Rolling Stats (after cycle #177 — Monday March 2 4:01 PM)
+- Papers read (deep): **17 total** (+1: AudioSAE full paper)
+- Papers scanned: 57+
+- Research gaps identified: **22** (Gap #22: SAE feature consistency vs causal utility)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts
+- Paper pitches: 2 (A v0.4 + B v0.7 → needs update with AudioSAE insights)
+- Knowledge-graph: **FULLY REFRESHED ✅** (cycle #176)
+- Must-read list: RAVEL added; AudioSAE checked off; Heimersheim & Nanda = next priority
+- **Execution-blocked**: ~65.5h, awaiting Leo → P0 Gap #18 phonological geometry
+
+## Recommended Next Cycles (Day 4 → evening)
+1. ~~**#178** → Heimersheim & Nanda patching best practices~~ ✅ DONE — AND/OR gate insight, audio denoising preference, Hydra effect quantified (0.7x), scope limitation, top-k aggregate metric design
+2. **#179** → RAVEL deep read (Huang et al. 2024, ACL) — text analogue of AudioSAEBench; needed for Paper B positioning
+3. **#180** → SPIRIT deep read OR Paper B pitch update
+
+| #178 | 2026-03-02 16:31 | learn (Heimersheim & Nanda patching tutorial) | **Activation patching best practices fully mapped**: AND/OR gate structure determines noising vs denoising choice (audio likely OR-dominant → denoising preferred); Hydra effect = 0.7x backup compensation → top-k aggregate needed in Gap #22 causal metric; scope = corruption-specific (phonological ≠ waveform ≠ semantic distributions); metric suite: logit-diff + logprob + SAE feature activation + WER secondary; path patching to test direct connector composition (Gap #18); attribution patching (AtP) for large model efficiency sweeps. |
+
+## Day 4 Rolling Stats (after cycle #178 — Monday March 2 4:31 PM)
+- Papers read (deep): **18 total** (+1: Heimersheim & Nanda patching tutorial)
+- Papers scanned: 57+
+- Research gaps identified: **22** (all OPEN)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts
+- Paper pitches: 2 (A v0.4 + B v0.7 → needs update with patching design insights)
+- Knowledge-graph: **FULLY REFRESHED** (cycle #176)
+- Must-read list: Heimersheim & Nanda ✅ checked off; RAVEL = next priority
+- **Execution-blocked**: ~66h, awaiting Leo → P0 Gap #18 phonological geometry
+- **Patching design decisions finalized**: denoising for audio (OR-gate), top-k aggregate for Hydra, per-phoneme logprob as primary metric
+
+## Recommended Next Cycles (Day 4 → evening continued)
+1. **#179** → RAVEL (Huang et al. 2024) deep read — needed for Paper B related work
+2. **#180** → SPIRIT deep read (Track 5 safety) OR Paper B v0.8 pitch update
+3. Leo check-in → unblock P0 Gap #18 when available

@@ -83,14 +83,15 @@
 ## Must-Read List（按優先級）
 1. [ ] **AudioLens** (智凱哥 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
 2. [x] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882] ✅ 2026-02-26 deep read cycle #6
-3. [ ] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027]
-4. [ ] **Activation patching best practices** (Heimersheim & Nanda) — 避免 pitfalls
+3. [x] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027] ✅ 2026-03-02 full deep read cycle #177
+4. [x] **Activation patching best practices** (Heimersheim & Nanda) — ✅ 2026-03-02 cycle #178; AND/OR gate insight, audio denoising preference, Hydra 0.7x, top-k aggregate metric, AtP for large models
 5. [ ] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541]
-6. [ ] **Causal abstraction** (Geiger et al.) — 因果介入的理論基礎
-7. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
-8. [x] **SAEBench** (Karvonen, Nanda et al., ICML 2025) — 8-metric multi-category evaluation; Matryoshka SAE wins disentanglement; proxy metrics ≠ quality; AudioSAEBench template identified; "Grounding Sensitivity" as novel metric ✅ 2026-02-27 cycle #38
-9. [ ] ICML 2025 MI Tutorial materials
-10. [ ] **Interspeech 2025 Tutorial** — "Interpretability for Speech Models"（結構化入門）
+6. [ ] **RAVEL** (Huang et al., ACL 2024) — disentanglement evaluation for LMs; text analogue of AudioSAEBench [NEW: identified cycle #177] ⬆️ NOW HIGHEST PRIORITY (needed for Paper B positioning)
+7. [ ] **Causal abstraction** (Geiger et al.) — 因果介入的理論基礎
+8. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
+9. [x] **SAEBench** (Karvonen, Nanda et al., ICML 2025) — 8-metric multi-category evaluation; Matryoshka SAE wins disentanglement; proxy metrics ≠ quality; AudioSAEBench template identified; "Grounding Sensitivity" as novel metric ✅ 2026-02-27 cycle #38
+10. [ ] ICML 2025 MI Tutorial materials
+11. [ ] **Interspeech 2025 Tutorial** — "Interpretability for Speech Models"（結構化入門）
 
 ## 6-12 Month Ramp Plan
 - **Month 0-2**: Foundations
@@ -166,6 +167,18 @@
 - Method: SPIRIT-style patching + Zhao et al. ESN cross-reference + SAE-guided feature attribution
 - **Gate verdict: 🟡 YELLOW** — genuine gap but Track 5 = lowest priority; Hung-yi Lee lab (same as AudioLens) may follow up
 - **Action: HOLD** — do not develop until Papers A+B submitted. Monitor Feng et al. for mechanistic follow-up.
+
+## Gap #22: SAE Feature Consistency vs. Causal Utility in Audio Models (新增 2026-03-02 cycle #177)
+**"Are consistently-reproduced audio SAE features also causally efficacious?"**
+- AudioSAE shows >50% feature consistency across seeds = STABLE representation
+- BUT: consistency ≠ causality — stable features could be epiphenomenal (observe but not cause behavior)
+- RAVEL (Huang et al. 2024, ACL) addresses this for LLMs; no audio analogue exists
+- SAEBench "intervention" category addresses this for text; no audio version
+- **AudioSAEBench Category 1** = "causal consistency" metric: cross-seed stable features × causal contribution (via patching/steering score)
+- Method: take AudioSAE consistent features → patching experiment on minimal pair audio → measure behavior change
+- **Paper B contribution**: first audio SAE benchmark measuring causal utility, not just representation quality
+- Venue: same as AudioSAEBench (ACL 2026 or NeurIPS 2026 workshop)
+- Status: 🟢 GREEN — natural extension of AudioSAE; completes their evaluation story
 
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
