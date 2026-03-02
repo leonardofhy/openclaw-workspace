@@ -282,6 +282,19 @@
       "created": "2026-03-02",
       "due": null,
       "completed": "2026-03-02"
+    },
+    {
+      "id": "Q023",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A: Introduction section skeleton (Tier 0)",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Structured intro skeleton with hook/problem/contributions/related work stubs + deadline notes",
+      "created": "2026-03-02",
+      "due": null,
+      "completed": "2026-03-02"
     }
   ]
 }

@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 2,
-    "build_remaining_today": 3,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 1,
     "budget_reset_date": "2026-03-02"
   },
@@ -39,14 +39,14 @@
     "research_gaps": 19,
     "paper_ideas": 7,
     "paper_pitches": 2,
-    "code_artifacts": 11,
+    "code_artifacts": 12,
     "system_improvements": 6,
     "days_active": 5
   },
   "last_cycle": {
-    "id": "c-20260302-1045",
+    "id": "c-20260302-1115",
     "action": "build",
-    "summary": "MATS proposal v2: JALMBench 246-query corpus integrated as primary eval; mechanistic defense section added (adversarial robustness arg, baseline comparison table)"
+    "summary": "Paper A intro skeleton: hook/problem/contributions/related-work stubs + Interspeech 2026 deadline warning (abstract due ~Mar 5)"
   },
   "last_gc": "2026-03-01T14:19:30.007894+08:00",
   "self_improve_tickets": []
