@@ -761,3 +761,16 @@ Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On P
 **[backlog-pick]** *An Empirical Review of the Animal Harm Benchmark* (LessWrong, 2026-03-01)
 - Why: Benchmark-quality audit on animal-harm evaluation directly affects the reliability of safety claims and deployment gating; useful for avoiding false confidence from weak evals.
 - Link: https://www.lesswrong.com/posts/FErugDzyajJtBNjzx/an-empirical-review-of-the-animal-harm-benchmark
+
+**2026-03-02 23:15 (Mon)** — scan: AF +0 new, LW +0 new | unread backlog remains (AF 5, LW 33)
+
+**[backlog-pick]** "Schelling Goodness, and Shared Morality as a Goal" (Alignment Forum, 2026-02-28) — Why: directly engages target selection / shared-values framing, a core alignment crux for specifying robust objectives across diverse agents. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
+
+---
+**2026-03-02 23:45 (Mon)** — scan: AF rate-limited (429), LW +0 new since 23:15 (curated top = "Persona Parasitology" already picked Mar 1; main top = "Secretary of War / Anthropic supply-chain-risk" already picked 21:45) | unread backlog remains (AF 5, LW 33)
+
+**[backlog-pick]** "3 Challenges and 2 Hopes for the Safety of Unsupervised Elicitation" (LessWrong, Feb 27, karma 19, MATS Program / Scalable Oversight)
+- Why: Directly addresses the core bottleneck of eliciting aligned behavior without reliable human supervision — the three challenges (distributional shift, capability elicitation asymmetry, deceptive compliance) are the exact crux of scalable oversight research; MATS provenance adds credibility. Sitting unread in LW backlog since Feb 27.
+- Link: https://www.lesswrong.com/posts/DKLrdLLxm5kLJbr7G/3-challenges-and-2-hopes-for-the-safety-of-unsupervised
+
+Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45), Secretary of War / Anthropic supply-chain-risk tweet (21:45), Animal Harm Benchmark audit (22:45 backlog), Schelling Goodness / shared morality (23:15 backlog), Unsupervised Elicitation challenges (23:45 backlog).
