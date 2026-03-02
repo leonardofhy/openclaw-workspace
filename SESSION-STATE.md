@@ -3,10 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-02 13:20
+**Last Updated:** 2026-03-02 21:00
 
 ## Current Task
 Deadline watchdog built + MATS EOI prep
+
+## Recent Context
+- 2026-03-02 21:00:收到每日研究簡報 cron 任務：執行 `python3 skills/autodidact/tools/daily_briefing.py --send`。
 
 ## Recent Context
 - MATS EOI: Leo confirms email = leonardofoohy@gmail.com
