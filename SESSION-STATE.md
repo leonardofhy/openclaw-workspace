@@ -3,12 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-03 00:41
+**Last Updated:** 2026-03-03 04:11
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-03 04:11: Leo decision on heartbeat stale tasks — all three marked 「請繼續」(M-06, M-02, M-03); proceed to update task board and continue execution.
 - 2026-03-03 00:41: Leo approved adding external reminder; proceed to create Todoist task for buying shampoo (today, before heading home).
 - 2026-03-03 00:14: Leo correction: shampoo was NOT actually bought; asks whether reminder was synced to Google Calendar or Todoist.
 - 2026-03-03 00:13: Leo correction: wording should be "昨天" (not "今天") when referring to the Ted breakfast + shampoo reminders context.
