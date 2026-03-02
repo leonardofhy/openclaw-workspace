@@ -273,12 +273,13 @@
       "type": "build",
       "track": "T3",
       "title": "Paper A: Method section skeleton (Tier 0) — gc(k) definition, causal patching protocol, listen layer formalization",
-      "status": "ready",
+      "status": "done",
       "priority": 0,
       "blocked_by": null,
       "definition_of_done": "Markdown skeleton with section headers, key equations placeholders, figure stubs; ready for Leo to fill in prose",
       "created": "2026-03-02",
-      "due": null
+      "due": null,
+      "completed": "2026-03-02"
     }
   ]
 }
