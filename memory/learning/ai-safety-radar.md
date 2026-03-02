@@ -724,3 +724,21 @@ No high-signal update. Monday evening feeds fully static since 15:15 pick. Today
 **2026-03-02 19:15 (Mon)** — scan: LW top = "If 'bad guys' don't pause, do you?" (Remmelt, 07:24 UTC, advocacy prompt, already flagged below threshold) | AF top = "How to Design Environments for Understanding Model Motives" (Neel Nanda et al., 07:14 UTC, already picked 15:15) — no new posts on either feed since 18:45 cycle
 
 No high-signal update. Monday late-evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15).
+
+---
+**2026-03-02 19:45 (Mon)** — scan: blogwatcher found 1 new AF post + 10 new LW posts; most were already covered in earlier cycles today; genuine new items: [LW #51] "Explaining undesirable model behavior: (How) can influence functions help?" (pub 2026-03-02) and [LW #55] "OpenAI employees: Now is the time to stop doing good work." (pub 2026-03-02)
+
+**Pick 1 (new):** "Explaining undesirable model behavior: (How) can influence functions help?" — LessWrong, 2026-03-02 — Technical post examining whether influence functions (a form of training-data attribution) can help diagnose and explain unsafe/undesired model outputs; directly relevant to interpretability-based safety tooling. https://www.lesswrong.com/posts/E6MnysCZdvSQ6n2SC/explaining-undesirable-model-behavior-how-can-influence
+
+Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45).
+
+---
+**2026-03-02 20:15 (Mon)** — scan: LW +1 new since 19:45 ("ball brainteaser 4 color beads slide rubics cube", pub 19:47 Taipei, karma 12 — not safety-relevant) | AF rate-limited (429) all evening | EA Forum: static
+
+No high-signal update. Monday evening feeds fully static since 15:15 last substantive pick; "Explaining undesirable model behavior" (influence functions) picked at 19:45 is the evening's final pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45).
+
+
+---
+**2026-03-02 20:45 (Mon)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (already picked 15:15) | LW top = "ball brainteaser 4 color beads slide rubics cube" (Rubik's cube/meaning-making, not safety-relevant) | EA Forum = "If 'bad guys' don't pause, do you?" (advocacy prompt, already flagged below threshold) — no new posts on any feed since 20:15 cycle
+
+No high-signal update. Monday evening feeds fully static since 15:15 last substantive pick; influence functions post (19:45) remains the evening's final substantive pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45).

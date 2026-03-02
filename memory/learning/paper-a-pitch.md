@@ -1,18 +1,19 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.5 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-02 19:31 (cycle #185)
+> Version: 0.6 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-02 20:31 (cycle #187)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v0.6 Upgrades (cycle #187)
+1. **Abstract synced** (stale flag RESOLVED): updated abstract reflects v0.4+v0.5 method upgrades — RVQ-layer corruption stimulus design, DashengTokenizer behavioral motivation, Liu et al. comparison table, Sutter et al. linear DAS justification, Geiger+Asiaee theory triangle.
+2. **STALE FLAG CLEARED**: abstract no longer pre-2.0 base text; safe to share with Leo/智凱哥 now.
 
 ### ⚡ v0.5 Upgrades (cycles #183–185)
 1. **Theory Triangle added**: Geiger et al. 2301.04709 (foundation) + Asiaee et al. 2602.24266 (efficiency) + Sutter et al. 2507.08802 (linearity guard) — 3-paper citation cluster for Paper A methodology section.
 2. **Risk A6 added** to Known Risks table: Low-variance phoneme features with high causal weight may be missed by variance-based ablation (Asiaee: activation variance = first-order proxy; fails for non-uniform curvature). Mitigation: use DAS (not variance threshold), report ablation delta per phoneme class separately.
-3. **Abstract sync note updated**: abstract still stale (stale flags from v0.4 still apply); Sutter+Asiaee cites should be added to abstract justification of linear DAS.
+3. ~~**Abstract sync note updated**: abstract still stale (stale flags from v0.4 still apply)~~ → RESOLVED in v0.6.
 
-### ⚠️ ABSTRACT STALE (flagged cycle #175 meta-audit)
-> Abstract below = v0.1 base text. Method section = v0.4. They have drifted.
-> Abstract needs sync pass before Leo review: (1) add RVQ-layer corruption motivation (Gap #21); (2) cite DashengTokenizer as behavioral evidence; (3) update related work framing to match Liu et al. 2025 comparison table.
-> **Do NOT share abstract with Leo/智凱哥 until this sync pass is done (~0.5 cycles).**
+### ✅ ABSTRACT SYNCED (cycle #187 — stale flag resolved)
 
 ### ⚡ v0.4 Upgrades (cycles #167–169)
 1. **Related Work expanded**: 4-paper comparison table added (see "Connections to Related Work"). Liu et al. 2025 (UW) = closest vision analog — observational only; Leo = first speech+causal. Strengthens Paper A's novelty claim.
@@ -40,7 +41,9 @@
 
 ## Abstract Draft (target 150 words)
 
-Large audio-language models (LALMs) can answer questions about audio content, but it is unclear *when* during their forward pass audio information becomes causally decisive. Prior work (AudioLens, ALME, Cascade Equivalence) characterizes audio-vs-text modality dominance behaviorally but none localizes *where* in the network audio representations are causally consulted. We introduce the **Listen Layer**: the set of layers where denoising activation patching of audio-stream hidden states most strongly flips model behavior from text-dominated to audio-grounded. We operationalize this using the **grounding coefficient** (gc = causal effect of audio patch / total causal effect), applied to 57K audio-text conflict stimuli from ALME (Li et al., 2025). Experiments on Whisper-small (MacBook) and Qwen2-Audio-7B (via NDIF) reveal a sharp gc peak at ~50% model depth — matching the Triple Convergence zone previously identified correlatively. We further show the Listen Layer shifts with fine-tuning (LoRA-SER) and is suppressed in text-dominant failure cases.
+> v0.6 — synced to method. Safe to share.
+
+Large audio-language models (LALMs) can answer questions about audio content, but it remains unclear *where* in their forward pass audio information becomes causally decisive. Prior work characterizes audio-vs-text dominance behaviorally (ALME, Cascade Equivalence, MiSTER-E, DashengTokenizer) but none performs layer-wise causal localization — unlike causal tracing in text LLMs (Geiger et al., 2301.04709; FCCT for VLMs). We introduce the **Listen Layer**: the depth at which denoising activation patching of audio-stream states most strongly shifts model behavior toward audio-grounded responses. We operationalize this with the **grounding coefficient** gc(L) = DAS-IIT accuracy at layer L (Geiger et al., Sutter et al. 2507.08802 — linear alignment maps are necessary for non-trivial causal abstraction), using 57K audio-text conflict stimuli from ALME (Li et al., 2025) and RVQ-layer-selective corruptions (SpeechTokenizer Layer 1 = semantic content; Sadok et al., 2506.04492). Experiments on Whisper-small and Qwen2-Audio-7B reveal a sharp gc(L) peak at ~50% model depth. We further show the Listen Layer shifts with LoRA fine-tuning and is suppressed in text-dominant failure cases — with practical implications for modality-targeted interventions.
 
 ---
 
