@@ -694,3 +694,13 @@ No high-signal update. Monday late-afternoon feeds nearly static since 15:15 pic
 **2026-03-02 16:15 (Mon)** — scan: LW new-visible since 15:45 = "If 'bad guys' don't pause, do you?" (Remmelt, karma 11, now 16:15 Taipei — still below threshold: short discussion prompt, advocacy-adjacent, no technical content) | AF rate-limited (429/Vercel firewall) — same frontpage as all prior cycles today | No EA Forum safety posts
 
 No high-signal update. Monday late-afternoon feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 16:45 (Mon)** — scan: LW new-visible since 16:15 = nil (most recent post still "If 'bad guys' don't pause, do you?" by Remmelt, pub 15:24 Taipei, karma 11 → 17; already flagged below threshold — advocacy prompt, no technical content) | AF rate-limited (429), same frontpage all day | EA Forum unchanged; no new safety posts
+
+No high-signal update. Monday late-afternoon feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 17:15 (Mon)** — scan: LW feed unchanged since 16:45 (most recent = "How to Design Environments…" pub 07:14 UTC, already picked 15:15; all other posts previously flagged or below threshold) | AF rate-limited (429) — no new posts all afternoon
+
+No high-signal update. Monday early-evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).

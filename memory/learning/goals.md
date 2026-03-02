@@ -86,7 +86,7 @@
 3. [x] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027] ✅ 2026-03-02 full deep read cycle #177
 4. [x] **Activation patching best practices** (Heimersheim & Nanda) — ✅ 2026-03-02 cycle #178; AND/OR gate insight, audio denoising preference, Hydra 0.7x, top-k aggregate metric, AtP for large models
 5. [ ] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541]
-6. [ ] **RAVEL** (Huang et al., ACL 2024) — disentanglement evaluation for LMs; text analogue of AudioSAEBench [NEW: identified cycle #177] ⬆️ NOW HIGHEST PRIORITY (needed for Paper B positioning)
+6. [x] **RAVEL** (Huang et al., ACL 2024) — Cause/Isolate two-score metric; MDAS = SOTA; SAEs fail isolation; Audio-RAVEL = new Category 0 for AudioSAEBench ✅ 2026-03-02 cycle #179
 7. [ ] **Causal abstraction** (Geiger et al.) — 因果介入的理論基礎
 8. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
 9. [x] **SAEBench** (Karvonen, Nanda et al., ICML 2025) — 8-metric multi-category evaluation; Matryoshka SAE wins disentanglement; proxy metrics ≠ quality; AudioSAEBench template identified; "Grounding Sensitivity" as novel metric ✅ 2026-02-27 cycle #38
@@ -179,6 +179,19 @@
 - **Paper B contribution**: first audio SAE benchmark measuring causal utility, not just representation quality
 - Venue: same as AudioSAEBench (ACL 2026 or NeurIPS 2026 workshop)
 - Status: 🟢 GREEN — natural extension of AudioSAE; completes their evaluation story
+
+## Gap #23: Audio-RAVEL — First Audio Disentanglement Benchmark (新增 2026-03-02 cycle #179)
+**"Do audio SAE features truly disentangle phonological attributes?"**
+- RAVEL (Huang et al. ACL 2024) introduced Cause/Isolate two-score metric for text LMs
+- **Cause(F, A)**: does patching feature F cause attribute A to change as expected? (localization)
+- **Isolate(F, A)**: does patching feature F leave OTHER attributes unchanged? (isolation)
+- Audio SAEs (AudioSAE, Mariotte, Plantinga, etc.) measure Cause implicitly via steering success, but NEVER measure Isolate
+- **Key hypothesis**: audio SAEs likely exhibit MORE cross-attribute leakage than text SAEs, because acoustic attributes co-occur at the physical signal level (voicing correlates with speaker gender in training corpora → voiced phoneme SAE features may also encode gender)
+- **AudioSAEBench Category 0 = Audio-RAVEL**: entity→audio stimulus; attribute→phonological feature (voicing, manner, place); interchange intervention→SAE feature patch; score = harmonic mean of Cause + Isolate
+- Stimulus design: Choi et al. 2602.18899 validated minimal pairs (96 languages × phonological contrasts) + TTS-augmented pairs
+- Ceiling baseline: MDAS (Multi-task DAS) from RAVEL applied to Whisper residual stream — simultaneously optimizes all attribute subspaces to be orthogonal
+- Status: 🟢 GREEN — no audio analogue of RAVEL exists; natural extension of RAVEL framework to speech
+- Impact: Category 0 becomes the most fundamental/differentiating contribution of AudioSAEBench (goes beyond what AudioSAE, SAEBench, or any existing audio work measures)
 
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）

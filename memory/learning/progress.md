@@ -794,6 +794,44 @@ Priority queue for Leo's first session:
 - **Patching design decisions finalized**: denoising for audio (OR-gate), top-k aggregate for Hydra, per-phoneme logprob as primary metric
 
 ## Recommended Next Cycles (Day 4 → evening continued)
-1. **#179** → RAVEL (Huang et al. 2024) deep read — needed for Paper B related work
-2. **#180** → SPIRIT deep read (Track 5 safety) OR Paper B v0.8 pitch update
+1. ~~**#179** → RAVEL (Huang et al. 2024) deep read~~ ✅ DONE — Cause/Isolate two-score metric; MDAS (multi-task DAS) as ceiling baseline; audio SAEs likely leak MORE than text SAEs due to acoustic co-occurrence; NEW Audio-RAVEL = Category 0 for AudioSAEBench; Paper B v0.8 structure finalized
+2. **#180** → Paper B v0.8 pitch update (RAVEL + AudioSAE + Heimersheim all in now — write while fresh)
 3. Leo check-in → unblock P0 Gap #18 when available
+
+| #179 | 2026-03-02 17:01 | learn (RAVEL — Huang et al. ACL 2024) | **RAVEL fully mapped**: Cause/Isolate two-score metric (harmonic mean = RAVEL score); MDAS = SOTA via multi-attribute simultaneous optimization; SAEs fail on isolation (score Cause but leak other attributes); **NEW for Paper B**: Audio-RAVEL = Category 0 (voicing/manner/place isolation test); Audio-RAVEL maps entity→stimulus, attribute→phonological feature, interchange intervention→SAE feature patching; audio leakage likely WORSE than text (acoustic co-occurrence > world knowledge co-occurrence); Paper B v0.8 title: "AudioSAEBench: Evaluating Sparse Autoencoders for Speech Models on Causal Disentanglement and Temporal Coherence". |
+
+## Day 4 Rolling Stats (after cycle #179 — Monday March 2 5:01 PM)
+- Papers read (deep): **19 total** (+1: RAVEL ACL 2024)
+- Papers scanned: 57+
+- Research gaps identified: **22** (all OPEN; Paper B design expanded with isolation metric)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts
+- Paper pitches: 2 (A v0.4 + B → v0.8 draft ready, needs write-up)
+- Knowledge-graph: **FULLY REFRESHED** (cycle #176)
+- Must-read list: RAVEL ✅ checked off; SPIRIT = next priority after Paper B update
+- **Execution-blocked**: ~66.5h, awaiting Leo → P0 Gap #18 phonological geometry
+- **AudioSAEBench Category 0 (Audio-RAVEL)**: new contribution identified — first audio disentanglement benchmark using Cause/Isolate scoring
+
+## Recommended Next Cycles (Day 4 → Monday evening)
+1. ~~**#180** → Paper B v0.8 pitch update — incorporate RAVEL + AudioSAE + Heimersheim; write Category 0 design~~ ✅ DONE — Audio-RAVEL = Category 0 added; Category 4 upgraded (3-metric Hydra protocol); comparison table + abstract + MVP all updated
+2. **#181** → micro-reflect (5th-cycle rule: #176 plan, #177 learn, #178 learn, #179 learn, #180 plan = 5 consecutive action cycles) OR SPIRIT deep read
+3. Leo check-in → unblock P0 Gap #18 when available
+
+| #180 | 2026-03-02 17:31 | plan (Paper B v0.8) | **paper-b-pitch.md → v0.8**: (1) Category 0 "Audio-RAVEL" added as primary novel contribution — Cause/Isolate two-score from RAVEL (Huang et al. ACL 2024) applied to speech SAEs; audio leakage hypothesis (acoustic co-occurrence = MORE leakage than text SAEs); MDAS ceiling baseline; (2) Category 4 upgraded: 3-metric protocol (ablation_d + steering_precision + hydra_compensation per H&N); denoising preferred; (3) Abstract rewritten: 6-category, audio leakage gap prominent, "no existing audio SAE tests causal disentanglement" opening; (4) 1-sentence pitch, comparison table (isolation row), and MVP updated. Paper B = first audio SAE benchmark with Cause+Isolate scoring. |
+
+## Day 4 Rolling Stats (after cycle #180 — Monday March 2 5:31 PM)
+- Papers read (deep): **19 total**
+- Papers scanned: 57+
+- Research gaps identified: **22** (all OPEN; Paper B now addresses Gap #23 via Audio-RAVEL)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts
+- Paper pitches: 2 (**A v0.4 + B v0.8** — B fully updated with RAVEL+AudioSAE+Heimersheim integration)
+- Knowledge-graph: **FULLY REFRESHED** (cycle #176)
+- Must-read list: RAVEL ✅, AudioSAE ✅, Heimersheim & Nanda ✅ — SPIRIT = next priority
+- **Execution-blocked**: ~67h, awaiting Leo → P0 Gap #18 phonological geometry
+
+## Recommended Next Cycles (Day 4 → evening)
+1. ~~**#181 micro-reflect** (5th-cycle rule)~~ ✅ DONE inline — all 5 cycles HIGH value; no low-value to prune; SPIRIT = next priority
+2. **#181** → SPIRIT deep read (arXiv:2505.13541, EMNLP 2025) — Track 5 safety anchor; last paper on must-read list
+3. **Tuesday arXiv batch** (~14:00 Taipei tomorrow) → next major learn cycle after SPIRIT
+4. Leo check-in → unblock P0 Gap #18 when available

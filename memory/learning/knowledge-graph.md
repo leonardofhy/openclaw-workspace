@@ -1,9 +1,9 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-02 10:31 (cycle #166: staleness flag + Gap #21 anchor)
+> Last updated: 2026-03-02 17:01 (cycle #179: RAVEL + Gap #23 Audio-RAVEL + AudioSAEBench Category 0)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). STALE ALERT resolved. See progress.md for raw cycle logs.
-> Major sections now reflect: all 21 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT, T-SAE, Modality Collapse, AudioSAEBench, codec causal patching.
+> Major sections now reflect: all 23 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT, T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark.
 
 ## Mech Interp × Speech/Audio — Field Map (2026)
 
@@ -532,6 +532,40 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - No single encoder is universally good → multi-metric evaluation is necessary
 - Key cite for Paper B (AudioSAEBench): empirical proof that one encoder ≠ one benchmark
 
+## 🆕 RAVEL — Disentanglement Benchmark (Cycle #179, 2026-03-02)
+
+### RAVEL (Huang et al., ACL 2024, arXiv:2402.17700) — 🟢 DEEP READ
+**Authors:** Jing Huang, Zhengxuan Wu, Christopher Potts (Stanford), Mor Geva (Tel Aviv), Atticus Geiger (Pr(Ai)²R Group)
+
+**Core task:** Attribute Disentanglement — given polysemantic neurons (neurons that represent multiple concepts), can an interpretability method find features that isolate ONE concept from others?
+
+**Two-score evaluation metric:**
+- **Cause(F, A)**: Interchange intervention on feature F → does attribute A change as expected? (localization/causal effectiveness)
+- **Isolate(F, A)**: Same intervention → do OTHER attributes remain unchanged? (disentanglement/isolation quality)
+- **RAVEL score** = harmonic mean of Cause + Isolate
+
+**Key finding:** SAEs score well on Cause but fail on Isolate (standard training objectives do NOT enforce disentanglement)
+
+**SOTA method:** Multi-task DAS (MDAS) — simultaneously optimizes rotation R to localize ALL attributes to orthogonal subspaces. Achieves best Cause + Isolate via multi-attribute causal loss.
+
+**Dataset:** 5 entity types (city, Nobel laureate, verb, physical object, occupation) × 4-6 attributes per type × 500-3500 entities × 50-150 prompt templates
+
+**Audio analogue (Gap #23 — NEW):**
+- Entity → Audio stimulus (spoken word/phoneme)
+- Attribute → Phonological feature (voicing, manner of articulation, place of articulation, speaker gender, speaking rate)
+- Interchange intervention → SAE feature patching
+- Audio-RAVEL = Category 0 of AudioSAEBench
+- KEY HYPOTHESIS: audio leakage likely WORSE than text (acoustic co-occurrence in training data → voicing features encode gender, speed, etc.)
+- Ceiling baseline: MDAS applied to Whisper residual stream
+- Stimulus source: Choi et al. 2602.18899 minimal pairs + TTS-augmented pairs
+
+**Connections:**
+- Paper B (AudioSAEBench): Category 0 = Audio-RAVEL (most fundamental + differentiating contribution)
+- Gap #22: RAVEL Cause metric = formalization of Gap #22's "causal utility" concept
+- Gap #18: MDAS could be applied to test phonological subspace orthogonality through connector
+- Heimersheim & Nanda (cycle #178): interchange intervention = specific form of denoising patching
+- SAEBench (Karvonen et al.): SAEBench covers text; RAVEL covers disentanglement; AudioSAEBench covers both for audio
+
 ## 🆕 DAS/IIT Method Details (Cycles #83, 101-106)
 
 ### N) Distributed Alignment Search (DAS) — Core Paper A Method
@@ -586,7 +620,8 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - aiOla Research (Glazer) — ASR MI, hallucination causal analysis
 - Huawei Noah's Ark (Aparin) — AudioSAE
 - MBZUAI — SPIRIT (audio safety)
-- Stanford (Atticus Geiger) — causal abstraction theory + pyvene; **DAS (Distributed Alignment Search)** = learns optimal linear subspace alignment per layer via IIT training loss; upgrade from vanilla patching → gc(k) = IIT accuracy at layer k = theoretically grounded grounding_coefficient; pyvene wraps any PyTorch model, ~50 lines for full DAS sweep; `pip install pyvene` (add to venv checklist)
+- Stanford (Jing Huang, Zhengxuan Wu, Christopher Potts) — RAVEL disentanglement benchmark; **Audio-RAVEL = Category 0 of AudioSAEBench** (Gap #23)
+- Stanford + Pr(Ai)²R (Atticus Geiger) — causal abstraction theory + pyvene + RAVEL + MDAS (Multi-task DAS); **DAS (Distributed Alignment Search)** = learns optimal linear subspace alignment per layer via IIT training loss; upgrade from vanilla patching → gc(k) = IIT accuracy at layer k = theoretically grounded grounding_coefficient; pyvene wraps any PyTorch model, ~50 lines for full DAS sweep; `pip install pyvene` (add to venv checklist)
 - **Heimersheim & Nanda "How to Use and Interpret Activation Patching" (2024, arXiv:2404.15255)** — 🟢 DEEP READ (cycle #178) — practitioner tutorial: noising vs denoising (AND/OR gate diagnostic), Hydra effect (0.7x backup compensation), no-minimality caveat, corruption design = trace exactly what changes, metric suite (logit-diff best default), path patching for direct composition test, attribution patching (AtP) = fast gradient approximation. **AUDIO ADAPTATIONS:** speech = likely OR-dominant (distributed) → denoising preferred; top-k aggregate patching for Hydra; per-phoneme logprob + SAE feature activation as audio metrics; corruption = phonological minimal pairs not waveform noise.
 - Neel Nanda — activation patching best practices, TransformerLens
 - Mozilla Builders — Whisper SAE tooling
