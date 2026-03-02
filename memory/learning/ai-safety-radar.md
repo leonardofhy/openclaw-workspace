@@ -664,3 +664,13 @@ No high-signal update. Monday midday feeds static; "WoFBench" post is new-visibl
 **2026-03-02 13:15 (Mon)** — scan: LW new top = "OpenAI employees: Now is the time to stop doing good work" (pub ~Mar 2, opinion/advocacy post on OpenAI/DoD contract; politically charged, not technical AI safety research — downstream of already-tracked Anthropic/DoD standoff) | LW curated = "Persona Parasitology" (already picked) | AF top = "Schelling Goodness" (already picked 2026-03-01) | EA Forum = no new AI safety posts
 
 No high-signal update. Monday afternoon feeds static; new LW opinion post on OpenAI/DoD is below threshold (advocacy, not research). Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick).
+
+---
+**2026-03-02 13:45 (Mon)** — scan: LW +1 new (since 13:15) | AF rate-limited (429)
+
+**[new-pick]** *Context Awareness: Constitutional AI can mitigate Emergent Misalignment* (LessWrong, Birardi, Wainstock, Gentile — pub 13:21 CST Mar 2, karma 7) — Empirical paper: character-trained models (via Constitutional AI / OpenCharacterTraining) reduce critically misaligned responses after EM fine-tuning across all persona types (including non-safety-obvious ones like humor/poeticism/math); effect is model-dependent (sarcasm amplifies EM on Llama 3.1 8B but not Qwen 2.5 7B). Directly extends the EM threat model with a concrete mitigation finding; relevant to inner-alignment robustness and persona-as-safety-lever debate this week. <https://www.lesswrong.com/posts/yA2hquLrFFSFDtcoE/context-awareness-constitutional-ai-can-mitigate-emergent>
+
+---
+**2026-03-02 14:15 (Mon)** — scan: LW top = "Context Awareness: Constitutional AI can mitigate Emergent Misalignment" (already picked 13:45) + "OpenAI employees: Now is the time to stop doing good work" (already flagged, advocacy/below threshold) | AF rate-limited (429); last new post "Schelling Goodness" already picked 2026-03-01 | EA Forum unchanged
+
+No high-signal update. Monday afternoon feeds static since 13:45 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick).
