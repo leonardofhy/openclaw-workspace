@@ -755,3 +755,9 @@ No high-signal update. Evening feeds fully static; today's six picks stand as-is
 **Pick (new):** "Secretary of War Tweets That Anthropic is Now a Supply Chain Risk" — LessWrong, 2026-03-02 — Pete Hegseth (Sec. of War/Defense) publicly called Anthropic a supply chain risk on social media; significant governance signal about US military–AI lab tensions and potential regulatory consequences for safety-focused labs operating under DoD scrutiny. https://www.lesswrong.com/posts/Wpdivf3iNJDzBcbzJ/secretary-of-war-tweets-that-anthropic-is-now-a-supply-chain
 
 Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45), Secretary of War / Anthropic supply-chain-risk tweet (21:45).
+
+**2026-03-02 22:45 (Mon)** — scan: AF +0 new, LW +0 new | backlog exists (AF 5 unread, LW 33 unread)
+
+**[backlog-pick]** *An Empirical Review of the Animal Harm Benchmark* (LessWrong, 2026-03-01)
+- Why: Benchmark-quality audit on animal-harm evaluation directly affects the reliability of safety claims and deployment gating; useful for avoiding false confidence from weak evals.
+- Link: https://www.lesswrong.com/posts/FErugDzyajJtBNjzx/an-empirical-review-of-the-animal-harm-benchmark
