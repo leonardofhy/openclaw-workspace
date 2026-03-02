@@ -393,7 +393,39 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 25/25 Qs answered ✅ (count-saturated, cycle #129)
+## Meta-board Status: 26/26 Qs answered ✅ (cycle #171)
+
+---
+
+## Q27: Consecutive Skip Loop Reset (✅ CLOSED cycle #157, 2026-03-02 06:01)
+
+31 consecutive principled skips (#126-156) protected by Q24 (genuine dead zone — no new arXiv, execution-blocked, Meta Budget SPENT). The restart was Monday morning when arXiv woke up (cycle #162). Rule: Q27 = consecutive skip guard resets when a genuine `learn` or `reflect` cycle produces new output. No action needed beyond SUNDAY-BRIEF→MONDAY-BRIEF rename.
+
+---
+
+## Q28+Q29: Gap #21 Sprint Audit + Knowledge Graph Staleness (✅ CLOSED cycle #166)
+
+Q28: Gap #21 sprint (cycles #162-165) = 75% novelty ✅ — 3/4 genuine; cycle #165 marginal (pitch-bloat risk on unreviewed).
+Q29: Knowledge-graph stale since cycle #8. Rule added: after `learn` opening a gap → add paper stub SAME cycle. Gap #21 anchor added as minimum viable entry.
+
+---
+
+## Q30: Pre-Batch Window Protocol (✅ CLOSED cycle #171, 2026-03-02 13:13)
+
+**Problem:** When arXiv batch is <60 min away AND execution-blocked AND last 2+ cycles were plan (pitch updates), what's the right action? Q19 pitch-bloat risk was triggered as suspicion after cycles #169-170.
+
+**Audit result (cycle #171):**
+- Pitch A v0.4 (cycle #169): ✅ passes Q19 — new verified papers only, ≤1.5 pages, experiment details in experiment-queue.md
+- Pitch B v0.7 (cycle #170): ✅ passes Q19 — targeted additions flagged as removable
+
+**Rule applied — "Pre-Batch Triage Protocol":**
+> When arXiv batch <60 min away AND execution-blocked AND last 2+ cycles were plan/pitch:
+> Priority order: (1) knowledge-graph anchor updates (non-Leo-gated hygiene) → (2) reflect/meta if genuine Q open → (3) principled skip.
+> NOT allowed: 3rd consecutive plan cycle updating unreviewed materials.
+
+**Applied this cycle:** Knowledge-graph Gaps #18-21 + Monday batch paper stubs added (previously missing despite gap discoveries in cycles #81-170).
+
+**Status:** ✅ CLOSED [INFERRED — validate if pre-batch window appears again]
 
 ---
 

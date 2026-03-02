@@ -440,6 +440,41 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 ```
 **Estimated net savings:** ~6h of experimental debugging avoided by understanding methodology first.
 
+## 🆕 March 2026 — Gaps & Papers (cycles #162–171)
+
+### Gap #18 (Priority 0) — Phonological Vector Geometry Through the Connector
+- **Question:** Does the linear phonological structure in S3M encoders (Choi et al. 2602.18899) survive through the connector into speech LLMs?
+- **Source paper:** Choi et al. — voicing vectors are linear/compositional/scale-continuous in HuBERT/WavLM/wav2vec2 across 96 languages
+- **Key experiment:** Extract voicing_vector from Whisper encoder → hook connector via NNsight → test arithmetic in LLM layer 0 → layer-wise sweep
+- **Status:** Added to experiment-queue.md Priority 0; DAS phonological init ablation = Paper A Table 1 ablation
+- **If YES:** LLM has direct access to phonological feature directions → grounding is phonologically structured
+- **If NO:** Connector = modality bottleneck → supports Modality Collapse hypothesis
+- **Idea gate:** 🟢 GREEN (no competitors; integrates as Paper A Figure 2 or AudioSAEBench Cat 0)
+
+### Gap #19 — No Standardized Audio SAE Training Pipeline
+- **Question:** Why does SAELens (decoderesearch/SAELens) have zero audio SAEs despite being the de-facto SAE training library?
+- **Finding:** All 25 SAELens HuggingFace models = Gemma-scope/GPT-2/LLaMA only. All 5 audio SAE papers use custom one-off code.
+- **Opportunity:** AudioSAEBench contribution = SAELens-compatible audio SAE training toolkit → `pip install` + reproducible + community building
+
+### Gap #20 — Emotion-Modulated Safety (🟡 YELLOW — HOLD)
+- **Question:** Why does speaker emotion override LALM safety alignment non-monotonically? (Medium intensity = highest risk)
+- **Source:** Feng et al. 2510.16893 (ICASSP 2026)
+- **Method:** SPIRIT-style patching + Zhao et al. ESN cross-reference + SAE-guided feature attribution
+- **Gate:** 🟡 YELLOW — genuine gap but Track 5 = lowest priority; HOLD until Papers A+B submitted
+
+### Gap #21 — No Causal Patching of Codec Token Streams in LALMs
+- **Source:** Sadok et al. (see below) — SpeechTokenizer Layer 1 = semantic; Layers 2+ = acoustic
+- **Gap:** Nobody has done causal patching on per-layer RVQ token streams in LALM inference
+- **Implication:** RVQ-selective corruption = cleanest possible clean/corrupt signal design (directly answers Core Q#1)
+- **Idea gate:** 🟢 GREEN (confirmed: 6 arXiv queries, 0 results)
+
+### Monday March 2 Batch — New Papers
+- **DashengTokenizer (arXiv:2602.23765):** "One semantic layer sufficient for 22 audio tasks" — behavioral evidence for Listen Layer Hypothesis + convergent with RVQ Layer 1 = semantic content (Gap #21); cite in Paper A Introduction
+- **FAD Encoder Bias (Gui et al., arXiv:2602.23958, Interspeech 2026):** Whisper is structurally biased toward text-predictable patterns, acoustically blind to certain attributes → proves no single encoder is universal → STRONG cite for Paper B (multi-metric necessity = factual evidence)
+- **Liu et al. 2025 (UW) — "Visual Representations inside the Language Model":** VLM-analog of Paper A; LLaVA/Qwen2.5-VL/Llama-3-LLaVA KV-token flow study; observational only, no causal patching. Leo = first speech+causal. Paper A 4-paper comparison table: FCCT + Liu et al. + AudioLens + Paper A.
+
+---
+
 ## 🆕 Latest Paper (cycle #162, 2026-03-02)
 
 ### Gap #21 Anchor — Neural Audio Codec Interpretability
