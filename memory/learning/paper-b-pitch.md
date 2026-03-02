@@ -1,6 +1,6 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 0.6 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-02 10:01 (cycle #165)
+> Version: 0.7 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-02 12:31 (cycle #170)
 > Status: Draft — for Leo's review. Not finalized.
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H
@@ -28,6 +28,8 @@ That metric is **Grounding Sensitivity** (`gc(F)`), and it requires a benchmark 
 
 **This paper = SAEBench (Karvonen et al., ICML 2025) for audio models + one novel metric that has no text analogue.**
 
+> **New motivation (cycle #167, 2026-03-02):** FAD encoder bias paper (Gui et al., arXiv:2602.23958, Interspeech 2026) shows Whisper is structurally biased toward text-predictable patterns and is acoustically blind to certain attributes — directly proving that no single encoder is universal and each encoder needs independent characterization. This is a strong "why you can't just use one benchmark for all models" cite for AudioSAEBench. Additionally, DashengTokenizer (arXiv:2602.23765) provides behavioral evidence that "one [semantic] layer is sufficient for 22 audio tasks" — convergent with the RVQ Layer 1 = content hypothesis from Gap #21, and supportive of the Listen Layer Hypothesis (Paper A). Both papers are new cites for Paper B §1 (The Problem) and §3 (Why This Paper Wins).
+
 ---
 
 ## Abstract Draft (target 200 words)
@@ -52,7 +54,7 @@ We benchmark 12+ SAEs across Whisper-base/small/large, HuBERT, WavLM, and Qwen2-
 
 | Claim | Evidence |
 |-------|----------|
-| **Only multi-metric audio SAE benchmark** | 5 audio SAE papers exist (AudioSAE, Mariotte, AR&D, Plantinga-PD, Paek et al.) — all single-dimension, incomparable. Nobody combines all. |
+| **Only multi-metric audio SAE benchmark** | 5 audio SAE papers exist (AudioSAE, Mariotte, AR&D, Plantinga-PD, Paek et al.) — all single-dimension, incomparable. Nobody combines all. FAD encoder bias (Gui et al. 2602.23958, Interspeech 2026) proves no single encoder is universal — model-specific multi-metric benchmarking is necessary. |
 | **Novel metric (Grounding Sensitivity)** | No text SAE paper has audio-vs-text attribution at feature level. Zero competitors. |
 | **Uses existing stimuli** | ALME 57K conflict pairs already exist; no need to generate. |
 | **Timely** | SAEBench (text) = ICML 2025; audio gap = open NOW. AR&D (partial overlap) just appeared Feb 24 2026 — move fast. |

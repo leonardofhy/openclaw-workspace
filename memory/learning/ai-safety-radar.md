@@ -654,3 +654,8 @@ No high-signal update. Monday morning feeds fully static since 10:15 cycle; all 
 **2026-03-02 11:45 (Mon)** — scan: LW new top = "Controversy surrounding Moltbook…" (already picked 11:15) | AF rate-limited (429) | EA Forum = community discussion on Anthropic/DoD PR dynamics + Epoch.ai credibility (no new AI safety posts, below threshold)
 
 No high-signal update. Monday midday feeds fully static since 11:15 cycle; all top items already picked or below threshold. Today's picks so far: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick).
+
+---
+**2026-03-02 12:15 (Mon)** — scan: LW top = "Controversy surrounding Moltbook…" (already picked 11:15) + "Introducing and Deprecating WoFBench" (new-visible, jefftk/jkaufman, Mar 1 18:20 UTC — Wings of Fire fan-knowledge benchmark immediately saturated by frontier models; AI capabilities observation, not safety-relevant, tagged AI only) | AF top = "Schelling Goodness" (already picked 2026-03-01); no new AF posts since last check | EA Forum = no new safety posts
+
+No high-signal update. Monday midday feeds static; "WoFBench" post is new-visible but below threshold (capabilities/humor, no alignment content). Today's picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15).

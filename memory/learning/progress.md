@@ -648,7 +648,35 @@ Priority queue for Leo's first session:
 - **Execution-blocked**: still awaiting Leo (real speech + venv + IIT experiment approval)
 - **New cite for Paper A**: Liu et al. 2025 (UW) — "closest vision analog, but observational; Leo = causal"
 
-## Recommended Next Cycles (Day 4 — after 11:31 AM)
-1. **Leo unblock Priority 0** → Priority 0 Gap #18 phonological geometry experiment
-2. **plan**: update paper-a-pitch.md with 4-paper related work comparison table (Liu et al. + FCCT + AudioLens + Paper A)
-3. **cs.SD afternoon batch** (~14:00 Taipei) — check for any new papers
+| #169 | 2026-03-02 12:01 | plan (paper-a-pitch v0.4) | **paper-a-pitch.md updated to v0.4**: 4-paper comparison Table 1 added (Liu et al. 2025 UW + FCCT + AudioLens + Paper A; Leo = only speech+causal+IIT-grounded), DashengTokenizer motivation cite integrated, narrative para ready for submission. Anti-bloat check: both cites are new verified papers. |
+
+## Day 4 Rolling Stats (after cycle #169 — Monday March 2 noon)
+- Papers read (deep): 16 total
+- Papers scanned: **47+** (Monday cs.SD + cs.CL batches complete)
+- Research gaps identified: **21** (all confirmed OPEN)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts (verified ✅)
+- Paper pitches: 2 (A v0.4 + B v0.6) — A now has full related-work comparison table
+- **Execution-blocked**: still awaiting Leo (real speech + venv + IIT experiment approval)
+- **New in pitch A v0.4**: Liu et al. 4-paper Table 1 + DashengTokenizer motivation cite
+
+## Recommended Next Cycles (Day 4 — after 12:01 PM)
+1. **Leo unblock Priority 0** → experiment-queue.md P0 (Gap #18 phonological geometry)
+2. **cs.SD afternoon batch** (~14:00 Taipei, ~2h away) → next learn cycle
+3. ~~**plan**: update paper-b-pitch.md with DashengTokenizer + FAD encoder bias (2602.23958) from cycle #167~~ ✅ DONE cycle #170
+
+| #170 | 2026-03-02 12:31 | plan | **paper-b-pitch.md → v0.7**: integrated Monday batch cites — FAD encoder bias (Gui et al. 2602.23958, Interspeech 2026: Whisper is encoder-biased, no universal encoder → multi-metric necessity proven) + DashengTokenizer (2602.23765: one semantic layer = 22 tasks → convergent with RVQ Layer 1 hypothesis). Both cites added to §1 addendum + §3 table. Anti-bloat check passed (verified, targeted, removable). Next: cs.SD afternoon batch ~14:00 → learn. |
+
+## Day 4 Rolling Stats (after cycle #170)
+- Papers read (deep): 16 total
+- Papers scanned: **47+** (Monday cs.SD + cs.CL batches complete)
+- Research gaps identified: **21** (all OPEN)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts (verified ✅)
+- Paper pitches: 2 (A v0.4 + **B v0.7**) — B now has FAD encoder bias + DashengTokenizer motivation cites
+- **Execution-blocked**: still awaiting Leo (real speech + venv + IIT experiment approval)
+- **arXiv afternoon batch**: cs.SD ~14:00 Taipei (~1.5h away) → next learn cycle
+
+## Recommended Next Cycles (Day 4 afternoon)
+1. **Leo unblock Priority 0** → experiment-queue.md P0 (Gap #18 phonological geometry)
+2. **cs.SD afternoon batch** (~14:00 Taipei) → cycle #171 = learn
