@@ -15,6 +15,7 @@ Deadline watchdog built + MATS EOI prep
 - MATS EOI: Leo confirms email = leonardofoohy@gmail.com
 - MATS mentor: **Leo 不一定只填 Neel Nanda**（太熱門），需要策略性選擇
 - Deadline watchdog 已上線：`skills/deadline_watch.py` + `memory/finance/deadlines.json`，7 個 one-shot cron 已清除
+- Leo 同意把 3 篇 digest 的可用資訊轉成 autodidact queue 後續任務（先深讀 Nanda 環境設計文）
 - People DB refinement sub-agent 可能還在跑（上個 session 啟動的）
 
 ## Recent Context
