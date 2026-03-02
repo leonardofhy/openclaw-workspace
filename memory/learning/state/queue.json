@@ -262,12 +262,13 @@
       "type": "build",
       "track": "T5",
       "title": "MATS proposal v2: integrate JALMBench 246-query eval corpus; add mechanistic defense section",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Updated proposal doc referencing JALMBench as primary eval corpus; defense mechanism section expanded to distinguish from existing methods",
       "created": "2026-03-02",
-      "due": null
+      "due": null,
+      "completed": "2026-03-02"
     },
     {
       "id": "Q022",
