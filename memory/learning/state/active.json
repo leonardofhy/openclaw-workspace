@@ -44,9 +44,9 @@
     "days_active": 5
   },
   "last_cycle": {
-    "id": "c-20260302-1145",
-    "action": "learn",
-    "summary": "Q014 Model Incrimination (Singh et al. MATS 9.0): counterfactual interventions = best incrimination method; mechanistic listen-layer patching fills black-box gap; added MATS proposal action item"
+    "id": "c-20260302-1215",
+    "action": "skip",
+    "summary": "Q015 (Alignment Forum) inaccessible from WSL2 \u2014 Vercel block. No READY build tasks. Principled skip."
   },
   "last_gc": "2026-03-01T14:19:30.007894+08:00",
   "self_improve_tickets": []
