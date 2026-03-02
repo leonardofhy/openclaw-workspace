@@ -704,3 +704,13 @@ No high-signal update. Monday late-afternoon feeds fully static since 15:15 pick
 **2026-03-02 17:15 (Mon)** — scan: LW feed unchanged since 16:45 (most recent = "How to Design Environments…" pub 07:14 UTC, already picked 15:15; all other posts previously flagged or below threshold) | AF rate-limited (429) — no new posts all afternoon
 
 No high-signal update. Monday early-evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 17:45 (Mon)** — scan: LW top-10 unchanged since 17:15 (most recent post "How to Design Environments…" pub 07:14 UTC, already picked 15:15; "If 'bad guys' don't pause…" still at karma ~17, advocacy prompt, below threshold; "An Empirical Review of the Animal Harm Benchmark" pub 03-01, welfare benchmarking not alignment-core, below threshold) | AF rate-limited (429) all day — no new posts
+
+No high-signal update. Monday evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 18:15 (Mon)** — scan: LW top post = "Introducing and Deprecating WoFBench" (Jeff Wise, humorous satire on benchmark saturation — frontier models score ~100% on Wings of Fire trivia, interesting benchmark-decay commentary but not safety-core) | AF feed: still "How to Design Environments…" pub 07:14 UTC, already picked 15:15 | EA Forum: static (pinned intro post only)
+
+No high-signal update. Monday evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15).

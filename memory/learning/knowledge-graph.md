@@ -1,9 +1,9 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-02 17:01 (cycle #179: RAVEL + Gap #23 Audio-RAVEL + AudioSAEBench Category 0)
+> Last updated: 2026-03-02 17:31 (cycles #180-181: Paper B v0.8 Audio-RAVEL + SPIRIT Gap #24)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). STALE ALERT resolved. See progress.md for raw cycle logs.
-> Major sections now reflect: all 23 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT, T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark.
+> Major sections now reflect: all 24 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT, T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense.
 
 ## Mech Interp × Speech/Audio — Field Map (2026)
 
@@ -95,13 +95,17 @@
   - NOTE: 智凱哥 = Chih-Kai Yang (ckyang1124), GitHub: https://github.com/ckyang1124/AudioLens
   - CROSS-PAPER: critical layer ↔ saturation layer (Beyond Transcription); potential unified framework
 - Beyond Transcription 也涵蓋 Qwen2-Audio
-- **🟢 SPIRIT (Djanibekov et al., EMNLP 2025, MBZUAI)** — 🟢 DEEP READ — activation patching for audio jailbreak defense [arXiv:2505.13541]
-  - KEY SETUP: PGD attack on Qwen2-Audio + LLaMa-Omni (both share Whisper encoder); AdvBench 246 samples
-  - KEY FINDINGS: PGD achieves 100% ASR in some categories; activation patching (inject clean activations) reduces to ~1% with negligible utility cost; bias addition and neuron pruning also effective
-  - BEST DEFENSE: patch at critical encoder-output/early-LM layers (found empirically, not mechanistically)
-  - KEY GAP: no explanation of *where* adversarial signal lives; no SAE-guided patching
-  - CODE: https://github.com/mbzuai-nlp/spirit-breaking
-  - LEO'S OPPORTUNITY: AudioSAE features → surgically suppress adversarial features vs SPIRIT's blind layer patching
+- **🟢 SPIRIT (Djanibekov et al., EMNLP 2025, MBZUAI)** — 🟢 FULL DEEP READ (cycle #181) — activation patching for audio jailbreak defense [arXiv:2505.13541v2]
+  - KEY SETUP: PGD waveform attack on Qwen2-Audio-7B + LLaMa-Omni (both share Whisper encoder); AdvBench 246 samples; white-box
+  - KEY FINDING — ATTACK: 100% ASR on bomb-making category (Qwen2Audio); avg 82.11% (Qwen2Audio) / 93.40% (LLaMa-Omni) with XTTSv2 female voice; text-only LLMs = safe → attack success is ENTIRELY in audio modality
+  - KEY FINDING — DEFENSE: 3-stage: (1) ΔA_i = noise-sensitive neuron identification, (2) top-k% selection, (3) intervention. Best: clean-activation substitution at MLP layers → 99% robustness, negligible utility cost, no retraining.
+  - Three defense variants: activation patching (best), bias addition, neuron pruning
+  - BEST DEFENSE LAYER: MLP of encoder or LM (empirically found; mechanistic reason unknown)
+  - MECHANISTIC WEAKNESS: noise-sensitive neurons identified by activation delta magnitude only — no SAE feature attribution, no explanation of WHICH features carry adversarial information
+  - CODE: https://github.com/mbzuai-nlp/spirit-breaking.git
+  - **Gap #24 (NEW):** Which AudioSAE features are noise-sensitive? Does jailbreak corrupt audio-grounded (gc≈1) or text-predicted (gc≈0) features? SAE-guided patching = more surgical defense
+  - **Paper B connection:** SPIRIT adversarial stimuli → AudioSAEBench Cat 4 (Causal Controllability) safety axis; Audio-RAVEL on jailbreak audio = does attack feature isolate to "safety-bypass" or leak into phoneme/speaker?
+  - **AudioSAE synthesis:** SPIRIT patrol → top-k noise-sensitive neurons; AudioSAE → decompose those neurons into features; SPIRIT + AudioSAE = mechanistic jailbreak explanation
 
 ### C.0) SAE-based Interpretability Framework for AudioLLMs (New — Cycle #37)
 - **AR&D (Chowdhury et al., ICASSP 2026)** — 🟢 DEEP READ (cycle #37) [arXiv:2602.22253]

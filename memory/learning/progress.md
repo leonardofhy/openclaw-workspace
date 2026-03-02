@@ -831,7 +831,60 @@ Priority queue for Leo's first session:
 - **Execution-blocked**: ~67h, awaiting Leo → P0 Gap #18 phonological geometry
 
 ## Recommended Next Cycles (Day 4 → evening)
-1. ~~**#181 micro-reflect** (5th-cycle rule)~~ ✅ DONE inline — all 5 cycles HIGH value; no low-value to prune; SPIRIT = next priority
-2. **#181** → SPIRIT deep read (arXiv:2505.13541, EMNLP 2025) — Track 5 safety anchor; last paper on must-read list
-3. **Tuesday arXiv batch** (~14:00 Taipei tomorrow) → next major learn cycle after SPIRIT
+1. ~~**#181 micro-reflect** (5th-cycle rule)~~ ✅ DONE inline — all 5 cycles HIGH value; no low-value to prune
+2. ~~**#181** → SPIRIT deep read~~ ✅ DONE — 100% ASR via waveform noise, 99% patching defense, Whisper encoder; Gap #24 (SAE-guided SPIRIT = "SAE-Guided Audio Jailbreak Defense"); must-read list NOW COMPLETE ✅
+3. **Tuesday arXiv batch** (~14:00 Taipei tomorrow) → next major learn cycle
 4. Leo check-in → unblock P0 Gap #18 when available
+
+| #181 | 2026-03-02 17:31 | learn (SPIRIT — Djanibekov et al., arXiv:2505.13541) | **SPIRIT mapped**: PGD waveform attack achieves 100% ASR on Qwen2Audio (audio modality only — text LLMs are safe); defense = 3-stage activation patching on MLP neurons (identify noise-sensitive → select top-k → substitute clean activations → 99% robustness, no retraining); SPIRIT is engineering-strong/mechanistically-weak; **Gap #24: SAE-guided SPIRIT extension** — WHICH SAE features are noise-sensitive? Does jailbreak corrupt audio-grounded (gc=1) or text-predicted (gc=0) features? SPIRIT + AudioSAE + Audio-RAVEL = Track 5 synthesis. Must-read list NOW COMPLETE ✅ (all 11 papers: AudioSAE, Heimersheim & Nanda, RAVEL, SPIRIT, Beyond Transcription, AudioLens, Causal Abstraction, Multimodal MI Survey, NNsight, AR&D, Mariotte). |
+
+## Day 4 Rolling Stats (after cycle #181 — Monday March 2 5:31 PM)
+- Papers read (deep): **20 total** (+1: SPIRIT EMNLP 2025)
+- Papers scanned: 57+
+- Research gaps identified: **24** (Gap #24: SAE-guided jailbreak defense mechanism)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts
+- Paper pitches: 2 (A v0.4 + B v0.8 — both fully updated)
+- Knowledge-graph: **FULLY REFRESHED** (cycle #176)
+- **Must-read list: FULLY COMPLETE ✅** (all 11 papers read)
+- **Execution-blocked**: ~67.5h, awaiting Leo → P0 Gap #18 phonological geometry
+
+## Recommended Next Cycles (Day 4 → evening)
+1. **#182** → micro-reflect (5th-cycle rule from #177-#181 = 5 cycles) + knowledge-graph SPIRIT update ✅ DONE inline
+2. **Tuesday arXiv batch** (~14:00 Taipei tomorrow, ~20h away) → next learn cycle
+3. Leo check-in → unblock P0 Gap #18 when available
+
+| #182 | 2026-03-02 18:01 | reflect (micro — 5th-cycle) | **5-cycle sprint #177-#181: ALL HIGH value (5/5)** — Must-read list COMPLETE ✅; Paper B v0.8 ready; knowledge graph fully updated; 24 gaps documented, all cleanly gated; Paper A (v0.4) + Paper B (v0.8) both pitch-ready. System improvement: paper-reading-list.md updated with 20 deep reads from Feb 26-Mar 2. Next: cite-trail OR Causal Abstraction foundational paper read while arXiv Tuesday batch builds (~20h). |
+
+## Day 4 Final Stats (after cycle #182 — Monday March 2, 6 PM)
+- Papers read (deep): **20 total**
+- Papers scanned: 57+
+- Research gaps identified: **24** (all OPEN, all cleanly gated)
+- Paper ideas: **7** (all 🟢 GREEN gate-validated)
+- Code written: 2 scripts
+- Paper pitches: **2** (A v0.4 + B v0.8 — both pitch-ready for Leo review)
+- Knowledge-graph: **FULLY CURRENT** (cycle #176 refresh + #177-#181 stubs + #182 prune)
+- Must-read list: **FULLY COMPLETE** ✅ (all 11 papers read)
+- **Execution-blocked**: ~74h awaiting Leo → P0 Gap #18 phonological geometry
+
+## Recommended (Cycle #183 onward — Monday evening → Tuesday)
+1. **#183** → Causal Abstraction (Geiger et al.) foundational read OR citation trail (AudioLens/FCCT/T-SAE on Semantic Scholar)
+2. **#184+ (~14:00 Tuesday)** → Tuesday arXiv batch: cs.SD + cs.CL + cs.AI
+3. Leo check-in → unblock P0 Gap #18 + Paper A/B review + venue decision
+
+| #183 | 2026-03-02 18:31 | learn (causal abstraction theory + citation trail) | **2 key papers found**: (1) Geiger et al. 2301.04709 = unified theory: all MI methods (patching, SAE, DAS, steering, circuit analysis) = special cases of causal abstraction with interchange interventions; (2) **Sutter et al. NeurIPS 2025 Spotlight 2507.08802** = "Non-Linear Representation Dilemma": with non-linear alignment maps, ANY NN maps to ANY algorithm at 100% IIA on random models → causal abstraction is VACUOUS without linearity constraint. **Critical for Paper A:** linear DAS = theoretically necessary, not just convenient. Must cite Sutter et al. **Gap #25**: do audio representations require non-linear maps? Acoustic features may be more non-linear than text → patching might underestimate localization. Low priority, but Paper A limitations section. |
+
+## Day 4 Final+ Stats (after cycle #183 — Monday March 2, 6:31 PM)
+- Papers read (deep): **21 total** (+1: Sutter et al. 2507.08802 NeurIPS 2025 Spotlight)
+- Papers scanned: 60+
+- Research gaps identified: **25** (Gap #25: non-linear audio representations)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts
+- Paper pitches: 2 (A v0.4 + B v0.8)
+- **Must-read list: FULLY COMPLETE** ✅
+- **Paper A key citation added:** Sutter et al. 2507.08802 (NeurIPS 2025 Spotlight) = justifies linear DAS
+
+## Recommended (Cycle #184 onward)
+1. **#184 (~14:00 Tuesday)** → Tuesday arXiv batch: cs.SD + cs.CL + cs.AI
+2. **Optional:** Read Asiaee 2026 "Efficient Discovery of Approximate Causal Abstractions via Neural Mechanism Sparsification" (Feb 27, 2026 — very fresh)
+3. Leo check-in → unblock P0 Gap #18 + Paper A citation update (Sutter et al.) + venue decision
