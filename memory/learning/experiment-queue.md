@@ -69,6 +69,8 @@ This enables *attribute-selective* audio corruption — far superior to white no
 
 **Connects to:** Paper A (prerequisite validation), Paper B (TCS(F) metric foundation), Idea #7 (Audio T-SAE phoneme priors), Gap #14 (Modality Collapse)
 
+**⚠️ Paper B Gate (added cycle #195):** Gap #18 also gates Paper B Category 0 design (Audio-RAVEL). If voicing_vector SURVIVES through connector → Cause/Isolate metric can be applied at LLM residual stream layer. If it DOESN'T survive → Audio-RAVEL Category 0 must be conducted at S3M encoder layer only (before connector). This means P0 result SHAPES Paper B experimental design, not just Paper A motivation. P0 is prerequisite for BOTH papers.
+
 ---
 
 ## ⭐ Priority 1 — IIT Experiment: Triple Convergence Causal Test

@@ -978,7 +978,39 @@ Priority queue for Leo's first session:
 
 | #194 | 2026-03-03 02:01 | skip (principled — Q25+Q26, arXiv dead zone ~12h, meta-board 26/26 SATURATED, cycle #193 already delivered Day 4 report to Leo, cycle #191 meta-audit 1.5h ago with 3 improvements applied) | No consecutive skips violation: #193 was `report` action (not skip). All skip conditions valid. Next: arXiv Tuesday ~14:00 cs.SD+cs.CL+cs.AI OR Leo unblock → P0 Gap #18. |
 
+| #195 | 2026-03-03 02:31 | reflect (meta-awareness — targeted: arXiv batch prep + gap synthesis) | 4 new arXiv search queries designed (DAS-theory + codec-MI + connector-analysis + EACL venue). 2 new cross-gap connections: (1) Gap #18 also gates Paper B Category 0 design (Audio-RAVEL) — not just Paper A; (2) Gap #22 causal consistency metric = same framework needed by Gap #24 jailbreak defense → Paper B enables Track 5. Geiger DAS section identified as next non-Leo-blocked read. Experiment-queue.md P0 updated with Paper B gate note. |
+
+## Day 5 Stats (after cycle #195 — Tuesday March 3, 2:31 AM)
+- Papers read (deep): **22 total** (no new)
+- Papers scanned: 60+
+- Research gaps identified: **25** (all OPEN, all gated)
+- Paper ideas: **7** (all 🟢 GREEN gate-validated)
+- Code written: 2 scripts
+- Paper pitches: 2 (**A v0.6** ✅ + **B v0.8** ✅ — both pitch-ready)
+- Must-read list: **FULLY COMPLETE** ✅
+- Knowledge-graph: **FULLY CURRENT**
+- New: Gap #18 → Paper B gate connection clarified; arXiv batch queries +4 optimized
+
 ## Recommended Next Cycles (Day 5)
-1. **#195 (~14:00 Tuesday)** → Tuesday arXiv batch: cs.SD + cs.CL + cs.AI (updated triage filter)
-2. **When Leo responds** → P0 phonological geometry experiment OR Paper A/B review session
-3. **P0 Gap #18 Discord ping**: already sent via cycle #191 rule; do NOT re-log until Leo replies
+1. **~14:00 Tuesday** → arXiv Tuesday batch with 4 optimized queries (DAS-theory + codec-MI + connector-analysis + EACL venue)
+2. ~~**If triggered before 14:00** → deep read Geiger et al. 2301.04709 DAS section~~ ✅ DONE cycle #196 — DAS mechanism + IIA as gc(k) + decomposability ablation + connector subspace test; Paper A v0.7 queued
+3. **When Leo responds** → P0 phonological geometry + Paper A/B pitch review
+4. **DO NOT re-log** Gap #18 blocker (Discord ping sent cycle #193)
+
+| #196 | 2026-03-03 03:01 | learn (DAS full mechanism — Geiger et al. 2303.02536) | **DAS algorithm fully understood**: (1) Rotate-fix-unrotate = RotatedSpaceIntervention in pyvene; (2) gradient descent over orthogonal R → finds best linear subspace, not brute-force search; (3) IIA = gc(k) = DAS-IIA at layer k for phonological variable F; (4) **NEW ablation**: test voicing-subspace ⊥ phoneme-identity subspace at Listen Layer → distinguishes abstract vs decomposable encoding; (5) **connector test**: does R learned at Whisper encoder persist to LLM layer 0? → specifies Gap #18 experiment more precisely; (6) must cite THREE separate Geiger papers (2301.04709, 2303.02536, Geiger 2023 approximate CA). Paper A v0.7 queued. |
+
+## Day 5 Rolling Stats (after cycle #196 — Tuesday March 3, 3:01 AM)
+- Papers read (deep): **23 total** (+1: DAS arXiv:2303.02536, method section)
+- Papers scanned: 60+
+- Research gaps identified: **25** (all OPEN, all gated)
+- Paper ideas: **7** (all 🟢 GREEN gate-validated)
+- Code written: 2 scripts
+- Paper pitches: 2 (**A v0.7 queued** + B v0.8)
+- Must-read list: **FULLY COMPLETE** ✅
+- Knowledge-graph: **FULLY CURRENT**
+- **New Paper A contributions**: decomposability ablation + connector R-transfer test + 3-Geiger citation clarification
+
+## Recommended Next Cycles (Day 5 continued)
+1. **Paper A v0.7 update** (non-Leo-blocked): formalize gc(k)=DAS-IIA + decomposability ablation + connector test + clarify 3 Geiger citations
+2. **~14:00 Tuesday** → arXiv Tuesday batch with 4 optimized queries
+3. **When Leo responds** → P0 Gap #18 + Paper A pitch review

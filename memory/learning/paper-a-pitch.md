@@ -1,8 +1,15 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.6 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-02 20:31 (cycle #187)
+> Version: 0.7 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 03:01 (cycle #196)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v0.7 Upgrades (cycle #196 — DAS mechanism deep read)
+1. **gc(k) = DAS-IIA formalized**: grounding coefficient is now properly defined as `gc(k) = DAS-IIA(layer k, phonological variable F)` using pyvene's `RotatedSpaceIntervention`. Not a ratio — an IIT-grounded accuracy metric.
+2. **NEW ablation (decomposability test)**: At the Listen Layer L*, test whether voicing-subspace ⊥ phoneme-identity subspace. If orthogonal = abstract phonological encoding (model encodes voicing independently of which phoneme). If overlapping = decomposable encoding (model derives voicing from phoneme label). This is a strong-form prediction specific to speech (no text analog exists).
+3. **Connector subspace transfer test (Gap #18 sharpened)**: DAS learns rotation R at Whisper encoder layer. Test: does R transfer to LLM layer 0? If same R → connector preserves phonological subspace; if different R but high IIA → connector rotates but preserves; if no IIA at LLM layer 0 → connector bottleneck destroys phonological geometry.
+4. **3 Geiger citations distinguished**: Must cite all three separately — (1) arXiv:2301.04709 (causal abstraction as unifying theory of MI), (2) arXiv:2303.02536 (DAS algorithm — THIS PAPER), (3) Geiger et al. 2023 ACL (approximate causal abstraction grounding for IIA metric).
+5. **Why DAS beats localist patching for audio**: AudioSAE shows ~2000 features per Whisper layer → extreme polysemanticity → individual neurons play multiple roles → localist patching patches irrelevant dimensions → low IIA is an ARTIFACT of wrong method. DAS finds the relevant subspace despite polysemanticity.
 
 ### ⚡ v0.6 Upgrades (cycle #187)
 1. **Abstract synced** (stale flag RESOLVED): updated abstract reflects v0.4+v0.5 method upgrades — RVQ-layer corruption stimulus design, DashengTokenizer behavioral motivation, Liu et al. comparison table, Sutter et al. linear DAS justification, Geiger+Asiaee theory triangle.
@@ -84,6 +91,31 @@ Large audio-language models (LALMs) can answer questions about audio content, bu
 **Note on PROBE_LAYER vs INTERVENE_LAYER:**
 - Sweep both independently: probe_layer = layer where MMProbe is extracted; intervene_layer = layer where patch is applied
 - Standard practice: probe at L-1, intervene at L (sliding window)
+
+**🆕 v0.7 Decomposability Ablation at L* (new test):**
+At the Listen Layer L* (from gc(k) sweep), run two DAS searches simultaneously:
+1. DAS for voicing variable F_voicing (voiced=1, unvoiced=0) → R_voicing
+2. DAS for phoneme-identity variable F_phoneme (one-hot over ~40 phonemes) → R_phoneme
+
+Test: are R_voicing and R_phoneme subspaces orthogonal?
+- `orthogonality = |cos(angle(R_voicing columns, R_phoneme columns))|`
+- Near 0 = abstract phonological encoding (INTERESTING: model encodes voicing without knowing which phoneme)
+- Near 1 = decomposable encoding (voicing derived from phoneme label; model might be doing table lookup)
+
+This test has no text-LLM analog (text models don't have the audio→phoneme→voicing hierarchy). It's speech-native.
+
+**🆕 v0.7 Connector Subspace Transfer Test (Gap #18 sharpened):**
+After finding R at Whisper encoder layer k*, test if the SAME rotation works at LLM layer 0:
+1. Extract DAS rotation R_encoder from Whisper encoder (trained to find voicing subspace there)
+2. Apply R_encoder as FIXED rotation at LLM layer 0 → compute IIA without re-training
+3. IIA_transfer = how well R_encoder works at LLM layer 0
+
+Interpretations:
+- IIA_transfer ≈ gc(encoder) → connector is a volume-preserving rotation: phonological subspace preserved ✅
+- IIA_transfer << gc(encoder) but re-trained IIA at LLM layer 0 is HIGH → connector adds rotation but subspace survives
+- IIA_transfer ≈ 0 AND re-trained IIA ≈ 0 → connector destroys phonological geometry → Paper A scopes to encoder
+
+This is the correct specification of Gap #18 experiment (now MacBook-feasible in Phase 1 setup).
 
 ### Phase 2: Qwen2-Audio-7B grounding_coefficient (NDIF/GPU)
 1. Use ALME 57K audio-text conflict stimuli (Li et al. 2025, arXiv:2602.11488) — already built
