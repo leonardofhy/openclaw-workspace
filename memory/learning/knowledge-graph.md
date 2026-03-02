@@ -349,6 +349,22 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 6. **"Temporally-resolved Audio SAE"** (Track 2 — AudioSAEBench extension): Mariotte mean-pools along time → loses temporal info. Nobody has asked "when during an utterance does each sparse feature activate?" Temporal SAE = direct connection to "Listen vs Guess" (which positions are causally critical?). Novel contribution to AudioSAEBench.
    - **Methodology found (cycle #70)**: Bhalla et al. "Temporal SAEs" (arXiv:2511.05541, Harvard/MIT, Oct 2025) — T-SAE adds contrastive loss on adjacent tokens to enforce temporal smoothness → recovers semantic concepts without supervision. Audio has STRONGER temporal structure than text (phoneme durations are fixed; formants smooth within phoneme, change at boundaries). T-SAE should work better on audio than text. Direct method backbone for this paper idea.
 
+### F2) Neural Audio Codec Interpretability
+
+- **Sadok, Hauret, Bavu "Bringing Interpretability to Neural Audio Codecs"** (Grenoble Alpes / CNAM / ISL, **Interspeech 2025**) — 🟢 SCAN (cycle #162) [arXiv:2506.04492]
+  - **Models analyzed:** DAC, SpeechTokenizer, Mimi, BigCodec — 4 RVQ-based codecs
+  - **Method (2-stage):**
+    1. *Analysis*: Pretrained AnCoGen-Melspectrogram probes codec tokens → maps where content/identity/pitch are encoded in RVQ layers
+    2. *Synthesis*: AnCoGen-Codec plugins trained on DAC + Mimi → direct attribute↔token prediction + manipulation
+  - **KEY FINDING**: SpeechTokenizer (only codec with explicit disentanglement via HuBERT teacher) → RVQ layer 1 = phonetic content; layers 2+ = acoustic attributes (timbre, prosody). DAC/Mimi have emergent/implicit structure.
+  - **METHOD LIMITATION**: Probe-based only — no causal patching. AnCoGen finds *correlational* attribute-token mappings; causal necessity not tested.
+  - **CONNECTIONS TO LEO'S WORK:**
+    - Q9 (codec codebook division): This paper directly answers for 4 codecs via probing. SpeechTokenizer layer 1 = content, layers 2+ = acoustic — use this as design blueprint for Track 1 "clean/corrupt" codec corruption protocols.
+    - Track 1 (Audio IOI Causal Benchmark): Codec token corruption = cleaner/more principled clean/corrupt signal than white-noise patching (Heimersheim & Nanda Gap). Corrupt only RVQ layers 2+ (speaker) while preserving layer 1 (content).
+    - Paper B (AudioSAEBench): RVQ layer partitioning = natural scaffold for Category 1 (Acoustic Concept Detection). SpeechTokenizer's designed disentanglement = validation baseline for SAE-discovered features.
+    - Paek et al. cycle #80: Paek = SAE on generation codecs (EnCodec/DiffRhythm). Sadok et al. = probe-based analysis of 4 comprehension/generation codecs. Together: codec interpretability field has probing + SAE, but NO CAUSAL PATCHING → Leo's gap.
+  - **NEW GAP #21: Codec Causal Patching in LALM Inference** — nobody has asked: "does zeroing RVQ layer k in the input to a speech LLM (Qwen2-Audio, Gemini) causally interrupt the LALM's understanding of speaker identity/pitch?" AnCoGen shows tokens *correlate* with attributes; causal necessity in downstream LALM = unanswered. Extend as Track 1 experiment.
+
 ### G) Activation Patching Methodology
 - **Heimersheim & Nanda (2024)** — 🟢 DEEP READ — "How to Use and Interpret Activation Patching" [arXiv:2404.15255]
   - KEY DISTINCTION: Denoising (clean→corrupt) tests SUFFICIENCY; Noising (corrupt→clean) tests NECESSITY — NOT symmetric!
