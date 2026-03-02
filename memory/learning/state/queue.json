@@ -146,14 +146,15 @@
       "type": "read",
       "track": "T5",
       "title": "Deep-read: Designing Environments for Understanding Model Motives (Nanda + MATS 9.0)",
-      "status": "ready",
+      "status": "done",
       "priority": 0,
       "blocked_by": null,
       "definition_of_done": "Extract 5 design principles; map to MATS proposal (how Leo's research task can apply them); note what Nanda cares about NOW",
       "created": "2026-03-02",
       "due": null,
       "action_type": "learn",
-      "source": "https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives"
+      "source": "https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives",
+      "completed": "2026-03-02"
     },
     {
       "id": "Q029",
