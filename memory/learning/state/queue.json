@@ -127,6 +127,19 @@
       "created": "2026-03-02",
       "due": null,
       "completed": "2026-03-02"
+    },
+    {
+      "id": "Q027",
+      "type": "build",
+      "track": "T5",
+      "title": "T5 safety probe unit tests (Tier 0) — validate listen_layer_audit.py mock mode",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "5/5 unit tests passing; script produces valid JSON with safety_score, gc_k, alert",
+      "created": "2026-03-02",
+      "due": null,
+      "completed": "2026-03-02"
     }
   ],
   "archived_count": 16,
