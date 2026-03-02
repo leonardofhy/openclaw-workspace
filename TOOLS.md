@@ -128,11 +128,18 @@
 - 週五 20:00 天氣偵察（email）
 
 ### Lab Bot（WSL2, 24/7）
-- ***/30 08-23 Heartbeat**（main session, g53s）— 沉默優先；有 alert 才通知 #general
+- ***/30 08-23 Heartbeat**（main session, g53s）— 沉默優先；有 alert 才通知 #general；**含 deadline watchdog**
 - **:15/:45 08-23 Autodidact**（isolated, sonnet, 300s timeout）— v2：precheck gate → phase-aware cycle
 - **14:00 News Scout** `366e373d`（isolated, g53s, 180s timeout）— HN + Alignment Forum 掃描 → LLM 相關度評分 → 加入 autodidact queue
 - **06:00 System Scanner**（isolated, g53s）— 每日健檢，🔴 時 Discord 通知 Leo
 - **08:00 Daily Merge**（isolated, g53s）— 自動 fetch + merge macbook-m3
 - **13:00 Afternoon Calendar**（isolated, g53s）— 3 小時內事件提醒
 - ***/2h Tunnel Watchdog**（isolated, g53s）— SSH 反向隧道自動修復
+- **21:00 Daily Research Briefing**（isolated, g53s, 120s timeout）— 綜合新聞 + autodidact + artifacts → email
 - **23:30 Daily Growth Report**（isolated, g53s）— 每日成長量化，常規→#bot-logs，異常→#general
+
+### Deadline Watchdog（取代舊 one-shot cron jobs）
+- **位置**: `skills/deadline_watch.py`
+- **資料**: `memory/finance/deadlines.json`（11 個 deadlines）
+- **觸發**: heartbeat 時跑 `deadline_watch.py --days 14`，有 alert 就通知 #general
+- **舊 cron 已清除**: pathfinder-followup, ntu-intl-scholarship, ctci-scholarship-prep, ctci-registration-open, mats-research-task-prep, sept-scholarship-batch, ctci-written-deadline

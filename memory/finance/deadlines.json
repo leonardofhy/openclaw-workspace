@@ -1,0 +1,112 @@
+[
+  {
+    "id": "D-001",
+    "name": "Pathfinder follow-up",
+    "deadline": "2026-03-13",
+    "category": "funding",
+    "action": "追蹤 Pathfinder grant 結果",
+    "owner": "bot",
+    "warn_days": 3,
+    "notify": "discord"
+  },
+  {
+    "id": "D-002",
+    "name": "NTU 國際傑出研究生獎學金確認",
+    "deadline": "2026-03-15",
+    "category": "scholarship",
+    "action": "確認申請時程和資格（研究獎助生是否衝突）",
+    "owner": "leo",
+    "warn_days": 5,
+    "notify": "discord"
+  },
+  {
+    "id": "D-003",
+    "name": "MATS General Application 開放",
+    "deadline": "2026-04-25",
+    "category": "funding",
+    "action": "填 MATS General Application 線上表單（~2h）",
+    "owner": "leo",
+    "warn_days": 7,
+    "notify": "discord"
+  },
+  {
+    "id": "D-004",
+    "name": "陳鴻珠教育基金 deadline",
+    "deadline": "2026-05-31",
+    "category": "scholarship",
+    "action": "確認研究生是否適用，如適用則申請",
+    "owner": "leo",
+    "warn_days": 14,
+    "notify": "discord"
+  },
+  {
+    "id": "D-005",
+    "name": "中技社準備開始",
+    "deadline": "2026-06-01",
+    "category": "scholarship",
+    "action": "確認電信所內部截止日，開始寫研究計畫書",
+    "owner": "leo",
+    "warn_days": 14,
+    "notify": "discord"
+  },
+  {
+    "id": "D-006",
+    "name": "中技社線上報名 OPEN",
+    "deadline": "2026-07-01",
+    "category": "scholarship",
+    "action": "立刻提交研究獎學金 + 生活助學金",
+    "owner": "leo",
+    "warn_days": 3,
+    "notify": "discord"
+  },
+  {
+    "id": "D-007",
+    "name": "MATS Research Task 準備衝刺",
+    "deadline": "2026-08-15",
+    "category": "funding",
+    "action": "開始 Research Task 環境搭建 + 選題確認",
+    "owner": "leo",
+    "warn_days": 7,
+    "notify": "discord"
+  },
+  {
+    "id": "D-008",
+    "name": "9 月獎學金批次準備",
+    "deadline": "2026-08-25",
+    "category": "scholarship",
+    "action": "準備潘文淵 + 上海商銀 + 續讀獎勵金申請材料",
+    "owner": "leo",
+    "warn_days": 7,
+    "notify": "discord"
+  },
+  {
+    "id": "D-009",
+    "name": "MATS Neel Nanda Research Task DEADLINE",
+    "deadline": "2026-08-29",
+    "category": "funding",
+    "action": "提交 12-20h MI 研究報告 + Executive Summary",
+    "owner": "leo",
+    "warn_days": 14,
+    "notify": "discord"
+  },
+  {
+    "id": "D-010",
+    "name": "中技社書面截止",
+    "deadline": "2026-09-10",
+    "category": "scholarship",
+    "action": "確認書面材料已寄出",
+    "owner": "leo",
+    "warn_days": 5,
+    "notify": "discord"
+  },
+  {
+    "id": "D-011",
+    "name": "僑委會捐贈獎助學金",
+    "deadline": "2027-01-15",
+    "category": "scholarship",
+    "action": "需 i 僑卡，申請僑委會獎助學金",
+    "owner": "leo",
+    "warn_days": 14,
+    "notify": "discord"
+  }
+]
