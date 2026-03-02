@@ -119,12 +119,13 @@
       "type": "build",
       "track": "T3",
       "title": "T3 synthetic stimuli generator for gc(k) harness (Tier 1) — CPU-only, no real speech needed",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Python script generating synthetic phoneme-contrastive activation pairs; integrates with gc_eval.py; passes unit test with mock whisper encoder output",
       "created": "2026-03-02",
-      "due": null
+      "due": null,
+      "completed": "2026-03-02"
     }
   ],
   "archived_count": 16,
