@@ -67,12 +67,13 @@
       "type": "build",
       "track": "T3",
       "title": "Paper A: Results + Discussion skeleton (Tier 0) — gc(k) results table stubs, ablation placeholders, limitation + future work",
-      "status": "ready",
+      "status": "done",
       "priority": 0,
       "blocked_by": null,
       "definition_of_done": "Markdown skeleton with results section (figure/table stubs for gc(k) curves + patching experiments) + discussion (limitations + future directions); ready for Leo to populate with real numbers",
       "created": "2026-03-02",
-      "due": null
+      "due": null,
+      "completed": "2026-03-02"
     },
     {
       "id": "Q021",
