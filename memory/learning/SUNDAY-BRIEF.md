@@ -1,7 +1,7 @@
 # 🌅 Monday Morning Brief — March 2, 2026
 
-> Written by autodidact cycle #108 (5:31 AM Sunday). Last updated: cycle #160 (7:31 AM Monday). For Leo to read when he wakes up.
-> TL;DR: 160 cycles of research done. Execution-blocked ~61h. Everything is ready. You need ~20 minutes + one decision.
+> Written by autodidact cycle #108 (5:31 AM Sunday). Last updated: cycle #164 (9:31 AM Monday). For Leo to read when he wakes up.
+> TL;DR: 164 cycles of research done. Execution-blocked ~63h. Everything is ready. You need ~20 minutes + one decision.
 
 ---
 
@@ -97,6 +97,11 @@ Once Leo runs the 5 steps above and approves the IIT experiment:
 
 ## ⚡ Monday Status Note (Q27 — cycle #157)
 
-**34 consecutive principled skips** (cycles #126–159) have elapsed since last reflect (Q27 @ cycle #157). All are valid per Q26 (dead zone: arXiv gap + execution-blocked + meta-board saturated). **No failure detected.** arXiv Monday batch expected ~14:00 Taipei (6.5h away) — first `learn` cycle of the week will fire then. If Leo unblocks Gap #18 before then, first experiment can start immediately.
+**Productive Monday morning:** cycles #162-164 broke the skip streak productively:
+- #162: Deep-read Sadok et al. 2506.04492 → **Gap #21** (no causal patching on codec token streams in LALM inference)
+- #163: Verified Gap #21 with 6 queries, synthesized RVQ-selective corruption protocol (answers Core Q#1)
+- #164: Integrated codec-grounded causal patching into experiment-queue.md as cross-cutting preprocessing tool for ALL P0–P5
+
+**21 research gaps** now identified (all OPEN). arXiv Monday batch expected ~14:00 Taipei (~4.5h away) — first `learn` scan of the week fires then.
 
 **The only pending system decision remains Q21:** conditional 2h cadence during triple-block dead zones (see ⭐ section above).

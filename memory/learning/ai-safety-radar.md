@@ -622,3 +622,15 @@ No high-signal update. Late Sunday night feeds fully static; no new AI safety po
 **2026-03-01 23:45 (Sun)** — scan: LW new = "Continuously Integrating Feelings…" (Karma 7, introspection/rationality, not safety-relevant); curated top = "Persona Parasitology" (already picked) | EA Forum top = "The best cause will disappoint you: optimiser's curse" (EA Forum, Feb 11, EA decision theory, not directly AI safety) | AF unavailable (429)
 
 No high-signal update. Sunday midnight feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-02 09:15 (Mon)** — scan: LW curated top = "Persona Parasitology" (already picked) | LW new: "An Open Letter to the Department of War and Congress" (Gordon Worley, pub 2026-03-01 18:31 UTC, NEW) + "An Empirical Review of the Animal Harm Benchmark" (eval/ethics, lower AI-safety relevance) | AF new top = "Schelling Goodness" (already picked 2026-03-01 09:15)
+
+**[new-pick]** *An Open Letter to the Department of War and Congress* (LessWrong, G.S. Worley) — Tech founders/engineers/investors coalition letter opposing DoD's "supply chain risk" designation of Anthropic for refusing contract changes; frames it as dangerous precedent for government coercion of AI labs; directly follows the Anthropic/DoD standoff already tracked. Key AI governance signal. <https://www.lesswrong.com/posts/fETA2GwdgTs7CjXfy/an-open-letter-to-the-department-of-war-and-congress>
+
+---
+**2026-03-02 09:45 (Mon)** — scan: AF rate-limited (429), LW +0 new posts since 09:15 (feed unchanged; top recent = "An Open Letter to the DoW", pub Mar 1 18:31 UTC) | no new items across AF/LW since last cycle
+
+**[backlog-pick]** *I'm Bearish On Personas For ASI Safety* (LessWrong, J Bostock, Mar 1 2026, Karma 54, Tags: AI)
+- Why: Direct counterargument to the week's highest-signal pick ("The Persona Selection Model"); argues persona-based frameworks are insufficient/misleading for ASI safety planning — an important steel-man worth reading alongside the pro-persona PSM post. Karma 54 confirms genuine community engagement; was present in the 09:15 feed but unpicked.
+- Link: <https://www.lesswrong.com/posts/i-m-bearish-on-personas-for-asi-safety>

@@ -6,6 +6,38 @@
 
 ---
 
+## 🆕 Cross-Cutting Preprocessing: Codec-Grounded Causal Patching (Gap #21 — cycle #163)
+
+> Applies as a preprocessing option to ALL experiments below (P0–P5). Not a standalone paper — an engineering contribution.
+
+**Insight (Sadok et al. 2506.04492, Interspeech 2025 + Gap #21 synthesis):**
+SpeechTokenizer maps RVQ layers to specific attributes:
+- **Layer 1 tokens** = semantic content (phonetic/linguistic, via HuBERT supervision)
+- **Layers 2+ tokens** = acoustic attributes (speaker identity, pitch, timbre, prosody)
+
+This enables *attribute-selective* audio corruption — far superior to white noise (Gap #6):
+
+| Corruption Goal | Method |
+|----------------|--------|
+| Isolate semantic pathway | Replace Layer 1 tokens from clean audio with different-content tokens (same speaker) |
+| Isolate acoustic/identity pathway | Replace Layers 2+ tokens (keep Layer 1 = content unchanged) |
+| Full replacement (baseline) | Replace all RVQ layers (current standard = naive approach) |
+
+**Connection to Core Research Q#1:** "Audio 的 'clean/corrupt' 怎麼設計才只破壞你要隔離的因素?" → ANSWERED via RVQ layer semantics.
+
+**Integration targets:**
+- **P0 (Gap #18 phonological geometry):** Patch Layer 1 tokens only → tests phonological geometry without acoustic confound. Layer 2+ fixed = speaker identity unchanged → cleanest phonological isolation.
+- **P1 (Triple Convergence IIT):** Layer 1 replacement = content corruption; Layer 2+ = acoustic corruption. Can disambiguate whether transition layer is phonetic or paralinguistic processing.
+- **P2 (Listen Layer Paper):** ALME conflict stimuli can be augmented: replace Layer 1 tokens with semantically conflicting content while keeping speaker voice (Layer 2+) identical → sharper audio-text conflict signal.
+- **P4 (Class-specific Neuron Grounding):** For emotion ESN analysis (Zhao et al. Qwen2.5-Omni): patch Layer 2+ tokens (prosody/energy) while keeping content fixed → cleaner test of whether ESNs respond to acoustic or linguistic emotion signals.
+- **P5 (AudioSAEBench):** RVQ layers = natural partition for Category 1 (Acoustic Concept Detection) — validate whether SAE features extracted from SpeechTokenizer align with the designed Layer 1 / Layer 2+ disentanglement.
+
+**Prerequisite:** SpeechTokenizer installed (`pip install speechtokenizer`). MacBook-feasible — CPU inference for tokenization.
+
+**Gap #21 status:** Confirmed fully open (6 arXiv queries, 0 results on causal patching of codec token streams in LALM inference). Adding codec causal patching to Paper A or B scope = incremental, not primary.
+
+---
+
 ## Queue Status
 - Total ideas: 6 (crystallized in knowledge-graph + goals)
 - Experiments proposed: 2 (ready for Leo approval)

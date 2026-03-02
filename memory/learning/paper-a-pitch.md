@@ -1,6 +1,6 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.2 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-02-28 21:31 (cycle #92)
+> Version: 0.3 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-02 10:01 (cycle #165)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
 
