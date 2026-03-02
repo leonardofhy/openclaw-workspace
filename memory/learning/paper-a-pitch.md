@@ -4,6 +4,11 @@
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
 
+### ⚠️ ABSTRACT STALE (flagged cycle #175 meta-audit)
+> Abstract below = v0.1 base text. Method section = v0.4. They have drifted.
+> Abstract needs sync pass before Leo review: (1) add RVQ-layer corruption motivation (Gap #21); (2) cite DashengTokenizer as behavioral evidence; (3) update related work framing to match Liu et al. 2025 comparison table.
+> **Do NOT share abstract with Leo/智凱哥 until this sync pass is done (~0.5 cycles).**
+
 ### ⚡ v0.4 Upgrades (cycles #167–169)
 1. **Related Work expanded**: 4-paper comparison table added (see "Connections to Related Work"). Liu et al. 2025 (UW) = closest vision analog — observational only; Leo = first speech+causal. Strengthens Paper A's novelty claim.
 2. **DashengTokenizer cite** (arXiv:2602.23765): "one layer sufficient for 22 audio tasks" = behavioral evidence for Listen Layer Hypothesis. Cite in Abstract/Introduction as motivation.

@@ -674,3 +674,13 @@ No high-signal update. Monday afternoon feeds static; new LW opinion post on Ope
 **2026-03-02 14:15 (Mon)** — scan: LW top = "Context Awareness: Constitutional AI can mitigate Emergent Misalignment" (already picked 13:45) + "OpenAI employees: Now is the time to stop doing good work" (already flagged, advocacy/below threshold) | AF rate-limited (429); last new post "Schelling Goodness" already picked 2026-03-01 | EA Forum unchanged
 
 No high-signal update. Monday afternoon feeds static since 13:45 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick).
+
+---
+**2026-03-02 14:45 (Mon)** — scan: LW recent = all items already picked or below threshold (OpenAI employees advocacy post unchanged at karma 28; WoFBench at karma 50 non-safety; Constitutional AI/EM at karma 7 already picked 13:45; Moltbook already picked 11:15) | AF rate-limited (429) — no new posts since 14:15 cycle
+
+No high-signal update. Monday afternoon feeds fully static. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick).
+
+---
+**2026-03-02 15:15 (Mon)** — scan: LW +1 new (since 14:45) | AF rate-limited (429) | EA Forum: no new safety posts (top = Cornell networking, anti-fascism/EAG discourse, all non-safety)
+
+**[new-pick]** *How to Design Environments for Understanding Model Motives* (LessWrong, Kroiz, Singh, Rajamanoharan, **Neel Nanda** — MATS 9.0; pub 15:14 Taipei, karma 12, Frontpage) — Methodological paper on building environments that distinguish *benign vs. malign motivations* (scheming vs. confusion) behind bad model actions; distills 5 design principles from iterating 20+ environments; directly addresses the model-incrimination problem central to scalable oversight and deceptive alignment detection. High-signal: Neel Nanda-advised, interpretability-tagged, fills a concrete tooling gap for inner-alignment evaluation. <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>

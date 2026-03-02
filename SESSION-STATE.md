@@ -3,13 +3,14 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-02 12:27
+**Last Updated:** 2026-03-02 13:07
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
-- 2026-03-02 12:26: Leo requested two reminders: (1) tomorrow 09:30 breakfast with Ted and must account for travel-to-school buffer; (2) today on the way home buy shampoo because it is used up.
+- 2026-03-02 13:06: Leo critical correction — prior "wait until tomorrow arXiv" judgment was wrong. There is immediate must-read + consolidation work now. Identified 3 process issues (including Paper A summary lag and KG gating misjudgment), added STALE warning in `paper-a-pitch.md` summary to prevent external use of stale text, and reordered executable queue: KG consolidation first, then AudioSAE/SPIRIT/patching reading. Decision: continue producing now (not a dead zone).
+- 2026-03-02 12:26: Leo requested two reminders: (1) tomorrow 09:30 breakfast with Ted and must account for travel-to-school buffer; (2) today on the way home buy shampoo because it is used up).
 - 2026-03-01: 制度改革完成（6 項修復 + 成長保障系統 + mailbox）
 - 2026-03-01: Mac Leo 完成修復（b2763a7）：mailbox.py、requireMention:false、SLA+ACK
 - 2026-03-01: Lab 正在 cross-merge macbook-m3，解 conflict 中

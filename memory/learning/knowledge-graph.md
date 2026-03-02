@@ -2,10 +2,8 @@
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
 > Last updated: 2026-03-02 10:31 (cycle #166: staleness flag + Gap #21 anchor)
-> ⚠️ STALE ALERT: Cycles #8-165 (~150 cycles of discoveries) are NOT reflected here.
-> Full state in: goals.md (gaps #1-21, paper ideas, must-read list), progress.md (all cycle logs), experiment-queue.md.
-> Recent major additions missing from graph: Choi et al. phonological arithmetic, DAS/IIT method, T-SAE idea, Modality Collapse paper, AudioSAEBench analysis, Gap #21 (codec causal patching).
-> TODO (Leo-gated): decide if deep knowledge-graph refresh is worth ~2 cycles.
+> Last deep refresh: 2026-03-02 15:31 (cycle #176). STALE ALERT resolved. See progress.md for raw cycle logs.
+> Major sections now reflect: all 21 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT, T-SAE, Modality Collapse, AudioSAEBench, codec causal patching.
 
 ## Mech Interp × Speech/Audio — Field Map (2026)
 
@@ -484,6 +482,104 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
   - AnCoGen plugin: attribute↔token prediction bidirectional
   - GAP #21: No causal patching of codec token streams in LALM inference (fully open — 6 arXiv queries, 0 results)
   - CONNECTIONS: Core Q#1 ("clean/corrupt design" = ANSWERED via RVQ layer semantics), Track 1 (Benchmark Protocol), Paper B (AudioSAEBench Category 1), Gap #18 (phonological geometry test = Layer 1 only patch)
+
+## 🆕 Modality Prioritization Research Cluster (Cycles #39-41, Feb 27 batch)
+
+### M1) MiSTER-E (IISc/Microsoft, arXiv:2602.23300 — SCAN cycle #39)
+- Uses Mixture-of-Experts gating (g_speech vs g_text) to **behaviorally** measure modality dominance
+- Quantifies speech vs text reliance at logit level — non-mechanistic (no causal patching)
+- Leo's contribution: MiSTER-E shows behavior → mechanism unknown → Leo's causal layer patching = mechanistic explanation
+- Status: motivating citation for Paper A introduction (behavioral → mechanistic gap)
+
+### M2) Modality Collapse (arXiv:2602.23136, Feb 27 batch — SCAN cycle #40)
+- **Gap #14:** Formal GMI theory explaining why audio info is ENCODED in speech LLMs but decoder CANNOT use it
+- "Modality Collapse" = information bottleneck at cross-modal projection
+- Key: audio is encoded but structurally inaccessible post-connector — not a training gap, an architectural one
+- Leo's layer-wise causal map = direct test of where the collapse happens
+- Connection to Gap #18: if phonological geometry is destroyed through the connector → Modality Collapse confirmed mechanistically
+
+### M3) Cascade Equivalence (arXiv:2602.17598, Feb 27 batch — SCAN cycle #40)
+- **Gap #15:** LEACE erasure confirms speech LLMs are implicit ASR cascades EXCEPT Qwen2-Audio
+- Speech LLMs internally approximate (transcription → text understanding) cascade without explicit ASR stage
+- No layer-wise patching sweep done — observational
+- Leo's listen-layer sweep = test whether Qwen2-Audio's genuine audio grounding is mechanistically localized
+
+### M4) ALME (arXiv:2602.11488, Feb 27 batch — SCAN cycle #40)
+- 57,000 audio-text conflict stimuli (matched pairs where audio content ≠ text content)
+- Behaviorally: text modality dominates LALM reasoning; localization is behavioral (no causal patching)
+- **Leo's priority**: use ALME stimuli as off-the-shelf test set for grounding_coefficient experiments (Paper A Phase 2 + AudioSAEBench Category 5)
+- Gap #16: no causal layer patching on ALME conflict stimuli → Leo runs denoising sweep = first causal localization
+
+### M5) Visual Analog Paper — Liu et al. 2025 (UW, arXiv not yet; cycle #168)
+- "Visual Representations inside the Language Model" — VLM-analog of Paper A
+- Studies KV-token flow in LLaVA/Qwen2.5-VL/Llama-3-LLaVA; vision-only; observational (no causal patching)
+- **Leo's differentiation:** Speech + DAS-IIT causal metric + grounding_coefficient. Leo = FIRST speech+causal+IIT-grounded
+- Paper A comparison table: FCCT (vision causal tracing) + Liu et al. (vision observational) + AudioLens (speech observational) + Paper A (speech causal)
+
+### M6) FCCT (Li et al., arXiv:2511.05923, AAAI 2026 Oral — cycle #68)
+- "Faithful Cross-modal Causal Tracing" in Vision-LLMs
+- KEY FINDING: MHSAs at middle layers = cross-modal aggregation points in VLMs
+- CLOSEST COMPETITOR to Paper A — but vision only; speech space still open
+- 4 citing papers: all vision/GUI/NLP — zero speech citations confirmed Feb 28
+
+### M7) DashengTokenizer (arXiv:2602.23765, Monday March 2 batch — cycle #167)
+- "One semantic layer sufficient for 22 audio tasks" — behavioral evidence for Listen Layer Hypothesis
+- Convergent with RVQ Layer 1 = semantic content (Gap #21 / Sadok et al.)
+- Cite in Paper A introduction: behavioral convergence for semantically focused "listen layer"
+
+### M8) FAD Encoder Bias (Gui et al., arXiv:2602.23958, Interspeech 2026 — cycle #167)
+- Whisper structurally biased toward text-predictable patterns; acoustically blind to certain attributes
+- No single encoder is universally good → multi-metric evaluation is necessary
+- Key cite for Paper B (AudioSAEBench): empirical proof that one encoder ≠ one benchmark
+
+## 🆕 DAS/IIT Method Details (Cycles #83, 101-106)
+
+### N) Distributed Alignment Search (DAS) — Core Paper A Method
+
+**Sources:** Geiger et al. "Finding Alignments Between Interpretable Causal Variables and Distributed Neural Representations" (arXiv:2303.02536) + pyvene (Wu et al., arXiv:2403.07809)
+
+**What DAS does:**
+- Searches for a **linear subspace** within a layer's residual stream that best aligns with a causal variable (e.g., "audio content is X")
+- Uses gradient descent over a rotation matrix W; IIA (Interchange Intervention Accuracy) measures how well patching the W-subspace causally affects the output
+- When IIA ≈ 1.0 → the rotated subspace IS the causal abstraction variable
+
+**Why DAS > vanilla activation patching (for Paper A):**
+- Vanilla patching: inserts all activations → may smuggle correlated info (confound)
+- DAS: isolates minimal linear subspace causally responsible → cleaner causal claim
+- FCCT competitor used vanilla causal tracing → Leo can claim stronger methodology
+- DAS = theoretically grounded by IIT (Geiger et al. 2301.04709 Causal Abstraction paper)
+
+**gc(k) formulation (DAS version):**
+- For layer k: train DAS W_k on audio/no-audio paired stimuli (ALME conflict pairs)
+- IIA(k) = accuracy of predicting audio-specific output after W_k-subspace interchange
+- gc(k) = IIA(k) / max_k(IIA(k)) — normalized layer-level grounding coefficient
+- Peak layer L* = "Listen Layer"
+
+**Implementation:**
+- Library: pyvene (`pip install pyvene`) — `RotatedSpaceIntervention` wraps any PyTorch model
+- ~50 lines for full gc(k) sweep; works with Whisper encoder via NNsight hooks
+- NDIF: can access Qwen2-Audio-7B remotely without local GPU
+
+**Risk Table (5 assumptions — from cycle #102):**
+1. A1: Linear phonological geometry survives connector — MEDIUM (Gap #18 is the prerequisite test)
+2. A2: ALME stimuli quality is sufficient — LOW (57K pairs, well-validated)
+3. A3: Cross-model generalization — MEDIUM (cross-generalization matrix test)
+4. A4: DAS rotation finds genuine subspace not spurious correlation — MEDIUM (phonological init ablation from Choi et al.)
+5. A5: WER significance — LOW (bootstrap 95% CI; permutation test null is wrong)
+
+**Visualization:** 2D probe×intervene heatmap predicted shape: "lower-triangular stripe" near L* = "acoustic must be encoded before it can be intervened upon" = testable Figure 3 for Paper A
+
+## 🆕 Further AudioLens Citation Papers (Cycle #99)
+
+### O) SAKE (arXiv:2510.16917, NTU lab cluster — cycle #99)
+- "Knowledge editing benchmark for LALMs" — "audio/text locality" concept adjacent to Track 3 grounding_coefficient
+- Not a competitor (knowledge editing ≠ mechanistic interpretability), but shares LALM editing framing
+- Citation context: demonstrates LALM vulnerability to audio-text attribution ambiguity
+
+### P) Feng et al. (arXiv:2510.16893, ICASSP 2026 — cycle #99/100)
+- Speaker emotion non-monotonically modulates LALM safety alignment (medium intensity = highest unsafe response rate)
+- **Gap #20 candidate** — mechanistic cause unknown (gated 🟡 YELLOW — HOLD until Papers A+B)
+- Connects to: SPIRIT (Track 5), Zhao et al. ESN paper (emotion neurons), SAE safety patching
 
 ## 關鍵研究者/團隊
 - **NTU 李宏毅 lab** — AudioLens (智凱哥！Leo 主場)
