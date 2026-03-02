@@ -243,6 +243,42 @@
       "created": "2026-03-01",
       "due": null,
       "completed": "2026-03-01"
+    },
+    {
+      "id": "Q020",
+      "type": "build",
+      "track": "T5",
+      "title": "AudioSAEBench scaffold (Tier 0): implement framework per Q013 design, use JALMBench 246-query corpus as eval set",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Python scaffold: takes audio SAE features + JALMBench queries → interpretability score per feature; CPU-only, no GPU",
+      "created": "2026-03-02",
+      "due": null
+    },
+    {
+      "id": "Q021",
+      "type": "build",
+      "track": "T5",
+      "title": "MATS proposal v2: integrate JALMBench 246-query eval corpus; add mechanistic defense section",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Updated proposal doc referencing JALMBench as primary eval corpus; defense mechanism section expanded to distinguish from existing methods",
+      "created": "2026-03-02",
+      "due": null
+    },
+    {
+      "id": "Q022",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A: Method section skeleton (Tier 0) — gc(k) definition, causal patching protocol, listen layer formalization",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Markdown skeleton with section headers, key equations placeholders, figure stubs; ready for Leo to fill in prose",
+      "created": "2026-03-02",
+      "due": null
     }
   ]
 }
