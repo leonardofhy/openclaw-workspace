@@ -32,7 +32,7 @@
     "budget_reset_date": "2026-03-02"
   },
   "stats": {
-    "total_cycles": 123,
+    "total_cycles": 124,
     "total_skips": 38,
     "papers_read_deep": 22,
     "papers_scanned": 33,
@@ -44,9 +44,9 @@
     "days_active": 5
   },
   "last_cycle": {
-    "id": "c-20260302-1245",
-    "action": "learn",
-    "summary": "Read The Persona Selection Model (Anthropic, AF). PSM: post-training refines LLM's simulation of the Assistant persona. Key insight for T3: gc(k) may be detecting persona-level epistemic state, not raw activation geometry."
+    "id": "c-20260302-1415",
+    "action": "plan",
+    "summary": "Queue pruned (16 archived); added Q025 (Paper A Results+Discussion), Q026 (synthetic stimuli gen); build budget = 2 for next action."
   },
   "last_gc": "2026-03-01T14:19:30.007894+08:00",
   "self_improve_tickets": []
