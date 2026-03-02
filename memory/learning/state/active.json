@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 1,
+    "learn_remaining_today": 0,
     "build_remaining_today": 2,
     "reflect_remaining_today": 1,
     "budget_reset_date": "2026-03-02"
@@ -34,7 +34,7 @@
   "stats": {
     "total_cycles": 123,
     "total_skips": 38,
-    "papers_read_deep": 21,
+    "papers_read_deep": 22,
     "papers_scanned": 33,
     "research_gaps": 19,
     "paper_ideas": 7,
@@ -44,9 +44,9 @@
     "days_active": 5
   },
   "last_cycle": {
-    "id": "c-20260302-1215",
-    "action": "skip",
-    "summary": "Q015 (Alignment Forum) inaccessible from WSL2 \u2014 Vercel block. No READY build tasks. Principled skip."
+    "id": "c-20260302-1245",
+    "action": "learn",
+    "summary": "Read The Persona Selection Model (Anthropic, AF). PSM: post-training refines LLM's simulation of the Assistant persona. Key insight for T3: gc(k) may be detecting persona-level epistemic state, not raw activation geometry."
   },
   "last_gc": "2026-03-01T14:19:30.007894+08:00",
   "self_improve_tickets": []

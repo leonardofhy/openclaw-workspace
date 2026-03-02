@@ -186,12 +186,13 @@
       "type": "read",
       "track": "T3",
       "title": "News: The persona selection model",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/ZwZgLgJn9YhJJFf5m/the-persona-selection-mod",
       "created": "2026-03-01",
-      "due": null
+      "due": null,
+      "completed": "2026-03-02"
     },
     {
       "id": "Q016",
