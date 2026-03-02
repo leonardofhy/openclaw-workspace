@@ -714,3 +714,13 @@ No high-signal update. Monday evening feeds fully static since 15:15 pick. Today
 **2026-03-02 18:15 (Mon)** — scan: LW top post = "Introducing and Deprecating WoFBench" (Jeff Wise, humorous satire on benchmark saturation — frontier models score ~100% on Wings of Fire trivia, interesting benchmark-decay commentary but not safety-core) | AF feed: still "How to Design Environments…" pub 07:14 UTC, already picked 15:15 | EA Forum: static (pinned intro post only)
 
 No high-signal update. Monday evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15).
+
+---
+**2026-03-02 18:45 (Mon)** — scan: LW new top = "If 'bad guys' don't pause, do you?" (Remmelt, pub 07:24 UTC, advocacy prompt, still below threshold) | AF rate-limited (429) all afternoon | EA Forum: static
+
+No high-signal update. Monday evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15).
+
+---
+**2026-03-02 19:15 (Mon)** — scan: LW top = "If 'bad guys' don't pause, do you?" (Remmelt, 07:24 UTC, advocacy prompt, already flagged below threshold) | AF top = "How to Design Environments for Understanding Model Motives" (Neel Nanda et al., 07:14 UTC, already picked 15:15) — no new posts on either feed since 18:45 cycle
+
+No high-signal update. Monday late-evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15).

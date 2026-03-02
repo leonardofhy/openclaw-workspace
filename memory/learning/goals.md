@@ -215,11 +215,15 @@
 - **Status:** 🟡 YELLOW — valid gap but low priority; Paper A limitations section, not primary contribution
 - Connection: Paper A (methodology justification), Audio-RAVEL Category 0 (MDAS ceiling baseline clarification)
 
-## Paper A Citation Update (2026-03-02 cycle #183)
+## Paper A Citation Update (2026-03-02 cycle #183-184)
 **Add to methodology section of Paper A:**
-- Sutter et al. 2507.08802 (NeurIPS 2025 Spotlight): "linear alignment maps are necessary for causal abstraction to be non-trivial"
-- Justifies DAS (distributed alignment search) over arbitrary neural alignment maps
-- Also: Geiger et al. 2301.04709 (Causal Abstraction: Theoretical Foundation for MI) = umbrella paper unifying ALL MI methods — cite as master reference in related work
+- Geiger et al. 2301.04709 (Causal Abstraction: Theoretical Foundation for MI) = master reference; ALL 10 MI methods = causal abstraction special cases
+- Sutter et al. 2507.08802 (NeurIPS 2025 Spotlight): "linear alignment maps are necessary for causal abstraction to be non-trivial" → justifies DAS over arbitrary neural alignment maps
+- Asiaee 2602.24266 (Feb 2026): efficient causal abstraction via structured pruning; activation variance = first-order proxy; justifies whisper_hook_demo.py norm heatmap as pre-screen; fails for non-uniform curvature (rare phoneme features → DAS is necessary, not optional)
+- **Theory triangle: Geiger (foundation) + Asiaee (efficiency) + Sutter (linearity guard)** = strong methodology section
+
+**New Risk A6 for Paper A experiment-queue:**
+- Low-variance phoneme features with high causal weight may be missed by variance-based ablation (H&N noising). Mitigation: use DAS (not variance threshold), report ablation delta per phoneme class separately.
 
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）

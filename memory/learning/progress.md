@@ -888,3 +888,23 @@ Priority queue for Leo's first session:
 1. **#184 (~14:00 Tuesday)** → Tuesday arXiv batch: cs.SD + cs.CL + cs.AI
 2. **Optional:** Read Asiaee 2026 "Efficient Discovery of Approximate Causal Abstractions via Neural Mechanism Sparsification" (Feb 27, 2026 — very fresh)
 3. Leo check-in → unblock P0 Gap #18 + Paper A citation update (Sutter et al.) + venue decision
+
+| #184 | 2026-03-02 19:01 | learn (Asiaee 2026 — efficient causal abstractions) | **arXiv:2602.24266** — "Efficient Discovery of Approximate Causal Abstractions via Neural Mechanism Sparsification": structured pruning = search over approximate abstractions; Interventional Risk second-order expansion → closed-form pruning criteria; activation variance = first-order proxy for causal importance (= theoretical justification for whisper_hook_demo.py norm heatmap cycle #12!); fails for non-uniform curvature (rare phoneme features = exactly the audio problem → DAS is necessary). **Paper A: cite alongside Sutter+Geiger (efficiency+correctness+linearity triangle)** + **new Risk A6: low-variance phoneme features with high causal weight**. cs.LG, not audio competitor. 0 new speech MI papers (confirmed). |
+| #185 | 2026-03-02 19:31 | reflect + plan | **Day 4 evening sprint assessment (cycles #177-#184)**: 8/8 HIGH value (100% novelty ratio). **Paper A v0.5 pitch update**: integrated Geiger+Asiaee+Sutter theory triangle (3-citation methodology paragraph ready), Risk A6 added (variance pre-screen misses rare phoneme features). Must-read COMPLETE ✅. Paper A + B pitch-ready. Next: arXiv Tuesday ~14:00 OR Leo unblock → P0 Gap #18. |
+
+## Day 4 Final Stats (after cycle #184 — Monday March 2, 7:01 PM)
+- Papers read (deep): **22 total** (+1: Asiaee 2026 causal abstraction efficiency)
+- Papers scanned: 60+
+- Research gaps identified: **25** (all OPEN; Risk A6 added to Paper A risk table)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts
+- Paper pitches: 2 (A v0.4 + B v0.8)
+- **Must-read list: FULLY COMPLETE** ✅
+- **Paper A theory section**: 3-paper citation triangle = Geiger (foundation) + Asiaee (efficiency) + Sutter (linearity guard)
+- **Execution-blocked**: ~68h, awaiting Leo → P0 Gap #18 phonological geometry
+
+## Recommended Next Cycles (Day 4 → Day 5)
+1. **Leo unblock Priority 0** → experiment-queue.md P0 (Gap #18 phonological geometry)
+2. **Tuesday arXiv batch** (~14:00 Taipei tomorrow, ~19h away) → cs.SD + cs.CL + cs.AI
+3. **Optional:** Update paper-a-pitch.md with Risk A6 + Asiaee+Sutter+Geiger theory triangle cite
+4. **Optional:** Conceptual comparison — whisper_hook_demo.py norm heatmap (variance proxy) vs DAS prediction → testable with existing code (no Leo needed)

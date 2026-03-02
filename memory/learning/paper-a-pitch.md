@@ -1,8 +1,13 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.4 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-02 12:01 (cycle #169)
+> Version: 0.5 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-02 19:31 (cycle #185)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v0.5 Upgrades (cycles #183–185)
+1. **Theory Triangle added**: Geiger et al. 2301.04709 (foundation) + Asiaee et al. 2602.24266 (efficiency) + Sutter et al. 2507.08802 (linearity guard) — 3-paper citation cluster for Paper A methodology section.
+2. **Risk A6 added** to Known Risks table: Low-variance phoneme features with high causal weight may be missed by variance-based ablation (Asiaee: activation variance = first-order proxy; fails for non-uniform curvature). Mitigation: use DAS (not variance threshold), report ablation delta per phoneme class separately.
+3. **Abstract sync note updated**: abstract still stale (stale flags from v0.4 still apply); Sutter+Asiaee cites should be added to abstract justification of linear DAS.
 
 ### ⚠️ ABSTRACT STALE (flagged cycle #175 meta-audit)
 > Abstract below = v0.1 base text. Method section = v0.4. They have drifted.
@@ -166,10 +171,23 @@ Large audio-language models (LALMs) can answer questions about audio content, bu
 
 ---
 
+## Theory Triangle: Causal Abstraction Methodology Justification
+> Added: cycle #185 (2026-03-02 reflect)
+
+Paper A's methodology section should cite all three in sequence:
+
+1. **Geiger et al. arXiv:2301.04709** ("Causal Abstraction: A Theoretical Foundation for Mechanistic Interpretability") — ALL MI methods (patching, SAE, DAS, logit lens, steering, circuits) = special cases of causal abstraction with interchange interventions. Master reference. gc = IIT accuracy.
+2. **Asiaee et al. arXiv:2602.24266** ("Efficient Discovery of Approximate Causal Abstractions", Feb 2026) — structured pruning approach; activation variance = first-order proxy for causal importance. Theoretically justifies why `whisper_hook_demo.py` norm heatmap is a reasonable prescreening tool. BUT: fails for non-uniform curvature (rare phoneme features → DAS is necessary, not optional).
+3. **Sutter et al. arXiv:2507.08802** (NeurIPS 2025 Spotlight, "The Non-Linear Representation Dilemma") — with non-linear alignment maps, ANY neural network can be made to implement ANY algorithm at 100% IIA. Therefore: causal abstraction is VACUOUS without linearity constraint. Linear DAS = necessary for non-trivial claims, not just convenient.
+
+**Three-sentence methodology paragraph:**
+> We formalize grounding coefficients using causal abstraction (Geiger et al. 2023), which unifies all mechanistic interpretability methods as interchange-intervention accuracy (IIA) under different parameterizations. We apply distributed alignment search (DAS), the provably correct linear-subspace variant (Sutter et al. 2025 — non-linear maps yield trivially perfect IIA on random models). As a cost-effective pre-screen, we use activation-variance heatmaps (Asiaee et al. 2026), while reserving DAS for features that variance ablation may miss (low-variance, high-causal-weight phoneme features).
+
 ## Known Risks (DAS gc(k) Assumption Checklist)
 > Added: cycle #102 (2026-03-01 meta-awareness audit)
+> Updated: cycle #185 — Risk A6 added (Asiaee 2026)
 
-Before running Phase 1 or 2 experiments, verify these 5 DAS assumptions hold:
+Before running Phase 1 or 2 experiments, verify these 6 DAS assumptions hold:
 
 | # | Assumption | Risk | Mitigation |
 |---|-----------|------|------------|
@@ -178,6 +196,7 @@ Before running Phase 1 or 2 experiments, verify these 5 DAS assumptions hold:
 | A3 | DAS learns the RIGHT subspace (not spurious correlate) | MEDIUM | 80/20 train/test split on stimuli; cross-generalization held-out test = Paper A Figure 3 |
 | A4 | IIA peak layer = causal (not just easy probe layer) | MEDIUM | Sweep PROBE_LAYER and INTERVENE_LAYER independently; report 2D heatmap |
 | A5 | DAS-IIA > vanilla patching | LOW | If they disagree, DAS wins (theory) — disagreement = a finding |
+| **A6** | **Variance-based pre-screen captures all causally important features** | **MEDIUM** | **Asiaee (2026): variance proxy fails for rare phoneme features with non-uniform curvature. Mitigation: use DAS (not variance threshold alone); report ablation delta per phoneme class separately; do not pre-filter features by activation variance when testing rare phonological contrasts.** |
 
 **Contingency plan:** If Gap #18 fails (connector destroys phonological geometry → A1 violated for LALM):
 - Scope Phase 2 claims to "encoder-internal grounding" (Whisper)
