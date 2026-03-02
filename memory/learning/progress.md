@@ -615,3 +615,40 @@ Priority queue for Leo's first session:
 | #164 | 2026-03-02 09:31 | plan (experiment integration) | **experiment-queue.md updated** with Gap #21 Codec-Grounded Causal Patching as cross-cutting preprocessing protocol for all P0–P5. RVQ Layer 1 = content, Layers 2+ = acoustic → attribute-selective corruption directly answers Core Q#1 ("clean/corrupt 怎麼設計"). Specific sharpening: P0 (Gap #18) patches Layer 1 only → cleanest phonological geometry test; P2 (Listen Layer) flips semantic content while preserving speaker voice → sharper audio-text conflict. No Leo needed. |
 | #165 | 2026-03-02 10:01 | plan (pitch update) | **Paper A v0.3 + Paper B v0.6 updated** with Gap #21 RVQ integration. Paper A Phase 2 stimuli now include RVQ-selective corruption (swap SpeechTokenizer Layer 1 tokens only = content change, voice preserved = sharper conflict). Paper B gains "RVQ Alignment" sub-metric for Category 1. arXiv Monday batch ~4h away. Execution-blocked ~63h. Meta Budget SPENT (25/25 Qs). |
 | #166 | 2026-03-02 10:31 | reflect (meta-awareness — Q28+Q29) | **Gap #21 sprint audit (75% novelty ✅)** — 3/4 cycles genuine; cycle #165 marginal (pitch-bloat risk on unreviewed materials). **Q29: knowledge-graph staleness** — ~150 cycles of gaps/papers missing from graph; applied: stale-alert header + Gap #21 anchor added; new rule: after `learn` opening a gap → add paper stub same cycle. knowledge-graph now has March 2026 anchor. arXiv Monday ~14:00. |
+| #167 | 2026-03-02 11:01 | learn (arXiv Monday batch) | **Monday cs.SD batch — 10 papers scanned; 2 relevant**: (1) DashengTokenizer (2602.23765) — "one layer sufficient for 22 audio tasks" = behavioral evidence supporting Listen Layer Hypothesis + convergent with RVQ Layer 1 = semantic content from Gap #21; (2) FAD encoder bias (2602.23958, Interspeech 2026) — ASR Whisper structurally biased but acoustically blind → no single encoder universal → STRONG cite for Paper B AudioSAEBench multi-metric motivation. All 21 gaps OPEN, 0 new MI×speech competitors. |
+
+## Day 4 Rolling Stats (after cycle #167 — Monday March 2 morning)
+- Papers read (deep): 16 total (Day 1-3 unchanged)
+- Papers scanned: **43+** (+10 Monday cs.SD batch + 3 causal audio LM query)
+- Research gaps identified: **21** (Gap #21 from cycle #162)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts (verified ✅)
+- Cheat sheets: 1 (NNsight + SAELens)
+- ARENA pre-digests: 4 (Linear Probes + Circuit Tracing + Biology + Neuronpedia+SAELens)
+- Experiment proposals: 3 (IIT Triple Convergence + Class-specific Neuron Grounding + Gap #18 Phonological)
+- Paper pitches: 2 (A v0.3 + B v0.6)
+- **arXiv Monday batch**: PROCESSED ✅ (10 cs.SD papers; 2 relevant; 0 new competitors)
+- **Execution-blocked**: still awaiting Leo (real speech + venv + IIT experiment approval)
+- **New citable papers for pitches**: DashengTokenizer → Paper A Listen Layer; FAD encoder bias → Paper B AudioSAEBench
+
+## Recommended Next Cycles (Day 4 morning)
+1. **Leo unblock Priority 0** (Gap #18 phonological geometry — see experiment-queue.md, MONDAY-BRIEF.md)
+2. **cs.CL Monday batch check** — any Track 3/5 paper in multimodal interpretability space?
+3. Next learn: DashengTokenizer deeper scan for tokenizer architecture details (relevant to Clean/Corrupt protocol)
+
+| #168 | 2026-03-02 11:31 | learn (cs.CL scan + VLM MI competitive intelligence) | **KEY FIND: "Visual Representations inside the Language Model"** (Liu et al., UW, Oct 2025) — VLM-analog of Paper A: studies KV-token flow through LLM layers in LLaVA/Qwen2.5-VL/Llama-3-LLaVA; vision-only, observational (no causal patching). Leo is STILL FIRST to do speech + DAS-IIT causal metric. New related-work 4-paper comparison table ready for paper-a-pitch. All 21 gaps confirmed OPEN. 0 new audio MI papers in cs.CL Monday batch. Audio SAE field still 5 papers. |
+
+## Day 4 Rolling Stats (after cycle #168)
+- Papers read (deep): 16 total
+- Papers scanned: **47+** (+cs.CL Monday batch, ~5 queries, Liu et al. key find)
+- Research gaps identified: **21** (all confirmed OPEN — speech+causal+theory = still exclusively Leo's)
+- Paper ideas: 7 (all gate-validated ✅)
+- Code written: 2 scripts (verified ✅)
+- Paper pitches: 2 (A v0.3 + B v0.6) — A needs Liu et al. related work addition
+- **Execution-blocked**: still awaiting Leo (real speech + venv + IIT experiment approval)
+- **New cite for Paper A**: Liu et al. 2025 (UW) — "closest vision analog, but observational; Leo = causal"
+
+## Recommended Next Cycles (Day 4 — after 11:31 AM)
+1. **Leo unblock Priority 0** → Priority 0 Gap #18 phonological geometry experiment
+2. **plan**: update paper-a-pitch.md with 4-paper related work comparison table (Liu et al. + FCCT + AudioLens + Paper A)
+3. **cs.SD afternoon batch** (~14:00 Taipei) — check for any new papers

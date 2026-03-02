@@ -95,13 +95,16 @@ Once Leo runs the 5 steps above and approves the IIT experiment:
 
 ---
 
-## ⚡ Monday Status Note (Q27 — cycle #157)
+## ⚡ Monday Update (cycle #167 — 11:01 AM)
 
-**Productive Monday morning:** cycles #162-164 broke the skip streak productively:
-- #162: Deep-read Sadok et al. 2506.04492 → **Gap #21** (no causal patching on codec token streams in LALM inference)
-- #163: Verified Gap #21 with 6 queries, synthesized RVQ-selective corruption protocol (answers Core Q#1)
-- #164: Integrated codec-grounded causal patching into experiment-queue.md as cross-cutting preprocessing tool for ALL P0–P5
+**arXiv Monday batch PROCESSED ✅** — 10 new cs.SD papers scanned:
 
-**21 research gaps** now identified (all OPEN). arXiv Monday batch expected ~14:00 Taipei (~4.5h away) — first `learn` scan of the week fires then.
+**2 relevant finds:**
+- **DashengTokenizer** (2602.23765): "One layer sufficient for 22 audio tasks" = behavioral convergent evidence for Listen Layer Hypothesis. Supports Paper A framing + Gap #21 RVQ Layer 1 = semantic content.
+- **FAD encoder bias** (2602.23958, Interspeech 2026 submission): No single encoder is universal evaluator → STRONG citation for Paper B AudioSAEBench multi-metric motivation.
+
+**0 new MI×speech competitors confirmed.** All 21 gaps OPEN. Leo's causal patching gap still fully owned.
+
+**Updated stats:** 43+ papers scanned total, Day 4 cycle #167.
 
 **The only pending system decision remains Q21:** conditional 2h cadence during triple-block dead zones (see ⭐ section above).

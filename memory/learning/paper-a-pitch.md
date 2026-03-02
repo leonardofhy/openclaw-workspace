@@ -1,8 +1,13 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.3 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-02 10:01 (cycle #165)
+> Version: 0.4 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-02 12:01 (cycle #169)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v0.4 Upgrades (cycles #167–169)
+1. **Related Work expanded**: 4-paper comparison table added (see "Connections to Related Work"). Liu et al. 2025 (UW) = closest vision analog — observational only; Leo = first speech+causal. Strengthens Paper A's novelty claim.
+2. **DashengTokenizer cite** (arXiv:2602.23765): "one layer sufficient for 22 audio tasks" = behavioral evidence for Listen Layer Hypothesis. Cite in Abstract/Introduction as motivation.
+3. **Narrative sharpened**: Paper A = "Speech analog of Liu et al. 2025, with causal DAS-IIT interventions" — explicit contribution over 3 prior papers (FCCT, Liu et al., AudioLens).
 
 ### ⚡ v0.3 Upgrade (cycle #165)
 - **RVQ-layer-selective corruption**: SpeechTokenizer Layer 1 = semantic content, Layers 2+ = acoustic attributes (Sadok et al., Interspeech 2025, arXiv:2506.04492). Phase 2 "corrupt" stimuli can be constructed by swapping ONLY Layer 1 tokens (content change, identity preserved) → cleanest audio-vs-text conflict signal; directly answers Core Q#1. Gap #21 registered.

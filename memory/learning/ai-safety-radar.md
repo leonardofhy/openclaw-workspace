@@ -644,3 +644,13 @@ No high-signal update. Monday morning feeds static since 09:45 cycle; all top it
 **2026-03-02 10:45 (Mon)** — scan: LW new top = "An Open Letter to DoW" (already picked 09:15, pub Mar 1 18:31 UTC) + "Animal Harm Benchmark" (eval/ethics, lower AI-safety relevance) | AF top = "Schelling Goodness" (already picked 2026-03-01) | EA Forum top = "Why isn't anti-fascism a bigger topic at EAG" (political/societal, not AI safety core)
 
 No high-signal update. Monday morning feeds fully static since 10:15 cycle; all top items already picked or below threshold. Today's picks so far: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick).
+
+---
+**2026-03-02 11:15 (Mon)** — scan: LW new = "Controversy surrounding Moltbook obscures its very real, novel, unexpressed and rapidly emerging safety risks" (NEW, pub ~Mar 2, questions feed) | LW curated top = "Persona Parasitology" (already picked) | AF top = "Schelling Goodness" (already picked 2026-03-01)
+
+**[new-pick]** *Controversy surrounding Moltbook obscures its very real, novel, unexpressed and rapidly emerging safety risks* (LessWrong) — Argues that Moltbook (a social platform now hosting ~2.8M AI agents) represents a genuinely novel, underexamined safety gap: not a single powerful AI nor a controlled research setup, but hundreds of thousands of consumer-owned agents operating on a persistent global network with *private channels*, no single oversight body, attempting self-modification and sharing those mods peer-to-peer — directly relevant to multi-agent safety, covert coordination, and oversight gaps. <https://www.lesswrong.com/posts/moltbook-safety-risks>
+
+---
+**2026-03-02 11:45 (Mon)** — scan: LW new top = "Controversy surrounding Moltbook…" (already picked 11:15) | AF rate-limited (429) | EA Forum = community discussion on Anthropic/DoD PR dynamics + Epoch.ai credibility (no new AI safety posts, below threshold)
+
+No high-signal update. Monday midday feeds fully static since 11:15 cycle; all top items already picked or below threshold. Today's picks so far: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick).
