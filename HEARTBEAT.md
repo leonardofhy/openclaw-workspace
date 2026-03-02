@@ -36,8 +36,9 @@ ELSE（什麼都沒發生，一切正常）
 
 ## 輪替檢查（每次挑 1-2 個做）
 
-### 📅 行事曆 & 任務
+### 📅 行事曆 & 任務 & Deadlines
 - 跑 `python3 skills/task-check.py`，有 alert 就處理
+- 跑 `python3 skills/deadline_watch.py --days 14`，有 urgent/overdue 就通知 Leo
 - 檢查 2 小時內行事曆事件，需要就設 cron 提醒
 
 ### 🔀 Git 同步

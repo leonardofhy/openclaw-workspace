@@ -3,10 +3,16 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-02 06:00
+**Last Updated:** 2026-03-02 13:20
 
 ## Current Task
-Autodidact v2 redesign — implementing based on Leo's deep research (RC1-RC8 diagnosis + 11-section redesign)
+Deadline watchdog built + MATS EOI prep
+
+## Recent Context
+- MATS EOI: Leo confirms email = leonardofoohy@gmail.com
+- MATS mentor: **Leo 不一定只填 Neel Nanda**（太熱門），需要策略性選擇
+- Deadline watchdog 已上線：`skills/deadline_watch.py` + `memory/finance/deadlines.json`，7 個 one-shot cron 已清除
+- People DB refinement sub-agent 可能還在跑（上個 session 啟動的）
 
 ## Recent Context
 - 2026-03-01: 制度改革完成（6 項修復 + 成長保障系統 + mailbox）
