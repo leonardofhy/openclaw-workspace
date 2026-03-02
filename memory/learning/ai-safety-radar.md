@@ -742,3 +742,16 @@ No high-signal update. Monday evening feeds fully static since 15:15 last substa
 **2026-03-02 20:45 (Mon)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (already picked 15:15) | LW top = "ball brainteaser 4 color beads slide rubics cube" (Rubik's cube/meaning-making, not safety-relevant) | EA Forum = "If 'bad guys' don't pause, do you?" (advocacy prompt, already flagged below threshold) — no new posts on any feed since 20:15 cycle
 
 No high-signal update. Monday evening feeds fully static since 15:15 last substantive pick; influence functions post (19:45) remains the evening's final substantive pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45).
+
+
+---
+**2026-03-02 21:15 (Mon)** — scan: LW top = "ball brainteaser 4 color beads slide rubics cube" (same non-safety post, no new items) | AF = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 15:15) | no new posts on any feed since 20:45 cycle
+
+No high-signal update. Evening feeds fully static; today's six picks stand as-is.
+
+---
+**2026-03-02 21:45 (Mon)** — scan: LW +2 new since 21:15 (blogwatcher IDs 62-63): [62] "Secretary of War Tweets That Anthropic is Now a Supply Chain Risk" (pub 2026-03-02, high-signal) | [63] "ball brainteaser 4 color beads slide rubics cube" (pub 2026-03-02, meaning-making/non-safety)
+
+**Pick (new):** "Secretary of War Tweets That Anthropic is Now a Supply Chain Risk" — LessWrong, 2026-03-02 — Pete Hegseth (Sec. of War/Defense) publicly called Anthropic a supply chain risk on social media; significant governance signal about US military–AI lab tensions and potential regulatory consequences for safety-focused labs operating under DoD scrutiny. https://www.lesswrong.com/posts/Wpdivf3iNJDzBcbzJ/secretary-of-war-tweets-that-anthropic-is-now-a-supply-chain
+
+Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45), Secretary of War / Anthropic supply-chain-risk tweet (21:45).
