@@ -1,7 +1,11 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-02-26 17:00 (cycle #7: AudioLens deep read)
+> Last updated: 2026-03-02 10:31 (cycle #166: staleness flag + Gap #21 anchor)
+> ⚠️ STALE ALERT: Cycles #8-165 (~150 cycles of discoveries) are NOT reflected here.
+> Full state in: goals.md (gaps #1-21, paper ideas, must-read list), progress.md (all cycle logs), experiment-queue.md.
+> Recent major additions missing from graph: Choi et al. phonological arithmetic, DAS/IIT method, T-SAE idea, Modality Collapse paper, AudioSAEBench analysis, Gap #21 (codec causal patching).
+> TODO (Leo-gated): decide if deep knowledge-graph refresh is worth ~2 cycles.
 
 ## Mech Interp × Speech/Audio — Field Map (2026)
 
@@ -435,6 +439,16 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 3. Run IIT experiment (Priority 1 in experiment-queue.md)
 ```
 **Estimated net savings:** ~6h of experimental debugging avoided by understanding methodology first.
+
+## 🆕 Latest Paper (cycle #162, 2026-03-02)
+
+### Gap #21 Anchor — Neural Audio Codec Interpretability
+- **Sadok et al. "Bringing Interpretability to Neural Audio Codecs" (Interspeech 2025, arXiv:2506.04492)**
+  - 4 codecs: DAC, SpeechTokenizer, Mimi, BigCodec; linear probes for content/identity/pitch in RVQ layers
+  - KEY FINDING: SpeechTokenizer Layer 1 = semantic content (HuBERT-supervised); Layers 2+ = acoustic attributes (speaker, pitch, timbre)
+  - AnCoGen plugin: attribute↔token prediction bidirectional
+  - GAP #21: No causal patching of codec token streams in LALM inference (fully open — 6 arXiv queries, 0 results)
+  - CONNECTIONS: Core Q#1 ("clean/corrupt design" = ANSWERED via RVQ layer semantics), Track 1 (Benchmark Protocol), Paper B (AudioSAEBench Category 1), Gap #18 (phonological geometry test = Layer 1 only patch)
 
 ## 關鍵研究者/團隊
 - **NTU 李宏毅 lab** — AudioLens (智凱哥！Leo 主場)

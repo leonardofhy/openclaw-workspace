@@ -1,6 +1,6 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 0.5 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-02-28 16:01 (cycle #81)
+> Version: 0.6 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-02 10:01 (cycle #165)
 > Status: Draft — for Leo's review. Not finalized.
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H
@@ -41,6 +41,8 @@ We introduce **AudioSAEBench**, a multi-metric evaluation framework that unifies
 We benchmark 12+ SAEs across Whisper-base/small/large, HuBERT, WavLM, and Qwen2-Audio-7B. We find that proxy metrics (sparsity + reconstruction) do not reliably predict Grounding Sensitivity — echoing SAEBench's finding for text, and motivating multi-metric evaluation as the standard.
 
 > **Field update (cycle #80, 2026-02-28):** 5 audio SAE papers now identified (AudioSAE, Mariotte, AR&D, Plantinga-PD, Paek et al. NeurIPS 2025 MI Workshop). Paek et al. focus on audio *generation* model latents (music synthesis) — no overlap with speech understanding. None of the 5 papers has causal patching OR grounding sensitivity. AudioSAEBench gap confirmed broader than initially mapped.
+
+> **Gap #21 — Codec RVQ natural partition (cycle #165):** Sadok et al. (Interspeech 2025, arXiv:2506.04492) probe RVQ layers of 4 neural codecs; SpeechTokenizer Layer 1 = semantic content, Layers 2+ = acoustic attributes (by design). Implication for AudioSAEBench Category 1 (Acoustic Concept Detection): RVQ layer index = principled ground-truth partition for concept type — content features should load on Layer 1, acoustic features on Layers 2+. Enables an additional AudioSAEBench "RVQ Alignment" sub-metric: does SAE feature activation pattern correlate with the RVQ layer that encodes the matched acoustic/semantic attribute? Zero competitors for this metric.
 
 > **TCS(F) metric validation (cycle #81):** Choi et al. 2602.18899 ("Phonological Vector Arithmetic in S3Ms", ACL submission, 96 languages) confirms that phonological features are LINEAR, COMPOSITIONAL, and SCALE-CONTINUOUS in S3M representation space. This directly validates the TCS(F) = Temporal Coherence Score metric: phoneme boundaries are geometrically well-defined, MFA-alignable, and stable across languages. Citation anchor for Category 1b (Acoustic Concept Detection, temporal dimension). Additionally, Choi et al. provides the STIMULI DESIGN BLUEPRINT for minimal-pair audio patching (phonological contrast pairs are an instance of the "minimal pair" principle from Heimersheim & Nanda). Cross-lingual stability of phonological vectors opens a new AudioSAEBench evaluation axis: "Cross-Lingual Feature Alignment" (do SAE features discovered on English align to Mandarin via phonological vector arithmetic?).
 

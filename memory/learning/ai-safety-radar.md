@@ -634,3 +634,13 @@ No high-signal update. Sunday midnight feeds fully static; no new AI safety post
 **[backlog-pick]** *I'm Bearish On Personas For ASI Safety* (LessWrong, J Bostock, Mar 1 2026, Karma 54, Tags: AI)
 - Why: Direct counterargument to the week's highest-signal pick ("The Persona Selection Model"); argues persona-based frameworks are insufficient/misleading for ASI safety planning — an important steel-man worth reading alongside the pro-persona PSM post. Karma 54 confirms genuine community engagement; was present in the 09:15 feed but unpicked.
 - Link: <https://www.lesswrong.com/posts/i-m-bearish-on-personas-for-asi-safety>
+
+---
+**2026-03-02 10:15 (Mon)** — scan: LW top = "An Open Letter to DoW" (already picked 09:15) + "Animal Harm Benchmark" (eval/ethics, lower AI-safety relevance) | AF top = "Schelling Goodness" (already picked 2026-03-01) | EA Forum top = "Why isn't anti-fascism a bigger topic at EAG" (political discussion, not AI safety core)
+
+No high-signal update. Monday morning feeds static since 09:45 cycle; all top items already picked or below threshold. Today's picks so far: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick).
+
+---
+**2026-03-02 10:45 (Mon)** — scan: LW new top = "An Open Letter to DoW" (already picked 09:15, pub Mar 1 18:31 UTC) + "Animal Harm Benchmark" (eval/ethics, lower AI-safety relevance) | AF top = "Schelling Goodness" (already picked 2026-03-01) | EA Forum top = "Why isn't anti-fascism a bigger topic at EAG" (political/societal, not AI safety core)
+
+No high-signal update. Monday morning feeds fully static since 10:15 cycle; all top items already picked or below threshold. Today's picks so far: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick).

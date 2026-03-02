@@ -4,6 +4,9 @@
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
 
+### ⚡ v0.3 Upgrade (cycle #165)
+- **RVQ-layer-selective corruption**: SpeechTokenizer Layer 1 = semantic content, Layers 2+ = acoustic attributes (Sadok et al., Interspeech 2025, arXiv:2506.04492). Phase 2 "corrupt" stimuli can be constructed by swapping ONLY Layer 1 tokens (content change, identity preserved) → cleanest audio-vs-text conflict signal; directly answers Core Q#1. Gap #21 registered.
+
 ### ⚡ v0.2 Upgrades (cycles #83-91)
 1. **gc(k) = DAS-grounded IIT accuracy** (not just ratio) — provably theoretically founded (pyvene, Wu et al.)
 2. **MMProbe for direction extraction** — diff-of-means > LR probe for causal interventions (ARENA [1.3.1])
@@ -66,6 +69,7 @@ Large audio-language models (LALMs) can answer questions about audio content, bu
 
 ### Phase 2: Qwen2-Audio-7B grounding_coefficient (NDIF/GPU)
 1. Use ALME 57K audio-text conflict stimuli (Li et al. 2025, arXiv:2602.11488) — already built
+   - **v0.3 upgrade**: also generate RVQ-selective corruptions using SpeechTokenizer: swap Layer 1 (semantic) tokens only → audio content changes, voice/identity preserved → sharper conflict signal (Gap #21)
 2. Two-sweep denoising patching on Qwen2-Audio-7B via NNsight (NOT circuit-tracer — cross-attention not supported by CLT):
    - Sweep A: patch audio-stream hidden states layer by layer → gc_audio(L) = IIT accuracy (audio as causal model)
    - Sweep B: patch text-context hidden states layer by layer → gc_text(L) = IIT accuracy (text as causal model)
