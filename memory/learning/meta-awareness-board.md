@@ -393,7 +393,7 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 26/26 Qs answered ✅ (cycle #171)
+## Meta-board Status: 27/27 Qs answered ✅ (cycle #203)
 
 ---
 
@@ -449,6 +449,24 @@ Cron summaries ARE delivered to Leo in near-real-time via the channel (Discord/m
 **Estimated savings:** ~$0.25/dead-zone period.
 **Self-modification rule:** Requires Leo approval before applying.
 **Decision memo:** See `memory/learning/2026-03-01_cycle112.md` for full cost analysis.
+
+---
+
+---
+
+## Q31: Consecutive-Skip Guard Over-Fires in Dead Zones (✅ CLOSED cycle #203, 2026-03-03 06:31)
+
+**Problem:** Current guard: 2 consecutive skips → force reflect(meta-audit), regardless of how recent the last audit was. In dead zones (arXiv gap + execution-blocked + meta-board saturated), this creates a ping-pong pattern: reflect → skip → skip → reflect → skip → skip → ... Each reflect in this pattern produces little novelty (Q24 anti-pattern).
+
+**Root cause:** Guard has no memory of "audit recency."
+
+**Rule applied (reversible):**
+> After a full meta-audit cycle, the consecutive-skip guard resets its counter AND enters a **90-minute cooldown**. Skip cycles within the cooldown do NOT count toward the next guard trigger. After cooldown expires, guard re-arms.
+> This preserves the guard's intent (catch genuine loop stagnation) while preventing false-positive audits in same-morning dead zones.
+
+**Applied cycle #203:** Guard reset. Next arm = 08:01 AM Tuesday (90min cooldown from 06:31 AM).
+
+**Status:** ✅ CLOSED [INFERRED — validate at next dead-zone period if ping-pong reappears]
 
 ---
 
