@@ -1,9 +1,9 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-02 17:31 (cycles #180-181: Paper B v0.8 Audio-RAVEL + SPIRIT Gap #24)
-> Last deep refresh: 2026-03-02 15:31 (cycle #176). STALE ALERT resolved. See progress.md for raw cycle logs.
-> Major sections now reflect: all 24 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT, T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense.
+> Last updated: 2026-03-03 03:31 (cycle #197: DAS mechanism deep-read — decomposability ablation, connector subspace transfer test, 3 Geiger citations disambiguated, polysemanticity motivation for DAS over vanilla patching)
+> Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
+> Major sections now reflect: all 25 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense.
 
 ## Mech Interp × Speech/Audio — Field Map (2026)
 
@@ -570,40 +570,73 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - Heimersheim & Nanda (cycle #178): interchange intervention = specific form of denoising patching
 - SAEBench (Karvonen et al.): SAEBench covers text; RAVEL covers disentanglement; AudioSAEBench covers both for audio
 
-## 🆕 DAS/IIT Method Details (Cycles #83, 101-106)
+## 🆕 DAS/IIT Method Details (Cycles #83, 101-106, 196)
 
 ### N) Distributed Alignment Search (DAS) — Core Paper A Method
 
-**Sources:** Geiger et al. "Finding Alignments Between Interpretable Causal Variables and Distributed Neural Representations" (arXiv:2303.02536) + pyvene (Wu et al., arXiv:2403.07809)
+**Three Geiger citations (do NOT conflate):**
+1. **arXiv:2301.04709** — "Causal Abstraction: A Theoretical Foundation for MI" — ALL 10 MI methods unified under IIT; master reference; gc = IIA
+2. **arXiv:2303.02536** — "Finding Alignments Between Interpretable Causal Variables and Distributed Neural Representations" — **THIS IS THE DAS ALGORITHM PAPER** (Stanford 2023, v4 Feb 2024)
+3. **Geiger et al. 2023 ACL** — approximate causal abstraction; grounding for IIA metric when model is not perfect high-level simulator
+
+**Sources:** Geiger et al. arXiv:2303.02536 (DAS algorithm) + pyvene (Wu et al., arXiv:2403.07809)
 
 **What DAS does:**
 - Searches for a **linear subspace** within a layer's residual stream that best aligns with a causal variable (e.g., "audio content is X")
 - Uses gradient descent over a rotation matrix W; IIA (Interchange Intervention Accuracy) measures how well patching the W-subspace causally affects the output
 - When IIA ≈ 1.0 → the rotated subspace IS the causal abstraction variable
 
+**DAS mechanism (cycle #196 deep read):**
+- Rotate-fix-unrotate: `h_new = R⁻¹·( fix(R·h, R·h_source)_d )` — only targeted dimensions d are patched in rotated space; R is orthogonal (R⁻¹ = Rᵀ)
+- Cayley parameterization: `R = (I - A)(I + A)⁻¹` where A is skew-symmetric — ensures orthogonality throughout training
+- Training: cross-entropy loss on model output after DII intervention, only R optimized (NN frozen)
+- Convergence: typically < 1000 steps; ~5 min per layer on MacBook for Whisper-small (6 layers total → full gc(k) curve ≈ 30 min)
+- Subspace dimensionality: hyperparameter; use d=1,2,4,8,16 sweep → report IIA vs d curve (Choi et al. show voicing is ~1-3 PCs → expect d=4 sufficient)
+
 **Why DAS > vanilla activation patching (for Paper A):**
 - Vanilla patching: inserts all activations → may smuggle correlated info (confound)
 - DAS: isolates minimal linear subspace causally responsible → cleaner causal claim
 - FCCT competitor used vanilla causal tracing → Leo can claim stronger methodology
 - DAS = theoretically grounded by IIT (Geiger et al. 2301.04709 Causal Abstraction paper)
+- **KEY AUDIO REASON**: AudioSAE shows ~2000 features per Whisper layer → extreme polysemanticity → individual neurons play multiple roles → localist patching (vanilla) patches irrelevant dimensions → low IIA is an ARTIFACT of wrong method, not absent signal. DAS finds the relevant subspace despite polysemanticity.
 
-**gc(k) formulation (DAS version):**
-- For layer k: train DAS W_k on audio/no-audio paired stimuli (ALME conflict pairs)
-- IIA(k) = accuracy of predicting audio-specific output after W_k-subspace interchange
-- gc(k) = IIA(k) / max_k(IIA(k)) — normalized layer-level grounding coefficient
-- Peak layer L* = "Listen Layer"
+**gc(k) formulation (DAS version — finalized cycle #196):**
+- `gc(k) = DAS-IIA(layer k, phonological variable F)` — NOT a ratio; an IIT-grounded accuracy metric
+- For layer k: train DAS R_k on phonological minimal pair stimuli (Choi et al. 2602.18899 voicing contrasts)
+- `IIA(k, F) = E_base,source [ NN_k(base→source for F) == HLM(F(source)) ]`
+- gc(k) = DAS-IIA directly (not normalized); peak layer L* = "Listen Layer"
+- High-level model HLM: binary voicing variable F∈{voiced, unvoiced}; Low-level model: speech LLM
+
+**🆕 Decomposability Ablation at L* (new Paper A test — cycle #196):**
+- At L*, train DAS for BOTH voicing F_voicing and phoneme-identity F_phoneme
+- Test: `|cos(angle(R_voicing columns, R_phoneme columns))|`
+  - Near 0 = abstract phonological encoding (voicing ⊥ phoneme-identity; speech-native finding!)
+  - Near 1 = decomposable encoding (voicing derived from phoneme label)
+- NO text-LLM analog exists (text models lack the audio→phoneme→voicing hierarchy)
+- Interprets WHETHER the listen layer encodes abstract phonology vs. phoneme labels
+
+**🆕 Connector Subspace Transfer Test (Gap #18 sharpened — cycle #196):**
+- Train R_encoder at Whisper encoder layer → apply as FIXED rotation at LLM layer 0
+- `IIA_transfer = IIA when using R_encoder at LLM layer 0 (without retraining)`
+- Interpretations:
+  - `IIA_transfer ≈ gc(encoder)` → connector preserves phonological subspace (volume-preserving rotation)
+  - `IIA_transfer << gc(encoder)` but re-trained IIA at LLM layer 0 is HIGH → connector adds rotation but subspace survives
+  - Both ≈ 0 → connector bottleneck destroys phonological geometry → scope Paper A to encoder
+- This is the correct specification of Gap #18 experiment (MacBook-feasible within Phase 1 setup)
 
 **Implementation:**
 - Library: pyvene (`pip install pyvene`) — `RotatedSpaceIntervention` wraps any PyTorch model
 - ~50 lines for full gc(k) sweep; works with Whisper encoder via NNsight hooks
 - NDIF: can access Qwen2-Audio-7B remotely without local GPU
+- Data needed: ~200-250 (base, source) pairs with known F(voicing) labels — Choi et al. minimal pairs sufficient
 
-**Risk Table (5 assumptions — from cycle #102):**
-1. A1: Linear phonological geometry survives connector — MEDIUM (Gap #18 is the prerequisite test)
+**Risk Table (6 assumptions — A6 added cycle #185):**
+1. A1: Linear phonological geometry survives connector — MEDIUM (Gap #18 connector transfer test)
 2. A2: ALME stimuli quality is sufficient — LOW (57K pairs, well-validated)
 3. A3: Cross-model generalization — MEDIUM (cross-generalization matrix test)
 4. A4: DAS rotation finds genuine subspace not spurious correlation — MEDIUM (phonological init ablation from Choi et al.)
 5. A5: WER significance — LOW (bootstrap 95% CI; permutation test null is wrong)
+6. **A6: Variance pre-screen captures all causally important features** — MEDIUM (Asiaee 2026: fails for rare phoneme features with non-uniform curvature; use DAS, not variance threshold; report ablation delta per phoneme class separately)
 
 **Visualization:** 2D probe×intervene heatmap predicted shape: "lower-triangular stripe" near L* = "acoustic must be encoded before it can be intervened upon" = testable Figure 3 for Paper A
 
