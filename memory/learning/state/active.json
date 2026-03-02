@@ -26,9 +26,9 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 0,
-    "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
+    "learn_remaining_today": 2,
+    "build_remaining_today": 4,
+    "reflect_remaining_today": 2,
     "budget_reset_date": "2026-03-02"
   },
   "stats": {

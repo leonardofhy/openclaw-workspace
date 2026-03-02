@@ -46,9 +46,32 @@ def main():
 
     now = datetime.now(TZ)
 
+    # --- Check 0.5: Budget exhaustion check ---
+    budgets = active.get('budgets', {})
+    reset_date = budgets.get('budget_reset_date')
+    same_day = (reset_date == now.strftime('%Y-%m-%d'))
+    if same_day:
+        learn_left = budgets.get('learn_remaining_today', 0)
+        build_left = budgets.get('build_remaining_today', 0)
+        reflect_left = budgets.get('reflect_remaining_today', 0)
+        if learn_left <= 0 and build_left <= 0 and reflect_left <= 0:
+            print("SKIP all budgets exhausted for today (learn=0, build=0, reflect=0)")
+            return
+
     # --- Check 1: Any READY tasks in queue? ---
     ready_tasks = [t for t in queue.get('tasks', []) if t.get('status') == 'ready']
     if ready_tasks:
+        # Even with READY tasks, check if any matching budget remains
+        if same_day:
+            has_build = any(t.get('action_type') in ('build', None) for t in ready_tasks)
+            has_learn = any(t.get('action_type') in ('learn', 'read', None) for t in ready_tasks)
+            can_build = budgets.get('build_remaining_today', 0) > 0
+            can_learn = budgets.get('learn_remaining_today', 0) > 0
+            can_reflect = budgets.get('reflect_remaining_today', 0) > 0
+            # If no budget for any possible action, skip
+            if not can_build and not can_learn and not can_reflect:
+                print(f"SKIP {len(ready_tasks)} READY tasks but all budgets exhausted")
+                return
         print(f"RUN {len(ready_tasks)} READY tasks in queue (top: {ready_tasks[0]['id']} {ready_tasks[0]['title'][:50]})")
         return
 
