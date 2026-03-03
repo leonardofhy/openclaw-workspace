@@ -1,7 +1,7 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-03 03:31 (cycle #197: DAS mechanism deep-read — decomposability ablation, connector subspace transfer test, 3 Geiger citations disambiguated, polysemanticity motivation for DAS over vanilla patching)
+> Last updated: 2026-03-03 13:01 (cycle #216: AG-REPA SCD added (M11) — Store-Contribute Dissociation = generation-domain validation that "stores ≠ causes"; FoG-A = DAS-gc(k) generation analog; cite in Paper A Introduction)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
 > Major sections now reflect: all 25 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense.
 
@@ -535,6 +535,42 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - Whisper structurally biased toward text-predictable patterns; acoustically blind to certain attributes
 - No single encoder is universally good → multi-metric evaluation is necessary
 - Key cite for Paper B (AudioSAEBench): empirical proof that one encoder ≠ one benchmark
+
+### M9) EmbedLens (Fan et al., arXiv:2603.00510, CVPR 2026 — cycle #214, Tuesday March 3 batch)
+- **Vision LLM analog** of Paper A's Listen Layer hypothesis
+- KEY FINDING: Visual tokens partition into **sink** (attention sinks), **dead** (carry no image info), and **alive** (~60% — carry image-specific meaning)
+- **Mid-layer injection is sufficient/optimal**: alive visual tokens naturally align with intermediate LLM layers; shallow-layer processing is redundant
+- EmbedLens = **Pearl Level 1** (observational probing only; no interventions)
+- **Paper A connection (DIRECT):**
+  - "EmbedLens finds mid-layer visual alignment observationally → Leo's DAS finds speech Listen Layer *causally*"
+  - Narrative: "EmbedLens (CVPR 2026) finds that visual tokens align with intermediate LLM layers rather than early embeddings — consistent with the Listen Layer hypothesis for speech. We provide the first causally grounded localization in speech LLMs."
+  - Added as Row 5 in Paper A Table 1 (Related Work comparison table): Vision | Probing | ❌ causal | ❌ grounded metric
+- **Audio token taxonomy implication:** Could preprocess Paper A experiment — classify audio tokens into sink/dead/alive using channel variance (EG-GRVQ method) BEFORE DAS patching → focus DAS on alive tokens only → cleaner causal signal + efficiency gain
+- **NOT a competitor** — vision-only, observational; Leo = speech + causal (Level 3 per Joshi et al.)
+
+### M10) EG-GRVQ (arXiv:2603.01476 — cycle #214, Tuesday March 3 batch)
+- **Entropy-Guided codec design** — 3rd independent empirical support that **channel variance ≈ semantic content** in speech models
+- KEY PRINCIPLE: "Assuming channel activations follow approximately Gaussian statistics, the variance of each channel can serve as a principled proxy for its information content"
+- This INDEPENDENTLY validates TWO things in Leo's research:
+  1. **Gap #21 (RVQ Layer 1 = semantic):** EG-GRVQ partitions encoder output into semantic/acoustic branches via channel variance — same principle as SpeechTokenizer Layer 1 semantic split (Sadok et al.)
+  2. **whisper_hook_demo.py norm heatmap + Asiaee 2602.24266 theory:** norm heatmap uses activation variance across layers as causal-layer pre-screen; EG-GRVQ = EMPIRICAL CODEC EVIDENCE for same principle
+- **Theory-Empirical-Application triangle now has 3 legs:**
+  - Asiaee 2602.24266 (theory: variance = first-order causal proxy)
+  - EG-GRVQ 2603.01476 (empirics: codec design convergently finds variance = information content)
+  - whisper_hook_demo.py norm heatmap (application: layer pre-screening)
+- **NOT a competitor** — codec engineering paper, not speech LM interpretability. Citable empirical prior for "variance = information content" claim.
+- Cite alongside Asiaee et al. in Paper A §3 (methodology pre-screen justification)
+
+### M11) AG-REPA (arXiv:2603.01006, ICML submission — cycle #216, Tuesday March 3 batch)
+**"Attribution-Guided REPresentation Alignment for Audio Flow Matching"**
+**Core finding: Store-Contribute Dissociation (SCD)** — layers that store the most semantic/acoustic information (high teacher-space similarity) ≠ layers that causally contribute most to audio generation (high FoG-A score).
+- **FoG-A (Forward-only Gate Ablation)**: quantifies causal contribution of each layer by measuring induced change in velocity field when layer is ablated. Early layers = causal drivers; deep layers = semantic reservoirs.
+- **Task domain**: audio *generation* (Flow Matching / DiT-based TTS + TTA) — NOT speech LM understanding. NOT a Paper A competitor.
+- **Paper A relevance (critical)**: SCD is empirical validation that "the layer with highest representational similarity is NOT the causally active layer" — exactly what AudioLens assumed (Level 1 observational) and Paper A disproves (Level 3 causal). FoG-A is the generation-domain parallel to DAS-gc(k).
+- **Cite in Paper A Introduction**: "Store-Contribute Dissociation (AG-REPA, 2603.01006) demonstrates in audio generation that representationally rich layers may be causally passive — we show this applies equally to speech understanding, motivating DAS-grounded causal localization over observational probing."
+- **Pearl Level**: FoG-A = Level 2 (interventional, gate ablation), not Level 3 (IIT counterfactual). Leo's DAS-IIT = still higher epistemological standard.
+- Connection: SCD (generation) + Listen Layer Hypothesis (understanding) = same phenomenon, different task domain. Dual-domain convergence strengthens Paper A's motivation claim.
+- Theory-Empirical quadrangle now complete: Asiaee 2602.24266 (efficiency theory) + EG-GRVQ 2603.01476 (codec empirics) + whisper_hook_demo.py (application) + **AG-REPA SCD (generation domain convergence)**
 
 ## 🆕 RAVEL — Disentanglement Benchmark (Cycle #179, 2026-03-02)
 

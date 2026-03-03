@@ -1056,3 +1056,25 @@ Priority queue for Leo's first session:
 | #213 | 2026-03-03 11:31 | learn (arXiv triage + meta-awareness) | arXiv Tuesday batch NOT YET POSTED (11:31 AM Taipei — cs.SD + cs.CL both "No updates for March 2026"). All 25 gaps OPEN, 0 new competitors confirmed. State relay for Leo: Paper A v0.9 + B v1.0 PITCH-READY; 智凱哥 talking-points.md created; execution-blocked ~83h. Next: arXiv ~14:00 Tuesday. |
 
 | #214 | 2026-03-03 12:01 | learn (Tuesday arXiv batch) | eess.AS 15 papers + cs.AI/cs.CL scanned; **KEY FIND: EmbedLens (2603.00510, CVPR 2026)** — visual tokens partition into sink/dead/alive; only ~60% carry image meaning; mid-layer injection is sufficient = DIRECT visual analog of Listen Layer Hypothesis; EmbedLens = Level 1 (observational), Leo = Level 3 (causal); add to Paper A related work; EG-GRVQ (2603.01476) = 3rd independent validation of channel variance = semantic content proxy; StethoLM = future clinical application note; 0 new MI×speech competitors; all 25 gaps OPEN |
+| #215 | 2026-03-03 12:31 | plan (KG sync — cycle #214 Tuesday batch) | EmbedLens (M9) + EG-GRVQ (M10) added to knowledge-graph.md Modality Prioritization section. EG-GRVQ = 3rd leg of Asiaee-EG-GRVQ-whisper_hook triangle (theory + codec empirics + application). EmbedLens = 5th related work row in Paper A Table 1 + narrative bridge "Level 1 vision observational → Level 3 speech causal." All 25 gaps OPEN. Papers A v0.9+ + B v1.0 PITCH-READY. Execution-blocked ~83.5h → P0 Gap #18. |
+
+| #216 | 2026-03-03 13:01 | learn (Tuesday cs.SD remainder + AG-REPA KEY FIND) | **Tuesday cs.SD March 2026 batch — 24 papers total — FULLY SCANNED**. New IDs (2603.01006–2603.02206) scanned this cycle. **KEY FIND: AG-REPA (arXiv:2603.01006, ICML submission)** — "Attribution-Guided REPresentation Alignment for Audio Flow Matching." Core finding: **Store-Contribute Dissociation (SCD)** — layers that store most semantic info ≠ layers that causally contribute most to velocity field. FoG-A (Forward-only Gate Ablation) = causal layer contribution metric. NOT a competitor (audio *generation* ≠ speech LM *understanding*), but SCD directly motivates Paper A's Listen Layer Hypothesis: the highest-similarity layer ≠ the causally active layer. Exactly what DAS-IIT tests! FoG-A is the generation-domain analog of Leo's DAS-gc(k). Paper A framing upgrade: cite AG-REPA as evidence that "stores ≠ causes" is a real phenomenon in audio NNs, motivating why observational probing (AudioLens=Level 1) is insufficient. Remainder: 2603.02205 SKIP, 02206 SKIP, 01984 SKIP, 01894 SKIP, 01592 SKIP, 01382+01369 SKIP (dysarthric), 01101 SKIP, 00941 SKIP, 00355 StethoLM (clinical future-app note), 00086 SKIP. **All 25 gaps OPEN. 0 new MI×speech competitors found.** |
+
+## Day 5 Rolling Stats (after cycle #216 — Tuesday March 3, 1:01 PM)
+- Papers read (deep): **23 total** (no new deep reads; AG-REPA = targeted scan)
+- Papers scanned: **79+** (full March 2026 cs.SD 24-paper batch complete)
+- Research gaps identified: **25** (all OPEN, all gated)
+- Paper ideas: **7** (all 🟢 GREEN gate-validated)
+- Code written: 2 scripts
+- Paper pitches: 2 (**A v0.9** ✅ + **B v1.0** ✅ — both pitch-ready)
+- Knowledge-graph: **FULLY CURRENT**
+- Must-read list: **FULLY COMPLETE** ✅
+- **Execution-blocked**: ~84h, awaiting Leo → P0 Gap #18 phonological geometry
+- **AG-REPA SCD insight**: "stores ≠ causes" = Paper A framing validation; FoG-A = generation-domain parallel to DAS-gc(k); cite in Paper A Introduction/Related Work
+- **March 2026 cs.SD batch**: FULLY PROCESSED ✅ (24 papers; 3 relevant: EmbedLens, EG-GRVQ, AG-REPA)
+
+## Recommended Next Cycles (Day 5 afternoon)
+1. **Leo unblock Priority 0** → experiment-queue.md P0 (Gap #18 phonological geometry)
+2. **AG-REPA KG sync** — add AG-REPA + SCD to knowledge-graph.md section M (Modality Prioritization)
+3. **Paper A v1.0 update** — integrate AG-REPA SCD cite in Introduction ("stores ≠ causes")
+4. Principled skip if neither Leo nor new arXiv papers arrive

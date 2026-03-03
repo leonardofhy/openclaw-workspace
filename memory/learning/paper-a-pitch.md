@@ -1,8 +1,17 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.9+ | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 12:01 (cycle #214)
+> Version: 1.0 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 13:01 (cycle #216)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v1.0 Upgrades (cycle #216 — AG-REPA Store-Contribute Dissociation)
+**Key cite for Paper A Introduction/§1**: AG-REPA (arXiv:2603.01006, ICML submission) provides **generation-domain empirical evidence for Store-Contribute Dissociation (SCD)**: in audio Flow Matching DiT models, layers with highest representational similarity to semantic/acoustic features ≠ layers with highest causal contribution to the velocity field. Early layers = causal drivers; deep layers = semantic reservoirs. This is NOT a competitor (audio generation ≠ speech LLM understanding), but directly motivates why observational probing (AudioLens, EmbedLens = Pearl Level 1) is insufficient — representationally rich layers may be causally passive.
+
+**Suggested Paper A citation**: "Store-Contribute Dissociation, recently demonstrated in audio generation models (AG-REPA, 2603.01006), shows that layers encoding the most semantic information may contribute least to model behavior — motivating causal DAS-IIT localization over observational probing in speech understanding."
+
+**Pearl Level clarification**: FoG-A (gate ablation) = Pearl Level 2 (interventional); Leo's DAS-IIT = Level 3 (counterfactual). Paper A still epistemologically highest.
+
+**Theory-Empirical quadrangle for §3 methodology**: Asiaee 2602.24266 (efficiency theory: variance = first-order proxy) + EG-GRVQ 2603.01476 (codec empirics: channel variance = semantic content) + whisper_hook_demo.py (application: layer norm pre-screening) + **AG-REPA 2603.01006 (generation convergence: SCD confirms stores≠causes)**
 
 ### ⚡ v0.9+ Upgrades (cycle #214 — EmbedLens + EG-GRVQ citations added)
 1. **EmbedLens (Fan et al. 2603.00510, CVPR 2026) added to Related Work**: visual tokens = sink/dead/alive; mid-layer injection optimal = direct visual analog of Listen Layer hypothesis. Added as 5th row in Table 1. Updated narrative in §4 Related Work. Pearl Level 1 (observational probing), Leo = Level 3.

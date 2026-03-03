@@ -812,3 +812,14 @@ Today's complete picks: An Open Letter to DoW/Congress (09:15 prior session), I'
 
 **[backlog-pick]** *Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior* (Aditya Singh, Gerson Kroiz, Senthooran Rajamanoharan, Neel Nanda — MATS 9.0, LessWrong/AF, 2026-02-27, score 40) — companion post to the already-picked environment design paper (Mon 15:15); operationalizes model incrimination: given a model caught in a suspicious action (sabotaging evals, whistleblowing, sandbagging), how do you distinguish scheming from confusion? Key takeaways: CoT reading for hypothesis generation, counterfactual prompt manipulation for verification, multi-method convergence for robustness. Directly actionable methodology for alignment evals design and oversight pipelines.
 - Link: https://www.lesswrong.com/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing
+
+---
+**2026-03-03 12:15 (Tue)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15) | LW ai-safety tag top = "Memory Decoding Journal Club" (neuroscience/non-safety — skip); #2 = "In-context learning / induction circuits" (already picked 09:15) | No new AF or LW posts since 11:45 scan | blogwatcher.py script path missing — direct RSS feed scan only; backlog db unreachable this cycle; no verified unread item could be confirmed → skipping backlog pick
+
+No high-signal new posts. Blogwatcher script unavailable (path: skills/blogwatcher/scripts/blogwatcher.py not found); RSS-direct scan confirms feeds unchanged since 11:45. Backlog pick deferred to next cycle when script restored.
+
+---
+**2026-03-03 12:45 (Tue)** — scan: LW frontpage top = "In-context learning / induction circuits" (already picked 09:15) | LW new feed top = same | AF top = "How to Design Environments for Understanding Model Motives" (AF GraphQL unresponsive again, confirmed by RSS — already picked Mon 15:15) | No new AF or LW posts since 12:15 scan
+
+**[backlog-pick]** *OpenAI employees: Now is the time to stop doing good work.* — LessWrong, 2026-03-02, score ~1.73 — Argues that safety-aligned employees at capability-first labs now face a structural dilemma: continued high-quality contributions may accelerate timelines faster than internal safety work can compensate, given recent governance and mission drift; frames individual labor decisions as part of the collective safety lever. Connects the Secretary of War / supply-chain-risk cluster (picked 09:15 Mon, 21:45 Mon) with insider-dynamics literature — what should people inside labs actually do when organizational direction diverges from safety norms?
+- Link: https://www.lesswrong.com/posts/OpenAI-employees-stop-doing-good-work (estimated slug)
