@@ -3,12 +3,14 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-03 04:11
+**Last Updated:** 2026-03-03 08:35
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-03 08:35: Leo asks for concrete recovery schedule: latest safe sleep-until time, wake/prep/lunch timing before 14:20 class.
+- 2026-03-03 08:31: Leo correction — pulled an all-nighter for paper; breakfast with Ted is canceled and Leo already messaged Ted.
 - 2026-03-03 04:11: Leo decision on heartbeat stale tasks — all three marked 「請繼續」(M-06, M-02, M-03); proceed to update task board and continue execution.
 - 2026-03-03 00:41: Leo approved adding external reminder; proceed to create Todoist task for buying shampoo (today, before heading home).
 - 2026-03-03 00:14: Leo correction: shampoo was NOT actually bought; asks whether reminder was synced to Google Calendar or Todoist.

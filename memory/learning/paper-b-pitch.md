@@ -1,9 +1,27 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 0.8 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-02 17:31 (cycle #180)
+> Version: 0.9 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-03 09:01 (cycle #208)
 > Status: Draft — for Leo's review. Not finalized.
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H, N (DAS/IIT), RAVEL (Huang et al. 2024)
+
+---
+
+### ⚡ v0.9 Upgrade (cycle #208 — Causal Abstraction Hierarchy)
+**NEW theoretical framing:** Under Geiger et al. 2301.04709 (Causal Abstraction as unified MI theory), all 6 AudioSAEBench evaluation categories are testing the SAME underlying question — whether audio SAE features constitute valid causal abstractions of the underlying speech computation — but at *different levels of alignment map strictness*:
+
+| Category | Alignment Map Strictness | What's Being Tested |
+|----------|--------------------------|---------------------|
+| 1–3 (Concept Detection, Disentanglement, Fidelity) | Weakest: M = soft correlation | Does the feature encode a human-recognizable concept? |
+| 4 (Causal Controllability / Hydra) | Medium: M = behavioral intervention | Does patching the feature change model behavior? |
+| 0 (Audio-RAVEL: Cause + Isolate) | Strict: M = cause AND isolate | Does the feature causally change A without leaking to B? |
+| 5 (Grounding Sensitivity gc(F)) | Strictest: M = audio-specific causality | Is the feature responding to audio or text? |
+
+This hierarchy:
+1. Provides a **principled justification** for why AudioSAEBench has these specific 6 categories (not arbitrary)
+2. **Unifies Papers A and B** under one theoretical spine (both cite Geiger 2301.04709)
+3. **Differentiates AudioSAEBench from SAEBench** (Karvonen et al.): SAEBench has no causal abstraction framing; AudioSAEBench does → novel theoretical contribution beyond category count
+4. **Decision for Leo:** Does this framing resonate? Abstract can be updated with 1 paragraph to add the hierarchy frame. If yes → add "Causal Abstraction Hierarchy" as a framing paragraph to Paper B abstract + §3. If no → current structure is still correct, just less unified.
 
 ---
 

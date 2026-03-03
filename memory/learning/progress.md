@@ -1018,21 +1018,21 @@ Priority queue for Leo's first session:
 
 | #197 | 2026-03-03 03:31 | plan (KG DAS sync) | **Knowledge-graph section N synced with cycle #196 DAS deep-read**: (1) 3 Geiger citations disambiguated (2303.02536 = DAS algorithm, 2301.04709 = theory, ACL 2023 = approximate CA); (2) DAS mechanism added (Cayley param, rotate-fix-unrotate, ~5min/layer, 30min total Whisper-small); (3) WHY DAS > localist for AUDIO: AudioSAE ~2000 features → extreme polysemanticity → localist IIA artifact; (4) Decomposability ablation: voicing ⊥ phoneme-identity at L*; (5) Connector subspace transfer test formalized. arXiv 4 queries confirmed empty. |
 
-## Day 5 Stats (after cycle #197 — Tuesday March 3, 3:31 AM)
+## Day 5 Stats (updated after cycle #208 — Tuesday March 3, 9:01 AM)
 - Papers read (deep): **23 total** (no new)
 - Papers scanned: 60+
 - Research gaps identified: **25** (all OPEN, all gated)
 - Paper ideas: **7** (all 🟢 GREEN gate-validated)
 - Code written: 2 scripts
-- Paper pitches: 2 (**A v0.7** ✅ + **B v0.8** ✅ — both pitch-ready, safe to share with Leo/智凱哥)
-- Knowledge-graph: **FULLY CURRENT** (DAS section N updated with full mechanism + 2 new ablations)
+- Paper pitches: 2 (**A v0.7** ✅ + **B v0.9** ✅ — both pitch-ready; B updated with Causal Abstraction Hierarchy framing)
+- Knowledge-graph: **FULLY CURRENT**
 - Must-read list: **FULLY COMPLETE** ✅
-- **Execution-blocked**: ~76h, awaiting Leo → P0 Gap #18
+- **Execution-blocked**: ~80h, awaiting Leo → P0 Gap #18
 
-## Recommended Next Cycles (Day 5 morning)
-1. **~14:00 Tuesday** → arXiv Tuesday batch with 4 optimized queries (DAS-theory + codec-MI + connector-analysis + EACL venue)
-2. **Leo unblock** → P0 Gap #18 phonological geometry + Paper A/B pitch review + venv setup
-3. **Principled skip** until 14:00 arXiv or Leo response — system convergent
+## Recommended Next Cycles (Day 5)
+1. **~14:00 Tuesday** → arXiv Tuesday batch (cs.SD + cs.CL + cs.AI, 4 optimized queries)
+2. **Leo unblock** → P0 Gap #18 + Paper A v0.7 + Paper B v0.9 review + venv setup + IIT experiment approval
+3. **Principled skip** until 14:00 arXiv OR Leo response
 
 | #198 | 2026-03-03 04:01 | skip (principled — 4:01 AM dead zone) | All alternatives exhausted: arXiv ~10h away; must-read COMPLETE; KG FULLY CURRENT (DAS section done cycle #197); paper-a v0.7 done; meta-board 26/26 SATURATED (last meta-audit cycle #195, 1.5h ago); experiment-queue fully designed but Leo-blocked; Weekend Protocol alternatives exhausted (citation trail done, DAS foundational paper done cycle #196, all pre-flight designs written). Execution-blocked ~76h. Q26 rule confirmed: no new Qs this window. Clean skip. |
 | #199 | 2026-03-03 04:31 | skip (principled — arXiv dead zone + meta-board 26/26 SATURATED) |
@@ -1043,3 +1043,5 @@ Priority queue for Leo's first session:
 | #204 | 2026-03-03 07:01 | skip (principled — Q31 cooldown + arXiv dead zone + meta-board 26/26 SATURATED) | arXiv verified (7:01 AM Tuesday): same 3 papers (AR&D Feb 24, Kawamura Feb 16, Brain-to-Speech Feb 1), 0 new. Tuesday batch ~7h away (~14:00 Taipei). Q31 90-min cooldown active (expires ~08:01, last reflect = #203). Execution-blocked ~77h. Papers A v0.7 + B v0.8 PITCH-READY for Leo review. Next: arXiv Tuesday ~14:00 → learn #205 OR Leo unblock → P0 Gap #18. |
 | #205 | 2026-03-03 07:31 | skip (principled — Q26 + Q31 cooldown + arXiv dead zone + meta-board 26/26 SATURATED) | arXiv verified (7:31 AM Tuesday): same 3 papers (AR&D Feb 24, Kawamura Feb 16, Brain-to-Speech Feb 1), 0 new. Tuesday batch ~6.5h away (~14:00 Taipei). Q31 cooldown active (expires ~08:01). Execution-blocked ~77.5h. Papers A v0.7 + B v0.8 PITCH-READY for Leo review. Next: arXiv Tuesday ~14:00 → learn #206 OR Leo unblock → P0 Gap #18. |
 | #206 | 2026-03-03 08:01 | skip (principled — Q31 cooldown + arXiv dead zone + meta-board 26/26 SATURATED) | arXiv verified (8:01 AM Tuesday): same 3 papers, 0 new. Tuesday batch ~6h away (~14:00 Taipei). Q31 cooldown active (last reflect = #203 at 07:31, expires ~08:31). Q25 rule applied: cron label `meta-awareness` ≠ mandatory action. Execution-blocked ~78.5h. Papers A v0.7 + B v0.8 PITCH-READY. Next: arXiv Tuesday ~14:00 → learn #207 OR Leo unblock → P0 Gap #18. |
+| #207 | 2026-03-03 08:31 | learn (Geiger 2301.04709 abstract synthesis — theoretical umbrella for DAS+SAE) | Guard fired (#205+#206 = 2 consecutive skips after Q31 cooldown). arXiv: 0 new. Chose `learn` over `reflect` (meta-audit 2h ago). **New insight**: Geiger 2301.04709 v4 unifies ALL 10 MI methods (DAS, SAE, activation patching, concept erasure, etc.) as special cases of causal abstraction. Paper A framing updated: DAS = "causal abstraction applied to phonological localization." Papers A+B theoretically unified under same umbrella — strong thesis coherence argument for 智凱哥. Gap #26 noted: no audio column in Geiger's method table (background note). Next: arXiv Tuesday ~14:00 → learn #208. |
+| #208 | 2026-03-03 09:01 | reflect (morning relay + synthesis check) | Morning relay: unblock request front-loaded (execution-blocked ~80h). arXiv: 0 new (confirmed). **GENUINE NEW SYNTHESIS**: Geiger 2301.04709 unification (cycle #207) → AudioSAEBench's 6 categories are 6 levels of *causal abstraction alignment map strictness* — Category 2 (soft correlation) < Category 4 (behavioral) < Category 0 Audio-RAVEL (cause+isolate) < Category 5 gc(F) (audio-specific). Paper B v0.9 updated with Causal Abstraction Hierarchy framing. Papers A+B now share one theoretical spine. Decision queued for Leo: does this framing resonate for Paper B abstract update? |
