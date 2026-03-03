@@ -893,3 +893,9 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new pick]** *I'm confused by the change in the METR trend* — LessWrong, 2026-03-03 — Rigorous statistical analysis of whether the 2024+ slope change in METR's task-horizon benchmark is real: uses piecewise linear fit + BIC + bootstrap resampling to validate the apparent acceleration in autonomous task capability. High signal: METR task horizons are a key input to RSP trigger conditions at major labs; if the slope break is statistically robust, it implies capability growth is *accelerating* faster than the pre-2024 trendline suggested — which compresses the safety margin before threshold-crossing. Extends the eval-crisis cluster (WoFBench saturation, Petri audit realism) with quantitative capability-side evidence.
 - Link: <https://www.lesswrong.com/posts/9ihaaXqdc3i328tLp/i-m-confused-by-the-change-in-the-metr-trend>
+
+---
+**2026-03-03 20:45 (Tue)** — scan: LW ai-tagged top = "I'm confused by the change in the METR trend" (already picked 20:15) | LW curated top = "Persona Parasitology" (already picked 17:15) | AF new top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 20:15 scan — no high-signal update
+
+---
+**2026-03-03 21:15 (Tue)** — scan: LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged new top = "I'm confused by the change in the METR trend" (already picked 20:15) | LW questions top = "Zurich AI Safety is hiring a Director" (job posting) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 20:45 scan — no high-signal update
