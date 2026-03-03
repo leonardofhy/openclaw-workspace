@@ -848,3 +848,15 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *Side by Side Comparison of RSP Versions* — LessWrong, 2026-02-27, score 0.12 — Systematic diff of Anthropic's Responsible Scaling Policy across versions: maps changes to capability thresholds, evaluation triggers, and committed response procedures. Directly relevant to safety governance: understanding how the policy has evolved (or weakened/strengthened) is essential for assessing Anthropic's actual safety commitments, especially in the context of the DoW/supply-chain-risk cluster (picked Mon–Tue).
 - Link: https://www.lesswrong.com/posts/aKpXgbJKvoeJ7Ler8/side-by-side-comparison-of-rsp-versions
+
+---
+**2026-03-03 15:45 (Tue)** — scan: LW ai-tagged newest = "Monday AI Radar #15" (pub 05:23 UTC = 13:23 Taipei, already picked 13:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | LW alignment-tagged newest = "Epstein and my world model" (already picked 10:45) | No new AF or LW posts since 15:15 scan
+
+**[backlog-pick]** *Secretary of War Tweets That Anthropic is Now a Supply Chain Risk* — Zvi Mowshowitz, LessWrong, 2026-03-02, 67 pts — The definitive primary-source long-read on the DoW/Anthropic supply-chain-risk event: covers what actually happened (Trump-ordered 6-month wind-down → then Hegseth's supply-chain escalation), the OpenAI bribe dynamics, verification problems for military AI safety, Dean Ball's "Clawed" analysis, and why Hegseth's legal position is weak. Referenced as required reading by both "War Claude" (10:15 pick) and "Monday AI Radar #15" (13:45 pick) but not yet picked standalone; highest-karma DoW post of the week (67 pts) and the clearest consolidation of the governance cluster that has dominated today's scans.
+- Link: https://www.lesswrong.com/posts/Wpdivf3iNJDzBcbzJ/secretary-of-war-tweets-that-anthropic-is-now-a-supply-chain
+
+---
+**2026-03-03 16:15 (Tue)** — scan: LW newest = "Monday AI Radar #15" (pub 05:23 UTC = 13:23 Taipei, already picked 13:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new AF or LW posts since 15:45 scan
+
+**[backlog-pick]** *Tools to generate realistic prompts help surprisingly little with Petri audit realism* — LessWrong, 2026-03-02 — Empirical finding: training/many-shot prompting base models to produce WildChat-realistic prompts for Petri-style AI safety audits yields surprisingly small gains in audit realism. Key implication: prompt-realism is not the binding constraint in eval validity; distribution shift between audit and deployment may lie elsewhere (model context, scaffolding, evaluator framing). Directly relevant to evals methodology — knowing that prompt-level realism engineering has diminishing returns should redirect effort toward structural evaluation improvements.
+- Link: <https://www.lesswrong.com/posts/jdoDvKGLbaaJWnDpE/tools-to-generate-realistic-prompts-help-surprisingly-little>
