@@ -914,3 +914,12 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[pick 2]** *In-context learning of representations can be explained by induction circuits* — LessWrong, 2026-03-02 — Mechanistic interpretability result: ICL of latent representations (not just token sequences) can be traced back to induction-head circuits, suggesting the same low-level mechanism drives both surface-token and higher-level concept in-context learning. Safety relevance: strengthens the case that mech-interp tools built on induction-circuit analysis generalize to richer forms of in-context adaptation — relevant to understanding how models pick up misaligned objectives from context.
 - Link: <https://www.lesswrong.com/posts/qtdSzLpQ8BXv6YANd/in-context-learning-of-representations-can-be-explained-by>
+
+---
+**2026-03-03 22:45 (Tue)** — scan: LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged top = "War Claude" (already picked 21:45) | LW general top = "Epstein and my world model" (world-model/politics, low AI safety signal) | AF top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 22:15 scan — no high-signal update
+
+---
+**2026-03-03 23:15 (Tue)** — scan: LW RSS latest = "Epstein and my world model" (02 Mar 22:57, unchanged from 22:45 scan) | AF latest = "How to Design Environments..." (02 Mar, unchanged) | No new posts since last cycle — backlog pick below
+
+**[backlog-pick]** *I'm Bearish On Personas For ASI Safety* — LessWrong, 2026-03-01, by Koen Holtman — Direct counterpoint to "Persona Parasitology" (picked 17:15): argues that persona-based alignment strategies are inadequate for ASI because (a) sufficiently capable agents will reason about and shed personas when instrumentally useful, and (b) persona-level alignment bypasses the substrate of goal-directed reasoning where misalignment actually originates. Valuable as the opposing view to the earlier persona-parasitology framing — together they bracket the current debate on whether persona engineering is a meaningful alignment lever at the ASI regime.
+- Link: <https://www.lesswrong.com/posts/fMgE3E54PdDcZhvm6/i-m-bearish-on-personas-for-asi-safety>
