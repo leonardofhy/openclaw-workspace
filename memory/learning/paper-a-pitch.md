@@ -1,8 +1,13 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.8 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 10:01 (cycle #210)
+> Version: 0.9 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 10:31 (cycle #211)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v0.9 Upgrades (cycle #211 — Paper A Related Work table + method paragraph finalized)
+1. **Joshi et al. added to Related Work table** (see below): "Paper A achieves Pearl Level 3 per Joshi et al. 2602.16698" added as a row with explicit comparison to AudioLens (Level 1) and FCCT (Level 2). This becomes the 1-sentence differentiation for reviewers.
+2. **Method paragraph (§2/§3) ready for paper**: Three-sentence paragraph synthesizing Geiger+Asiaee+Sutter+Joshi now complete (see Theory Pentagon cite block).
+3. **MFA (Shafran 2602.02464) added to §3** as alternative unsupervised method comparison — "MFA can locate candidate layers without supervision; DAS validates causally." Paper A authors may use MFA as pre-screen to confirm Listen Layer location before running full DAS.
 
 ### ⚡ v0.8 Upgrades (cycle #210 — Joshi et al. Pearl hierarchy + MFA baseline)
 1. **Pearl Level 3 claim added**: Following Joshi et al. 2602.16698 (Feb 2026), Paper A is positioned at **Pearl's Level 3 (counterfactual)** — DAS + controlled phonological minimal pairs (Choi et al.) = causal representation learning with interventional supervision. This distinguishes Paper A from:
@@ -179,6 +184,8 @@ This is the correct specification of Gap #18 experiment (now MacBook-feasible in
 | Paper | Relationship |
 |-------|-------------|
 | **Liu et al. 2025 (UW)** | **[v0.4 NEW] Closest vision analog** — KV-token flow observational study. We are the causal speech version. |
+| **Joshi et al. 2602.16698** | **[v0.9 NEW] Epistemological standard** — Pearl hierarchy for MI claims. Paper A achieves Level 3 (counterfactual) via DAS + controlled minimal pairs (Choi et al.). AudioLens = Level 1; FCCT = Level 2. Cite in §2: "We design experiments at Pearl's Level 3 (counterfactual), following Joshi et al. (2026), using DAS [Geiger et al.] with controlled phonological minimal pairs [Choi et al.]." |
+| **Shafran et al. 2602.02464 (MFA)** | **[v0.9 NEW] Alternative unsupervised method** — Mixture of Factor Analyzers outperforms SAEs on steering in text LMs. Use MFA as no-supervision pre-screen baseline in §3: locate candidate Listen Layer via MFA → validate causally with DAS. Convergent validity: if MFA and DAS agree on L*, hypothesis is stronger. |
 | AudioLens (智凱哥, 2025) | Our causal extension. Same observational setup; we add intervention. Co-author opportunity. |
 | ALME (Li et al. 2025, arXiv:2602.11488) | We use their 57K stimuli. No need to reproduce. |
 | Causal Abstraction (Geiger et al.) | Theoretical foundation. gc = IIT accuracy. Cite prominently. |
@@ -214,17 +221,22 @@ This is the correct specification of Gap #18 experiment (now MacBook-feasible in
 
 ---
 
-## Theory Triangle: Causal Abstraction Methodology Justification
-> Added: cycle #185 (2026-03-02 reflect)
+## Theory Pentagon: Causal Abstraction Methodology Justification
+> Added: cycle #185 (2026-03-02 reflect) | Updated: cycle #211 (2026-03-03 — Joshi added; pentagon finalized)
 
-Paper A's methodology section should cite all three in sequence:
+Paper A's methodology section (§2 + §3) cites these five papers in sequence:
 
 1. **Geiger et al. arXiv:2301.04709** ("Causal Abstraction: A Theoretical Foundation for Mechanistic Interpretability") — ALL MI methods (patching, SAE, DAS, logit lens, steering, circuits) = special cases of causal abstraction with interchange interventions. Master reference. gc = IIT accuracy.
-2. **Asiaee et al. arXiv:2602.24266** ("Efficient Discovery of Approximate Causal Abstractions", Feb 2026) — structured pruning approach; activation variance = first-order proxy for causal importance. Theoretically justifies why `whisper_hook_demo.py` norm heatmap is a reasonable prescreening tool. BUT: fails for non-uniform curvature (rare phoneme features → DAS is necessary, not optional).
+2. **Geiger et al. arXiv:2303.02536** ("Aligning AI With Shared Human Values" / DAS) — DAS algorithm: rotate-fix-unrotate (Cayley parametrization of orthogonal R); gradient descent finds linear subspace. `gc(k) = DAS-IIA at layer k for phonological variable F`.
 3. **Sutter et al. arXiv:2507.08802** (NeurIPS 2025 Spotlight, "The Non-Linear Representation Dilemma") — with non-linear alignment maps, ANY neural network can be made to implement ANY algorithm at 100% IIA. Therefore: causal abstraction is VACUOUS without linearity constraint. Linear DAS = necessary for non-trivial claims, not just convenient.
+4. **Asiaee et al. arXiv:2602.24266** ("Efficient Discovery of Approximate Causal Abstractions", Feb 2026) — structured pruning approach; activation variance = first-order proxy for causal importance. Theoretically justifies `whisper_hook_demo.py` norm heatmap as a reasonable prescreening tool. BUT: fails for non-uniform curvature (rare phoneme features → DAS is necessary, not optional). **Risk A6 source.**
+5. **Joshi et al. arXiv:2602.16698** ("Causality is Key for Interpretability Claims to Generalise", Feb 2026) — Pearl's Level 3 (counterfactual): controlled supervision + CRL is required for counterfactual claims. DAS + Choi et al. minimal pairs = exactly this setup. **Paper A is Level 3; AudioLens = Level 1; FCCT = Level 2.** This is the epistemological standard for Paper A's contribution claim.
 
-**Three-sentence methodology paragraph:**
-> We formalize grounding coefficients using causal abstraction (Geiger et al. 2023), which unifies all mechanistic interpretability methods as interchange-intervention accuracy (IIA) under different parameterizations. We apply distributed alignment search (DAS), the provably correct linear-subspace variant (Sutter et al. 2025 — non-linear maps yield trivially perfect IIA on random models). As a cost-effective pre-screen, we use activation-variance heatmaps (Asiaee et al. 2026), while reserving DAS for features that variance ablation may miss (low-variance, high-causal-weight phoneme features).
+**Five-sentence methodology paragraph (ready for §3):**
+> We formalize grounding coefficients using causal abstraction (Geiger et al. 2023a), which unifies all mechanistic interpretability methods as interchange-intervention accuracy (IIA) under different parameterizations. We apply distributed alignment search (DAS, Geiger et al. 2023b) — the theoretically correct linear-subspace variant: Sutter et al. (2025) prove that without the linearity constraint, any network can trivially achieve 100% IIA on random models. As a cost-effective pre-screen, we first identify candidate layers via activation-variance heatmaps (Asiaee et al. 2026), while reserving DAS for features that variance ablation may miss (low-variance, high-causal-weight phoneme features — Risk A6). Our experimental design targets Pearl's Level 3 (counterfactual claims, Joshi et al. 2026): DAS with controlled phonological minimal pairs (Choi et al. 2026) constitutes causal representation learning with interventional supervision, enabling counterfactual-level claims that observational probes (AudioLens, Level 1) and distribution-shift patching (FCCT, Level 2) cannot make.
+
+**Alternative method (unsupervised pre-screen, §3 sidebar):**
+> Shafran et al. (2602.02464, Mixture of Factor Analyzers) provides an unsupervised alternative to locate candidate layers. We use MFA as a no-supervision pre-screen (locate layer region with highest Gaussian-mixture separation for phonological features) and then apply supervised DAS to confirm the Listen Layer causally. If MFA and DAS converge on the same L*, this is convergent validity for the Listen Layer hypothesis.
 
 ## Known Risks (DAS gc(k) Assumption Checklist)
 > Added: cycle #102 (2026-03-01 meta-awareness audit)

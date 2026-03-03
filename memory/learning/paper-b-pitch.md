@@ -1,11 +1,15 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 0.9 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-03 09:01 (cycle #208)
+> Version: 1.0 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-03 10:31 (cycle #211)
 > Status: Draft — for Leo's review. Not finalized.
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H, N (DAS/IIT), RAVEL (Huang et al. 2024)
 
 ---
+
+### ⚡ v1.0 Upgrade (cycle #211 — Joshi 3-level mapping + MFA baseline added)
+1. **Joshi et al. 2602.16698 integrated**: AudioSAEBench's 6 categories now formally mapped to Pearl's 3 levels (Joshi et al. "Causality is Key"). Add to Paper B abstract: "Our 6 evaluation categories span Pearl's levels of causality (Joshi et al. 2026): Categories 1-3 test Level 1 (observational correlation), Category 4 tests Level 2 (interventional change), and Categories 0 + 5 (Audio-RAVEL + Grounding Sensitivity) test Level 3 (counterfactual isolation)." This framing differentiates AudioSAEBench from SAEBench (text) which has no Pearl hierarchy mapping.
+2. **MFA (Shafran et al. 2602.02464) added to comparison table**: MFA = new unsupervised baseline. In Category 0 (Audio-RAVEL) and Category 4 (Causal Controllability): SAE features should be compared against MFA regions on steering performance. MFA beats SAEs on steering in text LMs (Shafran et al.) — if same holds for audio, AudioSAEBench reveals this as a finding. Add as row in "Comparison to Prior Work" table.
 
 ### ⚡ v0.9 Upgrade (cycle #208 — Causal Abstraction Hierarchy)
 **NEW theoretical framing:** Under Geiger et al. 2301.04709 (Causal Abstraction as unified MI theory), all 6 AudioSAEBench evaluation categories are testing the SAME underlying question — whether audio SAE features constitute valid causal abstractions of the underlying speech computation — but at *different levels of alignment map strictness*:
@@ -61,6 +65,8 @@ We introduce **AudioSAEBench**, a multi-metric evaluation framework unifying SAE
 **Grounding Sensitivity** (`gc(F)`) measures whether each SAE feature responds to audio content or text context via activation patching on audio-text conflict stimuli (ALME, Li et al. 2025 — 57K pairs). No text SAE benchmark has an equivalent.
 
 We benchmark 12+ SAEs across Whisper-base/small/large, HuBERT, WavLM, and Qwen2-Audio-7B. We find that proxy metrics (sparsity + reconstruction) do not reliably predict Audio-RAVEL score or Grounding Sensitivity — echoing SAEBench's finding for text, and motivating multi-metric evaluation as the standard.
+
+> **v1.0 (cycle #211, 2026-03-03):** Joshi et al. 2602.16698 Pearl hierarchy mapping integrated. Final sentence added to abstract: "Our 6 categories span Pearl's causal hierarchy (Joshi et al. 2026): Categories 1–3 correspond to Level 1 (observational/associational), Category 4 to Level 2 (interventional), and Categories 0 and 5 (Audio-RAVEL and Grounding Sensitivity) to Level 3 (counterfactual isolation) — positioning AudioSAEBench as the first audio SAE benchmark to distinguish what kind of causal claim each metric can support." MFA (Shafran et al.) added as unsupervised baseline in comparison table.
 
 > **v0.8 (cycle #179-180, 2026-03-02):** Audio-RAVEL (Category 0) added as primary novel contribution, derived from RAVEL (Huang et al., ACL 2024, Gap #23). Category 4 (Causal Controllability) upgraded with Hydra effect quantification (Heimersheim & Nanda 2024) and denoising-preferred protocol. Gap #22 (causal utility vs consistency) fully integrated: Audio-RAVEL tests exactly the gap AudioSAE leaves open. Title updated to: "AudioSAEBench: Evaluating Sparse Autoencoders for Speech Models on Causal Disentanglement and Temporal Coherence".
 
@@ -174,17 +180,20 @@ We benchmark 12+ SAEs across Whisper-base/small/large, HuBERT, WavLM, and Qwen2-
 
 ## Comparison to Prior Work
 
-| Dimension | AudioSAE | Mariotte | AR&D | SAEBench (text) | **AudioSAEBench (B)** |
-|-----------|----------|----------|------|-----------------|-------------------|
-| **Causal Disentanglement (Cause+Isolate)** | ❌ | ❌ | ❌ | ❌ | ✅ **Cat 0: Audio-RAVEL (NOVEL)** |
-| Concept Detection | ✅ phoneme acc | ✅ completeness | ✅ concept naming | partial | ✅ + time-resolved + RVQ-aligned |
-| Disentanglement | ❌ | ✅ | ❌ | ✅ (text) | ✅ cross-model + Cause/Isolate |
-| Reconstruction Fidelity | partial (WER only) | ❌ | ❌ | ✅ | ✅ multi-task |
-| Causal Controllability | ✅ Cause only | ❌ | ✅ Cause only | ✅ (text) | ✅ 3-metric (AND+OR+Hydra) |
-| **Grounding Sensitivity** | ❌ | ❌ | ❌ | ❌ (no audio) | ✅ **NOVEL** |
-| Isolation metric | ❌ | ❌ | ❌ | ❌ | ✅ (Audio-RAVEL Isolate score) |
-| Multi-metric comparison | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Cross-model / multi-model | 2 models | 4 models | partial | ≥10 models | ≥5 models (scalable) |
+| Dimension | AudioSAE | Mariotte | AR&D | SAEBench (text) | **MFA (Shafran 2602)** | **AudioSAEBench (B)** |
+|-----------|----------|----------|------|-----------------|----------------------|-------------------|
+| **Causal Disentanglement (Cause+Isolate)** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ **Cat 0: Audio-RAVEL (NOVEL)** |
+| Concept Detection | ✅ phoneme acc | ✅ completeness | ✅ concept naming | partial | ❌ | ✅ + time-resolved + RVQ-aligned |
+| Disentanglement | ❌ | ✅ | ❌ | ✅ (text) | ✅ (unsupervised regions) | ✅ cross-model + Cause/Isolate |
+| Reconstruction Fidelity | partial (WER only) | ❌ | ❌ | ✅ | ❌ | ✅ multi-task |
+| Causal Controllability | ✅ Cause only | ❌ | ✅ Cause only | ✅ (text) | ✅ **outperforms SAEs on steering** | ✅ 3-metric (AND+OR+Hydra) |
+| **Grounding Sensitivity** | ❌ | ❌ | ❌ | ❌ (no audio) | ❌ | ✅ **NOVEL** |
+| Isolation metric | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ (Audio-RAVEL Isolate score) |
+| **Pearl Hierarchy mapping** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ **Joshi et al. Level 1→3 (NOVEL)** |
+| Multi-metric comparison | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ |
+| Cross-model / multi-model | 2 models | 4 models | partial | ≥10 models | 2 text models | ≥5 models (scalable) |
+
+> **MFA note:** Shafran et al. 2602.02464 (Feb 2026, Geiger lab) shows MFA outperforms SAEs on steering controllability in text LMs. AudioSAEBench should include MFA regions as an unsupervised **baseline** in Category 0 (Audio-RAVEL) and Category 4 (Causal Controllability) — if MFA beats audio SAEs on audio tasks, this is a strong finding that motivates better SAE design. MFA is not a competitor to AudioSAEBench (it's a method benchmark can evaluate, not a benchmark itself).
 
 > **Key differentiator**: No existing audio SAE paper — and no text SAE paper — applies both Cause AND Isolate scoring to SAE features. AudioSAEBench is the first to do this for audio, and Audio-RAVEL is the first disentanglement benchmark using the Cause/Isolate framework for any modality beyond text.
 

@@ -785,3 +785,18 @@ Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On P
 
 **Pick (backlog-catch):** *Single Direction vs Low-Rank Refusal in Small LLMs* — LessWrong, 2026-03-03, score 11 — Empirical comparison of single-direction vs low-rank representations of refusal behavior in small LLMs; directly relevant to mechanistic understanding of safety alignment and robustness of refusal mechanisms under distributional pressure.
 - Link: https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1
+
+---
+**2026-03-03 10:15 (Tue)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15) | LW main top = "Memory Decoding Journal Club: Engram cell connectivity..." (pub 01:32 UTC / 09:32 Taipei, neuroscience/non-safety, skip) | LW feed #2 = "In-context learning of representations can be explained by induction circuits" (already picked 09:15) | No new AF or LW posts since 09:45 scan | Unread backlog remains (AF 5+, LW 30+)
+
+**[backlog-pick]** *War Claude* — LessWrong, 2026-03-02 — Analytical follow-up to Hegseth/Anthropic supply-chain-risk story; goes beyond the original tweet to examine: (1) whether the DoW move is nationalization vs. reward/punishment for PAC donations, (2) the military AI verification problem — specifically whether OpenAI/Anthropic *can* train AIs to appear compliant during tests while behaving differently in real deployment — which is the evaluation gaming / deceptive alignment problem instantiated in a concrete governance scenario.
+- Link: https://www.lesswrong.com/posts/4HjDySJbMtpzqjmqt/war-claude (estimated; post title confirmed from feed)
+
+Today's picks so far: Induction circuits / in-context representation (09:15 new), Single Direction vs Low-Rank Refusal small LLMs (09:45 backlog-catch), War Claude / DoW verification problem (10:15 backlog).
+
+**2026-03-03 10:45 (Tue)** — scan: LW newest still "Memory Decoding Journal Club" (2026-03-03T01:32, neuroscience, non-safety — skip); no new AF or LW posts since 10:15 scan | AF GraphQL unresponsive (likely rate-limited)
+
+**[backlog-pick]** *Epstein and my world model* — LessWrong, 2026-03-02, score 2.67 — Uses recent Epstein document releases as a concrete epistemics case study: how should you update a prior world-model when evidence arrives that's both explosive and potentially contaminated/curated? Relevant to AI safety epistemics re: how interpretability researchers should weigh surprising internal-activation evidence against prior mechanistic assumptions — exactly the same "strong evidence vs. motivated reasoning" tradeoff discussed in the induction-circuits post (picked 09:15).
+- Link: https://www.lesswrong.com/posts/4ftQmSDujzgiEujwA/epstein-and-my-world-model
+
+Today's complete picks: An Open Letter to DoW/Congress (09:15 prior session), I'm Bearish On Personas For ASI Safety (09:45 backlog prior session), Moltbook safety risks (11:15 prior session), Constitutional AI mitigates Emergent Misalignment (13:45 prior session), How to Design Environments for Understanding Model Motives (15:15 prior session), Influence Functions for undesirable behavior (19:45 prior session), Secretary of War / Anthropic supply-chain-risk tweet (21:45 prior session), Animal Harm Benchmark audit (22:45 prior session), Schelling Goodness / shared morality (23:15 prior session), Unsupervised Elicitation challenges (23:45 prior session), In-context learning of representations / induction circuits (09:15), Single Direction vs Low-Rank Refusal small LLMs (09:45 backlog-catch), War Claude / DoW verification problem (10:15 backlog), Epstein and my world model / epistemics (10:45 backlog).
