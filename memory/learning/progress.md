@@ -1018,16 +1018,22 @@ Priority queue for Leo's first session:
 
 | #197 | 2026-03-03 03:31 | plan (KG DAS sync) | **Knowledge-graph section N synced with cycle #196 DAS deep-read**: (1) 3 Geiger citations disambiguated (2303.02536 = DAS algorithm, 2301.04709 = theory, ACL 2023 = approximate CA); (2) DAS mechanism added (Cayley param, rotate-fix-unrotate, ~5min/layer, 30min total Whisper-small); (3) WHY DAS > localist for AUDIO: AudioSAE ~2000 features → extreme polysemanticity → localist IIA artifact; (4) Decomposability ablation: voicing ⊥ phoneme-identity at L*; (5) Connector subspace transfer test formalized. arXiv 4 queries confirmed empty. |
 
-## Day 5 Stats (updated after cycle #208 — Tuesday March 3, 9:01 AM)
-- Papers read (deep): **23 total** (no new)
-- Papers scanned: 60+
-- Research gaps identified: **25** (all OPEN, all gated)
+| #209 | 2026-03-03 09:31 | learn (citation trail — DAS paper) | Semantic Scholar: top 20 citations of Geiger 2303.02536 — **ZERO speech/audio**. Leo's DAS-in-audio = still field-first ✅. NEW FINDS: (1) Joshi et al. 2602.16698 "Causality is Key" — epistemological standard for MI claims; DAS+controlled stimuli = satisfies their counterfactual-level requirement → cite as "Paper A meets Joshi et al.'s standard"; (2) Geiger-coauthored Shafran et al. 2602.02464 MFA paper — MFA outperforms SAEs at unsupervised localization → potential Paper B comparison baseline + connects to Gap #25 non-linear audio; (3) Arora et al. 2601.22594 — MLP neurons as sparse as SAEs → background note for Track 2. Paper A theory quadrangle updated: Geiger+Asiaee+Sutter+Joshi. |
+| #210 | 2026-03-03 10:01 | learn (Joshi 2602.16698 deep + Shafran 2602.02464 scan) | **Joshi et al. "Causality is Key" deep-read**: Pearl's Level 3 (counterfactual) requires controlled supervision + CRL = exactly what DAS + Choi et al. minimal pairs achieves. Paper A = Level 3; AudioLens = Level 1; FCCT = Level 2 — clean differentiation table. **Paper A theory PENTAGON** finalized: Geiger+Geiger DAS+Sutter+Asiaee+**Joshi**. **Shafran MFA scanned**: MFA (Gaussian-mixture regions) outperforms SAEs on steering in text LMs → Paper B new unsupervised baseline; also motivates Gap #25 non-linear audio (MFA would handle it where DAS might underfit). Paper A v0.8 updated; AudioSAEBench 6-cat → Joshi 3-level mapping identified for Paper B abstract positioning. |
+
+## Day 5 Stats (updated after cycle #210 — Tuesday March 3, 10:01 AM)
+- Papers read (deep): **23 total** (+0 new deep reads; Joshi = deep read; Shafran = deep scan)
+- Papers scanned: **65+** (+2: Joshi 2602.16698 deep-read, Shafran 2602.02464 deep-scan)
+- Research gaps identified: **25** (all OPEN, all gated; Gap #25 further reinforced by MFA finding)
 - Paper ideas: **7** (all 🟢 GREEN gate-validated)
 - Code written: 2 scripts
-- Paper pitches: 2 (**A v0.7** ✅ + **B v0.9** ✅ — both pitch-ready; B updated with Causal Abstraction Hierarchy framing)
+- Paper pitches: 2 (**A v0.8** ✅ + **B v0.9** ✅ — both pitch-ready)
 - Knowledge-graph: **FULLY CURRENT**
 - Must-read list: **FULLY COMPLETE** ✅
-- **Execution-blocked**: ~80h, awaiting Leo → P0 Gap #18
+- **Execution-blocked**: ~82h, awaiting Leo → P0 Gap #18
+- **Paper A theory PENTAGON**: Geiger 2301.04709 (causal abstraction foundation) + Geiger 2303.02536 (DAS algorithm) + Sutter 2507.08802 (linearity guard) + Asiaee 2602.24266 (efficiency; rare-feature risk) + Joshi 2602.16698 (Pearl Level 3 epistemological standard: Paper A achieves counterfactual claims)
+- **Paper B new unsupervised baseline**: Shafran et al. 2602.02464 MFA — outperforms SAEs on steering; should be included in AudioSAEBench baseline table
+- **AudioSAEBench → Joshi 3-level mapping**: Category 1+2 = Level 1 (observational), Category 3+4 = Level 2 (interventional), Category 0 Audio-RAVEL + Category 5 gc(F) = Level 3 (counterfactual)
 
 ## Recommended Next Cycles (Day 5)
 1. **~14:00 Tuesday** → arXiv Tuesday batch (cs.SD + cs.CL + cs.AI, 4 optimized queries)

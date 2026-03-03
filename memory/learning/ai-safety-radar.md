@@ -774,3 +774,14 @@ Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On P
 - Link: https://www.lesswrong.com/posts/DKLrdLLxm5kLJbr7G/3-challenges-and-2-hopes-for-the-safety-of-unsupervised
 
 Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45), Secretary of War / Anthropic supply-chain-risk tweet (21:45), Animal Harm Benchmark audit (22:45 backlog), Schelling Goodness / shared morality (23:15 backlog), Unsupervised Elicitation challenges (23:45 backlog).
+
+---
+**2026-03-03 09:15 (Tue)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (same, already picked Mon 15:15) | LW curated top = "Persona Parasitology" (already picked Mar 1) | LW main: **new post detected** — "In-context learning of representations can be explained by induction circuits" (ICLR 2026 blogpost crosspost, andyrdt, 2026-03-03)
+
+**Pick (new):** *In-context learning of representations can be explained by induction circuits* — LessWrong / ICLR 2026 blogpost, 2026-03-03 — Challenges Park et al. 2025's broad claim that LLMs "manipulate representations in-context to reflect concept semantics"; argues induction circuits (a known low-level bigram-recall mechanism) suffice to explain both the task performance and the observed representation geometry. Mechanistic-interpretability parsimony result: prefer known simple circuits over grander world-model narratives. Directly relevant to how we interpret internal representations and what strength of claim is justified from geometric similarity.
+- Link: https://www.lesswrong.com/posts/in-context-learning-of-representations-can-be-explained-by-induction-circuits (ICLR 2026 blogpost: https://iclr-blogposts.github.io/2026/blog/2026/iclr-induction/)
+
+**2026-03-03 09:45 (Tue)** — scan: AF rate-limited (429) | LW +1 new since 09:15 ("Memory Decoding Journal Club: Engram cell connectivity..." — neuroscience/non-safety, score 3, skip) | Backlog catch: "Single Direction vs Low-Rank Refusal in Small LLMs" (LW, pub 07:14 Taipei, score 11, missed by 09:15 scan)
+
+**Pick (backlog-catch):** *Single Direction vs Low-Rank Refusal in Small LLMs* — LessWrong, 2026-03-03, score 11 — Empirical comparison of single-direction vs low-rank representations of refusal behavior in small LLMs; directly relevant to mechanistic understanding of safety alignment and robustness of refusal mechanisms under distributional pressure.
+- Link: https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1

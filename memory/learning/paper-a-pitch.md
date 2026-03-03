@@ -1,8 +1,16 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.7 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 03:01 (cycle #196)
+> Version: 0.8 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 10:01 (cycle #210)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v0.8 Upgrades (cycle #210 — Joshi et al. Pearl hierarchy + MFA baseline)
+1. **Pearl Level 3 claim added**: Following Joshi et al. 2602.16698 (Feb 2026), Paper A is positioned at **Pearl's Level 3 (counterfactual)** — DAS + controlled phonological minimal pairs (Choi et al.) = causal representation learning with interventional supervision. This distinguishes Paper A from:
+   - AudioLens: Level 1 (logit lens = observational)
+   - FCCT: Level 2 (causal tracing = distributional intervention, no controlled stimuli)
+   - Paper A: Level 3 (DAS + minimal pairs = counterfactual-level claim per Joshi et al. diagnostic framework)
+2. **Theory pentagon finalized**: Geiger 2301.04709 (foundation) + Geiger 2303.02536 (DAS algorithm) + Sutter 2507.08802 (linearity guard) + Asiaee 2602.24266 (efficiency; variance proxy fails for rare features) + **Joshi 2602.16698 (epistemological standard: Level 3)** = 5-paper citation cluster for Paper A methodology section.
+3. **MFA (Shafran et al. 2602.02464) noted as alternative method**: MFA (Mixture of Factor Analyzers, unsupervised) outperforms SAEs on steering in text LMs. Paper A can use MFA as pre-screen baseline — if MFA finds similar layer as DAS, convergent validity. Add to §3 as "comparison to unsupervised alternative."
 
 ### ⚡ v0.7 Upgrades (cycle #196 — DAS mechanism deep read)
 1. **gc(k) = DAS-IIA formalized**: grounding coefficient is now properly defined as `gc(k) = DAS-IIA(layer k, phonological variable F)` using pyvene's `RotatedSpaceIntervention`. Not a ratio — an IIT-grounded accuracy metric.
