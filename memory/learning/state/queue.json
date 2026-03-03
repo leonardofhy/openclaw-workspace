@@ -161,14 +161,15 @@
       "type": "read",
       "track": "T5",
       "title": "Deep-read: Bearish on Personas for ASI Safety (counterpoint to PSM)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Compare with PSM reading (c-20260302-1245); synthesize balanced view on persona frameworks for safety",
       "created": "2026-03-02",
       "due": null,
       "action_type": "learn",
-      "source": "https://www.lesswrong.com/posts/i-m-bearish-on-personas-for-asi-safety"
+      "source": "https://www.lesswrong.com/posts/i-m-bearish-on-personas-for-asi-safety",
+      "completed": "2026-03-03"
     },
     {
       "id": "Q030",
@@ -190,13 +191,14 @@
       "type": "build",
       "track": "T5",
       "title": "Update MATS proposal: add Environment Design section (cite Kroiz et al. 2026)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Patch mats-proposal draft with a short section mapping our audio jailbreak eval to the 5 principles + at least 2 concrete anti-confound checks",
       "created": "2026-03-02",
       "due": null,
-      "action_type": "build"
+      "action_type": "build",
+      "completed": "2026-03-03"
     },
     {
       "id": "Q032",

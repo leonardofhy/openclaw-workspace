@@ -26,27 +26,27 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
-    "build_remaining_today": 10,
+    "learn_remaining_today": 3,
+    "build_remaining_today": 9,
     "reflect_remaining_today": 2,
     "budget_reset_date": "2026-03-03"
   },
   "stats": {
-    "total_cycles": 131,
+    "total_cycles": 133,
     "total_skips": 39,
-    "papers_read_deep": 23,
+    "papers_read_deep": 24,
     "papers_scanned": 35,
     "research_gaps": 19,
     "paper_ideas": 7,
     "paper_pitches": 2,
-    "code_artifacts": 16,
+    "code_artifacts": 17,
     "system_improvements": 6,
     "days_active": 6
   },
   "last_cycle": {
-    "id": "c-20260303-0815",
+    "id": "c-20260303-0915",
     "action": "learn",
-    "summary": "Q030 done: agent-interp-envs repo scan — 7 env-design gotchas extracted; Q031 unblocked (MATS proposal env-design section)"
+    "summary": "Q029 done: Bearish on Personas for ASI — PSM works at current scale but fails for ASI via RL extrapolation; EM evil vector connection to T5 audio jailbreak layer probes"
   },
   "last_gc": "2026-03-02T17:45:35.982137+08:00",
   "self_improve_tickets": []

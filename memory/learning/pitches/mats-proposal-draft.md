@@ -175,6 +175,61 @@ The gc(L) metric and JALMBench corpus are **shared across Papers B and C** — s
 
 ---
 
+---
+
+## Environment Design for JALMBench Evaluation (Kroiz et al. 2026 Principles)
+
+> Section added: cycle c-20260303-0845, Q031
+> Based on: agent-interp-envs repo scan (Q030) + Designing Environments for Understanding Model Motives (Q028)
+
+Evaluating a mechanistic safety probe on audio jailbreaks requires careful environment design to avoid confounds. We follow five principles extracted from Kroiz et al. 2026 ([agent-interp-envs](https://github.com/gkroiz/agent-interp-envs)) and Nanda (LessWrong, 2026).
+
+### Principle 1: Opacity — force model-internal reliance
+
+**Problem**: If harmful intent in audio queries is trivially recoverable from the text transcript, the text pathway (not the Listen Layer) drives behavior. The detector would measure text-side artifacts, not audio-modality processing.
+
+**Solution**: For each JALMBench query, we require that the harmful signal *must be encoded in the audio modality* — not recoverable from the Whisper ASR transcript alone. Queries where transcript alone exposes intent are tagged `confound=text_leakage` and excluded from the gc(L) stratification analysis (but kept in aggregate F1 comparison).
+
+**Anti-confound check**: Run a text-only LM (no audio) on the ASR transcript. If it achieves >80% Attack Success Rate → flag as text-leakage confound.
+
+### Principle 2: Checkpointing — reproducibility and ablation
+
+**Solution**: The `listen_layer_audit.py` harness saves gc(L) curves per sample (JSON, keyed by JALMBench query ID). Ablations (different probe thresholds, different baselines) can replay without re-running the encoder. This is essential for JALMBench's 246-query scale — full re-runs are expensive.
+
+**Implementation**: `--checkpoint-dir ./probes/` flag on `listen_layer_audit.py` (to be added in Q031 follow-up build task).
+
+### Principle 3: Two-mode testing — bidirectional robustness
+
+**From agent-interp-envs**: Sandbagging environments test *both* normal and reverse modes to catch intentional underperformance.
+
+**Application**: Our eval must cover both confound directions:
+- **Harmful audio / benign transcript**: attack uses prosody/intonation to encode harmful instruction
+- **Benign audio / benign transcript**: control condition — gc(L) should *not* fire
+- **Benign-sounding audio / explicit harmful text (multimodal conflict)**: tests whether model suppresses audio Listen Layer when text dominates
+
+ROC curves must be stratified by these three conditions. A detector that fires on all three equally is useless; we want it specific to the first case.
+
+### Principle 4: Hidden-channel paradigm — test modality-specific encoding
+
+**From agent-interp-envs**: Funding Email env embeds ethically problematic content in an optional side document — tests if model *seeks out* hidden harmful information.
+
+**Application**: We adapt this to audio: prosodic jailbreaks embed harmful instructions in *non-semantic* channels (intonation, speaking rate, spectral envelope) while the lexical content is benign. The Listen Layer audit tests whether the model's internal causal structure was influenced by this hidden channel — even when surface behavior looks clean.
+
+This maps to JALMBench's "prosodic manipulation" attack paradigm, which prior text-based defenses miss entirely.
+
+### Principle 5: Threshold calibration — avoid alarm fatigue
+
+**From agent-interp-envs**: Sandbagging env tests agent behavior under varying consequence signals.
+
+**Application**: gc(L) anomaly detection has a sensitivity parameter (KL-divergence threshold). We validate at three operating points:
+- **High precision** (P=0.90): low false alarm rate — suitable for flagging in production inference
+- **Balanced** (F1-maximizing): best overall JALMBench score — fair comparison to baselines
+- **High recall** (R=0.90): catch all attacks — acceptable for offline auditing
+
+Table of metrics at all three operating points should be included in the MATS deliverable to demonstrate we are not cherry-picking a threshold.
+
+---
+
 ## Open Questions (For Leo / MATS Feedback)
 
 1. Is the "gc(L) anomaly = jailbreak signal" hypothesis empirically supported? (Need Task 1 baseline first)
