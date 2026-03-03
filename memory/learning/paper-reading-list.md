@@ -7,7 +7,7 @@ Purpose: shared list for quick-scan candidates, deep-read queue, and completed r
 - (empty)
 
 ## B) Deep-read queue (High priority)
-- (empty)
+- **Maghsoudi & Mishra 2602.01247** — "Mechanistic Interpretability of Brain-to-Speech Models Across Speech Modes" (Feb 2026) — activation patching + causal tracing + causal scrubbing + neuron patching; "compact layer subspaces" mediate cross-mode transfer; methodology directly parallels Paper A; candidate Paper A §2 cite. Added cycle #243.
 
 ## C) Completed deep reads (selected)
 - Geiger et al. — Causal Abstraction / IIT foundations

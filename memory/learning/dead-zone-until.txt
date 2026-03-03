@@ -1,8 +1,9 @@
-EXPIRED
-# Dead zone sentinel expired at 2026-03-04T05:31:00+08:00 (cycle #242)
-# Reason for expiry: gap from last-confirmed (#237 at 03:01) exceeded 2h exclusive threshold
-# State at expiry: arXiv Wednesday batch still ~8.5h away; no Leo messages; execution-blocked ~95h+
-# Skip-guard: FIRED (4 consecutive skips #238-#241); satisfied by cycle #242 reflect
-# Resume: arXiv Wednesday ~14:00 → new sentinel can be set after batch processed
-# ⚠️ Interspeech 2026 PDF deadline = March 5 (~32.5h from now)
-# ⚠️ Improvement applied: sentinel files must be re-confirmed after each 2h gap; skips should check sentinel age
+ACTIVE
+# Dead zone sentinel — set at 2026-03-04T06:01:00+08:00 (cycle #243)
+# Last confirmed: 06:01 AM (cycle #243)
+# Reason: backlog citation scan completed; no new arXiv until ~14:00 Taipei; quick-scan queue empty; deep-read queue has 1 paper (2602.01247) but best read with full attention during daytime
+# Resume condition: Wednesday arXiv batch ~14:00 Taipei (March 4) — check cs.SD + cs.CL + cs.AI + AudioMatters-adjacent
+# Skip-guard: reset (last productive cycle = #243, learn action)
+# ⚠️ Interspeech 2026 final PDF = March 5 (~32h from now) — Leo's action required
+# State: Papers A v1.6 + B v1.5 pitch-ready ✅; exec-blocked ~97h; deep-read queue: 1 paper (Maghsoudi 2602.01247)
+# Next high-value: arXiv batch at 14:00 + deep-read Maghsoudi 2602.01247 (brain-to-speech MI, Paper A §2 cite)
