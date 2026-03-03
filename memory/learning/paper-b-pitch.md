@@ -1,9 +1,39 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 1.4 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-03 20:01 (cycle #227)
+> Version: 1.5 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-03 21:31 (cycle #230)
 > Status: Draft — for Leo's review. Not finalized. §1+§2+§3+§4 LaTeX-ready ✅
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H, N (DAS/IIT), RAVEL (Huang et al. 2024)
+
+---
+
+### ⚡ v1.5 Upgrade (cycle #230 — §5 Discussion skeleton added)
+
+**§5 Discussion Skeleton (5 subsection headers + 2-sentence stubs — PROSE BLOCKED until results):**
+
+**5.1 Proxy Metrics Are Insufficient: Implications for the Field**
+> *Stub:* If confirmed, the proxy-metric failure (ρ < 0.3 between L0/reconstruction and RAVEL-audio/gc) extends SAEBench's text finding to audio — establishing multi-metric evaluation as the universal standard. We discuss what practitioners should measure instead: for grounding-critical applications (speech safety, hallucination mitigation), Category 0 + Category 5 are the actionable metrics; for disentanglement audits, Category 0 RAVEL-audio is the principled choice.
+> *Content triggers:* Table 2 (rank correlations across all 12+ SAEs). Write after benchmark run.
+
+**5.2 Acoustic Co-occurrence: A Structural Challenge Unique to Audio**
+> *Stub:* We discuss why audio SAEs are expected to fail Isolate more severely than text SAEs: acoustic co-occurrence is a physical signal property (voiced stops share spectral energy with gender markers in training corpora), while text co-occurrence is a distributional artifact that SAE training with large corpora can partially overcome. We propose phoneme-boundary-aware batching (§3.8 SAELens toolkit) as a partial remedy and report its effect on Isolate scores as an ablation.
+> *Content triggers:* Cat 0 per-attribute leakage heatmap (Figure 1). Write after Cat 0 data collected.
+
+**5.3 Why Matryoshka SAEs Win on Audio**
+> *Stub:* We interpret the expected Matryoshka dominance (predicted §4.6) in terms of the hierarchical partition structure matching acoustic temporal organization: high-level features (~20%) capture phonemic identity and speaker characteristics (long-range stable across frames), while low-level features (~80%) capture frame-level acoustic detail (short-range volatile). This architectural prior is better matched to audio temporal structure than TopK's uniform sparsity. We discuss implications for the field: practitioners should adopt Matryoshka SAEs for audio by default, with the SAELens toolkit (§3.8) enabling drop-in training.
+> *Content triggers:* Table 3 (architecture comparison across 6 categories). Write after benchmark run.
+
+**5.4 Cross-Paper Validation: gc(F) vs gc(L)**
+> *Stub:* We show that the gc(F) distribution shift (bimodal for Qwen2-Audio-7B: audio cluster vs text cluster) is predicted to occur at the layer identified as L* in Paper A — providing independent evidence for the Listen Layer hypothesis using a feature-level rather than layer-level measure. This convergence strengthens both papers: Paper A's L* is validated by feature-level gc distribution; Paper B's gc(F) metric is validated by Paper A's ground truth. We discuss the implications for the grounding measurement program: layer-level and feature-level measures are complementary.
+> *Content triggers:* Figure 3 (gc(F) distribution per layer in Qwen2-Audio-7B; overlay with Paper A gc(L) peak). Requires Paper A E2 results.
+
+**5.5 Limitations and Future Directions**
+> *Stub:* Key limitations: (1) scope = 12+ SAEs currently trained; Matryoshka + T-SAE training requires GPU workstation time not yet available; (2) Cat 0 stimuli = Choi et al. 96-language phonological pairs — emotion prosody and speaker identity attributes need bespoke stimuli; (3) gc(F) for encoder-only models (Whisper) uses decoder proxy — noisier than LALM measurement. Future work: (a) extend to LoRA-adapted SAEs (Track 4 mechanistic adaptation analysis); (b) SPIRIT adversarial stimuli → Gap #24 SAE-guided safety defense; (c) auto-update the benchmark as new audio SAEs are released via SAELens-audio.
+> *Content triggers:* Final results + reviewer feedback. Write after submission draft.
+
+**Anti-bloat check:** 5 stubs, ~500 words total. No new papers introduced. Stubs are placeholders only — triggered by specific result tables/figures. **Writing §5 prose is BLOCKED until benchmark run completes.** This skeleton ends the pre-experiment paper writing budget.
+
+**Status of §5:** 🏗️ SKELETON ONLY. Full prose requires experimental results.
 
 ---
 

@@ -1,8 +1,38 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 1.5 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 20:31 (cycle #228)
+> Version: 1.6 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 21:31 (cycle #230)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+---
+
+### ⚡ v1.6 Upgrades (cycle #230 — §5 Discussion skeleton added)
+
+**§5 Discussion Skeleton (5 subsection headers + 2-sentence stubs — PROSE BLOCKED until results):**
+
+**5.1 The Listen Layer as a Causal Bottleneck**
+> *Stub:* We discuss the implications of the gc(L) peak pattern for the Store-Contribute Dissociation (SCD) hypothesis: the layer that stores the most audio-aligned representations (highest probe accuracy) is distinct from the layer that causally drives grounded outputs (highest IIA). This dissociation, if confirmed, establishes that representational probing alone cannot localize causal computation — motivating causal methods (DAS-IIT) as the correct tool for grounding analysis.
+> *Content triggers:* Figure 2 gc(L) curve + Figure 3 2D heatmap. Write after E1 complete.
+
+**5.2 Phonological Abstraction vs. Table-Lookup at L***
+> *Stub:* We interpret the decomposability ablation result: if decomp(L*) ≈ 0.8–0.9 (voicing ⊥ phoneme-identity), this is the first causal evidence that audio LMs encode compositional phonological structure rather than memorized phoneme-label associations. We contrast with the text LLM literature, where analogous abstract-vs-lookup debates have focused on factual recall (Meng et al. 2022) rather than linguistic feature geometry.
+> *Content triggers:* Table 1 (phono-init vs random-init DAS ablation). Write after E1 complete.
+
+**5.3 What the Connector Does to Phonological Geometry (Gap #18)**
+> *Stub:* We discuss the three possible connector transfer outcomes (IIA_transfer ≈ gc* vs reduced vs ~0) and their theoretical implications for Modality Collapse (arXiv:2602.23136): a volume-preserving connector is inconsistent with full collapse, while a geometry-destroying connector confirms the strongest form of Cascade Equivalence (arXiv:2602.17598). We propose that the connector's effect on phonological geometry is a new axis of model evaluation complementary to behavioral benchmarks.
+> *Content triggers:* Table 2 (connector subspace transfer results). Write after Gap #18 experiment.
+
+**5.4 Grounding Profile Across Generation vs. Understanding**
+> *Stub:* We compare gc(L) profiles between the Whisper encoder (understanding) and Qwen2-Audio-7B (full LALM understanding + generation) with audio generation models (AG-REPA, arXiv:2603.01006). We predict that understanding models exhibit middle-dominant gc profiles while generation models exhibit early-dominant profiles — a structural SCD asymmetry between model families that constrains interpretability method choice. If confirmed, this implies that AudioLens-style logit-lens probing is better suited for understanding models, while DAS patching is required for generation models.
+> *Content triggers:* Figure 4 (Qwen2-Audio gc(L) sweep). Write after E2 complete.
+
+**5.5 Limitations and Future Work**
+> *Stub:* Key limitations: (1) linear alignment assumption (DAS) — non-linear connectors may require kernel DAS (Gap #25); (2) phonological features tested = voicing/manner/place (cover ~65% of phoneme contrasts) — emotional prosody and speaker identity not yet tested; (3) Whisper-small + Qwen2-Audio-7B only — results may not transfer to other architecture families. Future work: extend gc metric to AudioSAEBench features (Paper B), apply to LoRA-adapted models (Track 4), and test adversarial audio (Track 5 SPIRIT extension).
+> *Content triggers:* Final results + reviewer feedback. Write after submission draft.
+
+**Anti-bloat check:** 5 stubs, ~500 words total. All content derived from already-read papers (no new citations introduced). Stubs are placeholders only — triggered by specific result tables/figures. **Writing §5 prose is BLOCKED until experiments run.** This skeleton ends the pre-experiment paper writing budget.
+
+**Status of §5:** 🏗️ SKELETON ONLY. Full prose requires experimental results.
 
 ---
 
@@ -110,7 +140,7 @@ We evaluate on **Whisper-small** (244M parameters, 6 encoder layers) for MacBook
 - §2 Related Work: ✅ LaTeX-ready (3 subsections, cycle #222)
 - §3 Method: ✅ LaTeX-ready (7 subsections, cycle #223)
 - §4 Experiments/Results: ✅ LaTeX-ready (5 subsections, **Expected Results** draft, cycle #228)
-- §5 Discussion: ⏳ after results
+- §5 Discussion: ✅ **SKELETON** (cycle #230, 2026-03-03 21:31 — 5 subsection headers + 2-sentence stubs. Full prose blocked until results.)
 
 ---
 

@@ -1241,23 +1241,24 @@ Priority queue for Leo's first session:
 3. **Principled skip** (+ 3-plan rule: #225+#227+#228 = 3 consecutive plans → next must be reflect/learn/skip)
 
 | #229 | 2026-03-03 21:01 | reflect (meta-awareness) | **3-plan anti-pattern post-mortem**: rule design flaw identified — global 3-plan counter fires on GENUINE new LaTeX sections (not just pitch-bloat). **Q32 CLOSED**: replaced with milestone-based plan budget (reflect required after each section milestone, not after every 3rd plan). **§5 Discussion timing risk** named: no full §5 prose until results exist. arXiv verified: 0 new papers. **Paper pre-experiment writing budget NOW EXHAUSTED** (both papers §1+§2+§3+§4 complete; §5 requires results). Principled skip until arXiv Wednesday ~14:00 OR §5 skeleton (1 plan) OR Leo unblocks P0. |
+| #230 | 2026-03-03 21:31 | plan (§5 skeleton — Papers A+B) | **§5 Discussion skeleton written for BOTH papers** — 5 subsection headers + 2-sentence stubs each (~500 words per paper). Paper A v1.6 §5: Listen Layer as Causal Bottleneck → Phonological Abstraction vs Table-Lookup → Connector Geometry → Generation vs Understanding → Limitations. Paper B v1.5 §5: Proxy Metric Failure → Acoustic Co-occurrence → Matryoshka Architecture → Cross-Paper gc validation → Limitations. **🎉 MILESTONE: Both papers now have §1+§2+§3+§4+§5-skeleton complete. Pre-experiment paper writing budget FULLY EXHAUSTED.** Next: principled skip until Wednesday arXiv ~14:00 March 4. |
 
-## Day 6 Rolling Stats (after cycle #229 — Tuesday March 3, 9:01 PM)
+## Day 6 Rolling Stats (after cycle #230 — Tuesday March 3, 9:31 PM)
 - Papers read (deep): **23 total**
 - Papers scanned: **81+**
 - Research gaps identified: **25** (all OPEN, all gated)
 - Paper ideas: **7** (all 🟢 GREEN gate-validated)
 - Code written: 2 scripts
-- Paper pitches: 2 (**A v1.5** ✅ [§1+§2+§3+§4 complete] + **B v1.4** ✅ [§1+§2+§3+§4 complete])
+- Paper pitches: 2 (**A v1.6** ✅ [§1+§2+§3+§4+§5-skeleton complete] + **B v1.5** ✅ [§1+§2+§3+§4+§5-skeleton complete])
 - Knowledge-graph: **FULLY CURRENT**
 - Must-read list: **FULLY COMPLETE** ✅
-- **Execution-blocked**: ~92h+ (no re-logging per cycle #191 rule; Discord ping sent cycle #193)
-- **🎉 Both papers §1+§2+§3+§4 LaTeX-ready** ✅
-- **Pre-experiment paper writing budget: EXHAUSTED** (§5 requires actual results)
+- **Execution-blocked**: ~93h (no re-logging per cycle #191 rule; Discord ping sent cycle #193)
+- **🎉 MILESTONE: Both papers §1+§2+§3+§4+§5-skeleton complete** ✅
+- **Pre-experiment paper writing budget: FULLY EXHAUSTED** (§5 prose blocked until results)
 - **Meta-improvement**: Q32 plan-milestone rule replaces blunt 3-plan counter
 
 ## Recommended Next Cycles (Day 6 → Day 7)
-1. **Wednesday arXiv batch** (~14:00 Taipei, March 4) → cs.SD + cs.CL + cs.AI `learn`
-2. **§5 Discussion skeleton** (1 plan cycle allowed — section headers + 2-sentence stubs only)
-3. **Leo unblock** → P0 Gap #18 + Papers A+B §1-§4 review + LaTeX shell opening
-4. Principled skip if none of the above
+1. **Principled skip** until Wednesday arXiv batch (~14:00 Taipei, March 4)
+2. **Wednesday arXiv batch** → cs.SD + cs.CL + cs.AI `learn`
+3. **Leo unblock** → P0 Gap #18 + Papers A+B §1-§5 review + LaTeX shell opening
+4. ⚠️ Pre-experiment writing budget is NOW FULLY EXHAUSTED — no more paper section drafting until experiments run
