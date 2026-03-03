@@ -1,8 +1,101 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 1.2 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 15:31 (cycle #219)
+> Version: 1.4 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 17:31 (cycle #223)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+---
+
+### ⚡ v1.4 Upgrades (cycle #223 — §3 Method prose draft written)
+
+**§3 Method Draft (7 subsections — ready to copy into LaTeX):**
+
+**3.1 Task Formulation**
+
+We formalize audio grounding as a causal abstraction problem (Geiger et al., 2023, arXiv:2301.04709). A speech language model $\mathcal{M}$ takes input $x = (x_{\text{audio}}, x_{\text{text}})$ — an audio token stream and a textual context — and produces output $y$. We hypothesize a *high-level causal variable* $A \in \{0, 1\}$ representing whether the model's output is determined by audio content ($A=1$) or by textual context ($A=0$). The **Listen Layer** $L^*$ is the layer at which patching $\mathcal{M}$'s hidden states with audio-consistent activations most strongly shifts $y$ toward audio-grounded behavior — i.e., the depth where audio causally dominates output generation.
+
+We operationalize this via the **grounding coefficient**:
+$$\text{gc}(L) = \text{IIA}_{\text{DAS}}(L; A)$$
+the interchange intervention accuracy (IIA) at layer $L$ under a learned linear alignment map (DAS; Geiger et al., 2023, arXiv:2303.02536). The linearity constraint is theoretically necessary: Sutter et al. (NeurIPS 2025 Spotlight, arXiv:2507.08802) prove that without it, any neural network achieves 100% IIA against any algorithm, making the causal claim vacuous. We identify $L^* = \arg\max_L \text{gc}(L)$.
+
+**3.2 Stimuli**
+
+*Phase 1 — Phonological minimal pairs.* We use the phonological arithmetic stimuli from Choi et al. (arXiv:2602.18899), who validate that speech self-supervised model (S3M) representations satisfy voicing arithmetic — $\mathbf{h}([\text{b}]) = \mathbf{h}([\text{d}]) - \mathbf{h}([\text{t}]) + \mathbf{h}([\text{p}])$ — across 96 languages. Each minimal pair (clean, corrupt) differs in exactly one phonological feature (voicing: [b]/[p], [d]/[t]), holding manner and place of articulation constant. These constitute principled causal stimuli satisfying Pearl's Level 3 counterfactual standard per Joshi et al. (arXiv:2602.16698): the intervention changes exactly the causal variable of interest (voicing, $A$), leaving all other factors fixed.
+
+*Phase 2 — Audio-text conflict stimuli.* For experiments on large audio-language models (LALMs), we use the 57,000 audio-text conflict stimuli from ALME (Li et al., arXiv:2602.11488), in which the audio content and textual context provide contradictory information. We additionally construct **RVQ-layer-selective corruptions** using SpeechTokenizer (Sadok et al., arXiv:2506.04492, Interspeech 2025): by swapping only the semantic Layer 1 RVQ tokens (which encode content) while retaining Layers 2+ (which encode speaker voice and acoustic attributes), we construct stimuli in which audio content changes while voice identity is preserved. This constitutes the cleanest possible causal corruption for audio content, and allows us to distinguish the Listen Layer for *semantic content* from layers sensitive to acoustic surface form.
+
+**3.3 Distributed Alignment Search**
+
+For each candidate layer $L$, we apply Distributed Alignment Search (DAS; Geiger et al., arXiv:2303.02536) to find the optimal linear subspace aligning model activations to the causal variable $A$. DAS parameterizes the alignment map as an orthogonal rotation matrix $R \in \mathcal{O}(d)$ via the Cayley parametrization and trains it by minimizing the interchange intervention loss:
+$$\mathcal{L}_{\text{IIT}}(R) = \mathbb{E}_{(x^c, x^n, y^*)} \left[ \ell\left( \mathcal{M}\left(x^n \,\big|\, h_L \leftarrow R^{-1} P R h_L^c \right),\, y^* \right) \right]$$
+where $x^c$ is the clean (audio-grounded) input, $x^n$ is the corrupt input, $h_L^c$ is the hidden state from $x^c$ at layer $L$, $P$ is a fixed low-rank projection onto the intervention subspace, and $y^*$ is the expected audio-grounded output. We implement DAS via pyvene's \texttt{RotatedSpaceIntervention} (Wu et al., 2024).
+
+For efficiency on Qwen2-Audio-7B (7B parameters), we use a three-stage pipeline: (i) variance-based layer pre-screening (Asiaee et al., arXiv:2602.24266) eliminates layers where activation variance — the first-order proxy for causal importance — is below threshold; (ii) Attribution Patching (AtP; Nanda \& Heimersheim, 2023) for a coarse causal sweep; and (iii) full DAS on the top-$k$ candidate layers. We report gc(L) per phoneme class separately to diagnose failures for rare phoneme classes with low variance but high causal weight (Risk A6).
+
+We use **denoising patching** (not noising patching) throughout: we patch *toward* the clean/audio-grounded state from the corrupt/text-grounded state. This tests sufficiency of audio representations for grounded outputs and avoids the fragility of Gaussian-noise corruptions documented by Heimersheim \& Nanda (2024).
+
+**3.4 Direction Extraction**
+
+For the initial subspace orientation, we use the **difference-of-means estimator** (MMProbe):
+$$\mathbf{d}_{\text{voicing}}^L = \mathbb{E}\left[\mathbf{h}_L \mid \text{voiced}\right] - \mathbb{E}\left[\mathbf{h}_L \mid \text{unvoiced}\right]$$
+using Phase 1 minimal pairs. This estimator identifies the causally implicated direction — not the maximally discriminative direction, which may be orthogonal to the interventional geometry (Marks \& Tegmark, 2023; ARENA [1.3.1]). We sweep both PROBE\_LAYER (where the direction is extracted) and INTERVENE\_LAYER (where the patch is applied) independently, mapping the full $(L_p, L_i)$ heatmap. We predict a lower-triangular band structure near $L^*$ (Paper A Figure 3).
+
+**3.5 Decomposability Ablation**
+
+At the identified Listen Layer $L^*$, we test whether the voicing subspace and the phoneme-identity subspace are orthogonal — the **decomposability ablation**. We run two simultaneous DAS searches at $L^*$: one for voicing ($F_{\text{voicing}} \in \{0,1\}$) and one for phoneme identity ($F_{\text{phoneme}} \in \Delta^{|\Sigma|}$). We measure:
+$$\text{decomp}(L^*) = 1 - \left|\cos\angle(R_{\text{voicing}}, R_{\text{phoneme}})\right|$$
+If $\text{decomp}(L^*) \approx 1$ (orthogonal), the model encodes voicing independently of phoneme identity — abstract phonological representation. If $\approx 0$, voicing is derived from phoneme label (table-lookup behavior). This test has no text LLM analog and directly addresses whether the Listen Layer is a *phonological abstraction layer* or a *phoneme lookup layer*.
+
+**3.6 Connector Subspace Transfer Test**
+
+To test whether phonological geometry survives the modality connector (Gap \#18; Choi et al. 2602.18899), we apply the rotation $R_{\text{encoder}}$ — learned at Whisper encoder's $L^*$ — to the LLM's layer 0 without re-training:
+$$\text{IIA}_{\text{transfer}} = \text{IIA}\left(\mathcal{M}_{\text{LLM}},\, R_{\text{encoder}},\, L_{\text{LLM}}=0\right)$$
+Three interpretations: (i) $\text{IIA}_{\text{transfer}} \approx \text{gc}(L^*_{\text{encoder}})$ → connector is a volume-preserving rotation, phonological subspace intact; (ii) $\text{IIA}_{\text{transfer}} \ll \text{gc}(L^*_{\text{encoder}})$ but re-trained IIA at LLM layer 0 is high → connector rotates the subspace but preserves it; (iii) both near zero → connector destroys phonological geometry (Paper A scopes to encoder).
+
+**3.7 Experimental Setup**
+
+We evaluate on **Whisper-small** (244M parameters, 6 encoder layers) for MacBook-feasible validation of the Triple Convergence Hypothesis, and **Qwen2-Audio-7B** (7B parameters, 32 LLM layers) for the full LALM grounding sweep via NDIF remote execution. All patching experiments use NNsight (Fiotto-Kaufman et al., 2023) rather than circuit-tracer (CLT), as CLT's frozen attention assumption prevents correct handling of cross-attention between audio and text token streams (Anthropic, 2025). DAS implementation via \texttt{pyvene} (Wu et al., 2024).
+
+**Status of §3:** ✅ DRAFT COMPLETE. ~750 words, 7 subsections, all cite IDs confirmed. Anti-bloat check passed: no new papers introduced; all content from experiment-queue.md + prior reading. LaTeX-ready (equations formatted). Ready to copy into LaTeX shell.
+
+**Papers A progress summary (v1.4):**
+- §1 Introduction: ✅ LaTeX-ready (3 paragraphs, cycle #219)
+- §2 Related Work: ✅ LaTeX-ready (3 subsections, cycle #222)
+- §3 Method: ✅ LaTeX-ready (7 subsections, cycle #223)
+- §4 Experiments/Results: ⏳ needs E1+E2 data (Leo unblock)
+- §5 Discussion: ⏳ after results
+
+---
+
+### ⚡ v1.3 Upgrades (cycle #222 — §2 Related Work prose draft written)
+
+**§2 Related Work Draft (3 subsections — ready to copy into LaTeX):**
+
+**2.1 Modality Grounding in Audio-Language Models**
+
+A growing body of evidence documents that audio-language models (ALMs) do not always consult their audio input as expected — and may rely on linguistic context even when audio contradicts it. AudioLens (Liu et al., ASRU 2025) applies the logit lens to large audio-language models (LALMs), finding that models heavily weight direct audio queries at a "critical layer" earlier in the network — providing behavioral evidence that audio processing concentrates at a specific depth. ALME (Li et al., arXiv:2602.11488) constructs 57,000 audio-text conflict stimuli and finds systematic text dominance in ALM responses. Modality Collapse (arXiv:2602.23136) provides a GMI-theoretic proof that connector bottlenecks cause audio information to be encoded in speech embeddings but not decoded by the LLM backbone — a representational failure that observational probing cannot diagnose. Cascade Equivalence (arXiv:2602.17598) uses LEACE erasure to show that most speech LLMs reduce to implicit ASR cascades, with Qwen2-Audio as the notable exception. MiSTER-E (arXiv:2602.23300) measures modality gating weights (g_speech vs g_text) in MoE speech LLMs, finding non-trivial audio-text competition at the logit level. DashengTokenizer (arXiv:2602.23765) demonstrates that a single semantic RVQ layer suffices for 22 audio tasks (Sadok et al., Interspeech 2025, arXiv:2506.04492 — SpeechTokenizer Layer 1 = semantic content), convergent with the hypothesis that audio grounding concentrates at a specific representation level.
+
+Each of these works is *behavioral or observational* — identifying modality dominance patterns in outputs or associating activations with behavior without intervention. None localizes *where* audio grounding is causally active at the layer level, nor provides a grounded metric for causal audio consultation. We address this gap by framing the Listen Layer question as a causal abstraction problem and operationalizing it via DAS-IIT interchange interventions.
+
+**2.2 Mechanistic Interpretability of Audio and Multimodal Models**
+
+Mechanistic interpretability (MI) has produced rich accounts of text LLM circuits — factual recall, indirect object identification, and multi-step reasoning — using causal tracing and activation patching (Meng et al. 2022; Wang et al. 2023; Conmy et al. 2023). Extending MI to multimodal models is harder: the modality connector introduces heterogeneous token streams with different distributional properties from text.
+
+For visual LLMs, recent work has begun to address cross-modal information flow. EmbedLens (Fan et al., arXiv:2603.00510, CVPR 2026) analyzes visual tokens in VLMs and finds that only ~60% carry meaningful image information; the remainder are sink tokens or positionally uninformative. Mid-layer injection outperforms both shallow and deep injection, consistent with the claim that visual processing concentrates at intermediate depths. Liu et al. (2025, UW) study KV-token flow in LLaVA/Qwen2.5-VL, finding that visual tokens influence language layers primarily via a subset of cross-attention heads — observationally identifying the "active" layers. FCCT (Li et al., AAAI 2026 Oral, arXiv:2511.05923) applies vanilla causal tracing to visual LLMs and finds that multi-head self-attention layers at middle depths are the primary site of cross-modal information integration. All three are observational or use vanilla (ungrounded) interventions — Pearl Level 1 or Level 2 at best.
+
+For speech models, AudioLens (智凱哥 et al., ASRU 2025) applies the logit lens without causal intervention, reporting critical-layer depth but not causal evidence. "Behind the Scenes" (Ma et al., arXiv:2509.08454, ICASSP 2026) uses NNsight to study LoRA-adapted Whisper for speech emotion recognition, finding delayed specialization (early layers general, late layers task-specific) but no layer-wise patching sweep. AR&D (Chowdhury et al., arXiv:2602.22253, ICASSP 2026) uses SAEs to decompose AudioLLM neurons and auto-name concepts, without causal grounding. Beyond Transcription (Glazer et al., arXiv:2508.15882, 2025) applies probing and white-noise patching to Whisper, finding that encoder representations go beyond acoustics — but white-noise patching is fragile: Heimersheim & Nanda (2024) demonstrate that Gaussian-noise corruptions are highly sensitive to noise level, making resulting localization claims unreliable. None of these works performs DAS-grounded layer-wise causal localization. Paper A is the first to do so for speech LLMs.
+
+**2.3 Causal Abstraction and Distributed Alignment Search**
+
+Our causal claims rest on causal abstraction (Geiger et al., arXiv:2301.04709), the unifying framework showing that all major MI methods — activation patching, circuit analysis, SAE feature steering, logit lens, DAS — are special cases of interchange interventions with different alignment map parameterizations. Under this framework, Paper A's grounding coefficient gc(L) = IIT accuracy (IIA) at layer L: the fraction of cases where patching layer L with states from an audio-consistent input causes the model to respond as though it received the audio-consistent input directly. This is a theoretically principled definition; grounding is not an ad hoc behavioral metric.
+
+We apply Distributed Alignment Search (DAS, Geiger et al., arXiv:2303.02536), which uses gradient descent over orthogonal rotation matrices (Cayley parametrization) to find the optimal linear subspace for alignment. The linearity constraint is not merely convenient: Sutter et al. (NeurIPS 2025 Spotlight, arXiv:2507.08802) prove that without it, any neural network can be made to implement any algorithm at 100% IIA on random models — making causal abstraction vacuous. We use Asiaee et al. (arXiv:2602.24266, Feb 2026) variance-based pre-screening to locate candidate layers efficiently, with DAS reserved for full causal validation, including features for which variance pre-screening fails (rare phoneme classes, Risk A6).
+
+Paper A targets Pearl's Level 3 (counterfactual) per Joshi et al. (arXiv:2602.16698): our controlled phonological minimal pairs (Choi et al., arXiv:2602.18899 — voicing vectors [b]=[d]-[t]+[p], 96 languages validated) constitute causal representation learning with interventional supervision. This makes our epistemological standard higher than AudioLens (Level 1) or FCCT (Level 2), and directly comparable to text LLM mechanistic findings that have cleared reviewer scrutiny.
+
+For efficiency on Qwen2-Audio-7B (too large for full sweep), we use Attribution Patching (AtP, Nanda & Heimersheim 2023) — a first-order Taylor approximation of activation patching that scales linearly in compute — for layer candidate pre-screening before running full DAS. The combination of variance pre-screen → AtP sweep → DAS localization constitutes a practical three-stage methodology for causal MI in large audio-language models.
+
+**Status of §2:** ✅ DRAFT COMPLETE. ~600 words, 3 subsections, all cite IDs confirmed. Anti-bloat check passed: all citations are verified papers from prior reading. Ready to copy into LaTeX. Structurally parallel to Paper B §2 (same Pearl hierarchy, same theory pentagon, same cross-reference pattern).
 
 ### ⚡ v1.2 Upgrades (cycle #219 — §1 Introduction prose draft written)
 
