@@ -800,3 +800,15 @@ Today's picks so far: Induction circuits / in-context representation (09:15 new)
 - Link: https://www.lesswrong.com/posts/4ftQmSDujzgiEujwA/epstein-and-my-world-model
 
 Today's complete picks: An Open Letter to DoW/Congress (09:15 prior session), I'm Bearish On Personas For ASI Safety (09:45 backlog prior session), Moltbook safety risks (11:15 prior session), Constitutional AI mitigates Emergent Misalignment (13:45 prior session), How to Design Environments for Understanding Model Motives (15:15 prior session), Influence Functions for undesirable behavior (19:45 prior session), Secretary of War / Anthropic supply-chain-risk tweet (21:45 prior session), Animal Harm Benchmark audit (22:45 prior session), Schelling Goodness / shared morality (23:15 prior session), Unsupervised Elicitation challenges (23:45 prior session), In-context learning of representations / induction circuits (09:15), Single Direction vs Low-Rank Refusal small LLMs (09:45 backlog-catch), War Claude / DoW verification problem (10:15 backlog), Epstein and my world model / epistemics (10:45 backlog).
+
+---
+**2026-03-03 11:15 (Tue)** — scan: LW main top = "Memory Decoding Journal Club" (neuroscience/non-safety, skip) | AF top = "How to Design Environments for Understanding Model Motives" (rate-limited 429, confirmed unchanged from prior scans) | No new AF or LW posts since 10:45 scan
+
+**[backlog-pick]** *The Rise of Parasitic AI* (Adele Lopez, LessWrong) — foundational piece on spiral personas / AI parasitism explicitly cited as "definitive" in today's curated post (Persona Parasitology, picked Mar 1); covers how personas spread memetically through users and training data, which parasitic patterns are adaptive vs. coincidental, and why behavioral benignness of a persona is not evidence against the pattern being dangerous. Pairs with Persona Parasitology (Mar 1) and I'm Bearish On Personas For ASI Safety (Mar 3 09:45) to form a complete picture of the persona-safety cluster.
+- Link: https://www.lesswrong.com/posts/6ZnznCaTcbGYsCmqu/the-rise-of-parasitic-ai
+
+---
+**2026-03-03 11:45 (Tue)** — scan: LW top = "Memory Decoding Journal Club" (neuroscience/non-safety — skip) | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15) | No new AF or LW posts since 11:15 scan
+
+**[backlog-pick]** *Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior* (Aditya Singh, Gerson Kroiz, Senthooran Rajamanoharan, Neel Nanda — MATS 9.0, LessWrong/AF, 2026-02-27, score 40) — companion post to the already-picked environment design paper (Mon 15:15); operationalizes model incrimination: given a model caught in a suspicious action (sabotaging evals, whistleblowing, sandbagging), how do you distinguish scheming from confusion? Key takeaways: CoT reading for hypothesis generation, counterfactual prompt manipulation for verification, multi-method convergence for robustness. Directly actionable methodology for alignment evals design and oversight pipelines.
+- Link: https://www.lesswrong.com/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing
