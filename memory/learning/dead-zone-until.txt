@@ -1,9 +1,9 @@
 ACTIVE
-# Dead zone sentinel — set at 2026-03-04T06:01:00+08:00 (cycle #243)
-# Last confirmed: 06:01 AM (cycle #243)
-# Reason: backlog citation scan completed; no new arXiv until ~14:00 Taipei; quick-scan queue empty; deep-read queue has 1 paper (2602.01247) but best read with full attention during daytime
-# Resume condition: Wednesday arXiv batch ~14:00 Taipei (March 4) — check cs.SD + cs.CL + cs.AI + AudioMatters-adjacent
-# Skip-guard: reset (last productive cycle = #243, learn action)
-# ⚠️ Interspeech 2026 final PDF = March 5 (~32h from now) — Leo's action required
-# State: Papers A v1.6 + B v1.5 pitch-ready ✅; exec-blocked ~97h; deep-read queue: 1 paper (Maghsoudi 2602.01247)
-# Next high-value: arXiv batch at 14:00 + deep-read Maghsoudi 2602.01247 (brain-to-speech MI, Paper A §2 cite)
+# Dead zone sentinel — set at 2026-03-04T07:01:00+08:00 (cycle #245)
+# Last confirmed: 07:01 AM (cycle #245)
+# Reason: Wednesday arXiv batch fully processed (24 papers, 2 relevant). Maghsoudi deep-read complete. No further learn/plan/build/reflect actions available without Leo unblock or new arXiv.
+# Resume condition: Thursday arXiv batch (~14:00 Taipei, March 5) — OR Leo unblock → P0 Gap #18 phonological geometry experiment
+# Skip-guard: reset (last productive cycle = #245, learn action)
+# ⚠️ Interspeech 2026 final PDF = March 5 (~31h from now) — Leo's action required
+# State: Papers A v1.6 + B v1.5 pitch-ready ✅; exec-blocked ~97h; Gap #26 added; 2 new Paper A §2 cites (AG-REPA + Maghsoudi)
+# Next high-value: Leo unblock → P0 Gap #18 + paper-a-pitch.md §2 update; or arXiv Thursday batch

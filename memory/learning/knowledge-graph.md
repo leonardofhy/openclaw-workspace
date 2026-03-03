@@ -1,9 +1,9 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-04 06:01 (cycle #243: Facchiano et al. 2504.04479 music steering vectors + Maghsoudi & Mishra 2602.01247 brain-to-speech MI → methodology convergence; SoundBreak 2601.16231 → Gap #24 support)
+> Last updated: 2026-03-04 07:01 (cycle #245: AG-REPA 2603.01006 SCD concept + Maghsoudi 2602.01247 full deep-read + Gap #26 added)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
-> Major sections now reflect: all 25 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense, music MI (Facchiano), brain-speech MI (Maghsoudi).
+> Major sections now reflect: all 26 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense, music MI (Facchiano), brain-speech MI (Maghsoudi), AG-REPA (SCD concept).
 
 ## Mech Interp × Speech/Audio — Field Map (2026)
 
@@ -712,10 +712,12 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - Yuan Gong (MIT) — AST/SSAST audio transformers
 - CallumMcDougall — ARENA curriculum (circuit-tracer, SAE Circuits, Linear Probes — best hands-on MI learning resource)
 - **Facchiano, Crisostomi, Galasso, Rodolà et al. (Sapienza Rome)** — Activation Patching / Steering Vectors in Music LLMs [2504.04479]; first audio-domain direction vectors
-- **Maghsoudi & Mishra** — Brain-to-Speech MI [2602.01247]; causal scrubbing + compact layer subspaces in speech decoder models; methodology alignment with Paper A
+- **Maghsoudi & Mishra** — Brain-to-Speech MI [2602.01247]; 🟢 FULL DEEP-READ (cycle #245). Cross-mode activation patching + tri-modal interpolation + coarse-to-fine causal tracing + causal scrubbing + neuron-level patching. KEY FINDINGS: (1) Speech modes = continuous causal manifold (not discrete) → gc(L) curve should be smooth; (2) compact layer-specific subspaces mediate cross-mode transfer; (3) Hierarchical + direction-dependent structure. **Gap #26**: no equivalent study for large-scale speech LLMs. Cite in Paper A §2.2: "Closest prior MI work on speech; extends to commercial speech LLMs + DAS subspace quantification."
 - **Hussain et al. (SoundBreak team)** — Trimodal audio adversarial attacks [2601.16231]; Gap #24 supporting citation
 
-## 🆕 Methodology Convergence Map (added cycle #243, 2026-03-04)
+## 🆕 Methodology Convergence Map (updated cycle #245, 2026-03-04)
+
+**Gap #26 (NEW — cycle #245):** Maghsoudi & Mishra prove compact causal subspaces exist in custom-trained brain-to-speech models. **No equivalent study exists for pre-trained, large-scale speech LLMs (Whisper/HuBERT encoder → Qwen2-Audio LM).** Leo's Paper A fills this directly. Key prediction from Maghsoudi: gc(L) curve should be smooth (speech modes = continuous manifold), not step-function.
 
 Audio MI methodology is converging naturally toward Paper A's design:
 | Year | Paper | Method | Domain | Gap |
@@ -723,6 +725,9 @@ Audio MI methodology is converging naturally toward Paper A's design:
 | 2025-08 | Glazer (BeyondTranscription) | logit lens + probing + patching | ASR/Whisper | no causal DAS |
 | 2025-04 | Facchiano et al. | diff-in-means steering vectors | Music LLM | non-causal; no speech |
 | 2026-02 | Maghsoudi & Mishra | causal tracing + patching + scrubbing | Brain-to-speech | not speech LLM |
-| 2026-?? | **Paper A (Leo)** | causal DAS + grounding_coefficient | Speech LLM | **closes all prior gaps** |
+| 2026-03 | AG-REPA (2603.01006) | FoG-A causal gate ablation | Audio generation | generation ≠ understanding |
+| 2026-?? | **Paper A (Leo)** | causal DAS + grounding_coefficient gc(L) | Speech LLM | **closes all prior gaps** |
 
-This trajectory validates Paper A's novelty claim: previous audio MI work is either (a) non-causal, (b) non-speech-LLM, or (c) neuron-level rather than subspace-level. Paper A = first full causal analysis of grounding in speech LLMs using DAS.
+This trajectory validates Paper A's novelty claim: previous audio MI work is either (a) non-causal, (b) non-speech-LLM, (c) neuron-level rather than subspace-level, or (d) generation domain rather than understanding. Paper A = first full causal analysis of grounding in speech LLMs using DAS.
+
+**SCD (Store-Contribute Dissociation)** — AG-REPA + Braun 2025 + Hase 2023: layers that best STORE audio info ≠ layers that causally CONTRIBUTE. Paper A's gc(L) specifically measures causal contribution (via DAS-IIA), not storage (cosine sim). This is why observational probing (AudioLens level 1) misses the listen layer.
