@@ -217,5 +217,7 @@ python skills/autodidact/scripts/whisper_hook_demo.py /tmp/test.wav
 | Week | Queued | Executed | Ratio |
 |------|--------|----------|-------|
 | 2026-W09 (Feb 23-28) | 6 | 0 | 0% |
+| 2026-W10 (Mar 1-7) | 6 | 0 | 0% ← **blocked: waiting for Leo to run P0 validation** |
 
 **Target:** ≥1 experiment per week starting Week 10 (after Leo unblock).
+**⚠️ Two consecutive 0% weeks.** P0 = whisper_hook_demo.py validation (15-20 min). Unblock needed this week.

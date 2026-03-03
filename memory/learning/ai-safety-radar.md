@@ -899,3 +899,18 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 ---
 **2026-03-03 21:15 (Tue)** — scan: LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged new top = "I'm confused by the change in the METR trend" (already picked 20:15) | LW questions top = "Zurich AI Safety is hiring a Director" (job posting) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 20:45 scan — no high-signal update
+
+---
+**2026-03-03 21:45 (Tue)** — scan: LW RSS new top = "War Claude" (NEW, not previously picked; governance) | LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged = "I'm confused by the change in the METR trend" (already picked 20:15) | AF top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15)
+
+**[new pick]** *War Claude* — LessWrong, 2026-03-03, author anon — Political/governance analysis of the DoD vs Anthropic conflict: argues the Hegseth move looks less like principled nationalization and more like bribery-driven favoritism (OpenAI president donated $25M to Trump PAC; DoD pivoted to OpenAI negotiations at suspicious speed), which directly threatens the independence of safety-focused labs; Dario's pro-Harris stance in 2024 now carries political cost. High governance signal: if safety-prioritizing labs become politically targeted while capability-first labs gain state backing, the competitive landscape tilts adversarially against the safety approach — relevant to how AI governance pressures shape RSP credibility.
+- Link: <https://www.lesswrong.com/search?search=War+Claude> (direct slug not retrieved; search LW for "War Claude" 2026-03-03)
+
+---
+**2026-03-03 22:15 (Tue)** — scan: LW RSS new = 10 items; AF new = 0; Top new picks below
+
+**[pick 1]** *Monday AI Radar #15* — LessWrong, 2026-03-03, by Against Moloch — Weekly roundup framing the DoW vs Anthropic conflict as the most significant AI governance event in a long time; curates external analysis (Dean Ball's "Clawed") arguing the forced tech-sharing threat undermines private property rights, erodes international trust in US AI, and could make AI a less viable profitable industry. Complements "War Claude" (picked 21:45) by adding the property-rights + foreign-trust angle: if DoW pressure becomes normal, safety-focused labs lose not only political protection but also the commercial runway needed to fund long-term alignment work.
+- Link: <https://www.lesswrong.com/posts/LihodhGu4T5Anpnuj/monday-ai-radar-15>
+
+**[pick 2]** *In-context learning of representations can be explained by induction circuits* — LessWrong, 2026-03-02 — Mechanistic interpretability result: ICL of latent representations (not just token sequences) can be traced back to induction-head circuits, suggesting the same low-level mechanism drives both surface-token and higher-level concept in-context learning. Safety relevance: strengthens the case that mech-interp tools built on induction-circuit analysis generalize to richer forms of in-context adaptation — relevant to understanding how models pick up misaligned objectives from context.
+- Link: <https://www.lesswrong.com/posts/qtdSzLpQ8BXv6YANd/in-context-learning-of-representations-can-be-explained-by>
