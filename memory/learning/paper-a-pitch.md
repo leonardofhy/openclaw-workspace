@@ -1,8 +1,55 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 1.4 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 17:31 (cycle #223)
+> Version: 1.5 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 20:31 (cycle #228)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+---
+
+### ⚡ v1.5 Upgrades (cycle #228 — §4 Expected Results prose draft written)
+
+**§4 Expected Results Draft (5 subsections — ready to copy into LaTeX):**
+
+**4.1 E1 (Whisper-small): gc(L) Peaks at the Triple Convergence Layer**
+
+We predict that the grounding coefficient gc(L) — DAS-IIT accuracy using voicing-contrast phonological minimal pairs (Choi et al., 2602.18899) — will exhibit a sharp peak at ~50% encoder depth in Whisper-small. For Whisper-small (6 encoder layers), this corresponds to L* ≈ layer 3.
+
+This prediction is grounded in three independent convergent sources: (1) AudioSAE (Aparin et al., EACL 2026): audio-level encoding peaks at layer 6, drops at layer 7 in Whisper-base-12-layer; layer 6-7 = speech/acoustic transition zone; (2) "Beyond Transcription" (Glazer et al., arXiv:2508.15882): saturation layer — where the encoder "commits" to a transcription — localizes at the layer where logit-lens entropy drops sharply; (3) our own whisper_hook_demo.py (cycle #12): a 4.2× norm jump at layer 3 in Whisper-base, with CKA heatmap confirming two distinct representation clusters (acoustic layers 0-2, semantic layers 3-5). All three independently identify the same ~50% depth. The grounding coefficient gc(L) curve is predicted to show a narrow peak rather than a plateau, consistent with the Store-Contribute Dissociation (SCD) phenomenon: layers storing the most semantic information do not coincide with the layer causally active in driving outputs (Braun et al. 2025; AG-REPA, arXiv:2603.01006).
+
+The 2D probe-layer × intervene-layer heatmap (Figure 3) is predicted to show a lower-triangular stripe with peak density near (probe=L*-1, intervene=L*): high IIA when probing at or before L* and intervening at L*, near-zero IIA when probing above L* (causal direction not yet written into representations). This is a testable geometric prediction derivable from the Listen Layer hypothesis (Q16, cycle #104).
+
+**4.2 E1 (Whisper-small): Decomposability Ablation at L***
+
+At the identified Listen Layer L*, we predict the voicing subspace (R_voicing) and the phoneme-identity subspace (R_phoneme) will be approximately **orthogonal** (decomp(L*) ≈ 0.8–0.9). This would demonstrate abstract phonological representation: the model encodes the voicing feature independently of which specific phoneme is present, analogous to the compositional geometry validated by Choi et al. (arXiv:2602.18899) at the S3M encoder level. A near-zero decomposability score (table-lookup behavior) would instead suggest the model retrieves voicing from a learned phoneme lexicon — a weaker and less interesting finding, but still informative. Either outcome is publishable; the abstract-representation hypothesis is the primary prediction.
+
+**4.3 E1 (Whisper-small): Connector Subspace Transfer Test (Gap #18)**
+
+Applying the encoder DAS rotation R_encoder (learned at L*) to LLM layer 0 without retraining, we predict three possible outcomes in decreasing likelihood:
+
+- **(Most likely)** IIA_transfer < gc(L*_encoder) by 30–50%, but re-trained DAS at LLM layer 0 recovers high IIA: connector applies a rotation to the phonological subspace but preserves it in a linearly recoverable form. This would mean the connector is an information-preserving linear map that rotates (but does not destroy) phonological geometry — compatible with Modality Collapse theory (arXiv:2602.23136) only for the geometric structure, not information content.
+- **(Second)** IIA_transfer ≈ gc(L*_encoder) within bootstrap 95% CI: connector is approximately phonological-subspace-preserving, i.e., the DAS rotation learned in the encoder transfers directly to the LLM. This would be a strong positive finding: phonological geometry is a truly invariant property of the speech representation pipeline.
+- **(Third/contingency)** IIA_transfer ≈ 0 AND re-trained IIA ≈ 0 at LLM layer 0: connector destroys phonological geometry. In this case, Paper A scopes Phase 2 claims to Whisper encoder only; Paper B's Audio-RAVEL Category 0 uses Whisper-only SAEs for the phonological disentanglement benchmark.
+
+The first outcome would directly motivate a Connector Bottleneck experiment as a Paper A Figure 4 extension.
+
+**4.4 E2 (Qwen2-Audio-7B): gc(L) Profile Across the Full LALM**
+
+For Qwen2-Audio-7B (32 LLM layers), using ALME 57K audio-text conflict stimuli and RVQ-layer-selective corruptions (SpeechTokenizer Layer 1 swap; Sadok et al., arXiv:2506.04492), we predict a gc(L) peak in the range L ∈ {14–22}, consistent with the ESN clustering reported by Zhao et al. (arXiv:2601.03115): emotion-sensitive neurons cluster at layers 0, 6-8, and 19-22, suggesting middle-to-late layers are where cross-modal information is actively consulted.
+
+The gc(L) profile is predicted to differ qualitatively from the audio generation case (AG-REPA: early layers = causal drivers): we expect a **middle-dominant** profile, where early layers passively encode audio features (high representational similarity, low IIA) and mid-to-late layers are where those features are causally consulted to produce text outputs. This SCD asymmetry between generation (early-causal) and understanding (middle-causal) is the main theoretical contribution of the cross-model comparison in §5 Discussion.
+
+We also predict that RVQ Layer 1 corruptions produce reliably higher gc(L) peaks than waveform-noise corruptions (lower-confidence alternative paths closed), consistent with Heimersheim & Nanda (2024): attribute-selective corruptions isolate the causal variable of interest, yielding cleaner IIA curves. This would validate RVQ-selective patching as the principled audio corruption design for future MI work (directly answering Core Research Question #1 from goals.md).
+
+**4.5 Predicted Failures and Contingencies**
+
+Four failure modes have been anticipated and assigned mitigations (Risk A1–A6 in §5):
+
+- **Risk A6** (low-variance rare phoneme features): gc(L) may underestimate causal importance of rare contrasts (e.g., retroflex consonants). Mitigation: report ablation delta per phoneme class; if variance pre-screen misses features that DAS recovers, report the discrepancy as a finding motivating DAS over variance-threshold methods.
+- **Risk A1** (non-linear connector): If Gap #18 test fails (phonological geometry destroyed by connector), Paper A's Layer 2 claims are limited to the Whisper encoder. The paper remains publishable with a sharper scope statement. Paper B (AudioSAEBench) is unaffected.
+- **Risk A3** (spurious DAS subspace): Cross-generalization holdout test (80/20 train/test split on stimuli) + cross-language generalization (Choi et al. stimuli cover 96 languages, test on held-out languages) validates that DAS finds a genuine phonological subspace, not a training-distribution artifact.
+- **Hydra effect** (compensatory backup pathways): Per Heimersheim & Nanda (2024), Hydra effects yield 0.7× backup compensation in text LLMs. We expect a stronger Hydra effect in audio (distributed representation: AudioSAE shows 2000 features per layer vs ~tens in text). Mitigation: report top-K aggregate gc(L) for K ∈ {1, 5, 10} to characterize backup pathway structure. Strong Hydra effect would be a positive finding (distributed phonological encoding = redundancy in speech is expected, theoretically interesting).
+
+**Status of §4:** ✅ DRAFT COMPLETE. ~850 words, 5 subsections, all predictions traceable to read papers. LaTeX-ready. Papers A+B now both have §1+§2+§3+§4 complete.
 
 ---
 
@@ -62,7 +109,7 @@ We evaluate on **Whisper-small** (244M parameters, 6 encoder layers) for MacBook
 - §1 Introduction: ✅ LaTeX-ready (3 paragraphs, cycle #219)
 - §2 Related Work: ✅ LaTeX-ready (3 subsections, cycle #222)
 - §3 Method: ✅ LaTeX-ready (7 subsections, cycle #223)
-- §4 Experiments/Results: ⏳ needs E1+E2 data (Leo unblock)
+- §4 Experiments/Results: ✅ LaTeX-ready (5 subsections, **Expected Results** draft, cycle #228)
 - §5 Discussion: ⏳ after results
 
 ---

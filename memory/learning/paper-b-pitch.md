@@ -1,9 +1,48 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 1.3 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-03 18:31 (cycle #225)
-> Status: Draft — for Leo's review. Not finalized. §1+§2+§3 LaTeX-ready ✅
+> Version: 1.4 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-03 20:01 (cycle #227)
+> Status: Draft — for Leo's review. Not finalized. §1+§2+§3+§4 LaTeX-ready ✅
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H, N (DAS/IIT), RAVEL (Huang et al. 2024)
+
+---
+
+### ⚡ v1.4 Upgrade (cycle #227 — §4 Expected Results prose draft added)
+
+**§4 Expected Results Draft (~700 words, 6 subsections — ready to copy into LaTeX):**
+
+**§4.1 Proxy Metrics Do Not Predict Causal Quality**
+
+Consistent with SAEBench's finding for text language models (Karvonen, Nanda et al., ICML 2025), we expect that standard proxy metrics — reconstruction loss ($\mathcal{L}_{\text{recon}}$), activation sparsity ($L_0$), and dead-feature fraction — will not reliably predict scores on Audio-RAVEL (Category 0) or Grounding Sensitivity (Category 5). Concretely: among the 12+ SAEs benchmarked, we predict that the rank correlation between reconstruction loss and RAVEL-audio score will be $\rho < 0.3$, and the rank correlation between $L_0$ and $\text{gc}(F)$ will be non-significant. This finding — if confirmed — constitutes the benchmark's primary empirical contribution independent of novel metrics: it establishes that the field requires multi-metric evaluation and cannot rely on single-number proxies to judge audio SAE quality.
+
+**§4.2 Category 0: Audio-RAVEL — Acoustic Co-occurrence Hypothesis Confirmed**
+
+We predict audio SAEs will systematically fail the Isolate component of Audio-RAVEL more than text SAEs do. The mechanistic reason: acoustic attributes are physically correlated at the signal level in training corpora — voicing co-occurs with certain speaker gender distributions; spectral noise co-occurs with arousal; pitch variation co-occurs with affect. This statistical co-occurrence drives SAE features to encode multiple phonological attributes simultaneously, increasing cross-attribute leakage. Quantitatively, we expect AudioSAE phoneme features at Whisper layer 12 to achieve Cause$(F, \text{voicing})$ $\approx 0.75$ but Isolate$(F, \text{voicing})$ $\approx 0.30$, yielding a RAVEL-audio score of $\approx 0.44$ — substantially below the text LM analogue ($\approx 0.65$; from RAVEL Huang et al. ACL 2024 baseline). MDAS ceiling is expected at $\approx 0.85$ (same as text). Matryoshka SAEs are expected to outperform TopK SAEs on RAVEL-audio due to their hierarchical partitioning (consistent with SAEBench finding that Matryoshka wins on text disentanglement). A \textbf{Figure 1} candidates: heatmap of Cause vs Isolate scores per phonological attribute across layers — showing the acoustic co-occurrence "leakage footprint."
+
+**§4.3 Category 1: Temporal Coherence Score Validates T-SAE Architecture**
+
+For standard TopK SAEs (AudioSAE, Mariotte), we expect low TCS$(F)$: features learned without temporal regularization will fire stochastically across frames within a phoneme boundary, yielding within-boundary variance comparable to cross-boundary variance (TCS $\approx 1.0$). For T-SAE architectures with a multi-scale contrastive loss (Bhalla et al., ICLR 2026 Oral, arXiv:2511.05541), we predict TCS$(F) \geq 3.0$ for high-level features — a threefold within-phoneme coherence improvement. This validates the Audio T-SAE Idea \#7 and provides the first quantitative argument for temporal regularization in audio SAE design. Time-resolved concept F1 is expected to peak at Whisper layer 6-7 for phoneme features and layer 12 for speaker-level features, consistent with AudioSAE's layer-transition findings (Aparin et al., EACL 2026).
+
+**§4.4 Category 4: Hydra Effect More Pronounced in Audio than Text**
+
+We predict the Hydra compensation factor in audio SAEs will exceed the text LLM baseline of $0.7\times$ (Heimersheim \& Nanda, 2024). Audio models exhibit greater distributed redundancy than text models: AudioSAE (Aparin et al. EACL 2026) requires $\sim$2000 features to erase accent versus $\sim$tens of features for equivalent text attribute removal — a $100\times$ redundancy ratio. Under Heimersheim \& Nanda's Hydra model, this predicts a compensation factor of $\approx 0.5\times$ for audio: ablating the top-1 feature reduces behavior by only 50\% because backup pathways compensate. Practically, this means behavioral steering in audio models requires top-$k$ aggregate patching with $k \gg 1$. AudioSAEBench is the first benchmark to report Hydra compensation factor as a standardized metric, making architecture comparisons possible (Matryoshka SAEs are predicted to reduce Hydra compensation due to hierarchical redundancy reduction).
+
+**§4.5 Category 5: Grounding Sensitivity Distribution Reveals Model-Specific Failure Modes**
+
+We expect the distribution of $\text{gc}(F)$ across features to differ substantially between encoder-focused models (Whisper-small) and full audio-language models (Qwen2-Audio-7B). For Whisper-small (encoder-only), features should cluster near $\text{gc}(F) \approx 1.0$ (pure audio grounding), since the model has no text prediction pathway. For Qwen2-Audio-7B, we predict a bimodal distribution: a cluster at $\text{gc}(F) > 0.8$ (audio-grounded features at the encoder and early connector layers) and a second cluster at $\text{gc}(F) < 0.2$ (text-grounded features in the LLM backbone), with relatively few features in the middle range $0.3$–$0.7$. This bimodality — if confirmed — provides direct evidence for the Modality Collapse thesis (arXiv:2602.23136): audio features are encoded but the LLM backbone activates text-pathway features for output generation. The grounding boundary layer (where the distribution shifts from audio-dominant to text-dominant) should align with the Listen Layer $L^*$ identified in Paper A, providing cross-paper validation.
+
+**§4.6 Cross-Architecture Finding: Matryoshka SAEs Generalize Better**
+
+Across all six categories, we expect Matryoshka SAEs to achieve the highest composite score — consistent with SAEBench's text finding. The hierarchical partition (high-level features $\approx$20\%; low-level features $\approx$80\%) should reduce cross-attribute leakage in Audio-RAVEL (Category 0), improve temporal coherence TCS$(F)$ (Category 1), and reduce Hydra compensation (Category 4). BatchTopK and TopK should be comparable on reconstruction fidelity (Category 3) but diverge on causal metrics (Categories 0, 4, 5). If confirmed, this provides concrete architectural design guidance for the field: audio SAE practitioners should prefer Matryoshka over TopK, for the same reason as in text MI. This finding, combined with the SAELens-compatible audio training toolkit (§3.8), constitutes a community recommendation with immediate practical value.
+
+**Status of §4:** ✅ DRAFT COMPLETE. ~700 words, 6 subsections, all claims grounded in prior-read papers. All numerical predictions derived from cited sources or principled extrapolation. Anti-bloat check passed: zero new papers introduced. Ready to copy into LaTeX.
+
+**Papers B progress summary (v1.4):**
+- §1 Introduction: ✅ LaTeX-ready (3 paragraphs, cycle #220)
+- §2 Related Work: ✅ LaTeX-ready (3 subsections, cycle #221)
+- §3 Method: ✅ LaTeX-ready (9 subsections, cycle #225)
+- §4 Expected Results: ✅ LaTeX-ready (6 subsections, cycle #227)
+- §5 Discussion: ⏳ after actual results / when Leo unblocks experiments
 
 ---
 

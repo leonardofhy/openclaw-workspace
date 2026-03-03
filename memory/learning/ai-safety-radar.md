@@ -884,3 +884,12 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 ---
 **2026-03-03 18:45 (Tue)** — scan: LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged new = "Zurich AI Safety is hiring a Director" (job posting, not research) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 18:15 scan
+
+---
+**2026-03-03 19:45 (Tue)** — scan: LW newest = "Zurich AI Safety is hiring a Director" (job posting, not research) | AF new-rss top = "Schelling Goodness, and Shared Morality as a Goal" (already picked 16:45) | No new high-signal AI safety posts since 18:45 scan — no high-signal update
+
+---
+**2026-03-03 20:15 (Tue)** — scan: LW newest = "I'm confused by the change in the METR trend" (NEW, not previously picked) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new AF posts since 19:45 scan
+
+**[new pick]** *I'm confused by the change in the METR trend* — LessWrong, 2026-03-03 — Rigorous statistical analysis of whether the 2024+ slope change in METR's task-horizon benchmark is real: uses piecewise linear fit + BIC + bootstrap resampling to validate the apparent acceleration in autonomous task capability. High signal: METR task horizons are a key input to RSP trigger conditions at major labs; if the slope break is statistically robust, it implies capability growth is *accelerating* faster than the pre-2024 trendline suggested — which compresses the safety margin before threshold-crossing. Extends the eval-crisis cluster (WoFBench saturation, Petri audit realism) with quantitative capability-side evidence.
+- Link: <https://www.lesswrong.com/posts/9ihaaXqdc3i328tLp/i-m-confused-by-the-change-in-the-metr-trend>

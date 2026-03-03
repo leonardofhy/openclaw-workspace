@@ -3,12 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-03 08:35
+**Last Updated:** 2026-03-03 20:30
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-03 20:30: Leo status update — reached home ~19:30, showered, now in bed at ~20:30 after severe sleep debt (last cycle wrote until 08:30 then slept ~3h+). Hard deadline: final paper revisions due Thu ~20:00. Goal: finish all changes from today noon discussion by Wed noon, then Wed re-discuss + final revisions; Thu only minor tweaks before submit. Requested tonight-to-tomorrow schedule with short nap first, all-night work block, daytime 3–4h sleep, and 10-min microbreak cadence.
 - 2026-03-03 08:35: Leo asks for concrete recovery schedule: latest safe sleep-until time, wake/prep/lunch timing before 14:20 class.
 - 2026-03-03 08:31: Leo correction — pulled an all-nighter for paper; breakfast with Ted is canceled and Leo already messaged Ted.
 - 2026-03-03 04:11: Leo decision on heartbeat stale tasks — all three marked 「請繼續」(M-06, M-02, M-03); proceed to update task board and continue execution.
