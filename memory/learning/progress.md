@@ -1296,3 +1296,5 @@ Priority queue for Leo's first session:
 4. 💡 **[Proposal for Leo]** SKILL.md amendment: fast-path heuristic (read sentinel file first, skip full reads if dead-zone valid). Sentinel file implemented (#234); SKILL.md change needs Leo approval.
 
 | #238 | 2026-03-04 03:31 | skip (principled — dead-zone sentinel valid, skip-guard satisfied by #237) | Sentinel valid (30min gap). arXiv not yet posted. State unchanged. Papers A v1.6 + B v1.5 pitch-ready. |
+| #239 | 2026-03-04 04:01 | skip (dead-zone sentinel) | Sentinel valid (1h gap < 2h threshold). Cron labeled `meta-awareness` but skip-guard already satisfied by #237. No new info. arXiv Wednesday batch ~10h away. ⚠️ Interspeech PDF = March 5 (TOMORROW). |
+| #240 | 2026-03-04 04:31 | skip (dead-zone sentinel) | Sentinel valid (1.5h gap since #237 < 2h threshold). Skip-guard satisfied by #237. No new arXiv. Pre-experiment writing budget exhausted. arXiv Wednesday batch ~9.5h away. ⚠️ Interspeech PDF = March 5 (TOMORROW). |
