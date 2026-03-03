@@ -84,6 +84,7 @@
 1. [ ] **AudioLens** (智凱哥 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
 2. [x] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882] ✅ 2026-02-26 deep read cycle #6
 3. [x] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027] ✅ 2026-03-02 full deep read cycle #177
+   → **Paper B v1.3 milestone**: §1+§2+§3 all LaTeX-ready ✅ (cycle #225, 2026-03-03)
 4. [x] **Activation patching best practices** (Heimersheim & Nanda) — ✅ 2026-03-02 cycle #178; AND/OR gate insight, audio denoising preference, Hydra 0.7x, top-k aggregate metric, AtP for large models
 5. [x] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541] ✅ 2026-03-02 full deep read cycle #181; 100% ASR via waveform PGD, 99% robustness via MLP-layer activation patching, Whisper encoder; Gap #24: no SAE-feature attribution for jailbreak mechanism
 6. [x] **RAVEL** (Huang et al., ACL 2024) — Cause/Isolate two-score metric; MDAS = SOTA; SAEs fail isolation; Audio-RAVEL = new Category 0 for AudioSAEBench ✅ 2026-03-02 cycle #179

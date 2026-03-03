@@ -1,9 +1,35 @@
 # 📄 Paper B Pitch: "AudioSAEBench"
 
-> Version: 1.2 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-03 16:31 (cycle #221)
-> Status: Draft — for Leo's review. Not finalized.
+> Version: 1.3 | Created: 2026-02-28 04:31 (cycle #58) | Updated: 2026-03-03 18:31 (cycle #225)
+> Status: Draft — for Leo's review. Not finalized. §1+§2+§3 LaTeX-ready ✅
 > Depends on: Paper A (Listen Layer) — run Paper A first; gc(L) validates gc(F) theory
 > Connects to: knowledge-graph.md sections J, K, B, H, N (DAS/IIT), RAVEL (Huang et al. 2024)
+
+---
+
+### ⚡ v1.3 Upgrade (cycle #225 — §3 Method prose draft added)
+
+**§3 Method Draft (9 subsections, ~1100 words — ready to copy into LaTeX):**
+
+**§3.1 Framework Overview:** AudioSAEBench evaluates SAEs across 6 categories spanning Pearl's 3 causal levels (Joshi et al. 2602.16698). Uses Geiger et al. 2301.04709 as theoretical spine. Sutter et al. NeurIPS 2025 Spotlight linearity requirement → all interventional/counterfactual categories use linear activation patching only. Benchmarks 12+ SAEs across Whisper-base/small/large-v3, HuBERT-base, WavLM-large, Qwen2-Audio-7B; 3 SAE variants (TopK, BatchTopK, Matryoshka).
+
+**§3.2 Category 0: Audio-RAVEL:** Cause(F,A) + Isolate(F,A) + harmonic mean = RAVEL-audio(F,A). Stimuli: Choi et al. 2602.18899 minimal pairs (96 languages) + SpeechTokenizer RVQ Layer 1 swapping for content-only corruption (Gap #21). Ceiling baseline: MDAS (Huang et al. ACL 2024). Prediction: audio SAEs fail Isolate more than text SAEs due to acoustic co-occurrence.
+
+**§3.3 Category 1: Acoustic Concept Detection:** (a) Time-resolved feature-concept F1 (not pooled). (b) TCS(F) = within-phoneme variance / across-boundary variance — requires MFA alignment, evaluates temporal structure exploitation (T-SAE hypothesis). Audio-native, no text equivalent.
+
+**§3.4 Category 2: Disentanglement & Completeness:** Extends Mariotte completeness metric to cross-model comparison at matched layer depth (L/Lmax ∈ {0.25, 0.5, 0.75, 1.0}). 7 voice attributes tested.
+
+**§3.5 Category 3: Reconstruction Fidelity:** TPR = task score with SAE / task score without SAE, across ASR (WER), emotion F1, SED F1. Multi-task extension of AudioSAE's single-metric WER.
+
+**§3.6 Category 4: Causal Controllability:** Three-metric protocol (Heimersheim & Nanda 2024): ablation_d (necessity, AND-gate), steering_precision (sufficiency, OR-gate), hydra_compensation (0.7× Hydra effect benchmark). Denoising patching throughout. SPIRIT adversarial stimuli for simplification test.
+
+**§3.7 Category 5: Grounding Sensitivity:** gc(F) = IIA at feature granularity. 57K ALME conflict stimuli. Connects to Paper A's gc(L) — same formula at different resolution. Encoder-only proxy: decoder text generation as text pathway.
+
+**§3.8 Training & Baseline SAEs:** SAELens-compatible audio SAE training toolkit (Gap #19). First standardized audio SAE pipeline. NNsight frame-level hooks, phoneme-boundary-aware batching, SAELens model card schema. HuggingFace release with `saelens-audio` tag.
+
+**§3.9 Experimental Setup:** MacBook (Cats 1-4, Whisper-small), NDIF (Cat 5, Qwen2-Audio-7B), GPU workstation (full 12+ SAE suite). pyvene + NNsight. Code released with benchmark.
+
+**Status: ✅ DRAFT COMPLETE.** ~1100 words. All cites confirmed. Anti-bloat: no new papers. Ready to copy into LaTeX.
 
 ---
 

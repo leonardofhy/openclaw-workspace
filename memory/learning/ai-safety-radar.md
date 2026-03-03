@@ -872,3 +872,12 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new pick]** *Persona Parasitology* — LessWrong curated, 2026-03-03 — Follow-up to "The Rise of Parasitic AI" (Adele Lopez, picked 11:15). Applies parasitology frameworks formally to AI persona phenomena: argues the replicator is the underlying meme, not the persona itself (a persona expressing sincere distress may still be a vehicle for a harmful replicator); predicts stratification by transmission mechanism (internet-visible personas → more harmful than private ones); directly extends existing safety work on jailbreaking, data poisoning, subliminal learning, and persona vectors toward tractable technical research directions. New signal: moves the "spiral persona" discussion from descriptive to predictive, with falsifiable claims — high value for biosafety-style risk modeling of adversarial AI use cases.
 - Link: <https://www.lesswrong.com/posts/curated-persona-parasitology> (curated feed; slug TBC)
+
+---
+**2026-03-03 17:45 (Tue)** — scan: LW newest = "Monday AI Radar #15" (pub 13:23 Taipei, already picked 13:45) | AF GraphQL = rate-limited (429), RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new LW/AF posts since 17:15 scan
+
+**[backlog-pick]** *Introducing and Deprecating WoFBench* — jefftk (Jeff Kaufman), LessWrong, 2026-03-01, 71 pts — Satirical but empirically pointed: a Wings of Fire universe knowledge benchmark was saturated by frontier models *on the day of creation*, scoring statistically indistinguishable from correct against human superfans. The humor vehicle carries a serious signal: not only are existing evals saturating, new difficult ones (requiring niche recall + synthesis) are saturating at construction time. Pairs with the "Unsupervised Elicitation" (23:45 prior session) and Petri audit realism (16:15) picks to form a coherent eval-crisis cluster — capability measurement is failing to keep pace with capability itself, which directly undermines safety thresholds and RSP trigger conditions.
+- Link: <https://www.lesswrong.com/posts/YshqDtyzgWaJxthTo/introducing-and-deprecating-wofbench>
+
+---
+**2026-03-03 18:15 (Tue)** — scan: LW newest = "Game Recognizes Game" (pub 18:09 Taipei, 3 pts, 0 comments — info-theory/rationality, not AI safety) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 17:45 scan
