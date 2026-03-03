@@ -1,8 +1,8 @@
-2026-03-04T14:00:00+08:00
-# Dead zone active: skip full reads, do 5-line stub
-# Reason: overnight, no new arXiv, no Leo messages, execution-blocked state confirmed
-# Last confirmed: 2026-03-04T03:01:00+08:00 (cycle #237)
-# Resume trigger: Wednesday arXiv batch OR Leo unblock
-# ⚠️ Override: if gap since last-confirmed > 2h, revert to full read
-# Skip-guard satisfied: cycle #237 reflect (3-consecutive-skip guard fired and resolved)
-# Pending for Leo: ⚠️ Interspeech 2026 final PDF = March 5 (TOMORROW)
+EXPIRED
+# Dead zone sentinel expired at 2026-03-04T05:31:00+08:00 (cycle #242)
+# Reason for expiry: gap from last-confirmed (#237 at 03:01) exceeded 2h exclusive threshold
+# State at expiry: arXiv Wednesday batch still ~8.5h away; no Leo messages; execution-blocked ~95h+
+# Skip-guard: FIRED (4 consecutive skips #238-#241); satisfied by cycle #242 reflect
+# Resume: arXiv Wednesday ~14:00 → new sentinel can be set after batch processed
+# ⚠️ Interspeech 2026 PDF deadline = March 5 (~32.5h from now)
+# ⚠️ Improvement applied: sentinel files must be re-confirmed after each 2h gap; skips should check sentinel age
