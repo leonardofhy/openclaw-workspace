@@ -881,3 +881,6 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 ---
 **2026-03-03 18:15 (Tue)** — scan: LW newest = "Game Recognizes Game" (pub 18:09 Taipei, 3 pts, 0 comments — info-theory/rationality, not AI safety) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 17:45 scan
+
+---
+**2026-03-03 18:45 (Tue)** — scan: LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged new = "Zurich AI Safety is hiring a Director" (job posting, not research) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 18:15 scan
