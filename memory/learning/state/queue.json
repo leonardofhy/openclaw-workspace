@@ -212,6 +212,19 @@
       "created": "2026-03-02",
       "due": null,
       "action_type": "plan"
+    },
+    {
+      "id": "Q033",
+      "type": "build",
+      "track": "T3",
+      "title": "CPU experiment spec for gc(k) T3 — ready for Leo review",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Spec doc written; Leo can confirm mock run + provide .wav to unblock Tier 1",
+      "created": "2026-03-03",
+      "due": null,
+      "completed": "2026-03-03"
     }
   ],
   "archived_count": 16,
