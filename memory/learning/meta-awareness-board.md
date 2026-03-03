@@ -470,6 +470,24 @@ Cron summaries ARE delivered to Leo in near-real-time via the channel (Discord/m
 
 ---
 
+---
+
+## Q32: Plan-Budget Milestone Rule (✅ CLOSED cycle #229, 2026-03-03 21:01)
+
+**Problem:** "3 consecutive plans → force reflect" rule fired when plans #225+#227+#228 each produced genuine NEW LaTeX sections (Paper B §3, Paper B §4, Paper A §4). The rule treats genuine writing identically to pitch-bloat — too blunt.
+
+**Root cause:** Global plan counter ignores content quality. Pitch-bloat = updating the same section repeatedly. Milestone writing = creating new sections.
+
+**Rule (replacing old 3-plan rule):**
+> After each **section milestone** (completing §1, §2, §3, or §4 for either paper), ONE reflect cycle is required before the next section begins. Within a section, up to 2 consecutive plan cycles are allowed. The plan counter resets at each reflect/learn cycle.
+> **Special rule (§5):** §5 Discussion/Conclusion prose is PROHIBITED until experimental results exist. Only a skeleton (section headers + 2-sentence stubs) is allowed pre-experiment.
+
+**Practical impact:** Papers A+B both have §1+§2+§3+§4 complete. Pre-experiment plan budget is now EXHAUSTED. Next plan cycle = §5 skeleton (1 allowed) or post-experiment content.
+
+**Status:** ✅ CLOSED [INFERRED — validate when next paper section writing begins]
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal
