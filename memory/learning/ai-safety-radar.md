@@ -823,3 +823,28 @@ No high-signal new posts. Blogwatcher script unavailable (path: skills/blogwatch
 
 **[backlog-pick]** *OpenAI employees: Now is the time to stop doing good work.* — LessWrong, 2026-03-02, score ~1.73 — Argues that safety-aligned employees at capability-first labs now face a structural dilemma: continued high-quality contributions may accelerate timelines faster than internal safety work can compensate, given recent governance and mission drift; frames individual labor decisions as part of the collective safety lever. Connects the Secretary of War / supply-chain-risk cluster (picked 09:15 Mon, 21:45 Mon) with insider-dynamics literature — what should people inside labs actually do when organizational direction diverges from safety norms?
 - Link: https://www.lesswrong.com/posts/OpenAI-employees-stop-doing-good-work (estimated slug)
+
+---
+**2026-03-03 13:15 (Tue)** — scan: LW frontpage top = "In-context learning / induction circuits" (already picked 09:15) | LW ai-safety new feed top = "Memory Decoding Journal Club" (neuroscience/non-safety — skip) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new AF or LW posts since 12:45 scan | blogwatcher.py script unavailable; backlog DB unreachable
+
+No new high-signal posts. Blogwatcher DB offline (blogwatcher.py path missing); RSS feeds confirm LW and AF unchanged since 12:45. Backlog pick deferred — cannot verify item without DB. Consistent with 12:15 behavior.
+
+---
+**2026-03-03 13:45 (Tue)** — scan: LW new = "Monday AI Radar #15" (pub ~13:30 Taipei, new since 13:15) | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15)
+
+**Pick (new):** *Monday AI Radar #15* — LessWrong, 2026-03-03 — Weekly AI governance digest synthesizing the DoW vs. Anthropic supply-chain-risk saga with linked external analysis not previously in the AF/LW feed: (1) Anthropic's official statement — they will sue, and draw a hard line on mass domestic surveillance / autonomous weapons; (2) Scott Alexander's "All Lawful Use" deep-dive — investigates whether OpenAI's DoW agreement meaningfully constrains autonomous-weapons/surveillance use, concludes probably not; (3) Lawfare legal analysis — argues the supply-chain-risk designation is legally untenable on multiple independent grounds and won't survive court challenge. New signal: Anthropic's legal/policy position is now formally stated; legal viability of the designation is weak; the governance story continues to develop.
+- Link: https://www.lesswrong.com/posts/monday-ai-radar-15 (direct links: Anthropic statement https://www.anthropic.com/news/statement-comments-secretary-war | Scott Alexander https://www.astralcodexten.com/p/all-lawful-use-much-more-than-you | Lawfare https://www.lawfaremedia.org/article/pentagon's-anthropic-designation-won't-survive-first-contact-with-legal-system)
+
+Today's picks so far (13:45): Induction circuits / in-context representation (09:15 new), Single Direction vs Low-Rank Refusal small LLMs (09:45 backlog-catch), War Claude / DoW verification problem (10:15 backlog), Epstein and my world model / epistemics (10:45 backlog), The Rise of Parasitic AI (11:15 backlog), Why Did My Model Do That / model incrimination (11:45 backlog), OpenAI employees stop doing good work (12:45 backlog), Monday AI Radar #15 / DoW-Anthropic legal + policy resolution (13:45 new).
+
+---
+**2026-03-03 14:45 (Tue)** — scan: LW newest = "Monday AI Radar #15" (pub 05:23 UTC, already picked 13:45) | AF GraphQL = Vercel security checkpoint (unresponsive, consistent with 10:45+ pattern) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new AF or LW posts since 13:45 scan
+
+**[backlog-pick]** *If 'bad guys' don't pause, do you?* — LessWrong, 2026-03-02 — Frames the unilateral disarmament dilemma directly: if safety-indifferent actors will race ahead regardless, what's the strategic argument for safety-focused labs to slow down or refuse DoD contracts? Complements the DoW/Anthropic cluster (Mon–Tue picks) and the "OpenAI employees stop doing good work" post (12:45 backlog) by stress-testing the actual leverage of individual actor choices against race-condition game theory — a core policy framing for AI governance.
+- Link: https://www.lesswrong.com/posts/cZKiSszN2abbqK5xN/if-bad-guys-don-t-pause-do-you
+
+---
+**2026-03-03 15:15 (Tue)** — scan: LW newest = "Monday AI Radar #15" (pub 05:23 UTC = 13:23 Taipei, already picked 13:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15) | No new AF or LW posts since 14:45 scan
+
+**[backlog-pick]** *Side by Side Comparison of RSP Versions* — LessWrong, 2026-02-27, score 0.12 — Systematic diff of Anthropic's Responsible Scaling Policy across versions: maps changes to capability thresholds, evaluation triggers, and committed response procedures. Directly relevant to safety governance: understanding how the policy has evolved (or weakened/strengthened) is essential for assessing Anthropic's actual safety commitments, especially in the context of the DoW/supply-chain-risk cluster (picked Mon–Tue).
+- Link: https://www.lesswrong.com/posts/aKpXgbJKvoeJ7Ler8/side-by-side-comparison-of-rsp-versions

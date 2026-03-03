@@ -1,7 +1,7 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-03 13:01 (cycle #216: AG-REPA SCD added (M11) — Store-Contribute Dissociation = generation-domain validation that "stores ≠ causes"; FoG-A = DAS-gc(k) generation analog; cite in Paper A Introduction)
+> Last updated: 2026-03-03 15:01 (cycle #218: SCD nuance resolved — generation=early-causal, understanding=middle-causal. New Paper A §1 cite cluster: Klabunde 2025 + Braun 2025 + Hase 2023)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
 > Major sections now reflect: all 25 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense.
 
@@ -571,6 +571,16 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - **Pearl Level**: FoG-A = Level 2 (interventional, gate ablation), not Level 3 (IIT counterfactual). Leo's DAS-IIT = still higher epistemological standard.
 - Connection: SCD (generation) + Listen Layer Hypothesis (understanding) = same phenomenon, different task domain. Dual-domain convergence strengthens Paper A's motivation claim.
 - Theory-Empirical quadrangle now complete: Asiaee 2602.24266 (efficiency theory) + EG-GRVQ 2603.01476 (codec empirics) + whisper_hook_demo.py (application) + **AG-REPA SCD (generation domain convergence)**
+
+#### SCD Nuance (cycle #218 — full paper read):
+- **Spatiotemporal anatomy**: Deep L20-24 = static semantic reservoirs; Early L1-3 = Causal Drivers (Jacobian sensitivity); Middle L6-12 = Dynamic Transition Zone (FoG-A shifts during denoising at t≈0.5)
+- **Generation SCD direction**: early-dominant (L1-3 = causal) ≠ understanding SCD direction: middle-dominant (L6-7 = Triple Convergence transition zone for Whisper). SAME META-PRINCIPLE, DIFFERENT IMPLEMENTATIONS.
+- **Paper A nuance**: "SCD is general (Braun 2025 theory, Hase 2023 text editing, AG-REPA generation); Paper A contributes the speech-UNDERSTANDING instance, where the causal depth is middle-layer (~50% depth), not early"
+
+#### New SCD-Support Cites (from AG-REPA §2.3 — add to Paper A §1):
+- **Klabunde et al. 2025** — survey of representational similarity metrics; "high similarity does not imply functional equivalence" → §1 opening cite
+- **Braun et al. 2025** — analytical proof: functional and representational similarity decouple in deep linear networks even under controlled settings → theoretical grounding for SCD
+- **Hase et al. 2023** — "layers storing factual knowledge are not necessarily the most effective targets for model editing" → text LM editing precedent, pre-existing evidence for SCD principle
 
 ## 🆕 RAVEL — Disentanglement Benchmark (Cycle #179, 2026-03-02)
 

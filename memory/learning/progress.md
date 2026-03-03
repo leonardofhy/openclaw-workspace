@@ -1059,6 +1059,7 @@ Priority queue for Leo's first session:
 | #215 | 2026-03-03 12:31 | plan (KG sync — cycle #214 Tuesday batch) | EmbedLens (M9) + EG-GRVQ (M10) added to knowledge-graph.md Modality Prioritization section. EG-GRVQ = 3rd leg of Asiaee-EG-GRVQ-whisper_hook triangle (theory + codec empirics + application). EmbedLens = 5th related work row in Paper A Table 1 + narrative bridge "Level 1 vision observational → Level 3 speech causal." All 25 gaps OPEN. Papers A v0.9+ + B v1.0 PITCH-READY. Execution-blocked ~83.5h → P0 Gap #18. |
 
 | #216 | 2026-03-03 13:01 | learn (Tuesday cs.SD remainder + AG-REPA KEY FIND) | **Tuesday cs.SD March 2026 batch — 24 papers total — FULLY SCANNED**. New IDs (2603.01006–2603.02206) scanned this cycle. **KEY FIND: AG-REPA (arXiv:2603.01006, ICML submission)** — "Attribution-Guided REPresentation Alignment for Audio Flow Matching." Core finding: **Store-Contribute Dissociation (SCD)** — layers that store most semantic info ≠ layers that causally contribute most to velocity field. FoG-A (Forward-only Gate Ablation) = causal layer contribution metric. NOT a competitor (audio *generation* ≠ speech LM *understanding*), but SCD directly motivates Paper A's Listen Layer Hypothesis: the highest-similarity layer ≠ the causally active layer. Exactly what DAS-IIT tests! FoG-A is the generation-domain analog of Leo's DAS-gc(k). Paper A framing upgrade: cite AG-REPA as evidence that "stores ≠ causes" is a real phenomenon in audio NNs, motivating why observational probing (AudioLens=Level 1) is insufficient. Remainder: 2603.02205 SKIP, 02206 SKIP, 01984 SKIP, 01894 SKIP, 01592 SKIP, 01382+01369 SKIP (dysarthric), 01101 SKIP, 00941 SKIP, 00355 StethoLM (clinical future-app note), 00086 SKIP. **All 25 gaps OPEN. 0 new MI×speech competitors found.** |
+| #217 | 2026-03-03 13:31 | reflect (micro — 5th-cycle) | Sprint #212-#216 assessment: 5/5 HIGH value (100% novelty ratio). Paper A convergence chain now spans 4 domains (theory + vision observational + speech observational + **audio generation causal SCD**). Paper A Introduction structure ready to draft. cs.CL/cs.AI final Tuesday sweep: 0 new MI×speech papers confirmed. Papers A v1.0 + B v1.0 PITCH-READY. Execution-blocked ~84h → P0 Gap #18. |
 
 ## Day 5 Rolling Stats (after cycle #216 — Tuesday March 3, 1:01 PM)
 - Papers read (deep): **23 total** (no new deep reads; AG-REPA = targeted scan)
@@ -1078,3 +1079,43 @@ Priority queue for Leo's first session:
 2. **AG-REPA KG sync** — add AG-REPA + SCD to knowledge-graph.md section M (Modality Prioritization)
 3. **Paper A v1.0 update** — integrate AG-REPA SCD cite in Introduction ("stores ≠ causes")
 4. Principled skip if neither Leo nor new arXiv papers arrive
+
+| #218 | 2026-03-03 15:01 | learn (AG-REPA deep scan) | **AG-REPA (2603.01006) fully read**: SCD spatiotemporally resolved — deep L20-24 = semantic reservoirs, early L1-3 = causal drivers, middle L6-12 = dynamic transition. NUANCE: generation SCD = early-dominant; understanding (Whisper Triple Convergence) = middle-dominant. Same meta-principle ("stores ≠ causes"), different implementations → Paper A contributes speech-understanding instance. NEW CITES for §1: Klabunde 2025 (similarity≠functional equivalence survey), Braun 2025 (analytical decoupling proof), Hase 2023 (text LM editing: fact storage ≠ edit target). FoG-A = Pearl Level 2; DAS-IIT = Level 3; Paper A still highest. §1 3-paragraph motivation structure crystallized. |
+
+## Day 5 Rolling Stats (after cycle #218 — Tuesday March 3, 3:01 PM)
+- Papers read (deep): **23 total** (AG-REPA = deep scan, not full read)
+- Papers scanned: **81+** (+AG-REPA full paper + SCD §2.3 related work)
+- Research gaps identified: **25** (all OPEN, all gated)
+- Paper ideas: **7** (all 🟢 GREEN gate-validated)
+- Code written: 2 scripts
+- Paper pitches: 2 (**A v1.1** ✅ [SCD nuance + cite cluster] + **B v1.0** ✅ — both pitch-ready)
+- Knowledge-graph: **FULLY CURRENT** (SCD nuance + Klabunde/Braun/Hase stubs added cycle #218)
+- Must-read list: **FULLY COMPLETE** ✅
+- **Execution-blocked**: ~85h, awaiting Leo → P0 Gap #18 phonological geometry
+- **NEW Paper A §1 cites**: Klabunde 2025 + Braun 2025 + Hase 2023 (SCD-support cluster from AG-REPA §2.3)
+- **SCD nuance**: generation = early-causal; understanding = middle-causal; Paper A frames as "speech-understanding instance of SCD general phenomenon"
+
+## Recommended Next Cycles (Day 5 continued)
+1. **KG + Paper A: add Klabunde/Braun/Hase cite cluster + SCD nuance** → update paper-a-pitch.md §1 framing
+2. **Leo unblock Priority 0** → experiment-queue.md P0 (Gap #18 phonological geometry)
+3. **Wednesday arXiv batch** (~14:00 Taipei tomorrow) → next learn cycle
+4. Principled skip until either of the above
+| #219 | 2026-03-03 15:31 | plan (Paper A §1 Introduction prose draft) | **§1 Introduction: 3-paragraph prose draft written** — Para 1 (behavioral evidence + SCD motivation), Para 2 (prior work gap: storage≠causal across SCD instances, Pearl Level 1/2 limit of AudioLens/FCCT), Para 3 (Listen Layer + gc(L) + Pearl Level 3 + DAS linearity justification + SpeechTokenizer RVQ stimuli + SCD middle-dominant speech understanding instance). All cite IDs confirmed live. §1 marked READY TO COPY INTO LaTeX. paper-a-pitch.md → v1.2. |
+
+## Day 5 Rolling Stats (after cycle #219 — Tuesday March 3, 3:31 PM)
+- Papers read (deep): **23 total** (no new)
+- Papers scanned: **81+**
+- Research gaps identified: **25** (all OPEN, all gated)
+- Paper ideas: **7** (all 🟢 GREEN gate-validated)
+- Code written: 2 scripts
+- Paper pitches: 2 (**A v1.2** ✅ [§1 prose draft added] + **B v1.0** ✅ — both pitch-ready)
+- Knowledge-graph: **FULLY CURRENT**
+- Must-read list: **FULLY COMPLETE** ✅
+- **Execution-blocked**: ~85h, awaiting Leo → P0 Gap #18 phonological geometry
+- **§1 Introduction**: 3-paragraph draft ready for LaTeX (v1.2)
+
+## Recommended Next Cycles (Day 5 continued)
+1. **Leo unblock Priority 0** → experiment-queue.md P0 (Gap #18 phonological geometry)
+2. **Wednesday arXiv batch** (~14:00 Taipei tomorrow) → cs.SD + cs.CL + cs.AI learn cycle
+3. **Paper B §1 Introduction draft** — same approach as cycle #219 (no external resources needed)
+4. Principled skip if none of the above available

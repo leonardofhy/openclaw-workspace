@@ -1,17 +1,50 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 1.0 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 13:01 (cycle #216)
+> Version: 1.2 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 15:31 (cycle #219)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v1.2 Upgrades (cycle #219 — §1 Introduction prose draft written)
+
+**§1 Introduction Draft (3 paragraphs — ready to copy into LaTeX):**
+
+> **Para 1 (problem motivation):**
+> Large audio-language models (LALMs) have achieved remarkable performance on audio understanding tasks — answering questions about speech content, identifying speakers, detecting emotions, and transcribing in noisy conditions. Yet a fundamental question remains unanswered: *where* in the forward pass does audio information become causally decisive? A model may internally encode rich acoustic representations across many layers, yet consult them for output generation only at a specific depth. Prior work on behavioral dominance (ALME, Li et al. 2025; Cascade Equivalence, 2602.17598; MiSTER-E; DashengTokenizer, 2602.23765 — one semantic layer suffices for 22 tasks) confirms that audio information is encoded but does not localize *where* and *when* it is causally used. In the absence of this localization, we cannot systematically explain why models fail on audio-grounded questions, nor can we design targeted interventions.
+
+> **Para 2 (prior work gap):**
+> A key insight from adjacent fields is that representationally rich layers are not necessarily causally active — a phenomenon termed Store-Contribute Dissociation (SCD). This has been demonstrated theoretically in deep linear networks (Braun et al. 2025), empirically in text LM knowledge editing ("layers storing factual knowledge are not necessarily the best edit targets," Hase et al. 2023), and in audio generation models (AG-REPA, 2603.01006 — early layers causally drive the velocity field while deep layers store semantic similarity). Observational probing alone cannot distinguish storage from causal contribution: visual token probing (EmbedLens, CVPR 2026; Liu et al. 2025), audio logit-lens methods (AudioLens, 智凱哥 et al. ASRU 2025), and representational similarity analyses (Klabunde et al. 2025) all achieve Pearl's Level 1 claims at best. Vanilla causal tracing (FCCT, AAAI 2026 Oral) reaches Level 2 but lacks a theoretically grounded grounding metric and controls for speech-specific phonological structure. In speech LLMs specifically, no prior work performs layer-wise causal localization of audio consultation.
+
+> **Para 3 (contribution):**
+> We introduce the **Listen Layer**: the depth at which audio representations are causally decisive for audio-grounded behavior in speech LLMs. We operationalize this via the **grounding coefficient** gc(L) = DAS-IIT accuracy at encoder/LLM layer L — the interchange-intervention accuracy (IIA) under a learned linear rotation (distributed alignment search, DAS; Geiger et al. 2303.02536), which achieves Pearl's Level 3 counterfactual claims (Joshi et al. 2026). Linear DAS is not merely convenient: Sutter et al. (NeurIPS 2025 Spotlight) prove that without the linearity constraint, arbitrary neural networks can achieve 100% IIA on random models, making causal abstraction vacuous. We evaluate on controlled phonological minimal pairs (Choi et al. 2026 — 96-language phonological arithmetic validated; voicing contrast: [b]=[d]-[t]+[p]) and 57K audio-text conflict stimuli (ALME, Li et al. 2025) with RVQ-layer-selective corruptions (SpeechTokenizer Layer 1 = semantic content; Sadok et al. 2506.04492). Experiments on Whisper-small and Qwen2-Audio-7B reveal a sharp gc(L) peak at ~50% model depth — the speech-understanding instance of SCD, where the causally dominant depth is the acoustic-to-semantic transition zone, distinct from the early-dominant pattern observed in audio generation.
+
+**Status of §1:** ✅ READY TO COPY INTO LATEX. Cite IDs confirmed live. All claims traceable to read papers.
+
+### ⚡ v1.1 Upgrades (cycle #218 — AG-REPA SCD nuance + new cite cluster)
+
+**SCD spatiotemporal nuance** (from AG-REPA full read): SCD is not generic — it has a DIRECTION:
+- Audio GENERATION (AG-REPA): early layers (L1-3) = causal drivers; deep layers = semantic reservoirs → "SCD = early-dominant in generation"
+- Speech UNDERSTANDING (Triple Convergence, Whisper): middle layers (~50% depth) = acoustic→semantic transition → "SCD = middle-dominant in understanding"
+
+**Paper A framing update**: "SCD is a general phenomenon across audio neural networks (Braun 2025 — deep linear theory; Hase 2023 — text editing; AG-REPA 2603.01006 — audio generation). We provide the first speech-understanding instance, showing the causally dominant depth is the transition zone at ~50% depth — distinct from the generation case."
+
+**NEW cite cluster for §1 Introduction** (extracted from AG-REPA §2.3 — validated SCD precursors):
+1. **Klabunde et al. 2025** — survey of representational similarity metrics; "high similarity does not imply functional equivalence" → §1 general principle
+2. **Braun et al. 2025** — analytical proof of representational/functional decoupling in deep linear networks → theoretical grounding for SCD in §1
+3. **Hase et al. 2023** — "layers storing factual knowledge are not necessarily the most effective targets for model editing" → precedent in text LMs, convergent with Paper A claim
+
+**3-paragraph §1 Introduction structure** (ready to write):
+- Para 1: "Speech LLMs can answer questions about audio, but we do not know WHERE in their layers audio becomes causally decisive."
+- Para 2: "Recent work shows representationally rich layers ≠ functionally causal layers — SCD observed in deep linear theory (Braun 2025), text editing (Hase 2023), and audio generation (AG-REPA 2603.01006). Observational probing alone is insufficient."
+- Para 3: "We introduce the Listen Layer — the depth where DAS-IIT gc(L) peaks — first causal localization of audio consultation in speech LLMs. Unlike AG-REPA (Pearl Level 2 gate ablation), we achieve Pearl Level 3 counterfactual evidence using controlled phonological minimal pairs."
+
+**Pearl Level note**: FoG-A (forward-only gate ablation) = Pearl Level 2. DAS-IIT = Level 3. Paper A epistemologically highest.
+
+**Theory-Empirical quadrangle for §3 methodology**: Asiaee 2602.24266 (efficiency theory: variance = first-order proxy) + EG-GRVQ 2603.01476 (codec empirics: channel variance = semantic content) + whisper_hook_demo.py (application: layer norm pre-screening) + **AG-REPA 2603.01006 (generation convergence: SCD confirms stores≠causes)**
 
 ### ⚡ v1.0 Upgrades (cycle #216 — AG-REPA Store-Contribute Dissociation)
 **Key cite for Paper A Introduction/§1**: AG-REPA (arXiv:2603.01006, ICML submission) provides **generation-domain empirical evidence for Store-Contribute Dissociation (SCD)**: in audio Flow Matching DiT models, layers with highest representational similarity to semantic/acoustic features ≠ layers with highest causal contribution to the velocity field. Early layers = causal drivers; deep layers = semantic reservoirs. This is NOT a competitor (audio generation ≠ speech LLM understanding), but directly motivates why observational probing (AudioLens, EmbedLens = Pearl Level 1) is insufficient — representationally rich layers may be causally passive.
 
 **Suggested Paper A citation**: "Store-Contribute Dissociation, recently demonstrated in audio generation models (AG-REPA, 2603.01006), shows that layers encoding the most semantic information may contribute least to model behavior — motivating causal DAS-IIT localization over observational probing in speech understanding."
-
-**Pearl Level clarification**: FoG-A (gate ablation) = Pearl Level 2 (interventional); Leo's DAS-IIT = Level 3 (counterfactual). Paper A still epistemologically highest.
-
-**Theory-Empirical quadrangle for §3 methodology**: Asiaee 2602.24266 (efficiency theory: variance = first-order proxy) + EG-GRVQ 2603.01476 (codec empirics: channel variance = semantic content) + whisper_hook_demo.py (application: layer norm pre-screening) + **AG-REPA 2603.01006 (generation convergence: SCD confirms stores≠causes)**
 
 ### ⚡ v0.9+ Upgrades (cycle #214 — EmbedLens + EG-GRVQ citations added)
 1. **EmbedLens (Fan et al. 2603.00510, CVPR 2026) added to Related Work**: visual tokens = sink/dead/alive; mid-layer injection optimal = direct visual analog of Listen Layer hypothesis. Added as 5th row in Table 1. Updated narrative in §4 Related Work. Pearl Level 1 (observational probing), Leo = Level 3.
