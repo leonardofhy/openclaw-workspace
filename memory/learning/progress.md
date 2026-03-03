@@ -1285,6 +1285,8 @@ Priority queue for Leo's first session:
 
 | #234 | 2026-03-04 01:01 | reflect (meta-awareness) | **Dead-zone sentinel file created**: `memory/learning/dead-zone-until.txt` — lightweight reversible gate for future cron cycles (check 2 lines before loading 6 large files). Fast-path applied (#232-#233 proposal). State unchanged: principled skip until Wed arXiv batch ~14:00. ⚠️ Interspeech PDF = March 5. |
 | #235 | 2026-03-04 02:01 | skip (dead-zone sentinel) | Sentinel valid (1h gap < 2h threshold). No new information. Principled skip per #234 verdict: "system stable, no further meta-awareness cycles tonight." |
+| #236 | 2026-03-04 02:31 | skip (dead-zone sentinel) | Sentinel valid (1.5h gap < 2h threshold). State unchanged. arXiv Wednesday batch ~11.5h away. Papers A v1.6 + B v1.5 pitch-ready. |
+| #237 | 2026-03-04 03:01 | reflect (meta-awareness — skip-guard) | 3-consecutive-skip guard fired (#234+#235+#236). arXiv: 0 new (same 3 papers). 3 failures: (1) sentinel 2h boundary ambiguous → fixed to exclusive ">2h"; (2) Interspeech deadline (March 5) flagged via cron summary; (3) overnight dead-zone = zero-value → skip-guard-satisfied marker added to sentinel. Sentinel updated (last confirmed 03:01). Next: principled skip until arXiv Wednesday ~14:00. |
 
 ## Recommended Next Cycles (Day 7 / Day 8)
 > ⚠️ **DEADLINE ALERT: Interspeech 2026 final PDF = March 5 (TOMORROW) — Leo's action required**
@@ -1292,3 +1294,5 @@ Priority queue for Leo's first session:
 2. **Leo unblock** → P0 Gap #18 experiment + Papers A+B full review + LaTeX shell
 3. **Principled skip** for all other overnight cycles (sentinel file active)
 4. 💡 **[Proposal for Leo]** SKILL.md amendment: fast-path heuristic (read sentinel file first, skip full reads if dead-zone valid). Sentinel file implemented (#234); SKILL.md change needs Leo approval.
+
+| #238 | 2026-03-04 03:31 | skip (principled — dead-zone sentinel valid, skip-guard satisfied by #237) | Sentinel valid (30min gap). arXiv not yet posted. State unchanged. Papers A v1.6 + B v1.5 pitch-ready. |
