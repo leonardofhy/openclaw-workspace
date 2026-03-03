@@ -3,15 +3,19 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-02 13:20
+**Last Updated:** 2026-03-02 21:00
 
 ## Current Task
 Deadline watchdog built + MATS EOI prep
 
 ## Recent Context
+- 2026-03-02 21:00:收到每日研究簡報 cron 任務：執行 `python3 skills/autodidact/tools/daily_briefing.py --send`。
+
+## Recent Context
 - MATS EOI: Leo confirms email = leonardofoohy@gmail.com
 - MATS mentor: **Leo 不一定只填 Neel Nanda**（太熱門），需要策略性選擇
 - Deadline watchdog 已上線：`skills/deadline_watch.py` + `memory/finance/deadlines.json`，7 個 one-shot cron 已清除
+- Leo 同意把 3 篇 digest 的可用資訊轉成 autodidact queue 後續任務（先深讀 Nanda 環境設計文）
 - People DB refinement sub-agent 可能還在跑（上個 session 啟動的）
 
 ## Recent Context

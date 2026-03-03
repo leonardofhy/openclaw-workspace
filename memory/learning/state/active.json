@@ -26,15 +26,15 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 1,
+    "learn_remaining_today": 0,
     "build_remaining_today": 3,
-    "reflect_remaining_today": 2,
+    "reflect_remaining_today": 1,
     "budget_reset_date": "2026-03-02"
   },
   "stats": {
-    "total_cycles": 127,
-    "total_skips": 38,
-    "papers_read_deep": 22,
+    "total_cycles": 130,
+    "total_skips": 39,
+    "papers_read_deep": 23,
     "papers_scanned": 34,
     "research_gaps": 19,
     "paper_ideas": 7,
@@ -44,9 +44,9 @@
     "days_active": 5
   },
   "last_cycle": {
-    "id": "c-20260302-1745",
-    "action": "build",
-    "summary": "Q027 done: Built test_listen_layer_audit.py (5/5 tests pass). T5 MVP safety probe validated. Also ran GC (46 old cycle files deleted)."
+    "id": "c-20260302-2345",
+    "action": "skip",
+    "summary": "Queue cleanup: Q028 done, Q029+Q030 unblocked. Reflect already done. No READY tasks."
   },
   "last_gc": "2026-03-02T17:45:35.982137+08:00",
   "self_improve_tickets": []
