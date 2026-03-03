@@ -1,8 +1,12 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 0.9 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 10:31 (cycle #211)
+> Version: 0.9+ | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-03 12:01 (cycle #214)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v0.9+ Upgrades (cycle #214 — EmbedLens + EG-GRVQ citations added)
+1. **EmbedLens (Fan et al. 2603.00510, CVPR 2026) added to Related Work**: visual tokens = sink/dead/alive; mid-layer injection optimal = direct visual analog of Listen Layer hypothesis. Added as 5th row in Table 1. Updated narrative in §4 Related Work. Pearl Level 1 (observational probing), Leo = Level 3.
+2. **EG-GRVQ (arXiv:2603.01476) = 3rd independent empirical support** for channel variance = semantic content proxy (used in whisper_hook_demo.py norm heatmap): Kazakh ASR + codec design both independently arrive at same principle (high-variance channels = more information content). Cite alongside Asiaee 2602.24266 in §3 as empirical prior.
 
 ### ⚡ v0.9 Upgrades (cycle #211 — Paper A Related Work table + method paragraph finalized)
 1. **Joshi et al. added to Related Work table** (see below): "Paper A achieves Pearl Level 3 per Joshi et al. 2602.16698" added as a row with explicit comparison to AudioLens (Level 1) and FCCT (Level 2). This becomes the 1-sentence differentiation for reviewers.
@@ -172,17 +176,19 @@ This is the correct specification of Gap #18 experiment (now MacBook-feasible in
 
 | Paper | Modality | Method | Causal? | Grounded Metric? |
 |-------|----------|--------|---------|-----------------|
+| **EmbedLens (Fan et al. 2603.00510, CVPR 2026)** | Vision | Probing: sink/dead/alive token taxonomy; mid-layer injection | ❌ (observational probing) | ❌ |
 | **Liu et al. 2025 (UW)** | Vision | KV-token flow analysis in LLaVA/Qwen2.5-VL | ❌ (observational) | ❌ |
 | **FCCT (Li et al. AAAI 2026 Oral, 2511.05923)** | Vision | Causal tracing, MHSA middle layers | ✅ (vanilla patching) | ❌ (no theory) |
 | **AudioLens (智凱哥, ASRU 2025)** | Speech | Logit lens on LALMs | ❌ (observational) | ❌ |
 | **Leo's Paper A** | Speech | DAS-IIT gc(k), interchange interventions | ✅✅ (theoretically grounded) | ✅ (IIT accuracy) |
 
-**Narrative**: "Prior work in vision has characterized *where* visual information is processed either observationally (Liu et al. 2025) or with vanilla causal tracing (FCCT). In speech, AudioLens applies the logit lens but does not intervene. We provide the first *causally grounded* localization in speech LLMs, combining speech-specific stimuli with DAS-IIT interchange interventions (gc = IIT accuracy, Geiger et al. 2023). This is the speech analog of Liu et al. 2025 with the theoretical rigor of causal abstraction."
+**Narrative (v0.9+)**: "Prior work in vision has characterized *where* visual information is processed either observationally (EmbedLens — sink/dead/alive token taxonomy, mid-layer injection optimal; Liu et al. 2025 — KV-token flow) or with vanilla causal tracing (FCCT). EmbedLens (CVPR 2026) finds that visual tokens align with intermediate LLM layers rather than early embeddings — consistent with the Listen Layer hypothesis for speech. In speech, AudioLens applies the logit lens but does not intervene. We provide the first *causally grounded* localization in speech LLMs, combining speech-specific stimuli with DAS-IIT interchange interventions (gc = IIT accuracy, Geiger et al. 2023). This is the speech analog of EmbedLens/Liu et al. 2025 with the theoretical rigor of causal abstraction at Pearl's Level 3."
 
 #### Full Related Work Table
 
 | Paper | Relationship |
 |-------|-------------|
+| **EmbedLens (Fan et al. arXiv:2603.00510, CVPR 2026)** | **[v0.9+ NEW, cycle #214] Vision MI analog** — visual tokens partition into sink/dead/alive (~60% are "alive"); mid-layer injection is OPTIMAL (shallow layers redundant for vision). Level 1 (probing). Direct visual analog of Listen Layer: "mid-layer is where visual processing concentrates" in VLMs. Leo = causal Level 3 for SPEECH. Add to Table 1 as 5th row. Motivates: "EmbedLens finds the visual mid-layer observationally; we find the speech Listen Layer causally." |
 | **Liu et al. 2025 (UW)** | **[v0.4 NEW] Closest vision analog** — KV-token flow observational study. We are the causal speech version. |
 | **Joshi et al. 2602.16698** | **[v0.9 NEW] Epistemological standard** — Pearl hierarchy for MI claims. Paper A achieves Level 3 (counterfactual) via DAS + controlled minimal pairs (Choi et al.). AudioLens = Level 1; FCCT = Level 2. Cite in §2: "We design experiments at Pearl's Level 3 (counterfactual), following Joshi et al. (2026), using DAS [Geiger et al.] with controlled phonological minimal pairs [Choi et al.]." |
 | **Shafran et al. 2602.02464 (MFA)** | **[v0.9 NEW] Alternative unsupervised method** — Mixture of Factor Analyzers outperforms SAEs on steering in text LMs. Use MFA as no-supervision pre-screen baseline in §3: locate candidate Listen Layer via MFA → validate causally with DAS. Convergent validity: if MFA and DAS agree on L*, hypothesis is stronger. |
