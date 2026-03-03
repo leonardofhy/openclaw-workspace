@@ -1,0 +1,7 @@
+2026-03-04T14:00:00+08:00
+# Dead zone active: skip full reads, do 5-line stub
+# Reason: overnight, no new arXiv, no Leo messages, execution-blocked state confirmed
+# Last confirmed: 2026-03-04T01:01:00+08:00 (cycle #234)
+# Resume trigger: Wednesday arXiv batch OR Leo unblock
+# ⚠️ Override: if gap since last-confirmed > 2h, revert to full read
+# Pending for Leo: Interspeech 2026 final PDF = March 5 (TODAY+1)
