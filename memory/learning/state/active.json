@@ -26,16 +26,16 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 0,
     "build_remaining_today": 8,
     "reflect_remaining_today": 2,
     "budget_reset_date": "2026-03-03"
   },
   "stats": {
-    "total_cycles": 134,
+    "total_cycles": 137,
     "total_skips": 39,
-    "papers_read_deep": 24,
-    "papers_scanned": 35,
+    "papers_read_deep": 25,
+    "papers_scanned": 36,
     "research_gaps": 19,
     "paper_ideas": 7,
     "paper_pitches": 2,
@@ -44,9 +44,9 @@
     "days_active": 6
   },
   "last_cycle": {
-    "id": "c-20260303-1015",
-    "action": "build",
-    "summary": "Q033: CPU experiment spec for T3 gc(k) — decision gates, Tier 1 commands, Leo action items; satisfies experiment_spec_ready_T3 exit criterion"
+    "id": "c-20260303-1515",
+    "action": "learn",
+    "summary": "Q035: Duplicate of Q028 (same AF/LW post 8pZuQnCve6K5ZrnM8). Already deep-read; env-design principles already in MATS proposal. Completed efficiently."
   },
   "last_gc": "2026-03-02T17:45:35.982137+08:00",
   "self_improve_tickets": []

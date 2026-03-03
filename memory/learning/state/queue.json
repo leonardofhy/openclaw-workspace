@@ -225,6 +225,45 @@
       "created": "2026-03-03",
       "due": null,
       "completed": "2026-03-03"
+    },
+    {
+      "id": "Q034",
+      "type": "read",
+      "track": "T5",
+      "title": "News: Why Did My Model Do That? Model Incrimination for Diagnosing",
+      "status": "done",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-",
+      "created": "2026-03-03",
+      "due": null,
+      "completed": "2026-03-03"
+    },
+    {
+      "id": "Q035",
+      "type": "read",
+      "track": "T5",
+      "title": "News: How to Design Environments for Understanding Model Motives",
+      "status": "done",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/8pZuQnCve6K5ZrnM8/how-to-design-environment",
+      "created": "2026-03-03",
+      "due": null,
+      "completed": "2026-03-03"
+    },
+    {
+      "id": "Q036",
+      "type": "read",
+      "track": "T3",
+      "title": "News: The persona selection model",
+      "status": "done",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/dfoty34sT7CSKeJNn/the-persona-selection-mod",
+      "created": "2026-03-03",
+      "due": null,
+      "completed": "2026-03-03"
     }
   ],
   "archived_count": 16,
