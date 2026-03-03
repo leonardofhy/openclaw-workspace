@@ -264,6 +264,19 @@
       "created": "2026-03-03",
       "due": null,
       "completed": "2026-03-03"
+    },
+    {
+      "id": "Q037",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A: Abstract skeleton (Tier 0) — 4-sentence template with hook, gap, method, contribution stubs",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Abstract draft: hook sentence, gap/problem, method/approach, key results+contribution stubs; Interspeech format; Leo fills numbers",
+      "created": "2026-03-03",
+      "due": null,
+      "completed": "2026-03-03"
     }
   ],
   "archived_count": 16,
