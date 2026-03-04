@@ -996,3 +996,13 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new-pick]** *OpenAI's surveillance language has many potential loopholes and they can do better* — LessWrong, 2026-03-04 — Rigorous legal analysis of the OpenAI–DoW contract amendment: argues the "intentional/deliberate" domestic surveillance restrictions are legally inadequate (citing government procurement law experts including GW Law's Tillipman), with specific loopholes — FISA-era intentionality standards allow incidental mass collection, no negligence/recklessness bar, non-US-person targeting exemptions, and ambiguous scope for commercially acquired data. Closes the DoW governance arc (Mon–Tue cluster) by showing the "resolution" OpenAI proposed does not actually resolve the safety concern; directly relevant to red-line enforceability and AI governance accountability.
 - Link: <https://www.lesswrong.com/posts/openai-surveillance-language-loopholes>
+
+---
+**2026-03-04 15:15 (Wed)** — scan: LW new (since 14:45) = 1 post (Austin meetup event, score 3.6, no research content) | AF GraphQL unresponsive; AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked 13:45). No new high-signal items since last cycle.
+
+**[no high-signal update]** — 30-min window quiet; only meetup-event post on LW, AF unchanged.
+
+---
+**2026-03-04 15:45 (Wed)** — scan: LW curated RSS top = "models have some pretty funny attractor states" (already picked 13:15) | LW karma≥30 top = "OpenAI's surveillance language has many potential loopholes" (already picked 14:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked 13:45). No new posts since 15:15 scan.
+
+**[no high-signal update]** — feeds stable; all high-signal items from today already captured.

@@ -1,7 +1,7 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-04 13:01 (cycle #257: SGPA 2603.02250 + MPAR² 2603.02266 stubs added — Wednesday March 4 batch)
+> Last updated: 2026-03-04 16:01 (cycle #262: Van Rensburg 2603.03096 — PCA speaker geometry in WavLM; connects Gap #18, Audio-RAVEL, T-SAE, Paper B §2.2)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
 > Major sections now reflect: all 26 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense, music MI (Facchiano), brain-speech MI (Maghsoudi), AG-REPA (SCD concept), SGPA (Shapley/phonetic alignment Level 1), MPAR² (audio perception decay).
 
@@ -16,6 +16,17 @@
   - DIRECT LINK to Track 3 (Listen vs Guess): saturation layer + patching sensitivity → operationalize grounding coefficient
 - Mozilla Builders (2024) — Whisper SAE (L1, TopK), phonetic/positional features
 - Open tools: whisper-interp (GitHub), whisper_logit_lens (GitHub)
+
+- **Van Rensburg 2603.03096 "Interpreting Speaker Characteristics in the Dimensions of Self-Supervised Speech Features"** (Mar 2026, IEEE SPL) — 🟢 ABSTRACT READ (cycle #262)
+  - **Method:** PCA on utterance-averaged WavLM representations
+  - **Key finding:** PC1 = pitch + gender; individual dimensions encode intensity, noise level, F2 formant, high-frequency characteristics; synthesis experiments confirm controllability
+  - **Connections:**
+    1. Gap #18: Convergent evidence (Choi = phonological geometry; Van Rensburg = speaker geometry) — both confirm acoustic attributes are linearly organized in SSL space; connector test needed
+    2. Audio-RAVEL (Gap #23): Speaker-level (gender, pitch) and phoneme-level (voicing, manner) attributes are dissociable in SSL space → valid RAVEL interchange interventions can be constructed
+    3. Paper B §2.2 motivation: "PCA finds speaker geometry without SAE" (baseline) vs "SAE finds causally steerable + monosemantic features" (AudioSAEBench claim)
+    4. T-SAE (Idea #7): Van Rensburg uses utterance-averaged (time-collapsed) → loses phoneme-level temporal info; T-SAE fills this gap by preserving both global (speaker) and local (phoneme) temporal structure
+  - **Competitor check:** NOT a competitor — correlation/PCA study, no causal intervention, no SAE, no disentanglement metric
+  - **Note:** Paper B → v1.6 candidate (cite in §2.2 or §3.1 as PCA baseline context)
 
 - **Choi et al. 2602.18899 "Phonological Vector Arithmetic in S3Ms"** (Feb 2026, ACL submission) — 🟢 DEEP-SCAN (cycle #81)
   - 96 languages, multiple S3Ms (HuBERT/WavLM/wav2vec 2.0)
