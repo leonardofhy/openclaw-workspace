@@ -1,9 +1,9 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-04 07:01 (cycle #245: AG-REPA 2603.01006 SCD concept + Maghsoudi 2602.01247 full deep-read + Gap #26 added)
+> Last updated: 2026-03-04 13:01 (cycle #257: SGPA 2603.02250 + MPAR² 2603.02266 stubs added — Wednesday March 4 batch)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
-> Major sections now reflect: all 26 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense, music MI (Facchiano), brain-speech MI (Maghsoudi), AG-REPA (SCD concept).
+> Major sections now reflect: all 26 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense, music MI (Facchiano), brain-speech MI (Maghsoudi), AG-REPA (SCD concept), SGPA (Shapley/phonetic alignment Level 1), MPAR² (audio perception decay).
 
 ## Mech Interp × Speech/Audio — Field Map (2026)
 
@@ -581,6 +581,26 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - **Klabunde et al. 2025** — survey of representational similarity metrics; "high similarity does not imply functional equivalence" → §1 opening cite
 - **Braun et al. 2025** — analytical proof: functional and representational similarity decouple in deep linear networks even under controlled settings → theoretical grounding for SCD
 - **Hase et al. 2023** — "layers storing factual knowledge are not necessarily the most effective targets for model editing" → text LM editing precedent, pre-existing evidence for SCD principle
+
+### M12) SGPA (arXiv:2603.02250, Interspeech 2026 — cycle #257, Wednesday March 4 batch)
+- **Title:** "Spectrogram-Guided Phonetic Alignment for Feasible Shapley Value Explanations in Multimodal Large Language Models"
+- CTC forced alignment + spectral boundary refinement → phoneme-aligned Shapley attribution for audio LLMs
+- Result: 43× fewer model evaluations (evaluated on LFM2-Audio-1.5B + VoiceBench)
+- **Pearl Level**: 1 (Shapley = observational attribution, NOT causal counterfactual)
+- **Not a Paper A competitor**: Level 1 vs Leo's Level 3 (DAS-IIT). SGPA cannot distinguish stored vs causally-driven representations.
+- **Connection to Paper A §2.2**: "SGPA as Level 1 Shapley baseline for audio MI; Leo = first Level 3 causal grounding localization"
+- **Validates stimuli design**: phoneme as natural attribution unit = corroborates Choi et al. minimal pair design for Phase 1 stimuli
+- cite_id: arXiv:2603.02250
+
+### M13) MPAR² (arXiv:2603.02266, Interspeech 2026 submission — cycle #257, Wednesday March 4 batch)
+- **Title:** "Mitigating Audio Perception Decay of LALMs via Multi-Step Perception-Aware Reasoning"
+- "Audio Perception Decay": as chain-of-thought reasoning extends, LALMs lose access to audio content; perception accuracy: ~63% → ~31% over reasoning length
+- CAFE evaluation framework introduced (quantifies audio perception accuracy at each reasoning step)
+- MPAR² training paradigm: RL + perception-rich sub-problems → recovers performance to ~74.59% on audio QA
+- **DIRECT behavioral corroboration for Listen Layer Hypothesis**: if audio is causally consulted only at L*, reasoning chains that bypass L* → perception decay. MPAR² diagnoses the *symptom*; Paper A localizes the *mechanism* (the layer).
+- **Connection to Paper A §1 or §5.1**: "MPAR² names the phenomenon ('audio perception decay'); Paper A provides the mechanistic explanation via gc(L) localization."
+- **CAFE as behavioral cross-validation**: gc(L) = mechanistic probe; CAFE = behavioral probe of same phenomenon. Testing whether layers with high gc(L) also show high CAFE audio perception accuracy = cross-level validation.
+- cite_id: arXiv:2603.02266
 
 ## 🆕 RAVEL — Disentanglement Benchmark (Cycle #179, 2026-03-02)
 

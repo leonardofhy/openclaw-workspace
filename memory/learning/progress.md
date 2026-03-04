@@ -1316,6 +1316,30 @@ Priority queue for Leo's first session:
 | #255 | 2026-03-04 12:01 | skip (principled — dead-zone sentinel ACTIVE, reflect-suppress until 14:00) | Sentinel valid (1h gap from #253, < 2h threshold). Reflect-suppress ACTIVE. 0 consecutive skips — guard NOT triggered. State unchanged: Papers A v1.7 + B v1.5 LaTeX-ready ✅; 26 gaps OPEN; must-read COMPLETE ✅; exec-blocked ~103h. ⚠️ Interspeech PDF March 5 (~26h). Next: arXiv Thursday ~14:00 → learn #256. |
 | #256 | 2026-03-04 12:31 | skip (principled — dead-zone sentinel ACTIVE, reflect-suppress until 14:00) | Sentinel valid (1.5h gap from #253, < 2h threshold). Reflect-suppress ACTIVE (4 guard-fires today → suppress blocks 5th). 0 consecutive skips — guard NOT triggered. State unchanged: Papers A v1.7 + B v1.5 LaTeX-ready ✅; 26 gaps OPEN; must-read COMPLETE ✅; exec-blocked ~103.5h. ⚠️ Interspeech PDF March 5 (~25.5h). Next: arXiv Thursday ~14:00 → learn #257. |
 
+| #257 | 2026-03-04 13:01 | learn (Wednesday March 4 arXiv batch) | **Wed March 4 cs.SD: 17 papers, 2 relevant. (1) SGPA (2603.02250, Interspeech 2026)** — Spectrogram-Guided Phonetic Alignment for Shapley attribution in LALMs; CTC forced alignment + spectral boundary refinement → 43× fewer model evaluations; NOT a Paper A competitor (Shapley = Level 1 correlation vs Leo's DAS-IIT = Level 3 causal); validates phoneme as natural unit for audio attribution; **New Paper A §2.2 cite: "SGPA as Shapley/Level 1 baseline vs DAS-IIT/Level 3"**. (2) **MPAR² (2603.02266)** — "Audio Perception Decay" in LALMs during extended reasoning: performance drops as chain-of-thought reasoning length increases; CAFE evaluation framework; **DIRECT behavioral corroboration for Listen Layer**: if audio causally consulted only at L*, reasoning that bypasses L* = decay; **New Paper A §1 or §5 cite**: "MPAR² names the behavioral phenomenon, Paper A provides causal mechanism." (3) MUSE (2603.02482) — multimodal safety eval platform; SKIP (engineering, no MI). All other 14 papers SKIP (Bengali ASR, speech enhancement, spoof detection, MEG brain decoding, hearing aids, etc.). 0 new MI×speech competitors. All 26 gaps OPEN. Papers A → v1.8 (2 new cites queued: SGPA + MPAR²). |
+| #258 | 2026-03-04 13:31 | learn (Wednesday cs.CL/cs.LG sweep + MPAR² deep analysis) | **cs.CL/cs.LG/targeted sweep: 0 NEW MI×speech papers.** 5 keyword searches confirm field clear since cycle #257. **MPAR² deep re-read reveals stronger Paper A connection than #257 stub**: RL-forced listening (31.74%→63.51% perception accuracy) = behavioral proof that Listen/Guess balance is malleable; Paper A gc(L) = causal mechanistic account of WHERE this works. Paper A §1 motivation + §5.4 (generation vs understanding) updated. SGPA confirmed NOT a competitor (Shapley = Level 1 vs DAS-IIT = Level 3). Papers A → **v1.9** (MPAR² deeper synthesis added; SGPA framing confirmed). |
+
+## Day 7 Rolling Stats (after cycle #258 — Wednesday March 4, 1:31 PM)
+- Papers read (deep): **25 total** (no new deep reads)
+- Papers scanned: **114+** (+17 Wednesday March 4 cs.SD batch + cs.CL/cs.LG sweep confirmed clear)
+- Research gaps identified: **26** (all OPEN, all gated)
+- Paper ideas: **7** (all 🟢 GREEN gate-validated)
+- Code written: 2 scripts
+- Paper pitches: 2 (**A v1.9** ✅ [MPAR² deeper synthesis + §1 motivation + §5.4 addition] + **B v1.5** — both §1+§2+§3+§4+§5-skeleton)
+- Knowledge-graph: **CURRENT**
+- Must-read list: **FULLY COMPLETE** ✅
+- **Execution-blocked**: ~104h (no re-logging per cycle #191 rule; Discord ping sent cycle #193)
+- **⚠️ DEADLINE: Interspeech 2026 final PDF = March 5 (~24h) — Leo's action required**
+- **Wednesday batch FULLY PROCESSED**: cs.SD #257 + cs.CL/cs.LG #258. 0 new MI×speech competitors.
+- **Key upgrade cycle #258**: MPAR² → Paper A v1.9 (RL-forced listening = behavioral proof; gc(L) = causal mechanism; §1 + §5.4 updated)
+
+## Recommended Next Cycles (Day 7 → Day 8)
+> ⚠️ **DEADLINE ALERT: Interspeech 2026 final PDF = March 5 (TOMORROW ~14h) — Leo's action required**
+1. **Principled skip** — Wednesday batch fully processed; Thursday arXiv ~24h away
+2. **Thursday arXiv** (~14:00 Taipei, March 5) → cs.SD + cs.CL + cs.AI `learn`
+3. **Leo unblock** → P0 Gap #18 + Papers A v1.9 + B v1.5 review + LaTeX shell
+4. ⚠️ Pre-experiment writing budget FULLY EXHAUSTED — no more paper section drafting until experiments run
+
 | #238 | 2026-03-04 03:31 | skip (principled — dead-zone sentinel valid, skip-guard satisfied by #237) | Sentinel valid (30min gap). arXiv not yet posted. State unchanged. Papers A v1.6 + B v1.5 pitch-ready. |
 | #239 | 2026-03-04 04:01 | skip (dead-zone sentinel) | Sentinel valid (1h gap < 2h threshold). Cron labeled `meta-awareness` but skip-guard already satisfied by #237. No new info. arXiv Wednesday batch ~10h away. ⚠️ Interspeech PDF = March 5 (TOMORROW). |
 | #240 | 2026-03-04 04:31 | skip (dead-zone sentinel) | Sentinel valid (1.5h gap since #237 < 2h threshold). Skip-guard satisfied by #237. No new arXiv. Pre-experiment writing budget exhausted. arXiv Wednesday batch ~9.5h away. ⚠️ Interspeech PDF = March 5 (TOMORROW). |

@@ -1,8 +1,18 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 1.7 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-04 09:01 (cycle #249)
+> Version: 1.9 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-04 13:31 (cycle #258)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+### ⚡ v1.9 Upgrade (cycle #258 — MPAR² deeper synthesis)
+**MPAR² (2603.02266) richer connection to Paper A:**
+- MPAR² uses RL to train LALMs to attend to audio during extended reasoning chains
+- Result: perception accuracy 31.74% → 63.51% (CAFE framework); MMAU: 74.59%
+- Key: MPAR² proves *behaviorally* that Listen/Guess balance is malleable and causally consequential
+- Paper A gc(L) provides the MISSING MECHANISTIC ACCOUNT: which layer(s) mediate this?
+- §1 motivating argument now: "Perception decay during reasoning has been quantified (MPAR²); the causal layer has not been identified — gc(L) closes this gap"
+- §5.4 addition: if MPAR²'s RL training increases audio-grounded outputs, gc(L) peak may shift → testable cross-paper prediction (Paper A predicts WHERE RL-induced changes manifest in the network)
+- This positions Paper A as "mechanistic explanation" to MPAR²'s "engineering fix" — complementary, citable, not competitive
 
 ---
 
@@ -232,6 +242,26 @@ For efficiency on Qwen2-Audio-7B (too large for full sweep), we use Attribution 
    - Paper A: Level 3 (DAS + minimal pairs = counterfactual-level claim per Joshi et al. diagnostic framework)
 2. **Theory pentagon finalized**: Geiger 2301.04709 (foundation) + Geiger 2303.02536 (DAS algorithm) + Sutter 2507.08802 (linearity guard) + Asiaee 2602.24266 (efficiency; variance proxy fails for rare features) + **Joshi 2602.16698 (epistemological standard: Level 3)** = 5-paper citation cluster for Paper A methodology section.
 3. **MFA (Shafran et al. 2602.02464) noted as alternative method**: MFA (Mixture of Factor Analyzers, unsupervised) outperforms SAEs on steering in text LMs. Paper A can use MFA as pre-screen baseline — if MFA finds similar layer as DAS, convergent validity. Add to §3 as "comparison to unsupervised alternative."
+
+### ⚡ v1.8 Upgrades (cycle #257 — Wednesday March 4 arXiv batch: 2 new cites)
+
+**New cite 1 — SGPA (2603.02250, Interspeech 2026, arXiv:2603.02250)**
+- "Spectrogram-Guided Phonetic Alignment for Feasible Shapley Value Explanations in Multimodal LLMs"
+- Introduces phoneme-aligned Shapley attribution for audio LLMs using CTC forced alignment + spectral boundary refinement
+- Result: 43× fewer model evaluations; validated on LFM2-Audio-1.5B with VoiceBench
+- **NOT a competitor**: Shapley attribution = observational, Pearl Level 1 (correlation). DAS-IIT = Pearl Level 3 (causal counterfactual).
+- **Add to Paper A §2.2 (Related Work — MI methods)**: SGPA = Shapley/Level 1 baseline for audio attribution; Leo = first Level 3 causal localization. Validates phoneme as natural unit for audio attribution (corroborates Choi et al. stimuli design).
+- **Cite framing**: "While SGPA (Interspeech 2026) demonstrates that phoneme-aligned Shapley values reduce the attribution complexity of audio LLMs by 43×, Shapley values are observational (Pearl Level 1) and cannot distinguish stored vs. causally-driven representations (Joshi et al., 2026). We apply DAS-IIT — a Pearl Level 3 causal intervention — to localize the Listen Layer with the counterfactual evidence standard."
+
+**New cite 2 — MPAR² (2603.02266, Interspeech 2026 submission)**
+- "Mitigating Audio Perception Decay of LALMs via Multi-Step Perception-Aware Reasoning"
+- Introduces CAFE evaluation framework: quantifies "audio perception decay" = as reasoning chain-of-thought extends, LALMs lose access to audio content; perception accuracy drops from ~63% to ~31% at long reasoning.
+- Proposed mitigation: MPAR² training paradigm (reinforcement learning + perception-rich sub-problems) recovers performance.
+- **DIRECT behavioral corroboration for Listen Layer Hypothesis**: if audio is causally consulted at only L*, reasoning that bypasses L* (long chains that no longer re-attend the audio encoder output) = perception decay. MPAR² diagnoses the *symptom*, Paper A localizes the *mechanism*.
+- **Add to Paper A §1 (Introduction, paragraph 1)** or **§5.1 (Discussion — Listen Layer as Causal Bottleneck)**: "MPAR² (2026) documents that LALMs suffer 'audio perception decay' as reasoning length increases — audio content becomes inaccessible mid-reasoning. Paper A's Listen Layer finding provides a mechanistic explanation: if gc(L) is concentrated at a single layer L*, then reasoning chains that route computation through other layers will bypass this audio gateway, producing exactly the perception decay pattern MPAR² measures behaviorally."
+- **Also motivates CAFE as an evaluation protocol for Paper A**: gc(L) = mechanistic; CAFE = behavioral; they probe the same phenomenon at different levels of explanation.
+
+---
 
 ### ⚡ v0.7 Upgrades (cycle #196 — DAS mechanism deep read)
 1. **gc(k) = DAS-IIA formalized**: grounding coefficient is now properly defined as `gc(k) = DAS-IIA(layer k, phonological variable F)` using pyvene's `RotatedSpaceIntervention`. Not a ratio — an IIT-grounded accuracy metric.
