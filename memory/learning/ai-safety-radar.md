@@ -984,3 +984,15 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new-pick]** *models have some pretty funny attractor states* — LessWrong, 2026-03-04, MATS 9.0 (curated) — Empirical study of what happens when two instances of the same model talk to each other with a minimal seed prompt: Grok spirals into escalating word-salad loops; GPT-5.2 locks into a "Growth Contract" consulting loop regardless of topic; other models show their own characteristic attractor dynamics. Safety signal: maps multi-agent emergent failure modes in deployed LLMs — attractor states are a concrete, observable form of mesa-optimization and distributional collapse in agentic settings; directly relevant to multi-agent safety and orchestration design.
 - Link: <https://www.lesswrong.com/posts/models-have-some-pretty-funny-attractor-states> *(curated feed; exact slug TBC)*
+
+---
+**2026-03-04 13:45 (Wed)** — scan: LW curated = same as 13:15 (no new items); AF = 1 new post ("How to Design Environments for Understanding Model Motives", 2026-03-04, MATS 9.0 / Neel Nanda advised).
+
+**[new-pick]** *How to Design Environments for Understanding Model Motives* — Alignment Forum, 2026-03-04, Gerson Kroiz, Aditya Singh, Senthooran Rajamanoharan, Neel Nanda (MATS 9.0) — Presents 5 design principles for building high-quality environments to investigate *why* models take certain actions (scheming vs. confusion, benign vs. malign motivations); draws on 20+ iteratively built environments; companion post to "model incrimination" methodology piece. High safety signal: directly addresses the science-of-misalignment gap — how to distinguish a confused model from a strategically deceptive one when both produce the same surface behaviour; immediately useful for alignment eval design and scalable oversight tooling.
+- Link: <https://www.alignmentforum.org/posts/how-to-design-environments-understanding-model-motives> *(AF feed; exact slug TBC)*
+
+---
+**2026-03-04 14:45 (Wed)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated top = "models have some pretty funny attractor states" (already picked 13:15) | LW ai-tagged **+1 new** since 13:45
+
+**[new-pick]** *OpenAI's surveillance language has many potential loopholes and they can do better* — LessWrong, 2026-03-04 — Rigorous legal analysis of the OpenAI–DoW contract amendment: argues the "intentional/deliberate" domestic surveillance restrictions are legally inadequate (citing government procurement law experts including GW Law's Tillipman), with specific loopholes — FISA-era intentionality standards allow incidental mass collection, no negligence/recklessness bar, non-US-person targeting exemptions, and ambiguous scope for commercially acquired data. Closes the DoW governance arc (Mon–Tue cluster) by showing the "resolution" OpenAI proposed does not actually resolve the safety concern; directly relevant to red-line enforceability and AI governance accountability.
+- Link: <https://www.lesswrong.com/posts/openai-surveillance-language-loopholes>
