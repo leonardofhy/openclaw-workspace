@@ -3,12 +3,14 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-04 08:18
+**Last Updated:** 2026-03-04 12:33
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-04 12:33: Leo update — plans to skip this afternoon Long Lab Weekly Meeting; currently hesitating whether to go to school due to rain. Going to campus benefit: can discuss paper revisions with co-authors.
+- 2026-03-04 12:30: Leo update — woke up at 12:30 and successfully caught up sleep status.
 - 2026-03-04 08:18: Leo update — actually worked from ~01:00 to ~08:00 with progress going smoothly; asked for Todoist reminder to write diary after waking (possibly missed yesterday too), and requested concrete sleep/wake recommendation plus today's executable schedule.
 - 2026-03-04 00:55: Leo update — finished late-night meal at 00:55 (2 tea eggs + soy milk). Critical correction: Interspeech final paper update deadline is 3/5 AoE.
 - 2026-03-04 00:00: Leo correction — planned 90-min nap became longer sleep until around 00:00; requests full overnight replan from now.
