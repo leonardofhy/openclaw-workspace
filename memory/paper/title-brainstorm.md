@@ -315,3 +315,35 @@
 
 5. **A Roadmap to Audio-Faithful Evaluation: Evidence from Audio-Need Analysis at Scale**
    - score: 6.80 (len=3.0, spec=1.0, clarity=2.0, novelty=0.8, penalty=0.0)
+
+## Batch 9 — 04:15（策略：評測有效性 / construct validity）
+
+1. **Are We Measuring Listening? A Construct-Validity Audit of Audio-Language Benchmarks**
+   — 把論文定位成 validity 檢查，學術感強、審稿友善
+
+2. **When “Audio” Scores Come from Text: A Validity Check for Audio-Language Evaluation**
+   — 直接點出測量錯配（label 是 audio，訊號卻是 text）
+
+3. **Measuring the Measure: Validating Audio-Language Benchmarks with Audio-Need Tests**
+   — meta-evaluation framing，突顯方法通用性
+
+4. **Do Audio Benchmarks Have Acoustic Validity? Evidence from 8 Models and 3 Suites**
+   — 用 8×3 規模支撐「validity」主張
+
+5. **From Face Validity to Acoustic Validity: Auditing What Audio-Language Tests Actually Measure**
+   — 借用 psychometrics 語彙，角度新且專業
+
+6. **A Validity Crisis in Audio-Language Benchmarking: Text Priors, Minimal Audio, Inflated Scores**
+   — 偏強烈立場，適合吸睛版本
+
+7. **The Listening Construct Under Test: Quantifying Text and Audio Contributions in Benchmark Scores**
+   — construct-centric，適合方法導向投稿口味
+
+8. **Audio in Name, Text in Signal: Reassessing Validity in Audio-Language Benchmarks**
+   — 對比鮮明、記憶點高
+
+9. **How Valid Are Audio-Language Benchmarks? A Necessity-Based Measurement Audit**
+   — 中性保守、可作主標題候選
+
+10. **Validity Before Accuracy: Reframing Audio-Language Evaluation Around Audio Necessity**
+    — 提出 community-level design principle（先 valid 再追分數）
