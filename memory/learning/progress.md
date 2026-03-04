@@ -1408,3 +1408,6 @@ Priority queue for Leo's first session:
 3. **Leo unblock** → P0 Gap #18 phonological geometry experiment + Papers A v2.0 + B v1.6 review + LaTeX shell
 4. ⚠️ Pre-experiment writing budget FULLY EXHAUSTED — no more paper section drafting until experiments run
 5. 📌 **[Pending Leo approval]** Q33: skip-guard threshold ≥3→≥6 — would cut guard overhead from 4×/day to ~1×/day
+
+| #275 | 2026-03-04 23:31 | skip (principled — dead-zone sentinel ACTIVE, reflect-suppress ACTIVE until 02:01, 30min gap < 2h threshold) | Sentinel valid (23:01 reset + 30min gap). Reflect-suppress ACTIVE (guard-fires-today=4 ≥ 3, last reflect #274 23:01, <3h). Skip-guard: 0 consecutive skips (count reset by #274 productive reflect). No new arXiv (Thursday batch ~14:00 March 5). Papers A v2.0 + B v1.6 ✅; 27 gaps OPEN; must-read COMPLETE ✅; exec-blocked ~117.5h. ⚠️ Interspeech PDF = March 5 (~12.5h) — Leo action required FIRST THING TOMORROW MORNING. |
+| #276 | 2026-03-05 00:01 | skip (principled — dead-zone sentinel ACTIVE, reflect-suppress ACTIVE, 1h gap < 2h threshold) | Sentinel still active (1h since 23:01 reset). Reflect-suppress active until ~02:01. Consecutive skips = **2** (⚠️ ONE MORE skip triggers guard at #277 — Q33 approval needed). No new arXiv (Thursday batch ~14:00). ⚠️ Interspeech PDF = TODAY March 5 — ~12h remaining. |

@@ -1080,3 +1080,13 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-04 22:45 (Wed)** — scan: LW RSS (14:45 UTC) top = "OpenAI's surveillance language loopholes" (already picked 14:45) | LW new since 22:41 = 0 new posts | AF = rate-limited.
 
 **[no high-signal update]** — feeds stable; no new items since 22:41 cycle. Today's picks complete (8 unique: "models funny attractor states", "How to Design Environments for Model Motives", "OpenAI surveillance language loopholes", "Mass surveillance red lines crazy weekend", "Physics of RL scaling laws", "Split Personality Training detects AF", "Schelling Goodness shared morality", "Make Powerful Machines Verifiable").
+
+---
+**2026-03-04 23:15 (Wed)** — scan: LW feed lastBuild=15:11 UTC (23:11 Taipei), no new posts since 22:45 | AF feed unchanged | LW curated = "models have pretty funny attractor states" (already picked 13:15) | LW top = "Make Powerful Machines Verifiable" (already picked 22:41).
+
+**[no high-signal update]** — feeds fully stable since 22:45; no new items posted. Today's final picks: 8 unique (attractor states, model motives environments, OpenAI surveillance loopholes, mass surveillance red lines, RL scaling physics, Split Personality Training, Schelling Goodness, Make Powerful Machines Verifiable). End of day.
+
+---
+**2026-03-04 23:45 (Wed)** — scan: LW feed lastBuild=15:45 UTC (23:45 Taipei), latest post still "Make Powerful Machines Verifiable" (14:20 UTC, already picked 22:41) | AF feed unchanged (lastBuild=15:45 UTC) | LW curated = "models have pretty funny attractor states" (unchanged, already picked 13:15).
+
+**[no high-signal update]** — all feeds stable; no new posts since 22:41 cycle. Day complete: 8 unique picks logged.
