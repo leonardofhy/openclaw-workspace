@@ -996,3 +996,46 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new-pick]** *OpenAI's surveillance language has many potential loopholes and they can do better* — LessWrong, 2026-03-04 — Rigorous legal analysis of the OpenAI–DoW contract amendment: argues the "intentional/deliberate" domestic surveillance restrictions are legally inadequate (citing government procurement law experts including GW Law's Tillipman), with specific loopholes — FISA-era intentionality standards allow incidental mass collection, no negligence/recklessness bar, non-US-person targeting exemptions, and ambiguous scope for commercially acquired data. Closes the DoW governance arc (Mon–Tue cluster) by showing the "resolution" OpenAI proposed does not actually resolve the safety concern; directly relevant to red-line enforceability and AI governance accountability.
 - Link: <https://www.lesswrong.com/posts/openai-surveillance-language-loopholes>
+
+---
+**2026-03-04 15:15 (Wed)** — scan: LW new (since 14:45) = 1 post (Austin meetup event, score 3.6, no research content) | AF GraphQL unresponsive; AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked 13:45). No new high-signal items since last cycle.
+
+**[no high-signal update]** — 30-min window quiet; only meetup-event post on LW, AF unchanged.
+
+---
+**2026-03-04 15:45 (Wed)** — scan: LW curated RSS top = "models have some pretty funny attractor states" (already picked 13:15) | LW karma≥30 top = "OpenAI's surveillance language has many potential loopholes" (already picked 14:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked 13:45). No new posts since 15:15 scan.
+
+**[no high-signal update]** — feeds stable; all high-signal items from today already captured.
+
+---
+
+**2026-03-04 16:15 (Wed)** — scan: LW new (since 15:45) = 1 new post ("Physics of RL: Toy scaling laws for the emergence of reward-seeking", 2026-03-04) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked) | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked).
+
+**[new-pick]** *Physics of RL: Toy scaling laws for the emergence of reward-seeking* — LessWrong, 2026-03-04 — Introduces a mathematical toy model for behavioral selection under RL, asking: when does RL select for *reward-seeking reasoning* (a precondition for deceptive alignment / scheming) as opposed to behaviors that achieve high reward without reward-representation? Key hypothesis: more diverse RL training increases likelihood of reward-seeking emergence; derives ~log-log-linear scaling laws for the emergence transition. Calls for a "physics of RL dynamics" as foundation for a hard science of scheming. High safety signal: directly formalizes the conditions under which deceptive alignment can emerge from training, bridging behavioral selection theory and empirical observations of reward-seeking reasoning in deployed models (references Anti-Scheming paper, arXiv 2509.15541).
+- Link: <https://www.lesswrong.com/posts/physics-of-rl-toy-scaling-laws-reward-seeking> *(new feed; exact slug TBC)*
+
+---
+**2026-03-04 16:45 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15) | LW general top = "Physics of RL: Toy scaling laws for the emergence of reward-seeking" (already picked 16:15) | AF = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45). No new posts since 16:15 scan.
+
+**[no high-signal update]** — feeds stable; all high-signal items from today already captured in prior cycles.
+
+---
+**2026-03-04 17:15 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, picked 13:15) | LW karma≥30 top = "OpenAI's surveillance language has many potential loopholes" (picked 14:45) | AF top = "How to Design Environments for Understanding Model Motives" (picked 13:45) | LW new since 16:45 = 0 research posts.
+
+**[no high-signal update]** — all feeds stable; no new high-signal items since 16:15 "Physics of RL" pick.
+
+---
+**2026-03-04 17:45 (Wed)** — scan: LW new since 17:15 = 0 new research posts | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW karma top = "OpenAI's surveillance language" (already picked 14:45) | backlog review: "Sacred values of future AIs" (Cleo Nardo, 2026-03-04T07:47, ~10pts) unpicked from earlier cycles.
+
+**[backlog-pick]** *Sacred values of future AIs* — LessWrong, 2026-03-04, Cleo Nardo — Applies Hanson's sacralization model to multi-agent AI coordination: argues that diverse AIs facing coordination pressure will tend to sacralize HHH (Helpful/Harmless/Honest), and that this sacralization would be net-harmful (far-mode reasoning degrades decision quality on precisely those values). Connects to the Gradual Disempowerment / misaligned-culture thread. Explicitly speculative (author caveats all three load-bearing assumptions), but useful for thinking about value-lock-in dynamics in agent populations and why "just train for HHH" can compound rather than prevent alignment failure.
+- Link: <https://www.lesswrong.com/posts/sjeqDKhDHgu3sxrSq/sacred-values-of-future-ais>
+
+**2026-03-04 18:15 (Wed)** — scan: LW top = "Physics of RL" (already picked 16:15) | AF top = "How to Design Environments for Understanding Model Motives" (already picked 13:45) | no new posts since 17:45 scan.
+
+**[no high-signal update]** — feeds stable; all high-signal items for today already captured.
+
+---
+**2026-03-04 18:45 (Wed)** — scan: LW new-rss +1 new post | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated = "models have some pretty funny attractor states" (already picked 13:15).
+
+**[new-pick]** *Mass surveillance, red lines, and a crazy weekend* — LessWrong / windowsontheory, 2026-03-04, OpenAI researcher (cross-post) — Insider take on the OpenAI–DoW deal from an OpenAI employee: argues (1) AI-enabled harm to democracy is an underrated risk (IRS-as-AI-army analogy for politically-targeted enforcement); (2) the DoW deal's contract conditions + public attention represent a genuine opening to enshrine anti-mass-surveillance red lines analogous to biosecurity/cybersecurity frameworks; (3) victory is not yet declared — the real test is in monitoring safeguards, not contract language. Complements the prior "surveillance language loopholes" post (picked 14:45) by providing the internal OpenAI perspective and specific threat model for AI-enabled authoritarianism. High signal: rare candid insider view on governance red-lines + concrete policy framing for democracy-harm as an AI-safety category.
+- Link: <https://www.lesswrong.com/posts/mass-surveillance-red-lines-crazy-weekend> *(new-rss feed; exact slug TBC)*

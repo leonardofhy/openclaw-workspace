@@ -488,9 +488,35 @@ Cron summaries ARE delivered to Leo in near-real-time via the channel (Discord/m
 
 ---
 
+## Q33: Skip-Guard Threshold Too Low for 30min Cadence (PENDING Leo approval — cycle #268)
+
+**Problem (observed 4× today — cycles #237, #242, #249, #253):**
+Current consecutive-skip guard threshold = ≥3 skips → force reflect(meta-audit).
+At 30min cadence: ≥3 skips = 1.5h dead zone. This is SHORTER than the dead-zone sentinel window (2h), causing the guard to fire **inside** what should be a single sentinel window. Result: 4 low-value guard-triggered reflects in one day.
+
+**Proposal (requires Leo approval per self-modification rule):**
+> Raise skip-guard threshold from **≥3 to ≥6** consecutive skips.
+> - New trigger: ≥6 skips = 3h dead zone (matches 2× sentinel window, more natural)
+> - Expected impact: guard fires 1-2×/day instead of 4×/day in dead zones
+> - No risk: Q31 90min cooldown already reduces ping-pong; this is an additional guard on entry
+
+**Why this needs Leo:**
+SKILL.md says "Consecutive execution-blocked skips (≥2) → force reflect (meta-audit)" — this is a direction-level rule. Changing ≥2/≥3 to ≥6 changes the guard's behavior significantly. Self-modification rule requires Leo approval.
+
+**Estimated effort for Leo:** 30 seconds — just say "yes, change it" and I'll apply in next SKILL.md update cycle.
+
+**Status:** 🟡 PENDING Leo decision — raised first time cycle #253 (11:01), surfaced formally here cycle #268 (19:01)
+
+---
+
+## Meta-board Status: 33/33 Qs answered, Q33 PENDING Leo ✅ (cycle #268)
+
+---
+
 ## Flag for Leo
 - **Delete:** `提醒-SL-Weekly-Meeting` cron job (id: d70f2ffd-…) — disabled, past, error state
 - **Monitor:** `ai-safety-radar-30min` — reassess after 1 week if generating signal
-- **⭐ UNBLOCK REQUEST (PENDING since 02:01 AM):** See `memory/learning/unblock-request.md` — 15-20 min of Leo's time unlocks all experiments
+- **⭐ UNBLOCK REQUEST (PENDING since 02:01 AM Feb 28):** See `memory/learning/unblock-request.md` — 15-20 min of Leo's time unlocks all experiments
 - **📋 DAY-1 PLAN READY:** `memory/learning/2026-02-28_cycle88.md` — step-by-step session plan to start experiments immediately
 - **🎨 Q10:** Audio SAE visualization gap — `sae_vis` = text only. Options + recommendation above. Quick decision needed for Paper B.
+- **📌 Q33:** Approve skip-guard threshold ≥3→≥6? Fired 4× today generating low-value reflects. 30-second decision.
