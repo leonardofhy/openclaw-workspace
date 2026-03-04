@@ -240,3 +240,14 @@
     — finding-led，偏保守學術口吻
 
 ---
+
+## Batch 7 — 04:08（策略：mixed）
+
+1. **Designing Benchmarks That Must Be Listened To**
+   — auto-generated via title_workbench
+
+2. **Do Models Actually Listen?**
+   — auto-generated via title_workbench
+
+3. **Auditing Audio Questions in Audio-Language Benchmarks**
+   — auto-generated via title_workbench
