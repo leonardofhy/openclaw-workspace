@@ -251,3 +251,16 @@
 
 3. **Auditing Audio Questions in Audio-Language Benchmarks**
    — auto-generated via title_workbench
+
+## 🔖 Auto Shortlist — 2026-03-05 04:09
+
+來源 batches：Batch 6 — 04:01（策略：數字衝擊）, Batch 7 — 04:08（策略：mixed）
+
+1. **73% Without Listening: Auditing Text Priors in Audio-Language Benchmarks**
+   - score: 7.90 (len=2.4, spec=2.0, clarity=2.0, novelty=1.5, penalty=0.0)
+
+2. **61–73% Without Audio: How Much Are We Really Evaluating Listening?**
+   - score: 7.50 (len=3.0, spec=1.0, clarity=2.0, novelty=1.5, penalty=0.0)
+
+3. **3 Benchmarks, Little Hearing: Quantifying Audio Necessity at Item Level**
+   - score: 7.00 (len=2.7, spec=1.5, clarity=2.0, novelty=0.8, penalty=0.0)

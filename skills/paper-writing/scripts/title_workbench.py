@@ -143,8 +143,12 @@ def extract_batch_titles(md_text: str, batch_label: str) -> list[str]:
     return titles
 
 
+def all_batch_labels(md_text: str) -> list[str]:
+    return re.findall(r"^##\s+(Batch\s+\d+\s+—\s+[^\n]+)", md_text, flags=re.MULTILINE)
+
+
 def latest_batch_label(md_text: str) -> str:
-    labels = re.findall(r"^##\s+(Batch\s+\d+\s+—\s+[^\n]+)", md_text, flags=re.MULTILINE)
+    labels = all_batch_labels(md_text)
     if not labels:
         raise ValueError("no batch sections found")
     return labels[-1]
@@ -231,6 +235,44 @@ def cmd_select(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_shortlist(args: argparse.Namespace) -> int:
+    path = Path(args.md)
+    md = ensure_md(path)
+
+    labels = args.batch_label or all_batch_labels(md)[-args.last_batches :]
+    if not labels:
+        raise ValueError("no batches selected for shortlist")
+
+    all_titles: list[str] = []
+    for label in labels:
+        all_titles.extend(extract_batch_titles(md, label))
+
+    unique_titles = dedup_keep_order(all_titles)
+    scored = sorted((score_title(t) for t in unique_titles), key=lambda x: x.score, reverse=True)
+    top = scored[: args.top_k]
+
+    print(f"Shortlist top {len(top)} from {len(labels)} batches ({len(unique_titles)} unique titles)")
+    for i, s in enumerate(top, start=1):
+        print(f"{i}. {s.score:.2f} | {s.title}")
+
+    if args.append_md:
+        ts = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
+        lines = [
+            f"\n## 🔖 Auto Shortlist — {ts}\n",
+            f"\n來源 batches：{', '.join(labels)}\n",
+        ]
+        for i, s in enumerate(top, start=1):
+            b = s.breakdown
+            lines.append(
+                f"\n{i}. **{s.title}**\n"
+                f"   - score: {s.score:.2f} (len={b['length']}, spec={b['specificity']}, clarity={b['clarity']}, novelty={b['novelty']}, penalty={b['penalty']})\n"
+            )
+        append_section(path, "".join(lines))
+        print(f"Appended shortlist section to {path}")
+
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Generate/score/select paper titles")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -255,6 +297,14 @@ def build_parser() -> argparse.ArgumentParser:
     sel.add_argument("--top-k", type=int, default=5)
     sel.set_defaults(func=cmd_select)
 
+    sh = sub.add_parser("shortlist", help="Create top-k shortlist across multiple batches")
+    sh.add_argument("--md", default=str(DEFAULT_MD))
+    sh.add_argument("--batch-label", action="append", default=[], help="Repeatable; default uses latest N batches")
+    sh.add_argument("--last-batches", type=int, default=3, help="Used when --batch-label is omitted")
+    sh.add_argument("--top-k", type=int, default=5)
+    sh.add_argument("--append-md", action="store_true", help="Append shortlist section into markdown")
+    sh.set_defaults(func=cmd_shortlist)
+
     return p
 
 
@@ -267,6 +317,9 @@ def main() -> int:
         return 2
     if getattr(args, "top_k", 1) <= 0:
         eprint("ERROR: --top-k must be > 0")
+        return 2
+    if getattr(args, "last_batches", 1) <= 0:
+        eprint("ERROR: --last-batches must be > 0")
         return 2
 
     try:
