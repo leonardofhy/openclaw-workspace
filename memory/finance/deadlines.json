@@ -2,9 +2,9 @@
   {
     "id": "D-001",
     "name": "Pathfinder follow-up",
-    "deadline": "2026-03-13",
+    "deadline": "2026-03-10",
     "category": "funding",
-    "action": "追蹤 Pathfinder grant 結果",
+    "action": "追蹤 Pathfinder grant 結果（內部鎖定 3/10，原始 deadline 3/13）",
     "owner": "bot",
     "warn_days": 3,
     "notify": "discord"
@@ -12,9 +12,9 @@
   {
     "id": "D-002",
     "name": "NTU 國際傑出研究生獎學金確認",
-    "deadline": "2026-03-15",
+    "deadline": "2026-03-11",
     "category": "scholarship",
-    "action": "確認申請時程和資格（研究獎助生是否衝突）",
+    "action": "確認申請時程和資格（研究獎助生是否衝突）（內部鎖定 3/11，原始 3/15）",
     "owner": "leo",
     "warn_days": 5,
     "notify": "discord"

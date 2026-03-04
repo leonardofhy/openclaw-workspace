@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-02-28 13:53
+> 最後更新：2026-03-04 15:10
 
 ## 規則
 
@@ -67,32 +67,34 @@
 - **next_action**: 主線持續推進；備線改為 listen-layer 三步循環（Exp1 attention suppression → Exp2 activation patching → Exp3 layer-restricted LoRA）；blocked 時優先執行 meta-audit 第 1 項（novelty classifier 草案）
 
 ### L-08 | 財務管理（主線）
-- **owner**: Lab
+- **owner**: Leo
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-02-27
+- **last_touched**: 2026-03-04
 - **描述**: 管理 Leo 的財務：獎學金申請追蹤、收入增加策略、支出監控
 - **tracker**: memory/finance/FINANCE_TRACKER.md
-- **next_action**: 查僑委會獎學金 deadline + 台大國際傑出研究生獎學金申請時程 + 電信所 TA 空缺
+- **next_action**: 整理 3 月現金流與必要支出清單（含固定/可延後）
 - **recurring**: 每週更新一次 FINANCE_TRACKER
 
 ### L-07 | SYNC_PROTOCOL 落地驗證
 - **owner**: Lab
 - **priority**: P2
 - **created**: 2026-02-27
-- **last_touched**: 2026-02-27
+- **last_touched**: 2026-03-04
 - **描述**: 驗證混合同步協議實際運作：每日 merge、[STATE] 通知、reconcile
-- **next_action**: 等 Mac Leo 完成 merge 後做第一次 smoke test
+- **next_action**: 跑一輪端到端 SYNC 驗證（含失敗重試）並記錄結果
+- **deadline**: 2026-03-04
 
 ### L-09 | HN 雙時段推薦（移交自 Mac）
 - **owner**: Lab
 - **priority**: P1
 - **created**: 2026-02-28
-- **last_touched**: 2026-02-28
+- **last_touched**: 2026-03-04
 - **描述**: 每天 2 次閱讀 Hacker News，分析後推送 Leo 感興趣文章
 - **schedule**: 13:30、20:30（Asia/Taipei）
 - **output_format**: 每次 3-5 篇；每篇含 why it matters + link + action（略讀/深讀）
-- **next_action**: 於 Lab 端建立固定流程，先完成今天 20:30 推送並在 #bot-sync 回報接手狀態
+- **next_action**: 產出並排程兩個時段的推薦草案（早/晚各一）
+- **deadline**: 2026-03-04
 
 ## WAITING
 
