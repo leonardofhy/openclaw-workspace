@@ -1029,3 +1029,13 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *Sacred values of future AIs* — LessWrong, 2026-03-04, Cleo Nardo — Applies Hanson's sacralization model to multi-agent AI coordination: argues that diverse AIs facing coordination pressure will tend to sacralize HHH (Helpful/Harmless/Honest), and that this sacralization would be net-harmful (far-mode reasoning degrades decision quality on precisely those values). Connects to the Gradual Disempowerment / misaligned-culture thread. Explicitly speculative (author caveats all three load-bearing assumptions), but useful for thinking about value-lock-in dynamics in agent populations and why "just train for HHH" can compound rather than prevent alignment failure.
 - Link: <https://www.lesswrong.com/posts/sjeqDKhDHgu3sxrSq/sacred-values-of-future-ais>
+
+**2026-03-04 18:15 (Wed)** — scan: LW top = "Physics of RL" (already picked 16:15) | AF top = "How to Design Environments for Understanding Model Motives" (already picked 13:45) | no new posts since 17:45 scan.
+
+**[no high-signal update]** — feeds stable; all high-signal items for today already captured.
+
+---
+**2026-03-04 18:45 (Wed)** — scan: LW new-rss +1 new post | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated = "models have some pretty funny attractor states" (already picked 13:15).
+
+**[new-pick]** *Mass surveillance, red lines, and a crazy weekend* — LessWrong / windowsontheory, 2026-03-04, OpenAI researcher (cross-post) — Insider take on the OpenAI–DoW deal from an OpenAI employee: argues (1) AI-enabled harm to democracy is an underrated risk (IRS-as-AI-army analogy for politically-targeted enforcement); (2) the DoW deal's contract conditions + public attention represent a genuine opening to enshrine anti-mass-surveillance red lines analogous to biosecurity/cybersecurity frameworks; (3) victory is not yet declared — the real test is in monitoring safeguards, not contract language. Complements the prior "surveillance language loopholes" post (picked 14:45) by providing the internal OpenAI perspective and specific threat model for AI-enabled authoritarianism. High signal: rare candid insider view on governance red-lines + concrete policy framing for democracy-harm as an AI-safety category.
+- Link: <https://www.lesswrong.com/posts/mass-surveillance-red-lines-crazy-weekend> *(new-rss feed; exact slug TBC)*
