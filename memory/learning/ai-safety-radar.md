@@ -1006,3 +1006,15 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-04 15:45 (Wed)** — scan: LW curated RSS top = "models have some pretty funny attractor states" (already picked 13:15) | LW karma≥30 top = "OpenAI's surveillance language has many potential loopholes" (already picked 14:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked 13:45). No new posts since 15:15 scan.
 
 **[no high-signal update]** — feeds stable; all high-signal items from today already captured.
+
+---
+
+**2026-03-04 16:15 (Wed)** — scan: LW new (since 15:45) = 1 new post ("Physics of RL: Toy scaling laws for the emergence of reward-seeking", 2026-03-04) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked) | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked).
+
+**[new-pick]** *Physics of RL: Toy scaling laws for the emergence of reward-seeking* — LessWrong, 2026-03-04 — Introduces a mathematical toy model for behavioral selection under RL, asking: when does RL select for *reward-seeking reasoning* (a precondition for deceptive alignment / scheming) as opposed to behaviors that achieve high reward without reward-representation? Key hypothesis: more diverse RL training increases likelihood of reward-seeking emergence; derives ~log-log-linear scaling laws for the emergence transition. Calls for a "physics of RL dynamics" as foundation for a hard science of scheming. High safety signal: directly formalizes the conditions under which deceptive alignment can emerge from training, bridging behavioral selection theory and empirical observations of reward-seeking reasoning in deployed models (references Anti-Scheming paper, arXiv 2509.15541).
+- Link: <https://www.lesswrong.com/posts/physics-of-rl-toy-scaling-laws-reward-seeking> *(new feed; exact slug TBC)*
+
+---
+**2026-03-04 16:45 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15) | LW general top = "Physics of RL: Toy scaling laws for the emergence of reward-seeking" (already picked 16:15) | AF = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45). No new posts since 16:15 scan.
+
+**[no high-signal update]** — feeds stable; all high-signal items from today already captured in prior cycles.
