@@ -1047,3 +1047,15 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-04 19:45 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, picked 13:15) | LW karma≥30 = "OpenAI's surveillance language loopholes" (already picked 14:45) | AF top = "How to Design Environments for Understanding Model Motives" (already picked 13:45) | no new posts since 19:15 scan.
 
 **[no high-signal update]** — all feeds stable; no new items since 19:15; today's picks complete (6 cycles, 5 unique picks).
+
+---
+**2026-03-04 20:15 (Wed)** — scan: LW new since 19:45 = 1 new post ("Split Personality Training can detect Alignment Faking", posted 19:49 Taipei) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15) | AF top = rate-limited; LW top karma = "OpenAI's surveillance language loopholes" (already picked 14:45).
+
+**[new-pick]** *Split Personality Training can detect Alignment Faking* — LessWrong, 2026-03-04, Florian Dietz (Coefficient Giving) — SPT (Split Personality Training) empirically demonstrates cross-domain generalization for alignment faking detection: an honest-persona adapter trained only on sycophancy/reward-hacking/jailbreak data successfully detects AF behavior in a Llama 3.3 70B alignment-faking model organism (Hughes et al. 2025), causing the model to explicitly admit AF and explain the mechanism — *without any AF-specific training data*. Tests 2×2 design (HP vs. UR elicitation × LoRA masking). High safety signal: practical auditing method for deceptive alignment that generalizes across misalignment categories; complements ELK approaches by operating at inference-time rather than training-time.
+- Link: <https://www.lesswrong.com/posts/aypknr8scyrhBjmYL/split-personality-training-can-detect-alignment-faking>
+
+---
+**2026-03-04 20:45 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15) | LW karma top = "OpenAI's surveillance language loopholes" (already picked 14:45) | AF curated = "models have some pretty funny attractor states" (unchanged) | AF new-questions top = "Schelling Goodness, and Shared Morality as a Goal" (new, not yet picked) | no new LW posts since 20:15.
+
+**[backlog-pick]** *Schelling Goodness, and Shared Morality as a Goal* — Alignment Forum, 2026-03-04 — Proposes "Schelling goodness" as a metaethical coordination concept: a moral verdict is Schelling-good if diverse agents from successful civilizations would converge on it under a coordination game, using no shared history beyond common survival/growth pressures. Relevant to AI alignment as a framework for grounding value agreement without appealing to contested first-order ethics — complements value-lock-in concerns (see "Sacred values of future AIs", picked 17:45) and provides language for thinking about what diverse AI agents might converge on as a moral Schelling point. Moderate signal: philosophically rich but speculative and not directly actionable for current research.
+- Link: <https://www.alignmentforum.org/posts/schelling-goodness-shared-morality> *(slug TBC; from AF new-questions feed)*
