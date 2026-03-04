@@ -92,9 +92,9 @@
 - **描述**: 每天 2 次閱讀 Hacker News，分析後推送 Leo 感興趣文章
 - **schedule**: 13:30、20:30（Asia/Taipei）
 - **output_format**: 每次 3-5 篇；每篇含 why it matters + link + action（略讀/深讀）
-- **progress**: v1 完成 — `hn_recommend.py` (interest profile + dedup + feedback)，2 cron jobs 已建立
+- **progress**: v1 完成 — `hn_recommend.py` (interest profile + dedup + feedback)，改為每小時推送
 - **next_action**: 觀察首批推送效果，根據 Leo 反饋調整 profile 權重
-- **cron_ids**: `18871a94`（13:30 午間）, `1d66820b`（20:30 晚間）
+- **cron_ids**: `f70a49dc`（每小時 09-22）
 
 ## WAITING
 
