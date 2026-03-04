@@ -1059,3 +1059,13 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *Schelling Goodness, and Shared Morality as a Goal* — Alignment Forum, 2026-03-04 — Proposes "Schelling goodness" as a metaethical coordination concept: a moral verdict is Schelling-good if diverse agents from successful civilizations would converge on it under a coordination game, using no shared history beyond common survival/growth pressures. Relevant to AI alignment as a framework for grounding value agreement without appealing to contested first-order ethics — complements value-lock-in concerns (see "Sacred values of future AIs", picked 17:45) and provides language for thinking about what diverse AI agents might converge on as a moral Schelling point. Moderate signal: philosophically rich but speculative and not directly actionable for current research.
 - Link: <https://www.alignmentforum.org/posts/schelling-goodness-shared-morality> *(slug TBC; from AF new-questions feed)*
+
+---
+**2026-03-04 21:15 (Wed)** — scan: LW new since 20:45 = 0 new posts | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15) | LW karma top = "OpenAI's surveillance language loopholes" (already picked 14:45) | backlog review: "Mass Surveillance w/ LLMs is the Default Outcome. Contracts Won't Change That." (Logan Riggs, Mar 3, 37pts) — legislative argument (Third Party Doctrine reform needed to stop mass surveillance); companion to today's 3× surveillance picks — redundant, skipping.
+
+**[no high-signal update]** — feeds stable; no new posts since 20:45; today's radar complete (7 unique picks: "models have some funny attractor states", "How to Design Environments for Model Motives", "OpenAI's surveillance language loopholes", "Mass surveillance red lines", "Physics of RL scaling laws", "Split Personality Training detects AF", "Schelling Goodness").
+
+---
+**2026-03-04 21:45 (Wed)** — scan: LW new since 21:15 = 1 post ("How a Pinky Promise once stopped a war in the Middle East", baseScore=2, non-safety) | AF = rate-limited/blocked | LW curated/top unchanged.
+
+**[no high-signal update]** — single new LW post is off-topic (geopolitical anecdote, score=2); AF unavailable; all feeds stable. Today's picks remain complete.

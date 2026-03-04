@@ -88,7 +88,7 @@
 4. [x] **Activation patching best practices** (Heimersheim & Nanda) — ✅ 2026-03-02 cycle #178; AND/OR gate insight, audio denoising preference, Hydra 0.7x, top-k aggregate metric, AtP for large models
 5. [x] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541] ✅ 2026-03-02 full deep read cycle #181; 100% ASR via waveform PGD, 99% robustness via MLP-layer activation patching, Whisper encoder; Gap #24: no SAE-feature attribution for jailbreak mechanism
 6. [x] **RAVEL** (Huang et al., ACL 2024) — Cause/Isolate two-score metric; MDAS = SOTA; SAEs fail isolation; Audio-RAVEL = new Category 0 for AudioSAEBench ✅ 2026-03-02 cycle #179
-7. [ ] **Causal abstraction** (Geiger et al.) — 因果介入的理論基礎
+7. [x] **Causal abstraction** (Geiger et al.) — ✅ 2026-03-04 deep read cycle #272; theory triangle complete; Paper A §2.1 Geiger + Sutter + Asiaee fully assembled; gc(L) = graded faithfulness instance
 8. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
 9. [x] **SAEBench** (Karvonen, Nanda et al., ICML 2025) — 8-metric multi-category evaluation; Matryoshka SAE wins disentanglement; proxy metrics ≠ quality; AudioSAEBench template identified; "Grounding Sensitivity" as novel metric ✅ 2026-02-27 cycle #38
 10. [ ] ICML 2025 MI Tutorial materials
