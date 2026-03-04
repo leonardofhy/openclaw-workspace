@@ -277,6 +277,19 @@
       "created": "2026-03-03",
       "due": null,
       "completed": "2026-03-03"
+    },
+    {
+      "id": "Q038",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A: Related Work prose section (Tier 0) — 4-subsection draft from grid",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "",
+      "created": "2026-03-04",
+      "due": null,
+      "completed": "2026-03-04"
     }
   ],
   "archived_count": 16,
