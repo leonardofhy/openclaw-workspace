@@ -92,8 +92,9 @@
 - **描述**: 每天 2 次閱讀 Hacker News，分析後推送 Leo 感興趣文章
 - **schedule**: 13:30、20:30（Asia/Taipei）
 - **output_format**: 每次 3-5 篇；每篇含 why it matters + link + action（略讀/深讀）
-- **next_action**: 建立雙時段 cron job（news_scout 已有基礎，需拆成 2 次推送 + 加 Discord 通知）
-- **status**: ⚠️ 尚未實作雙時段推送，目前只有 14:00 的 news-scout（autodidact 用）
+- **progress**: v1 完成 — `hn_recommend.py` (interest profile + dedup + feedback)，2 cron jobs 已建立
+- **next_action**: 觀察首批推送效果，根據 Leo 反饋調整 profile 權重
+- **cron_ids**: `18871a94`（13:30 午間）, `1d66820b`（20:30 晚間）
 
 ## WAITING
 

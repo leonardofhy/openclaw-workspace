@@ -128,6 +128,8 @@
 - 週五 20:00 天氣偵察（email）
 
 ### Lab Bot（WSL2, 24/7）
+- **13:30 HN 午間推薦** `18871a94`（isolated, g53s, 120s timeout）— 個人化 HN 推薦，送 Leo DM
+- **20:30 HN 晚間推薦** `1d66820b`（isolated, g53s, 120s timeout）— 同上（PM session，避免重複）
 - ***/30 08-23 Heartbeat**（main session, g53s）— 沉默優先；有 alert 才通知 #general；**含 deadline watchdog**
 - **:15/:45 08-23 Autodidact**（isolated, sonnet, 300s timeout）— v2：precheck gate → phase-aware cycle
 - **14:00 News Scout** `366e373d`（isolated, g53s, 180s timeout）— HN + Alignment Forum 掃描 → LLM 相關度評分 → 加入 autodidact queue
