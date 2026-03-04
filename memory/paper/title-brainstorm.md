@@ -264,3 +264,54 @@
 
 3. **3 Benchmarks, Little Hearing: Quantifying Audio Necessity at Item Level**
    - score: 7.00 (len=2.7, spec=1.5, clarity=2.0, novelty=0.8, penalty=0.0)
+
+## Batch 8 — 04:10（策略：redesign）
+
+1. **Benchmarking for Ears, Not Priors**
+   — auto-generated via title_workbench
+
+2. **Designing Benchmarks That Must Be Heard**
+   — auto-generated via title_workbench
+
+3. **Benchmarking for Acoustic Grounding, Not Priors**
+   — auto-generated via title_workbench
+
+4. **Towards Audio-Required Evaluation: Auditing and Repairing Read-Not-Listen Shortcuts**
+   — auto-generated via title_workbench
+
+5. **A Roadmap to Audio-Faithful Evaluation: Evidence from Audio-Need Analysis at Scale**
+   — auto-generated via title_workbench
+
+6. **Towards Audio-Faithful Evaluation: Auditing and Repairing Text-Prior Shortcuts**
+   — auto-generated via title_workbench
+
+7. **Designing Benchmarks That Must Be Listened To**
+   — auto-generated via title_workbench
+
+8. **Towards Audio-Required Evaluation: Auditing and Repairing Text-Prior Shortcuts**
+   — auto-generated via title_workbench
+
+9. **Benchmarking for Acoustic Grounding, Not Text Shortcuts**
+   — auto-generated via title_workbench
+
+10. **Benchmarking for Ears, Not Text Shortcuts**
+   — auto-generated via title_workbench
+
+## 🔖 Auto Shortlist — 2026-03-05 04:10
+
+來源 batches：Batch 6 — 04:01（策略：數字衝擊）, Batch 7 — 04:08（策略：mixed）, Batch 8 — 04:10（策略：redesign）
+
+1. **73% Without Listening: Auditing Text Priors in Audio-Language Benchmarks**
+   - score: 7.90 (len=2.4, spec=2.0, clarity=2.0, novelty=1.5, penalty=0.0)
+
+2. **61–73% Without Audio: How Much Are We Really Evaluating Listening?**
+   - score: 7.50 (len=3.0, spec=1.0, clarity=2.0, novelty=1.5, penalty=0.0)
+
+3. **Towards Audio-Required Evaluation: Auditing and Repairing Read-Not-Listen Shortcuts**
+   - score: 7.10 (len=2.1, spec=1.5, clarity=2.0, novelty=1.5, penalty=0.0)
+
+4. **3 Benchmarks, Little Hearing: Quantifying Audio Necessity at Item Level**
+   - score: 7.00 (len=2.7, spec=1.5, clarity=2.0, novelty=0.8, penalty=0.0)
+
+5. **A Roadmap to Audio-Faithful Evaluation: Evidence from Audio-Need Analysis at Scale**
+   - score: 6.80 (len=3.0, spec=1.0, clarity=2.0, novelty=0.8, penalty=0.0)

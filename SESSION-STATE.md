@@ -3,12 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-05 00:12
+**Last Updated:** 2026-03-05 00:20
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-05 00:20: Leo instruction — current mission is to craft paper titles aligned with the thesis; Leo is going to sleep and requests autonomous continuation without waiting for replies.
 - 2026-03-05 00:12: Leo approval — proceed with further development ("沒問題，你可以開發").
 - 2026-03-05 00:00: Leo decision — approved building a real title-generation workflow/script ("可以呀").
 - 2026-03-04 16:16: Leo decision — skip NTUAIS check today; postpone to Thursday after 20:00.
