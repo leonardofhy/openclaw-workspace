@@ -359,6 +359,96 @@ def cmd_fetch_and_score(args):
     print(file=sys.stdout)  # trailing newline
 
 
+def cmd_collect(args):
+    """Collect: fetch, score, append new candidates to daily JSONL. Silent accumulation."""
+    profile = load_profile()
+    seen = load_seen()
+
+    fetch_count = max(args.limit * 5, 50)
+    print(f"Collecting HN top {fetch_count}...", file=sys.stderr)
+    items = fetch_hn_top(limit=fetch_count)
+
+    if not items:
+        print("No stories fetched", file=sys.stderr)
+        return
+
+    min_score = profile.get('min_hn_score', 20)
+    items = [i for i in items if i.get('score', 0) >= min_score]
+    items = [i for i in items if i['id'] not in seen]
+
+    for item in items:
+        item['interest_score'] = score_article(item, profile)
+        item['suggested_action'] = classify_action(item['interest_score'])
+
+    # Load existing daily candidates to dedup
+    today = args.date or datetime.now(TZ).strftime('%Y-%m-%d')
+    candidates_dir = os.path.join(DATA_DIR, 'candidates')
+    os.makedirs(candidates_dir, exist_ok=True)
+    daily_path = os.path.join(candidates_dir, f'{today}.jsonl')
+
+    existing_ids = set()
+    if os.path.exists(daily_path):
+        with open(daily_path) as f:
+            for line in f:
+                try:
+                    existing_ids.add(json.loads(line.strip())['id'])
+                except (json.JSONDecodeError, KeyError):
+                    continue
+
+    new_items = [i for i in items if i['id'] not in existing_ids]
+    if not new_items:
+        print(f"No new candidates (all {len(items)} already collected)", file=sys.stderr)
+        return
+
+    with open(daily_path, 'a') as f:
+        for item in new_items:
+            item['collected_at'] = datetime.now(TZ).isoformat()
+            f.write(json.dumps(item, ensure_ascii=False) + '\n')
+
+    print(f"Collected {len(new_items)} new candidates → {daily_path} (total today: {len(existing_ids) + len(new_items)})", file=sys.stderr)
+
+
+def cmd_digest(args):
+    """Digest: read today's collected candidates, rank, output top N as JSON for LLM."""
+    today = args.date or datetime.now(TZ).strftime('%Y-%m-%d')
+    candidates_dir = os.path.join(DATA_DIR, 'candidates')
+    daily_path = os.path.join(candidates_dir, f'{today}.jsonl')
+
+    if not os.path.exists(daily_path):
+        print(f"No candidates for {today}", file=sys.stderr)
+        json.dump({"items": [], "date": today}, sys.stdout)
+        return
+
+    items = []
+    with open(daily_path) as f:
+        for line in f:
+            try:
+                items.append(json.loads(line.strip()))
+            except json.JSONDecodeError:
+                continue
+
+    # Re-score with latest profile (scores may have been stale)
+    profile = load_profile()
+    for item in items:
+        item['interest_score'] = score_article(item, profile)
+        item['suggested_action'] = classify_action(item['interest_score'])
+
+    # Sort by interest score desc, then HN score as tiebreaker
+    items.sort(key=lambda x: (x.get('interest_score', 0), x.get('score', 0)), reverse=True)
+
+    top = items[:args.limit]
+
+    output = {
+        'date': today,
+        'total_collected': len(items),
+        'selected': len(top),
+        'items': top,
+    }
+    json.dump(output, sys.stdout, ensure_ascii=False, indent=2)
+    print()
+    print(f"Digest: {len(items)} candidates → top {len(top)}", file=sys.stderr)
+
+
 def cmd_mark_seen(args):
     """Mark IDs as seen from stdin JSON array."""
     try:
@@ -399,10 +489,20 @@ def main():
     parser = argparse.ArgumentParser(description='HN Recommender for Leo')
     sub = parser.add_subparsers(dest='command')
 
-    # Default: fetch and score
-    p_fetch = sub.add_parser('fetch', help='Fetch and score HN stories')
+    # fetch: one-shot fetch + score (legacy, still works)
+    p_fetch = sub.add_parser('fetch', help='Fetch and score HN stories (one-shot)')
     p_fetch.add_argument('--limit', type=int, default=8, help='Number of candidates')
-    p_fetch.add_argument('--session', default='default', help='Session tag (morning/evening)')
+    p_fetch.add_argument('--session', default='default', help='Session tag')
+
+    # collect: silent hourly accumulation
+    p_collect = sub.add_parser('collect', help='Fetch and append new candidates to daily file')
+    p_collect.add_argument('--limit', type=int, default=15, help='Max candidates per collect')
+    p_collect.add_argument('--date', default=None, help='Override date (YYYY-MM-DD)')
+
+    # digest: daily summary for LLM
+    p_digest = sub.add_parser('digest', help='Output top-N from today\'s collected candidates')
+    p_digest.add_argument('--limit', type=int, default=10, help='Number of items in digest')
+    p_digest.add_argument('--date', default=None, help='Override date (YYYY-MM-DD)')
 
     p_seen = sub.add_parser('mark-seen', help='Mark article IDs as seen')
 
@@ -417,7 +517,11 @@ def main():
 
     args = parser.parse_args()
 
-    if args.command == 'mark-seen':
+    if args.command == 'collect':
+        cmd_collect(args)
+    elif args.command == 'digest':
+        cmd_digest(args)
+    elif args.command == 'mark-seen':
         cmd_mark_seen(args)
     elif args.command == 'feedback':
         cmd_feedback(args)
@@ -425,6 +529,8 @@ def main():
         cmd_profile(args)
     elif args.command == 'stats':
         cmd_stats(args)
+    elif args.command == 'fetch':
+        cmd_fetch_and_score(args)
     else:
         # Default to fetch
         if not hasattr(args, 'limit'):

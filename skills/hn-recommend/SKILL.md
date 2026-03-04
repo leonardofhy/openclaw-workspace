@@ -1,70 +1,50 @@
 ---
 name: hn-recommend
 description: >
-  Personalized Hacker News recommendations for Leo. Dual-time push (13:30 + 20:30)
-  with interest profile learning, dedup, and feedback loop.
+  Personalized Hacker News recommendations for Leo. Hourly silent collection,
+  daily 20:30 digest (top 10), interest profile learning, dedup, feedback loop.
 ---
 
 # HN Recommender — L-09
 
-每小時推送 Leo 感興趣的 Hacker News 文章到 Discord（09:00-22:00）。
+每小時靜默蒐集 HN 文章 → 每天 20:30 整理 top 10 推送 Leo。
 
 ## Architecture
 
 ```
-[Cron 每小時整點 09-22]
-  → LLM session (isolated, g53s)
-    → Step 1: python3 hn_recommend.py fetch --limit 8 --session hourly
-    → Step 2: LLM reads candidates, writes personalized "why it matters"
-    → Step 3: Send to Discord #general (≤5 articles, formatted)
-    → Step 4: Mark sent articles as seen (avoid PM repeat)
+[Cron 每小時 09-22] hn-collect (spark, 60s)
+  → python3 hn_recommend.py collect
+  → 靜默寫入 memory/hn/candidates/YYYY-MM-DD.jsonl（不發訊息）
+
+[Cron 20:30] hn-daily-digest (g53s, 120s)
+  → python3 hn_recommend.py digest --limit 10
+  → LLM 寫 "why it matters" × 10 篇
+  → Discord DM 一次推送
+  → mark-seen
 ```
 
-## Cron Prompt (hourly, 09-22)
+## Commands
 
-```
-Run the HN recommender for Leo.
-
-1. Run: python3 ~/.openclaw/workspace/skills/hn-recommend/scripts/hn_recommend.py fetch --limit 8 --session hourly
-2. From the JSON output, pick the top 3-5 most interesting items (interest_score ≥ 3).
-3. For each picked item, write a 1-sentence "why it matters" tailored to Leo's research interests
-   (mechanistic interpretability, speech/audio ML, AI safety, tooling).
-4. Format and send to Discord user:756053339913060392 (Leo DM):
-
-   📰 **HN 推薦** ({date} {HH:MM})
-
-   **1. [Title](url)**
-   💡 {why it matters}
-   📊 {score}pts · {comments} comments · {suggested_action}
-
-   **2. [Title](url)**
-   ...
-
-   > 回覆 👍 / 👎 + 編號 來調整推薦偏好
-
-5. After sending, mark all sent article IDs as seen:
-   echo '["id1","id2",...]' | python3 ~/.openclaw/workspace/skills/hn-recommend/scripts/hn_recommend.py mark-seen
-
-6. If no items score >= 3 after LLM review, skip silently (HEARTBEAT_OK).
-```
+| Command | 說明 |
+|---------|------|
+| `collect` | 靜默蒐集：fetch HN → score → 新候選寫入當日 JSONL |
+| `digest --limit 10` | 整理：讀當日候選 → 重新排序 → 輸出 top N JSON |
+| `fetch --limit N` | 舊版一次性 fetch + score（仍可用） |
+| `mark-seen` | stdin JSON array → 標記為已推送 |
+| `feedback <id> +/-` | 記錄 Leo 的 👍/👎 |
+| `profile` | 顯示興趣 profile |
+| `stats` | 統計（seen 數、feedback 數） |
 
 ## Data Files
 
 | File | Purpose |
 |------|---------|
-| `memory/hn/preferences.json` | Interest profile (boost/penalty keywords, weights) |
-| `memory/hn/seen.jsonl` | Seen article IDs (7-day window, auto-GC) |
-| `memory/hn/feedback.jsonl` | Leo's 👍/👎 feedback history |
+| `memory/hn/preferences.json` | Interest profile (boost/penalty keywords) |
+| `memory/hn/candidates/YYYY-MM-DD.jsonl` | 當日蒐集的候選文章（每小時追加） |
+| `memory/hn/seen.jsonl` | 已推送 article IDs（7 天 dedup） |
+| `memory/hn/feedback.jsonl` | Leo 的 👍/👎 反饋 |
 
 ## Feedback Loop
 
-When Leo reacts with 👍 or 👎 to a recommendation:
-1. Run `hn_recommend.py feedback <id> +/-`
-2. Periodically (weekly): analyze feedback patterns → adjust `preferences.json` weights
-
-## Profile Tuning
-
-View: `python3 hn_recommend.py profile`
-Stats: `python3 hn_recommend.py stats`
-
-Weights can be manually edited in `memory/hn/preferences.json`.
+Leo 回覆 👍/👎 + 文章編號 → `feedback <id> +/-`
+每週分析 feedback patterns → 調整 `preferences.json` 權重
