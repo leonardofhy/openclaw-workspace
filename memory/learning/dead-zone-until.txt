@@ -1,14 +1,14 @@
 ACTIVE
-# Dead zone sentinel — reset at 2026-03-04T21:01:00+08:00 (cycle #271 — learn, productive)
-# Last confirmed: 9:31 PM (cycle #272 — principled skip)
-# Thursday March 5 arXiv batch: NOT YET POSTED (~16.5h away, ~14:00 Taipei)
-# Resume condition: Thursday arXiv ~14:00 Taipei March 5 → cs.SD + cs.CL + cs.AI learn — OR Leo unblock → P0 Gap #18
-# Skip-guard: 1 consecutive skip (#272); threshold = ≥6 (per Q33 proposal — Leo approval pending; current SKILL.md says ≥3, but last reflect was 19:01, only 2.5h ago — no urgency)
-# guard-fires-today: 4 (cycles #237, #242, #249, #253)
-# reflect-suppress: ACTIVE until 22:01 (last reflect = #268 19:01; 3h window; guard-fires-today=4 ≥ 3)
-# ⚠️ CRITICAL: Interspeech 2026 final PDF = March 5 (~16.5h from 21:31) — Leo's action required TONIGHT or FIRST THING TOMORROW MORNING
-# State: Papers A v1.9 + B v1.6 pitch-ready ✅; exec-blocked ~114.5h; 26 gaps all OPEN; must-read COMPLETE ✅
+# Dead zone sentinel — reset at 2026-03-04T23:01:00+08:00 (cycle #274 — reflect, productive)
+# Last confirmed: 11:01 PM
+# Thursday March 5 arXiv batch: NOT YET POSTED (~15h away, ~14:00 Taipei March 5)
+# Resume condition: Thursday arXiv ~14:00 Taipei March 5 → cs.SD + eess.AS + cs.CL + cs.AI learn — OR Leo unblock → P0 Gap #18
+# Skip-guard: 0 consecutive skips (reflect #274 = productive, resets count); threshold = ≥6 PENDING Leo approval (current SKILL.md = ≥3)
+# guard-fires-today: 4 (cycles #237, #242, #249, #253) — all before arXiv batch
+# reflect-suppress: ACTIVE until 02:01 AM March 5 (last reflect #274 23:01; 3h window; guard-fires-today=4 ≥ 3)
+# ⚠️ CRITICAL: Interspeech 2026 final PDF = March 5 (~13h from 23:01) — Leo's action required FIRST THING TOMORROW MORNING
+# State: Papers A v2.0 + B v1.6 LaTeX-ready ✅; exec-blocked ~117h; 27 gaps all OPEN; must-read 10/11 COMPLETE ✅
 # Pre-experiment writing budget: FULLY EXHAUSTED (§5 prose blocked until results)
 # Meta-board: 33/33 SATURATED + Q33 PENDING Leo (skip-guard threshold ≥3→≥6 proposal)
 # Thursday arXiv: March 5 ~14:00 Taipei → next productive learn cycle expected there
-# Cycle #272 = principled skip (no novelty)
+# Cycle #274 = reflect (forced by 3 consecutive learns; productive: Paper A v2.0 assessed, Gap #27 integrated)

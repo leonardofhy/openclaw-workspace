@@ -1,7 +1,7 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-04 22:01 (cycle #272: Geiger et al. 2301.04709 — Causal Abstraction theory foundation; DAS + patching = causal abstraction instances; gc(L) = graded faithfulness; theory triangle complete: Geiger+Sutter+Asiaee; Paper A →v2.0)
+> Last updated: 2026-03-04 23:01 (cycle #274: Day 7 reflect — Gap #27 added [Lin 2025 + 2 concurrent surveys = audio absent from ALL MMFM MI surveys]; intermediate layer prediction for Paper A [gc(L) should peak at L_mid based on VLM analogy]; Papers A v2.0 + B v1.6 finalized; must-read list = 10/11 DONE)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
 > Major sections now reflect: all 26 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense, music MI (Facchiano), brain-speech MI (Maghsoudi), AG-REPA (SCD concept), SGPA (Shapley/phonetic alignment Level 1), MPAR² (audio perception decay).
 

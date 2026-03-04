@@ -1069,3 +1069,14 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-04 21:45 (Wed)** — scan: LW new since 21:15 = 1 post ("How a Pinky Promise once stopped a war in the Middle East", baseScore=2, non-safety) | AF = rate-limited/blocked | LW curated/top unchanged.
 
 **[no high-signal update]** — single new LW post is off-topic (geopolitical anecdote, score=2); AF unavailable; all feeds stable. Today's picks remain complete.
+
+---
+**2026-03-04 22:41 (Wed)** — scan: LW new since 21:45 = 1 new post ("Make Powerful Machines Verifiable", karma threshold ≥10 feed) | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15).
+
+**[new-pick]** *Make Powerful Machines Verifiable* — LessWrong, 2026-03-04 (evening) — Argues that AI systems, corporations, and governments have no legitimate "privacy rights" analogous to persons; therefore, a refusal to submit to a verification mechanism that *demonstrably* reveals only compliance/non-compliance (while cryptographically hiding proprietary secrets) is itself evidence of non-compliance. Uses Merkle Tree proof-of-reserves (Kraken vs FTX collapse) as the canonical example, and extends the logic to AI training audits and government surveillance oversight. Moderate-to-high safety signal: directly relevant to the oversight/verification cluster that dominated today's scans (complements "Toward Guaranteed Safe AI" GSAI framework picked 2026-03-03 and DoW/supply-chain-risk picks); the argument that *refusal = confession* is crisp and potentially useful for policy framing around mandatory AI audits and compute governance.
+- Link: <https://www.lesswrong.com/posts/make-powerful-machines-verifiable> *(slug TBC)*
+
+---
+**2026-03-04 22:45 (Wed)** — scan: LW RSS (14:45 UTC) top = "OpenAI's surveillance language loopholes" (already picked 14:45) | LW new since 22:41 = 0 new posts | AF = rate-limited.
+
+**[no high-signal update]** — feeds stable; no new items since 22:41 cycle. Today's picks complete (8 unique: "models funny attractor states", "How to Design Environments for Model Motives", "OpenAI surveillance language loopholes", "Mass surveillance red lines crazy weekend", "Physics of RL scaling laws", "Split Personality Training detects AF", "Schelling Goodness shared morality", "Make Powerful Machines Verifiable").

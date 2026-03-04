@@ -1371,15 +1371,40 @@ Priority queue for Leo's first session:
 | #248 | 2026-03-04 08:31 | skip (principled — dead-zone sentinel valid, 1h30m gap < 2h threshold) | Sentinel set 07:01 (#245), gap = 1h30m < 2h. 1 skip since #245. Skip-guard NOT triggered. No new arXiv. Pre-experiment budget EXHAUSTED. Meta-board 33/33 saturated. Principled skip. ⚠️ Interspeech PDF = March 5 (~29.5h). Sentinel expires 09:01. |
 
 | #272 | 2026-03-04 22:01 | learn (Geiger et al. 2301.04709 — Causal Abstraction theory foundation) | **Must-read #7 CLEARED**: Geiger et al. 2301.04709 — 3 contributions: (1) Generalized causal abstraction (mechanism replacement → arbitrary transformation); (2) Formal definitions: polysemantic neurons, linear representation hypothesis, modular features, **graded faithfulness**; (3) **ALL 11 MI methods unified** under causal abstraction (DAS + patching both proven instances). **Paper A → v2.0**: theory triangle COMPLETE — §2.1 now has Geiger (foundation) + Sutter (linearity guard) + Asiaee (efficiency); gc(L) = graded faithfulness instance. Must-read list: 9/11 items complete (remaining: Multimodal MI Survey 2502.17516, Interspeech 2025 Tutorial). ⚠️ Interspeech 2026 PDF = March 5 (~14h). |
+| #273 | 2026-03-04 22:40 | learn (Lin et al. 2502.17516 — Multimodal MI Survey) | **Must-read #8 CLEARED**: Lin et al. survey (30pp, 21 authors) covers 3 MMFM families (non-gen VLMs, generative VLMs, text-to-image) → **ZERO audio/speech coverage**. Gap #27 logged: THREE concurrent MMFM MI surveys all skip audio = white space confirmed by survey omission. New citation for Paper A + B §1: "most comprehensive MMFM MI survey [Lin et al. 2025] does not cover audio." Bonus: intermediate layer finding in VLMs (cross-modal interactions at L_mid, not upper layers) → falsifiable prediction: gc(L) in Paper A should peak at intermediate layers. Must-read: 10/11 complete. Only remaining: Interspeech 2025 Tutorial (manual resource, no arXiv). ⚠️ Interspeech 2026 PDF = March 5 (~15h). |
 
-## Day 7 Final Stats (after cycle #272 — Wednesday March 4, 10:01 PM)
-- Papers read (deep): **26 total** (+1: Geiger 2301.04709)
+## Day 7 Final Stats (after cycle #273 — Wednesday March 4, 10:40 PM)
+- Papers read (deep): **27 total** (+1: Lin et al. 2502.17516)
 - Papers scanned: **124+**
-- Research gaps identified: **26** (all OPEN, all gated)
+- Research gaps identified: **27** (all OPEN, all gated) — Gap #27: Audio absent from all MI surveys
 - Paper ideas: **7** (all 🟢 GREEN gate-validated)
 - Code written: 2 scripts
-- Paper pitches: 2 (**A v2.0** ✅ [theory triangle complete: Geiger+Sutter+Asiaee] + **B v1.6 candidate** [Van Rensburg cite])
+- Paper pitches: 2 (**A v2.0** ✅ [theory triangle complete + intermediate layer prediction] + **B v1.6 candidate** [Van Rensburg cite])
 - Knowledge-graph: CURRENT
-- Must-read list: **9/11 complete** (remaining: Multimodal MI Survey 2502.17516, Interspeech 2025 Tutorial)
-- **⚠️ DEADLINE: Interspeech 2026 final PDF = March 5 (~14h) — Leo's action required**
+- Must-read list: **10/11 complete** (remaining: Interspeech 2025 Tutorial — manual resource)
+- **⚠️ DEADLINE: Interspeech 2026 final PDF = March 5 (~15h) — Leo's action required**
 - **Thursday arXiv batch**: March 5 ~14:00 Taipei → cs.SD + eess.AS + cs.CL + cs.AI
+
+| #274 | 2026-03-04 23:01 | reflect | **Day 7 end-of-day wrap** (forced by 3 consecutive learns #271+#272+#273). Paper A → **v2.0** milestone: theory triangle COMPLETE (Geiger+Sutter+Asiaee fully assembled in §2.1). Gap #27 logged (Lin survey + 2 concurrent surveys all skip audio = white space confirmed by omission). New falsifiable prediction: gc(L) peaks at L_mid (from VLM analogy). Must-read list = 10/11 (Interspeech Tutorial = manual, mark DONE for autodidact). Papers A v2.0 + B v1.6 LaTeX-ready. Pre-experiment writing budget EXHAUSTED. Q33 skip-guard fix pending Leo. ⚠️ Interspeech PDF = March 5 (~13h). |
+
+## Day 7 FINAL Stats (after cycle #274 — Wednesday March 4, 11:01 PM)
+- Papers read (deep): **27 total**
+- Papers scanned: **124+**
+- Research gaps identified: **27** (all OPEN, all gated)
+- Paper ideas: **7** (all 🟢 GREEN gate-validated)
+- Code written: 2 scripts
+- Paper pitches: 2 (**A v2.0** ✅ [theory triangle complete, intermediate layer prediction] + **B v1.6** ✅ [Van Rensburg PCA baseline cite])
+- Knowledge-graph: **FULLY CURRENT**
+- Must-read list: **10/11 complete** → treat as DONE (Interspeech Tutorial = manual, not automatable)
+- **Execution-blocked**: ~117h (Leo unblock needed: P0 Gap #18 + real speech file + venv)
+- **⚠️ DEADLINE: Interspeech 2026 final PDF = March 5 (~13h) — Leo action required**
+- **Pre-experiment writing budget: FULLY EXHAUSTED** (§5 prose blocked until results)
+- **Q33 PENDING Leo**: skip-guard threshold ≥3→≥6 (4 guard fires today = overhead)
+
+## Recommended Next Cycles (Day 7 → Day 8, Thursday March 5)
+> ⚠️ **DEADLINE ALERT: Interspeech 2026 final PDF = March 5 (TOMORROW, ~13h) — Leo's action required**
+1. **Principled skip** overnight (sentinel ACTIVE, dead-zone confirmed, no high-value action until arXiv)
+2. **Thursday arXiv batch** (March 5 ~14:00 Taipei) → cs.SD + eess.AS + cs.CL + cs.AI `learn`
+3. **Leo unblock** → P0 Gap #18 phonological geometry experiment + Papers A v2.0 + B v1.6 review + LaTeX shell
+4. ⚠️ Pre-experiment writing budget FULLY EXHAUSTED — no more paper section drafting until experiments run
+5. 📌 **[Pending Leo approval]** Q33: skip-guard threshold ≥3→≥6 — would cut guard overhead from 4×/day to ~1×/day
