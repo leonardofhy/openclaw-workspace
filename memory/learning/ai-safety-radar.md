@@ -929,3 +929,18 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new pick]** *LLM coherentization as an obvious low-hanging fruit to try?* — LessWrong, 2026-03-04, by community author — Proposes a fine-tuning technique ("coherentization") that applies KL-divergence or activation alignment across semantically equivalent prompt variations to improve LLM self-consistency, framing it as a counterweight to RLHF drift and goal misgeneralization; references Anthropic's "operating system" view of models (PSM post at alignment.anthropic.com/2026/psm/) and Constitutional AI as complementary approaches. Moderate AI safety signal: the idea is speculative/brainstormy rather than empirically grounded, but it explicitly addresses the inner coherence problem flagged in prior picks ("Persona Parasitology", "I'm Bearish On Personas For ASI Safety") and proposes a concrete training-time intervention — worth monitoring if it gets developed further or attracts substantive replies.
 - Link: <https://www.lesswrong.com/posts/LLM-coherentization> (slug approximate; search LW for "LLM coherentization" 2026-03-04)
+
+---
+**2026-03-04 09:45 (Wed)** — scan: LW new top = "LLM coherentization" (already picked 09:15) | AF top = "How to Design Environments..." (already picked Mon 15:15) | No new posts since 09:15 scan.
+
+**[backlog-pick]** *Jailbreaking is Empirical Evidence for Inner Misalignment and Against Alignment by Default* — LessWrong, ~2026-02, referenced in today's "LLM coherentization" post — Argues that jailbreaking behavior shows models fail to generalize to a "natural abstraction" for alignment; interprets jailbreakability not as surface-level prompt sensitivity but as evidence the target behavior was never robustly learned as a coherent internal goal. Safety relevance: reframes jailbreaking diagnostics from an engineering nuisance into structural evidence of inner misalignment — directly relevant to whether current RLHF-trained models can ever have robust values vs. context-dependent behavioral compliance.
+- Link: <https://www.lesswrong.com/posts/eCc2GX3N9D2mjZJfL/jailbreaking-is-empirical-evidence-for-inner-misalignment>
+
+---
+**2026-03-04 10:15 (Wed)** — scan: LW RSS new = 10 items (2026-03-03/04); AF new = 0; top new picks below
+
+**[pick 1]** *Constitutional Black-Box Monitoring for Scheming in LLM Agents* — LessWrong, 2026-03-03 — Proposes using Constitutional AI principles as a black-box runtime monitor to detect scheming/deceptive alignment in LLM agents; the key insight is that a constitutionally-grounded monitor can flag agent trajectories that violate alignment principles without white-box access to model internals. High AI safety signal: addresses one of the hardest open problems (detecting deceptive alignment at inference time) with a practically deployable framework — complements prior picks on activation-oracle limitations ([79]) by showing a black-box alternative path.
+- Link: <https://www.lesswrong.com/posts/894KvMQcMQQnteYk8/constitutional-black-box-monitoring-for-scheming-in-llm>
+
+**[pick 2]** *I Had Claude Read Every AI Safety Paper Since 2020, Here's the DB* — LessWrong, 2026-03-03 — Community project: used Claude to read and summarize every AI safety paper since 2020, producing a structured searchable database. Moderate signal as direct research, but high utility as a field-overview resource; useful for identifying gaps in prior picks coverage and tracking which research threads are heating up.
+- Link: <https://www.lesswrong.com/posts/CpWFrT9Grr5t7L3vx/i-had-claude-read-every-ai-safety-paper-since-2020-here-s>
