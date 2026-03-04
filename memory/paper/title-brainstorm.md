@@ -120,3 +120,123 @@
     — 口語 meme 感 + 技術術語
 
 ---
+
+## Batch 4 — 04:00（策略：方法/貢獻導向，弱化口號感）
+
+31. **Auditing Audio Necessity in Audio-Language Benchmarks**
+    — 直接點出方法核心（audio necessity audit）
+
+32. **From Full Clips to Fragments: Measuring How Much Audio Benchmarks Really Need**
+    — 把「full vs fragment」發現放到前景
+
+33. **Benchmarking the Need to Hear: A Fine-Grained Audit of Audio Dependence**
+    — 強調 item-level / fine-grained 分析深度
+
+34. **How Audio-Dependent Are Audio-Language Benchmarks? Evidence from 8 Models and 3 Suites**
+    — 以研究設計（8×3）建立可信度
+
+35. **Beyond Accuracy: Quantifying Text Priors and Minimal Audio Reliance**
+    — 將論文定位成 evaluation rethink，而非單一 finding
+
+36. **Not All Listening Is Equal: A Taxonomy of Audio Need in Benchmark Items**
+    — 凸顯你們可能的分類貢獻（no-audio / fragment / full-audio）
+
+37. **When Benchmarks Don’t Need the Whole Signal: Revisiting Audio Grounding**
+    — 以 grounding 問題作為理論 framing
+
+38. **Disentangling Text Priors from Acoustic Evidence in Audio-Language Evaluation**
+    — 方法論語感強，適合偏 technical 審稿口味
+
+39. **A Necessity Audit for Audio-Language Benchmarks: Most Items Need Little Audio**
+    — 結果導向但不過度聳動
+
+40. **Rethinking Audio-Language Benchmarks with Audio-Need Analysis**
+    — meta/evaluation community 取向，適合當主線 title
+
+---
+
+## 🔎 Batch 4 Review（每 4 批）
+
+### 目前最佳候選（本輪後）
+1. **Auditing Audio Necessity in Audio-Language Benchmarks**
+   - 優點：最穩、最學術、和方法一一對應；不受數字版本變動影響。
+2. **Disentangling Text Priors from Acoustic Evidence in Audio-Language Evaluation**
+   - 優點：technical 感強，容易吸引做 evaluation/methodology 的審稿人。
+3. **From Full Clips to Fragments: Measuring How Much Audio Benchmarks Really Need**
+   - 優點：把你們最有辨識度的發現（fragment sufficiency）直接打進標題。
+
+### 策略調整（下一批建議）
+- 往 **「benchmark redesign / implications」** 再推進：
+  - 例如 title 出現 *Towards Audio-Faithful Evaluation*、*Designing Harder Audio-Needed Items*。
+- 保留 1-2 個「吸睛版」做備選，但主軸以 **method + evidence** 為主（更符合 Interspeech 審稿口味）。
+- 下一批可測試「主標題短 + 副標題完整」的冒號格式，以兼顧可讀性與資訊密度。
+
+---
+
+## Batch 5 — 04:00（策略：重設評測標準 / design implications）
+
+41. **Towards Audio-Faithful Benchmarks: Auditing and Repairing Text-Prior Shortcuts**
+    — 不只揭露問題，也暗示可行修復路線（faithful evaluation）
+
+42. **From Score to Signal: Rebuilding Audio-Language Evaluation Around Acoustic Necessity**
+    — 強調「高分 ≠ 聽懂」，把焦點拉回真正的 acoustic signal
+
+43. **Designing Benchmarks That Must Be Heard: Lessons from 8 Models and 3 Suites**
+    — implication-led，直接對 benchmark 設計社群喊話
+
+44. **When Benchmarks Read Instead of Listen: A Blueprint for Audio-Required Evaluation**
+    — 把問題（read/listen 混淆）與解法（blueprint）放在同一標題
+
+45. **Beyond Easy Audio: Stress-Testing Audio-Language Benchmarks for Real Listening**
+    — 用 stress-test framing，突顯現有題目過於寬鬆
+
+46. **What Should Count as Listening? A Necessity-Driven Audit of Audio-Language Benchmarks**
+    — 提出規範性問題，適合引導 reviewer 思考 evaluation 定義
+
+47. **Benchmarking for Ears, Not Priors: Rethinking Audio-Language Test Construction**
+    — 明確站位：評測應服務聽覺理解，而非 text prior 投機
+
+48. **Minimal Audio, Maximal Scores: Why Audio-Language Benchmarks Need Redesign**
+    — 結果導向 + 行動導向（need redesign）
+
+49. **Audited to Fail: How Current Audio Benchmarks Underspecify Listening**
+    — 較強烈批判語氣，適合吸睛備選版本
+
+50. **A Roadmap to Audio-Needed Evaluation: Evidence from Necessity Audits at Scale**
+    — roadmap + at scale，給人「方法可擴展」的印象
+
+---
+
+## Batch 6 — 04:01（策略：數字衝擊）
+
+51. **73% Without Listening: Auditing Text Priors in Audio-Language Benchmarks**
+    — 先給最大衝擊數字，再接方法與場景
+
+52. **61–73% Without Audio: How Much Are We Really Evaluating Listening?**
+    — 直接把核心區間放標題，突顯問題是系統性的
+
+53. **96% Fragment-Sufficient: Why Full Audio Rarely Matters in Current Benchmarks**
+    — 聚焦最反直覺發現（fragment 就夠）
+
+54. **8 Models, 3 Benchmarks, 1 Problem: Text Priors Dominate**
+    — 研究規模 + 單一結論，記憶點強
+
+55. **3 Benchmarks, Little Hearing: Quantifying Audio Necessity at Item Level**
+    — 用數字引入，再落到方法粒度（item-level）
+
+56. **2 Signals, 1 Score: Disentangling Text Priors from Acoustic Evidence**
+    — 對比 framing（text vs audio）＋方法論語感
+
+57. **0 Audio, Non-Zero Scores: The Grounding Gap in Audio-Language Evaluation**
+    — 數學式 punchline，適合吸睛版本
+
+58. **73% by Text Alone: Reassessing What Audio Benchmarks Measure**
+    — 數字 + 社群意涵（measure 什麼）
+
+59. **96% Need Only Fragments: Stress-Testing the “Audio” in Audio-Language Benchmarks**
+    — 引號強化質疑：是否名副其實的 audio benchmark
+
+60. **61% No-Audio Items: Evidence for Shortcut-Driven Audio-Language Scores**
+    — finding-led，偏保守學術口吻
+
+---

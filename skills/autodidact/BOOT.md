@@ -43,13 +43,13 @@ The `phase` field in active.json controls behavior. Three phases:
 
 ## Quotas (per day, enforced in active.json budgets)
 
-| Phase    | learn budget | build budget | reflect budget |
-|----------|-------------|-------------|---------------|
-| explore  | 6           | 4           | 2             |
-| converge | 5           | 10          | 2             |
-| execute  | 2           | 12          | 1             |
+| Phase    | learn budget | build budget | reflect budget | ideate budget |
+|----------|-------------|-------------|---------------|--------------|
+| explore  | 6           | 4           | 2             | 2            |
+| converge | 5           | 10          | 2             | 1            |
+| execute  | 2           | 12          | 1             | 1            |
 
-Budgets are **caps** (max allowed per day). The decision matrix priority (build > learn > plan > reflect > skip) ensures build gets done first. When a budget hits 0, that action type is blocked for the day.
+Budgets are **caps** (max allowed per day). The decision matrix priority (build > learn > ideate > plan > reflect > skip) ensures build gets done first. When a budget hits 0, that action type is blocked for the day.
 
 ## Decision Matrix
 
@@ -58,18 +58,22 @@ Budgets are **caps** (max allowed per day). The decision matrix priority (build 
 | Queue has READY build task + build budget > 0 | **build** |
 | Queue has READY read task + learn budget > 0 | **learn** |
 | Phase transition criteria nearly met | **build** (push to exit) |
+| Queue running thin (<3 READY tasks) + ideate budget > 0 | **ideate** |
+| No READY build/learn + ideate budget > 0 | **ideate** |
 | Blocked on all tracks | Read `playbooks/blocked.md`, pick fallback |
 | End of day (last cycle ≥22:00) | **reflect** (daily digest) |
 | Task failed 2x | **reflect** (diagnosis) |
 | No READY tasks, all budgets exhausted | **skip** (principled) |
 
-**Priority**: build > learn > plan > reflect > skip.
+**Priority**: build > learn > ideate > plan > reflect > skip.
 Build is the default. Learn only when it directly serves a READY task or fills a gap for the current track.
+Ideate when the queue needs fresh ideas or between build/learn tasks.
 
 ## Action Constraints
 
 - **learn**: Must tie to a specific queue task or gap. No random arXiv browsing in converge/execute phase.
 - **build**: Tier 0 (code scaffold, tests, configs, paper sections) = always allowed. Tier 1 (CPU <5min) = auto-allowed. Tier 2 (GPU) = Leo approval required.
+- **ideate**: Combinatorial creativity — cross-pollinate seed elements to generate 20 novel research ideas. Self-score 1-5. Top ideas (≥4) → add to queue as new tasks. Run `ideate_seeds.py` first to get seed elements, then generate combinations.
 - **reflect**: Only on triggers (task failure, phase transition, end-of-day, build milestone). Max 1/day. Max 12 lines output.
 - **skip**: Log reason in events.jsonl. No cycle file needed.
 

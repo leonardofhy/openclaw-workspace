@@ -54,8 +54,9 @@ def main():
         learn_left = budgets.get('learn_remaining_today', 0)
         build_left = budgets.get('build_remaining_today', 0)
         reflect_left = budgets.get('reflect_remaining_today', 0)
-        if learn_left <= 0 and build_left <= 0 and reflect_left <= 0:
-            print("SKIP all budgets exhausted for today (learn=0, build=0, reflect=0)")
+        ideate_left = budgets.get('ideate_remaining_today', 0)
+        if learn_left <= 0 and build_left <= 0 and reflect_left <= 0 and ideate_left <= 0:
+            print("SKIP all budgets exhausted for today (learn=0, build=0, reflect=0, ideate=0)")
             return
 
     # --- Check 1: Any READY tasks in queue? ---
@@ -68,8 +69,9 @@ def main():
             can_build = budgets.get('build_remaining_today', 0) > 0
             can_learn = budgets.get('learn_remaining_today', 0) > 0
             can_reflect = budgets.get('reflect_remaining_today', 0) > 0
+            can_ideate = budgets.get('ideate_remaining_today', 0) > 0
             # If no budget for any possible action, skip
-            if not can_build and not can_learn and not can_reflect:
+            if not can_build and not can_learn and not can_reflect and not can_ideate:
                 print(f"SKIP {len(ready_tasks)} READY tasks but all budgets exhausted")
                 return
         print(f"RUN {len(ready_tasks)} READY tasks in queue (top: {ready_tasks[0]['id']} {ready_tasks[0]['title'][:50]})")
