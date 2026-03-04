@@ -347,3 +347,183 @@
 
 10. **Validity Before Accuracy: Reframing Audio-Language Evaluation Around Audio Necessity**
     — 提出 community-level design principle（先 valid 再追分數）
+
+## Batch 10 — 04:15（策略：counterfactual / intervention framing）
+
+1. **Counterfactual Listening: What Changes When Audio Is Removed from Audio-Language Benchmarks?**
+   — 以干預視角定義問題（remove audio 後性能變化）
+
+2. **Intervene on Audio, Measure the Gap: A Causal Audit of Audio-Language Benchmarks**
+   — 用 causal audit 語彙，突顯方法論深度
+
+3. **No-Audio as Intervention: Estimating Causal Audio Effects in Benchmark Scores**
+   — 直接把 no-audio 設成 intervention，角度新穎
+
+4. **How Causal Is “Audio” Performance? Intervention-Based Audits Across 8 LALMs**
+   — 把 8 模型規模與 causal framing 結合
+
+5. **Ablate the Sound, Keep the Score: Counterfactual Evidence of Text-Prior Dominance**
+   — 「ablate sound」形成強記憶點
+
+6. **Causal Audio Reliance in Audio-Language Evaluation: Evidence from 3 Benchmarks**
+   — 保守學術款，適合主標題候選
+
+7. **If Audio Didn’t Exist: Counterfactual Testing for Audio-Language Benchmarks**
+   — 假設句式，吸睛但不失學術性
+
+8. **Intervention over Correlation: Auditing True Audio Dependence in LALM Benchmarks**
+   — 對比式 framing（介入 vs 關聯）
+
+9. **Estimating the Audio Treatment Effect in Audio-Language Benchmarks**
+   — 借用 treatment effect 術語，方法導向強
+
+10. **From Correlated Cues to Causal Evidence: Re-evaluating Audio-Language Benchmarks**
+    — community-level framing，適合引導評測重設討論
+
+## Batch 11 — 04:16（策略：流行文化改編）
+
+1. **The Sound of Shortcuts: Text Priors in Audio-Language Benchmarks**
+   — 改編 *The Sound of Silence*，點出「聲音任務卻靠捷徑」
+
+2. **Can’t Hear Me Now: Benchmark Scores Without Listening**
+   — 改編廣告句 *Can you hear me now?*，反諷 no-audio 高分
+
+3. **Good Clips, Bad Listening: Why Fragments Beat Full Audio**
+   — 改編 *Good Will Hunting* 式節奏，凸顯 fragment-sufficient 發現
+
+4. **Everything Everywhere All at Once—Except the Audio**
+   — 改編電影名，強調模型用了很多線索但不是聲音
+
+5. **No Country for Full Audio: Fragment-Sufficient Benchmarking in LALMs**
+   — 改編 *No Country for Old Men*，對應 full clip rarely needed
+
+6. **The Fast and the Curious: How Audio Benchmarks Drift to Text Priors**
+   — 改編系列片名，語氣輕但問題尖銳
+
+7. **Audio Club: The First Rule Is You Don’t Need Audio**
+   — 改編 *Fight Club* 經典台詞，meme 感強、記憶點高
+
+8. **How I Met Your Prior: Text-Driven Success in “Audio” Tasks**
+   — 改編影集名，突出 text prior 主導
+
+9. **The Benchmark Knight Rises (Without Sound)**
+   — 改編 *The Dark Knight Rises*，帶出 unsound 的暗示
+
+10. **A Quiet Place for Listening, A Loud Place for Text Priors**
+    — 改編 *A Quiet Place*，形成 quiet/listening vs loud/prior 對比
+
+## Batch 12 — 04:30（策略：leaderboard inflation / challenge-set framing）
+
+1. **Leaderboard Without Listening: Auditing Score Inflation in Audio-Language Benchmarks**
+   — 直指「榜單高分可能不是聽覺能力」
+
+2. **When Higher Scores Mean Less Hearing: Benchmark Inflation from Text Priors**
+   — 反直覺 framing，強調分數與能力錯位
+
+3. **Beyond Leaderboards: Measuring True Listening in Audio-Language Evaluation**
+   — 從排名導向轉向能力導向，社群訊號明確
+
+4. **From Benchmark Wins to Listening Fails: A Text-Prior Audit Across 8 LALMs**
+   — 把 8 模型規模與「高分≠聽懂」結論綁定
+
+5. **Hardening Audio Benchmarks: Challenge Sets for Audio-Required Reasoning**
+   — 解法導向，點出 challenge set 建構方向
+
+6. **Stress-Testing the Leaderboard: Do Audio-Language Gains Survive No-Audio Controls?**
+   — 用 no-audio control 作為壓力測試，方法感強
+
+7. **Winning the Benchmark, Missing the Signal: Text-Prior Reliance in LALMs**
+   — 對比鮮明、可讀性高
+
+8. **Audio-Required or Score-Optimized? Reassessing Benchmark Difficulty in LALMs**
+   — 聚焦題目難度是否真的要求音訊證據
+
+9. **Benchmark Inflation in Audio-Language Tasks: Evidence from Necessity Audits**
+   — 保守學術款，適合作主標題候選
+
+10. **Challenge the Shortcut: Designing Audio-Language Tests That Resist Text Priors**
+    — 設計原則導向，強調可行改進
+
+---
+
+## 🔎 Batch 12 Review（每 4 批）
+
+### 本批最佳候選
+1. **Leaderboard Without Listening: Auditing Score Inflation in Audio-Language Benchmarks**
+   - 優點：新角度（leaderboard inflation）明確，且保留 audit 方法識別度。
+2. **Stress-Testing the Leaderboard: Do Audio-Language Gains Survive No-Audio Controls?**
+   - 優點：把方法（no-audio controls）直接寫進標題，審稿人一眼看懂貢獻。
+3. **Hardening Audio Benchmarks: Challenge Sets for Audio-Required Reasoning**
+   - 優點：從「發現問題」前進到「如何改進」，對 Interspeech 社群更 actionable。
+
+### 與前幾批相比的新意
+- 這批主軸從 validity/causal 轉向 **evaluation incentive**（排行榜驅動造成的錯配）。
+- 更強調 **benchmark design implications**（hardening、challenge sets、resist shortcuts），避免只停留在揭露問題。
+
+### 下一批建議
+- 可測試 **「短主標 + 技術副標」** 的雙層結構（例如 2–4 字主標 + 冒號副標）。
+- 加入 1-2 個 **Interspeech 口味保守版**（少修辭、重 evidence）作為終稿候選。
+
+## Batch 13 — 04:30（策略：measurement integrity / calibration framing）
+
+1. **Calibrating “Audio” Benchmarks: How Much Score Is Truly Acoustic?**
+   — 以 calibration 語彙切入，強調分數可解釋性
+
+2. **Measurement Integrity in Audio-Language Evaluation: Auditing Acoustic Attribution**
+   — 新角度聚焦 measurement integrity（非單純 accuracy）
+
+3. **What Does an Audio Score Mean? A Calibration Audit of LALM Benchmarks**
+   — 直接問分數語義，適合方法論導向審稿人
+
+4. **From Raw Scores to Attributed Scores: Calibrating Text and Audio Contributions**
+   — 強調你們把 score 拆成可歸因成分
+
+5. **Miscalibrated Listening: Why Audio-Language Scores Overstate Acoustic Understanding**
+   — 把核心問題定義為 miscalibration，辨識度高
+
+6. **Acoustic Attribution Error in Audio-Language Benchmarks: Evidence from 8×3 Audits**
+   — 引入 attribution error 概念 + 8×3 規模
+
+7. **Score Calibration for Audio-Language Benchmarks via Audio-Necessity Testing**
+   — 保守學術款，方法名詞完整
+
+8. **How Well-Calibrated Are Audio Benchmarks? Quantifying Non-Acoustic Score Mass**
+   — 用 non-acoustic score mass 描述 text-prior 佔比
+
+9. **Calibrate Before You Compare: Reinterpreting LALM Leaderboards with Audio-Need Audits**
+   — 給社群流程建議：先校準再比較模型
+
+10. **Attributing Benchmark Success: A Calibration View of Text Priors in Audio Tasks**
+    — attribution + calibration 雙框架，和前批角度區隔明顯
+
+## Batch 14 — 04:31（策略：極短 ≤6 words）
+
+1. **Scoring Without Listening**
+   — 4 詞直擊核心，簡潔有力
+
+2. **Audio Optional, Scores Intact**
+   — 4 詞呈現 no-audio 仍高分
+
+3. **Hearing Is Not Required**
+   — 5 詞反直覺，審稿人會停下來看
+
+4. **Mostly Text, Barely Audio**
+   — 4 詞濃縮 61–73% 結論
+
+5. **Benchmarking the Unheard**
+   — 3 詞，帶方法感與隱喻
+
+6. **Listen Less, Score More**
+   — 4 詞對比強，記憶點高
+
+7. **When Audio Doesn’t Matter**
+   — 4 詞，語氣冷靜但有衝擊
+
+8. **Fragments Win, Audio Loses**
+   — 4 詞呼應 96% fragment-sufficient
+
+9. **The Unheard Leaderboard**
+   — 3 詞，對應 leaderboard inflation 脈絡
+
+10. **Audio in Name Only**
+    — 4 詞，精準點出名實不符
