@@ -1039,3 +1039,11 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new-pick]** *Mass surveillance, red lines, and a crazy weekend* — LessWrong / windowsontheory, 2026-03-04, OpenAI researcher (cross-post) — Insider take on the OpenAI–DoW deal from an OpenAI employee: argues (1) AI-enabled harm to democracy is an underrated risk (IRS-as-AI-army analogy for politically-targeted enforcement); (2) the DoW deal's contract conditions + public attention represent a genuine opening to enshrine anti-mass-surveillance red lines analogous to biosecurity/cybersecurity frameworks; (3) victory is not yet declared — the real test is in monitoring safeguards, not contract language. Complements the prior "surveillance language loopholes" post (picked 14:45) by providing the internal OpenAI perspective and specific threat model for AI-enabled authoritarianism. High signal: rare candid insider view on governance red-lines + concrete policy framing for democracy-harm as an AI-safety category.
 - Link: <https://www.lesswrong.com/posts/mass-surveillance-red-lines-crazy-weekend> *(new-rss feed; exact slug TBC)*
+
+**2026-03-04 19:15 (Wed)** — scan: LW new since 18:45 = 0 new research posts | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged) | LW karma top = "OpenAI's surveillance language loopholes" (already picked 14:45) | LW recent = "Physics of RL" (already picked 16:15) + "Mass surveillance, red lines" (already picked 18:45).
+
+**[no high-signal update]** — all feeds stable; no new high-signal items since 18:45 cycle; today's picks complete.
+
+**2026-03-04 19:45 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, picked 13:15) | LW karma≥30 = "OpenAI's surveillance language loopholes" (already picked 14:45) | AF top = "How to Design Environments for Understanding Model Motives" (already picked 13:45) | no new posts since 19:15 scan.
+
+**[no high-signal update]** — all feeds stable; no new items since 19:15; today's picks complete (6 cycles, 5 unique picks).
