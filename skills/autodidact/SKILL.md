@@ -174,7 +174,7 @@ Core principles:
 - Cadence target: every 30 minutes (unless Leo explicitly changes cron)
 - Each cycle: < 90 seconds compute (sonnet)
 - Skip only when truly no high-value action（不要因為夜間就自動跳過）
-- Repeated skip guard: after 2 execution-blocked skips, next cycle must run meta-awareness reflect
+- Repeated skip guard: use Q33 thresholds (≥6 in dead-zone cadence; ≥3 daytime) before forcing meta-awareness reflect
 - Depth > breadth (1 deep read > 5 skims)
 - Always connect learning back to goals; flag uncertainty honestly
 - Don't spam Leo — report only genuine insights
@@ -182,3 +182,20 @@ Core principles:
 ## Self-modification rule
 
 方向性改變（改 goals、改 SKILL.md、加 cron）需要 Leo 批准。其他自由更新。
+
+### Race-safe write protocol (mandatory for `skills/autodidact/SKILL.md`)
+
+When editing this SKILL file, **must** use `skills/autodidact/scripts/safe_patch.py` (not chained direct exact-replace calls):
+
+1. Prepare old/new snippets as temp files.
+2. Run single locked patch:
+   - acquires file lock
+   - reads latest content inside lock
+   - patches once
+   - atomic write (`os.replace`)
+3. Verify required markers (`--verify ...`).
+4. Only then commit.
+5. If `old-text-not-found` → re-read file and regenerate patch (do not force write stale context).
+
+This prevents recurring partial-write/race failures from overlapping cron/session writers.
+

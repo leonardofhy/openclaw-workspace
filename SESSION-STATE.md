@@ -3,12 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-04 16:45
+**Last Updated:** 2026-03-04 17:00
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-04 17:00: Leo request — recurring partial-write failures must be fixed systemically now; approved implementing robust anti-race write flow.
 - 2026-03-04 16:45: Leo decision — explicitly agreed to "Q33".
 - 2026-03-04 16:40: Leo request — complete a robust Todoist task-management mechanism by tomorrow before 12:00; autonomous self-iteration explicitly authorized.
 - 2026-03-04 16:16: Leo decision — skip NTUAIS check today; postpone to Thursday after 20:00.
