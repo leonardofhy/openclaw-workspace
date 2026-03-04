@@ -3,12 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-05 05:15
+**Last Updated:** 2026-03-05 06:00
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-05 07:00: Cron title-brainstorm executed; appended Batch 39 (incentive compatibility / Goodhart angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 05:15: Cron title-brainstorm executed; appended Batch 21 (forensic accounting / evidence ledger angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 05:00: Cron title-brainstorm executed; appended Batch 19 (item ecology / benchmark cartography angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 00:20: Leo instruction — current mission is to craft paper titles aligned with the thesis; Leo is going to sleep and requests autonomous continuation without waiting for replies.
