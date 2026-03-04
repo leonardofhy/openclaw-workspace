@@ -1018,3 +1018,14 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-04 16:45 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15) | LW general top = "Physics of RL: Toy scaling laws for the emergence of reward-seeking" (already picked 16:15) | AF = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45). No new posts since 16:15 scan.
 
 **[no high-signal update]** — feeds stable; all high-signal items from today already captured in prior cycles.
+
+---
+**2026-03-04 17:15 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, picked 13:15) | LW karma≥30 top = "OpenAI's surveillance language has many potential loopholes" (picked 14:45) | AF top = "How to Design Environments for Understanding Model Motives" (picked 13:45) | LW new since 16:45 = 0 research posts.
+
+**[no high-signal update]** — all feeds stable; no new high-signal items since 16:15 "Physics of RL" pick.
+
+---
+**2026-03-04 17:45 (Wed)** — scan: LW new since 17:15 = 0 new research posts | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW karma top = "OpenAI's surveillance language" (already picked 14:45) | backlog review: "Sacred values of future AIs" (Cleo Nardo, 2026-03-04T07:47, ~10pts) unpicked from earlier cycles.
+
+**[backlog-pick]** *Sacred values of future AIs* — LessWrong, 2026-03-04, Cleo Nardo — Applies Hanson's sacralization model to multi-agent AI coordination: argues that diverse AIs facing coordination pressure will tend to sacralize HHH (Helpful/Harmless/Honest), and that this sacralization would be net-harmful (far-mode reasoning degrades decision quality on precisely those values). Connects to the Gradual Disempowerment / misaligned-culture thread. Explicitly speculative (author caveats all three load-bearing assumptions), but useful for thinking about value-lock-in dynamics in agent populations and why "just train for HHH" can compound rather than prevent alignment failure.
+- Link: <https://www.lesswrong.com/posts/sjeqDKhDHgu3sxrSq/sacred-values-of-future-ais>
