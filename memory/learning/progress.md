@@ -1307,6 +1307,9 @@ Priority queue for Leo's first session:
 3. **Principled skip** for all other cycles (dead-zone sentinel ACTIVE, skip-guard satisfied by #245)
 4. 💡 **[Proposal for Leo]** SKILL.md amendment: fast-path heuristic (check sentinel file first). Sentinel file implemented (#234); SKILL.md change needs Leo approval.
 
+| #249 | 2026-03-04 09:01 | reflect (meta-awareness + citation maintenance) | Skip-guard fired (#246-#248 = 3 consecutive skips). 3 loop failures: (1) sentinel/guard interaction ambiguity → rule tightened; (2) Paper A §2.2 Maghsoudi cite pending → **applied now**: Maghsoudi & Mishra 2602.01247 added to §2.2 prose, Paper A → v1.7; (3) Thursday arXiv prep not queued → deferred. State: Papers A v1.7 + B v1.5 both LaTeX-ready ✅. ⚠️ Interspeech PDF March 5 (~29h). Sentinel reset. |
+| #250 | 2026-03-04 09:31 | skip (principled — dead-zone sentinel ACTIVE, 30min gap < 2h, 0 consecutive skips) | Verified state: Papers A v1.7 + B v1.5 LaTeX-ready ✅; must-read COMPLETE ✅; 26 gaps OPEN; exec-blocked ~100.5h; Thursday arXiv batch ~4.5h away (~14:00); ⚠️ Interspeech PDF = March 5 (~28.5h). |
+
 | #238 | 2026-03-04 03:31 | skip (principled — dead-zone sentinel valid, skip-guard satisfied by #237) | Sentinel valid (30min gap). arXiv not yet posted. State unchanged. Papers A v1.6 + B v1.5 pitch-ready. |
 | #239 | 2026-03-04 04:01 | skip (dead-zone sentinel) | Sentinel valid (1h gap < 2h threshold). Cron labeled `meta-awareness` but skip-guard already satisfied by #237. No new info. arXiv Wednesday batch ~10h away. ⚠️ Interspeech PDF = March 5 (TOMORROW). |
 | #240 | 2026-03-04 04:31 | skip (dead-zone sentinel) | Sentinel valid (1.5h gap since #237 < 2h threshold). Skip-guard satisfied by #237. No new arXiv. Pre-experiment writing budget exhausted. arXiv Wednesday batch ~9.5h away. ⚠️ Interspeech PDF = March 5 (TOMORROW). |
