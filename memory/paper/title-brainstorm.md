@@ -971,3 +971,119 @@
 
 10. **Hear Me Out: Why Audio Benchmarks Often Don’t**
     — 口語句型反轉，短而有記憶點
+
+## Batch 27 — 05:45（策略：invariance / distribution-shift robustness）
+
+1. **Invariance to Sound, Sensitivity to Text: Diagnosing Shortcut Reliance in Audio-Language Benchmarks**
+   — 以 invariance 視角點出「對音訊不敏感、對文字先驗過敏」
+
+2. **What Survives Distribution Shift? Auditing Audio Reliance Beyond In-Domain Scores**
+   — 把問題延伸到 OOD 情境，避免只看靜態 leaderboard
+
+3. **Shift the Audio, Keep the Score: An Invariance Audit for LALM Benchmarks**
+   — 強調分數在音訊變動下不變的反直覺現象
+
+4. **Robust to Noise, or Blind to Audio? Reassessing Audio-Language Generalization**
+   — 區分「真魯棒」與「其實沒在用音訊」
+
+5. **Out-of-Distribution Listening: Testing Whether Audio Evidence Still Matters**
+   — 用 OOD listening framing 提升社群關聯性
+
+6. **Invariant Predictions, Minimal Acoustics: A Shift-Robustness Audit Across 8×3**
+   — 把 8×3 規模與 shift robustness 一起交代
+
+7. **Generalization Without Grounding Under Shift: Text-Prior Effects in Audio Evaluation**
+   — 連結 distribution shift 與 grounding gap
+
+8. **When Acoustic Perturbations Don’t Perturb the Score: Evidence of Weak Audio Dependence**
+   — 以 perturbation 觀點表達音訊依賴不足
+
+9. **Stress-Testing Audio Evidence Under Shift: A Necessity Audit for LALM Benchmarks**
+   — 保守投稿款：方法、場景、目的都清楚
+
+10. **From In-Domain Success to Shift-Valid Listening: Rethinking Audio Benchmark Reliability**
+    — 將結論提升到 reliability 與 benchmark validity 層次
+
+## Batch 28 — 05:45（策略：falsification / null-hypothesis stress）
+
+1. **Falsifying Listening Claims: Null-Audio Tests for Audio-Language Benchmarks**
+   — 以 falsification 為核心：先嘗試推翻「有在聽」的主張
+
+2. **Reject or Retain “Audio Reliance”? A Hypothesis-Testing Audit Across 8×3**
+   — 把論文包裝成可檢定的統計問題（reject/retain）
+
+3. **The Null of No Listening: Stress-Testing Audio-Language Scores with Audio Removal**
+   — 明確提出 null hypothesis：模型其實不依賴音訊
+
+4. **Evidence Against the Null? Re-evaluating Audio Benchmarks with Necessity Tests**
+   — 反向問句：到底有多少題能真正反證 no-audio null
+
+5. **Fail to Reject No-Audio: What Benchmark Scores Reveal About Text-Prior Dependence**
+   — 借用統計語句（fail to reject），新鮮且方法導向
+
+6. **Hypothesis Tests for Hearing: Quantifying When Audio Actually Changes Outcomes**
+   — 聚焦 outcome 是否改變，對應你們 intervention 設計
+
+7. **From Correlation to Refutation: A Falsification Audit of Audio-Language Evaluation**
+   — 強調不是相關性敘事，而是可反駁性（refutability）
+
+8. **No-Audio as a Null Model: Auditing Modality Claims in LALM Benchmarks**
+   — 將 no-audio 設為強基線（null model），審稿可讀性高
+
+9. **Testing the No-Listening Hypothesis in “Audio” Benchmarks**
+   — 極簡保守款，直白清楚
+
+10. **Refuting Shortcut Explanations? A Null-Hypothesis View of Audio Benchmark Validity**
+    — 把 validity 問題轉為「能否駁斥 shortcut 解釋」
+
+---
+
+## 🔎 Batch 28 Review（每 4 批）
+
+### 本批最佳候選
+1. **Falsifying Listening Claims: Null-Audio Tests for Audio-Language Benchmarks**
+   - 優點：角度明確且新（falsification），一眼看懂方法精神。
+2. **Fail to Reject No-Audio: What Benchmark Scores Reveal About Text-Prior Dependence**
+   - 優點：統計語感強、辨識度高，適合方法導向審稿人。
+3. **No-Audio as a Null Model: Auditing Modality Claims in LALM Benchmarks**
+   - 優點：最穩健投稿款，術語清楚、修辭克制、可直接對應實驗設計。
+
+### 與 Batch 25–27 的區隔
+- Batch 25 是 legal-evidence（burden/proof）、26 是 wordplay、27 是 invariance/shift。
+- 本批轉向 **falsification / null-hypothesis**：把核心問題從「分數來源」推進到「主張是否可被反證」。
+
+### 下一批建議
+- 可測試 **causal identifiability / mediation** 角度（例如 text-mediated vs audio-mediated effects）。
+- 同時保留 2 個「超保守投稿版」：標題直接含 *8×3* + *necessity/null audit*，方便最後定稿比較。
+
+## Batch 29 — 05:46（策略：反直覺/矛盾）
+
+1. **Listening Optional, Leaderboards Stable: Auditing Audio-Language Benchmarks**
+   — 「應該要聽」與「不聽也穩」形成強對比，保守可投稿
+
+2. **More Sound, Same Answer: The Audio-Need Paradox in LALM Evaluation**
+   — 點出增加音訊卻不改預測的反直覺現象
+
+3. **Hearing Less, Scoring More: Text-Prior Dominance in “Audio” Tasks**
+   — 對仗結構強，直接傳達核心張力
+
+4. **Acoustic Evidence Down, Confidence Up: A Necessity Audit Across 8×3**
+   — 以 evidence/confidence 反向變化建立衝擊感
+
+5. **Silence-Robust, Audio-Fragile: Reassessing What Audio Benchmarks Reward**
+   — 「對沉默魯棒、對音訊脆弱」的矛盾 framing，記憶點高
+
+6. **When Better Listening Doesn’t Matter: Diagnosing Benchmark Shortcut Equilibria**
+   — 將矛盾上升到機制層（shortcut equilibrium）
+
+7. **High Scores, Low Hearing: The Grounding Contradiction in Audio-Language Evaluation**
+   — 極簡強烈，適合主標題備選
+
+8. **Audio-Rich Inputs, Audio-Poor Decisions: A Decision-Level Audit of LALMs**
+   — input 與 decision 對比，貼合你們 decision-layer 脈絡
+
+9. **More Waveform, Less Influence: Quantifying the Listening-Impact Mismatch**
+   — waveform/influence 反向關係，方法導向明確
+
+10. **Strong Performance, Weak Perception: The Paradox of Modern Audio Benchmarks**
+    — 社群導向總結句，適合 discussion 型標題
