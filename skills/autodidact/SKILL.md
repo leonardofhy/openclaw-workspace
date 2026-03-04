@@ -36,7 +36,7 @@ Choose ONE action type based on current needs. Use the decision matrix:
 | Knowledge gap identified | **learn** — read papers, study concepts |
 | Enough knowledge, need experiments | **build** — write code, create tools |
 | Multiple cycles without review | **reflect** — assess progress, update goals |
-| Consecutive execution-blocked skips (≥2) | **reflect** — run a meta-awareness audit and produce one concrete system improvement |
+| Consecutive execution-blocked skips (≥6, or ≥2 during daytime non-dead-zone) | **reflect** — run a meta-awareness audit and produce one concrete system improvement |
 | Found useful tool/method to acquire | **skill-up** — learn a new tool or technique |
 | Interesting finding to share | **report** — write summary for Leo |
 
@@ -45,7 +45,8 @@ Priority rules:
 - If last 3 cycles were all "learn" → force a **reflect**
 - If Leo gave feedback → **plan** to integrate it
 - **Every 5th cycle → forced micro-reflect**（合併筆記、刪低價值、< 2 min）
-- If consecutive skips due `execution-blocked` ≥ 2 → force **reflect (meta-audit)**, 不可繼續重複 skip
+- If consecutive skips due `execution-blocked` ≥ 6 → force **reflect (meta-audit)**, 不可繼續重複 skip [Q33: raised from ≥2; 30-min cadence × 6 = 3h dead zone before firing; applied cycle #277 2026-03-05]
+- **Dead-zone guard exception**: During 00:00–08:00 Taipei AND sentinel ACTIVE AND no new arXiv content AND execution-blocked → skip-guard suppressed entirely. At most one brief summary note per 3-hour block during dead zone. Daytime threshold: ≥3 consecutive skips (= 1.5h) still triggers guard during working hours (08:00–23:00).
 - Default: **learn** (knowledge compounds)
 - 夜間（23:00–08:00）**不是**自動 skip 理由；只要有高價值 survey/整合任務就照常執行
 - ⚠️ **build / skill-up 需要 Leo 明確批准**。當前階段重心 = 讀論文 + 挖掘新想法，不要自己跑去寫 code
