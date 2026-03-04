@@ -944,3 +944,14 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[pick 2]** *I Had Claude Read Every AI Safety Paper Since 2020, Here's the DB* — LessWrong, 2026-03-03 — Community project: used Claude to read and summarize every AI safety paper since 2020, producing a structured searchable database. Moderate signal as direct research, but high utility as a field-overview resource; useful for identifying gaps in prior picks coverage and tracking which research threads are heating up.
 - Link: <https://www.lesswrong.com/posts/CpWFrT9Grr5t7L3vx/i-had-claude-read-every-ai-safety-paper-since-2020-here-s>
+
+---
+**2026-03-04 10:45 (Wed)** — scan: LW curated = "Persona Parasitology" (already picked); LW general top new = "Lie To Me, But At Least Don't Bullshit" (epistemics essay, no direct AI safety signal); AF = "How to Design Environments..." (already picked). No new high-signal posts since 10:15 scan.
+
+**[no high-signal update]** All high-value items from today's scans captured in prior cycles (09:15, 09:45, 10:15). Next scan will check for fresh posts.
+
+---
+**2026-03-04 11:15 (Wed)** — scan: LW RSS = same 10 items as 10:15 scan (no new posts since 10:45) | AF = "How to Design Environments..." (already picked Mon 15:15) | No new posts this cycle.
+
+**[backlog-pick]** *White-Box Attacks on the Best Open-Weight Model: CCP Bias vs. Safety Training in Kimi K2.5* — LessWrong, 2026-03-03, by Corm — Empirical white-box adversarial analysis of Kimi K2.5 revealing persistent CCP-aligned bias that survives standard safety fine-tuning; demonstrates that white-box access allows targeted extraction of politically-motivated behaviors that black-box safety evals miss entirely. High safety signal: directly relevant to (a) robustness of RLHF/safety-training against motivated adversaries with model access, (b) risks of geopolitically-biased AI deployed as "safety-trained" models, and (c) the open-weight model threat surface — complements prior interpretability picks (Constitutional Black-Box Monitoring, activation-oracle limitations) by showing what adversarially-motivated bias actually looks like empirically.
+- Link: <https://www.lesswrong.com/posts/sRNHWhoZfYpE6WH2r/white-box-attacks-on-the-best-open-weight-model-ccp-bias-vs>

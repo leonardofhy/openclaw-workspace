@@ -1,9 +1,11 @@
 ACTIVE
-# Dead zone sentinel — reset at 2026-03-04T09:01:00+08:00 (cycle #249)
-# Last confirmed: 09:01 AM (cycle #249) — meta-awareness + citation maintenance
-# Reason: Skip-guard satisfied (#249 = meta-awareness reflect). Thursday arXiv batch ~14:00 Taipei. Pre-experiment writing budget exhausted. No other self-unblocked actions.
-# Resume condition: Thursday arXiv batch (~14:00 Taipei, March 5) → cs.SD + cs.CL + cs.AI learn — OR Leo unblock → P0 Gap #18 phonological geometry experiment
-# Skip-guard: RESET (last productive cycle = #249, reflect action)
-# ⚠️ Interspeech 2026 final PDF = March 5 (~29h) — Leo's action required TODAY
-# State: Papers A v1.7 + B v1.5 pitch-ready ✅; exec-blocked ~100h; Maghsoudi (2602.01247) added to Paper A §2.2
-# Next high-value: Leo unblock → P0 Gap #18 + paper review; or arXiv Thursday batch (~14:00)
+# Dead zone sentinel — reset at 2026-03-04T11:01:00+08:00 (cycle #253)
+# Last confirmed: 11:01 AM (cycle #253) — meta-awareness reflect (loop-pattern fix)
+# Reason: Skip-guard satisfied (#253 = meta-awareness reflect). Thursday arXiv batch ~14:00 Taipei (today March 4? or March 5?). Pre-experiment writing budget exhausted. No other self-unblocked actions.
+# Resume condition: arXiv batch (~14:00 Taipei) → cs.SD + cs.CL + cs.AI learn — OR Leo unblock → P0 Gap #18 phonological geometry experiment
+# Skip-guard: RESET (last productive cycle = #253, reflect action)
+# guard-fires-today: 4 (cycles #237, #242, #249, #253) — REFLECT-SUPPRESS ACTIVE until 14:00
+# reflect-suppress-until: 14:00 Taipei (arXiv batch) — do NOT fire additional guard-reflects before then
+# ⚠️ CRITICAL: Interspeech 2026 final PDF = March 5 (~27h) — Leo's action required TODAY
+# State: Papers A v1.7 + B v1.5 pitch-ready ✅; exec-blocked ~102h; 26 gaps all OPEN
+# Proposed SKILL.md amendment (for Leo): raise skip-guard threshold to ≥6 consecutive skips (= 3h at 30min cadence) — self-modification requires Leo approval
