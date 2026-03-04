@@ -336,8 +336,8 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
                     existing_event = e
                 else:
                     actions['warnings'].append({'uid': block.uid, 'reason': 'meta_event_uid_mismatch'})
-            except Exception:
-                actions['warnings'].append({'uid': block.uid, 'reason': 'meta_event_not_found'})
+            except Exception as exc:
+                actions['warnings'].append({'uid': block.uid, 'reason': f'meta_event_lookup_failed:{type(exc).__name__}'})
 
         # Fallback by uid scan result.
         if existing_event is None:
@@ -348,7 +348,12 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
             continue
 
         if existing_event:
+            # Backfill meta mapping even on kept paths so future runs avoid fallback scans.
+            meta_row['gcal_event_id'] = existing_event.get('id')
+            meta_row['managed'] = True
+
             if meta_row.get('last_synced_hash') == new_hash:
+                meta_row['last_synced_hash'] = new_hash
                 actions['kept'].append(block.uid)
             else:
                 actions['update'].append(block.uid)

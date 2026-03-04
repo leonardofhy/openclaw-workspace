@@ -108,7 +108,7 @@ def _parse_actual_blocks(text: str, date_str: str) -> list[ActualBlock]:
         r'^\s*-\s*\[A\]\s*'
         r'(~?)(\d{2}:\d{2})\s*[–-]\s*(~?)(\d{2}:\d{2})(\(\+1d\))?\s+'
         r'(.+?)\s*'
-        r'\{([^}]*)\}\s*$',
+        r'(?:\{([^}]*)\})?\s*$',
         flags=re.M,
     )
 
@@ -116,10 +116,11 @@ def _parse_actual_blocks(text: str, date_str: str) -> list[ActualBlock]:
     for idx, m in enumerate(pat.finditer(body), start=1):
         s_mark, start, e_mark, end, plus_raw, title, meta_body = m.groups()
         meta = {}
-        for part in re.split(r'\s*,\s*', meta_body.strip()):
-            if ':' in part:
-                k, v = part.split(':', 1)
-                meta[k.strip()] = v.strip().strip('"\'')
+        if meta_body:
+            for part in re.split(r'\s*,\s*', meta_body.strip()):
+                if ':' in part:
+                    k, v = part.split(':', 1)
+                    meta[k.strip()] = v.strip().strip('"\'')
 
         uid = meta.get('uid') or _mint_uid(date_str, start, end, title.strip(), idx)
         out.append(

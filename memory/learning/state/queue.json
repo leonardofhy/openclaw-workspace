@@ -277,6 +277,57 @@
       "created": "2026-03-03",
       "due": null,
       "completed": "2026-03-03"
+    },
+    {
+      "id": "Q038",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A: Related Work prose section (Tier 0) — 4-subsection draft from grid",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "",
+      "created": "2026-03-04",
+      "due": null,
+      "completed": "2026-03-04"
+    },
+    {
+      "id": "Q039",
+      "title": "News: 2026-03-04 digest — all 3 items already processed as Q034-Q036",
+      "status": "done",
+      "type": "read",
+      "track": "T3",
+      "priority": 1,
+      "created": "2026-03-04",
+      "completed": "2026-03-04",
+      "note": "Digest placeholder to mark news as processed for precheck"
+    },
+    {
+      "id": "Q040",
+      "title": "T3 gc_experiment_runner.py — multi-condition runner (Tier 0)",
+      "status": "done",
+      "type": "build",
+      "track": "T3",
+      "priority": 2,
+      "created": "2026-03-04",
+      "completed": "2026-03-04",
+      "artifacts": [
+        "skills/autodidact/scripts/gc_experiment_runner.py"
+      ],
+      "dod": "Script runs all 3 conditions (listen/mid/guess) with stats + plot; outputs gc_summary.json"
+    },
+    {
+      "id": "Q041",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A: gc(k) visualizer — plot confidence curves + patching effect figures (Tier 0)",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "gc_visualizer.py generates 3 paper-ready figures: gc(k) curves, listen/guess separation, patching effect heatmap",
+      "created": "2026-03-04",
+      "due": null,
+      "completed": "2026-03-04"
     }
   ],
   "archived_count": 16,

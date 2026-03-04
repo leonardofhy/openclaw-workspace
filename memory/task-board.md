@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-02-28 13:53
+> 最後更新：2026-03-04 15:30
 
 ## 規則
 
@@ -42,7 +42,7 @@
 - **owner**: MacBook
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-02-28
+- **last_touched**: 2026-03-03
 - **描述**: 用 battleship 跑 chunk sensitivity，定位可能的 listen-layer 訊號
 - **progress**: smoke run（n=4,k=3,20 samples）完成；full run 進行中（21:46 時點：`n4_chunk3` 3562 行、`n5_chunk0` 1188 行）；已重提 n5 任務 `job 224422`（RUNNING）；夜間已把 merge-to-main 流程修穩，早上可無阻接續實驗收尾
 - **next_action**: 明早第一段先檢查 n4/n5 任務是否完成；完成則立即跑 evaluate 產生 `*_comprehensive_results.json`，並更新 `chunk_sensitivity_desta25.md` v2（Method/Results Δ 表）；未完成則 11:30 再次檢查
@@ -52,7 +52,7 @@
 - **owner**: MacBook
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-02-28
+- **last_touched**: 2026-03-03
 - **描述**: AudioMatters 論文 Results section 初稿（承接已完成的 Method v1 + Setup v1）
 - **progress**: Leo 回報 Method 第一版與 Setup 第一版已完成；Results v0 寫作包已補上 40 分鐘 kickoff 清單（填表→主敘事→ablation）
 - **next_action**: 早上第一個寫作時段先完成 kickoff 清單前 2 項（Table X 數字 + hardest subset），中午前交付 Main Results 四句版本
@@ -61,7 +61,7 @@
 - **owner**: MacBook
 - **priority**: P1
 - **created**: 2026-02-27
-- **last_touched**: 2026-02-28
+- **last_touched**: 2026-03-03
 - **描述**: 不被單一討論卡住，維持主線 + 備線
 - **progress**: 已納入 Leo 新指示：autodidact 恢復 30 分鐘 cadence，新增 meta-awareness 自我改進模式（避免 execution-blocked 連續 skip）；已建立 `meta-awareness-board.md` 與 `experiment-queue.md`
 - **next_action**: 主線持續推進；備線改為 listen-layer 三步循環（Exp1 attention suppression → Exp2 activation patching → Exp3 layer-restricted LoRA）；blocked 時優先執行 meta-audit 第 1 項（novelty classifier 草案）
@@ -70,29 +70,31 @@
 - **owner**: Lab
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-02-27
+- **last_touched**: 2026-03-04
 - **描述**: 管理 Leo 的財務：獎學金申請追蹤、收入增加策略、支出監控
 - **tracker**: memory/finance/FINANCE_TRACKER.md
-- **next_action**: 查僑委會獎學金 deadline + 台大國際傑出研究生獎學金申請時程 + 電信所 TA 空缺
+- **next_action**: 整理 3 月現金流與必要支出清單（含固定/可延後）
 - **recurring**: 每週更新一次 FINANCE_TRACKER
 
 ### L-07 | SYNC_PROTOCOL 落地驗證
 - **owner**: Lab
 - **priority**: P2
 - **created**: 2026-02-27
-- **last_touched**: 2026-02-27
+- **last_touched**: 2026-03-04
 - **描述**: 驗證混合同步協議實際運作：每日 merge、[STATE] 通知、reconcile
-- **next_action**: 等 Mac Leo 完成 merge 後做第一次 smoke test
+- **next_action**: 跑一輪端到端 SYNC 驗證（含失敗重試）並記錄結果
 
 ### L-09 | HN 雙時段推薦（移交自 Mac）
 - **owner**: Lab
 - **priority**: P1
 - **created**: 2026-02-28
-- **last_touched**: 2026-02-28
+- **last_touched**: 2026-03-04
 - **描述**: 每天 2 次閱讀 Hacker News，分析後推送 Leo 感興趣文章
 - **schedule**: 13:30、20:30（Asia/Taipei）
 - **output_format**: 每次 3-5 篇；每篇含 why it matters + link + action（略讀/深讀）
-- **next_action**: 於 Lab 端建立固定流程，先完成今天 20:30 推送並在 #bot-sync 回報接手狀態
+- **progress**: v2 完成 — 改為「每小時靜默蒐集 + 每天 20:30 推送 top 10」
+- **next_action**: 觀察首批 daily digest 效果，根據 Leo 反饋調整 profile 權重
+- **cron_ids**: `df22eb11`（每小時蒐集, spark）, `76817b6d`（20:30 digest, g53s）
 
 ## WAITING
 

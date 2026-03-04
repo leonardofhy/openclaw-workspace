@@ -19,11 +19,23 @@
 
 ### Step 3: 決定是否通知
 
+**🚨 Anti-Spam Rule（最高優先）：**
+1. 讀 `memory/heartbeat-state.json` 的 `recent_alerts`
+2. 如果你要發的 alert **內容本質上和過去 24h 內已發的一樣**（同一個 task stale、同一個系統故障、同一個 deadline），**不要發**
+3. 只有在 **狀態改變** 時才重新通知（例：stale task 被修了又 stale、新的故障、deadline 進入更緊急階段）
+4. 發完 alert 後，寫入 `heartbeat-state.json`：`recent_alerts[<key>] = {ts, summary}`
+5. 每次 heartbeat 開始時清理 >24h 的舊 entries
+
 ```
-IF 有 actionable alert（overdue task / broken system / Leo 需要知道的事）
+IF 有 NEW actionable alert（之前 24h 沒發過同樣的）
   → 修復問題（能修的先修）
   → 發 #general：簡短說發生什麼 + 你做了什麼 + Leo 需要做什麼（如有）
+  → 更新 heartbeat-state.json
   → 不需要固定模板，說人話
+
+ELSE IF 有 actionable alert 但已通知過
+  → 不發 #general（已通知，等 Leo 或等狀態變化）
+  → 可以寫到 memory/YYYY-MM-DD.md 記錄你檢查過了
 
 ELSE IF 做了有意義的工作（修 bug、推進任務、清理 learnings）
   → 寫到 memory/YYYY-MM-DD.md
