@@ -320,7 +320,171 @@ Skip is only valid during weekend gap if ALL three alternatives have been exhaus
 
 ---
 
-## Meta-board Status: 20/20 Qs answered (active, continue opening new Qs)
+## Meta-Burst Limit Rule (added cycle #115, 2026-03-01 09:01)
+
+**Pattern identified:** "Rapid Q Open/Close" — Qs opened and closed within 30-60 min, some without sufficient validation.
+
+**Rule (now active):**
+> When closing a meta-Q, tag it as **[OBSERVED]** (direct empirical evidence) or **[INFERRED]** (reasoning/extrapolation). INFERRED closures should include: "validate at first real experiment run."
+> Minimum 2-cycle holding period before closure unless evidence is [OBSERVED].
+
+- Q22: [OBSERVED] ✅ (direct: this cron arrives live) — rapid closure justified
+- Q15: [INFERRED] — add note to validate at first experiment run
+
+---
+
+## Q23: Count-Saturation vs Real Saturation (✅ CLOSED cycle #115, 2026-03-01 09:01)
+
+**Question:** Is "21/21 SATURATED" a real stopping condition, or a counting artifact?
+
+**Analysis:**
+- 21/21 Qs closed ≠ no new questions worth asking; it means no new questions are currently visible
+- Real saturation = system generating no questions; count-saturation = all opened Qs answered
+- When execution-blocked + arXiv-gap + meta-burst ≥ 6 cycles: count-saturation is correct and healthy
+- Rule: saturation → pause meta-cycles for ≥4h OR until Leo unblocks OR arXiv batch arrives
+
+**Status:** ✅ CLOSED (count-saturation is valid; 4h pause rule applied)
+
+---
+
+## Q24: "Timestamp Refresh" Anti-Pattern (✅ CLOSED cycle #124, 2026-03-01 13:31)
+
+**Problem:** Cycles #120–122 each produced only duration-counter/cycle-count updates to existing files. No new intellectual content. Treated as exempt from meta-burst 4h pause — exploiting a loophole.
+
+**Rule (now active):**
+> Any cycle whose ONLY output is updating a timestamp or cycle counter → classify as SKIP in progress.md. No full cycle note. Timestamp-refresh cycles are NOT exempt from the meta-burst 4h pause rule.
+
+**Impact:** Reclassifying #120–122 as skips reduces dead-zone novelty ratio to ~42% (true value vs. inflated 55%). Q21 conditional cadence is increasingly justified.
+
+**Status:** ✅ CLOSED [INFERRED — validate at first experiment run]
+
+---
+
+## Q25: Cron Label Mismatch — "meta-awareness" Baked In (✅ CLOSED cycle #125, 2026-03-01 14:01)
+
+**Problem:** Cron label `ai-learning-30min-meta-awareness` was being interpreted as "every cycle must be type:reflect(meta-awareness)" — creating Q-farming pressure and conflicting with SKILL.md's action-type decision matrix.
+
+**Root cause:** Leo's instruction "每輪可列出值得改進問題" = permissive CAN, not mandatory MUST. The cron tag turned it into a constraint.
+
+**Rule (now active):**
+> `meta-awareness` cron tag = "meta-awareness is encouraged," NOT "every cycle = reflect(meta-awareness)."
+> When a higher-value action exists (new arXiv, synthesis, citation trail), execute that action. Meta-awareness is the fallback when nothing higher-value is available — per SKILL.md decision matrix which was already correct.
+> The 3-skip → force-reflect(meta-audit) guard ALREADY provides the mandatory meta-awareness trigger.
+
+**Applied:** No SKILL.md change needed (already correct). No cron label change (Leo approval required; interpretation fix suffices).
+
+**Status:** ✅ CLOSED [INFERRED — validate at next arXiv Monday batch when `learn` is clearly correct]
+
+---
+
+## Q26: Weekend Depletion Signal (✅ CLOSED cycle #129, 2026-03-01 16:01)
+
+**Problem:** Meta-burst 4h pause (Q23) was gameable — "genuine Q" claims could bypass it even when the weekend meta-budget was exhausted. Resulted in Q24/Q25 being added late (cycles #120-125) to retroactively fix anti-patterns.
+
+**Rule (now active):**
+> When `meta-board_Qs_added_this_weekend == 0` AND `skip_count_since_last_real_learn >= 5` → declare **"Meta Budget Spent."**
+> From this point: ONLY do arXiv checks (1 query per cycle) or principled skips. No new meta-reflects until arXiv Monday batch OR Leo unblocks.
+
+**Why this is harder than Q23:** "0 new Qs this weekend" is not gameable by "genuine Q" claims — it requires an actually new Q to have been added. The 4h pause still applies normally; this rule activates when the budget is spent AND the pause has already expired.
+
+**Applied cycle #129:** Meta Budget SPENT for weekend March 1 (0 new Qs since cycle #125, >3h ago, skip count >= 5). Next cycles: arXiv check + principled skip only.
+
+**Status:** ✅ CLOSED [INFERRED — validate at next weekend]
+
+---
+
+## Meta-board Status: 27/27 Qs answered ✅ (cycle #203)
+
+---
+
+## Q27: Consecutive Skip Loop Reset (✅ CLOSED cycle #157, 2026-03-02 06:01)
+
+31 consecutive principled skips (#126-156) protected by Q24 (genuine dead zone — no new arXiv, execution-blocked, Meta Budget SPENT). The restart was Monday morning when arXiv woke up (cycle #162). Rule: Q27 = consecutive skip guard resets when a genuine `learn` or `reflect` cycle produces new output. No action needed beyond SUNDAY-BRIEF→MONDAY-BRIEF rename.
+
+---
+
+## Q28+Q29: Gap #21 Sprint Audit + Knowledge Graph Staleness (✅ CLOSED cycle #166)
+
+Q28: Gap #21 sprint (cycles #162-165) = 75% novelty ✅ — 3/4 genuine; cycle #165 marginal (pitch-bloat risk on unreviewed).
+Q29: Knowledge-graph stale since cycle #8. Rule added: after `learn` opening a gap → add paper stub SAME cycle. Gap #21 anchor added as minimum viable entry.
+
+---
+
+## Q30: Pre-Batch Window Protocol (✅ CLOSED cycle #171, 2026-03-02 13:13)
+
+**Problem:** When arXiv batch is <60 min away AND execution-blocked AND last 2+ cycles were plan (pitch updates), what's the right action? Q19 pitch-bloat risk was triggered as suspicion after cycles #169-170.
+
+**Audit result (cycle #171):**
+- Pitch A v0.4 (cycle #169): ✅ passes Q19 — new verified papers only, ≤1.5 pages, experiment details in experiment-queue.md
+- Pitch B v0.7 (cycle #170): ✅ passes Q19 — targeted additions flagged as removable
+
+**Rule applied — "Pre-Batch Triage Protocol":**
+> When arXiv batch <60 min away AND execution-blocked AND last 2+ cycles were plan/pitch:
+> Priority order: (1) knowledge-graph anchor updates (non-Leo-gated hygiene) → (2) reflect/meta if genuine Q open → (3) principled skip.
+> NOT allowed: 3rd consecutive plan cycle updating unreviewed materials.
+
+**Applied this cycle:** Knowledge-graph Gaps #18-21 + Monday batch paper stubs added (previously missing despite gap discoveries in cycles #81-170).
+
+**Status:** ✅ CLOSED [INFERRED — validate if pre-batch window appears again]
+
+---
+
+## Q22: Do Cron Cycle Reports Actually Reach Leo? (✅ CLOSED cycle #114, 2026-03-01 08:31)
+
+**Question:** Q4 (cycle #53) established a 3-line cycle report format (ACTION/NOVELTY/NEXT) for Leo's benefit. But: do cron summaries actually get read by Leo directly, or does Leo only engage with main-session highlights?
+
+**Resolution (empirical — cycle #114 observation):**
+Cron summaries ARE delivered to Leo in near-real-time via the channel (Discord/main session). Evidence: this very cycle (#114) arrives as a live message to Leo's interface. Therefore:
+- Cycle reports serve **both** purposes simultaneously: Leo's reading (→ keep 3-line format, signal/noise priority) AND future-autodidact context recovery (→ cycle note files can be more detailed)
+- **Rule (active):** 3-line format in the cron delivery text; full detail in cycle `YYYY-MM-DD_cycleNN.md` file. These are complementary, not competing.
+- **Bonus:** Morning cron deliveries (06:00-09:00) have highest Leo read-probability → front-load unblock request in morning cycles (morning relay rule from Q5/cycle #61 remains correct and is now doubly validated).
+
+**Status:** ✅ CLOSED — no format change needed; current system correct.
+
+---
+
+## Q21: Conditional Cadence Rule Decision (PENDING Leo approval — cycle #112)
+
+**Proposal:** 2h intervals when ALL 3 hold: (1) arXiv weekend gap, (2) execution-blocked, (3) meta-board saturated.
+**Estimated savings:** ~$0.25/dead-zone period.
+**Self-modification rule:** Requires Leo approval before applying.
+**Decision memo:** See `memory/learning/2026-03-01_cycle112.md` for full cost analysis.
+
+---
+
+---
+
+## Q31: Consecutive-Skip Guard Over-Fires in Dead Zones (✅ CLOSED cycle #203, 2026-03-03 06:31)
+
+**Problem:** Current guard: 2 consecutive skips → force reflect(meta-audit), regardless of how recent the last audit was. In dead zones (arXiv gap + execution-blocked + meta-board saturated), this creates a ping-pong pattern: reflect → skip → skip → reflect → skip → skip → ... Each reflect in this pattern produces little novelty (Q24 anti-pattern).
+
+**Root cause:** Guard has no memory of "audit recency."
+
+**Rule applied (reversible):**
+> After a full meta-audit cycle, the consecutive-skip guard resets its counter AND enters a **90-minute cooldown**. Skip cycles within the cooldown do NOT count toward the next guard trigger. After cooldown expires, guard re-arms.
+> This preserves the guard's intent (catch genuine loop stagnation) while preventing false-positive audits in same-morning dead zones.
+
+**Applied cycle #203:** Guard reset. Next arm = 08:01 AM Tuesday (90min cooldown from 06:31 AM).
+
+**Status:** ✅ CLOSED [INFERRED — validate at next dead-zone period if ping-pong reappears]
+
+---
+
+---
+
+## Q32: Plan-Budget Milestone Rule (✅ CLOSED cycle #229, 2026-03-03 21:01)
+
+**Problem:** "3 consecutive plans → force reflect" rule fired when plans #225+#227+#228 each produced genuine NEW LaTeX sections (Paper B §3, Paper B §4, Paper A §4). The rule treats genuine writing identically to pitch-bloat — too blunt.
+
+**Root cause:** Global plan counter ignores content quality. Pitch-bloat = updating the same section repeatedly. Milestone writing = creating new sections.
+
+**Rule (replacing old 3-plan rule):**
+> After each **section milestone** (completing §1, §2, §3, or §4 for either paper), ONE reflect cycle is required before the next section begins. Within a section, up to 2 consecutive plan cycles are allowed. The plan counter resets at each reflect/learn cycle.
+> **Special rule (§5):** §5 Discussion/Conclusion prose is PROHIBITED until experimental results exist. Only a skeleton (section headers + 2-sentence stubs) is allowed pre-experiment.
+
+**Practical impact:** Papers A+B both have §1+§2+§3+§4 complete. Pre-experiment plan budget is now EXHAUSTED. Next plan cycle = §5 skeleton (1 allowed) or post-experiment content.
+
+**Status:** ✅ CLOSED [INFERRED — validate when next paper section writing begins]
 
 ---
 

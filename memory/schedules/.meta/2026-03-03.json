@@ -1,0 +1,64 @@
+{
+  "schema": "daily-scheduler/meta-v2",
+  "date": "2026-03-03",
+  "gcal": {
+    "events": {
+      "A-054cc7bbe5": {
+        "gcal_event_id": "96d6icmcdf2onto22rvm8qc8ok",
+        "last_synced_hash": "7302d7c721c5c034cb87e0f96098201244a32a15",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "A-33c5187275": {
+        "gcal_event_id": "12qkkb993dcvtqcfcqbj36blhg",
+        "last_synced_hash": "c092ea0fe938d51c941efbb3362fb4b5f29871ef",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "A-a16512eec1": {
+        "gcal_event_id": "8hslluvuu0fjeiebfmgn2ist4o",
+        "last_synced_hash": "e1e3cac264691a677e5dc3ab3abfa8f536bdff13",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "A-913307d8f8": {
+        "gcal_event_id": "5rdcaehv275eukgf6ptef2rkc4",
+        "last_synced_hash": "899251047ec6f4405877aaeab942884bdb968a16",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "A-9bc63dce4b": {
+        "gcal_event_id": "qb1kl3cjga8ei3o02962r604ho",
+        "last_synced_hash": "0e992f46f72b1cf7b4b50da2d442df68e1b4db4a",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "A-ad04e507d0": {
+        "gcal_event_id": "8771718hm3elggrtl6a450umcg",
+        "last_synced_hash": "e68a26e5fa328840c4621cccf6666bd3de683368",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "A-4c9b103d09": {
+        "gcal_event_id": "htlfvq0unk72fnm1gjr9cflfio",
+        "last_synced_hash": "f34e72168897004a84aaa5f4c8d65dab5582dcdd",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "A-64327c8b37": {
+        "gcal_event_id": "mhak0ho08pn3ekv97a3vql6f7s",
+        "last_synced_hash": "cee419632812140afa6f57f67a95413c70d29e92",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      }
+    }
+  }
+}

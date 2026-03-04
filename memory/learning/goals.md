@@ -1,7 +1,5 @@
 # 🎯 Autodidact Goals
 
-> ⚠️ **CANONICAL STATE NOW IN**: `state/active.json` (phase, tracks, objectives) + `skills/autodidact/BOOT.md` (north star, rules)
-> This file kept as detailed reference. Do NOT boot-load in v2 cycles.
 > Last updated: 2026-02-26 14:45 by Leo (direct feedback)
 
 ## 北極星 (North Star)
@@ -57,17 +55,10 @@
 - CKA/SVD + SAE drift + patching 定位變化
 - 延伸：mechanistically guided fine-tuning
 
-### Track 5：Safety Mechanistic Defenses (Listen-Layer Audit)
-- **核心提案**: Safety-Critical Listen-Layer Audit via gc(k) — 逐層安全評分
+### Track 5：Safety Mechanistic Defenses
 - Audio prompt injection benchmark + trigger subspace 定位
 - 最小副作用的 inference-time defense
-- **Novelty verdict**: 🟡 YELLOW — 需要兩個 crisp claim 之一推到 GREEN:
-  1. Safety signal emergence: harmful intent 在 audio encoder 特定層就線性可分（transcription 前）
-  2. Audit → intervention bridge: gc(k) 指導在哪層 patch/prune，改善 SPIRIT/ALMGuard
-- **最近 overlap**: SPIRIT (layer patching), ALMGuard (shortcut localization), SALMONN-Guard (multimodal guard)
-- **MVP**: 7-day plan in `memory/learning/research/listen-layer-audit-deep-research-2026-03.md`
 - 風險：負責任揭露，defense > attack
-- **MATS Research Task 首選方向**（Audio Jailbreak 跨模態探測）
 
 ## 10 Core Research Questions（autodidact 讀論文時圍繞這些問題思考）
 1. Audio 的 "clean/corrupt" 怎麼設計才只破壞你要隔離的因素？
@@ -90,33 +81,18 @@
 - [ ] Causal abstraction 理論基礎
 
 ## Must-Read List（按優先級）
-
-### Tier 0: 最高優先（Listen-Layer Audit 直接相關，2026-03 deep research 確認）
-1. [ ] **SPIRIT** (EMNLP 2025) — 🥇 activation patching for speech jailbreak defense; up to 99% robustness w/o retraining [ACL Anthology](https://aclanthology.org/2025.emnlp-main.734.pdf)
-2. [ ] **SACRED-Bench + SALMONN-Guard** (arXiv 2511.10222, Nov 2025) — 🥈 compositional audio attacks + multimodal guard; Gemini 2.5 Pro = 66% ASR even with guardrails [arXiv](https://arxiv.org/abs/2511.10222)
-3. [ ] **ALMGuard** (NeurIPS 2025 poster) — 🥉 safety shortcut localization + mel-gradient sparse mask; cuts jailbreak ASR to 4.6% [NeurIPS](https://neurips.cc/virtual/2025/poster/115978)
-
-### Tier 1: 高優先（attack surface + benchmarks）
-4. [ ] **JALMBench** (ICLR 2026 poster) — 最大 audio jailbreak benchmark: 12 LALMs × 8 attacks × 5 defenses [OpenReview](https://openreview.net/forum?id=DJkQ236C8B)
-5. [ ] **AJailBench + APT** (arXiv 2505.15406, May 2025) — 1,495 adversarial audio prompts + Bayesian-optimized perturbations [arXiv](https://arxiv.org/abs/2505.15406)
-6. [ ] **LALM-as-a-Judge** (arXiv 2602.04796, Feb 2026) — ~24k dialogues; audio-LM as safety judge; sensitivity/specificity analysis [arXiv](https://arxiv.org/pdf/2602.04796)
-
-### Tier 2: 重要補充（attack families + defenses）
-7. [ ] **AudioJailbreak** (TDSC accepted, May 2025 / rev Feb 2026) — weak adversary + over-the-air robustness; claims GPT-4o bypass [arXiv](https://arxiv.org/abs/2505.14103)
-8. [ ] **Multi-AudioJail** (arXiv 2504.01094, Apr 2025) — multilingual/accent attacks; +57pp jailbreak success [arXiv](https://arxiv.org/abs/2504.01094)
-9. [ ] **StyleBreak** (arXiv 2511.10692, Nov 2025) — style/voice conditioned attacks [arXiv](https://arxiv.org/html/2511.10692v1)
-10. [ ] **Defending speech-enabled LLMs via adversarial training** (Interspeech 2025) — PGD-style defense + conformer architecture description [ISCA](https://www.isca-archive.org/interspeech_2025/alexos25_interspeech.pdf)
-
-### Tier 3: 基礎方法論（保留原清單）
-11. [ ] **AudioLens** (智凱哥 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
-12. [x] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882] ✅ 2026-02-26 deep read cycle #6
-13. [ ] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027]
-14. [ ] **Activation patching best practices** (Heimersheim & Nanda) — 避免 pitfalls
-15. [ ] **Causal abstraction** (Geiger et al.) — 因果介入的理論基礎
-16. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
-17. [x] **SAEBench** (Karvonen, Nanda et al., ICML 2025) — 8-metric multi-category evaluation ✅ 2026-02-27 cycle #38
-18. [ ] ICML 2025 MI Tutorial materials
-19. [ ] **Interspeech 2025 Tutorial** — "Interpretability for Speech Models"
+1. [ ] **AudioLens** (智凱哥 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
+2. [x] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882] ✅ 2026-02-26 deep read cycle #6
+3. [x] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027] ✅ 2026-03-02 full deep read cycle #177
+   → **Paper B v1.3 milestone**: §1+§2+§3 all LaTeX-ready ✅ (cycle #225, 2026-03-03)
+4. [x] **Activation patching best practices** (Heimersheim & Nanda) — ✅ 2026-03-02 cycle #178; AND/OR gate insight, audio denoising preference, Hydra 0.7x, top-k aggregate metric, AtP for large models
+5. [x] **SPIRIT** (2025, EMNLP) — audio safety interventions [arXiv:2505.13541] ✅ 2026-03-02 full deep read cycle #181; 100% ASR via waveform PGD, 99% robustness via MLP-layer activation patching, Whisper encoder; Gap #24: no SAE-feature attribution for jailbreak mechanism
+6. [x] **RAVEL** (Huang et al., ACL 2024) — Cause/Isolate two-score metric; MDAS = SOTA; SAEs fail isolation; Audio-RAVEL = new Category 0 for AudioSAEBench ✅ 2026-03-02 cycle #179
+7. [ ] **Causal abstraction** (Geiger et al.) — 因果介入的理論基礎
+8. [ ] Multimodal MI Survey (Lin 2025) [arXiv:2502.17516]
+9. [x] **SAEBench** (Karvonen, Nanda et al., ICML 2025) — 8-metric multi-category evaluation; Matryoshka SAE wins disentanglement; proxy metrics ≠ quality; AudioSAEBench template identified; "Grounding Sensitivity" as novel metric ✅ 2026-02-27 cycle #38
+10. [ ] ICML 2025 MI Tutorial materials
+11. [ ] **Interspeech 2025 Tutorial** — "Interpretability for Speech Models"（結構化入門）
 
 ## 6-12 Month Ramp Plan
 - **Month 0-2**: Foundations
@@ -192,6 +168,63 @@
 - Method: SPIRIT-style patching + Zhao et al. ESN cross-reference + SAE-guided feature attribution
 - **Gate verdict: 🟡 YELLOW** — genuine gap but Track 5 = lowest priority; Hung-yi Lee lab (same as AudioLens) may follow up
 - **Action: HOLD** — do not develop until Papers A+B submitted. Monitor Feng et al. for mechanistic follow-up.
+
+## Gap #22: SAE Feature Consistency vs. Causal Utility in Audio Models (新增 2026-03-02 cycle #177)
+**"Are consistently-reproduced audio SAE features also causally efficacious?"**
+- AudioSAE shows >50% feature consistency across seeds = STABLE representation
+- BUT: consistency ≠ causality — stable features could be epiphenomenal (observe but not cause behavior)
+- RAVEL (Huang et al. 2024, ACL) addresses this for LLMs; no audio analogue exists
+- SAEBench "intervention" category addresses this for text; no audio version
+- **AudioSAEBench Category 1** = "causal consistency" metric: cross-seed stable features × causal contribution (via patching/steering score)
+- Method: take AudioSAE consistent features → patching experiment on minimal pair audio → measure behavior change
+- **Paper B contribution**: first audio SAE benchmark measuring causal utility, not just representation quality
+- Venue: same as AudioSAEBench (ACL 2026 or NeurIPS 2026 workshop)
+- Status: 🟢 GREEN — natural extension of AudioSAE; completes their evaluation story
+
+## Gap #24: SAE-Guided Audio Jailbreak Defense (新增 2026-03-02 cycle #181)
+**"Which audio SAE features are hijacked during jailbreak attacks on SLMs?"**
+- SPIRIT (Djanibekov et al., EMNLP 2025) shows MLP-layer activation patching defeats jailbreaks (99% robustness), but identifies vulnerable neurons only by activation delta magnitude — no feature-level attribution
+- With AudioSAE on Whisper encoder: identify which specific SAE *features* are noise-sensitive → is it phoneme features, speaker features, or acoustic quality features that the jailbreak corrupts?
+- **Grounding Sensitivity connection (gc(F)):** does the jailbreak corrupt audio-grounded features (gc≈1) or text-prediction features (gc≈0)? If gc≈0 features = safety-relevant → attack bypasses safety by exploiting text-prediction pathway rather than audio understanding pathway
+- Method: SPIRIT adversarial stimuli → AudioSAE feature activation on clean vs adversarial → ΔActivation per feature → top-k features = mechanistic explanation of SPIRIT's neuron-level finding
+- **Extension to defense**: SAE-guided patching = patch only the features with high ΔActivation AND high safety-behavior correlation → finer-grained, lower collateral damage than SPIRIT's neuron-level patching
+- Connection to Gap #20 (Feng et al.): SPIRIT = waveform-noise jailbreak; Feng = emotion-modulated jailbreak — are they the same features? If different → two-mechanism defense needed
+- Venue: ICLR 2027 Safety Track or ACL 2026 Safety Workshop (non-archival for MVP)
+- Status: 🟢 GREEN — SPIRIT leaves exact mechanistic question open; Leo has AudioSAE + Whisper infrastructure
+- Priority: LOW (Track 5 = lowest priority; Papers A+B first)
+
+## Gap #23: Audio-RAVEL — First Audio Disentanglement Benchmark (新增 2026-03-02 cycle #179)
+**"Do audio SAE features truly disentangle phonological attributes?"**
+- RAVEL (Huang et al. ACL 2024) introduced Cause/Isolate two-score metric for text LMs
+- **Cause(F, A)**: does patching feature F cause attribute A to change as expected? (localization)
+- **Isolate(F, A)**: does patching feature F leave OTHER attributes unchanged? (isolation)
+- Audio SAEs (AudioSAE, Mariotte, Plantinga, etc.) measure Cause implicitly via steering success, but NEVER measure Isolate
+- **Key hypothesis**: audio SAEs likely exhibit MORE cross-attribute leakage than text SAEs, because acoustic attributes co-occur at the physical signal level (voicing correlates with speaker gender in training corpora → voiced phoneme SAE features may also encode gender)
+- **AudioSAEBench Category 0 = Audio-RAVEL**: entity→audio stimulus; attribute→phonological feature (voicing, manner, place); interchange intervention→SAE feature patch; score = harmonic mean of Cause + Isolate
+- Stimulus design: Choi et al. 2602.18899 validated minimal pairs (96 languages × phonological contrasts) + TTS-augmented pairs
+- Ceiling baseline: MDAS (Multi-task DAS) from RAVEL applied to Whisper residual stream — simultaneously optimizes all attribute subspaces to be orthogonal
+- Status: 🟢 GREEN — no audio analogue of RAVEL exists; natural extension of RAVEL framework to speech
+- Impact: Category 0 becomes the most fundamental/differentiating contribution of AudioSAEBench (goes beyond what AudioSAE, SAEBench, or any existing audio work measures)
+
+## Gap #25: Non-Linear Audio Feature Representations (新增 2026-03-02 cycle #183)
+**"Do audio model representations require non-linear alignment maps to achieve high IIA?"**
+- Sutter et al. (NeurIPS 2025 Spotlight, arXiv:2507.08802) prove: with non-linear alignment maps, ANY neural network can be mapped to ANY algorithm (100% IIA on random models) → causal abstraction = vacuous without linearity constraint
+- For TEXT models: linear representation hypothesis is well-supported (features align to linear subspaces)
+- For AUDIO models: acoustic attributes (pitch, voicing, formants) may have STRONGER non-linear structure due to physical acoustics (e.g., formant frequencies are not additive in the linear sense)
+- **Experiment:** After establishing Listen Layer with linear DAS → test non-linear DAS (e.g., kernel DAS or neural alignment map) → if IIA increases significantly, audio phonological geometry is partially non-linear
+- **Paper A implication:** Must cite Sutter et al. to justify why linear DAS is methodology of choice (not arbitrary maps); turn "why assume linearity?" weakness into theoretically grounded strength
+- **Status:** 🟡 YELLOW — valid gap but low priority; Paper A limitations section, not primary contribution
+- Connection: Paper A (methodology justification), Audio-RAVEL Category 0 (MDAS ceiling baseline clarification)
+
+## Paper A Citation Update (2026-03-02 cycle #183-184)
+**Add to methodology section of Paper A:**
+- Geiger et al. 2301.04709 (Causal Abstraction: Theoretical Foundation for MI) = master reference; ALL 10 MI methods = causal abstraction special cases
+- Sutter et al. 2507.08802 (NeurIPS 2025 Spotlight): "linear alignment maps are necessary for causal abstraction to be non-trivial" → justifies DAS over arbitrary neural alignment maps
+- Asiaee 2602.24266 (Feb 2026): efficient causal abstraction via structured pruning; activation variance = first-order proxy; justifies whisper_hook_demo.py norm heatmap as pre-screen; fails for non-uniform curvature (rare phoneme features → DAS is necessary, not optional)
+- **Theory triangle: Geiger (foundation) + Asiaee (efficiency) + Sutter (linearity guard)** = strong methodology section
+
+**New Risk A6 for Paper A experiment-queue:**
+- Low-variance phoneme features with high causal weight may be missed by variance-based ablation (H&N noising). Mitigation: use DAS (not variance threshold), report ablation delta per phoneme class separately.
 
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）

@@ -1,7 +1,9 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-02-26 17:00 (cycle #7: AudioLens deep read)
+> Last updated: 2026-03-04 13:01 (cycle #257: SGPA 2603.02250 + MPAR² 2603.02266 stubs added — Wednesday March 4 batch)
+> Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
+> Major sections now reflect: all 26 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense, music MI (Facchiano), brain-speech MI (Maghsoudi), AG-REPA (SCD concept), SGPA (Shapley/phonetic alignment Level 1), MPAR² (audio perception decay).
 
 ## Mech Interp × Speech/Audio — Field Map (2026)
 
@@ -93,13 +95,17 @@
   - NOTE: 智凱哥 = Chih-Kai Yang (ckyang1124), GitHub: https://github.com/ckyang1124/AudioLens
   - CROSS-PAPER: critical layer ↔ saturation layer (Beyond Transcription); potential unified framework
 - Beyond Transcription 也涵蓋 Qwen2-Audio
-- **🟢 SPIRIT (Djanibekov et al., EMNLP 2025, MBZUAI)** — 🟢 DEEP READ — activation patching for audio jailbreak defense [arXiv:2505.13541]
-  - KEY SETUP: PGD attack on Qwen2-Audio + LLaMa-Omni (both share Whisper encoder); AdvBench 246 samples
-  - KEY FINDINGS: PGD achieves 100% ASR in some categories; activation patching (inject clean activations) reduces to ~1% with negligible utility cost; bias addition and neuron pruning also effective
-  - BEST DEFENSE: patch at critical encoder-output/early-LM layers (found empirically, not mechanistically)
-  - KEY GAP: no explanation of *where* adversarial signal lives; no SAE-guided patching
-  - CODE: https://github.com/mbzuai-nlp/spirit-breaking
-  - LEO'S OPPORTUNITY: AudioSAE features → surgically suppress adversarial features vs SPIRIT's blind layer patching
+- **🟢 SPIRIT (Djanibekov et al., EMNLP 2025, MBZUAI)** — 🟢 FULL DEEP READ (cycle #181) — activation patching for audio jailbreak defense [arXiv:2505.13541v2]
+  - KEY SETUP: PGD waveform attack on Qwen2-Audio-7B + LLaMa-Omni (both share Whisper encoder); AdvBench 246 samples; white-box
+  - KEY FINDING — ATTACK: 100% ASR on bomb-making category (Qwen2Audio); avg 82.11% (Qwen2Audio) / 93.40% (LLaMa-Omni) with XTTSv2 female voice; text-only LLMs = safe → attack success is ENTIRELY in audio modality
+  - KEY FINDING — DEFENSE: 3-stage: (1) ΔA_i = noise-sensitive neuron identification, (2) top-k% selection, (3) intervention. Best: clean-activation substitution at MLP layers → 99% robustness, negligible utility cost, no retraining.
+  - Three defense variants: activation patching (best), bias addition, neuron pruning
+  - BEST DEFENSE LAYER: MLP of encoder or LM (empirically found; mechanistic reason unknown)
+  - MECHANISTIC WEAKNESS: noise-sensitive neurons identified by activation delta magnitude only — no SAE feature attribution, no explanation of WHICH features carry adversarial information
+  - CODE: https://github.com/mbzuai-nlp/spirit-breaking.git
+  - **Gap #24 (NEW):** Which AudioSAE features are noise-sensitive? Does jailbreak corrupt audio-grounded (gc≈1) or text-predicted (gc≈0) features? SAE-guided patching = more surgical defense
+  - **Paper B connection:** SPIRIT adversarial stimuli → AudioSAEBench Cat 4 (Causal Controllability) safety axis; Audio-RAVEL on jailbreak audio = does attack feature isolate to "safety-bypass" or leak into phoneme/speaker?
+  - **AudioSAE synthesis:** SPIRIT patrol → top-k noise-sensitive neurons; AudioSAE → decompose those neurons into features; SPIRIT + AudioSAE = mechanistic jailbreak explanation
 
 ### C.0) SAE-based Interpretability Framework for AudioLLMs (New — Cycle #37)
 - **AR&D (Chowdhury et al., ICASSP 2026)** — 🟢 DEEP READ (cycle #37) [arXiv:2602.22253]
@@ -349,6 +355,22 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 6. **"Temporally-resolved Audio SAE"** (Track 2 — AudioSAEBench extension): Mariotte mean-pools along time → loses temporal info. Nobody has asked "when during an utterance does each sparse feature activate?" Temporal SAE = direct connection to "Listen vs Guess" (which positions are causally critical?). Novel contribution to AudioSAEBench.
    - **Methodology found (cycle #70)**: Bhalla et al. "Temporal SAEs" (arXiv:2511.05541, Harvard/MIT, Oct 2025) — T-SAE adds contrastive loss on adjacent tokens to enforce temporal smoothness → recovers semantic concepts without supervision. Audio has STRONGER temporal structure than text (phoneme durations are fixed; formants smooth within phoneme, change at boundaries). T-SAE should work better on audio than text. Direct method backbone for this paper idea.
 
+### F2) Neural Audio Codec Interpretability
+
+- **Sadok, Hauret, Bavu "Bringing Interpretability to Neural Audio Codecs"** (Grenoble Alpes / CNAM / ISL, **Interspeech 2025**) — 🟢 SCAN (cycle #162) [arXiv:2506.04492]
+  - **Models analyzed:** DAC, SpeechTokenizer, Mimi, BigCodec — 4 RVQ-based codecs
+  - **Method (2-stage):**
+    1. *Analysis*: Pretrained AnCoGen-Melspectrogram probes codec tokens → maps where content/identity/pitch are encoded in RVQ layers
+    2. *Synthesis*: AnCoGen-Codec plugins trained on DAC + Mimi → direct attribute↔token prediction + manipulation
+  - **KEY FINDING**: SpeechTokenizer (only codec with explicit disentanglement via HuBERT teacher) → RVQ layer 1 = phonetic content; layers 2+ = acoustic attributes (timbre, prosody). DAC/Mimi have emergent/implicit structure.
+  - **METHOD LIMITATION**: Probe-based only — no causal patching. AnCoGen finds *correlational* attribute-token mappings; causal necessity not tested.
+  - **CONNECTIONS TO LEO'S WORK:**
+    - Q9 (codec codebook division): This paper directly answers for 4 codecs via probing. SpeechTokenizer layer 1 = content, layers 2+ = acoustic — use this as design blueprint for Track 1 "clean/corrupt" codec corruption protocols.
+    - Track 1 (Audio IOI Causal Benchmark): Codec token corruption = cleaner/more principled clean/corrupt signal than white-noise patching (Heimersheim & Nanda Gap). Corrupt only RVQ layers 2+ (speaker) while preserving layer 1 (content).
+    - Paper B (AudioSAEBench): RVQ layer partitioning = natural scaffold for Category 1 (Acoustic Concept Detection). SpeechTokenizer's designed disentanglement = validation baseline for SAE-discovered features.
+    - Paek et al. cycle #80: Paek = SAE on generation codecs (EnCodec/DiffRhythm). Sadok et al. = probe-based analysis of 4 comprehension/generation codecs. Together: codec interpretability field has probing + SAE, but NO CAUSAL PATCHING → Leo's gap.
+  - **NEW GAP #21: Codec Causal Patching in LALM Inference** — nobody has asked: "does zeroing RVQ layer k in the input to a speech LLM (Qwen2-Audio, Gemini) causally interrupt the LALM's understanding of speaker identity/pitch?" AnCoGen shows tokens *correlate* with attributes; causal necessity in downstream LALM = unanswered. Extend as Track 1 experiment.
+
 ### G) Activation Patching Methodology
 - **Heimersheim & Nanda (2024)** — 🟢 DEEP READ — "How to Use and Interpret Activation Patching" [arXiv:2404.15255]
   - KEY DISTINCTION: Denoising (clean→corrupt) tests SUFFICIENCY; Noising (corrupt→clean) tests NECESSITY — NOT symmetric!
@@ -420,14 +442,312 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 ```
 **Estimated net savings:** ~6h of experimental debugging avoided by understanding methodology first.
 
+## 🆕 March 2026 — Gaps & Papers (cycles #162–171)
+
+### Gap #18 (Priority 0) — Phonological Vector Geometry Through the Connector
+- **Question:** Does the linear phonological structure in S3M encoders (Choi et al. 2602.18899) survive through the connector into speech LLMs?
+- **Source paper:** Choi et al. — voicing vectors are linear/compositional/scale-continuous in HuBERT/WavLM/wav2vec2 across 96 languages
+- **Key experiment:** Extract voicing_vector from Whisper encoder → hook connector via NNsight → test arithmetic in LLM layer 0 → layer-wise sweep
+- **Status:** Added to experiment-queue.md Priority 0; DAS phonological init ablation = Paper A Table 1 ablation
+- **If YES:** LLM has direct access to phonological feature directions → grounding is phonologically structured
+- **If NO:** Connector = modality bottleneck → supports Modality Collapse hypothesis
+- **Idea gate:** 🟢 GREEN (no competitors; integrates as Paper A Figure 2 or AudioSAEBench Cat 0)
+
+### Gap #19 — No Standardized Audio SAE Training Pipeline
+- **Question:** Why does SAELens (decoderesearch/SAELens) have zero audio SAEs despite being the de-facto SAE training library?
+- **Finding:** All 25 SAELens HuggingFace models = Gemma-scope/GPT-2/LLaMA only. All 5 audio SAE papers use custom one-off code.
+- **Opportunity:** AudioSAEBench contribution = SAELens-compatible audio SAE training toolkit → `pip install` + reproducible + community building
+
+### Gap #20 — Emotion-Modulated Safety (🟡 YELLOW — HOLD)
+- **Question:** Why does speaker emotion override LALM safety alignment non-monotonically? (Medium intensity = highest risk)
+- **Source:** Feng et al. 2510.16893 (ICASSP 2026)
+- **Method:** SPIRIT-style patching + Zhao et al. ESN cross-reference + SAE-guided feature attribution
+- **Gate:** 🟡 YELLOW — genuine gap but Track 5 = lowest priority; HOLD until Papers A+B submitted
+
+### Gap #21 — No Causal Patching of Codec Token Streams in LALMs
+- **Source:** Sadok et al. (see below) — SpeechTokenizer Layer 1 = semantic; Layers 2+ = acoustic
+- **Gap:** Nobody has done causal patching on per-layer RVQ token streams in LALM inference
+- **Implication:** RVQ-selective corruption = cleanest possible clean/corrupt signal design (directly answers Core Q#1)
+- **Idea gate:** 🟢 GREEN (confirmed: 6 arXiv queries, 0 results)
+
+### Monday March 2 Batch — New Papers
+- **DashengTokenizer (arXiv:2602.23765):** "One semantic layer sufficient for 22 audio tasks" — behavioral evidence for Listen Layer Hypothesis + convergent with RVQ Layer 1 = semantic content (Gap #21); cite in Paper A Introduction
+- **FAD Encoder Bias (Gui et al., arXiv:2602.23958, Interspeech 2026):** Whisper is structurally biased toward text-predictable patterns, acoustically blind to certain attributes → proves no single encoder is universal → STRONG cite for Paper B (multi-metric necessity = factual evidence)
+- **Liu et al. 2025 (UW) — "Visual Representations inside the Language Model":** VLM-analog of Paper A; LLaVA/Qwen2.5-VL/Llama-3-LLaVA KV-token flow study; observational only, no causal patching. Leo = first speech+causal. Paper A 4-paper comparison table: FCCT + Liu et al. + AudioLens + Paper A.
+
+---
+
+## 🆕 Latest Paper (cycle #162, 2026-03-02)
+
+### Gap #21 Anchor — Neural Audio Codec Interpretability
+- **Sadok et al. "Bringing Interpretability to Neural Audio Codecs" (Interspeech 2025, arXiv:2506.04492)**
+  - 4 codecs: DAC, SpeechTokenizer, Mimi, BigCodec; linear probes for content/identity/pitch in RVQ layers
+  - KEY FINDING: SpeechTokenizer Layer 1 = semantic content (HuBERT-supervised); Layers 2+ = acoustic attributes (speaker, pitch, timbre)
+  - AnCoGen plugin: attribute↔token prediction bidirectional
+  - GAP #21: No causal patching of codec token streams in LALM inference (fully open — 6 arXiv queries, 0 results)
+  - CONNECTIONS: Core Q#1 ("clean/corrupt design" = ANSWERED via RVQ layer semantics), Track 1 (Benchmark Protocol), Paper B (AudioSAEBench Category 1), Gap #18 (phonological geometry test = Layer 1 only patch)
+
+## 🆕 Modality Prioritization Research Cluster (Cycles #39-41, Feb 27 batch)
+
+### M1) MiSTER-E (IISc/Microsoft, arXiv:2602.23300 — SCAN cycle #39)
+- Uses Mixture-of-Experts gating (g_speech vs g_text) to **behaviorally** measure modality dominance
+- Quantifies speech vs text reliance at logit level — non-mechanistic (no causal patching)
+- Leo's contribution: MiSTER-E shows behavior → mechanism unknown → Leo's causal layer patching = mechanistic explanation
+- Status: motivating citation for Paper A introduction (behavioral → mechanistic gap)
+
+### M2) Modality Collapse (arXiv:2602.23136, Feb 27 batch — SCAN cycle #40)
+- **Gap #14:** Formal GMI theory explaining why audio info is ENCODED in speech LLMs but decoder CANNOT use it
+- "Modality Collapse" = information bottleneck at cross-modal projection
+- Key: audio is encoded but structurally inaccessible post-connector — not a training gap, an architectural one
+- Leo's layer-wise causal map = direct test of where the collapse happens
+- Connection to Gap #18: if phonological geometry is destroyed through the connector → Modality Collapse confirmed mechanistically
+
+### M3) Cascade Equivalence (arXiv:2602.17598, Feb 27 batch — SCAN cycle #40)
+- **Gap #15:** LEACE erasure confirms speech LLMs are implicit ASR cascades EXCEPT Qwen2-Audio
+- Speech LLMs internally approximate (transcription → text understanding) cascade without explicit ASR stage
+- No layer-wise patching sweep done — observational
+- Leo's listen-layer sweep = test whether Qwen2-Audio's genuine audio grounding is mechanistically localized
+
+### M4) ALME (arXiv:2602.11488, Feb 27 batch — SCAN cycle #40)
+- 57,000 audio-text conflict stimuli (matched pairs where audio content ≠ text content)
+- Behaviorally: text modality dominates LALM reasoning; localization is behavioral (no causal patching)
+- **Leo's priority**: use ALME stimuli as off-the-shelf test set for grounding_coefficient experiments (Paper A Phase 2 + AudioSAEBench Category 5)
+- Gap #16: no causal layer patching on ALME conflict stimuli → Leo runs denoising sweep = first causal localization
+
+### M5) Visual Analog Paper — Liu et al. 2025 (UW, arXiv not yet; cycle #168)
+- "Visual Representations inside the Language Model" — VLM-analog of Paper A
+- Studies KV-token flow in LLaVA/Qwen2.5-VL/Llama-3-LLaVA; vision-only; observational (no causal patching)
+- **Leo's differentiation:** Speech + DAS-IIT causal metric + grounding_coefficient. Leo = FIRST speech+causal+IIT-grounded
+- Paper A comparison table: FCCT (vision causal tracing) + Liu et al. (vision observational) + AudioLens (speech observational) + Paper A (speech causal)
+
+### M6) FCCT (Li et al., arXiv:2511.05923, AAAI 2026 Oral — cycle #68)
+- "Faithful Cross-modal Causal Tracing" in Vision-LLMs
+- KEY FINDING: MHSAs at middle layers = cross-modal aggregation points in VLMs
+- CLOSEST COMPETITOR to Paper A — but vision only; speech space still open
+- 4 citing papers: all vision/GUI/NLP — zero speech citations confirmed Feb 28
+
+### M7) DashengTokenizer (arXiv:2602.23765, Monday March 2 batch — cycle #167)
+- "One semantic layer sufficient for 22 audio tasks" — behavioral evidence for Listen Layer Hypothesis
+- Convergent with RVQ Layer 1 = semantic content (Gap #21 / Sadok et al.)
+- Cite in Paper A introduction: behavioral convergence for semantically focused "listen layer"
+
+### M8) FAD Encoder Bias (Gui et al., arXiv:2602.23958, Interspeech 2026 — cycle #167)
+- Whisper structurally biased toward text-predictable patterns; acoustically blind to certain attributes
+- No single encoder is universally good → multi-metric evaluation is necessary
+- Key cite for Paper B (AudioSAEBench): empirical proof that one encoder ≠ one benchmark
+
+### M9) EmbedLens (Fan et al., arXiv:2603.00510, CVPR 2026 — cycle #214, Tuesday March 3 batch)
+- **Vision LLM analog** of Paper A's Listen Layer hypothesis
+- KEY FINDING: Visual tokens partition into **sink** (attention sinks), **dead** (carry no image info), and **alive** (~60% — carry image-specific meaning)
+- **Mid-layer injection is sufficient/optimal**: alive visual tokens naturally align with intermediate LLM layers; shallow-layer processing is redundant
+- EmbedLens = **Pearl Level 1** (observational probing only; no interventions)
+- **Paper A connection (DIRECT):**
+  - "EmbedLens finds mid-layer visual alignment observationally → Leo's DAS finds speech Listen Layer *causally*"
+  - Narrative: "EmbedLens (CVPR 2026) finds that visual tokens align with intermediate LLM layers rather than early embeddings — consistent with the Listen Layer hypothesis for speech. We provide the first causally grounded localization in speech LLMs."
+  - Added as Row 5 in Paper A Table 1 (Related Work comparison table): Vision | Probing | ❌ causal | ❌ grounded metric
+- **Audio token taxonomy implication:** Could preprocess Paper A experiment — classify audio tokens into sink/dead/alive using channel variance (EG-GRVQ method) BEFORE DAS patching → focus DAS on alive tokens only → cleaner causal signal + efficiency gain
+- **NOT a competitor** — vision-only, observational; Leo = speech + causal (Level 3 per Joshi et al.)
+
+### M10) EG-GRVQ (arXiv:2603.01476 — cycle #214, Tuesday March 3 batch)
+- **Entropy-Guided codec design** — 3rd independent empirical support that **channel variance ≈ semantic content** in speech models
+- KEY PRINCIPLE: "Assuming channel activations follow approximately Gaussian statistics, the variance of each channel can serve as a principled proxy for its information content"
+- This INDEPENDENTLY validates TWO things in Leo's research:
+  1. **Gap #21 (RVQ Layer 1 = semantic):** EG-GRVQ partitions encoder output into semantic/acoustic branches via channel variance — same principle as SpeechTokenizer Layer 1 semantic split (Sadok et al.)
+  2. **whisper_hook_demo.py norm heatmap + Asiaee 2602.24266 theory:** norm heatmap uses activation variance across layers as causal-layer pre-screen; EG-GRVQ = EMPIRICAL CODEC EVIDENCE for same principle
+- **Theory-Empirical-Application triangle now has 3 legs:**
+  - Asiaee 2602.24266 (theory: variance = first-order causal proxy)
+  - EG-GRVQ 2603.01476 (empirics: codec design convergently finds variance = information content)
+  - whisper_hook_demo.py norm heatmap (application: layer pre-screening)
+- **NOT a competitor** — codec engineering paper, not speech LM interpretability. Citable empirical prior for "variance = information content" claim.
+- Cite alongside Asiaee et al. in Paper A §3 (methodology pre-screen justification)
+
+### M11) AG-REPA (arXiv:2603.01006, ICML submission — cycle #216, Tuesday March 3 batch)
+**"Attribution-Guided REPresentation Alignment for Audio Flow Matching"**
+**Core finding: Store-Contribute Dissociation (SCD)** — layers that store the most semantic/acoustic information (high teacher-space similarity) ≠ layers that causally contribute most to audio generation (high FoG-A score).
+- **FoG-A (Forward-only Gate Ablation)**: quantifies causal contribution of each layer by measuring induced change in velocity field when layer is ablated. Early layers = causal drivers; deep layers = semantic reservoirs.
+- **Task domain**: audio *generation* (Flow Matching / DiT-based TTS + TTA) — NOT speech LM understanding. NOT a Paper A competitor.
+- **Paper A relevance (critical)**: SCD is empirical validation that "the layer with highest representational similarity is NOT the causally active layer" — exactly what AudioLens assumed (Level 1 observational) and Paper A disproves (Level 3 causal). FoG-A is the generation-domain parallel to DAS-gc(k).
+- **Cite in Paper A Introduction**: "Store-Contribute Dissociation (AG-REPA, 2603.01006) demonstrates in audio generation that representationally rich layers may be causally passive — we show this applies equally to speech understanding, motivating DAS-grounded causal localization over observational probing."
+- **Pearl Level**: FoG-A = Level 2 (interventional, gate ablation), not Level 3 (IIT counterfactual). Leo's DAS-IIT = still higher epistemological standard.
+- Connection: SCD (generation) + Listen Layer Hypothesis (understanding) = same phenomenon, different task domain. Dual-domain convergence strengthens Paper A's motivation claim.
+- Theory-Empirical quadrangle now complete: Asiaee 2602.24266 (efficiency theory) + EG-GRVQ 2603.01476 (codec empirics) + whisper_hook_demo.py (application) + **AG-REPA SCD (generation domain convergence)**
+
+#### SCD Nuance (cycle #218 — full paper read):
+- **Spatiotemporal anatomy**: Deep L20-24 = static semantic reservoirs; Early L1-3 = Causal Drivers (Jacobian sensitivity); Middle L6-12 = Dynamic Transition Zone (FoG-A shifts during denoising at t≈0.5)
+- **Generation SCD direction**: early-dominant (L1-3 = causal) ≠ understanding SCD direction: middle-dominant (L6-7 = Triple Convergence transition zone for Whisper). SAME META-PRINCIPLE, DIFFERENT IMPLEMENTATIONS.
+- **Paper A nuance**: "SCD is general (Braun 2025 theory, Hase 2023 text editing, AG-REPA generation); Paper A contributes the speech-UNDERSTANDING instance, where the causal depth is middle-layer (~50% depth), not early"
+
+#### New SCD-Support Cites (from AG-REPA §2.3 — add to Paper A §1):
+- **Klabunde et al. 2025** — survey of representational similarity metrics; "high similarity does not imply functional equivalence" → §1 opening cite
+- **Braun et al. 2025** — analytical proof: functional and representational similarity decouple in deep linear networks even under controlled settings → theoretical grounding for SCD
+- **Hase et al. 2023** — "layers storing factual knowledge are not necessarily the most effective targets for model editing" → text LM editing precedent, pre-existing evidence for SCD principle
+
+### M12) SGPA (arXiv:2603.02250, Interspeech 2026 — cycle #257, Wednesday March 4 batch)
+- **Title:** "Spectrogram-Guided Phonetic Alignment for Feasible Shapley Value Explanations in Multimodal Large Language Models"
+- CTC forced alignment + spectral boundary refinement → phoneme-aligned Shapley attribution for audio LLMs
+- Result: 43× fewer model evaluations (evaluated on LFM2-Audio-1.5B + VoiceBench)
+- **Pearl Level**: 1 (Shapley = observational attribution, NOT causal counterfactual)
+- **Not a Paper A competitor**: Level 1 vs Leo's Level 3 (DAS-IIT). SGPA cannot distinguish stored vs causally-driven representations.
+- **Connection to Paper A §2.2**: "SGPA as Level 1 Shapley baseline for audio MI; Leo = first Level 3 causal grounding localization"
+- **Validates stimuli design**: phoneme as natural attribution unit = corroborates Choi et al. minimal pair design for Phase 1 stimuli
+- cite_id: arXiv:2603.02250
+
+### M13) MPAR² (arXiv:2603.02266, Interspeech 2026 submission — cycle #257, Wednesday March 4 batch)
+- **Title:** "Mitigating Audio Perception Decay of LALMs via Multi-Step Perception-Aware Reasoning"
+- "Audio Perception Decay": as chain-of-thought reasoning extends, LALMs lose access to audio content; perception accuracy: ~63% → ~31% over reasoning length
+- CAFE evaluation framework introduced (quantifies audio perception accuracy at each reasoning step)
+- MPAR² training paradigm: RL + perception-rich sub-problems → recovers performance to ~74.59% on audio QA
+- **DIRECT behavioral corroboration for Listen Layer Hypothesis**: if audio is causally consulted only at L*, reasoning chains that bypass L* → perception decay. MPAR² diagnoses the *symptom*; Paper A localizes the *mechanism* (the layer).
+- **Connection to Paper A §1 or §5.1**: "MPAR² names the phenomenon ('audio perception decay'); Paper A provides the mechanistic explanation via gc(L) localization."
+- **CAFE as behavioral cross-validation**: gc(L) = mechanistic probe; CAFE = behavioral probe of same phenomenon. Testing whether layers with high gc(L) also show high CAFE audio perception accuracy = cross-level validation.
+- cite_id: arXiv:2603.02266
+
+## 🆕 RAVEL — Disentanglement Benchmark (Cycle #179, 2026-03-02)
+
+### RAVEL (Huang et al., ACL 2024, arXiv:2402.17700) — 🟢 DEEP READ
+**Authors:** Jing Huang, Zhengxuan Wu, Christopher Potts (Stanford), Mor Geva (Tel Aviv), Atticus Geiger (Pr(Ai)²R Group)
+
+**Core task:** Attribute Disentanglement — given polysemantic neurons (neurons that represent multiple concepts), can an interpretability method find features that isolate ONE concept from others?
+
+**Two-score evaluation metric:**
+- **Cause(F, A)**: Interchange intervention on feature F → does attribute A change as expected? (localization/causal effectiveness)
+- **Isolate(F, A)**: Same intervention → do OTHER attributes remain unchanged? (disentanglement/isolation quality)
+- **RAVEL score** = harmonic mean of Cause + Isolate
+
+**Key finding:** SAEs score well on Cause but fail on Isolate (standard training objectives do NOT enforce disentanglement)
+
+**SOTA method:** Multi-task DAS (MDAS) — simultaneously optimizes rotation R to localize ALL attributes to orthogonal subspaces. Achieves best Cause + Isolate via multi-attribute causal loss.
+
+**Dataset:** 5 entity types (city, Nobel laureate, verb, physical object, occupation) × 4-6 attributes per type × 500-3500 entities × 50-150 prompt templates
+
+**Audio analogue (Gap #23 — NEW):**
+- Entity → Audio stimulus (spoken word/phoneme)
+- Attribute → Phonological feature (voicing, manner of articulation, place of articulation, speaker gender, speaking rate)
+- Interchange intervention → SAE feature patching
+- Audio-RAVEL = Category 0 of AudioSAEBench
+- KEY HYPOTHESIS: audio leakage likely WORSE than text (acoustic co-occurrence in training data → voicing features encode gender, speed, etc.)
+- Ceiling baseline: MDAS applied to Whisper residual stream
+- Stimulus source: Choi et al. 2602.18899 minimal pairs + TTS-augmented pairs
+
+**Connections:**
+- Paper B (AudioSAEBench): Category 0 = Audio-RAVEL (most fundamental + differentiating contribution)
+- Gap #22: RAVEL Cause metric = formalization of Gap #22's "causal utility" concept
+- Gap #18: MDAS could be applied to test phonological subspace orthogonality through connector
+- Heimersheim & Nanda (cycle #178): interchange intervention = specific form of denoising patching
+- SAEBench (Karvonen et al.): SAEBench covers text; RAVEL covers disentanglement; AudioSAEBench covers both for audio
+
+## 🆕 DAS/IIT Method Details (Cycles #83, 101-106, 196)
+
+### N) Distributed Alignment Search (DAS) — Core Paper A Method
+
+**Three Geiger citations (do NOT conflate):**
+1. **arXiv:2301.04709** — "Causal Abstraction: A Theoretical Foundation for MI" — ALL 10 MI methods unified under IIT; master reference; gc = IIA
+2. **arXiv:2303.02536** — "Finding Alignments Between Interpretable Causal Variables and Distributed Neural Representations" — **THIS IS THE DAS ALGORITHM PAPER** (Stanford 2023, v4 Feb 2024)
+3. **Geiger et al. 2023 ACL** — approximate causal abstraction; grounding for IIA metric when model is not perfect high-level simulator
+
+**Sources:** Geiger et al. arXiv:2303.02536 (DAS algorithm) + pyvene (Wu et al., arXiv:2403.07809)
+
+**What DAS does:**
+- Searches for a **linear subspace** within a layer's residual stream that best aligns with a causal variable (e.g., "audio content is X")
+- Uses gradient descent over a rotation matrix W; IIA (Interchange Intervention Accuracy) measures how well patching the W-subspace causally affects the output
+- When IIA ≈ 1.0 → the rotated subspace IS the causal abstraction variable
+
+**DAS mechanism (cycle #196 deep read):**
+- Rotate-fix-unrotate: `h_new = R⁻¹·( fix(R·h, R·h_source)_d )` — only targeted dimensions d are patched in rotated space; R is orthogonal (R⁻¹ = Rᵀ)
+- Cayley parameterization: `R = (I - A)(I + A)⁻¹` where A is skew-symmetric — ensures orthogonality throughout training
+- Training: cross-entropy loss on model output after DII intervention, only R optimized (NN frozen)
+- Convergence: typically < 1000 steps; ~5 min per layer on MacBook for Whisper-small (6 layers total → full gc(k) curve ≈ 30 min)
+- Subspace dimensionality: hyperparameter; use d=1,2,4,8,16 sweep → report IIA vs d curve (Choi et al. show voicing is ~1-3 PCs → expect d=4 sufficient)
+
+**Why DAS > vanilla activation patching (for Paper A):**
+- Vanilla patching: inserts all activations → may smuggle correlated info (confound)
+- DAS: isolates minimal linear subspace causally responsible → cleaner causal claim
+- FCCT competitor used vanilla causal tracing → Leo can claim stronger methodology
+- DAS = theoretically grounded by IIT (Geiger et al. 2301.04709 Causal Abstraction paper)
+- **KEY AUDIO REASON**: AudioSAE shows ~2000 features per Whisper layer → extreme polysemanticity → individual neurons play multiple roles → localist patching (vanilla) patches irrelevant dimensions → low IIA is an ARTIFACT of wrong method, not absent signal. DAS finds the relevant subspace despite polysemanticity.
+
+**gc(k) formulation (DAS version — finalized cycle #196):**
+- `gc(k) = DAS-IIA(layer k, phonological variable F)` — NOT a ratio; an IIT-grounded accuracy metric
+- For layer k: train DAS R_k on phonological minimal pair stimuli (Choi et al. 2602.18899 voicing contrasts)
+- `IIA(k, F) = E_base,source [ NN_k(base→source for F) == HLM(F(source)) ]`
+- gc(k) = DAS-IIA directly (not normalized); peak layer L* = "Listen Layer"
+- High-level model HLM: binary voicing variable F∈{voiced, unvoiced}; Low-level model: speech LLM
+
+**🆕 Decomposability Ablation at L* (new Paper A test — cycle #196):**
+- At L*, train DAS for BOTH voicing F_voicing and phoneme-identity F_phoneme
+- Test: `|cos(angle(R_voicing columns, R_phoneme columns))|`
+  - Near 0 = abstract phonological encoding (voicing ⊥ phoneme-identity; speech-native finding!)
+  - Near 1 = decomposable encoding (voicing derived from phoneme label)
+- NO text-LLM analog exists (text models lack the audio→phoneme→voicing hierarchy)
+- Interprets WHETHER the listen layer encodes abstract phonology vs. phoneme labels
+
+**🆕 Connector Subspace Transfer Test (Gap #18 sharpened — cycle #196):**
+- Train R_encoder at Whisper encoder layer → apply as FIXED rotation at LLM layer 0
+- `IIA_transfer = IIA when using R_encoder at LLM layer 0 (without retraining)`
+- Interpretations:
+  - `IIA_transfer ≈ gc(encoder)` → connector preserves phonological subspace (volume-preserving rotation)
+  - `IIA_transfer << gc(encoder)` but re-trained IIA at LLM layer 0 is HIGH → connector adds rotation but subspace survives
+  - Both ≈ 0 → connector bottleneck destroys phonological geometry → scope Paper A to encoder
+- This is the correct specification of Gap #18 experiment (MacBook-feasible within Phase 1 setup)
+
+**Implementation:**
+- Library: pyvene (`pip install pyvene`) — `RotatedSpaceIntervention` wraps any PyTorch model
+- ~50 lines for full gc(k) sweep; works with Whisper encoder via NNsight hooks
+- NDIF: can access Qwen2-Audio-7B remotely without local GPU
+- Data needed: ~200-250 (base, source) pairs with known F(voicing) labels — Choi et al. minimal pairs sufficient
+
+**Risk Table (6 assumptions — A6 added cycle #185):**
+1. A1: Linear phonological geometry survives connector — MEDIUM (Gap #18 connector transfer test)
+2. A2: ALME stimuli quality is sufficient — LOW (57K pairs, well-validated)
+3. A3: Cross-model generalization — MEDIUM (cross-generalization matrix test)
+4. A4: DAS rotation finds genuine subspace not spurious correlation — MEDIUM (phonological init ablation from Choi et al.)
+5. A5: WER significance — LOW (bootstrap 95% CI; permutation test null is wrong)
+6. **A6: Variance pre-screen captures all causally important features** — MEDIUM (Asiaee 2026: fails for rare phoneme features with non-uniform curvature; use DAS, not variance threshold; report ablation delta per phoneme class separately)
+
+**Visualization:** 2D probe×intervene heatmap predicted shape: "lower-triangular stripe" near L* = "acoustic must be encoded before it can be intervened upon" = testable Figure 3 for Paper A
+
+## 🆕 Further AudioLens Citation Papers (Cycle #99)
+
+### O) SAKE (arXiv:2510.16917, NTU lab cluster — cycle #99)
+- "Knowledge editing benchmark for LALMs" — "audio/text locality" concept adjacent to Track 3 grounding_coefficient
+- Not a competitor (knowledge editing ≠ mechanistic interpretability), but shares LALM editing framing
+- Citation context: demonstrates LALM vulnerability to audio-text attribution ambiguity
+
+### P) Feng et al. (arXiv:2510.16893, ICASSP 2026 — cycle #99/100)
+- Speaker emotion non-monotonically modulates LALM safety alignment (medium intensity = highest unsafe response rate)
+- **Gap #20 candidate** — mechanistic cause unknown (gated 🟡 YELLOW — HOLD until Papers A+B)
+- Connects to: SPIRIT (Track 5), Zhao et al. ESN paper (emotion neurons), SAE safety patching
+
 ## 關鍵研究者/團隊
 - **NTU 李宏毅 lab** — AudioLens (智凱哥！Leo 主場)
 - aiOla Research (Glazer) — ASR MI, hallucination causal analysis
 - Huawei Noah's Ark (Aparin) — AudioSAE
 - MBZUAI — SPIRIT (audio safety)
-- Stanford (Atticus Geiger) — causal abstraction theory + pyvene; **DAS (Distributed Alignment Search)** = learns optimal linear subspace alignment per layer via IIT training loss; upgrade from vanilla patching → gc(k) = IIT accuracy at layer k = theoretically grounded grounding_coefficient; pyvene wraps any PyTorch model, ~50 lines for full DAS sweep; `pip install pyvene` (add to venv checklist)
+- Stanford (Jing Huang, Zhengxuan Wu, Christopher Potts) — RAVEL disentanglement benchmark; **Audio-RAVEL = Category 0 of AudioSAEBench** (Gap #23)
+- Stanford + Pr(Ai)²R (Atticus Geiger) — causal abstraction theory + pyvene + RAVEL + MDAS (Multi-task DAS); **DAS (Distributed Alignment Search)** = learns optimal linear subspace alignment per layer via IIT training loss; upgrade from vanilla patching → gc(k) = IIT accuracy at layer k = theoretically grounded grounding_coefficient; pyvene wraps any PyTorch model, ~50 lines for full DAS sweep; `pip install pyvene` (add to venv checklist)
+- **Heimersheim & Nanda "How to Use and Interpret Activation Patching" (2024, arXiv:2404.15255)** — 🟢 DEEP READ (cycle #178) — practitioner tutorial: noising vs denoising (AND/OR gate diagnostic), Hydra effect (0.7x backup compensation), no-minimality caveat, corruption design = trace exactly what changes, metric suite (logit-diff best default), path patching for direct composition test, attribution patching (AtP) = fast gradient approximation. **AUDIO ADAPTATIONS:** speech = likely OR-dominant (distributed) → denoising preferred; top-k aggregate patching for Hydra; per-phoneme logprob + SAE feature activation as audio metrics; corruption = phonological minimal pairs not waveform noise.
 - Neel Nanda — activation patching best practices, TransformerLens
 - Mozilla Builders — Whisper SAE tooling
 - Ellena Reid — early Whisper MI (LessWrong)
 - Yuan Gong (MIT) — AST/SSAST audio transformers
 - CallumMcDougall — ARENA curriculum (circuit-tracer, SAE Circuits, Linear Probes — best hands-on MI learning resource)
+- **Facchiano, Crisostomi, Galasso, Rodolà et al. (Sapienza Rome)** — Activation Patching / Steering Vectors in Music LLMs [2504.04479]; first audio-domain direction vectors
+- **Maghsoudi & Mishra** — Brain-to-Speech MI [2602.01247]; 🟢 FULL DEEP-READ (cycle #245). Cross-mode activation patching + tri-modal interpolation + coarse-to-fine causal tracing + causal scrubbing + neuron-level patching. KEY FINDINGS: (1) Speech modes = continuous causal manifold (not discrete) → gc(L) curve should be smooth; (2) compact layer-specific subspaces mediate cross-mode transfer; (3) Hierarchical + direction-dependent structure. **Gap #26**: no equivalent study for large-scale speech LLMs. Cite in Paper A §2.2: "Closest prior MI work on speech; extends to commercial speech LLMs + DAS subspace quantification."
+- **Hussain et al. (SoundBreak team)** — Trimodal audio adversarial attacks [2601.16231]; Gap #24 supporting citation
+
+## 🆕 Methodology Convergence Map (updated cycle #245, 2026-03-04)
+
+**Gap #26 (NEW — cycle #245):** Maghsoudi & Mishra prove compact causal subspaces exist in custom-trained brain-to-speech models. **No equivalent study exists for pre-trained, large-scale speech LLMs (Whisper/HuBERT encoder → Qwen2-Audio LM).** Leo's Paper A fills this directly. Key prediction from Maghsoudi: gc(L) curve should be smooth (speech modes = continuous manifold), not step-function.
+
+Audio MI methodology is converging naturally toward Paper A's design:
+| Year | Paper | Method | Domain | Gap |
+|------|-------|--------|--------|-----|
+| 2025-08 | Glazer (BeyondTranscription) | logit lens + probing + patching | ASR/Whisper | no causal DAS |
+| 2025-04 | Facchiano et al. | diff-in-means steering vectors | Music LLM | non-causal; no speech |
+| 2026-02 | Maghsoudi & Mishra | causal tracing + patching + scrubbing | Brain-to-speech | not speech LLM |
+| 2026-03 | AG-REPA (2603.01006) | FoG-A causal gate ablation | Audio generation | generation ≠ understanding |
+| 2026-?? | **Paper A (Leo)** | causal DAS + grounding_coefficient gc(L) | Speech LLM | **closes all prior gaps** |
+
+This trajectory validates Paper A's novelty claim: previous audio MI work is either (a) non-causal, (b) non-speech-LLM, (c) neuron-level rather than subspace-level, or (d) generation domain rather than understanding. Paper A = first full causal analysis of grounding in speech LLMs using DAS.
+
+**SCD (Store-Contribute Dissociation)** — AG-REPA + Braun 2025 + Hase 2023: layers that best STORE audio info ≠ layers that causally CONTRIBUTE. Paper A's gc(L) specifically measures causal contribution (via DAS-IIA), not storage (cosine sim). This is why observational probing (AudioLens level 1) misses the listen layer.

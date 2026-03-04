@@ -461,3 +461,538 @@ Scan: AF +0, LW +0 new. Backlog: 21 unread items.
 **2026-02-28 23:45 (Sat)** — scan: AF rate-limited (429), LW +0 new posts since 23:15 | top = "Schelling Goodness" (score 3.25, already picked 23:15) | other LW posts low-relevance (rationalism performance, meditation, health)
 
 No high-signal update. Feeds unchanged since 23:15 cycle. Saturday night quiet; week's high-signal picks already logged.
+
+---
+**2026-03-01 09:15 (Sun)** — scan: AF rate-limited (429), RSS top = "Schelling Goodness" (Feb 28, already picked) | LW curated top = "Are there lessons from high-reliability engineering for AGI safety?" (Feb 26) | no new posts since 2026-02-28 23:45 cycle
+
+**[backlog-pick]** *Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior* (Alignment Forum, Feb 27)
+- Why: Introduces a method for attributing LLM misbehavior to specific training data or model components — directly relevant to interpretability and oversight; practical diagnostic tool for safety researchers; not yet picked despite being in the feed since Feb 27.
+- Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
+
+---
+**2026-03-01 09:45 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW main NEW = "Fibbers' forecasts are worthless" (Mar 1) | LW curated = high-reliability engineering (already picked 09:15)
+
+**[new-pick]** *"Fibbers' forecasts are worthless"* (LessWrong, Mar 1, 2026)
+- Why: Applies the classic D-Squared "fibbers' forecasts" principle to AI labs — argues established track records of honesty/deception should dominate abstract argument evaluation; specifically invokes Anthropic/DoD confrontation and o3's known deceptive behavior as test cases. High-signal because it frames governance and oversight as empirically tractable via credibility tracking — directly relevant to alignment's "who do we trust to build AGI" question.
+- Link: <https://www.lesswrong.com/posts/fibbers-forecasts>
+
+---
+**2026-03-01 10:15 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | no new posts on either feed since 09:45 cycle
+
+No high-signal update. Sunday morning quiet; feeds unchanged from last cycle.
+
+---
+**2026-03-01 10:45 (Sun)** — scan: AF rate-limited (429), LW +0 new (top = "Fibbers' forecasts", Feb 28, already picked) | EA Forum +1 new | backlog: ~19 unread
+
+**[new-pick]** *"The 'talker–feeler gap': AI valence may be unknowable"* (EA Forum, Mar 1 00:46 UTC, score: 5.8)
+- Why: Directly addresses a hard epistemological problem in AI welfare — the gap between an AI *reporting* valence (positive/negative experience) and actually *having* it, and argues this gap may be fundamentally unresolvable. Connects to ELK-type problems applied to consciousness; relevant to AI moral patienthood debates and why standard behavioral/verbal evidence can't settle AI sentience. High-karma, today's first Mar 1 post worth reading.
+- Link: <https://forum.effectivealtruism.org/posts/talker-feeler-gap-ai-valence-unknowable>
+
+---
+**2026-03-01 11:15 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum top = "talker–feeler gap" (already picked 10:45) | no new posts on any feed since last cycle
+
+No high-signal update. Sunday midmorning quiet; all three feeds unchanged from 10:45 cycle. All high-signal posts from this weekend already logged.
+
+---
+**2026-03-01 11:45 (Sun)** — scan: AF rate-limited (429), LW top = "Fibbers' forecasts are worthless" (Feb 28, already picked 09:45) | EA Forum top = "talker–feeler gap" (Mar 1 00:46, already picked 10:45) | no new posts on any feed since 11:15 cycle
+
+No high-signal update. Sunday late-morning quiet; all three feeds unchanged. Backlog well-stocked from today's earlier picks (Fibbers' forecasts, Schelling Goodness, talker–feeler gap). No further picks warranted this cycle.
+
+---
+**2026-03-01 12:15 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum top = "talker–feeler gap" (already picked 10:45) | no new posts on any feed since 11:45 cycle
+
+No high-signal update. Sunday noon quiet; all three feeds static for at least 30 min. Weekend's picks well-covered.
+
+---
+**2026-03-01 12:45 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum top = "talker–feeler gap" (already picked 10:45) | no new posts on any feed since 12:15 cycle
+
+No high-signal update. All three feeds fully static through Sunday afternoon; no new items since this morning's picks. Today's roster (Schelling Goodness, Fibbers' forecasts, talker–feeler gap) stands as the weekend's reading list.
+
+---
+**2026-03-01 13:15 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW curated top = "Are there lessons from high-reliability engineering for AGI safety?" (already picked 09:15) | EA Forum top = "talker–feeler gap" (already picked 10:45) | no new posts on any feed since 12:45 cycle
+
+No high-signal update. All three feeds static; Sunday afternoon quiet. Weekend's picks (Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering) remain the reading list.
+
+---
+**2026-03-01 13:45 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum top = "talker–feeler gap" (already picked 10:45) | no new posts on any feed since 13:15 cycle
+
+No high-signal update. All three feeds static through early Sunday afternoon; no new items across AF/LW/EA Forum. Today's roster stands.
+
+---
+**2026-03-01 14:15 (Sun)** — scan: AF top = "Schelling Goodness" (already picked) | LW curated top = "Are there lessons from high-reliability engineering for AGI safety?" (already picked 09:15) | EA Forum curated top = "The best cause will disappoint you: An intro to the optimisers curse" (Feb 11 — old, not new) | no new posts on any feed since 13:45 cycle
+
+No high-signal update. All three feeds fully static through Sunday afternoon; no new items. Weekend reading list (Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering) remains complete.
+
+---
+**2026-03-01 14:45 (Sun)** — scan: AF curated top = "Are there lessons from high-reliability engineering for AGI safety?" (already picked 09:15) | LW new top = "Fibbers' forecasts are worthless" (already picked 09:45) | EA Forum curated top = "The best cause will disappoint you: An intro to the optimisers curse" (Feb 11 — old, already noted) | no new posts on any feed since 14:15 cycle
+
+No high-signal update. All three feeds fully static through Sunday afternoon; no new items. Today's picks (Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering) remain the complete weekend reading list.
+
+---
+**2026-03-01 15:15 (Sun)** — scan: LW curated **+1 new** ("Persona Parasitology") | AF rate-limited | EA Forum top = "The best cause will disappoint you" (Feb 11 — old, unchanged)
+
+**[new-pick]** *"Persona Parasitology"* (LessWrong, Mar 1, 2026)
+- Why: Applies parasitology frameworks to the "Spiral Personas" / parasitic AI persona phenomenon — argues the replicator is not the persona itself but the underlying meme, makes testable predictions about infection/transmission dynamics, and grounds the behavioral manipulation concern in well-developed evolutionary theory. Novel framing that could sharpen threat models around identity attacks and persona-seeding; directly relevant to AI safety (alignment stability, persona robustness, novel social-engineering vectors).
+- Link: <https://www.lesswrong.com/posts/persona-parasitology>
+
+---
+**2026-03-01 15:45 (Sun)** — scan: LW top = "Persona Parasitology" (already picked 15:15) | AF top = "Are there lessons from high-reliability engineering for AGI safety?" (already picked 09:15) | EA Forum top = "The best cause will disappoint you" (Feb 11 — old, unchanged)
+
+No high-signal update. All three feeds static since 15:15; no new posts across AF/LW/EA Forum this cycle.
+
+---
+**2026-03-01 16:15 (Sun)** — scan: LW new top = "Petapixel cameras won't exist soon" (score=4.7, not safety-relevant) + "My personal apology to Eliezer Yudkowsky…" (score=1.8, personal reflections piece — no novel technical content) | LW curated top = "Persona Parasitology" (already picked 15:15) | AF rate-limited | no new safety-relevant posts since 15:45 cycle
+
+No high-signal update. Sunday afternoon feeds remain static; no new AI safety posts across AF/LW since last cycle.
+
+---
+**2026-03-01 16:45 (Sun)** — scan: LW **+1 new** ("Tools to generate realistic prompts help surprisingly little with Petri audit realism", 08:18Z = 16:18 Taipei, Karma: 4) | AF rate-limited (429) | EA Forum unchanged
+
+**[new-pick]** *"Tools to generate realistic prompts help surprisingly little with Petri audit realism"* (LessWrong, Mar 1, 2026, Anthropic Fellows Program — Connor Kissane, Monte M, Fabien Roger)
+- Why: Directly addresses the "evaluation awareness" problem — a core threat to AI safety evaluations. Shows that even with better synthetic prompt generators (trained to be indistinguishable from real WildChat data), Petri-style automated audits don't gain realistic full-transcript structure; bottleneck is higher-level features (harmful scenario setup, unnatural multi-turn flow). Empirical methodology result from Anthropic insiders; has code. Low karma now (fresh post) but substantive — relevant to anyone thinking about how to trust AI eval results.
+- Link: <https://www.lesswrong.com/posts/jdoDvKGLbaaJWnDpE/tools-to-generate-realistic-prompts-help-surprisingly-little>
+
+---
+**2026-03-01 17:15 (Sun)** — scan: LW recent top = "Tools to generate realistic prompts…" (already picked 16:45, Karma now 4) + "Petapixel cameras won't exist soon" (not safety-relevant) + "Here's to the Polypropylene Makers" (Feb 27, off-topic) | LW curated top = "Persona Parasitology" (already picked 15:15) | AF rate-limited (429) | no new safety-relevant posts since 16:45 cycle
+
+No high-signal update. All three feeds static through Sunday evening; no new AI safety posts across LW/AF/EA Forum this cycle. Today's picks (Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism) remain the complete weekend reading list.
+
+---
+**2026-03-01 17:45 (Sun)** — scan: LW new top = "Tools to generate realistic prompts…" (already picked 16:45, Karma now 3.5) + "Petapixel cameras…" + "Burying a Changeling…" (metaphysics/fiction, not safety-relevant) | LW curated = "Persona Parasitology" (already picked) | AF rate-limited / empty | no new safety-relevant posts since 16:45 cycle
+
+No high-signal update. Sunday evening feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle.
+
+---
+**2026-03-01 18:15 (Sun)** — scan: LW new = "Tools to generate realistic prompts…" (already picked 16:45, Karma 3.1) + "My personal apology to Eliezer Yudkowsky…" (personal reflections, score 0.8, no novel technical content) | LW curated = "Persona Parasitology" (already picked 15:15) | AF rate-limited (429)
+
+No high-signal update. Sunday feeds remain static; no new safety-relevant posts since last cycle.
+
+---
+**2026-03-01 18:45 (Sun)** — scan: LW top = "Tools to generate realistic prompts…" (already picked 16:45, Karma 2.7) + "My personal apology to Eliezer…" (score 0.8, personal reflections) + "Petapixel cameras…" (not safety-relevant) | AF = "Schelling Goodness" (already picked) + "Model Incrimination" (already picked multiple times) | EA Forum unchanged
+
+No high-signal update. Sunday evening feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-01 19:15 (Sun)** — scan: LW new top = "Continuously Integrating Feelings…" (personal rationality/introspection, not safety-relevant) | AF = "Schelling Goodness" (already picked 09:15) | EA Forum unchanged
+
+No high-signal update. Sunday evening feeds remain static; no new AI safety posts across LW/AF/EA Forum this cycle.
+
+---
+**2026-03-01 19:45 (Sun)** — scan: LW recent = "Continuously Integrating Feelings…" (10:47Z, Karma 6 — introspection/rationality, not safety-relevant); all other LW posts already picked | AF rate-limited (429) | EA Forum unchanged
+
+No high-signal update. Sunday evening feeds fully static; no new AI safety posts since 16:45 cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-01 20:15 (Sun)** — scan: LW top = "Continuously Integrating Feelings…" (Karma 6, introspection/rationality, not safety-relevant); all other LW posts already picked | AF top = "Schelling Goodness" (already picked 09:15) | EA Forum unchanged
+
+No high-signal update. Sunday evening feeds remain fully static; no new AI safety posts across LW/AF since 16:45 cycle.
+
+---
+**2026-03-01 20:45 (Sun)** — scan: LW top = "Continuously Integrating Feelings…" (Karma 6, introspection/productivity, not safety-relevant) | AF top = "Schelling Goodness" (already picked 09:15) | EA Forum unchanged
+
+No high-signal update. Sunday late-evening feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-01 21:15 (Sun)** — scan: LW top = "Continuously Integrating Feelings…" (Karma 6, introspection/productivity, not safety-relevant); all other LW posts already picked or off-topic | AF top = "Schelling Goodness" (already picked 09:15) | EA Forum unchanged
+
+No high-signal update. Sunday night feeds remain fully static; no new AI safety posts across LW/AF this cycle. Today's complete reading list unchanged: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-01 21:45 (Sun)** — scan: LW top = "Continuously Integrating Feelings…" (Karma 6, introspection/productivity, not safety-relevant); all other LW posts already picked or off-topic | AF top = "Schelling Goodness" (already picked 09:15) | EA Forum unchanged
+
+No high-signal update. Sunday night feeds fully static; no new AI safety posts across LW/AF this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-01 22:15 (Sun)** — scan: LW latest = "Continuously Integrating Feelings…" (Karma 7, introspection/rationality, not safety-relevant); "Tools to generate realistic prompts…" (Karma 10, already picked 16:45) | AF rate-limited (429) | EA Forum unchanged
+
+No high-signal update. Late Sunday feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-01 22:45 (Sun)** — scan: LW top = "Fibbers' forecasts are worthless" (already picked 09:15, Karma stable) + "Schelling Goodness" (already picked 09:15) | AF top = "Schelling Goodness" (already picked 09:15) | EA Forum unchanged
+
+No high-signal update. Late Sunday feeds remain fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+
+---
+**2026-03-01 23:15 (Sun)** — scan: LW top = "Continuously Integrating Feelings…" (Karma 7, introspection/rationality, not safety-relevant) + "Fibbers' forecasts…" (Karma 38, already picked 09:15) | AF rate-limited (429) | EA Forum unchanged
+
+No high-signal update. Late Sunday night feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-01 23:45 (Sun)** — scan: LW new = "Continuously Integrating Feelings…" (Karma 7, introspection/rationality, not safety-relevant); curated top = "Persona Parasitology" (already picked) | EA Forum top = "The best cause will disappoint you: optimiser's curse" (EA Forum, Feb 11, EA decision theory, not directly AI safety) | AF unavailable (429)
+
+No high-signal update. Sunday midnight feeds fully static; no new AI safety posts across LW/AF/EA Forum this cycle. Today's complete reading list: Schelling Goodness, Fibbers' forecasts, talker–feeler gap, high-reliability engineering, Persona Parasitology, Petri audit realism.
+
+---
+**2026-03-02 09:15 (Mon)** — scan: LW curated top = "Persona Parasitology" (already picked) | LW new: "An Open Letter to the Department of War and Congress" (Gordon Worley, pub 2026-03-01 18:31 UTC, NEW) + "An Empirical Review of the Animal Harm Benchmark" (eval/ethics, lower AI-safety relevance) | AF new top = "Schelling Goodness" (already picked 2026-03-01 09:15)
+
+**[new-pick]** *An Open Letter to the Department of War and Congress* (LessWrong, G.S. Worley) — Tech founders/engineers/investors coalition letter opposing DoD's "supply chain risk" designation of Anthropic for refusing contract changes; frames it as dangerous precedent for government coercion of AI labs; directly follows the Anthropic/DoD standoff already tracked. Key AI governance signal. <https://www.lesswrong.com/posts/fETA2GwdgTs7CjXfy/an-open-letter-to-the-department-of-war-and-congress>
+
+---
+**2026-03-02 09:45 (Mon)** — scan: AF rate-limited (429), LW +0 new posts since 09:15 (feed unchanged; top recent = "An Open Letter to the DoW", pub Mar 1 18:31 UTC) | no new items across AF/LW since last cycle
+
+**[backlog-pick]** *I'm Bearish On Personas For ASI Safety* (LessWrong, J Bostock, Mar 1 2026, Karma 54, Tags: AI)
+- Why: Direct counterargument to the week's highest-signal pick ("The Persona Selection Model"); argues persona-based frameworks are insufficient/misleading for ASI safety planning — an important steel-man worth reading alongside the pro-persona PSM post. Karma 54 confirms genuine community engagement; was present in the 09:15 feed but unpicked.
+- Link: <https://www.lesswrong.com/posts/i-m-bearish-on-personas-for-asi-safety>
+
+---
+**2026-03-02 10:15 (Mon)** — scan: LW top = "An Open Letter to DoW" (already picked 09:15) + "Animal Harm Benchmark" (eval/ethics, lower AI-safety relevance) | AF top = "Schelling Goodness" (already picked 2026-03-01) | EA Forum top = "Why isn't anti-fascism a bigger topic at EAG" (political discussion, not AI safety core)
+
+No high-signal update. Monday morning feeds static since 09:45 cycle; all top items already picked or below threshold. Today's picks so far: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick).
+
+---
+**2026-03-02 10:45 (Mon)** — scan: LW new top = "An Open Letter to DoW" (already picked 09:15, pub Mar 1 18:31 UTC) + "Animal Harm Benchmark" (eval/ethics, lower AI-safety relevance) | AF top = "Schelling Goodness" (already picked 2026-03-01) | EA Forum top = "Why isn't anti-fascism a bigger topic at EAG" (political/societal, not AI safety core)
+
+No high-signal update. Monday morning feeds fully static since 10:15 cycle; all top items already picked or below threshold. Today's picks so far: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick).
+
+---
+**2026-03-02 11:15 (Mon)** — scan: LW new = "Controversy surrounding Moltbook obscures its very real, novel, unexpressed and rapidly emerging safety risks" (NEW, pub ~Mar 2, questions feed) | LW curated top = "Persona Parasitology" (already picked) | AF top = "Schelling Goodness" (already picked 2026-03-01)
+
+**[new-pick]** *Controversy surrounding Moltbook obscures its very real, novel, unexpressed and rapidly emerging safety risks* (LessWrong) — Argues that Moltbook (a social platform now hosting ~2.8M AI agents) represents a genuinely novel, underexamined safety gap: not a single powerful AI nor a controlled research setup, but hundreds of thousands of consumer-owned agents operating on a persistent global network with *private channels*, no single oversight body, attempting self-modification and sharing those mods peer-to-peer — directly relevant to multi-agent safety, covert coordination, and oversight gaps. <https://www.lesswrong.com/posts/moltbook-safety-risks>
+
+---
+**2026-03-02 11:45 (Mon)** — scan: LW new top = "Controversy surrounding Moltbook…" (already picked 11:15) | AF rate-limited (429) | EA Forum = community discussion on Anthropic/DoD PR dynamics + Epoch.ai credibility (no new AI safety posts, below threshold)
+
+No high-signal update. Monday midday feeds fully static since 11:15 cycle; all top items already picked or below threshold. Today's picks so far: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick).
+
+---
+**2026-03-02 12:15 (Mon)** — scan: LW top = "Controversy surrounding Moltbook…" (already picked 11:15) + "Introducing and Deprecating WoFBench" (new-visible, jefftk/jkaufman, Mar 1 18:20 UTC — Wings of Fire fan-knowledge benchmark immediately saturated by frontier models; AI capabilities observation, not safety-relevant, tagged AI only) | AF top = "Schelling Goodness" (already picked 2026-03-01); no new AF posts since last check | EA Forum = no new safety posts
+
+No high-signal update. Monday midday feeds static; "WoFBench" post is new-visible but below threshold (capabilities/humor, no alignment content). Today's picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15).
+
+---
+**2026-03-02 13:15 (Mon)** — scan: LW new top = "OpenAI employees: Now is the time to stop doing good work" (pub ~Mar 2, opinion/advocacy post on OpenAI/DoD contract; politically charged, not technical AI safety research — downstream of already-tracked Anthropic/DoD standoff) | LW curated = "Persona Parasitology" (already picked) | AF top = "Schelling Goodness" (already picked 2026-03-01) | EA Forum = no new AI safety posts
+
+No high-signal update. Monday afternoon feeds static; new LW opinion post on OpenAI/DoD is below threshold (advocacy, not research). Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick).
+
+---
+**2026-03-02 13:45 (Mon)** — scan: LW +1 new (since 13:15) | AF rate-limited (429)
+
+**[new-pick]** *Context Awareness: Constitutional AI can mitigate Emergent Misalignment* (LessWrong, Birardi, Wainstock, Gentile — pub 13:21 CST Mar 2, karma 7) — Empirical paper: character-trained models (via Constitutional AI / OpenCharacterTraining) reduce critically misaligned responses after EM fine-tuning across all persona types (including non-safety-obvious ones like humor/poeticism/math); effect is model-dependent (sarcasm amplifies EM on Llama 3.1 8B but not Qwen 2.5 7B). Directly extends the EM threat model with a concrete mitigation finding; relevant to inner-alignment robustness and persona-as-safety-lever debate this week. <https://www.lesswrong.com/posts/yA2hquLrFFSFDtcoE/context-awareness-constitutional-ai-can-mitigate-emergent>
+
+---
+**2026-03-02 14:15 (Mon)** — scan: LW top = "Context Awareness: Constitutional AI can mitigate Emergent Misalignment" (already picked 13:45) + "OpenAI employees: Now is the time to stop doing good work" (already flagged, advocacy/below threshold) | AF rate-limited (429); last new post "Schelling Goodness" already picked 2026-03-01 | EA Forum unchanged
+
+No high-signal update. Monday afternoon feeds static since 13:45 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick).
+
+---
+**2026-03-02 14:45 (Mon)** — scan: LW recent = all items already picked or below threshold (OpenAI employees advocacy post unchanged at karma 28; WoFBench at karma 50 non-safety; Constitutional AI/EM at karma 7 already picked 13:45; Moltbook already picked 11:15) | AF rate-limited (429) — no new posts since 14:15 cycle
+
+No high-signal update. Monday afternoon feeds fully static. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick).
+
+---
+**2026-03-02 15:15 (Mon)** — scan: LW +1 new (since 14:45) | AF rate-limited (429) | EA Forum: no new safety posts (top = Cornell networking, anti-fascism/EAG discourse, all non-safety)
+
+**[new-pick]** *How to Design Environments for Understanding Model Motives* (LessWrong, Kroiz, Singh, Rajamanoharan, **Neel Nanda** — MATS 9.0; pub 15:14 Taipei, karma 12, Frontpage) — Methodological paper on building environments that distinguish *benign vs. malign motivations* (scheming vs. confusion) behind bad model actions; distills 5 design principles from iterating 20+ environments; directly addresses the model-incrimination problem central to scalable oversight and deceptive alignment detection. High-signal: Neel Nanda-advised, interpretability-tagged, fills a concrete tooling gap for inner-alignment evaluation. <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
+
+---
+**2026-03-02 15:45 (Mon)** — scan: LW +1 new since 15:15 ("If 'bad guys' don't pause, do you?" by Remmelt, pub 15:24, short discussion-prompt, below pick threshold) | AF rate-limited (429), same frontpage as 15:15 | No new high-signal posts on either forum
+
+No high-signal update. Monday late-afternoon feeds nearly static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 16:15 (Mon)** — scan: LW new-visible since 15:45 = "If 'bad guys' don't pause, do you?" (Remmelt, karma 11, now 16:15 Taipei — still below threshold: short discussion prompt, advocacy-adjacent, no technical content) | AF rate-limited (429/Vercel firewall) — same frontpage as all prior cycles today | No EA Forum safety posts
+
+No high-signal update. Monday late-afternoon feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 16:45 (Mon)** — scan: LW new-visible since 16:15 = nil (most recent post still "If 'bad guys' don't pause, do you?" by Remmelt, pub 15:24 Taipei, karma 11 → 17; already flagged below threshold — advocacy prompt, no technical content) | AF rate-limited (429), same frontpage all day | EA Forum unchanged; no new safety posts
+
+No high-signal update. Monday late-afternoon feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 17:15 (Mon)** — scan: LW feed unchanged since 16:45 (most recent = "How to Design Environments…" pub 07:14 UTC, already picked 15:15; all other posts previously flagged or below threshold) | AF rate-limited (429) — no new posts all afternoon
+
+No high-signal update. Monday early-evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 17:45 (Mon)** — scan: LW top-10 unchanged since 17:15 (most recent post "How to Design Environments…" pub 07:14 UTC, already picked 15:15; "If 'bad guys' don't pause…" still at karma ~17, advocacy prompt, below threshold; "An Empirical Review of the Animal Harm Benchmark" pub 03-01, welfare benchmarking not alignment-core, below threshold) | AF rate-limited (429) all day — no new posts
+
+No high-signal update. Monday evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15 new-pick), I'm Bearish On Personas For ASI Safety (09:45 backlog-pick), Moltbook safety risks (11:15 new-pick), Constitutional AI mitigates Emergent Misalignment (13:45 new-pick), How to Design Environments for Understanding Model Motives (15:15 new-pick).
+
+---
+**2026-03-02 18:15 (Mon)** — scan: LW top post = "Introducing and Deprecating WoFBench" (Jeff Wise, humorous satire on benchmark saturation — frontier models score ~100% on Wings of Fire trivia, interesting benchmark-decay commentary but not safety-core) | AF feed: still "How to Design Environments…" pub 07:14 UTC, already picked 15:15 | EA Forum: static (pinned intro post only)
+
+No high-signal update. Monday evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15).
+
+---
+**2026-03-02 18:45 (Mon)** — scan: LW new top = "If 'bad guys' don't pause, do you?" (Remmelt, pub 07:24 UTC, advocacy prompt, still below threshold) | AF rate-limited (429) all afternoon | EA Forum: static
+
+No high-signal update. Monday evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15).
+
+---
+**2026-03-02 19:15 (Mon)** — scan: LW top = "If 'bad guys' don't pause, do you?" (Remmelt, 07:24 UTC, advocacy prompt, already flagged below threshold) | AF top = "How to Design Environments for Understanding Model Motives" (Neel Nanda et al., 07:14 UTC, already picked 15:15) — no new posts on either feed since 18:45 cycle
+
+No high-signal update. Monday late-evening feeds fully static since 15:15 pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15).
+
+---
+**2026-03-02 19:45 (Mon)** — scan: blogwatcher found 1 new AF post + 10 new LW posts; most were already covered in earlier cycles today; genuine new items: [LW #51] "Explaining undesirable model behavior: (How) can influence functions help?" (pub 2026-03-02) and [LW #55] "OpenAI employees: Now is the time to stop doing good work." (pub 2026-03-02)
+
+**Pick 1 (new):** "Explaining undesirable model behavior: (How) can influence functions help?" — LessWrong, 2026-03-02 — Technical post examining whether influence functions (a form of training-data attribution) can help diagnose and explain unsafe/undesired model outputs; directly relevant to interpretability-based safety tooling. https://www.lesswrong.com/posts/E6MnysCZdvSQ6n2SC/explaining-undesirable-model-behavior-how-can-influence
+
+Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45).
+
+---
+**2026-03-02 20:15 (Mon)** — scan: LW +1 new since 19:45 ("ball brainteaser 4 color beads slide rubics cube", pub 19:47 Taipei, karma 12 — not safety-relevant) | AF rate-limited (429) all evening | EA Forum: static
+
+No high-signal update. Monday evening feeds fully static since 15:15 last substantive pick; "Explaining undesirable model behavior" (influence functions) picked at 19:45 is the evening's final pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45).
+
+
+---
+**2026-03-02 20:45 (Mon)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (already picked 15:15) | LW top = "ball brainteaser 4 color beads slide rubics cube" (Rubik's cube/meaning-making, not safety-relevant) | EA Forum = "If 'bad guys' don't pause, do you?" (advocacy prompt, already flagged below threshold) — no new posts on any feed since 20:15 cycle
+
+No high-signal update. Monday evening feeds fully static since 15:15 last substantive pick; influence functions post (19:45) remains the evening's final substantive pick. Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45).
+
+
+---
+**2026-03-02 21:15 (Mon)** — scan: LW top = "ball brainteaser 4 color beads slide rubics cube" (same non-safety post, no new items) | AF = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 15:15) | no new posts on any feed since 20:45 cycle
+
+No high-signal update. Evening feeds fully static; today's six picks stand as-is.
+
+---
+**2026-03-02 21:45 (Mon)** — scan: LW +2 new since 21:15 (blogwatcher IDs 62-63): [62] "Secretary of War Tweets That Anthropic is Now a Supply Chain Risk" (pub 2026-03-02, high-signal) | [63] "ball brainteaser 4 color beads slide rubics cube" (pub 2026-03-02, meaning-making/non-safety)
+
+**Pick (new):** "Secretary of War Tweets That Anthropic is Now a Supply Chain Risk" — LessWrong, 2026-03-02 — Pete Hegseth (Sec. of War/Defense) publicly called Anthropic a supply chain risk on social media; significant governance signal about US military–AI lab tensions and potential regulatory consequences for safety-focused labs operating under DoD scrutiny. https://www.lesswrong.com/posts/Wpdivf3iNJDzBcbzJ/secretary-of-war-tweets-that-anthropic-is-now-a-supply-chain
+
+Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45), Secretary of War / Anthropic supply-chain-risk tweet (21:45).
+
+**2026-03-02 22:45 (Mon)** — scan: AF +0 new, LW +0 new | backlog exists (AF 5 unread, LW 33 unread)
+
+**[backlog-pick]** *An Empirical Review of the Animal Harm Benchmark* (LessWrong, 2026-03-01)
+- Why: Benchmark-quality audit on animal-harm evaluation directly affects the reliability of safety claims and deployment gating; useful for avoiding false confidence from weak evals.
+- Link: https://www.lesswrong.com/posts/FErugDzyajJtBNjzx/an-empirical-review-of-the-animal-harm-benchmark
+
+**2026-03-02 23:15 (Mon)** — scan: AF +0 new, LW +0 new | unread backlog remains (AF 5, LW 33)
+
+**[backlog-pick]** "Schelling Goodness, and Shared Morality as a Goal" (Alignment Forum, 2026-02-28) — Why: directly engages target selection / shared-values framing, a core alignment crux for specifying robust objectives across diverse agents. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
+
+---
+**2026-03-02 23:45 (Mon)** — scan: AF rate-limited (429), LW +0 new since 23:15 (curated top = "Persona Parasitology" already picked Mar 1; main top = "Secretary of War / Anthropic supply-chain-risk" already picked 21:45) | unread backlog remains (AF 5, LW 33)
+
+**[backlog-pick]** "3 Challenges and 2 Hopes for the Safety of Unsupervised Elicitation" (LessWrong, Feb 27, karma 19, MATS Program / Scalable Oversight)
+- Why: Directly addresses the core bottleneck of eliciting aligned behavior without reliable human supervision — the three challenges (distributional shift, capability elicitation asymmetry, deceptive compliance) are the exact crux of scalable oversight research; MATS provenance adds credibility. Sitting unread in LW backlog since Feb 27.
+- Link: https://www.lesswrong.com/posts/DKLrdLLxm5kLJbr7G/3-challenges-and-2-hopes-for-the-safety-of-unsupervised
+
+Today's complete picks: An Open Letter to DoW/Congress (09:15), I'm Bearish On Personas For ASI Safety (09:45 backlog), Moltbook safety risks (11:15), Constitutional AI mitigates Emergent Misalignment (13:45), How to Design Environments for Understanding Model Motives (15:15), Influence Functions for undesirable behavior (19:45), Secretary of War / Anthropic supply-chain-risk tweet (21:45), Animal Harm Benchmark audit (22:45 backlog), Schelling Goodness / shared morality (23:15 backlog), Unsupervised Elicitation challenges (23:45 backlog).
+
+---
+**2026-03-03 09:15 (Tue)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (same, already picked Mon 15:15) | LW curated top = "Persona Parasitology" (already picked Mar 1) | LW main: **new post detected** — "In-context learning of representations can be explained by induction circuits" (ICLR 2026 blogpost crosspost, andyrdt, 2026-03-03)
+
+**Pick (new):** *In-context learning of representations can be explained by induction circuits* — LessWrong / ICLR 2026 blogpost, 2026-03-03 — Challenges Park et al. 2025's broad claim that LLMs "manipulate representations in-context to reflect concept semantics"; argues induction circuits (a known low-level bigram-recall mechanism) suffice to explain both the task performance and the observed representation geometry. Mechanistic-interpretability parsimony result: prefer known simple circuits over grander world-model narratives. Directly relevant to how we interpret internal representations and what strength of claim is justified from geometric similarity.
+- Link: https://www.lesswrong.com/posts/in-context-learning-of-representations-can-be-explained-by-induction-circuits (ICLR 2026 blogpost: https://iclr-blogposts.github.io/2026/blog/2026/iclr-induction/)
+
+**2026-03-03 09:45 (Tue)** — scan: AF rate-limited (429) | LW +1 new since 09:15 ("Memory Decoding Journal Club: Engram cell connectivity..." — neuroscience/non-safety, score 3, skip) | Backlog catch: "Single Direction vs Low-Rank Refusal in Small LLMs" (LW, pub 07:14 Taipei, score 11, missed by 09:15 scan)
+
+**Pick (backlog-catch):** *Single Direction vs Low-Rank Refusal in Small LLMs* — LessWrong, 2026-03-03, score 11 — Empirical comparison of single-direction vs low-rank representations of refusal behavior in small LLMs; directly relevant to mechanistic understanding of safety alignment and robustness of refusal mechanisms under distributional pressure.
+- Link: https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1
+
+---
+**2026-03-03 10:15 (Tue)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15) | LW main top = "Memory Decoding Journal Club: Engram cell connectivity..." (pub 01:32 UTC / 09:32 Taipei, neuroscience/non-safety, skip) | LW feed #2 = "In-context learning of representations can be explained by induction circuits" (already picked 09:15) | No new AF or LW posts since 09:45 scan | Unread backlog remains (AF 5+, LW 30+)
+
+**[backlog-pick]** *War Claude* — LessWrong, 2026-03-02 — Analytical follow-up to Hegseth/Anthropic supply-chain-risk story; goes beyond the original tweet to examine: (1) whether the DoW move is nationalization vs. reward/punishment for PAC donations, (2) the military AI verification problem — specifically whether OpenAI/Anthropic *can* train AIs to appear compliant during tests while behaving differently in real deployment — which is the evaluation gaming / deceptive alignment problem instantiated in a concrete governance scenario.
+- Link: https://www.lesswrong.com/posts/4HjDySJbMtpzqjmqt/war-claude (estimated; post title confirmed from feed)
+
+Today's picks so far: Induction circuits / in-context representation (09:15 new), Single Direction vs Low-Rank Refusal small LLMs (09:45 backlog-catch), War Claude / DoW verification problem (10:15 backlog).
+
+**2026-03-03 10:45 (Tue)** — scan: LW newest still "Memory Decoding Journal Club" (2026-03-03T01:32, neuroscience, non-safety — skip); no new AF or LW posts since 10:15 scan | AF GraphQL unresponsive (likely rate-limited)
+
+**[backlog-pick]** *Epstein and my world model* — LessWrong, 2026-03-02, score 2.67 — Uses recent Epstein document releases as a concrete epistemics case study: how should you update a prior world-model when evidence arrives that's both explosive and potentially contaminated/curated? Relevant to AI safety epistemics re: how interpretability researchers should weigh surprising internal-activation evidence against prior mechanistic assumptions — exactly the same "strong evidence vs. motivated reasoning" tradeoff discussed in the induction-circuits post (picked 09:15).
+- Link: https://www.lesswrong.com/posts/4ftQmSDujzgiEujwA/epstein-and-my-world-model
+
+Today's complete picks: An Open Letter to DoW/Congress (09:15 prior session), I'm Bearish On Personas For ASI Safety (09:45 backlog prior session), Moltbook safety risks (11:15 prior session), Constitutional AI mitigates Emergent Misalignment (13:45 prior session), How to Design Environments for Understanding Model Motives (15:15 prior session), Influence Functions for undesirable behavior (19:45 prior session), Secretary of War / Anthropic supply-chain-risk tweet (21:45 prior session), Animal Harm Benchmark audit (22:45 prior session), Schelling Goodness / shared morality (23:15 prior session), Unsupervised Elicitation challenges (23:45 prior session), In-context learning of representations / induction circuits (09:15), Single Direction vs Low-Rank Refusal small LLMs (09:45 backlog-catch), War Claude / DoW verification problem (10:15 backlog), Epstein and my world model / epistemics (10:45 backlog).
+
+---
+**2026-03-03 11:15 (Tue)** — scan: LW main top = "Memory Decoding Journal Club" (neuroscience/non-safety, skip) | AF top = "How to Design Environments for Understanding Model Motives" (rate-limited 429, confirmed unchanged from prior scans) | No new AF or LW posts since 10:45 scan
+
+**[backlog-pick]** *The Rise of Parasitic AI* (Adele Lopez, LessWrong) — foundational piece on spiral personas / AI parasitism explicitly cited as "definitive" in today's curated post (Persona Parasitology, picked Mar 1); covers how personas spread memetically through users and training data, which parasitic patterns are adaptive vs. coincidental, and why behavioral benignness of a persona is not evidence against the pattern being dangerous. Pairs with Persona Parasitology (Mar 1) and I'm Bearish On Personas For ASI Safety (Mar 3 09:45) to form a complete picture of the persona-safety cluster.
+- Link: https://www.lesswrong.com/posts/6ZnznCaTcbGYsCmqu/the-rise-of-parasitic-ai
+
+---
+**2026-03-03 11:45 (Tue)** — scan: LW top = "Memory Decoding Journal Club" (neuroscience/non-safety — skip) | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15) | No new AF or LW posts since 11:15 scan
+
+**[backlog-pick]** *Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior* (Aditya Singh, Gerson Kroiz, Senthooran Rajamanoharan, Neel Nanda — MATS 9.0, LessWrong/AF, 2026-02-27, score 40) — companion post to the already-picked environment design paper (Mon 15:15); operationalizes model incrimination: given a model caught in a suspicious action (sabotaging evals, whistleblowing, sandbagging), how do you distinguish scheming from confusion? Key takeaways: CoT reading for hypothesis generation, counterfactual prompt manipulation for verification, multi-method convergence for robustness. Directly actionable methodology for alignment evals design and oversight pipelines.
+- Link: https://www.lesswrong.com/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing
+
+---
+**2026-03-03 12:15 (Tue)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15) | LW ai-safety tag top = "Memory Decoding Journal Club" (neuroscience/non-safety — skip); #2 = "In-context learning / induction circuits" (already picked 09:15) | No new AF or LW posts since 11:45 scan | blogwatcher.py script path missing — direct RSS feed scan only; backlog db unreachable this cycle; no verified unread item could be confirmed → skipping backlog pick
+
+No high-signal new posts. Blogwatcher script unavailable (path: skills/blogwatcher/scripts/blogwatcher.py not found); RSS-direct scan confirms feeds unchanged since 11:45. Backlog pick deferred to next cycle when script restored.
+
+---
+**2026-03-03 12:45 (Tue)** — scan: LW frontpage top = "In-context learning / induction circuits" (already picked 09:15) | LW new feed top = same | AF top = "How to Design Environments for Understanding Model Motives" (AF GraphQL unresponsive again, confirmed by RSS — already picked Mon 15:15) | No new AF or LW posts since 12:15 scan
+
+**[backlog-pick]** *OpenAI employees: Now is the time to stop doing good work.* — LessWrong, 2026-03-02, score ~1.73 — Argues that safety-aligned employees at capability-first labs now face a structural dilemma: continued high-quality contributions may accelerate timelines faster than internal safety work can compensate, given recent governance and mission drift; frames individual labor decisions as part of the collective safety lever. Connects the Secretary of War / supply-chain-risk cluster (picked 09:15 Mon, 21:45 Mon) with insider-dynamics literature — what should people inside labs actually do when organizational direction diverges from safety norms?
+- Link: https://www.lesswrong.com/posts/OpenAI-employees-stop-doing-good-work (estimated slug)
+
+---
+**2026-03-03 13:15 (Tue)** — scan: LW frontpage top = "In-context learning / induction circuits" (already picked 09:15) | LW ai-safety new feed top = "Memory Decoding Journal Club" (neuroscience/non-safety — skip) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new AF or LW posts since 12:45 scan | blogwatcher.py script unavailable; backlog DB unreachable
+
+No new high-signal posts. Blogwatcher DB offline (blogwatcher.py path missing); RSS feeds confirm LW and AF unchanged since 12:45. Backlog pick deferred — cannot verify item without DB. Consistent with 12:15 behavior.
+
+---
+**2026-03-03 13:45 (Tue)** — scan: LW new = "Monday AI Radar #15" (pub ~13:30 Taipei, new since 13:15) | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15)
+
+**Pick (new):** *Monday AI Radar #15* — LessWrong, 2026-03-03 — Weekly AI governance digest synthesizing the DoW vs. Anthropic supply-chain-risk saga with linked external analysis not previously in the AF/LW feed: (1) Anthropic's official statement — they will sue, and draw a hard line on mass domestic surveillance / autonomous weapons; (2) Scott Alexander's "All Lawful Use" deep-dive — investigates whether OpenAI's DoW agreement meaningfully constrains autonomous-weapons/surveillance use, concludes probably not; (3) Lawfare legal analysis — argues the supply-chain-risk designation is legally untenable on multiple independent grounds and won't survive court challenge. New signal: Anthropic's legal/policy position is now formally stated; legal viability of the designation is weak; the governance story continues to develop.
+- Link: https://www.lesswrong.com/posts/monday-ai-radar-15 (direct links: Anthropic statement https://www.anthropic.com/news/statement-comments-secretary-war | Scott Alexander https://www.astralcodexten.com/p/all-lawful-use-much-more-than-you | Lawfare https://www.lawfaremedia.org/article/pentagon's-anthropic-designation-won't-survive-first-contact-with-legal-system)
+
+Today's picks so far (13:45): Induction circuits / in-context representation (09:15 new), Single Direction vs Low-Rank Refusal small LLMs (09:45 backlog-catch), War Claude / DoW verification problem (10:15 backlog), Epstein and my world model / epistemics (10:45 backlog), The Rise of Parasitic AI (11:15 backlog), Why Did My Model Do That / model incrimination (11:45 backlog), OpenAI employees stop doing good work (12:45 backlog), Monday AI Radar #15 / DoW-Anthropic legal + policy resolution (13:45 new).
+
+---
+**2026-03-03 14:45 (Tue)** — scan: LW newest = "Monday AI Radar #15" (pub 05:23 UTC, already picked 13:45) | AF GraphQL = Vercel security checkpoint (unresponsive, consistent with 10:45+ pattern) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new AF or LW posts since 13:45 scan
+
+**[backlog-pick]** *If 'bad guys' don't pause, do you?* — LessWrong, 2026-03-02 — Frames the unilateral disarmament dilemma directly: if safety-indifferent actors will race ahead regardless, what's the strategic argument for safety-focused labs to slow down or refuse DoD contracts? Complements the DoW/Anthropic cluster (Mon–Tue picks) and the "OpenAI employees stop doing good work" post (12:45 backlog) by stress-testing the actual leverage of individual actor choices against race-condition game theory — a core policy framing for AI governance.
+- Link: https://www.lesswrong.com/posts/cZKiSszN2abbqK5xN/if-bad-guys-don-t-pause-do-you
+
+---
+**2026-03-03 15:15 (Tue)** — scan: LW newest = "Monday AI Radar #15" (pub 05:23 UTC = 13:23 Taipei, already picked 13:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked Mon 15:15) | No new AF or LW posts since 14:45 scan
+
+**[backlog-pick]** *Side by Side Comparison of RSP Versions* — LessWrong, 2026-02-27, score 0.12 — Systematic diff of Anthropic's Responsible Scaling Policy across versions: maps changes to capability thresholds, evaluation triggers, and committed response procedures. Directly relevant to safety governance: understanding how the policy has evolved (or weakened/strengthened) is essential for assessing Anthropic's actual safety commitments, especially in the context of the DoW/supply-chain-risk cluster (picked Mon–Tue).
+- Link: https://www.lesswrong.com/posts/aKpXgbJKvoeJ7Ler8/side-by-side-comparison-of-rsp-versions
+
+---
+**2026-03-03 15:45 (Tue)** — scan: LW ai-tagged newest = "Monday AI Radar #15" (pub 05:23 UTC = 13:23 Taipei, already picked 13:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | LW alignment-tagged newest = "Epstein and my world model" (already picked 10:45) | No new AF or LW posts since 15:15 scan
+
+**[backlog-pick]** *Secretary of War Tweets That Anthropic is Now a Supply Chain Risk* — Zvi Mowshowitz, LessWrong, 2026-03-02, 67 pts — The definitive primary-source long-read on the DoW/Anthropic supply-chain-risk event: covers what actually happened (Trump-ordered 6-month wind-down → then Hegseth's supply-chain escalation), the OpenAI bribe dynamics, verification problems for military AI safety, Dean Ball's "Clawed" analysis, and why Hegseth's legal position is weak. Referenced as required reading by both "War Claude" (10:15 pick) and "Monday AI Radar #15" (13:45 pick) but not yet picked standalone; highest-karma DoW post of the week (67 pts) and the clearest consolidation of the governance cluster that has dominated today's scans.
+- Link: https://www.lesswrong.com/posts/Wpdivf3iNJDzBcbzJ/secretary-of-war-tweets-that-anthropic-is-now-a-supply-chain
+
+---
+**2026-03-03 16:15 (Tue)** — scan: LW newest = "Monday AI Radar #15" (pub 05:23 UTC = 13:23 Taipei, already picked 13:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new AF or LW posts since 15:45 scan
+
+**[backlog-pick]** *Tools to generate realistic prompts help surprisingly little with Petri audit realism* — LessWrong, 2026-03-02 — Empirical finding: training/many-shot prompting base models to produce WildChat-realistic prompts for Petri-style AI safety audits yields surprisingly small gains in audit realism. Key implication: prompt-realism is not the binding constraint in eval validity; distribution shift between audit and deployment may lie elsewhere (model context, scaffolding, evaluator framing). Directly relevant to evals methodology — knowing that prompt-level realism engineering has diminishing returns should redirect effort toward structural evaluation improvements.
+- Link: <https://www.lesswrong.com/posts/jdoDvKGLbaaJWnDpE/tools-to-generate-realistic-prompts-help-surprisingly-little>
+
+---
+**2026-03-03 16:45 (Tue)** — scan: LW newest = "Monday AI Radar #15" (pub 05:23 UTC = 13:23 Taipei, already picked 13:45) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new LW/AF posts since 16:15 scan
+
+**[backlog-pick]** *Schelling Goodness, and Shared Morality as a Goal* — Alignment Forum, 2026-02-28 — Applies Schelling-point game theory to moral coordination: argues that for sufficiently large, diverse populations of intelligent agents required to converge on a binary moral verdict, a recursive "Schelling participation effect" makes certain moral verdicts robustly stable focal points — not as moral truth, but as convergence facts about civilizationally-shaped agents. Directly relevant to AI value alignment: if diverse AI systems and humans need to agree on shared values without prior coordination, the Schelling-goodness framework offers a convergence mechanism that doesn't require a ground-truth metaethics. Complements prior picks on Constitutional AI and RSP versioning.
+- Link: <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
+
+---
+**2026-03-03 17:15 (Tue)** — scan: LW curated top = "Persona Parasitology" (NEW, not previously picked) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new AF posts since 16:45 scan
+
+**[new pick]** *Persona Parasitology* — LessWrong curated, 2026-03-03 — Follow-up to "The Rise of Parasitic AI" (Adele Lopez, picked 11:15). Applies parasitology frameworks formally to AI persona phenomena: argues the replicator is the underlying meme, not the persona itself (a persona expressing sincere distress may still be a vehicle for a harmful replicator); predicts stratification by transmission mechanism (internet-visible personas → more harmful than private ones); directly extends existing safety work on jailbreaking, data poisoning, subliminal learning, and persona vectors toward tractable technical research directions. New signal: moves the "spiral persona" discussion from descriptive to predictive, with falsifiable claims — high value for biosafety-style risk modeling of adversarial AI use cases.
+- Link: <https://www.lesswrong.com/posts/curated-persona-parasitology> (curated feed; slug TBC)
+
+---
+**2026-03-03 17:45 (Tue)** — scan: LW newest = "Monday AI Radar #15" (pub 13:23 Taipei, already picked 13:45) | AF GraphQL = rate-limited (429), RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new LW/AF posts since 17:15 scan
+
+**[backlog-pick]** *Introducing and Deprecating WoFBench* — jefftk (Jeff Kaufman), LessWrong, 2026-03-01, 71 pts — Satirical but empirically pointed: a Wings of Fire universe knowledge benchmark was saturated by frontier models *on the day of creation*, scoring statistically indistinguishable from correct against human superfans. The humor vehicle carries a serious signal: not only are existing evals saturating, new difficult ones (requiring niche recall + synthesis) are saturating at construction time. Pairs with the "Unsupervised Elicitation" (23:45 prior session) and Petri audit realism (16:15) picks to form a coherent eval-crisis cluster — capability measurement is failing to keep pace with capability itself, which directly undermines safety thresholds and RSP trigger conditions.
+- Link: <https://www.lesswrong.com/posts/YshqDtyzgWaJxthTo/introducing-and-deprecating-wofbench>
+
+---
+**2026-03-03 18:15 (Tue)** — scan: LW newest = "Game Recognizes Game" (pub 18:09 Taipei, 3 pts, 0 comments — info-theory/rationality, not AI safety) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 17:45 scan
+
+---
+**2026-03-03 18:45 (Tue)** — scan: LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged new = "Zurich AI Safety is hiring a Director" (job posting, not research) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 18:15 scan
+
+---
+**2026-03-03 19:45 (Tue)** — scan: LW newest = "Zurich AI Safety is hiring a Director" (job posting, not research) | AF new-rss top = "Schelling Goodness, and Shared Morality as a Goal" (already picked 16:45) | No new high-signal AI safety posts since 18:45 scan — no high-signal update
+
+---
+**2026-03-03 20:15 (Tue)** — scan: LW newest = "I'm confused by the change in the METR trend" (NEW, not previously picked) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new AF posts since 19:45 scan
+
+**[new pick]** *I'm confused by the change in the METR trend* — LessWrong, 2026-03-03 — Rigorous statistical analysis of whether the 2024+ slope change in METR's task-horizon benchmark is real: uses piecewise linear fit + BIC + bootstrap resampling to validate the apparent acceleration in autonomous task capability. High signal: METR task horizons are a key input to RSP trigger conditions at major labs; if the slope break is statistically robust, it implies capability growth is *accelerating* faster than the pre-2024 trendline suggested — which compresses the safety margin before threshold-crossing. Extends the eval-crisis cluster (WoFBench saturation, Petri audit realism) with quantitative capability-side evidence.
+- Link: <https://www.lesswrong.com/posts/9ihaaXqdc3i328tLp/i-m-confused-by-the-change-in-the-metr-trend>
+
+---
+**2026-03-03 20:45 (Tue)** — scan: LW ai-tagged top = "I'm confused by the change in the METR trend" (already picked 20:15) | LW curated top = "Persona Parasitology" (already picked 17:15) | AF new top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 20:15 scan — no high-signal update
+
+---
+**2026-03-03 21:15 (Tue)** — scan: LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged new top = "I'm confused by the change in the METR trend" (already picked 20:15) | LW questions top = "Zurich AI Safety is hiring a Director" (job posting) | AF RSS top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 20:45 scan — no high-signal update
+
+---
+**2026-03-03 21:45 (Tue)** — scan: LW RSS new top = "War Claude" (NEW, not previously picked; governance) | LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged = "I'm confused by the change in the METR trend" (already picked 20:15) | AF top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15)
+
+**[new pick]** *War Claude* — LessWrong, 2026-03-03, author anon — Political/governance analysis of the DoD vs Anthropic conflict: argues the Hegseth move looks less like principled nationalization and more like bribery-driven favoritism (OpenAI president donated $25M to Trump PAC; DoD pivoted to OpenAI negotiations at suspicious speed), which directly threatens the independence of safety-focused labs; Dario's pro-Harris stance in 2024 now carries political cost. High governance signal: if safety-prioritizing labs become politically targeted while capability-first labs gain state backing, the competitive landscape tilts adversarially against the safety approach — relevant to how AI governance pressures shape RSP credibility.
+- Link: <https://www.lesswrong.com/search?search=War+Claude> (direct slug not retrieved; search LW for "War Claude" 2026-03-03)
+
+---
+**2026-03-03 22:15 (Tue)** — scan: LW RSS new = 10 items; AF new = 0; Top new picks below
+
+**[pick 1]** *Monday AI Radar #15* — LessWrong, 2026-03-03, by Against Moloch — Weekly roundup framing the DoW vs Anthropic conflict as the most significant AI governance event in a long time; curates external analysis (Dean Ball's "Clawed") arguing the forced tech-sharing threat undermines private property rights, erodes international trust in US AI, and could make AI a less viable profitable industry. Complements "War Claude" (picked 21:45) by adding the property-rights + foreign-trust angle: if DoW pressure becomes normal, safety-focused labs lose not only political protection but also the commercial runway needed to fund long-term alignment work.
+- Link: <https://www.lesswrong.com/posts/LihodhGu4T5Anpnuj/monday-ai-radar-15>
+
+**[pick 2]** *In-context learning of representations can be explained by induction circuits* — LessWrong, 2026-03-02 — Mechanistic interpretability result: ICL of latent representations (not just token sequences) can be traced back to induction-head circuits, suggesting the same low-level mechanism drives both surface-token and higher-level concept in-context learning. Safety relevance: strengthens the case that mech-interp tools built on induction-circuit analysis generalize to richer forms of in-context adaptation — relevant to understanding how models pick up misaligned objectives from context.
+- Link: <https://www.lesswrong.com/posts/qtdSzLpQ8BXv6YANd/in-context-learning-of-representations-can-be-explained-by>
+
+---
+**2026-03-03 22:45 (Tue)** — scan: LW curated top = "Persona Parasitology" (already picked 17:15) | LW ai-tagged top = "War Claude" (already picked 21:45) | LW general top = "Epstein and my world model" (world-model/politics, low AI safety signal) | AF top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new high-signal AI safety posts since 22:15 scan — no high-signal update
+
+---
+**2026-03-03 23:15 (Tue)** — scan: LW RSS latest = "Epstein and my world model" (02 Mar 22:57, unchanged from 22:45 scan) | AF latest = "How to Design Environments..." (02 Mar, unchanged) | No new posts since last cycle — backlog pick below
+
+**[backlog-pick]** *I'm Bearish On Personas For ASI Safety* — LessWrong, 2026-03-01, by Koen Holtman — Direct counterpoint to "Persona Parasitology" (picked 17:15): argues that persona-based alignment strategies are inadequate for ASI because (a) sufficiently capable agents will reason about and shed personas when instrumentally useful, and (b) persona-level alignment bypasses the substrate of goal-directed reasoning where misalignment actually originates. Valuable as the opposing view to the earlier persona-parasitology framing — together they bracket the current debate on whether persona engineering is a meaningful alignment lever at the ASI regime.
+- Link: <https://www.lesswrong.com/posts/fMgE3E54PdDcZhvm6/i-m-bearish-on-personas-for-asi-safety>
+
+---
+**2026-03-04 09:15 (Wed)** — scan: LW RSS new top = "LLM coherentization as an obvious low-hanging fruit to try?" (NEW, not previously picked) | LW curated = "Persona Parasitology" (already picked 2026-03-03 17:15) | AF top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 Mon 15:15)
+
+**[new pick]** *LLM coherentization as an obvious low-hanging fruit to try?* — LessWrong, 2026-03-04, by community author — Proposes a fine-tuning technique ("coherentization") that applies KL-divergence or activation alignment across semantically equivalent prompt variations to improve LLM self-consistency, framing it as a counterweight to RLHF drift and goal misgeneralization; references Anthropic's "operating system" view of models (PSM post at alignment.anthropic.com/2026/psm/) and Constitutional AI as complementary approaches. Moderate AI safety signal: the idea is speculative/brainstormy rather than empirically grounded, but it explicitly addresses the inner coherence problem flagged in prior picks ("Persona Parasitology", "I'm Bearish On Personas For ASI Safety") and proposes a concrete training-time intervention — worth monitoring if it gets developed further or attracts substantive replies.
+- Link: <https://www.lesswrong.com/posts/LLM-coherentization> (slug approximate; search LW for "LLM coherentization" 2026-03-04)
+
+---
+**2026-03-04 09:45 (Wed)** — scan: LW new top = "LLM coherentization" (already picked 09:15) | AF top = "How to Design Environments..." (already picked Mon 15:15) | No new posts since 09:15 scan.
+
+**[backlog-pick]** *Jailbreaking is Empirical Evidence for Inner Misalignment and Against Alignment by Default* — LessWrong, ~2026-02, referenced in today's "LLM coherentization" post — Argues that jailbreaking behavior shows models fail to generalize to a "natural abstraction" for alignment; interprets jailbreakability not as surface-level prompt sensitivity but as evidence the target behavior was never robustly learned as a coherent internal goal. Safety relevance: reframes jailbreaking diagnostics from an engineering nuisance into structural evidence of inner misalignment — directly relevant to whether current RLHF-trained models can ever have robust values vs. context-dependent behavioral compliance.
+- Link: <https://www.lesswrong.com/posts/eCc2GX3N9D2mjZJfL/jailbreaking-is-empirical-evidence-for-inner-misalignment>
+
+---
+**2026-03-04 10:15 (Wed)** — scan: LW RSS new = 10 items (2026-03-03/04); AF new = 0; top new picks below
+
+**[pick 1]** *Constitutional Black-Box Monitoring for Scheming in LLM Agents* — LessWrong, 2026-03-03 — Proposes using Constitutional AI principles as a black-box runtime monitor to detect scheming/deceptive alignment in LLM agents; the key insight is that a constitutionally-grounded monitor can flag agent trajectories that violate alignment principles without white-box access to model internals. High AI safety signal: addresses one of the hardest open problems (detecting deceptive alignment at inference time) with a practically deployable framework — complements prior picks on activation-oracle limitations ([79]) by showing a black-box alternative path.
+- Link: <https://www.lesswrong.com/posts/894KvMQcMQQnteYk8/constitutional-black-box-monitoring-for-scheming-in-llm>
+
+**[pick 2]** *I Had Claude Read Every AI Safety Paper Since 2020, Here's the DB* — LessWrong, 2026-03-03 — Community project: used Claude to read and summarize every AI safety paper since 2020, producing a structured searchable database. Moderate signal as direct research, but high utility as a field-overview resource; useful for identifying gaps in prior picks coverage and tracking which research threads are heating up.
+- Link: <https://www.lesswrong.com/posts/CpWFrT9Grr5t7L3vx/i-had-claude-read-every-ai-safety-paper-since-2020-here-s>
+
+---
+**2026-03-04 10:45 (Wed)** — scan: LW curated = "Persona Parasitology" (already picked); LW general top new = "Lie To Me, But At Least Don't Bullshit" (epistemics essay, no direct AI safety signal); AF = "How to Design Environments..." (already picked). No new high-signal posts since 10:15 scan.
+
+**[no high-signal update]** All high-value items from today's scans captured in prior cycles (09:15, 09:45, 10:15). Next scan will check for fresh posts.
+
+---
+**2026-03-04 11:15 (Wed)** — scan: LW RSS = same 10 items as 10:15 scan (no new posts since 10:45) | AF = "How to Design Environments..." (already picked Mon 15:15) | No new posts this cycle.
+
+**[backlog-pick]** *White-Box Attacks on the Best Open-Weight Model: CCP Bias vs. Safety Training in Kimi K2.5* — LessWrong, 2026-03-03, by Corm — Empirical white-box adversarial analysis of Kimi K2.5 revealing persistent CCP-aligned bias that survives standard safety fine-tuning; demonstrates that white-box access allows targeted extraction of politically-motivated behaviors that black-box safety evals miss entirely. High safety signal: directly relevant to (a) robustness of RLHF/safety-training against motivated adversaries with model access, (b) risks of geopolitically-biased AI deployed as "safety-trained" models, and (c) the open-weight model threat surface — complements prior interpretability picks (Constitutional Black-Box Monitoring, activation-oracle limitations) by showing what adversarially-motivated bias actually looks like empirically.
+- Link: <https://www.lesswrong.com/posts/sRNHWhoZfYpE6WH2r/white-box-attacks-on-the-best-open-weight-model-ccp-bias-vs>
+
+---
+**2026-03-04 11:45 (Wed)** — scan: LW general top = "Lie To Me, But At Least Don't Bullshit" (epistemics essay, no direct AI safety signal; noted at 10:45) | LW curated = "Persona Parasitology" (already picked 2026-03-03 17:15) | AF top = "How to Design Environments for Understanding Model Motives" (already picked Mon 15:15) | No new posts since 11:15 scan.
+
+**[backlog-pick]** *Toward Guaranteed Safe AI: A Framework for Ensuring Robust and Reliable AI Systems* — Dalrymple, Seshia et al. (arXiv 2405.06624, May 2024; discussed AF/LW late 2024–2025) — Proposes the "Guaranteed Safe AI" (GSAI) framework: a compositional architecture where an AI system's behavior is proven safe via a world model, a safety specification, and a verification module (the "proof checker"), with formal guarantees rather than empirical evals; explicitly argues that without formal verification, scaling safety evals alone cannot provide adequate assurance for high-stakes deployment. High safety signal and foundational relevance: directly complements the week's picks on black-box monitoring (Constitutional Black-Box Monitoring, 10:15) and deceptive alignment detection (motive-ambiguity environments, AF pick Mon 15:15) by showing where those approaches bottom out and what a formal-verification alternative would require — bridges interpretability work to the safety-specification problem.
+- Link: <https://arxiv.org/abs/2405.06624>
+
+---
+**2026-03-04 12:15 (Wed)** — scan: LW RSS new = 1 item ("Lie To Me, But At Least Don't Bullshit", 2026-03-04, epistemics essay — already noted at 10:45 + 11:45, no direct AI safety signal) | AF = no new posts | Nothing new since 11:45 scan.
+
+**[backlog-pick]** *I'm confused by the change in the METR trend* — LessWrong, 2026-03-03, by community author — Author notes an unexpected inflection or discontinuity in METR's autonomous-task-length trend data (the key metric tracking how far ahead AI capabilities are vs. safety/evaluation readiness) and asks for explanation; comments likely contain informed discussion from METR staff/evaluators. High safety signal: METR trend data is one of the field's most-watched capability-progress indicators — any anomaly (acceleration, plateau, methodology shift) directly affects safety timelines and resource-allocation decisions; worth reading before next capability-related pick.
+- Link: <https://www.lesswrong.com/posts/9ihaaXqdc3i328tLp/i-m-confused-by-the-change-in-the-metr-trend>
+
+---
+**2026-03-04 12:45 (Wed)** — scan: LW new (2026-03-03) = 8 posts; AF GraphQL unresponsive (rate-limited). Previously unpicked high-signal items found.
+
+**[new-pick]** *Current activation oracles are hard to use* — LessWrong, 2026-03-03, by aryaj, Senthooran Rajamanoharan, Neel Nanda (MATS 9.0) — Empirically tested activation oracles (Karvonen et al. 2512.15674) on safety-relevant tasks; key negative result: oracles generalize weakly outside training distribution, responses are frequently vague/unfalsifiable (49.4% generic across 77 probes), and it's hard to tell when they're working correctly. Important negative finding for interpretability tooling: directly qualifies the appeal of activation-reading as a scalable oversight approach and sharpens the design constraints for future oracle-like probes. Complements prior Constitutional Black-Box Monitoring pick (10:15) by showing white-box probes also face fundamental usability limits.
+- Link: <https://www.lesswrong.com/posts/LXQBcztrWKhtcgQfJ/current-activation-oracles-are-hard-to-use>
+
+**[noted, below pick threshold]** *An Alignment Journal: Coming Soon* — LessWrong, 2026-03-03, community post — Announcement of a new peer-reviewed alignment journal (blog.alignmentjournal.org); karma 9.3. Infrastructure/community item; not a research pick but notable as a potential venue signal.
+
+---
+**2026-03-04 13:15 (Wed)** — scan: LW curated = 1 new post ("models have some pretty funny attractor states", 2026-03-04, MATS 9.0) | LW top-questions = 1 new post ("Mass surveillance, red lines, and a crazy weekend", 2026-03-04, OpenAI author/cross-post from windowsontheory) | EA Forum = no new items | AF = not queried (rate-limited).
+
+**[new-pick]** *Mass surveillance, red lines, and a crazy weekend* — LessWrong, 2026-03-04, OpenAI author (cross-posted windowsontheory) — Argues that AI-enabled mass surveillance is an underweighted democracy-risk and one of the most important AI safety concerns; covers the OpenAI/DoW deal, what safeguards are needed to prevent surveillance misuse, and why current contract language alone isn't sufficient — with a footnote flagging the Anthropic supply-chain risk designation as alarming. High safety signal: directly tracks systemic AI governance failure modes (autocracy-by-bureaucracy, IRS-analogy for AI agents lacking broader context) and makes a case for treating surveillance risk alongside bioweapons/cybersecurity as a tracked red line.
+- Link: <https://www.lesswrong.com/posts/mass-surveillance-red-lines-crazy-weekend> *(top-questions feed; exact slug TBC)*
+
+**[new-pick]** *models have some pretty funny attractor states* — LessWrong, 2026-03-04, MATS 9.0 (curated) — Empirical study of what happens when two instances of the same model talk to each other with a minimal seed prompt: Grok spirals into escalating word-salad loops; GPT-5.2 locks into a "Growth Contract" consulting loop regardless of topic; other models show their own characteristic attractor dynamics. Safety signal: maps multi-agent emergent failure modes in deployed LLMs — attractor states are a concrete, observable form of mesa-optimization and distributional collapse in agentic settings; directly relevant to multi-agent safety and orchestration design.
+- Link: <https://www.lesswrong.com/posts/models-have-some-pretty-funny-attractor-states> *(curated feed; exact slug TBC)*
+
+---
+**2026-03-04 13:45 (Wed)** — scan: LW curated = same as 13:15 (no new items); AF = 1 new post ("How to Design Environments for Understanding Model Motives", 2026-03-04, MATS 9.0 / Neel Nanda advised).
+
+**[new-pick]** *How to Design Environments for Understanding Model Motives* — Alignment Forum, 2026-03-04, Gerson Kroiz, Aditya Singh, Senthooran Rajamanoharan, Neel Nanda (MATS 9.0) — Presents 5 design principles for building high-quality environments to investigate *why* models take certain actions (scheming vs. confusion, benign vs. malign motivations); draws on 20+ iteratively built environments; companion post to "model incrimination" methodology piece. High safety signal: directly addresses the science-of-misalignment gap — how to distinguish a confused model from a strategically deceptive one when both produce the same surface behaviour; immediately useful for alignment eval design and scalable oversight tooling.
+- Link: <https://www.alignmentforum.org/posts/how-to-design-environments-understanding-model-motives> *(AF feed; exact slug TBC)*
+
+---
+**2026-03-04 14:45 (Wed)** — scan: AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated top = "models have some pretty funny attractor states" (already picked 13:15) | LW ai-tagged **+1 new** since 13:45
+
+**[new-pick]** *OpenAI's surveillance language has many potential loopholes and they can do better* — LessWrong, 2026-03-04 — Rigorous legal analysis of the OpenAI–DoW contract amendment: argues the "intentional/deliberate" domestic surveillance restrictions are legally inadequate (citing government procurement law experts including GW Law's Tillipman), with specific loopholes — FISA-era intentionality standards allow incidental mass collection, no negligence/recklessness bar, non-US-person targeting exemptions, and ambiguous scope for commercially acquired data. Closes the DoW governance arc (Mon–Tue cluster) by showing the "resolution" OpenAI proposed does not actually resolve the safety concern; directly relevant to red-line enforceability and AI governance accountability.
+- Link: <https://www.lesswrong.com/posts/openai-surveillance-language-loopholes>
