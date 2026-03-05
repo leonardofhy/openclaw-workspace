@@ -3,8 +3,14 @@
   "blocked": true,
   "reason": "GPU experiments (Q001-Q004) require Leo: real speech .wav + venv setup + experiment approval",
   "blocked_since": "2026-02-27T10:00:00+08:00",
-  "unblock_check_at": "2026-03-05T10:00:00+08:00",
+  "unblock_check_at": "2026-03-12T10:00:00+08:00",
   "fallback_mode": "blocked_gpu",
-  "fallback_tasks": ["Q005", "Q006", "Q007", "Q008", "Q009", "Q010", "Q012"],
-  "note": "7 READY tasks available despite GPU block. Tier 0 builds + paper reads unblocked."
+  "fallback_tasks": [
+    "Q033",
+    "Q034",
+    "Q035",
+    "Q036",
+    "Q037"
+  ],
+  "note": "Reassessed 2026-03-05T10:01: still blocked (Q001-Q004 need real speech .wav + venv from Leo). Fallback tasks (Q005-Q012) all done/archived. New fallback: Q033-Q037 (ideate design tasks). Next check: 2026-03-12."
 }
