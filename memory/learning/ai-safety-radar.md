@@ -1128,3 +1128,9 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-05 18:15 (Thu)** — scan: LW-karma10 lastBuild=10:15 UTC (18:15 Taipei), top = "A Behavioural and Representational Evaluation of Goal-directedness" (02:20 UTC, already picked 15:15) | AF-karma25 lastBuild=10:15 UTC, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | LW-curated lastBuild=10:15 UTC, top = "models have some pretty funny attractor states" (unchanged, already picked 2026-03-04) | All feeds fully stable since 17:45 cycle; all viable backlog candidates exhausted.
 
 **[no high-signal update]** — feeds unchanged; today's complete picks remain: "Condensation & Natural Latents" (15:15), "Behavioural & Representational Evaluation of Goal-directedness" (15:15), "Text Compression Can Help Secure Model Weights" (backlog, 15:45). End of evening.
+
+---
+**2026-03-05 18:45 (Thu)** — scan: LW-karma10 lastBuild=10:45 UTC (18:45 Taipei), one new post since 18:15: "Vibe Coding cripples the mind" (10:29 UTC) | AF lastBuild=10:15 UTC (unchanged), top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | LW-curated unchanged.
+
+**[pick]** *"Vibe Coding cripples the mind"* — LessWrong, 2026-03-05 (18:29 Taipei / 10:29 UTC), karma≥10. Argues that relying on AI coding tools (vibe-coding) atrophies core programming skills and deep technical understanding; safety-adjacent because human expertise erosion directly undermines the oversight capacity needed to audit and correct AI systems — if practitioners lose deep understanding, meaningful human oversight gets harder.
+- Link: <https://www.lesswrong.com/posts/qcz4mg2PMHckSwymX/vibe-coding-cripples-the-mind>
