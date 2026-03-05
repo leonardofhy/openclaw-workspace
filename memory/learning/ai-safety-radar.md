@@ -1149,3 +1149,30 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *"Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior"* — Alignment Forum, 2026-02-27, karma≥25. Proposes "model incrimination" — a technique for attributing specific misbehavior (e.g., sycophancy, refusal failure) back to the input features or training decisions that caused it; directly useful for interpretability-in-deployment and the practical "why did it do that?" question that currently has no systematic answer. Core safety relevance: closes the feedback loop between observed misalignment and actionable diagnosis.
 - Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
+
+---
+**2026-03-05 22:10 (Thu)** — scan: LW-karma10 unchanged (top = "Vibe Coding cripples the mind", already picked 18:45) | LW-karma25 unchanged | AF feed unchanged (all 4 items already picked in prior cycles) | HN: "Dario Amodei calls OpenAI's messaging around military deal 'straight up lies'" (683 pts, TechCrunch, Mar 4) — not yet picked; "Something is afoot in the land of Qwen" (720 pts, Simon Willison) — capability news only.
+
+**[new-pick]** *"Dario Amodei calls OpenAI's messaging around military deal 'straight up lies'"* — TechCrunch, HN 683 pts, 2026-03-04. Dario publicly accuses OpenAI of misrepresenting its military partnership in public statements — the clearest lab-vs-lab governance conflict of the week; closes the DoW/Anthropic/OpenAI arc with a direct credibility challenge that has direct implications for how safety narratives get contested in public discourse and whose framing of "responsible military AI" wins. Prior related picks: "War Claude" (Mar 3), "Secretary of War Tweets..." (Mar 2), "Anthropic and the DoW" (Feb 27).
+- Link: <https://techcrunch.com/2026/03/04/anthropic-ceo-dario-amodei-calls-openais-messaging-around-military-deal-straight-up-lies-report-says/>
+
+---
+**2026-03-05 22:16 (Thu)** — scan: LW-curated lastBuild=14:16 UTC (22:16 Taipei), top = "models have some pretty funny attractor states" (already picked 2026-03-04) | LW-karma10 lastBuild=14:16 UTC, top = "Maybe there's a pattern here?" (already picked 19:15) | AF-karma25 lastBuild=14:16 UTC, top = "Schelling Goodness" (already picked 2026-03-04) | All feeds fully stable since 22:10 cycle; no new posts.
+
+**[no high-signal update]** — feeds unchanged; today's complete picks: "Condensation & Natural Latents" (15:15), "Behavioural & Representational Evaluation of Goal-directedness" (15:15), "Text Compression Can Help Secure Model Weights" (backlog, 15:45), "Vibe Coding cripples the mind" (18:45), "Maybe there's a pattern here?" (backlog, 19:15), "The L in 'LLM' Stands for Lying" (19:15), "Dario Amodei calls OpenAI's messaging around military deal 'straight up lies'" (22:10). End of day.
+
+## 2026-03-05 22:45 (backlog-picks, 68 unread)
+
+**LW [94]** Split Personality Training can detect Alignment Faking — directly probes the alignment-faking threat model with a novel training-side detection method; high relevance.
+→ https://www.lesswrong.com/posts/aypknr8scyrhBjmYL/split-personality-training-can-detect-alignment-faking
+
+**LW [92]** Make Powerful Machines Verifiable — argues verifiability is a tractable safety lever; connects to oversight/interpretability research agenda.
+→ https://www.lesswrong.com/posts/bnawpDWcKaJqLX8RF/make-powerful-machines-verifiable
+
+(3 new today were LW chess/vibe-coding pieces — low signal for AI safety; above two are backlog-picks.)
+
+---
+**2026-03-05 23:15 (Thu)** — scan: LW-frontpage lastBuild=15:15 UTC (23:15 Taipei), 1 new post since 22:45 cycle: "Investigating Self-Fulfilling Misalignment and Collusion in AI Control" (15:05 UTC / 23:05 Taipei) | AF-karma25 unchanged (top = "Schelling Goodness", already picked 2026-03-04) | LW-curated unchanged.
+
+**[new-pick]** *"Investigating Self-Fulfilling Misalignment and Collusion in AI Control"* — LessWrong, 2026-03-05 23:05 Taipei (15:05 UTC). Examines whether misaligned AI behavior can become self-reinforcing through feedback loops, and whether multiple AI systems might collude within AI-control setups — two compounding failure modes that undercut the standard "control via oversight" safety paradigm; directly relevant to robustness of AI control frameworks.
+- Link: <https://www.lesswrong.com/posts/vfxoCKW9T9wJFbCfv/investigating-self-fulfilling-misalignment-and-collusion-in>
