@@ -1090,3 +1090,11 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-04 23:45 (Wed)** — scan: LW feed lastBuild=15:45 UTC (23:45 Taipei), latest post still "Make Powerful Machines Verifiable" (14:20 UTC, already picked 22:41) | AF feed unchanged (lastBuild=15:45 UTC) | LW curated = "models have pretty funny attractor states" (unchanged, already picked 13:15).
 
 **[no high-signal update]** — all feeds stable; no new posts since 22:41 cycle. Day complete: 8 unique picks logged.
+
+---
+
+**2026-03-05 09:45 (Thu)** — scan: LW new (karma≥30) = 1 new post | LW questions = 1 new post | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 2026-03-04 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 2026-02-27).
+
+**[picks]**
+- **"A summary of Condensation and its relation to Natural Latents"** — LessWrong, 2026-03-05 — Summarizes Sam Eisenstat's Condensation theory and draws first mathematical comparisons to John Wentworth's Natural Latents; both address when latent variable models will converge on the "same" concepts across agents with different implementations. Moderate-to-high alignment signal: directly relevant to interpretability and the question of whether AI systems and humans can share objective representations — foundational for value alignment approaches that depend on concept convergence. <https://www.lesswrong.com/posts/condensation-natural-latents>
+- **"Maybe there's a pattern here?"** — LessWrong, 2026-03-05 — Historical essay tracing how transformative dual-use technologies (Gatling gun, rockets/VfR → V-2, aircraft → bombers) were systematically co-opted by military-industrial interests despite creators' peaceful intentions. Moderate safety signal: provides historical grounding for AI governance analogies about civilian vs. military AI development trajectories; useful framing for policy/deployment discussions. <https://www.lesswrong.com/posts/TjcvjwaDsuea8bmbR/maybe-there-s-a-pattern-here>
