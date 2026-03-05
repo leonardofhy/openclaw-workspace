@@ -119,12 +119,13 @@
       "type": "build",
       "track": "T5",
       "title": "MATS proposal anti-confound checklist — 10-item acoustic eval env controls (Tier 0 doc)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Markdown checklist: acoustic baseline, speaker identity, text-only ablation, prompt injection controls; patch into MATS proposal env design section",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     }
   ],
   "archived_count": 36,
