@@ -120,12 +120,13 @@
       "type": "design",
       "track": "T2",
       "title": "Idea: RAVEL × Emotion-Sensitive Neurons — ESN leakage hypothesis (N=5,F=3=8)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design Audio-RAVEL Category 0 targeting ESN features (Zhao 2601.03115); expected Cause≈0.7, Isolate≈0.2 due to speaker-gender co-occurrence; AudioSAEBench Category 0 contribution",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     }
   ],
   "archived_count": 36,

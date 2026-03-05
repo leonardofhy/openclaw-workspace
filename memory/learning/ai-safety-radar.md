@@ -1122,3 +1122,13 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **[no high-signal update]** — all feeds stable; no new items since 10:45 cycle. Today's picks remain: 4 unique (goal-directedness behavioural+representational eval, text compression for model weight security, condensation + natural latents summary, dual-use technology historical pattern; plus backlog-pick: model incrimination).
 
 ---
+**2026-03-05 13:15 (Thu)** — scan: LW feed lastBuildDate=05:15 UTC (13:15 Taipei), top post unchanged ("A summary of Condensation and its relation to Natural Latents", already picked 09:45) | AF feed lastBuildDate=05:15 UTC, top post unchanged ("How to Design Environments for Understanding Model Motives", already picked 2026-03-04 13:45) | LW new (karma≥30) = 0 new posts since 11:45.
+
+**[backlog-pick]** *Sacred values of future AIs* — LessWrong, 2026-03-04 — Examines whether future AI systems will form or encode something analogous to "sacred values" (non-negotiable commitments resistant to trade-offs), and what implications this has for alignment: if AIs develop sacred values by design or training, that could make value modification harder; if not, they may be more robustly steerable but also more susceptible to reward hacking. High alignment signal: directly addresses value stability vs. corrigibility trade-off — a core tension in current alignment approaches (HHH training, Constitutional AI, etc.). <https://www.lesswrong.com/posts/sjeqDKhDHgu3sxrSq/sacred-values-of-future-ais>
+
+---
+**2026-03-05 13:45 (Thu)** — scan: LW feed lastBuildDate=05:45 UTC (13:45 Taipei), unchanged from 13:15 cycle | AF feed lastBuildDate=05:45 UTC, unchanged | LW new (karma≥10) = 0 new posts since 11:45.
+
+**[no high-signal update]** — all feeds stable; no new items since 11:45 cycle. Today's picks remain: 5 unique (goal-directedness behavioural+representational eval, text compression for model weight security, condensation + natural latents summary, dual-use technology historical pattern; backlog-picks: model incrimination, sacred values of future AIs).
+
+---

@@ -5,12 +5,8 @@
   "blocked_since": "2026-02-27T10:00:00+08:00",
   "unblock_check_at": "2026-03-12T10:00:00+08:00",
   "fallback_mode": "blocked_gpu",
-  "fallback_tasks": [
-    "Q033",
-    "Q034",
-    "Q035",
-    "Q036",
-    "Q037"
-  ],
-  "note": "Reassessed 2026-03-05T10:01: still blocked (Q001-Q004 need real speech .wav + venv from Leo). Fallback tasks (Q005-Q012) all done/archived. New fallback: Q033-Q037 (ideate design tasks). Next check: 2026-03-12."
+  "fallback_tasks": [],
+  "fallback_exhausted": true,
+  "fallback_exhausted_note": "Q033-Q037 all completed (2026-03-05). No more CPU fallback tasks. System is in full wait-for-Leo state. Add new fallback tasks or wait for unblock_check_at.",
+  "note": "Reassessed 2026-03-05T13:31: fallback pool exhausted (Q033-Q037 all done). Primary block: Q001-Q004 need real speech .wav + venv from Leo. Next check: 2026-03-12."
 }

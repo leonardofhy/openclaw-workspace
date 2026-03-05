@@ -3,12 +3,14 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-05 08:43
+**Last Updated:** 2026-03-05 13:51
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-05 13:51: Leo update — this afternoon meeting is canceled (Short Lab Weekly Meeting). Adjust today's execution plan to reclaim that time block.
+- 2026-03-05 13:01: Leo instruction — "自己想辦法解決這些問題。然後我給你授權"; proceed autonomously to identify and solve outstanding issues first, then return with precise authorization requests.
 - 2026-03-05 08:43: Leo update — PR has been closed. Immediate decision/instruction: resolve conflicts between current working branch and `main` first, then merge into `main`.
 - 2026-03-05 07:30: Cron title-brainstorm executed; appended Batch 46 (legal standards / burden-of-proof angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 07:00: Cron title-brainstorm executed; appended Batch 39 (incentive compatibility / Goodhart angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
