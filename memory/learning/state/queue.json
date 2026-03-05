@@ -107,12 +107,13 @@
       "type": "design",
       "track": "T3",
       "title": "Idea: CoT reasoning × gc(k) decay — mechanistic account of perception erosion (N=5,F=3=8)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design gc(k) sweep across generation steps in CoT: does gc decay as reasoning chain grows? Mechanistic account of MPAR2 behavioral finding. Spec Tier 0 (execution needs LALM)",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     },
     {
       "id": "Q037",
