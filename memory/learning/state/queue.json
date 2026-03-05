@@ -81,24 +81,26 @@
       "type": "design",
       "track": "T5",
       "title": "Hypothesis note: gc(k) as jailbreak detector — confidence collapse signature at listen layers",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "1-page note: threat model + gc(k) signal signature for jailbreak vs benign + minimal detection protocol + expected failure modes",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     },
     {
       "id": "Q035",
       "type": "build",
       "track": "T3",
       "title": "Unified eval script: gc(k) + listen_layer_audit.py on same audio clip in one pass (Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "unified_eval.py runs gc(k) confidence curve + safety score + alert on single synthetic input; JSON output; unit test passes",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     },
     {
       "id": "Q036",
