@@ -19,11 +19,23 @@
 
 ### Step 3: 決定是否通知
 
+**🚨 Anti-Spam Rule（最高優先）：**
+1. 讀 `memory/heartbeat-state.json` 的 `recent_alerts`
+2. 如果你要發的 alert **內容本質上和過去 24h 內已發的一樣**（同一個 task stale、同一個系統故障、同一個 deadline），**不要發**
+3. 只有在 **狀態改變** 時才重新通知（例：stale task 被修了又 stale、新的故障、deadline 進入更緊急階段）
+4. 發完 alert 後，寫入 `heartbeat-state.json`：`recent_alerts[<key>] = {ts, summary}`
+5. 每次 heartbeat 開始時清理 >24h 的舊 entries
+
 ```
-IF 有 actionable alert（overdue task / broken system / Leo 需要知道的事）
+IF 有 NEW actionable alert（之前 24h 沒發過同樣的）
   → 修復問題（能修的先修）
   → 發 #general：簡短說發生什麼 + 你做了什麼 + Leo 需要做什麼（如有）
+  → 更新 heartbeat-state.json
   → 不需要固定模板，說人話
+
+ELSE IF 有 actionable alert 但已通知過
+  → 不發 #general（已通知，等 Leo 或等狀態變化）
+  → 可以寫到 memory/YYYY-MM-DD.md 記錄你檢查過了
 
 ELSE IF 做了有意義的工作（修 bug、推進任務、清理 learnings）
   → 寫到 memory/YYYY-MM-DD.md
@@ -36,8 +48,9 @@ ELSE（什麼都沒發生，一切正常）
 
 ## 輪替檢查（每次挑 1-2 個做）
 
-### 📅 行事曆 & 任務
+### 📅 行事曆 & 任務 & Deadlines
 - 跑 `python3 skills/task-check.py`，有 alert 就處理
+- 跑 `python3 skills/deadline_watch.py --days 14`，有 urgent/overdue 就通知 Leo
 - 檢查 2 小時內行事曆事件，需要就設 cron 提醒
 
 ### 🔀 Git 同步
@@ -61,8 +74,9 @@ ELSE（什麼都沒發生，一切正常）
 - 目標：pending ≤ 3
 
 ## 頻道規則
-- **#general**（`978709248978599979`）：只發 Leo 需要看的（alerts、需要決策的事、重要進展）
-- **#bot-logs**（`1477354525378744543`）：機器日誌、routine 工作記錄、self-awareness 記錄
-- **#bot-sync**（`1476624495702966506`）：跨 bot 通訊（不變）
+- **#general**（`978709248978599979`）：**只發真正重要的事**（系統故障、需要 Leo 立刻決策、重大 milestone）。Bot 之間的通訊**不准用 #general**
+- **#bot-logs**（`1477354525378744543`）：機器日誌、routine 工作記錄、self-awareness、daily growth report
+- **#bot-sync**（`1476624495702966506`）：跨 bot 通訊、@mention、mailbox 通知
+- Bot 之間的所有互動 → **#bot-sync**（即時）或 **#bot-logs**（記錄）
 - 深夜 (23:00-08:00) 不發 #general，除非緊急
-- #bot-logs 不受時間限制
+- #bot-logs 和 #bot-sync 不受時間限制

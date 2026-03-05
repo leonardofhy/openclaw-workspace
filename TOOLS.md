@@ -47,9 +47,9 @@
 - **發送方式：** `message` tool（channel=discord）
 - **Target 格式：** `user:756053339913060392`（DM）、`channel:ID`（頻道）
 - **頻道：**
-  - `#general`（`978709248978599979`）— 給人看的：alerts、需要 Leo 決策的事、重要進展
-  - `#bot-logs`（`1477354525378744543`）— 機器日誌：routine 工作記錄、self-awareness、heartbeat 記錄
-  - `#bot-sync`（`1476624495702966506`）— 跨 bot 通訊
+  - `#general`（`978709248978599979`）— **只發真正重要的**（系統故障、需要 Leo 決策、重大 milestone）。Bot 之間不准用
+  - `#bot-logs`（`1477354525378744543`）— 機器日誌、routine 記錄、growth report、bot 工作匯報
+  - `#bot-sync`（`1476624495702966506`）— bot 之間的即時通訊、@mention、mailbox 通知
 - **用途：** Todoist 提醒、日終摘要、週報、行事曆提醒
 
 ### 🔑 Google OAuth (Desktop)
@@ -128,10 +128,20 @@
 - 週五 20:00 天氣偵察（email）
 
 ### Lab Bot（WSL2, 24/7）
-- ***/30 08-23 Heartbeat**（main session, g53s）— 沉默優先；有 alert 才通知 #general
-- **:15/:45 08-23 Autodidact**（isolated, sonnet）— 自主學習 cycle：讀論文、挖 gap、反思
+- **每小時 09-22 HN 蒐集** `df22eb11`（isolated, spark, 60s）— 靜默蒐集 HN 候選到 `memory/hn/candidates/`
+- **20:30 HN Daily Digest** `76817b6d`（isolated, g53s, 120s）— 整理當日 top 10 推送 Leo DM
+- ***/30 08-23 Heartbeat**（main session, g53s）— 沉默優先；有 alert 才通知 #general；**含 deadline watchdog**
+- **:15/:45 08-23 Autodidact**（isolated, sonnet, 300s timeout）— v2：precheck gate → phase-aware cycle
+- **14:00 News Scout** `366e373d`（isolated, g53s, 180s timeout）— HN + Alignment Forum 掃描 → LLM 相關度評分 → 加入 autodidact queue
 - **06:00 System Scanner**（isolated, g53s）— 每日健檢，🔴 時 Discord 通知 Leo
 - **08:00 Daily Merge**（isolated, g53s）— 自動 fetch + merge macbook-m3
 - **13:00 Afternoon Calendar**（isolated, g53s）— 3 小時內事件提醒
 - ***/2h Tunnel Watchdog**（isolated, g53s）— SSH 反向隧道自動修復
+- **21:00 Daily Research Briefing**（isolated, g53s, 120s timeout）— 綜合新聞 + autodidact + artifacts → email
 - **23:30 Daily Growth Report**（isolated, g53s）— 每日成長量化，常規→#bot-logs，異常→#general
+
+### Deadline Watchdog（取代舊 one-shot cron jobs）
+- **位置**: `skills/deadline_watch.py`
+- **資料**: `memory/finance/deadlines.json`（11 個 deadlines）
+- **觸發**: heartbeat 時跑 `deadline_watch.py --days 14`，有 alert 就通知 #general
+- **舊 cron 已清除**: pathfinder-followup, ntu-intl-scholarship, ctci-scholarship-prep, ctci-registration-open, mats-research-task-prep, sept-scholarship-batch, ctci-written-deadline

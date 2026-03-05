@@ -3,15 +3,19 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-04 17:00
+**Last Updated:** 2026-03-05 06:00
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
-- 2026-03-04 17:00: Leo request — recurring partial-write failures must be fixed systemically now; approved implementing robust anti-race write flow.
-- 2026-03-04 16:45: Leo decision — explicitly agreed to "Q33".
-- 2026-03-04 16:40: Leo request — complete a robust Todoist task-management mechanism by tomorrow before 12:00; autonomous self-iteration explicitly authorized.
+- 2026-03-05 07:30: Cron title-brainstorm executed; appended Batch 46 (legal standards / burden-of-proof angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
+- 2026-03-05 07:00: Cron title-brainstorm executed; appended Batch 39 (incentive compatibility / Goodhart angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
+- 2026-03-05 05:15: Cron title-brainstorm executed; appended Batch 21 (forensic accounting / evidence ledger angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
+- 2026-03-05 05:00: Cron title-brainstorm executed; appended Batch 19 (item ecology / benchmark cartography angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
+- 2026-03-05 00:20: Leo instruction — current mission is to craft paper titles aligned with the thesis; Leo is going to sleep and requests autonomous continuation without waiting for replies.
+- 2026-03-05 00:12: Leo approval — proceed with further development ("沒問題，你可以開發").
+- 2026-03-05 00:00: Leo decision — approved building a real title-generation workflow/script ("可以呀").
 - 2026-03-04 16:16: Leo decision — skip NTUAIS check today; postpone to Thursday after 20:00.
 - 2026-03-04 12:33: Leo update — plans to skip this afternoon Long Lab Weekly Meeting; currently hesitating whether to go to school due to rain. Going to campus benefit: can discuss paper revisions with co-authors.
 - 2026-03-04 12:30: Leo update — woke up at 12:30 and successfully caught up sleep status.
