@@ -1090,3 +1090,21 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-04 23:45 (Wed)** — scan: LW feed lastBuild=15:45 UTC (23:45 Taipei), latest post still "Make Powerful Machines Verifiable" (14:20 UTC, already picked 22:41) | AF feed unchanged (lastBuild=15:45 UTC) | LW curated = "models have pretty funny attractor states" (unchanged, already picked 13:15).
 
 **[no high-signal update]** — all feeds stable; no new posts since 22:41 cycle. Day complete: 8 unique picks logged.
+
+---
+**2026-03-05 15:15 (Thu)** — scan: LW new today = 3 posts (≥10 karma feed) | AF unchanged (top = "How to Design Environments for Understanding Model Motives", already picked 2026-03-04 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 2026-03-04 13:15) | LW karma≥25 = "A summary of Condensation and its relation to Natural Latents" (new, 08:48 Taipei).
+
+**[picks]**
+- **"A summary of Condensation and its relation to Natural Latents"** — LessWrong, 2026-03-05, karma≥25. Summarises the Condensation framework and its connection to Natural Latents (Wentworth); foundational for representation-learning-based alignment approaches; relevant to understanding what structure emerges in trained models and why Natural Latents matter for scalable oversight. High signal for interpretability-adjacent safety work. <https://www.lesswrong.com/posts/agw7HhW4cWjADpBgo/a-summary-of-condensation-and-its-relation-to-natural>
+- **"A Behavioural and Representational Evaluation of Goal-directedness in Language Model Agents"** — LessWrong, 2026-03-05 (10:20 Taipei). Empirical paper evaluating goal-directedness in LLM agents both behaviourally and representationally; directly tests a core safety-relevant property (are models goal-directed?) with dual-method validation — high-signal for mesa-optimiser / agentic risk research. <https://www.lesswrong.com/posts/fe5cJmwGETNf8rYjE/a-behavioural-and-representational-evaluation-of-goal-1>
+
+---
+**2026-03-05 15:45 (Thu)** — scan: LW karma≥10 lastBuild=07:45 UTC (15:45 Taipei), latest post "A Behavioural and Representational Evaluation of Goal-directedness" at 02:20 UTC (already picked 15:15) | AF karma≥25 feed unchanged (top = biosecurity fieldbuilding + animal welfare posts, off-topic for AI safety) | No new safety-relevant posts since 15:15 cycle.
+
+**[backlog-pick]** *"Text Compression Can Help Secure Model Weights"* — LessWrong, 2026-03-05 (07:30 Taipei / 23:30 UTC Wed), karma≥10. Proposes using text compression techniques as a mechanism to secure model weights against theft/exfiltration; directly relevant to the model security cluster (complements the verification/oversight thread running through this week's picks — if weights can't be secured, audit schemes lose teeth). Unpicked from today's earlier scans.
+- Link: <https://www.lesswrong.com/posts/GcbkprYPCjXdysLq4/text-compression-can-help-secure-model-weights>
+
+---
+**2026-03-05 16:15 (Thu)** — scan: LW karma≥25 lastBuild=08:15 UTC (16:15 Taipei), top = "A summary of Condensation and its relation to Natural Latents" (already picked 15:15) | LW karma≥10 top = "A Behavioural and Representational Evaluation of Goal-directedness" (already picked 15:15) | AF lastBuild=08:14 UTC, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | No new safety-relevant posts since 15:45 cycle.
+
+**[no high-signal update]** — all feeds stable since 15:45; no new posts. Today's picks so far: "Condensation & Natural Latents", "Behavioural & Representational Evaluation of Goal-directedness", "Text Compression Can Help Secure Model Weights" (backlog).
