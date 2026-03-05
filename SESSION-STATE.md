@@ -3,12 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-05 23:36
+**Last Updated:** 2026-03-05 23:41
 
 ## Current Task
-Cross-merge macbook-m3 + mailbox 啟用驗證
+Execute [cron:b563a3ee-97ef-4920-9262-c15c7051962a] weekly-research-summary
 
 ## Recent Context
+- 2026-03-05 23:41: Leo cron [weekly-research-summary b563a3ee-97ef-4920-9262-c15c7051962a] started.
 - 2026-03-05 23:36: Leo instruction — fix all issues reported by system-scanner (git dirty state, stuck delivery queue, openclaw doctor anomaly, cron error states) autonomously.
 - 2026-03-05 20:19: Leo standing authorization — proceed immediately without waiting for approval unless Leo’s direct personal intervention is strictly required.
 - 2026-03-05 14:40: Leo hard directive — do not wait for Leo to provide audio files or environment setup; solve acquisition/setup autonomously end-to-end.
