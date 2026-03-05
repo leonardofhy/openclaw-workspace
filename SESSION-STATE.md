@@ -3,12 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-05 11:46
+**Last Updated:** 2026-03-05 12:15
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-05 12:15: Cron title-brainstorm request — append one new batch of 10 Interspeech title candidates to `memory/paper/title-brainstorm.md` using a creative angle not used before; add review only every 4th batch.
 - 2026-03-05 11:46: Cron title-brainstorm request — read `memory/paper/title-brainstorm.md` fully, append exactly one new batch of 10 titles using a strategy not used before, and add review section every 4th batch only.
 - 2026-03-05 10:47: Cron title-brainstorm request — generate 10 new Interspeech title candidates using a creative angle different from all prior batches; append to `memory/paper/title-brainstorm.md`. Since this is Batch 84 (multiple of 4), include a review section.
 - 2026-03-05 09:50: Leo correction — write failed due to `memory/paper/title-brainstorm.md` edit mismatch; requested fix via append-safe flow (read latest tail before append) and shift to Batch 72 review convergence to reduce high-frequency conflicts. Reported Batch 73 already appended at 09:48 (10 titles, wordplay strategy), and no review expected this round.

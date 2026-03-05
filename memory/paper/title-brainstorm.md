@@ -3634,3 +3634,215 @@
 
 10. **TUNE: Tracking Useful Non-text Evidence**
     — 將 no-audio / fragment / full-audio 三分法包成 evidence tracking 敘事。
+
+## Batch 98 — 12:01（策略：sequential evidence accumulation / early-vs-late listening）
+
+1. **Do Models Accumulate Audio Evidence? A Sequential Audit of Audio-Language Benchmarks**
+   — 新角度檢查模型是否隨時間累積聲學證據，而非僅靠早期文字/先驗線索作答。
+
+2. **Early Guess, Late Audio? Tracking Evidence Accumulation Across 8 Models and 3 Benchmarks**
+   — 保守投稿款，保留 8×3 規模並點出 early-vs-late 決策機制。
+
+3. **From First Cue to Final Answer: Measuring Sequential Audio Necessity in LALM Evaluation**
+   — 以序列決策語言描述「哪個時間點音訊真正改變答案」。
+
+4. **How Long Until Listening Matters? A Time-Accumulative Audit of “Audio” Scores**
+   — 問句式可讀性高，直接對應 fragment-sufficient 與關鍵時段發現。
+
+5. **Prefix-to-Full Audio Curves: Quantifying Evidence Accumulation in Audio-Language Tasks**
+   — 用 prefix-to-full 曲線呈現隨音訊長度增加的決策變化。
+
+6. **Do Predictions Update with More Sound? A Sequential Necessity Audit with Prefix Controls**
+   — 把方法（prefix controls）直接寫進標題，審稿人一眼可懂。
+
+7. **Accumulate or Shortcut? Diagnosing Early-Exit Text Priors in LALM Benchmarks**
+   — 對比 accumulation 與 early-exit shortcut，凸顯 read-not-listen 機制。
+
+8. **Sequential Listening Reliability: Item-Level Audits of When Audio Changes Decisions**
+   — item-level 粒度清楚，強化細粒度分析貢獻。
+
+9. **Audio Evidence Over Time: Reassessing Benchmark Validity with Incremental Reveals**
+   — 以 incremental reveal protocol 重估 benchmark 的聽覺效度。
+
+10. **Toward Sequence-Faithful Audio Evaluation: Rewarding Models That Update from Sound Over Time**
+    — 解法導向收尾，提出 sequence-faithful benchmark 設計方向。
+
+## Batch 99 — 12:02（策略：energy landscape / free-energy evidence framing）
+
+1. **Low-Energy Guesses, High Scores: Auditing Free-Energy Shortcuts in Audio-Language Benchmarks**
+   — 以 free-energy/低成本推理角度切入：模型是否偏好不需聲學處理的低能路徑。
+
+2. **Energy Landscapes of Listening: Tracing Text-Easy and Audio-Hard Paths Across 8 Models and 3 Benchmarks**
+   — 保守投稿款，保留 8×3 規模並引入 path-energy 對比。
+
+3. **Do “Audio” Scores Follow the Lowest-Energy Path? A Necessity Audit for LALMs**
+   — 問句式點出核心：高分是否來自最低計算/證據成本路徑。
+
+4. **From Acoustic Work to Text Workarounds: An Energy-Based Audit of Benchmark Decisions**
+   — 將 read-not-listen 重寫成能量最小化下的策略替代。
+
+5. **Energy-Minimizing Evaluation: Why Audio-Language Benchmarks Reward Non-Acoustic Solutions**
+   — 以 incentive + energy framing 解釋 text prior 主導。
+
+6. **Thermodynamics of “Audio” Accuracy: High Performance Under Low Acoustic Effort**
+   — 對比式 punchline，突顯高分與低音訊投入並存。
+
+7. **Acoustic Energy Budget vs Score Gain: Measuring Efficiency Gaps in LALM Benchmarks**
+   — 以 budget/gain 關係量化「投入多少聲學努力、得到多少分數」。
+
+8. **Escape from Listening Basins: Diagnosing Text-Prior Attractors in Audio-Language Tasks**
+   — landscape/attractor 視角，描述模型被 text-prior 盆地吸引的現象。
+
+9. **Energy-Faithful Audio Evaluation: Separating Low-Effort Prior Matching from Genuine Listening**
+   — 保守主標題候選，語氣穩健且方法辨識度清楚。
+
+10. **Toward Higher-Energy-Barrier Benchmarks: Designing Audio Tasks That Prevent Shortcut Paths**
+    — 解法導向收尾，提出以「提高捷徑能障」來強迫模型使用音訊證據。
+
+## Batch 100 — 12:02（策略：X Without Y）
+
+1. **State-of-the-Art Without Sound: Auditing Text Priors in Audio-Language Benchmarks**
+   — 直接把 SoTA 與「不聽也高分」並置，衝擊感強且投稿友善。
+
+2. **Understanding Without Hearing: A Necessity Audit Across 8 Models and 3 Benchmarks**
+   — 保守主標題款，方法與 8×3 規模資訊完整。
+
+3. **Progress Without Listening: Reassessing Audio-Language Leaderboards**
+   — 社群導向 framing，凸顯 leaderboard 解讀偏差。
+
+4. **Prediction Without Perception: Measuring Audio Dependence Item by Item**
+   — decision-level 對比明確，呼應 item-level 分析深度。
+
+5. **Confidence Without Acoustic Evidence: Why “Audio” Scores Stay High**
+   — 高信心與低聲學依賴形成反直覺張力。
+
+6. **Benchmark Wins Without Full Clips: Quantifying Fragment-Sufficient Scoring in LALMs**
+   — 直接連到 96% fragment-sufficient 的核心發現。
+
+7. **Generalization Without Grounding: Text-Driven Success in Audio Evaluation**
+   — ground truth 與分數脫鉤的主題清楚、審稿友善。
+
+8. **Evaluation Without Ears: Diagnosing Read-Not-Listen Shortcuts in Modern LALMs**
+   — 簡短有力，保留診斷框架可讀性。
+
+9. **Claims Without Proof: Do Audio Benchmarks Truly Require Audio?**
+   — claim/proof 對比鮮明，適合作為 discussion 導向版本。
+
+10. **Leaderboard Gains Without Listening: A Validity Audit of Audio-Language Benchmarks**
+    — 結合社群痛點與方法語氣，適合主標題候選。
+
+---
+
+## 🔎 Batch 100 Review（每 4 批）
+
+### Top 5 titles so far（含本批重評）
+1. **73% Without Listening: Auditing Text Priors in Audio-Language Benchmarks** — 9.6/10
+   - 依舊最均衡：數字衝擊、方法辨識度、場景完整度都在高點。
+
+2. **Scoring Without Listening: Auditing Text Priors in Audio-Language Benchmarks** — 9.5/10
+   - 最穩投稿款：不綁特定數字，跨版本彈性最高。
+
+3. **How Many Seconds Carry the Score? Measuring Effective Audio Bandwidth in Benchmarks** — 9.3/10
+   - 對 fragment-sufficient 洞見的表達最有辨識度與記憶點。
+
+4. **Disentangling Text Priors from Acoustic Evidence in Audio-Language Evaluation** — 9.1/10
+   - 技術語氣成熟，最符合保守審稿口味。
+
+5. **State-of-the-Art Without Sound: Auditing Text Priors in Audio-Language Benchmarks** — 8.9/10
+   - 本批最佳，SoTA 對比強、可讀性高，適合作為高衝擊備選主標題。
+
+## Batch 101 — 12:15（策略：disconfirmatory evidence / falsification-by-audio）
+
+1. **Can Audio Disconfirm the Guess? Auditing Disconfirmatory Evidence in LALM Benchmarks**
+   — 新角度：不只問 audio 能否支持答案，而是能否推翻 text-prior 猜測。
+
+2. **Disconfirming with Sound: A Necessity Audit Across 8 Models and 3 Benchmarks**
+   — 保守投稿款，8×3 規模與方法完整交代。
+
+3. **When Audio Says No: Measuring Contradictory-Signal Sensitivity in Audio-Language Evaluation**
+   — 聚焦「音訊與文字線索衝突時」模型是否真的聽音訊。
+
+4. **Support vs Refute: Do Audio Benchmarks Test Disconfirmatory Listening?**
+   — 把評測目標升級成 support/refute 雙向證據能力。
+
+5. **Text-Prior Beliefs Under Contradictory Audio: A Falsification Audit for LALMs**
+   — 以矛盾音訊干預檢驗模型是否會修正先驗。
+
+6. **Can Sound Overrule Priors? Item-Level Audits of Audio-Driven Belief Revision**
+   — item-level 深度清楚，對應細粒度分析優勢。
+
+7. **Disconfirmatory Audio Tests: No-Audio, Fragment, and Contradiction Controls in 8×3 Benchmarks**
+   — 直接把新控制設計（contradiction controls）寫進標題，方法辨識度高。
+
+8. **Hearing Against the Prompt: Reassessing Audio-Language Validity with Contradiction Edits**
+   — 新穎且可讀，點出 prompt 與 audio 衝突時的關鍵能力。
+
+9. **From Prior-Matching to Prior-Revision: Auditing Whether Audio Can Change the Answer**
+   — 將核心問題寫成「匹配先驗」vs「修正先驗」的可檢驗轉換。
+
+10. **Toward Refutation-Faithful Audio Evaluation: Rewarding Models That Let Sound Correct Text Priors**
+    — 解法導向收尾，提出 refutation-faithful benchmark 設計方向。
+
+## Batch 102 — 12:15（策略：placebo controls / sham-audio evaluation）
+
+1. **Placebo Audio, Real Scores? A Sham-Control Audit of Audio-Language Benchmarks**
+   — 新角度：把「假的/無資訊音訊」當 placebo，檢查分數是否仍維持，辨識假性 listening。
+
+2. **Sham Listening Tests Across 8 Models and 3 Benchmarks: Do Scores Survive Placebo Audio?**
+   — 保守投稿款，8×3 規模 + placebo 設計一次交代。
+
+3. **From Audio to Placebo Audio: Measuring Non-Acoustic Score Stability in LALM Evaluation**
+   — 用音訊→假音訊替換測試分數是否不合理地穩定。
+
+4. **Do “Audio” Benchmarks Pass a Placebo-Controlled Listening Test?**
+   — 問句式直觀，審稿人一眼理解方法精神。
+
+5. **Sham-Controlled Necessity Audits: Separating Acoustic Evidence from Text-Prior Defaults**
+   — 直接連到核心貢獻：拆分真正聲學證據與文字先驗捷徑。
+
+6. **Placebo-Resistant Listening: Item-Level Audits of Audio-Causal Predictions**
+   — item-level 粒度清楚，強調哪些題目對 placebo 仍有抵抗力。
+
+7. **No-Audio, Fragment, and Sham-Audio Controls: A Placebo Audit for LALM Benchmarks**
+   — 把三種既有控制 + 新 sham control 一起寫入標題，方法辨識度高。
+
+8. **When Fake Sound Works: Diagnosing Pseudo-Listening in Audio-Language Scores**
+   — 對比式 punchline，凸顯「假音訊也能得分」的效度風險。
+
+9. **Toward Placebo-Robust Audio Evaluation: Benchmarking Models That Need Real Sound**
+   — 解法導向，提出 placebo-robust 的 benchmark 設計方向。
+
+10. **Beyond Accuracy with Placebo Controls: Reassessing Listening Validity in Audio-Language Benchmarks**
+    — 收尾總結款：把評測重心從 accuracy 拉回 listening validity.
+
+## Batch 103 — 12:16（策略：極短 ≤6 words）
+
+1. **Score High, Hear Little**
+   — 4 詞，直接呈現高分與低聽覺依賴的核心矛盾。
+
+2. **Silence Still Wins**
+   — 3 詞，對應 no-audio 條件下仍可得分的衝擊感。
+
+3. **Listening Not Needed**
+   — 3 詞，極簡保守款，投稿語氣乾淨。
+
+4. **Audio Optional, Benchmark Happy**
+   — 4 詞，突出 benchmark 對「不聽也能答」的寬容。
+
+5. **Read First, Hear Never**
+   — 4 詞，濃縮 read-not-listen 路徑。
+
+6. **Fragments Carry Scores**
+   — 3 詞，對應 fragment-sufficient 的主發現。
+
+7. **SoTA in Silence**
+   — 3 詞，短促有力，保留 SoTA 反差。
+
+8. **Audio Name, Text Game**
+   — 4 詞，名實不符＋雙關感，辨識度高。
+
+9. **Win Without Waveforms**
+   — 3 詞，點出 full audio 不是必要條件。
+
+10. **Strong Scores, Weak Listening**
+    — 4 詞，總結型短標題，適合作為吸睛備選。
