@@ -1,3 +1,4 @@
-# GC Alert — 2026-03-04 18:48
+# GC Alert — cleared 2026-03-05 19:31
 
-- ⚠️ 117 cycle files (cap: 30)
+Cycle files cleaned: deleted 36 legacy 2026-03-04 cycle files.
+Remaining: 13 (2026-03-05 only). Within cap of 30.

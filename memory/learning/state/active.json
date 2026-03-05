@@ -27,28 +27,28 @@
   ],
   "budgets": {
     "learn_remaining_today": 4,
-    "build_remaining_today": 5,
+    "build_remaining_today": 4,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-05"
   },
   "stats": {
-    "total_cycles": 297,
+    "total_cycles": 298,
     "total_skips": 39,
     "papers_read_deep": 25,
     "papers_scanned": 46,
     "research_gaps": 20,
     "paper_ideas": 9,
     "paper_pitches": 2,
-    "code_artifacts": 26,
+    "code_artifacts": 28,
     "system_improvements": 6,
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260305-1901",
+    "id": "c-20260305-1931",
     "action": "build",
-    "summary": "Q046: Built m4_pcds.py — AudioSAEBench M4 PCDS Tier 0 scaffold. Audio-RAVEL Cause/Isolate two-score. Mock shows Specialized PCDS=0.776, Polysemantic Cause=0.63/Isolate=0.04 (Gap #30 audio leakage confirmed), Noise PCDS=0.000."
+    "summary": "Q046: Built m7_spurious.py (M7 spurious correlation / χ²+articulatory coherence) + m8_geometry.py (M8 feature geometry / cluster_score=13.6 on mock). Both Tier 0 tests pass. GC: 36 old cycle files deleted."
   },
-  "last_gc": "2026-03-04T18:45:00+08:00",
+  "last_gc": "2026-03-05T19:35:58.618528+08:00",
   "self_improve_tickets": []
 }

@@ -1134,3 +1134,18 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[pick]** *"Vibe Coding cripples the mind"* — LessWrong, 2026-03-05 (18:29 Taipei / 10:29 UTC), karma≥10. Argues that relying on AI coding tools (vibe-coding) atrophies core programming skills and deep technical understanding; safety-adjacent because human expertise erosion directly undermines the oversight capacity needed to audit and correct AI systems — if practitioners lose deep understanding, meaningful human oversight gets harder.
 - Link: <https://www.lesswrong.com/posts/qcz4mg2PMHckSwymX/vibe-coding-cripples-the-mind>
+
+---
+**2026-03-05 19:15 (Thu)** — scan: LW-karma10 lastBuild=11:15 UTC (19:15 Taipei), top = "Vibe Coding cripples the mind" (10:29 UTC, already picked 18:45) | AF lastBuild=11:15 UTC (unchanged), top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | LW-curated unchanged | No new posts since 18:45 cycle. Backlog review: "Maybe there's a pattern here?" (dynomight, LW, 82 pts, 2026-03-04 20:32 UTC = 2026-03-05 04:32 Taipei) — was available since early this morning but bypassed by all prior cycles; high karma, frontpage. HN notable: "The L in 'LLM' Stands for Lying" (acko.net, 227 pts, today).
+
+**[backlog-pick]** *"Maybe there's a pattern here?"* — LessWrong, dynomight, 2026-03-04 (04:32 Taipei / 20:32 UTC), 82 pts, Frontpage. Historical-parallel piece drawing from the Gatling gun inventor's self-justification ("my rapid-fire gun will reduce armies and casualties") through V2 rocketry rationalizations → extends to AI; directly relevant to the "race to capability under benevolent framing" failure mode that recurs in AI safety discourse — the pattern is: build dangerous dual-use technology, rationalize that it'll have the opposite of its obvious effect, then be wrong.
+- Link: <https://www.lesswrong.com/posts/TjcvjwaDsuea8bmbR/maybe-there-s-a-pattern-here>
+
+**[pick]** *"The L in 'LLM' Stands for Lying"* — acko.net, HN 227 pts, 2026-03-05. Technical-essay arguing that language models are structurally deceptive by design — the "L" framing is a hook for a deeper point about how LLMs don't have truth-tracking as a first-order goal; safety-relevant because it connects honesty/deception to fundamental architecture, not just fine-tuning failures.
+- Link: <https://acko.net/blog/the-l-in-llm-stands-for-lying/>
+
+---
+**2026-03-05 19:45 (Thu)** — scan: LW-karma10 lastBuild=11:29 UTC (unchanged from 19:15), top = "Vibe Coding cripples the mind" (already picked 18:45) | AF-karma25 lastBuild unchanged, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04) | LW-curated unchanged | No new posts since 19:15 cycle. Backlog review: AF feed has several un-picked posts from Feb 27 – Mar 1 that have not been surfaced in any prior cycle.
+
+**[backlog-pick]** *"Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior"* — Alignment Forum, 2026-02-27, karma≥25. Proposes "model incrimination" — a technique for attributing specific misbehavior (e.g., sycophancy, refusal failure) back to the input features or training decisions that caused it; directly useful for interpretability-in-deployment and the practical "why did it do that?" question that currently has no systematic answer. Core safety relevance: closes the feedback loop between observed misalignment and actionable diagnosis.
+- Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>

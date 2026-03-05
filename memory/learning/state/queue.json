@@ -114,6 +114,19 @@
       "created": "2026-03-05",
       "due": null,
       "completed": "2026-03-05"
+    },
+    {
+      "id": "Q046",
+      "type": "build",
+      "track": "T2",
+      "title": "AudioSAEBench Tier 0: build m7_spurious.py + m8_geometry.py (remaining scaffold metrics)",
+      "status": "done",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "",
+      "created": "2026-03-05",
+      "due": null,
+      "completed": "2026-03-05"
     }
   ],
   "archived_count": 36,
