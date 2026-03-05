@@ -127,6 +127,54 @@
       "created": "2026-03-05",
       "due": null,
       "completed": "2026-03-05"
+    },
+    {
+      "id": "Q047",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A §3: write experiment design prose section (gc(k) harness → paper-ready method section)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "~500-word §3 experiment design written and appended to paper-a skeleton; covers stimuli, patching protocol, gc(k) formula, evaluation conditions",
+      "created": "2026-03-05",
+      "due": null
+    },
+    {
+      "id": "Q048",
+      "type": "build",
+      "track": "T2",
+      "title": "AudioSAEBench integration harness: run M1-M8 on unified mock corpus, produce summary report",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Single script runs all 8 metrics on same mock data and prints pass/fail + score table; all 8 pass",
+      "created": "2026-03-05",
+      "due": null
+    },
+    {
+      "id": "Q049",
+      "type": "write",
+      "track": "T2",
+      "title": "Paper B §3 related work: write prose version of SAEBench portability matrix",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "~400-word §3 related work prose covering 8 SAEBench metrics, audio feasibility, and gaps AudioSAEBench fills",
+      "created": "2026-03-05",
+      "due": null
+    },
+    {
+      "id": "Q050",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A §4: 3-Tier taxonomy experiment protocol — per-tier expected gc(k) patterns as table + §4 prose",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Table: Tier × (codec/connector/LLM) × gc(k) signature × falsifiable prediction; appended to paper-a §4 taxonomy note",
+      "created": "2026-03-05",
+      "due": null
     }
   ],
   "archived_count": 36,
