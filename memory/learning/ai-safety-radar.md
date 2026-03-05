@@ -1176,3 +1176,8 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new-pick]** *"Investigating Self-Fulfilling Misalignment and Collusion in AI Control"* — LessWrong, 2026-03-05 23:05 Taipei (15:05 UTC). Examines whether misaligned AI behavior can become self-reinforcing through feedback loops, and whether multiple AI systems might collude within AI-control setups — two compounding failure modes that undercut the standard "control via oversight" safety paradigm; directly relevant to robustness of AI control frameworks.
 - Link: <https://www.lesswrong.com/posts/vfxoCKW9T9wJFbCfv/investigating-self-fulfilling-misalignment-and-collusion-in>
+
+---
+**2026-03-05 23:45 (Thu)** — scan: LW-frontpage lastBuild=15:45 UTC (23:45 Taipei), top = "Investigating Self-Fulfilling Misalignment and Collusion in AI Control" (already picked 23:15) | AF unchanged (all 4 items previously picked) | HN: "The L in 'LLM' Stands for Lying" (476 pts, already picked 19:15). No new high-signal posts.
+
+**[no high-signal update]** — feeds fully stable; last meaningful pick was "Investigating Self-Fulfilling Misalignment and Collusion in AI Control" (23:15).

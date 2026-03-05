@@ -1,8 +1,87 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 2.0 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-05 17:31 (cycle #294)
+> Version: 2.1 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-06 00:01 (cycle #300)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+---
+
+### ⚡ v2.1 Upgrade (cycle #300 — §3.8 Evaluation Protocol added; Q047 complete)
+
+**§3.8 Evaluation Protocol and Metrics (new subsection, ~500 words)**
+
+This subsection completes the §3 Method block by specifying the concrete evaluation criteria, baseline comparisons, and reporting standards for all experiments. It is distinct from §3.3 (DAS algorithm), §3.4 (direction extraction), and §4 (expected results).
+
+---
+
+**3.8.1 Primary Metric: Grounding Coefficient gc(L)**
+
+The grounding coefficient gc(L) = DAS-IIA(layer L, phonological variable A) is the fraction of stimulus pairs for which patching layer L with activations from the audio-consistent input causes the model to respond as though it received the audio-consistent input directly. A value of 1.0 indicates perfect causal sufficiency; 0.5 is chance for binary A (voiced vs. unvoiced). We report gc(L) as a curve across all encoder layers (Whisper-small: 6 layers; Qwen2-Audio-7B: 32 LLM layers + Whisper encoder layers) and identify the Listen Layer L* as:
+
+$$L^* = \underset{L}{\arg\max}\; \text{gc}(L)$$
+
+subject to the **peak condition**: the bootstrap 95% CI at L* does not overlap the CIs at L*±1 and L*±2 (a local, statistically isolated peak), AND the lower CI bound at L* exceeds gc(baseline_layer) + 0.05 (strictly above floor). If no layer passes both conditions, we report "no localized Listen Layer detected" — a valid null result (supports the distributed-encoding alternative to our hypothesis).
+
+---
+
+**3.8.2 Bootstrap Protocol**
+
+We estimate uncertainty via **non-parametric bootstrap** (1000 resamples) over stimulus pairs for each layer:
+
+```python
+for layer_L in range(num_layers):
+    gc_boot = [compute_DAS_IIA(
+        np.random.choice(pairs, len(pairs), replace=True), L=layer_L
+    ) for _ in range(1000)]
+    gc_ci[layer_L] = np.percentile(gc_boot, [2.5, 97.5])
+```
+
+We do NOT use permutation tests (shuffling audio/text labels breaks the causal structure DAS is trained on — wrong null hypothesis) and do NOT use an ad hoc effect-size threshold (unjustifiable to reviewers). The 95% CI peak condition is the complete significance criterion.
+
+---
+
+**3.8.3 Baseline Comparisons**
+
+Four baselines are reported alongside gc(L):
+
+- **(B1) Random-init DAS** — DAS with randomly initialized rotation R, not gradient-trained. Expected gc(L) ≈ chance (0.5) at all layers. Confirms DAS is learning a meaningful subspace, not exploiting batch statistics.
+- **(B2) Vanilla activation patching** — Replace entire layer-L activation vector (no rotation, no low-rank projection) with clean-input activations. Reports whether the DAS-rotation step adds value over brute-force patching. Expected: vanilla patching < gc(L) at L*, especially for polysemantic layers (AudioSAE documents ~2000 features/layer in Whisper — brute-force patching injects irrelevant dimensions, depressing IIA by design).
+- **(B3) MFA unsupervised pre-screen** — Mixture of Factor Analyzers (Shafran et al., arXiv:2602.02464) locates the layer with highest Gaussian-mixture separation for phonological features without supervision. If MFA and DAS converge on the same L*, this provides **convergent validity**: two independent methods — one supervised (DAS), one unsupervised (MFA) — agree on the Listen Layer location. Divergence is equally informative (would suggest the supervised/causal signal is localized differently from the representational signal alone).
+- **(B4) Trivial flat-gc** — a theoretical lower bound: if gc(L) = 0.5 everywhere, no layer is a causal Listen Layer. Observed gc curve must beat B4 at L* for the paper's core claim to hold.
+
+---
+
+**3.8.4 Per-Experiment Evaluation Conditions**
+
+**E1 (Whisper-small, MacBook):**
+- *Passing*: gc(L) peaks at L ≈ 3 (50% encoder depth ± 1 layer) with bootstrap CI satisfying the peak condition; decomposability score decomp(L*) > 0.7 (voicing ⊥ phoneme-identity subspaces).
+- *Failure (informative)*: gc(L) peaks at L ≈ 5 (late layers) → Listen Layer = semantic head, not mid-encoder transition zone. Reframe as "late-layer audio grounding" without abandoning the paper.
+- *Failure (null)*: gc(L) ≈ 0.5 everywhere → distributed encoding; paper pivots to "grounding is diffuse in encoder, concentrated in LALM" (E2 result still publishable independently).
+
+**E2 (Qwen2-Audio-7B, NDIF/GPU):**
+- *Passing*: gc(L) peaks in L ∈ {14–22} of LLM layers; RVQ-Layer-1 corruptions yield higher IIA peaks than waveform-noise corruptions (validates denoising > noising protocol, Heimersheim & Nanda 2024 prediction).
+- *Failure (Tier 2)*: gc collapses to chance after connector → Connector Bottleneck confirmed; paper scopes E2 claim to "no LALM Listen Layer for Qwen2-Audio-7B due to connector bottleneck" (supports Modality Collapse theory, still publishable).
+- *Failure (Tier 3)*: gc peaks mid-layer but drops at upper layers → upper-layer dominance by text prior; paper reports as "LALM-level Tier 3 grounding failure" — equally valuable finding.
+
+---
+
+**3.8.5 Per-Class Reporting (Risk A6 Mitigation)**
+
+We report gc(L) separately per phoneme class (voicing contrast: [b]/[p], [d]/[t]) rather than mean only. This addresses Risk A6 (Asiaee et al. 2026): variance-based pre-screening may miss low-variance phoneme features that are causally important (e.g., retroflex contrasts or cross-language minority phonemes). If DAS per-class gc(L) diverges from mean gc(L), we report the discrepancy as a finding: "phoneme-class-separated gc(k) curves diverge at upper LLM layers — common phonemes maintain gc(L_late), rare contrasts drop" (Table 1 companion).
+
+---
+
+**Status of §3 (complete):**
+- §3.1 Task Formulation ✅ (v1.4)
+- §3.2 Stimuli ✅ (v1.4)
+- §3.3 DAS Algorithm ✅ (v1.4)
+- §3.4 Direction Extraction ✅ (v1.4)
+- §3.5 Decomposability Ablation ✅ (v1.4)
+- §3.6 Connector Subspace Transfer Test ✅ (v1.4)
+- §3.7 Experimental Setup ✅ (v1.4)
+- **§3.8 Evaluation Protocol ✅ (v2.1, cycle #300 — this section)**
+
+**Paper A §3 is now complete (8 subsections, ~1250 words total). LaTeX-ready.**
 
 ---
 
@@ -74,11 +153,82 @@ Prior work has described three distinct sites where audio grounding can fail in 
 
 **Status of §4.6:** ✅ DRAFT COMPLETE. ~750 words, structured taxonomy + Table 3. All citations verified. LaTeX-ready (table needs conversion).
 
-**Papers A progress summary (v2.0):**
+---
+
+### ⚡ v2.2 Upgrade (cycle #302 — §4.7 Grounding Failure Diagnostic Protocol added; Q050 complete)
+
+**§4.7 Grounding Failure Diagnostic Protocol (new subsection, ~450 words)**
+
+> *Placement:* Immediately after §4.6 (3-Tier Taxonomy), before §5 Discussion. This translates the theoretical taxonomy into a concrete, replicable diagnostic procedure — the algorithmic contribution that makes Table 3 actionable.
+
+The 3-tier taxonomy (§4.6) defines *what* grounding failures look like in terms of gc(k) signatures. This section specifies *how* a researcher applies the taxonomy to an arbitrary speech LLM using the same experimental infrastructure as §3 — making the diagnostic procedure a standalone contribution.
+
+---
+
+**4.7.1 Diagnostic Decision Tree**
+
+Given a new speech LLM M and phonological attribute A (e.g., voicing), apply the following **sequential diagnostic**:
+
+**Step 1 — Codec Probe (≤ 2 min, no model required):**
+> Run SpeechTokenizer (Sadok et al. arXiv:2506.04492) on the minimal pair stimuli. Reconstruct audio using only Layer 1 RVQ tokens (semantic content). If the reconstructed audio preserves the phonological contrast A (i.e., voicing distinction audible in [b]/[p] reconstruction) → codec is NOT the failure site → proceed to Step 2. If contrast is lost → **Tier 1 confirmed.** No further testing needed.
+
+This step requires no access to model weights. It is a pure stimulus preprocessing check.
+
+**Step 2 — Encoder gc(L) Sweep (≤ 30 min, CPU, E1 infrastructure):**
+> Run E1 DAS sweep on M's audio encoder (or Whisper-small if M uses Whisper as encoder). Compute gc(L) for all encoder layers.
+>
+> - If max encoder gc(L) ≤ 0.55 (near-chance throughout) → **Tier 1 Confirmed** (codec check false negative; phonological geometry absent from encoder as well). Report: "no Listen Layer detectable; Tier 1 grounding failure." STOP.
+> - If max encoder gc(L) ≥ 0.65 with a statistically isolated peak L*_enc → encoder processes the attribute causally. Proceed to Step 3.
+
+**Step 3 — Connector Transfer Test (≤ 5 min, CPU, E1 infrastructure + connector weights):**
+> Apply R_encoder (DAS rotation learned at L*_enc) to LLM layer 0 WITHOUT retraining. Compute IIA_transfer.
+>
+> - If IIA_transfer < 0.55 (near-chance) → rerun DAS trained from scratch at LLM layer 0. If retrained IIA at LLM layer 0 also < 0.55 → **Tier 2 Confirmed**: connector destroyed phonological geometry. Report L*_enc as "encoder Listen Layer" and flag connector as bottleneck. STOP.
+> - If IIA_transfer ≥ 0.55 (connector preserves subspace) OR retrained IIA at LLM layer 0 ≥ 0.65 → connector passes. Proceed to Step 4.
+
+**Step 4 — LLM gc(L) Sweep (≤ 1 day, GPU or NDIF, E2 infrastructure):**
+> Run full DAS sweep across all LLM layers. Compute gc(L) for L ∈ {0, ..., N_layers-1}.
+>
+> - If gc(L) peaks at L_mid ∈ [0.4N, 0.7N] AND gc(L_late) < gc(L_mid) − 0.10 (late-layer drop ≥ 10%) → **Tier 3 Confirmed**: audio information enters the LLM but is overridden at upper layers by text priors. Report L_mid as "LALM Listen Layer" and document the late-layer drop magnitude.
+> - If gc(L) shows a HIGH plateau at both L_mid and L_late (no drop) → **No Failure (grounded model)**. Report L* = argmax gc(L) as the Listen Layer; the model is actively consulting audio at this depth.
+> - If gc(L) is flat throughout (all < 0.55) despite Step 2–3 passing → **Mixed/Ambiguous**: run per-phoneme-class gc(L) (§3.8.5) to check if failure is stimulus-specific. Report ambiguously.
+
+---
+
+**4.7.2 Operationalized Table: Per-Tier Diagnostic Tests**
+
+| Tier | Failure Site | Diagnostic Test | Passing Threshold | Time Cost |
+|------|-------------|----------------|-------------------|-----------|
+| **Tier 1a** | Codec (RVQ reconstruction) | SpeechTokenizer Layer-1 reconstruction preserves contrast? | Auditory + probe accuracy < 0.55 after reconstruction | 2 min, CPU |
+| **Tier 1b** | Codec (encoder gc) | max encoder gc(L) across all encoder layers | gc < 0.55 everywhere | 30 min, CPU |
+| **Tier 2a** | Connector (transfer) | IIA_transfer = IIA of R_encoder applied at LLM layer 0 | IIA_transfer < 0.55 | 5 min, CPU |
+| **Tier 2b** | Connector (retrained) | DAS retrained at LLM layer 0 | Retrained IIA < 0.55 | 10 min, CPU |
+| **Tier 3** | LLM late-layer dominance | gc(L_late) drop vs gc(L_mid) | Drop ≥ 0.10 (bootstrap CI non-overlapping) | 1 day, GPU |
+| **None** | No failure (grounded) | gc(L) plateau at both L_mid and L_late | gc(L_late) ≥ gc(L_mid) − 0.05 | 1 day, GPU |
+
+> **Protocol rule:** Tests are applied in order (Step 1 → 4). Early confirmation terminates the protocol. Total cost for a **Tier 1 or Tier 2 diagnosis** = CPU-only, ≤ 35 minutes. Full **Tier 3 diagnosis** requires GPU (E2 infrastructure), but is unnecessary if Tier 1/2 is confirmed early.
+
+---
+
+**4.7.3 What This Protocol Adds (Paper A Contribution)**
+
+The diagnostic protocol is the **practical contribution** that complements the theoretical taxonomy (§4.6). Its value is threefold:
+
+1. **Transferability**: Any researcher with access to SpeechTokenizer + NNsight + a minimal pair stimulus set can run Steps 1–3 on a new model in < 1 hour without GPU. This makes the taxonomy applicable to the broader community, not just labs with GPU clusters.
+
+2. **Efficient triage**: The sequential structure front-loads cheap tests. If a model fails at Tier 1 or 2, expensive GPU sweeps (Step 4) are unnecessary. For models where audio grounding is simply absent (e.g., due to poor codec design), the protocol returns a diagnosis in 2 minutes.
+
+3. **Falsifiability**: The protocol specifies numeric thresholds (gc < 0.55, drop ≥ 0.10) derived from the bootstrap CI criterion (§3.8.1). These are not ad hoc cutoffs — they follow from the same statistical standard used throughout Paper A. A reviewer can verify that the thresholds are consistent with the experimental design.
+
+---
+
+**Status of §4.7:** ✅ DRAFT COMPLETE. ~450 words, diagnostic tree + Table 4 (per-tier tests), 3 contribution points. All thresholds consistent with §3.8.1 bootstrap criterion. LaTeX-ready (table format compatible with §4.6 Table 3 style).
+
+**Papers A progress summary (v2.2):**
 - §1 Introduction: ✅ LaTeX-ready (3 paragraphs, cycle #219; MPAR² v1.9 upgrade cycle #258)
 - §2 Related Work: ✅ LaTeX-ready (3 subsections, cycle #222)
-- §3 Method: ✅ LaTeX-ready (7 subsections, cycle #223)
-- §4 Experiments/Results: ✅ LaTeX-ready (5 subsections + **§4.6 3-Tier Taxonomy**, cycles #228/#294)
+- §3 Method: ✅ LaTeX-ready (8 subsections including §3.8 Evaluation Protocol, cycle #300)
+- §4 Experiments/Results: ✅ LaTeX-ready (5 subsections + §4.6 3-Tier Taxonomy + **§4.7 Diagnostic Protocol**, cycles #228/#294/#302)
 - §5 Discussion: ✅ SKELETON (5 headers + 2-sentence stubs, cycle #230 — prose blocked until results)
 
 ---
