@@ -166,6 +166,55 @@
       "created": "2026-03-05",
       "due": null,
       "completed": "2026-03-05"
+    },
+    {
+      "id": "Q041",
+      "type": "write",
+      "track": "T3",
+      "title": "Paper A: Write Introduction section draft (Tier 0 doc)",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "~400-word intro in memory/learning/pitches/paper-a-intro.md: motivation, hypothesis, 3 contributions, roadmap",
+      "created": "2026-03-05",
+      "due": null,
+      "completed": "2026-03-05"
+    },
+    {
+      "id": "Q042",
+      "type": "build",
+      "track": "T3",
+      "title": "Paper A: Generate Figure 1 draft (ASCII gc(k) curve + caption) from experiment_runner output",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "memory/learning/pitches/figure-1-draft.md with ASCII plot, axis labels, caption ready for LaTeX",
+      "created": "2026-03-05",
+      "due": null
+    },
+    {
+      "id": "Q043",
+      "type": "read",
+      "track": "T5",
+      "title": "Read: CAI vs Emergent Misalignment contrast — unblocks Q032 Audio EM hypothesis note",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Notes written; Q032 status updated to ready",
+      "created": "2026-03-05",
+      "due": null
+    },
+    {
+      "id": "Q044",
+      "type": "write",
+      "track": "T5",
+      "title": "MATS proposal v0.3: integrate anti-confound checklist + Audio EM section into clean final draft",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "mats-proposal-draft.md updated to v0.3; all sections coherent; ready for Leo review",
+      "created": "2026-03-05",
+      "due": null
     }
   ],
   "archived_count": 36,
