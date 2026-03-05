@@ -185,12 +185,13 @@
       "type": "build",
       "track": "T3",
       "title": "Paper A: Generate Figure 1 draft (ASCII gc(k) curve + caption) from experiment_runner output",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/figure-1-draft.md with ASCII plot, axis labels, caption ready for LaTeX",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     },
     {
       "id": "Q043",
