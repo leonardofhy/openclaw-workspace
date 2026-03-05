@@ -3401,3 +3401,236 @@
 
 10. **Redesign Audio Benchmarks to Reward Answers Backed by Sound**
     — Redesign 作為解法導向收尾，強化可行建議。
+
+## Batch 92 — 11:30（策略：Bayesian evidence update / posterior-faithfulness）
+1. **Posterior to Sound or Prior to Text? A Bayesian Audit of Audio-Language Benchmarks**
+   — 新角度用 Bayesian 語言檢查：最終決策到底更新自音訊證據，還是停留在文字先驗。
+
+2. **Bayesian Listening Audits Across 8 Models and 3 Benchmarks: How Much Does Audio Update Belief?**
+   — 保守投稿款，8×3 規模 + 核心問題（音訊是否真正改變 belief）。
+
+3. **From Text Priors to Audio Posteriors: Measuring Evidence Update in LALM Evaluation**
+   — 直接把論文主張寫成 prior→posterior 的可檢驗流程。
+
+4. **Do “Audio” Scores Reflect Bayesian Updating from Sound? A Necessity Audit**
+   — 問句式清楚，兼顧可讀性與方法辨識度。
+
+5. **Weak Acoustic Likelihood, Strong Benchmark Scores: Reassessing Audio-Language Validity**
+   — 對比式 punchline：音訊似然訊號弱，但分數仍高。
+
+6. **Belief Shift Under Audio Edits: A Bayesian View of Read-Not-Listen Behavior**
+   — 用 belief shift 量化 no-audio/fragment/full 干預下的決策改變。
+
+7. **Posterior-Faithful Audio Evaluation: Separating Real Evidence Updates from Prior Matching**
+   — 保守主標題候選，語氣穩健且對齊核心機制。
+
+8. **How Much Does Sound Move the Posterior? Item-Level Audits for Audio-Language Tasks**
+   — item-level 深度清楚，對應細粒度分析優勢。
+
+9. **Bayesian Gaps in “Audio” Benchmarks: High Accuracy with Minimal Acoustic Update**
+   — 凸顯 accuracy 與 evidence update 脫鉤的系統性問題。
+
+10. **Toward Update-Faithful Audio Benchmarks: Rewarding Predictions that Truly Revise from Sound**
+    — 解法導向收尾，提出 update-faithful benchmark 設計方向。
+
+---
+
+## 🔎 Batch 92 Review（每 4 批）
+
+### 本批最佳候選
+1. **Posterior to Sound or Prior to Text? A Bayesian Audit of Audio-Language Benchmarks**
+   - 優點：概念新（Bayesian update），且一句話就能講清楚核心矛盾。
+2. **From Text Priors to Audio Posteriors: Measuring Evidence Update in LALM Evaluation**
+   - 優點：與論文貢獻高度對齊（prior vs evidence），技術語氣成熟。
+3. **Bayesian Listening Audits Across 8 Models and 3 Benchmarks: How Much Does Audio Update Belief?**
+   - 優點：8×3 規模完整，投稿保守且審稿友善。
+
+### 與 Batch 89–91 的區隔
+- Batch 89：evidence hierarchy / level-of-evidence
+- Batch 90：psychometrics / DIF
+- Batch 91：動詞開頭
+- 本批（92）轉向 **Bayesian evidence update**：從「有沒有音訊依賴」進一步問「音訊是否真的改變模型後驗信念」。
+
+### 下一批建議
+- 可測試 **causal calibration / probability-of-causation** 角度（不只看是否更新，還看更新是否由音訊因果驅動）。
+- 保留 2 個極保守版本（含 8×3 + necessity/update audit）作最終投稿標題池。
+
+## Batch 93 — 11:31（策略：signal detection theory / sensitivity-bias decomposition）
+1. **Hearing Sensitivity or Text Bias? An SDT Audit of Audio-Language Benchmarks**
+   — 新角度以訊號偵測理論拆解 sensitivity 與 bias，直接對應「高分不等於真聽懂」。
+
+2. **Signal Detection Audits Across 8 Models and 3 Benchmarks: Quantifying Audio Sensitivity vs Prior Bias**
+   — 保守投稿款，8×3 規模 + SDT 核心分解一次交代。
+
+3. **From Accuracy to d′: Reassessing Listening Ability in LALM Benchmark Scores**
+   — 用 d′ 指標替代單純 accuracy，凸顯真正可分辨聲學訊號的能力。
+
+4. **Criterion Shift Without Listening: Bias-Driven Success in “Audio” Evaluation**
+   — 將 text-prior dominance 寫成 decision criterion shift，理論語言新且清楚。
+
+5. **Do “Audio” Benchmarks Measure Sensitivity or Response Bias? A Necessity Audit**
+   — 問句式可讀性高，直接命中評測是否測到對的能力。
+
+6. **High Scores, Low d′: Diagnosing Weak Acoustic Discriminability in Audio-Language Tasks**
+   — 對比式 punchline，呼應高分與低音訊依賴矛盾。
+
+7. **Separating Hit Rates from Prior-Driven Guesses: An SDT View of LALM Listening**
+   — 以 hit/guess 分離呈現 read-not-listen 機制，方法辨識度高。
+
+8. **Bias-Corrected Audio Evaluation: Estimating True Listening Sensitivity Under No-Audio and Fragment Controls**
+   — 把核心控制實驗寫進 SDT 框架，審稿友善。
+
+9. **Item-Level Signal Detection for Audio Benchmarks: Which Questions Truly Require Hearing?**
+   — item-level 粒度清楚，對應你們細粒度分析優勢。
+
+10. **Toward Sensitivity-Faithful Audio Benchmarks: Rewarding d′, Not Prior-Matched Responses**
+    — 解法導向收尾，提出 sensitivity-faithful benchmark 設計方向。
+
+## Batch 94 — 11:31（策略：仿經典論文）
+1. **Attention Is All You Read: Auditing Text Priors in Audio-Language Benchmarks**
+   — 改編經典標題，直接扣住 read-not-listen 核心矛盾。
+
+2. **An Audio Task Is Worth Zero Seconds: Evidence from 8 Models and 3 Benchmarks**
+   — 經典句式改寫，前半吸睛，後半補足 8×3 規模訊號。
+
+3. **You Only Listen Once—If Necessary: Measuring Fragment-Sufficient Scoring in LALMs**
+   — YOLO 式改寫，精準對應 fragment sufficiency 發現。
+
+4. **Audio Is All You Need—Until You Remove It**
+   — 反轉經典句型，對應 no-audio 控制實驗的核心衝擊。
+
+5. **On the Listening Properties of Audio-Language Benchmarks**
+   — 保守投稿款，語氣穩健、審稿友善。
+
+6. **Rethinking Audio Evaluation: Necessity Audits for LALM Benchmarks**
+   — 經典「Rethinking」框架，清楚交代方法與社群意涵。
+
+7. **The Bitter Lesson of Audio Benchmarks: Scores Scale Faster Than Listening**
+   — 改編經典觀點，凸顯能力與分數脫鉤。
+
+8. **Playing the Leaderboard with Text Priors: A Necessity-Audit Perspective**
+   — 經典 RL 標題節奏，連到 leaderboard incentive 問題。
+
+9. **Do Benchmarks Listen? A Reappraisal of Audio-Language Evaluation**
+   — 短而直接的經典 reappraisal 風格，易讀且可投稿。
+
+10. **A Survey of Audio Understanding (Without the Audio)**
+    — 戲仿 survey 句型，作為高記憶點備選。
+
+## Batch 95 — 11:45（策略：causal calibration / probability-of-causation）
+1. **How Causal Is the Audio Signal? A Probability-of-Causation Audit for LALM Benchmarks**
+   — 新角度聚焦「音訊對答案的因果機率」，不只看相關或分數變化。
+
+2. **Probability of Causation in Audio-Language Evaluation: Evidence from 8 Models and 3 Benchmarks**
+   — 保守投稿款，8×3 規模與方法核心一次交代。
+
+3. **From Correlation to Causation Probability: Reassessing Audio Reliance in “Audio” Tasks**
+   — 將論文定位成從相關性檢查升級到可量化因果歸因。
+
+4. **Did Audio Cause the Answer? A Necessity Audit with Causal Calibration**
+   — 問句式清楚，直接命中審稿人關心的核心判準。
+
+5. **Calibrating Causal Credit for Sound: Quantifying Text-Prior vs Audio-Driven Decisions**
+   — 將 text/audio 分數來源改寫為可校準的 causal credit 分配。
+
+6. **High Scores, Low Causal Audio Probability: Diagnosing Weak Acoustic Dependence in LALMs**
+   — 對比式 punchline，呼應高分與低音訊必要性的主結論。
+
+7. **Causal-Probability Audits for Audio Benchmarks: No-Audio, Fragment, and Full-Signal Evidence**
+   — 把三層控制設計完整寫進因果機率框架，方法辨識度高。
+
+8. **Item-Level Causal Calibration of Listening: Which Questions Are Truly Audio-Caused?**
+   — item-level 粒度清楚，突出細粒度分析優勢。
+
+9. **Toward Causally Calibrated Audio Evaluation: Separating Audio Causes from Textual Supports**
+   — 保守主標題候選，技術語氣成熟且可投稿。
+
+10. **Causation-Faithful Audio Benchmarks: Rewarding Predictions with High Acoustic Causal Probability**
+    — 解法導向收尾，提出 causation-faithful benchmark 設計方向。
+
+## Batch 96 — 11:46（策略：active sensing / listen-or-skip policy）
+1. **Do Models Choose to Listen? An Active-Sensing Audit of Audio-Language Benchmarks**
+   — 新角度聚焦「是否主動使用音訊」而非被動看分數，直接對應 read-not-listen 行為機制。
+
+2. **Listen-or-Skip Policies in LALMs: Evidence from 8 Models and 3 Benchmarks**
+   — 保守投稿款，8×3 規模與策略層問題一行交代。
+
+3. **Active Listening or Passive Guessing? Auditing Modality-Selection Behavior in “Audio” Tasks**
+   — 將問題寫成策略選擇（modality selection），和既有歸因框架區隔明顯。
+
+4. **When Models Skip the Sound: A Policy Audit of Audio Necessity in Benchmark Scoring**
+   — 直接點出核心現象：模型常選擇跳過音訊仍能高分。
+
+5. **Policy-Level Audio Reliance: Measuring When LALMs Decide to Use Acoustic Evidence**
+   — 保守技術語氣，聚焦 decision policy 而非僅最終 accuracy。
+
+6. **From Always-Listen to Selective-Listen: Reassessing Audio-Language Evaluation Protocols**
+   — 提出 protocol 轉向：不假設模型總會聽，改測試其選擇性聆聽策略。
+
+7. **Audio as an Optional Action: Quantifying Listen-Skip Decisions with No-Audio and Fragment Controls**
+   — 把核心控制實驗寫進 action-policy 視角，方法辨識度高。
+
+8. **Which Items Trigger Listening? An Item-Level Audit of Active Acoustic Use in LALM Benchmarks**
+   — item-level 粒度清楚，直接連到題目層觸發條件分析。
+
+9. **Toward Policy-Faithful Audio Evaluation: Rewarding Models That Listen When It Matters**
+   — 解法導向候選，強調 benchmark 應獎勵「關鍵時刻有聽」的行為。
+
+10. **Benchmarking Listening Policies: Separating Strategic Audio Use from Text-Prior Defaulting**
+    — 收尾總結型標題，將 strategic listening 與 text-default shortcut 清楚分離。
+
+---
+
+## 🔎 Batch 96 Review（每 4 批）
+
+### 本批最佳候選
+1. **Do Models Choose to Listen? An Active-Sensing Audit of Audio-Language Benchmarks**
+   - 優點：問題直觀、角度新（active sensing），同時保留 audit 方法辨識度。
+2. **Listen-or-Skip Policies in LALMs: Evidence from 8 Models and 3 Benchmarks**
+   - 優點：保守投稿友善，8×3 規模與核心貢獻明確。
+3. **Audio as an Optional Action: Quantifying Listen-Skip Decisions with No-Audio and Fragment Controls**
+   - 優點：把你們關鍵實驗設計直接嵌入策略框架，審稿人一眼可懂。
+
+### 與 Batch 93–95 的區隔
+- Batch 93：signal detection theory（sensitivity vs bias）
+- Batch 94：仿經典論文
+- Batch 95：causal calibration / probability-of-causation
+- 本批（96）轉向 **active sensing / policy behavior**：從「音訊是否造成答案」進一步問「模型何時主動選擇使用音訊」。
+
+### 下一批建議
+- 可測試 **sequential evidence accumulation** 角度（模型是否隨時間累積音訊證據，而非一次性取樣）。
+- 保留 2 個極保守版本（含 8×3 + policy audit）作最終投稿標題池。
+
+---
+
+## Batch 97 — 11:46（策略：酷縮寫 Backronym）
+
+1. **SOUND: Scoring Over Unheard, Non-acoustic Data**
+   — 直接點出核心：分數建立在未聽音訊的線索上，縮寫好記。
+
+2. **EARS: Evaluating Acoustic Reliance at Scale**
+   — 保守學術風格，對應 8×3 的大規模審計設定。
+
+3. **VOICE: Verifying Whether Inputs Causally Explain predictions**
+   — 把 causal explainability 放進 audio 場景，方法感強。
+
+4. **MUTE: Models Using Text Evidence**
+   — 超短、衝擊強，直接傳達「不聽也能答」。
+
+5. **SONIC: Separating Oral/Narrated Information from Context priors**
+   — 把 acoustic signal 與 context prior 的拆分寫成可辨識品牌詞。
+
+6. **HEAR: How Evaluations Avoid Real-audio**
+   — 反諷式 backronym，突出 benchmark 設計缺口。
+
+7. **AUDIO: Are Understanding Decisions Input-Oriented?**
+   — 問句式 framing，適合引導 reviewer 關注 decision policy。
+
+8. **ECHO: Evidence of Comprehension or Heuristic Overreach?**
+   — 經典對立句型，與你們「真聽懂 vs 捷徑」主軸高度對齊。
+
+9. **WAVE: When Acoustic Value Emerges**
+   — 聚焦「何時音訊才有增益」這個 item-level 問題。
+
+10. **TUNE: Tracking Useful Non-text Evidence**
+    — 將 no-audio / fragment / full-audio 三分法包成 evidence tracking 敘事。
