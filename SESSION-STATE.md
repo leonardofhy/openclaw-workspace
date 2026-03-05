@@ -3,12 +3,14 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-05 12:18
+**Last Updated:** 2026-03-05 13:00
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-05 13:00: Leo request — review past 3 days dialogue and repair possible system issues; applied cron delivery hardening to prevent unsolicited DM noise.
+- 2026-03-05 12:52: Leo asks to fix current issue immediately ("請幫我修復好，可以嗎？").
 - 2026-03-05 12:18: Leo hard stop — do NOT add any new titles; stop title generation immediately.
 - 2026-03-05 12:15: Cron title-brainstorm request — append one new batch of 10 Interspeech title candidates to `memory/paper/title-brainstorm.md` using a creative angle not used before; add review only every 4th batch.
 - 2026-03-05 11:46: Cron title-brainstorm request — read `memory/paper/title-brainstorm.md` fully, append exactly one new batch of 10 titles using a strategy not used before, and add review section every 4th batch only.
