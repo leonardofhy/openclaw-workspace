@@ -3,12 +3,14 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-06 00:42
+**Last Updated:** 2026-03-06 00:58
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-06 00:58: Leo going to sleep now; requests wake-up reminder that first action must be web check-in for today's flight.
+- 2026-03-06 00:50: Leo request — implement a reusable skill for diary polishing from speech transcripts and save a fixed prompt (role: 語音轉文字日記還原與潤飾專家) for future use.
 - 2026-03-06 00:42: Leo request — provide a concrete tomorrow timeline optimized for safely catching HX265 flight; prioritize sufficient airport buffer.
 - 2026-03-06 00:35: Leo update — due to busy days, HK/Shenzhen trip not actually planned; needs pre-departure preparation plan including haircut and laundry after waking.
 - 2026-03-05 13:00: Leo request — review past 3 days dialogue and repair possible system issues; applied cron delivery hardening to prevent unsolicited DM noise.
