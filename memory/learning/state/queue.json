@@ -67,7 +67,7 @@
       "id": "Q042",
       "type": "build",
       "track": "T3",
-      "title": "Paper A + B: Add Thu batch citations (2603.03855 + 2603.03359) \u2014 \u00a71 behavioral motivation + \u00a72.2 Isolate metric support (Tier 0)",
+      "title": "Paper A + B: Add Thu batch citations (2603.03855 + 2603.03359) — §1 behavioral motivation + §2.2 Isolate metric support (Tier 0)",
       "status": "done",
       "priority": 1,
       "blocked_by": null,
@@ -75,6 +75,43 @@
       "created": "2026-03-05",
       "due": null,
       "completed": "2026-03-05"
+    },
+    {
+      "id": "Q043",
+      "type": "build",
+      "track": "T3",
+      "title": "3-Tier Grounding Taxonomy: write §4 taxonomy note for Paper A (codec/connector/LLM failure tiers)",
+      "status": "done",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Taxonomy note written: 3 tiers × gc(k) signature description; added to paper-a skeleton §4",
+      "created": "2026-03-05",
+      "due": null,
+      "completed": "2026-03-05"
+    },
+    {
+      "id": "Q044",
+      "type": "build",
+      "track": "T2",
+      "title": "SAEBench Metric Portability Audit: produce portability matrix (8 metrics × audio feasibility)",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Table produced: 8 SAEBench metrics × (assumes-text / audio-analogue / implementation-cost); added to AudioSAEBench scaffold",
+      "created": "2026-03-05",
+      "due": null
+    },
+    {
+      "id": "Q045",
+      "type": "write",
+      "track": "T2",
+      "title": "Modality Collapse = Low SAE Isolate: add as Gap #30 + AudioSAEBench M4 hypothesis note",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Gap #30 added to goals.md; hypothesis note (modality collapse ↔ Isolate score correlation) added to AudioSAEBench design doc",
+      "created": "2026-03-05",
+      "due": null
     }
   ],
   "archived_count": 36,

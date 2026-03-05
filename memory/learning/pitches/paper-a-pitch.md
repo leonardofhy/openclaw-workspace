@@ -1,8 +1,87 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 1.9 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-04 13:31 (cycle #258)
+> Version: 2.0 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-05 17:31 (cycle #294)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+---
+
+### ⚡ v2.0 Upgrade (cycle #294 — §4 Grounding Failure Taxonomy added; Gap #31)
+
+**§4.6 A Taxonomy of Grounding Failures (3-Tier Model)**
+
+> *Placement:* Insert after §4.5 (Predicted Failures and Contingencies), before §5 Discussion. This is a theoretical contribution that unifies prior failure-mode literature under a single gc(k) framework.
+
+Prior work has described three distinct sites where audio grounding can fail in speech LLMs: the neural codec (RVQ tokenization), the modality connector (audio→LLM projection), and the LLM backbone (text-prior dominance). We unify these into a three-tier taxonomy with falsifiable gc(k) predictions.
+
+**Tier 1 — Codec Failure: Signal Lost Before Entering the Model**
+
+*Mechanism:* Audio information is destroyed at RVQ tokenization. The codec's discrete codebook cannot faithfully encode the acoustic attribute in question. If the RVQ Layer 1 tokens (semantic content; Sadok et al. arXiv:2506.04492, SpeechTokenizer) fail to encode a phonological contrast, no downstream layer can recover it.
+
+*Empirical support:* Sadok et al. (arXiv:2506.04492) show semantic content concentrates in Layer 1 RVQ tokens; probe accuracy on all downstream layers is near random for content not captured in Layer 1. For fine phonological attributes not well-represented in the codec's training distribution, this is the most likely failure mode.
+
+*gc(k) signature:* **FLAT near chance at ALL layers.** The gc(k) curve shows no peak — DAS cannot find a causal subspace because the causal variable (e.g., voicing) has no representation in the model at any depth. The curve is indistinguishable from baseline noise (bootstrap 95% CI overlaps chance throughout).
+
+*Diagnostic:* Compare gc(k) using RVQ Layer 1 corruption (SpeechTokenizer swap) vs. waveform noise corruption. If RVQ-swap produces flat gc(k) but waveform-swap does not → Tier 1 failure. The codec lost the signal before the model saw it.
+
+*Implication:* Not a model interpretability problem — it's a codec design problem. Paper A reports but does not attempt to fix. Motivates codec-aware evaluation in AudioSAEBench (Paper B).
+
+---
+
+**Tier 2 — Connector Bottleneck: Signal Present in Encoder, Lost After Projection**
+
+*Mechanism:* The audio encoder (e.g., Whisper) successfully encodes the phonological attribute as a linear subspace at layer L* in the encoder. However, the modality connector (linear projection or Q-Former) collapses or scrambles this subspace before the LLM receives it. The LLM backbone never has access to the causally relevant direction.
+
+*Empirical support:* Gap #18 experiment (connector subspace transfer test): apply R_encoder (DAS rotation learned at Whisper L*) to LLM layer 0 without re-training. If IIA_transfer ≈ 0 AND re-trained IIA at LLM layer 0 ≈ 0 → connector destroyed phonological geometry. Choi et al. (arXiv:2602.18899) validate that phonological feature directions are linear and composable in S3M encoders across 96 languages; the question is whether these directions survive the connector. The GMI-theoretic argument in Modality Collapse (arXiv:2602.23136) provides theoretical motivation: a connector with insufficient capacity must collapse some audio directions.
+
+*gc(k) signature:* **Peak in encoder layers, collapse to chance AFTER connector.** gc(k) shows a well-defined maximum at L*_encoder (inside the Whisper encoder). After the connector output — at LLM layer 0 and beyond — gc(k) drops sharply to near-chance. The encoder "knows" the answer, but the LLM never receives it. The gc(k) curve has a "cliff" at the encoder/LLM boundary.
+
+*Diagnostic:* The cliff pattern is the diagnostic. If gc(encoder L*) >> gc(LLM layer 0), and re-training DAS at LLM layer 0 still yields low IIA, this is Tier 2. (Contrast: if re-trained DAS at LLM layer 0 yields high IIA despite R_encoder transfer failure, the connector merely rotated the subspace — it's still present and the failure is in our alignment test, not the connector itself.)
+
+*Implication:* The connector is an information bottleneck. Paper A §5.3 (Discussion) addresses this. Motivates connector-aware training objectives. AudioSAEBench Category 0 (Audio-RAVEL) would find low Cause scores for Tier 2 models.
+
+---
+
+**Tier 3 — LLM Modality Collapse: Signal Present, But Model Ignores It**
+
+*Mechanism:* Both encoder and connector successfully deliver phonological information to the LLM residual stream. The LLM has access to the causal subspace at some layer. However, the LLM defaults to text-prediction pathways — prior language statistics override the audio-grounded signal. The audio information is "there" but the model doesn't use it to generate output.
+
+*Empirical support:* Zhao et al. (arXiv:2602.23136) document this as "Modality Collapse": ALME stimuli (57K audio-text conflict pairs) show that LALMs respond according to text context even when audio contradicts it. MPAR² (arXiv:2603.02266) demonstrates that RL training that rewards audio-grounded outputs recovers performance from 31.74% → 63.51% — proving the model CAN use audio but defaults to text-prediction without incentive. ESN clustering (Zhao et al. arXiv:2601.03115) shows emotion-sensitive neurons cluster at layers 6-8 and 19-22, not uniformly throughout.
+
+*gc(k) signature:* **Peak at intermediate depth (L_mid ∈ {14–22} for 32-layer LLM), followed by drop at UPPER LAYERS.** The gc(k) curve rises through encoder and early LLM layers as the audio signal is present and encoded, reaches a maximum at L_mid where the model has integrated audio information into its residual stream, and then DROPS at upper layers as the language modeling head receives its input increasingly dominated by text priors. Late-layer drop = Tier 3 signature. Consistent with Lin et al. (arXiv:2502.17516) intermediate-layer finding for VLMs: cross-modal interactions peak at mid-layers, not output layers.
+
+*Diagnostic:* If gc(encoder L*) is high AND gc(LLM L_mid) is high AND gc(LLM L_late) drops → Tier 3. The audio signal enters the LLM correctly but is "overwritten" at late layers by text prediction. Contrast with Tier 2 (cliff at connector boundary) and Tier 1 (flat everywhere).
+
+*Implication:* This is the most tractable failure mode for Paper A's intervention framework. Interventions targeting L_mid are most likely to improve grounding (consistent with SPIRIT's layer-targeted patching defense). MPAR²'s RL training implicitly learns to route computation through L_mid.
+
+---
+
+**Falsifiability Summary (Paper A Table 3)**
+
+| Tier | Failure Site | gc(k) Pattern | Encoder gc(L*)? | LLM layer 0 gc? | LLM L_mid gc? | LLM L_late gc? |
+|------|-------------|---------------|-----------------|-----------------|---------------|----------------|
+| **T1** | Codec (RVQ) | Flat, near chance | ~chance | ~chance | ~chance | ~chance |
+| **T2** | Connector | Cliff at boundary | HIGH | ~chance | ~chance | ~chance |
+| **T3** | LLM backbone | Mid-peak + late drop | HIGH | Medium | HIGH | DROP |
+| **None** | No failure | Rising plateau | HIGH | Medium | HIGH | HIGH |
+
+> **Key prediction:** Real-world models (Qwen2-Audio-7B on ALME stimuli) should show a MIXED pattern — some stimulus classes failing at Tier 2, others at Tier 3 — with the overall gc(L) curve reflecting the mixture. High-frequency common phonemes = Tier 3 or None. Rare phonemes or unusual acoustic conditions = Tier 1 or Tier 2. This predicts that phoneme-class-separated gc(k) curves (per-class bootstrap CI) will diverge in UPPER LLM LAYERS: common phonemes maintain gc(L_late), rare phonemes drop.
+
+**Sources unified:**
+- Tier 1: Sadok et al. arXiv:2506.04492 (SpeechTokenizer codec probe) + Sadok et al. arXiv:2602.23765 (DashengTokenizer)
+- Tier 2: Gap #18 (phonological geometry through connector) + Modality Collapse arXiv:2602.23136 (GMI bottleneck theory) + Choi et al. arXiv:2602.18899 (encoder linearity baseline)
+- Tier 3: Zhao et al. arXiv:2602.23136 (behavioral collapse) + MPAR² arXiv:2603.02266 (RL recovery) + ESN arXiv:2601.03115 (layer clustering) + Lin et al. arXiv:2502.17516 (VLM intermediate-layer precedent) + Lee et al. arXiv:2603.03855 (behavioral degradation under scene complexity → mechanical account)
+
+**Status of §4.6:** ✅ DRAFT COMPLETE. ~750 words, structured taxonomy + Table 3. All citations verified. LaTeX-ready (table needs conversion).
+
+**Papers A progress summary (v2.0):**
+- §1 Introduction: ✅ LaTeX-ready (3 paragraphs, cycle #219; MPAR² v1.9 upgrade cycle #258)
+- §2 Related Work: ✅ LaTeX-ready (3 subsections, cycle #222)
+- §3 Method: ✅ LaTeX-ready (7 subsections, cycle #223)
+- §4 Experiments/Results: ✅ LaTeX-ready (5 subsections + **§4.6 3-Tier Taxonomy**, cycles #228/#294)
+- §5 Discussion: ✅ SKELETON (5 headers + 2-sentence stubs, cycle #230 — prose blocked until results)
+
+---
 
 ### ⚡ v1.9 Upgrade (cycle #258 — MPAR² deeper synthesis)
 **MPAR² (2603.02266) richer connection to Paper A:**
