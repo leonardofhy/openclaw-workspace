@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 9,
+    "build_remaining_today": 7,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-05"
@@ -40,14 +40,14 @@
     "research_gaps": 19,
     "paper_ideas": 12,
     "paper_pitches": 2,
-    "code_artifacts": 23,
+    "code_artifacts": 24,
     "system_improvements": 6,
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260305-1040",
+    "id": "c-20260305-1131",
     "action": "build",
-    "summary": "Wrote full experiment spec for Q033: Microgpt x Phonological DAS — 2-layer 64-dim transformer on 6-phoneme synthetic task, DAS IIA protocol + Cause/Isolate scores, Paper A Appendix A candidate"
+    "summary": "Wrote experiment spec for PSM Persona × gc(k): 3 conditions (neutral/assistant/anti-ground), ESC-50 mock, Tier 0 pipeline extension, Paper A §4.3 confound check."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
