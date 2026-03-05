@@ -3846,3 +3846,239 @@
 
 10. **Strong Scores, Weak Listening**
     — 4 詞，總結型短標題，適合作為吸睛備選。
+
+## Batch 104 — 12:30（策略：negative controls / impossible-audio sanity checks）
+
+1. **Can Impossible Audio Still Score? A Negative-Control Audit of Audio-Language Benchmarks**
+   — 新角度用 impossible audio（理應無法提供正確訊息）做 sanity check，測試是否仍出現不合理高分。
+
+2. **Negative Controls for Listening: Evidence from 8 Models and 3 Benchmarks**
+   — 保守投稿款，直接交代 8×3 規模與方法定位。
+
+3. **When Wrong Sound Doesn’t Hurt: Diagnosing Non-Acoustic Robustness in LALM Evaluation**
+   — 聚焦「給錯音訊也不掉分」的反直覺現象，對應 text-prior 主導。
+
+4. **Audio Sanity Checks in Benchmarking: Do Scores Drop Under Impossible-Audio Controls?**
+   — 問句式直觀，審稿人一眼理解方法精神。
+
+5. **Failing to Fail on Bad Audio: A Negative-Control Necessity Audit for LALMs**
+   — 用 failing-to-fail 表達關鍵問題：該掉分時沒掉分。
+
+6. **No-Audio, Fragment, and Impossible-Audio: A Sanity-Control Study Across 8×3 Benchmarks**
+   — 把既有控制 + 新 negative control 放進同一標題，方法辨識度高。
+
+7. **Do “Audio” Benchmarks Reject Nonsense Sound? Item-Level Negative-Control Audits**
+   — item-level 粒度清楚，直接檢驗 benchmark 是否能識別無效音訊。
+
+8. **Pseudo-Listening Under Negative Controls: High Scores Despite Invalid Audio Evidence**
+   — 對比式 punchline，凸顯效度風險。
+
+9. **Toward Sanity-Robust Audio Evaluation: Benchmarking Models That Need Valid Sound**
+   — 解法導向，提出 sanity-robust benchmark 設計方向。
+
+10. **Negative-Control Benchmarks for LALMs: Auditing Whether Audio Evidence Is Truly Necessary**
+    — 收尾保守款，語氣穩健且可投稿。
+
+---
+
+## 🔎 Batch 104 Review（每 4 批）
+
+### 本批最佳候選
+1. **Can Impossible Audio Still Score? A Negative-Control Audit of Audio-Language Benchmarks**
+   - 優點：角度新（negative control + impossible audio），核心問題一眼可懂。
+2. **No-Audio, Fragment, and Impossible-Audio: A Sanity-Control Study Across 8×3 Benchmarks**
+   - 優點：方法完整入題，8×3 規模清楚，投稿友善。
+3. **Negative-Control Benchmarks for LALMs: Auditing Whether Audio Evidence Is Truly Necessary**
+   - 優點：保守穩健，語氣正式，適合作主標題候選。
+
+### 與 Batch 101–103 的區隔
+- Batch 101：disconfirmatory evidence / prior revision
+- Batch 102：placebo controls / sham-audio
+- Batch 103：極短標題（≤6 words）
+- 本批（104）轉向 **negative controls / sanity checks**：不只看「無音訊是否可解」，而是看「無效音訊是否也能得分」，更嚴格檢驗 listening validity。
+
+### 下一批建議
+- 可測試 **adversarial contradiction audio**（專門與題幹衝突的聲學證據）來檢驗模型是否會被真實反證訊號糾正。
+- 保留 2 個極保守版本（含 8×3 + negative-control audit）供最終投稿標題池。
+
+## Batch 105 — 12:31（策略：mechanism design / incentive-compatible benchmark contracts）
+
+1. **Designing Incentive-Compatible Audio Benchmarks: Making Listening the Dominant Strategy**
+   — 新角度：把 benchmark 視為機制設計問題，目標是讓「真的聽」成為最優策略。
+
+2. **Dominant-Strategy Listening: A Mechanism-Design Audit Across 8 Models and 3 Benchmarks**
+   — 保守投稿款，直接交代 8×3 規模與機制設計核心。
+
+3. **When Shortcuts Pay More Than Listening: Auditing Incentive Compatibility in Audio-Language Evaluation**
+   — 點出現況問題：text shortcut 的回報高於 acoustic grounding。
+
+4. **From Score Maximization to Mechanism Alignment: Rebuilding Audio Benchmark Incentives**
+   — 將研究定位為「目標函數與評測機制對齊」問題。
+
+5. **Are Audio Benchmarks Strategy-Proof? A Necessity Audit of Text-Prior Exploitability**
+   — 問句式易懂，strategy-proof framing 新且正式。
+
+6. **Mechanism Failures in “Audio” Tasks: High Rewards for Low Acoustic Reliance**
+   — 對比式 punchline，呼應高分與低聽覺依賴並存現象。
+
+7. **Truthful Listening as Equilibrium: A Design Audit for Audio-Language Benchmarks**
+   — equilibrium framing，適合 methods/evaluation 審稿口味。
+
+8. **Incentive-Compatible Evaluation with No-Audio and Fragment Controls Across 8×3**
+   — 直接把核心控制實驗嵌入新框架，方法辨識度高。
+
+9. **Benchmark Mechanism Design for LALMs: Separating Strategy-Proof Listening from Shortcut Gaming**
+   — 保守主標題候選，社群意涵明確。
+
+10. **Toward Strategy-Faithful Audio Evaluation: Benchmarks That Reward Honest Use of Sound**
+    — 解法導向收尾，提出 strategy-faithful 的 benchmark 設計方向。
+
+## Batch 106 — 12:31（策略：仿經典論文）
+
+1. **Attention Is All You Read: Revisiting Audio-Language Benchmarks with Necessity Audits**
+   — 改編經典句式，直接凸顯 read-not-listen 核心矛盾。
+
+2. **An Audio Task Is Worth Zero Seconds: Evidence from 8 Models and 3 Benchmarks**
+   — 延續 ViT 式節奏，前半吸睛、後半補足 8×3 規模資訊。
+
+3. **You Only Listen Once—If Ever: Quantifying Fragment-Sufficient Scoring in LALMs**
+   — YOLO 改寫，對應 fragment-only 也能高分的關鍵發現。
+
+4. **Audio Is All You Need—Until You Remove It**
+   — 反轉經典標題，精準對應 no-audio 控制實驗。
+
+5. **On the Listening Properties of Audio-Language Benchmarks**
+   — 保守投稿款，語氣穩健、審稿友善。
+
+6. **Rethinking Audio Evaluation: A Necessity Audit of Text-Prior Dominance**
+   — 經典「Rethinking」框架，清楚交代方法與主結論。
+
+7. **Playing the Leaderboard with Text Priors: A Benchmark Audit Perspective**
+   — 改編經典 RL 句型，連結 leaderboard incentive 問題。
+
+8. **Do Benchmarks Listen? A Reappraisal of Audio-Language Evaluation**
+   — 經典 reappraisal 風格，短而直接，適合作為主標題候選。
+
+9. **The Bitter Lesson of Audio Benchmarks: Scores Scale Faster Than Listening**
+   — 借經典觀點改寫，凸顯能力與分數成長脫鉤。
+
+10. **A Survey of Audio Understanding (Without the Audio)**
+    — 戲仿 survey 標題模板，作為高辨識度備選。
+
+## Batch 107 — 12:45（策略：adversarial contradiction audio / refutation stress）
+
+1. **When Audio Contradicts the Prompt: An Adversarial Refutation Audit of Audio-Language Benchmarks**
+   — 新角度用「題幹與音訊衝突」測試模型是否真的會讓音訊推翻文字先驗。
+
+2. **Contradiction-Audio Stress Tests Across 8 Models and 3 Benchmarks**
+   — 保守投稿款，8×3 規模與核心實驗設計一行交代。
+
+3. **Can Sound Overrule Text Priors? A Necessity Audit with Contradictory Audio Controls**
+   — 直接問核心問題：音訊能否在衝突情境下主導決策。
+
+4. **Adversarial Audio Refutations in LALM Evaluation: Measuring Prior-Revision Under Conflict**
+   — 把貢獻定位為 conflict 下的先驗修正能力量測。
+
+5. **Do “Audio” Benchmarks Test Refutation or Just Confirmation?**
+   — support/refute 對比式問句，凸顯現有 benchmark 可能只測到 confirmation。
+
+6. **From Prompt-Following to Evidence-Following: A Contradiction-Control Audit for Audio Tasks**
+   — 以行為轉換（follow prompt → follow evidence）定義你們的檢驗目標。
+
+7. **Conflict-Condition Listening: Item-Level Audits of Audio-Driven Belief Revision**
+   — item-level 粒度清楚，適合展示細粒度分析深度。
+
+8. **High Scores Under Contradiction: Diagnosing Non-Refutable Text-Prior Dependence**
+   — 對比式 punchline，點出「衝突下仍高分」的效度風險。
+
+9. **No-Audio, Fragment, and Contradiction-Audio: A Refutation Audit Across 8×3 Benchmarks**
+   — 把既有控制與新控制整合進同一標題，方法辨識度高。
+
+10. **Toward Refutation-Faithful Audio Evaluation: Benchmarks That Reward Sound-Corrected Decisions**
+    — 解法導向收尾，提出 refutation-faithful benchmark 設計方向。
+
+## Batch 108 — 12:45（策略：metamorphic testing / relation-preservation checks）
+
+1. **Metamorphic Tests for Listening: Auditing Relation Preservation in Audio-Language Benchmarks**
+   — 新角度用 metamorphic relations 檢查：音訊變換後，答案是否以「應有方式」改變。
+
+2. **Do “Audio” Scores Obey Audio Relations? A Metamorphic Audit Across 8 Models and 3 Benchmarks**
+   — 保守投稿款，8×3 規模與方法核心一次交代。
+
+3. **From No-Audio to Transformed-Audio: A Metamorphic Necessity Audit for LALM Evaluation**
+   — 把控制條件擴展成關係測試，而非只看單點分數。
+
+4. **When Transformations Don’t Transform Decisions: Diagnosing Non-Listening with Metamorphic Tests**
+   — 對比式 punchline，突顯音訊改變卻決策不變的失真。
+
+5. **Relation-Faithful Listening: Measuring Whether Predictions Track Acoustic Transformations**
+   — 以 relation-faithful framing 重述核心有效性問題。
+
+6. **Metamorphic Robustness or Text Inertia? Reassessing Audio Dependence in “Audio” Tasks**
+   — 區分真正的聲學關係追蹤與文字先驗慣性。
+
+7. **Acoustic Relation Checks at Item Level: Which Benchmark Questions Truly Listen?**
+   — item-level 粒度清楚，貼合你們細粒度分析優勢。
+
+8. **No-Audio, Fragment, Contradiction, and Metamorphic Controls: A Relation-Based Audit Across 8×3**
+   — 把既有控制與 relation-based 新控制整合進同一標題。
+
+9. **Can Audio Benchmarks Enforce Relation Consistency? A Metamorphic Validity Study**
+   — 問句式可讀性高，審稿人一眼理解方法精神。
+
+10. **Toward Relation-Faithful Audio Evaluation: Designing Benchmarks That Reward Sound-Consistent Predictions**
+    — 解法導向收尾，提出 relation-faithful benchmark 設計方向。
+
+---
+
+## 🔎 Batch 108 Review（每 4 批）
+
+### 本批最佳候選
+1. **Do “Audio” Scores Obey Audio Relations? A Metamorphic Audit Across 8 Models and 3 Benchmarks**
+   - 優點：最穩投稿款；8×3 規模完整，metamorphic 核心清楚。
+2. **Metamorphic Tests for Listening: Auditing Relation Preservation in Audio-Language Benchmarks**
+   - 優點：方法辨識度高，和既有 necessity/control 系列自然銜接。
+3. **When Transformations Don’t Transform Decisions: Diagnosing Non-Listening with Metamorphic Tests**
+   - 優點：可讀性強、衝擊清楚，適合作為高辨識度備選。
+
+### 與 Batch 105–107 的區隔
+- Batch 105：mechanism design / incentive compatibility
+- Batch 106：仿經典論文
+- Batch 107：adversarial contradiction / refutation stress
+- 本批（108）轉向 **metamorphic relation testing**：從「單次控制是否掉分」進一步檢查「音訊變換與答案變化是否符合可預期關係」。
+
+### 下一批建議
+- 可測試 **compositional audio evidence**（多段線索組合才可解）角度，避免模型靠單一 cue 過關。
+- 保留 2 個極保守版本（含 8×3 + metamorphic audit）作最終投稿標題池。
+
+## Batch 109 — 12:46（策略：冒號格式 Brand: Subtitle）
+
+1. **SoundClause: Do Audio-Language Benchmarks Actually Enforce Listening?**
+   — Brand + 問句副標題，直接對齊 benchmark contract / compliance 主軸。
+
+2. **HearProof: Auditing Text-Prior Dominance Across 8 Models and 3 Benchmarks**
+   — 保守投稿款，8×3 規模與審計目的一行交代。
+
+3. **ClipSignal: Measuring How Much Audio Actually Changes the Answer**
+   — 對應 fragment-sufficient 與 decision-flip 的核心洞見。
+
+4. **PriorTrap: Why “Audio” Scores Stay High Without Full Listening**
+   — 高可讀性版本，聚焦 text-prior shortcut 機制。
+
+5. **WaveCheck: No-Audio, Fragment, and Contradiction Controls for LALM Evaluation**
+   — 把關鍵控制設計直接寫進副標題，方法辨識度高。
+
+6. **EchoTrace: Item-Level Attribution of Text and Acoustic Evidence in Audio Tasks**
+   — item-level 分析深度清楚，語氣穩健。
+
+7. **MuteMeter: Quantifying Read-Not-Listen Behavior in Modern Audio-Language Benchmarks**
+   — 短主標吸睛，副標完整交代研究問題。
+
+8. **SignalVerdict: Reassessing Benchmark Validity with Audio-Need Audits at Scale**
+   — validity + scale framing，適合作為主標題候選。
+
+9. **ListenSpec: Verifying Claimed vs Required Audio in 8×3 Benchmark Suites**
+   — 承接 specification framing，且含 8×3 實證訊號。
+
+10. **AudioFaith: Toward Benchmarks That Reward Sound-Driven Decisions**
+    — 解法導向收尾，提出 benchmark redesign 方向。
