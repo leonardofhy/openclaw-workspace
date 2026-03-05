@@ -9,6 +9,7 @@
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-05 07:30: Cron title-brainstorm executed; appended Batch 46 (legal standards / burden-of-proof angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 07:00: Cron title-brainstorm executed; appended Batch 39 (incentive compatibility / Goodhart angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 05:15: Cron title-brainstorm executed; appended Batch 21 (forensic accounting / evidence ledger angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 05:00: Cron title-brainstorm executed; appended Batch 19 (item ecology / benchmark cartography angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
