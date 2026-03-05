@@ -3,16 +3,28 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-05 23:41
+**Last Updated:** 2026-03-06 01:50
 
 ## Current Task
-Execute [cron:b563a3ee-97ef-4920-9262-c15c7051962a] weekly-research-summary
+Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
-- 2026-03-05 23:41: Leo cron [weekly-research-summary b563a3ee-97ef-4920-9262-c15c7051962a] started.
-- 2026-03-05 23:36: Leo instruction — fix all issues reported by system-scanner (git dirty state, stuck delivery queue, openclaw doctor anomaly, cron error states) autonomously.
-- 2026-03-05 20:19: Leo standing authorization — proceed immediately without waiting for approval unless Leo’s direct personal intervention is strictly required.
-- 2026-03-05 14:40: Leo hard directive — do not wait for Leo to provide audio files or environment setup; solve acquisition/setup autonomously end-to-end.
+- 2026-03-06 01:50: Voice note — Leo likely time-constrained before HK trip; may only handle ARENA application in HK or brief slot after haircut/laundry; asks assistant to brainstorm/draft from past experience to reduce effort.
+- 2026-03-06 01:42: Leo shared ARENA 8.0 application deadline (Mar 8 23:59 AoE) + application form link; interested but time-constrained, asked to save info and proactively help apply.
+- 2026-03-06 00:58: Leo going to sleep now; requests wake-up reminder that first action must be web check-in for today's flight.
+- 2026-03-06 00:50: Leo request — implement a reusable skill for diary polishing from speech transcripts and save a fixed prompt (role: 語音轉文字日記還原與潤飾專家) for future use.
+- 2026-03-06 00:42: Leo request — provide a concrete tomorrow timeline optimized for safely catching HX265 flight; prioritize sufficient airport buffer.
+- 2026-03-06 00:35: Leo update — due to busy days, HK/Shenzhen trip not actually planned; needs pre-departure preparation plan including haircut and laundry after waking.
+- 2026-03-05 13:00: Leo request — review past 3 days dialogue and repair possible system issues; applied cron delivery hardening to prevent unsolicited DM noise.
+- 2026-03-05 12:52: Leo asks to fix current issue immediately ("請幫我修復好，可以嗎？").
+- 2026-03-05 12:18: Leo hard stop — do NOT add any new titles; stop title generation immediately.
+- 2026-03-05 12:15: Cron title-brainstorm request — append one new batch of 10 Interspeech title candidates to `memory/paper/title-brainstorm.md` using a creative angle not used before; add review only every 4th batch.
+- 2026-03-05 11:46: Cron title-brainstorm request — read `memory/paper/title-brainstorm.md` fully, append exactly one new batch of 10 titles using a strategy not used before, and add review section every 4th batch only.
+- 2026-03-05 10:47: Cron title-brainstorm request — generate 10 new Interspeech title candidates using a creative angle different from all prior batches; append to `memory/paper/title-brainstorm.md`. Since this is Batch 84 (multiple of 4), include a review section.
+- 2026-03-05 09:50: Leo correction — write failed due to `memory/paper/title-brainstorm.md` edit mismatch; requested fix via append-safe flow (read latest tail before append) and shift to Batch 72 review convergence to reduce high-frequency conflicts. Reported Batch 73 already appended at 09:48 (10 titles, wordplay strategy), and no review expected this round.
+- 2026-03-05 09:24: Leo decision — stop generating new paper titles.
+- 2026-03-05 09:02: Cron title-brainstorm executed; appended Batch 63 (ecological validity / real-world acoustic mismatch angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
+- 2026-03-05 08:30: Cron title-brainstorm executed; appended Batch 57 (red-team evaluation / adversarial benchmark hardening angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 07:30: Cron title-brainstorm executed; appended Batch 46 (legal standards / burden-of-proof angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 07:00: Cron title-brainstorm executed; appended Batch 39 (incentive compatibility / Goodhart angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 05:15: Cron title-brainstorm executed; appended Batch 21 (forensic accounting / evidence ledger angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
