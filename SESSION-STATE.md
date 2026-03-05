@@ -3,12 +3,14 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-05 13:00
+**Last Updated:** 2026-03-06 00:42
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-06 00:42: Leo request — provide a concrete tomorrow timeline optimized for safely catching HX265 flight; prioritize sufficient airport buffer.
+- 2026-03-06 00:35: Leo update — due to busy days, HK/Shenzhen trip not actually planned; needs pre-departure preparation plan including haircut and laundry after waking.
 - 2026-03-05 13:00: Leo request — review past 3 days dialogue and repair possible system issues; applied cron delivery hardening to prevent unsolicited DM noise.
 - 2026-03-05 12:52: Leo asks to fix current issue immediately ("請幫我修復好，可以嗎？").
 - 2026-03-05 12:18: Leo hard stop — do NOT add any new titles; stop title generation immediately.
