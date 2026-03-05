@@ -3,12 +3,15 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-05 08:30
+**Last Updated:** 2026-03-05 09:50
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-05 09:50: Leo correction — write failed due to `memory/paper/title-brainstorm.md` edit mismatch; requested fix via append-safe flow (read latest tail before append) and shift to Batch 72 review convergence to reduce high-frequency conflicts. Reported Batch 73 already appended at 09:48 (10 titles, wordplay strategy), and no review expected this round.
+- 2026-03-05 09:24: Leo decision — stop generating new paper titles.
+- 2026-03-05 09:02: Cron title-brainstorm executed; appended Batch 63 (ecological validity / real-world acoustic mismatch angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 08:30: Cron title-brainstorm executed; appended Batch 57 (red-team evaluation / adversarial benchmark hardening angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 07:30: Cron title-brainstorm executed; appended Batch 46 (legal standards / burden-of-proof angle) with 10 new titles in `memory/paper/title-brainstorm.md`.
 - 2026-03-05 07:00: Cron title-brainstorm executed; appended Batch 39 (incentive compatibility / Goodhart angle) with 10 new titles in `memory/paper/title-brainstorm.md`.

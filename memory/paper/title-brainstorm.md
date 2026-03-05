@@ -2278,3 +2278,476 @@
 
 10. **TUNE: Testing Unimodal NLU Exploitation in “audio” tasks**
     — 用 NLU exploitation 定義核心問題，方法導向清楚。
+
+## Batch 62 — 09:01（策略：human trust / decision-support risk）
+
+1. **Can We Trust the Answer? Auditing Evidence-Aware Reliability in Audio-Language Benchmarks**
+   — 以使用者信任為主軸：高分是否伴隨可驗證的音訊證據。
+
+2. **Trust Without Listening? A Risk Audit Across 8 Models and 3 Audio-Language Benchmarks**
+   — 保守投稿款：trust + risk framing，並保留 8×3 規模訊號。
+
+3. **When Confident Scores Mislead Users: Reassessing Audio Reliance in LALM Evaluation**
+   — 聚焦 downstream 誤導風險，而不只 benchmark accuracy。
+
+4. **Decision Support Without Sound: Measuring Trust Risk in “Audio” Benchmark Predictions**
+   — 將 no-audio 高分轉寫為 decision-support 風險問題。
+
+5. **High Score, Low Evidence, High Risk: Auditing Trustworthiness in Audio-Language Tasks**
+   — 三段式對比，強調 evidence 與信任錯配。
+
+6. **Do Audio Benchmarks Reward Trustworthy Listening? Evidence from No-Audio and Fragment Controls**
+   — 直接把核心實驗設計寫入標題，審稿人一眼可懂。
+
+7. **From Accuracy to Trust Calibration: A Necessity Audit for Audio-Language Evaluation**
+   — 把主軸從分數推進到 trust calibration，方法語氣穩健。
+
+8. **Trusting the Right Signal: Separating Acoustic Evidence from Text-Prior Guessing in LALMs**
+   — 保留你們核心貢獻（text/audio disentangling）並連到可用信任。
+
+9. **Risk of Overtrust in “Audio” Scores: An Item-Level Audit of Listening Evidence**
+   — item-level framing，對應細粒度分析優勢。
+
+10. **Toward Trust-Faithful Audio Evaluation: Benchmarks That Penalize Confident Guessing Without Sound**
+    — 解法導向收尾，提出 trust-faithful benchmark 設計方向。
+
+## Batch 63 — 09:02（策略：ecological validity / real-world acoustic mismatch）
+1. **Benchmark Silence, Real-World Noise: Auditing Ecological Validity in Audio-Language Evaluation**
+   — 新角度聚焦生態效度：benchmark 條件是否代表真實聲學場景。
+
+2. **Do Audio Benchmarks Reflect Real Listening Conditions? Evidence from 8 Models and 3 Suites**
+   — 保守投稿款，直接問外部效度並保留 8×3 規模訊號。
+
+3. **From Lab Audio to Wild Audio: Reassessing Listening Claims in LALM Benchmarks**
+   — 將問題定義為 lab-to-real-world 落差，而非僅 leaderboard 分數。
+
+4. **Ecological Validity of “Audio” Scores: Text Priors Under Realistic Acoustic Variation**
+   — 把 text-prior dominance 放進真實變異條件下檢驗。
+
+5. **When Clean Benchmarks Meet Messy Sound: A Real-World Audit of Audio Necessity**
+   — clean vs messy 對比鮮明，易於傳達 benchmark 失真風險。
+
+6. **Listening in the Wild: Testing Whether Benchmark Success Survives Real Acoustic Contexts**
+   — 聚焦 benchmark 發現是否能遷移到真實聆聽情境。
+
+7. **Are We Evaluating Hearing or Benchmark Hygiene? An Ecological Audit of Audio Tasks**
+   — 新穎對比（hearing vs hygiene）凸顯資料條件偏差。
+
+8. **Realistic Audio, Different Answers: Ecological Stress Tests for Audio-Language Benchmarks**
+   — 以 ecological stress test 包裝「真實條件下答案翻轉」的核心直覺。
+
+9. **Out-of-Lab Listening Reliability: A Necessity Audit Across Realistic Acoustic Conditions**
+   — 偏技術保守語氣，適合作主標題備選。
+
+10. **Toward Ecologically Faithful Audio Evaluation: Benchmarks That Reward Real Listening**
+    — 解法導向收尾，提出 ecologically faithful benchmark 設計方向。
+
+## Batch 64 — 09:03（策略：X Without Y）
+
+1. **State-of-the-Art Without Hearing: Auditing Text Priors in Audio-Language Benchmarks**
+   — 以 SoTA 與「不聽也高分」並置，衝擊感強且投稿友善。
+
+2. **Progress Without Sound: Measuring Audio Necessity Across 8 Models and 3 Benchmarks**
+   — 保守主標題款，方法與 8×3 規模資訊完整。
+
+3. **Confidence Without Acoustic Evidence: Reassessing Trust in Audio-Language Scores**
+   — 連結信任風險主軸，凸顯高信心不等於有聲學依據。
+
+4. **Understanding Without Listening: A Necessity Audit of Modern LALM Evaluation**
+   — 直接命中 read-not-listen 核心矛盾，語氣穩健。
+
+5. **Leaderboard Gains Without Audio Reliance: A Benchmark Validity Audit**
+   — 串接 leaderboard 與 validity 問題，社群意涵明確。
+
+6. **Generalization Without Grounding: Text-Driven Success in “Audio” Tasks**
+   — ground truth 與分數脫鉤的張力清楚，記憶點高。
+
+7. **Prediction Without Perception: Which Signal Actually Drives the Answer?**
+   — decision-level 問句式，突顯訊號驅動來源。
+
+8. **Evaluation Without Ears: Diagnosing Read-Not-Listen Shortcuts in LALMs**
+   — 簡短有力，且保留診斷框架可讀性。
+
+9. **Claims Without Proof: Do Audio Benchmarks Truly Require Audio?**
+   — claim/proof 對比鮮明，適合 discussion 導向版本。
+
+10. **Benchmarking Without Full Clips: Quantifying Fragment-Sufficient Scoring**
+    — 對應 96% fragment-sufficient 洞見，資訊密度高。
+
+---
+
+## 🔎 Batch 64 Review（每 4 批）
+
+### Top 5 titles so far（含本批重評）
+1. **73% Without Listening: Auditing Text Priors in Audio-Language Benchmarks** — 9.6/10
+   - 依舊最均衡：數字衝擊、方法清楚、場景完整。
+
+2. **Scoring Without Listening: Auditing Text Priors in Audio-Language Benchmarks** — 9.5/10
+   - 最穩投稿款，不綁特定數字、跨版本彈性高。
+
+3. **How Many Seconds Carry the Score? Measuring Effective Audio Bandwidth in Benchmarks** — 9.3/10
+   - fragment-sufficient 洞見表達最有辨識度。
+
+4. **Disentangling Text Priors from Acoustic Evidence in Audio-Language Evaluation** — 9.1/10
+   - 技術語氣成熟，對保守審稿人最友善。
+
+5. **No-Audio as a Null Model: Auditing Modality Claims in LALM Benchmarks** — 9.0/10
+   - 方法辨識度高，和 no-audio 實驗設計高度對齊。
+
+## Batch 65 — 09:17（策略：minimal sufficient evidence / sufficiency certificates）
+
+1. **Certifying Minimal Audio Sufficiency: Auditing Evidence Thresholds in LALM Benchmarks**
+   — 以「sufficiency certificate」角度切入，強調可驗證的最小音訊證據門檻。
+
+2. **How Much Audio Is Sufficient? A Threshold Audit Across 8 Models and 3 Benchmarks**
+   — 保守投稿款：研究問題清楚，且保留 8×3 規模訊號。
+
+3. **From Full Clips to Sufficient Cues: Measuring Minimal Evidence for Correct Answers**
+   — 把 full→fragment 發現寫成 evidence-threshold 敘事。
+
+4. **Sufficiency Before Accuracy: Reframing Audio-Language Evaluation Around Evidence Thresholds**
+   — 社群導向 framing：先看是否有足夠聲學證據，再看分數。
+
+5. **Minimal Acoustic Proof, Maximal Scores: A Sufficiency Audit of Audio Benchmarks**
+   — 高分與低證據門檻對比強烈，記憶點高。
+
+6. **Evidence Thresholds for Listening: Item-Level Sufficiency Analysis in Audio-Language Tasks**
+   — item-level 對齊既有分析深度，術語清楚。
+
+7. **Sufficient by Text, Not by Sound: Diagnosing Threshold Mismatch in “Audio” Evaluation**
+   — 以 threshold mismatch 重述 read-not-listen 核心矛盾。
+
+8. **What Is the Minimum Audio That Changes the Answer? A Sufficiency Test for LALMs**
+   — 問句式直覺，直接對應干預設計與決策翻轉條件。
+
+9. **Toward Sufficiency-Faithful Audio Benchmarks: Verifying Acoustic Evidence Requirements**
+   — 解法導向收尾，提出 sufficiency-faithful benchmark 設計原則。
+
+10. **Benchmarking Listening by Required Evidence: A Minimal-Sufficiency Audit at Scale**
+    — 方法總結款，兼顧可投稿穩定性與 scale 訊號。
+
+## Batch 66 — 09:17（策略：phase-transition / tipping-point framing）
+
+1. **The Listening Phase Transition: When Does Audio Start to Matter in LALM Benchmarks?**
+   — 新角度用 phase transition 描述「從 text-sufficient 到 audio-required」的臨界點。
+
+2. **From Prior-Dominated to Audio-Driven: Mapping Tipping Points in Audio-Language Evaluation**
+   — 把核心發現寫成 regime shift（主導機制轉換），與既有命名區隔明顯。
+
+3. **Critical Audio Mass: Estimating Necessity Thresholds Across 8 Models and 3 Benchmarks**
+   — 保守投稿款，保留 8×3 規模與 threshold 訊號。
+
+4. **When More Sound Finally Changes the Answer: A Tipping-Point Audit for LALMs**
+   — 直觀問句式，直接對應你們的干預與答案翻轉條件。
+
+5. **Phase Boundaries of Listening: Auditing Text and Audio Regimes in Benchmark Items**
+   — item-level framing，突出 no-audio / fragment / full-audio 三區域可解釋性。
+
+6. **Regime Shift in “Audio” Scores: Identifying the Transition from Guessing to Grounding**
+   — 將 read-not-listen 問題轉成 guessing→grounding 的可定位轉折。
+
+7. **Tipping Points of Acoustic Evidence: A Necessity Analysis of Audio-Language Benchmarks**
+   — 方法語氣穩健，適合作為主標題候選。
+
+8. **Near-Critical Listening: Why Most Benchmark Items Stay Below the Audio-Need Threshold**
+   — 對應 61–73% no-audio + fragment-sufficient 發現，敘事一致且新穎。
+
+9. **Crossing the Listening Threshold: Measuring Regime Changes in LALM Decision Behavior**
+   — 連到 decision-level 分析，突出訊號主導權何時改變。
+
+10. **Toward Threshold-Faithful Audio Evaluation: Designing Benchmarks Beyond the Text-Dominant Regime**
+    — 解法導向收尾，提出以 threshold/regime 為核心的 benchmark redesign 方向。
+
+## Batch 67 — 09:18（策略：數字衝擊）
+
+1. **73% Without Listening: What Are Audio-Language Benchmarks Really Scoring?**
+   — 直接以前置數字衝擊，聚焦「分數來源」而非表面任務名。
+
+2. **96% Fragment-Sufficient: Full Audio Is Rarely Needed in Modern LALM Evaluation**
+   — 強調最反直覺結果，明確點出 full clip 的必要性不足。
+
+3. **8 Models, 3 Benchmarks, 1 Problem: Text Priors Dominate “Audio” Scores**
+   — 研究規模與核心結論同時入標題，投稿可讀性高。
+
+4. **61–73% No-Audio Solvable: Reassessing Benchmark Validity in Audio-Language Tasks**
+   — 用區間呈現系統性，不把現象誤解為個別例外。
+
+5. **96% Need Only Snippets: Measuring Effective Audio Demand at Item Level**
+   — 把 fragment finding 轉為「effective demand」的技術語言。
+
+6. **73% by Text Alone: A Necessity Audit Across 8 LALMs and 3 Suites**
+   — 保守學術款：數字 + 方法 + 規模完整。
+
+7. **61% Questions Solved in Silence: Evidence of Read-Not-Listen Shortcuts**
+   — 直接把 no-audio 可解性與 shortcut 機制綁定。
+
+8. **3 Suites, Minimal Sound: Quantifying Acoustic Reliance Beyond Accuracy**
+   — 用 minimal sound 對比傳統 accuracy 指標，凸顯評測盲點。
+
+9. **73% Without Audio Reliance, Still High Scores: Rethinking LALM Progress**
+   — 將結果連到社群層意涵（progress narrative 可能失真）。
+
+10. **96% Fragment Reliance: Why Benchmark Scores Overstate Listening Ability**
+    — 以 strongest statistic 收尾，直接指向 listening overclaim 問題。
+
+## Batch 68 — 09:30（策略：specification compliance / benchmark contract）
+
+1. **Do Audio Benchmarks Meet Their Own Contract? A Specification Audit Across 8×3**
+   — 以「benchmark contract」切入：標成 audio 的題目是否真的要求音訊證據。
+
+2. **Specification Violations in Audio-Language Evaluation: Text-Prior Wins Without Listening**
+   — 把核心問題定義為 spec violation，語氣保守且審稿友善。
+
+3. **Contract-Faithful Benchmarking: Auditing Claimed vs Required Audio in LALM Scores**
+   — claimed/required 對照清楚，適合作為主標題候選。
+
+4. **From Benchmark Labels to Test Specifications: Verifying Audio Requirement at Item Level**
+   — 突出 item-level 驗證深度，從標籤走向可檢驗規格。
+
+5. **Are We Passing the Wrong Test? A Specification-Compliance Audit of “Audio” Tasks**
+   — 問句式可讀性高，點出高分可能來自規格外捷徑。
+
+6. **Spec-Compliant Listening: Measuring Whether Audio Evidence Is Actually Necessary**
+   — 保守投稿款，方法和核心問題一行交代。
+
+7. **When Tests Drift from Their Specs: Reassessing Audio-Language Benchmark Validity**
+   — 把 validity gap 重述為 spec drift，和既有 framing 有區隔。
+
+8. **Benchmark Contracts for LALMs: Separating Audio-Required Items from Text-Sufficient Items**
+   — 直接映射 no-audio / fragment / full-audio 分層邏輯。
+
+9. **Compliance Before Comparison: Auditing Audio Specifications in Modern LALM Leaderboards**
+   — 社群導向：先驗 spec，再比榜單。
+
+10. **Toward Spec-Faithful Audio Evaluation: Necessity Audits for Contract-Valid Benchmarks**
+    — 解法導向收尾，提出 spec-faithful benchmark 設計方向。
+
+---
+
+## 🔎 Batch 68 Review（每 4 批）
+
+### 本批最佳候選
+1. **Do Audio Benchmarks Meet Their Own Contract? A Specification Audit Across 8×3**
+   - 優點：新角度清楚（contract/spec compliance）且含 8×3 規模，投稿穩定度高。
+2. **Contract-Faithful Benchmarking: Auditing Claimed vs Required Audio in LALM Scores**
+   - 優點：核心錯配（claimed vs required）表達最精煉，方法辨識度強。
+3. **From Benchmark Labels to Test Specifications: Verifying Audio Requirement at Item Level**
+   - 優點：item-level depth 明確，語氣保守、審稿友善。
+
+### 與 Batch 65–67 的區隔
+- Batch 65：minimal sufficiency threshold
+- Batch 66：phase transition / tipping point
+- Batch 67：數字衝擊
+- 本批（68）轉向 **specification compliance / benchmark contract**：把問題定義成「測試規格是否被真正執行」，利於連到 benchmark governance 與可驗證 protocol。
+
+### 下一批建議
+- 可測試 **instruction-following vs evidence-following** 角度（模型是在遵循題幹語言，還是遵循音訊證據）。
+- 保留 2 個極保守主標題（含 8×3 + specification audit）作最終定稿比較。
+
+## Batch 69 — 09:30（策略：instruction-following vs evidence-following）
+
+1. **Following Instructions, Not Audio: Auditing Evidence Use in Audio-Language Benchmarks**
+   — 新角度直接對比「遵循題幹語言」與「遵循音訊證據」，問題定義清楚。
+
+2. **Instruction-Faithful, Evidence-Poor: Reassessing What Audio Benchmarks Reward**
+   — 以 faithfulness 對比呈現核心矛盾：看似聽話，未必在聽聲音。
+
+3. **Do Models Follow the Prompt or the Sound? A Necessity Audit Across 8 Models and 3 Benchmarks**
+   — 問句式 + 8×3 規模，投稿保守款。
+
+4. **From Prompt Compliance to Acoustic Compliance: Measuring True Listening in LALM Evaluation**
+   — 把 compliance 語彙延伸到訊號層，和上一批 spec framing自然銜接。
+
+5. **Instruction Cues Over Audio Evidence: Diagnosing Read-Not-Listen Behavior in “Audio” Tasks**
+   — 點出 instruction cue 主導的機制，連到既有 semantic leakage 發現。
+
+6. **Prompt-Following Without Hearing: Quantifying Text-Led Success in Audio-Language Scores**
+   — 簡潔傳達「聽指令但不聽音訊」的反直覺現象。
+
+7. **Evidence-Following Tests for Audio Benchmarks: No-Audio and Fragment Controls Across 8×3**
+   — 直接把核心控制設計寫進標題，方法辨識度高。
+
+8. **When Prompt Obedience Masks Listening Failure: An Item-Level Audit of Audio Necessity**
+   — item-level framing，突顯細粒度分析深度。
+
+9. **Instruction-Aligned, Audio-Misaligned: A Benchmark Audit of Signal-Faithful Reasoning**
+   — alignment 對比鮮明，適合 discussion 導向版本。
+
+10. **Toward Evidence-Faithful Audio Evaluation: Benchmarking Models That Follow Sound, Not Just Prompts**
+    — 解法導向收尾，提出 evidence-faithful benchmark 設計方向。
+
+## Batch 70 — 09:31（策略：數字衝擊）
+
+1. **73% Without Sound: Auditing Text-Prior Dominance in Audio-Language Benchmarks**
+   — 以最大衝擊數字開場，直指「高分來源」問題。
+
+2. **61–73% No-Audio Solvable: What Are Audio Benchmarks Actually Measuring?**
+   — 用區間呈現系統性偏差，而非單一異常。
+
+3. **96% Fragment-Sufficient: Full Clips Rarely Decide LALM Scores**
+   — 聚焦最反直覺發現，挑戰 full-audio 假設。
+
+4. **8 Models, 3 Benchmarks, 1 Gap: Listening Claims vs Score Reality**
+   — 研究規模 + 核心矛盾一次到位。
+
+5. **73% by Text Alone: A Necessity Audit Across 8×3 Audio-Language Benchmarks**
+   — 數字、方法、規模完整，投稿保守款。
+
+6. **96% Need Only Snippets: Measuring Effective Audio Demand Item by Item**
+   — 將 fragment 發現轉為 effective-demand 語言。
+
+7. **61% Questions Solved in Silence: Evidence of Read-Not-Listen Shortcuts**
+   — no-audio 可解性直接連到 shortcut 機制。
+
+8. **3 Suites, Minimal Sound: Quantifying Acoustic Reliance Beyond Accuracy**
+   — 從單純 accuracy 推進到 acoustic reliance。
+
+9. **73% Without Listening, Still Competitive: Rethinking LALM Progress**
+   — 連結數字衝擊與社群進步敘事風險。
+
+10. **96% Fragment Reliance: Why Benchmark Scores Overstate Listening Ability**
+    — 以 strongest statistic 收尾，結論鮮明。
+
+## Batch 71 — 09:46（策略：explanation faithfulness / rationale-grounding）
+
+1. **Explaining Without Listening? Auditing Rationale-Grounding in Audio-Language Benchmarks**
+   — 新角度檢查「回答理由」是否真的由音訊證據支撐。
+
+2. **Do Explanations Follow Sound or Text Priors? Evidence from 8 Models and 3 Benchmarks**
+   — 問句式＋8×3 規模，投稿保守且可讀性高。
+
+3. **Rationale-Faithful Listening: Measuring Whether Audio Evidence Supports LALM Answers**
+   — 把核心問題從 correctness 推進到 explanation faithfulness。
+
+4. **Right Answer, Wrong Reason: A Rationale Audit of “Audio” Benchmark Success**
+   — 強記憶點對比，點出高分也可能是錯誤證據路徑。
+
+5. **From Score Validity to Rationale Validity: Reassessing Audio-Language Evaluation**
+   — 將研究定位提升到「答案正確 + 理由可靠」雙重有效性。
+
+6. **Text-Driven Rationales in Audio Tasks: Quantifying Explanation–Evidence Mismatch**
+   — 直接定義新問題：解釋內容與實際證據來源不一致。
+
+7. **Can Audio Benchmarks Verify Why Models Are Right? A Necessity-and-Rationale Audit**
+   — 把 necessity 與 rationale 兩條證據鏈結合。
+
+8. **Evidence-Cited but Not Evidence-Used: Auditing Listening Rationales in LALMs**
+   — 指出模型可能「提到音訊」但決策未必依賴音訊。
+
+9. **Rationale-Grounded Audio Evaluation: Separating Acoustic Justification from Textual Guessing**
+   — 保守技術款，適合 methods/evaluation 審稿口味。
+
+10. **Toward Explanation-Faithful Audio Benchmarks: Testing Whether Answers and Reasons Co-Depend on Sound**
+    — 解法導向收尾，提出 explanation-faithful 的 benchmark 設計方向。
+
+## Batch 72 — 09:47（策略：Pareto frontier / trade-off diagnostics）
+1. **The Listening Pareto Frontier: Auditing Score–Audio Trade-offs in LALM Benchmarks**
+   — 新角度把問題定義成多目標權衡：高分是否以低音訊依賴換來。
+
+2. **High Scores, Low Listening Cost: Mapping the Pareto Surface Across 8 Models and 3 Benchmarks**
+   — 8×3 規模 + Pareto surface，清楚呈現系統性趨勢。
+
+3. **Pareto-Optimal Without Hearing? Reassessing Audio-Language Benchmark Progress**
+   — 問句式突顯核心矛盾：是否在錯誤目標上最優。
+
+4. **From Accuracy to Trade-off Curves: Quantifying Audio Necessity in Modern LALM Evaluation**
+   — 將單點 accuracy 推進到曲線層分析，方法辨識度高。
+
+5. **Benchmarking the Listening–Scoring Trade-off: Evidence of Text-Prior Dominance**
+   — 直接把 text prior 視為 trade-off 失衡來源。
+
+6. **Pareto Gaps in “Audio” Evaluation: When Better Scores Need Less Sound**
+   — 反直覺 framing，對應 61–73% no-audio 與 fragment-sufficient 結果。
+
+7. **Do Audio Benchmarks Reward the Right Frontier? A Necessity Audit with No-Audio and Fragment Controls**
+   — 把核心控制實驗嵌入新框架，投稿友善。
+
+8. **Frontier Drift in LALMs: Optimizing Score While Leaving Listening Behind**
+   — 社群導向，點出評測優化方向偏移。
+
+9. **Toward Listening-Efficient Evaluation: Auditing Pareto-Faithful Audio Benchmarks**
+   — 解法導向收尾，提出 Pareto-faithful benchmark 原則。
+
+10. **Pareto-Faithful Audio Evaluation: Separating Genuine Listening Gains from Text-Prior Gains**
+    — 保守主標題候選，兼具方法與結論可解釋性。
+
+---
+
+## 🔎 Batch 72 Review（每 4 批）
+
+### 本批最佳候選
+1. **The Listening Pareto Frontier: Auditing Score–Audio Trade-offs in LALM Benchmarks**
+   - 優點：角度新且清楚（Pareto trade-off），同時保有 audit 方法識別度。
+2. **Do Audio Benchmarks Reward the Right Frontier? A Necessity Audit with No-Audio and Fragment Controls**
+   - 優點：把核心實驗設計直接寫進標題，審稿人一眼可懂。
+3. **Pareto-Faithful Audio Evaluation: Separating Genuine Listening Gains from Text-Prior Gains**
+   - 優點：最穩健投稿款，語氣保守、概念完整，適合最終定稿比較。
+
+### 與 Batch 69–71 的區隔
+- Batch 69：instruction-following vs evidence-following
+- Batch 70：數字衝擊
+- Batch 71：explanation faithfulness
+- 本批（72）轉向 **multi-objective trade-off / Pareto frontier**：從「有沒有聽」進一步問「評測是否在正確的效率前沿上優化」。
+
+### 下一批建議
+- 可測試 **causal intervention budget** 角度（用最少干預找出決策翻轉點），延續 frontier 與 sufficiency 脈絡。
+- 另保留 2 個極保守版本（含 8×3 + necessity audit）作最終投稿標題池。
+
+## Batch 73 — 09:48（策略：雙關/諧音 wordplay）
+1. **Hear and Now: Auditing Text Priors in Audio-Language Benchmarks**
+   — hear/here + now 雙關，短促吸睛，保留 audit 方法訊號。
+
+2. **Sound Judgment, Unsound Benchmarks: Measuring Audio Necessity in LALMs**
+   — sound/unsound（聲音/可靠性）雙關，投稿語氣穩健。
+
+3. **Mute Point, Loud Scores: Why “Audio” Tasks Often Don’t Need Audio**
+   — mute/moot 雙關，直指 no-audio 高分矛盾。
+
+4. **Hear Me Out: Why Benchmarks Often Don’t**
+   — 口語反轉，極短且記憶點強。
+
+5. **Right on Cue, Wrong Cue: Text Beats Sound in Benchmark Decisions**
+   — cue 雙關，點出決策層訊號主導錯配。
+
+6. **No Sound, Still Sound? A Necessity Audit of Audio-Language Claims**
+   — sound 雙義（有聲音/合理）維持可讀性與技術感。
+
+7. **All Ear, No There: Quantifying Listening Gaps in LALM Evaluation**
+   — ear/here（there）諧音，對應聽覺依賴不足。
+
+8. **Deaf-initely Competitive: High Scores from Low Acoustic Reliance**
+   — definitely/deaf 雙關，吸睛但不失學術語氣。
+
+9. **For What It’s Heard: Reassessing Evidence in Audio-Language Benchmarks**
+   — worth/heard 諧音改寫，聚焦 evidence validity。
+
+10. **Listen Up, Score Up—Even When Audio Drops Out**
+    — 對仗節奏強，對應 fragment/no-audio 控制結果。
+
+## 🔖 Auto Shortlist — 2026-03-05 09:51
+
+來源 batches：Batch 70 — 09:31（策略：數字衝擊）, Batch 71 — 09:46（策略：explanation faithfulness / rationale-grounding）, Batch 72 — 09:47（策略：Pareto frontier / trade-off diagnostics）, Batch 73 — 09:48（策略：雙關/諧音 wordplay）
+
+1. **Can Audio Benchmarks Verify Why Models Are Right? A Necessity-and-Rationale Audit**
+   - score: 7.30 (len=3.0, spec=1.5, clarity=2.0, novelty=0.8, penalty=0.0)
+
+2. **The Listening Pareto Frontier: Auditing Score–Audio Trade-offs in LALM Benchmarks**
+   - score: 7.30 (len=3.0, spec=1.5, clarity=2.0, novelty=0.8, penalty=0.0)
+
+3. **Explaining Without Listening? Auditing Rationale-Grounding in Audio-Language Benchmarks**
+   - score: 7.10 (len=2.1, spec=1.5, clarity=2.0, novelty=1.5, penalty=0.0)
+
+4. **73% by Text Alone: A Necessity Audit Across 8×3 Audio-Language Benchmarks**
+   - score: 7.00 (len=2.7, spec=1.5, clarity=2.0, novelty=0.8, penalty=0.0)
+
+5. **From Accuracy to Trade-off Curves: Quantifying Audio Necessity in Modern LALM Evaluation**
+   - score: 7.00 (len=2.7, spec=1.5, clarity=2.0, novelty=0.8, penalty=0.0)
+
+6. **Pareto-Faithful Audio Evaluation: Separating Genuine Listening Gains from Text-Prior Gains**
+   - score: 7.00 (len=2.7, spec=1.5, clarity=2.0, novelty=0.8, penalty=0.0)
+
+7. **73% Without Sound: Auditing Text-Prior Dominance in Audio-Language Benchmarks**
+   - score: 6.90 (len=2.4, spec=1.0, clarity=2.0, novelty=1.5, penalty=0.0)
+
+8. **8 Models, 3 Benchmarks, 1 Gap: Listening Claims vs Score Reality**
+   - score: 6.80 (len=3.0, spec=1.0, clarity=2.0, novelty=0.8, penalty=0.0)

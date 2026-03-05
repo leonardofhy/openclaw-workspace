@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import fcntl
 import random
 import re
 import sys
@@ -86,13 +87,34 @@ def ensure_md(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def append_section(path: Path, section: str) -> None:
-    with path.open("a", encoding="utf-8") as f:
-        if not section.startswith("\n"):
+def append_section(path: Path, section: str, dedupe_key: str = "") -> bool:
+    """Append text safely with lock + tail read.
+
+    Returns True when append happened, False when skipped by dedupe_key.
+    """
+    with path.open("a+", encoding="utf-8") as f:
+        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+        f.seek(0)
+        current = f.read()
+        tail = "\n".join(current.splitlines()[-30:])
+        eprint("TAIL_PREVIEW:\n" + tail)
+
+        if dedupe_key and dedupe_key in current:
+            eprint(f"SKIP: dedupe_key already exists: {dedupe_key}")
+            fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+            return False
+
+        if current and not current.endswith("\n"):
+            f.write("\n")
+        if section and not section.startswith("\n"):
             f.write("\n")
         f.write(section)
-        if not section.endswith("\n"):
+        if section and not section.endswith("\n"):
             f.write("\n")
+
+        f.flush()
+        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+        return True
 
 
 def choose_template(strategy: str, n: int, rng: random.Random) -> list[str]:
@@ -199,8 +221,12 @@ def cmd_generate(args: argparse.Namespace) -> int:
     for i, t in enumerate(titles, start=start_idx):
         section.append(f"\n{i}. **{t}**\n   — auto-generated via title_workbench\n")
 
-    append_section(path, "".join(section))
-    print(f"Appended {len(titles)} titles to {path} under '{args.batch_label}'.")
+    header = f"## {args.batch_label} — {timestamp}（策略：{args.strategy}）"
+    appended = append_section(path, "".join(section), dedupe_key=header)
+    if appended:
+        print(f"Appended {len(titles)} titles to {path} under '{args.batch_label}'.")
+    else:
+        print(f"Skipped append (duplicate header): {header}")
     return 0
 
 
@@ -267,8 +293,12 @@ def cmd_shortlist(args: argparse.Namespace) -> int:
                 f"\n{i}. **{s.title}**\n"
                 f"   - score: {s.score:.2f} (len={b['length']}, spec={b['specificity']}, clarity={b['clarity']}, novelty={b['novelty']}, penalty={b['penalty']})\n"
             )
-        append_section(path, "".join(lines))
-        print(f"Appended shortlist section to {path}")
+        header = f"## 🔖 Auto Shortlist — {ts}"
+        appended = append_section(path, "".join(lines), dedupe_key=header)
+        if appended:
+            print(f"Appended shortlist section to {path}")
+        else:
+            print(f"Skipped shortlist append (duplicate header): {header}")
 
     return 0
 
