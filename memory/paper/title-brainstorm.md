@@ -2963,3 +2963,235 @@
 
 10. **AudioFaith: Toward Benchmarks That Reward Real Listening**
     — 解法導向收尾，保留社群導向的 redesign 訊號。
+
+## Batch 80 — 10:30（策略：decision provenance / evidence provenance graph）
+
+1. **Where Did the Answer Come From? A Provenance Audit of Audio-Language Benchmarks**
+   — 新角度把問題定義成「答案來源追溯」：究竟來自音訊證據還是文字先驗。
+
+2. **Decision Provenance in LALMs: Tracing Text and Audio Paths Across 8 Models and 3 Benchmarks**
+   — 保守投稿款，含 8×3 規模，清楚傳達 path-level attribution。
+
+3. **Provenance Before Performance: Auditing Source Paths of “Audio” Benchmark Scores**
+   — 從單看分數轉向看來源路徑，社群導向訊號明確。
+
+4. **From Score to Source Path: A Provenance Analysis of Audio Dependence in LALM Evaluation**
+   — 技術語氣穩健，適合 methods/evaluation 審稿口味。
+
+5. **Do Audio Scores Have Audio Provenance? A Necessity Audit with No-Audio and Fragment Controls**
+   — 直接把核心控制實驗寫進標題，審稿人一眼可懂。
+
+6. **Tracing Listening Claims: Provenance Graphs for Text-Prior and Acoustic Evidence**
+   — 引入 provenance graph 語言，強化可解釋與可審計定位。
+
+7. **Evidence Lineage of Benchmark Success: Separating Acoustic Causes from Textual Supports**
+   — lineage framing 新鮮且正式，凸顯 causal vs supportive evidence 差異。
+
+8. **Source-Traceable Audio Evaluation: An Item-Level Provenance Audit of Listening Validity**
+   — item-level 粒度清楚，並對齊 validity 主線。
+
+9. **Provenance Gaps in Audio-Language Benchmarks: High Scores with Weak Acoustic Lineage**
+   — 對比式 punchline，呼應高分與低音訊依賴矛盾。
+
+10. **Toward Provenance-Faithful Audio Benchmarks: Rewarding Predictions with Verifiable Acoustic Origins**
+    — 解法導向收尾，提出 provenance-faithful benchmark 設計方向。
+
+---
+
+## 🔎 Batch 80 Review（每 4 批）
+
+### 本批最佳候選
+1. **Where Did the Answer Come From? A Provenance Audit of Audio-Language Benchmarks**
+   - 優點：可讀性強、角度新（provenance），且保有 audit 方法辨識度。
+2. **Do Audio Scores Have Audio Provenance? A Necessity Audit with No-Audio and Fragment Controls**
+   - 優點：核心實驗設計直接入題，審稿人能快速理解方法貢獻。
+3. **Source-Traceable Audio Evaluation: An Item-Level Provenance Audit of Listening Validity**
+   - 優點：保守且完整，item-level 深度與 validity 定位都清楚。
+
+### 與 Batch 77–79 的區隔
+- Batch 77：causal witness set（最小決策證據子集）
+- Batch 78：compression / MDL（不可壓縮音訊資訊）
+- Batch 79：Brand: Subtitle 命名實驗
+- 本批（80）轉向 **decision provenance / evidence lineage**：從「是否需要音訊」進一步問「答案來源鏈是否可追溯且可驗證」。
+
+### 下一批建議
+- 可測試 **benchmark repair policy** 角度（如何根據 provenance 缺口自動修題與重配權重）。
+- 保留 2 個極保守主標題（含 8×3 + necessity/provenance audit）作最終投稿標題池。
+
+## Batch 81 — 10:31（策略：benchmark repair policy / automatic item patching）
+
+1. **Repairing Audio Benchmarks by Policy: Auto-Patching Text-Leaky Items at Scale**
+   — 新角度從「診斷問題」轉向「如何系統修題」，直接對接 benchmark maintenance。
+
+2. **From Audit to Repair: Policy-Driven Benchmark Patching Across 8 Models and 3 Suites**
+   — 保守投稿款，保留 8×3 規模與 audit→repair 的完整敘事。
+
+3. **Patch the Leak, Keep the Task: A Repair-Policy Audit for Audio-Language Benchmarks**
+   — 聚焦「修漏洞而不改任務本質」，適合 benchmark 設計社群。
+
+4. **Automatic Item Repair for Audio Validity: Fixing Text-Prior Shortcuts in LALM Evaluation**
+   — 以 automatic item repair 定義方法貢獻，語氣穩健。
+
+5. **Which Items Should Be Fixed First? A Risk-Weighted Repair Policy for “Audio” Benchmarks**
+   — 引入 priority/risk 視角，強調實務可操作性。
+
+6. **Policy-Guided Benchmark Triage: Rewriting No-Audio-Solvable Items for Real Listening**
+   — 將 triage 概念落地到修題流程（先找、再改、再驗）。
+
+7. **Repair Curves for Audio Evaluation: How Patching Item Leaks Changes Benchmark Validity**
+   — 用 repair curves 呈現修補強度與效度提升關係。
+
+8. **Toward Self-Healing Audio Benchmarks: Auditing and Patching Text-Driven Failure Modes**
+   — 提出 self-healing benchmark 願景，從一次性 audit 走向持續維護。
+
+9. **Benchmark Maintenance for Listening: A Policy Framework to Reduce Text-Prior Exploits**
+   — 偏保守主標題候選，突出 framework 與社群實用性。
+
+10. **Closing the Audio Validity Gap with Policy-Based Item Repair in Audio-Language Benchmarks**
+    — 解法導向收尾，明確點出核心目標：縮小 validity gap。
+
+## Batch 82 — 10:32（策略：極短 ≤6 words）
+1. **Scores Without Sound**
+   — 3 詞直擊核心：高分不代表有聽。
+
+2. **Listening Optional, Scores Stable**
+   — 4 詞呈現 no-audio 條件下分數仍穩定。
+
+3. **Audio Optional, Accuracy Intact**
+   — 4 詞保守而有力，對應 text-prior 主導。
+
+4. **Hear Less, Win More**
+   — 4 詞對比強，記憶點高。
+
+5. **Fragments In, Listening Out**
+   — 4 詞呼應 96% fragment-sufficient 發現。
+
+6. **Read to Score, Not Listen**
+   — 5 詞濃縮 read-not-listen 核心矛盾。
+
+7. **State-of-the-Art Without Hearing**
+   — 4 詞＋SoTA 張力，吸睛且投稿友善。
+
+8. **Silence, Then High Scores**
+   — 4 詞反直覺，突出 no-audio 高分現象。
+
+9. **Audio in Name Only**
+   — 4 詞精準點出 benchmark 名實不符。
+
+10. **High Scores, Low Hearing**
+    — 4 詞短促收尾，保留社群討論延展性。
+
+## Batch 83 — 10:46（策略：preregistration / falsifiability protocol）
+1. **Pre-Registered Listening Claims: A Falsifiability Audit for Audio-Language Benchmarks**
+   — 以 preregistration 切入，強調「先定義可反駁條件，再看分數」。
+
+2. **Can “Audio” Claims Survive Pre-Registered Tests? Evidence from 8 Models and 3 Benchmarks**
+   — 保守投稿款，8×3 規模與方法完整交代。
+
+3. **From Post-Hoc Scores to Pre-Specified Evidence: Reassessing Audio-Language Evaluation**
+   — 把焦點從事後解釋轉向事前驗證標準。
+
+4. **A Pre-Registered Necessity Audit of Audio Dependence in LALM Benchmarks**
+   — 極保守主標題候選，方法語言清楚穩健。
+
+5. **Testing Listening with Falsification Protocols: No-Audio and Fragment Controls Across 8×3**
+   — 將核心控制實驗放進 protocol/falsification 框架。
+
+6. **Do Audio Benchmarks Pass Their Pre-Specified Listening Criteria?**
+   — 問句式簡潔有力，對應 spec-compliance 脈絡但角度更新。
+
+7. **Preregistered Counterfactuals for Audio Evaluation: When Does Sound Actually Change Answers?**
+   — 把 counterfactual 測試變成可重複、可審計流程。
+
+8. **Falsifiability Before Leaderboards: Auditing Audio-Language Benchmark Validity**
+   — 社群導向 framing，先驗證再排名。
+
+9. **Protocol-First Audio Benchmarking: Separating Confirmatory Listening Evidence from Post-Hoc Narratives**
+   — 區分 confirmatory vs post-hoc，提升方法信度敘事。
+
+10. **Toward Falsifiable Audio Evaluation: Benchmarks with Pre-Registered Listening Tests**
+    — 解法導向收尾，提出可操作的 benchmark protocol 方向。
+
+## Batch 84 — 10:47（策略：Shapley attribution / cooperative game evidence credit）
+1. **Who Gets Credit for the Score? A Shapley Audit of Text and Audio Evidence in LALM Benchmarks**
+   — 新角度以 Shapley credit 分配切入，量化分數到底由哪個模態「貢獻」。
+
+2. **Shapley Values for Listening: Attributing Benchmark Success Across 8 Models and 3 Suites**
+   — 保守投稿款，8×3 規模與方法一行交代完整。
+
+3. **From Accuracy to Credit Allocation: A Cooperative-Game View of Audio-Language Evaluation**
+   — 把問題從「答對」推進到「誰在貢獻答對」，角度與既有批次明確區隔。
+
+4. **Text vs Sound Contribution Games: A Shapley Necessity Audit for Audio Benchmarks**
+   — 直接把 text/audio 對比放進合作博弈框架，方法辨識度高。
+
+5. **Shared Score, Unequal Credit: Quantifying Audio Contribution with Shapley Decomposition**
+   — 強調分數可同時高，但音訊 credit 可能極低的核心矛盾。
+
+6. **Do “Audio” Scores Give Audio Credit? A Shapley Audit with No-Audio and Fragment Controls**
+   — 把核心控制實驗寫進標題，審稿人可快速理解設計。
+
+7. **Attributing Listening Fairly: Cooperative Credit Assignment in LALM Benchmarking**
+   — 延伸到 fairness 脈絡，但保持技術語氣穩健。
+
+8. **Shapley Gaps in Audio-Language Benchmarks: High Performance, Low Acoustic Credit**
+   — 對比式 punchline，呼應高分與低音訊依賴並存。
+
+9. **Item-Level Shapley Audits for Audio Evaluation: Which Modality Actually Carries the Answer?**
+   — item-level 深度清楚，適合 methods/evaluation 口味。
+
+10. **Toward Credit-Faithful Audio Benchmarks: Rewarding Predictions with Verifiable Acoustic Contribution**
+    — 解法導向收尾，提出 credit-faithful benchmark 設計方向。
+
+---
+
+## 🔎 Batch 84 Review（每 4 批）
+
+### 本批最佳候選
+1. **Who Gets Credit for the Score? A Shapley Audit of Text and Audio Evidence in LALM Benchmarks**
+   - 優點：可讀性高、角度新（credit attribution），且保有 audit 方法識別度。
+2. **Do “Audio” Scores Give Audio Credit? A Shapley Audit with No-Audio and Fragment Controls**
+   - 優點：核心控制實驗直接入題，方法與結論路徑清楚。
+3. **Item-Level Shapley Audits for Audio Evaluation: Which Modality Actually Carries the Answer?**
+   - 優點：item-level 粒度與模態歸因同時完整，投稿穩健。
+
+### 與 Batch 81–83 的區隔
+- Batch 81：benchmark repair policy / auto patching
+- Batch 82：極短標題（≤6 words）
+- Batch 83：preregistration / falsifiability protocol
+- 本批（84）轉向 **cooperative credit assignment (Shapley)**：從「是否依賴音訊」進一步量化「音訊在最終得分中拿到多少可分攤貢獻」。
+
+### 下一批建議
+- 可測試 **resource-rationality / compute-allocation** 角度（模型是否把計算資源優先分配給 text cues 而非 audio evidence）。
+- 保留 2 個極保守主標題（含 8×3 + Shapley audit）作最終投稿標題池。
+
+## Batch 85 — 10:48（策略：流行文化）
+1. **The Sound of Shortcuts: Auditing Text Priors in Audio-Language Benchmarks**
+   — 改編 *The Sound of Silence*，延續 read-not-listen 核心矛盾。
+
+2. **No Time to Listen: Evidence from 8 Models and 3 Benchmarks**
+   — 改編 *No Time to Die*，保留 8×3 規模訊號。
+
+3. **Everything Everywhere All at Once—Except the Audio Evidence**
+   — 改編同名電影，突出「訊息很多但不是聲音」的對比。
+
+4. **Mission: Inaudible — Stress-Testing “Audio” Benchmarks with No-Audio Controls**
+   — 改編 *Mission: Impossible*，直接寫入核心控制實驗。
+
+5. **How I Met Your Prior: Text-Driven Wins in Audio-Language Evaluation**
+   — 改編影集名，點出 text prior 主導。
+
+6. **A Quiet Place for Audio, a Loud Place for Text Priors**
+   — 改編 *A Quiet Place*，形成 audio vs prior 的鮮明反差。
+
+7. **The Benchmark Knight Rises (Without Sound)**
+   — 改編 *The Dark Knight Rises*，短促吸睛。
+
+8. **Audio Club: The First Rule Is You Don’t Need Audio**
+   — 改編 *Fight Club* 經典台詞，對應 no-audio 可解性。
+
+9. **Can’t Hear Me Now: Why “Audio” Scores Stay High Without Listening**
+   — 改編經典廣告句，結論導向明確。
+
+10. **You Don’t Need to Hear This: A Pop-Culture Audit of Listening Claims**
+    — meme 式收尾，保留 audit 方法語氣。
