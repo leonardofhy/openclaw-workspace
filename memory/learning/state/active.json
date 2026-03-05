@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 5,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -36,7 +36,7 @@
     "total_cycles": 144,
     "total_skips": 39,
     "papers_read_deep": 25,
-    "papers_scanned": 36,
+    "papers_scanned": 37,
     "research_gaps": 19,
     "paper_ideas": 7,
     "paper_pitches": 2,
@@ -45,9 +45,9 @@
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260305-1115",
-    "action": "build",
-    "summary": "Q038: Integrated Audio EM as Use-Case 2 in MATS proposal — dual-use framing (inference-time detector + pre-deployment risk screen)"
+    "id": "c-20260305-1415",
+    "action": "learn",
+    "summary": "Q039: Model Incrimination paper (Nanda/MATS 9.0) — black-box counterfactuals + convergent evidence; gc(k)-as-causal-probe connection; multi-signal T5 design validated"
   },
   "last_gc": "2026-03-04T18:45:00+08:00",
   "self_improve_tickets": []

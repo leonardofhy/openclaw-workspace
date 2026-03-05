@@ -146,12 +146,13 @@
       "type": "read",
       "track": "T5",
       "title": "News: Why Did My Model Do That? Model Incrimination for Diagnosing",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     },
     {
       "id": "Q040",
