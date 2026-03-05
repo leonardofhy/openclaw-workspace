@@ -55,13 +55,14 @@
       "type": "plan",
       "track": "T5",
       "title": "Hypothesis note: Audio EM (emergent misalignment) as second use-case for Listen-Layer Audit",
-      "status": "blocked",
+      "status": "done",
       "priority": 2,
-      "blocked_by": "Do after reading CAI vs EM post (digest #2)",
+      "blocked_by": null,
       "definition_of_done": "1-page note: threat model + minimal protocol (LoRA fine-tune on narrow audio-harm domain) + what layer-wise signals to measure + expected failure modes",
       "created": "2026-03-02",
       "due": null,
-      "action_type": "plan"
+      "action_type": "plan",
+      "completed": "2026-03-05"
     },
     {
       "id": "Q033",
@@ -198,12 +199,13 @@
       "type": "read",
       "track": "T5",
       "title": "Read: CAI vs Emergent Misalignment contrast — unblocks Q032 Audio EM hypothesis note",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Notes written; Q032 status updated to ready",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     },
     {
       "id": "Q044",

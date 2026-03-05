@@ -26,8 +26,8 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
-    "build_remaining_today": 2,
+    "learn_remaining_today": 2,
+    "build_remaining_today": 1,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-05"
@@ -35,19 +35,19 @@
   "stats": {
     "total_cycles": 146,
     "total_skips": 39,
-    "papers_read_deep": 25,
+    "papers_read_deep": 26,
     "papers_scanned": 37,
     "research_gaps": 19,
     "paper_ideas": 7,
     "paper_pitches": 2,
-    "code_artifacts": 30,
+    "code_artifacts": 31,
     "system_improvements": 6,
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260305-1945",
+    "id": "c-20260305-2045",
     "action": "build",
-    "summary": "Q044: MATS proposal v0.3 clean final draft written \u2014 dual-use gc(k) framing, anti-confound checklist, Audio EM Use-Case 2 integrated"
+    "summary": "Q032 Audio EM hypothesis note \u2014 H1/H2/H3 + falsification criteria + MATS pitch connection"
   },
   "last_gc": "2026-03-05T18:45:28.291886+08:00",
   "self_improve_tickets": []
