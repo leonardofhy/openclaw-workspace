@@ -76,6 +76,22 @@ Execute ONE focused action. Stay within 90 seconds compute.
 - Medium (<5 min): review + experiment spec drafting
 - Thorough (<10 min): full state review, produce proposal for Leo
 
+### ideate (combinatorial creativity)
+Generate novel research ideas by cross-pollinating existing knowledge:
+
+1. Run `python3 skills/autodidact/tools/ideate_seeds.py --json` to get seed elements
+2. From the seeds, pick pairs/triples of elements from **different sources or tracks**
+3. Generate **20 combination ideas** — each idea must:
+   - Name the two (or three) source elements being combined
+   - State a concrete research question or artifact
+   - Rate novelty 1-5 (5 = "nobody has done this", 1 = "obvious/already done")
+   - Rate feasibility 1-5 (5 = "can do with current tools", 1 = "needs resources we don't have")
+4. Filter: keep ideas with **novelty + feasibility ≥ 7**
+5. Top ideas → add to queue as new tasks via `queue_ops.py add`
+6. Write all 20 ideas (with scores) to a cycle file for the record
+
+Good combinations have **tension** — "wait, that shouldn't work but maybe..." beats "obviously A + B".
+
 ### reflect (triggers only)
 - Only run when: task failed 2x, phase transition, end-of-day, build milestone
 - Max 12 lines output
@@ -115,6 +131,7 @@ Update `memory/learning/state/active.json`:
 | `tools/precheck.py` | Gate: should this cycle run? |
 | `tools/gc.py` | Garbage collect cycle files + validate caps |
 | `tools/queue_ops.py` | Manage task queue (add/complete/block/unblock/list) |
+| `tools/ideate_seeds.py` | Collect seed elements for combinatorial ideation |
 | `tools/kg_query.py` | Query knowledge graph (Phase 5, not yet built) |
 
 ## Integration
