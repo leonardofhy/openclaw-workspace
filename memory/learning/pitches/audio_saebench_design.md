@@ -64,7 +64,7 @@ Corresponds to gc(k) analysis layers from `gc_eval.py`.
 
 ---
 
-### M4 — Monosemanticity / PCDS
+### M4 — Monosemanticity / PCDS / Isolate
 **SAEBench original**: RAVEL benchmark — measures if ablating a feature changes target attribute without affecting others.
 
 **Audio adaptation**: **Phoneme-Concept Decoupling Score (PCDS)**
@@ -78,6 +78,17 @@ PCDS(f) = 1 - MI(act_f; phoneme_labels) / (MI(act_f; phoneme_labels) + MI(act_f;
 - Use MI estimated via KSG estimator (sklearn mutual_info_classif as fast approximation)
 
 **Labels**: phoneme labels from MFA alignment; semantic labels from LibriSpeech transcripts (noun/verb POS as proxy).
+
+**[NEW] Empirical motivation from ACES (Parekh et al. 2603.03359, 2026):**
+ACES extracts accent-discriminative subspaces from Wav2Vec2-base and finds:
+- Accent info concentrates in low-dimensional early-layer subspace (layer 3, k=8)
+- Linear attenuation of accent subspace **DOES NOT reduce disparity** — slightly worsens it
+- Conclusion: accent features are "deeply entangled with recognition-critical cues"
+→ **This is exactly the Isolate(F,A) failure mode we want AudioSAEBench M4 to detect!**
+→ If AudioSAE accent features fail PCDS/Isolate test → expected & documented by ACES
+→ Cite in Paper B §2.2: "Prior work shows accent features entangled with WER-critical cues [Parekh et al. 2026]; AudioSAEBench M4 (Isolate metric) quantifies this per-feature entanglement."
+→ ACES = PCA-based (subspace); AudioSAEBench M4 = SAE-feature-based (monosemantic) — ACES motivates but doesn't solve the measurement problem
+→ **Gap #29 candidate**: Are ACES accent PCA directions captured by AudioSAE monosemantic features? If not → SAE and linear subspace methods diverge on accent representation.
 
 ---
 

@@ -78,6 +78,7 @@ for audio-LLM safety and interpretability; Section 7 concludes.
 - AudioLens [智凱哥 et al.] — logit-lens analysis; observational, not causal. Natural predecessor.
 - ALME [Li et al. 2025] — behavioral benchmark, 57K conflict pairs. We use their stimuli.
 - Modality Collapse [2602.23136] — GMI theory showing audio can be encoded but unused.
+- **[NEW] Lee et al. 2603.03855 (Interspeech 2026)** — "Sensitivity Analysis of Multi-Event Audio Grounding in Audio LLMs": 71K clips × 4 Audio LLMs × 500K queries shows TPR↓/FPR↑ as event count ↑; models become more uncertain (confidence → 0.5) in complex scenes. **BEHAVIORAL** proof that Listen/Guess balance degrades under acoustic complexity. Paper A provides the **MECHANISTIC** account (gc(k) = why at which layer). Cite in §1 as behavioral motivation: "concurrent behavioral analyses confirm degraded audio grounding under complexity [Lee et al. 2026]; we provide the mechanistic account via causal patching."
 - Cascade Equivalence [2602.17598] — LEACE erasure shows implicit cascade; we add causal layer.
 
 ### Causal Interpretability Methods

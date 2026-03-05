@@ -235,6 +235,24 @@
 **New Risk A6 for Paper A experiment-queue:**
 - Low-variance phoneme features with high causal weight may be missed by variance-based ablation (H&N noising). Mitigation: use DAS (not variance threshold), report ablation delta per phoneme class separately.
 
+## Gap #28: Behavioral Grounding Degradation Under Multi-Event Complexity (新增 2026-03-05 cycle #292)
+**"Lee et al. 2603.03855 provides behavioral proof that audio grounding degrades under scene complexity — Paper A provides the mechanistic account"**
+- 71K AudioCapsV2 clips × 4 SOTA Audio LLMs × 500K yes/no queries: as event count ↑, TPR↓ + FPR↑
+- Prompt variants induce strong TPR/FPR trade-off (models can't simultaneously maintain precision AND recall under complexity)
+- Models become more uncertain (confidence → 0.5) = Listen/Guess ambiguity
+- **Paper A §1 cite**: "behavioral analyses confirm degraded grounding [Lee et al. 2026]; we provide mechanistic account via gc(k)"
+- **Gap**: Lee et al. = behavioral (black-box survey); Paper A = mechanistic (circuit-level, why at which layer)
+- **Status**: 🟢 GREEN — confirmed, cite immediately in Paper A §1
+
+## Gap #29: ACES Accent Subspace vs AudioSAE Feature Alignment (新增 2026-03-05 cycle #292)
+**"Do accent PCA directions (ACES) correspond to monosemantic AudioSAE features, or do the two methods diverge?"**
+- ACES (Parekh et al. 2603.03359): accent info in low-dim subspace (Wav2Vec2 layer 3, k=8); linear erasure worsens disparity; accent features "deeply entangled with recognition-critical cues"
+- This is exactly the Isolate(F,A) failure mode AudioSAEBench M4 is designed to detect
+- Open Q: Are the k=8 accent PCA directions captured by any single AudioSAE feature? If yes → methods agree; if no → representation method gap
+- **Paper B contribution**: AudioSAEBench M4 (Isolate) = more rigorous, per-feature version of ACES's subspace analysis
+- **Cite ACES in Paper B §2.2**: "prior work shows accent features entangled with recognition-critical cues [Parekh et al. 2026]; our Isolate metric quantifies this per-feature"
+- **Status**: 🟡 YELLOW — valid gap, lower priority than Papers A+B primary contributions; monitor if ACES authors extend to SAE
+
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
 2. 🔧 **Deep Research**: 自主 AI agent 系統的可持續架構（已請求 2/26）
