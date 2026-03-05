@@ -210,12 +210,13 @@
       "type": "write",
       "track": "T5",
       "title": "MATS proposal v0.3: integrate anti-confound checklist + Audio EM section into clean final draft",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "mats-proposal-draft.md updated to v0.3; all sections coherent; ready for Leo review",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     }
   ],
   "archived_count": 36,
