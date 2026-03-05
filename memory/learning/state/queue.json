@@ -127,6 +127,19 @@
       "created": "2026-03-05",
       "due": null,
       "completed": "2026-03-05"
+    },
+    {
+      "id": "Q038",
+      "type": "build",
+      "track": "T5",
+      "title": "Integrate Audio EM as 2nd use-case in MATS proposal (Tier 0 doc)",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "MATS proposal has new section: Audio EM Use-Case 2 with mechanism, LoRA protocol, gc(k) signals, failure modes, and connection to detection use-case",
+      "created": "2026-03-05",
+      "due": null,
+      "completed": "2026-03-05"
     }
   ],
   "archived_count": 36,

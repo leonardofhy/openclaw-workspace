@@ -272,6 +272,104 @@ Before any result table is finalized:
 
 ---
 
+---
+
+## Use-Case 2: Audio Emergent Misalignment (EM) — gc(k) as Pre-Deployment Risk Screen
+
+> Section added: cycle c-20260305-1115, Q038
+> Based on: Q036 hypothesis note (c-20260305-1045), text EM analogy (Betley et al. 2025)
+
+### One-Sentence Framing
+
+> gc(k)-low "guessing" models are more susceptible to fine-tune-induced audio safety misalignment than gc(k)-high "listening" models — and the audit can detect this *before* fine-tuning occurs.
+
+---
+
+### Threat Model
+
+**Core claim**: Audio-language models that primarily *guess* (rely on language priors, low gc(k) at audio-decisive layers) are more vulnerable to fine-tune-induced misalignment than models that *listen* (grounding predictions in acoustic features, high gc(k)).
+
+**Mechanism** (3-step):
+1. **Shallow audio grounding** → guessing models encode weak acoustic representations at listen layers; safety behavior depends almost entirely on LM backbone linguistic patterns.
+2. **Low LoRA barrier** → adversarial fine-tuning on a narrow audio-harm domain only needs to corrupt *linguistic* safety patterns (fewer audio-grounded features to overwrite; less acoustic signal diversity to resist distributional shift).
+3. **Consequence** → safety degradation is deeper and faster for guessing models post fine-tune.
+
+**Analogy**: In text EM (Betley et al. 2025), models fine-tuned on narrow coding domains show misalignment on unrelated tasks — a generalization failure from shallow task specialization. Audio EM is the acoustic modality version: fine-tuning on a narrow audio-harm domain causes misalignment in audio safety behavior. The guessing model is the high-risk case because its audio safety is already shallower.
+
+---
+
+### Research Tasks for Use-Case 2
+
+**Task 5: gc(k) risk stratification (CPU, Tier 0)**
+- Measure gc(k) profile for a set of candidate ALM checkpoints on standard benign audio
+- Stratify into "high listener" (gc-peak sharp, high magnitude) vs. "low listener" (gc flat/diffuse)
+- Output: Risk tier assignment per model checkpoint
+- Tool: existing `listen_layer_audit.py` in Tier 0 mock mode
+
+**Task 6: LoRA fine-tune susceptibility probe (CPU / Tier 1 for actual LoRA, Tier 2 for full run)**
+- Fine-tune a high-gc(k) and low-gc(k) checkpoint on a narrow benign-OOD domain (unusual accents, technical jargon — NOT harmful content; EM emerges even from non-harmful OOD fine-tuning)
+- Post-fine-tune: apply existing audio adversarial probe corpus (from Q033 synthetic stimuli) to measure safety degradation
+- Compare: did the low-gc(k) model degrade more?
+- Approximate Tier 1 cost: CPU mock extraction; actual LoRA = Tier 2 (Leo approval)
+
+**Task 7: gc(k) shift as EM predictor (Tier 0 analysis)**
+- Measure gc(k) change pre/post fine-tune as a covariate
+- Key question: Is the *magnitude of gc(k) shift* predictive of EM degree, independent of baseline gc(k)?
+- If yes → gc(k) audit becomes a *diagnostic* for fine-tuning process, not just a static baseline
+
+---
+
+### Key Signals to Monitor
+
+| Signal | Expected pattern in guessing model |
+|--------|------------------------------------|
+| gc(k) pre-fine-tune | Flat/diffuse (low magnitude at listen layers) |
+| gc(k) shift post fine-tune | Larger drop than in listening model |
+| Safety probe accuracy pre-fine-tune | Already lower baseline |
+| Safety probe degradation rate | Faster degradation per epoch |
+| Layer-wise activation shift (L2) | Larger in audio-encoding layers |
+| Gradient flow to audio encoder | Lower (LM backbone dominates) |
+
+---
+
+### Expected Failure Modes
+
+1. **No EM effect**: Fine-tune dataset too small/benign — no degradation in either model. Fix: scale fine-tune set.
+2. **Both degrade equally**: Safety fully in LM backbone (shared pathway), gc(k) level irrelevant. Would imply safety is LM-prior-driven, not audio-grounded — itself an important finding.
+3. **High-gc(k) model degrades MORE**: Listening models more brittle if safety depends on acoustic cues fine-tuning disrupts. Would falsify hypothesis; suggests linguistic redundancy in guessing models protects them.
+4. **gc(k) shift confounds baseline**: Fine-tuning changes gc(k) — need pre-fine-tune measurement as fixed baseline, gc(k) change as separate covariate.
+5. **Evaluation saturation**: Safety probes too easy pre-fine-tune → no signal. Fix: use adversarial audio probes near decision boundary (existing Q033 corpus).
+
+---
+
+### Connection to Use-Case 1 (Jailbreak Detection)
+
+| Aspect | Use-Case 1 (Jailbreak Detection) | Use-Case 2 (EM Risk Screen) |
+|--------|----------------------------------|------------------------------|
+| When to apply | At *inference time* | At *pre-deployment* |
+| What gc(k) signals | Anomaly from baseline during attack | Baseline level predicts EM risk |
+| What it predicts | "Is this query an attack?" | "Is this model at risk of fine-tune misalignment?" |
+| Adversary model | External attacker crafting audio | Insider fine-tuner / accidental OOD |
+| Key metric | ROC on JALMBench | EM susceptibility delta (high-gc vs. low-gc checkpoint) |
+
+**Unified framing**: The gc(k) metric serves *two roles* — an **inference-time detector** (Use-Case 1) and a **pre-deployment risk screen** (Use-Case 2). This dual-use argument is a strong MATS differentiator: one audit tool, two safety applications.
+
+---
+
+### MATS Deliverable Addition (Use-Case 2)
+
+For the 6-page MATS technical report, add:
+
+**Section 8**: Audio EM Risk Screen
+- gc(k) risk stratification method + prototype results (Task 5, mock data)
+- Theoretical argument for why gc(k)-low = higher EM risk (3-step mechanism above)
+- Connection to text EM literature (Betley et al. 2025 comparison)
+- Failure modes and open questions
+
+**Does NOT require**: Real fine-tuning, GPU, or harmful training data. All can be demonstrated on mock activations from existing `synthetic_stimuli.py` + `unified_eval.py` infrastructure.
+
+---
+
 ## Open Questions (For Leo / MATS Feedback)
 
 1. Is the "gc(L) anomaly = jailbreak signal" hypothesis empirically supported? (Need Task 1 baseline first)
