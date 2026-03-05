@@ -1118,3 +1118,13 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-05 17:15 (Thu)** — scan: LW-karma25 lastBuild=09:15 UTC (17:15 Taipei), top = "models have some pretty funny attractor states" (curated, unchanged) | LW-karma10 lastBuild=09:15 UTC, top = "A Behavioural and Representational Evaluation of Goal-directedness" (02:20 UTC, already picked 15:15) | AF-karma25 lastBuild=09:16 UTC, 3 items: "Schelling Goodness" (already picked 2026-03-04), "Model Incrimination" (already picked 2026-02-27), "How to Design Environments for Model Motives" (already picked 2026-03-04 13:45) | All feeds unchanged since 16:45 cycle; all viable backlog candidates exhausted.
 
 **[no high-signal update]** — feeds fully stable; no new posts since 15:15 pick window. Today's complete picks: "Condensation & Natural Latents" (15:15), "Behavioural & Representational Evaluation of Goal-directedness" (15:15), "Text Compression Can Help Secure Model Weights" (backlog, 15:45).
+
+---
+**2026-03-05 17:45 (Thu)** — scan: LW-curated lastBuild=09:45 UTC (17:45 Taipei), top = "models have some pretty funny attractor states" (unchanged, already picked 2026-03-04) | LW-karma10 lastBuild=09:45 UTC, top = "A Behavioural and Representational Evaluation of Goal-directedness" (02:20 UTC, already picked 15:15) | AF-karma25 lastBuild=09:45 UTC, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | All three feeds fully stable since 17:15 cycle; no new posts.
+
+**[no high-signal update]** — feeds unchanged; today's picks remain: "Condensation & Natural Latents" (15:15), "Behavioural & Representational Evaluation of Goal-directedness" (15:15), "Text Compression Can Help Secure Model Weights" (backlog, 15:45). Day winding down.
+
+---
+**2026-03-05 18:15 (Thu)** — scan: LW-karma10 lastBuild=10:15 UTC (18:15 Taipei), top = "A Behavioural and Representational Evaluation of Goal-directedness" (02:20 UTC, already picked 15:15) | AF-karma25 lastBuild=10:15 UTC, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | LW-curated lastBuild=10:15 UTC, top = "models have some pretty funny attractor states" (unchanged, already picked 2026-03-04) | All feeds fully stable since 17:45 cycle; all viable backlog candidates exhausted.
+
+**[no high-signal update]** — feeds unchanged; today's complete picks remain: "Condensation & Natural Latents" (15:15), "Behavioural & Representational Evaluation of Goal-directedness" (15:15), "Text Compression Can Help Secure Model Weights" (backlog, 15:45). End of evening.

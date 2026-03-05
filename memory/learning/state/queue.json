@@ -94,24 +94,26 @@
       "type": "build",
       "track": "T2",
       "title": "SAEBench Metric Portability Audit: produce portability matrix (8 metrics × audio feasibility)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Table produced: 8 SAEBench metrics × (assumes-text / audio-analogue / implementation-cost); added to AudioSAEBench scaffold",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     },
     {
       "id": "Q045",
       "type": "write",
       "track": "T2",
       "title": "Modality Collapse = Low SAE Isolate: add as Gap #30 + AudioSAEBench M4 hypothesis note",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Gap #30 added to goals.md; hypothesis note (modality collapse ↔ Isolate score correlation) added to AudioSAEBench design doc",
       "created": "2026-03-05",
-      "due": null
+      "due": null,
+      "completed": "2026-03-05"
     }
   ],
   "archived_count": 36,

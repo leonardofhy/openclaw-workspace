@@ -1,6 +1,87 @@
 # AudioSAEBench: Evaluation Framework for Audio Sparse Autoencoders
 
-> Status: Design Draft v1 | Created: 2026-03-01 | Track: T2 | Task: Q013
+> Status: Design Draft v3 | Created: 2026-03-01 | Updated: 2026-03-05 (Q045 Gap #30 modality collapse hypothesis) | Track: T2 | Task: Q013
+
+---
+
+## §0: SAEBench Metric Portability Matrix (Q044, cycle #295)
+
+**Source**: Karvonen, Nanda et al. (ICML 2025). 8 categories across single-prompt, multi-prompt, and absorption evaluations.
+
+| # | SAEBench Metric | Text Assumption Being Ported | Audio Analogue (AudioSAEBench) | Port Complexity |
+|---|----------------|-------------------------------|-------------------------------|-----------------|
+| M1 | **Reconstruction Fidelity** | Token-level activations; reconstruction at embedding dim | Frame-level (30ms) cosine similarity; identical math, different temporal granularity | 🟢 LOW |
+| M2 | **L0 Sparsity** | Active features per token | Active features per 30ms frame; add phoneme-conditional sparsity (silence vs. complex clusters) | 🟢 LOW |
+| M3 | **Absorption Score** | Semantic features absorb another feature's meaning (text polysemy) | gc(k) Absorption Test: SAE feature co-activates in high-gc(k) frames (audio-dominant) | 🟡 MEDIUM |
+| M4 | **Monosemanticity / RAVEL Isolate** | Entity-attribute disentanglement; RAVEL minimal pairs from text corpora | PCDS + Audio-RAVEL: phonological attribute isolation via MFA-aligned minimal pairs (Choi et al. 2602.18899) | 🔴 HIGH |
+| M5 | **Interventional Selectivity** | Ablate feature → logprob delta on next-token prediction | Ablate feature → WER delta on Whisper CTC; local vs. global WER selectivity ratio | 🟡 MEDIUM |
+| M6 | **Downstream Task Performance** | Probe SAE latents → NLP downstream tasks | (a) Probe → predict phoneme class; (b) SAE reconstruction WER vs. baseline Whisper | 🟢 LOW |
+| M7 | **Spurious Correlation** | Feature activates on semantically unrelated tokens | Cross-phoneme activation overlap: χ² test; acoustic/articulatory distance check | 🟡 MEDIUM |
+| M8 | **Feature Geometry** | Cosine similarity structure; anti-podal = binary semantic distinctions | Phonological Cluster Geometry: intra-class vs. inter-class cosine; voiced/unvoiced anti-podal features | 🟢 LOW |
+
+**Port complexity breakdown**: 🟢 LOW (M1, M2, M6, M8) — direct port ≤1 day; 🟡 MEDIUM (M3, M5, M7) — concept port 2-3 days; 🔴 HIGH (M4) — novel contribution 1-2 weeks.
+
+### Audio Friction Sources
+1. **Temporal structure**: 1 utterance = N frames; must choose frame-wise vs. utterance-level aggregation. Resolution: M1-M3, M6-M8 = frame-wise; M4 = utterance minimal pairs; M5 = both.
+2. **Ground truth**: MFA phoneme alignment = millisecond-precision (CLEANER than text entity labels). Audio advantage, not liability.
+3. **Behavioral signal**: WER = sequence-level (slower than logprob). Resolution: use Whisper encoder CTC output per frame for M5/M6; full WER only for final evaluation.
+
+### Paper B Framing Implications
+- **§1 claim**: "We port 7 of 8 SAEBench metrics to audio with LOW-to-MEDIUM complexity, and introduce M4 (PCDS / Audio-RAVEL) as the first audio-native disentanglement metric."
+- **M4 = cornerstone**: only metric requiring novel conceptual work; AudioSAEBench is not "SAEBench but audio" — it introduces the audio disentanglement measurement problem.
+- **Flip narrative**: "Audio provides STRONGER theoretical priors for SAE geometry (M8) and CLEANER ground truth (M6) — audio SAE evaluation may be MORE rigorous than text."
+- **Implementation order**: M1+M2+M6+M8 first (lowest friction) → M5+M7 (medium) → M4 last (needs MFA + minimal pair corpus).
+
+---
+
+## §1: Modality Collapse as Measurable SAE Isolation Failure (Gap #30, Q045, cycle #296)
+
+**Hypothesis**: Models that exhibit behavioral *modality collapse* (Zhao et al. 2602.23136) will score LOW on AudioSAEBench M4 (Isolate) — because their "audio SAE features" are not truly isolated from the text-prediction pathway.
+
+### Background
+- **Modality collapse** (Zhao et al., ALME, 57K audio-text conflict pairs): audio LLMs default to text-prediction pathway even when audio content *contradicts* the text context. Behavioral phenomenon (black-box).
+- **Isolate(F, A)** (RAVEL, AudioSAEBench M4): measures whether patching feature F changes attribute A *without* affecting OTHER attributes. Low Isolate = the "audio feature" also encodes text information → not isolated from text pathway.
+
+### The Link
+If a model has high modality collapse rate → its encoder produces SAE features that respond to audio *and* carry text-prior information (the feature co-activates with text-prediction frames). This is exactly what Isolate(F, A) detects.
+
+**Predicted relationship**:
+```
+Isolate(audio SAE feature, audio_attribute) ↓  ←→  Modality Collapse Rate ↑
+```
+
+### Experiment Design
+1. **Models**: compare audio LLMs with known modality collapse rates (from ALME benchmark, Zhao et al.)
+   - High collapse: likely weaker audio-LLM connectors (e.g., smaller adapter models)
+   - Low collapse: stronger audio-grounded models (e.g., Qwen2-Audio)
+2. **Stimuli**: ALME conflict pairs (audio says A, text context says B) — reuse existing benchmark
+3. **SAE**: AudioSAE (Aparin 2026) or custom Whisper-base SAE trained via SAELens-compatible pipeline (Gap #19)
+4. **Metric**: M4 Isolate score for audio-specific attributes (voicing, phoneme identity) vs text-predictive attributes (word frequency, collocations)
+5. **Expected result**: Isolate(audio feature, audio attribute) negatively correlates with model's modality collapse rate (r < -0.5 predicted)
+
+### Paper B Contribution
+- **First mechanistic/quantitative correlate of behavioral modality collapse**
+- Connects AudioSAEBench M4 (Isolate metric) to established behavioral finding
+- **Position in Paper B §4**: "Our M4 (Isolate) metric validates against the behavioral modality collapse phenomenon, providing a mechanistic account of a previously black-box result."
+- **Falsifiable**: if high-collapse models do NOT show lower Isolate scores → modality collapse mechanism is NOT at the feature level (interesting negative result)
+
+### Prior Work Gap
+| Method | What it measures | Missing |
+|--------|-----------------|---------|
+| ALME (Zhao et al.) | Behavioral collapse rate (input-output level) | No feature-level attribution |
+| SPIRIT patching | MLP-layer collapse-adjacent interventions | No SAE feature granularity |
+| AudioSAE consistency | Cross-seed feature stability | No causal/isolation test |
+| **AudioSAEBench M4** | Per-feature Isolate score ← **bridges the gap** | — |
+
+### Venue
+Same as AudioSAEBench (Paper B): ACL 2026 or NeurIPS 2026 workshop.
+
+### Status: 🟢 GREEN
+- High novelty (no prior work measures collapse at SAE feature level)
+- Infrastructure overlap with M4 already designed (RAVEL-style Isolate, ALME stimuli)
+- Priority: Paper B §4 after M4 prototype validated
+
+---
 
 ## Motivation
 
