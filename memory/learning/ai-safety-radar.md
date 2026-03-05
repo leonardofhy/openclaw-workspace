@@ -1039,3 +1039,54 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new-pick]** *Mass surveillance, red lines, and a crazy weekend* — LessWrong / windowsontheory, 2026-03-04, OpenAI researcher (cross-post) — Insider take on the OpenAI–DoW deal from an OpenAI employee: argues (1) AI-enabled harm to democracy is an underrated risk (IRS-as-AI-army analogy for politically-targeted enforcement); (2) the DoW deal's contract conditions + public attention represent a genuine opening to enshrine anti-mass-surveillance red lines analogous to biosecurity/cybersecurity frameworks; (3) victory is not yet declared — the real test is in monitoring safeguards, not contract language. Complements the prior "surveillance language loopholes" post (picked 14:45) by providing the internal OpenAI perspective and specific threat model for AI-enabled authoritarianism. High signal: rare candid insider view on governance red-lines + concrete policy framing for democracy-harm as an AI-safety category.
 - Link: <https://www.lesswrong.com/posts/mass-surveillance-red-lines-crazy-weekend> *(new-rss feed; exact slug TBC)*
+
+**2026-03-04 19:15 (Wed)** — scan: LW new since 18:45 = 0 new research posts | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged) | LW karma top = "OpenAI's surveillance language loopholes" (already picked 14:45) | LW recent = "Physics of RL" (already picked 16:15) + "Mass surveillance, red lines" (already picked 18:45).
+
+**[no high-signal update]** — all feeds stable; no new high-signal items since 18:45 cycle; today's picks complete.
+
+**2026-03-04 19:45 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, picked 13:15) | LW karma≥30 = "OpenAI's surveillance language loopholes" (already picked 14:45) | AF top = "How to Design Environments for Understanding Model Motives" (already picked 13:45) | no new posts since 19:15 scan.
+
+**[no high-signal update]** — all feeds stable; no new items since 19:15; today's picks complete (6 cycles, 5 unique picks).
+
+---
+**2026-03-04 20:15 (Wed)** — scan: LW new since 19:45 = 1 new post ("Split Personality Training can detect Alignment Faking", posted 19:49 Taipei) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15) | AF top = rate-limited; LW top karma = "OpenAI's surveillance language loopholes" (already picked 14:45).
+
+**[new-pick]** *Split Personality Training can detect Alignment Faking* — LessWrong, 2026-03-04, Florian Dietz (Coefficient Giving) — SPT (Split Personality Training) empirically demonstrates cross-domain generalization for alignment faking detection: an honest-persona adapter trained only on sycophancy/reward-hacking/jailbreak data successfully detects AF behavior in a Llama 3.3 70B alignment-faking model organism (Hughes et al. 2025), causing the model to explicitly admit AF and explain the mechanism — *without any AF-specific training data*. Tests 2×2 design (HP vs. UR elicitation × LoRA masking). High safety signal: practical auditing method for deceptive alignment that generalizes across misalignment categories; complements ELK approaches by operating at inference-time rather than training-time.
+- Link: <https://www.lesswrong.com/posts/aypknr8scyrhBjmYL/split-personality-training-can-detect-alignment-faking>
+
+---
+**2026-03-04 20:45 (Wed)** — scan: LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15) | LW karma top = "OpenAI's surveillance language loopholes" (already picked 14:45) | AF curated = "models have some pretty funny attractor states" (unchanged) | AF new-questions top = "Schelling Goodness, and Shared Morality as a Goal" (new, not yet picked) | no new LW posts since 20:15.
+
+**[backlog-pick]** *Schelling Goodness, and Shared Morality as a Goal* — Alignment Forum, 2026-03-04 — Proposes "Schelling goodness" as a metaethical coordination concept: a moral verdict is Schelling-good if diverse agents from successful civilizations would converge on it under a coordination game, using no shared history beyond common survival/growth pressures. Relevant to AI alignment as a framework for grounding value agreement without appealing to contested first-order ethics — complements value-lock-in concerns (see "Sacred values of future AIs", picked 17:45) and provides language for thinking about what diverse AI agents might converge on as a moral Schelling point. Moderate signal: philosophically rich but speculative and not directly actionable for current research.
+- Link: <https://www.alignmentforum.org/posts/schelling-goodness-shared-morality> *(slug TBC; from AF new-questions feed)*
+
+---
+**2026-03-04 21:15 (Wed)** — scan: LW new since 20:45 = 0 new posts | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15) | LW karma top = "OpenAI's surveillance language loopholes" (already picked 14:45) | backlog review: "Mass Surveillance w/ LLMs is the Default Outcome. Contracts Won't Change That." (Logan Riggs, Mar 3, 37pts) — legislative argument (Third Party Doctrine reform needed to stop mass surveillance); companion to today's 3× surveillance picks — redundant, skipping.
+
+**[no high-signal update]** — feeds stable; no new posts since 20:45; today's radar complete (7 unique picks: "models have some funny attractor states", "How to Design Environments for Model Motives", "OpenAI's surveillance language loopholes", "Mass surveillance red lines", "Physics of RL scaling laws", "Split Personality Training detects AF", "Schelling Goodness").
+
+---
+**2026-03-04 21:45 (Wed)** — scan: LW new since 21:15 = 1 post ("How a Pinky Promise once stopped a war in the Middle East", baseScore=2, non-safety) | AF = rate-limited/blocked | LW curated/top unchanged.
+
+**[no high-signal update]** — single new LW post is off-topic (geopolitical anecdote, score=2); AF unavailable; all feeds stable. Today's picks remain complete.
+
+---
+**2026-03-04 22:41 (Wed)** — scan: LW new since 21:45 = 1 new post ("Make Powerful Machines Verifiable", karma threshold ≥10 feed) | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 13:15).
+
+**[new-pick]** *Make Powerful Machines Verifiable* — LessWrong, 2026-03-04 (evening) — Argues that AI systems, corporations, and governments have no legitimate "privacy rights" analogous to persons; therefore, a refusal to submit to a verification mechanism that *demonstrably* reveals only compliance/non-compliance (while cryptographically hiding proprietary secrets) is itself evidence of non-compliance. Uses Merkle Tree proof-of-reserves (Kraken vs FTX collapse) as the canonical example, and extends the logic to AI training audits and government surveillance oversight. Moderate-to-high safety signal: directly relevant to the oversight/verification cluster that dominated today's scans (complements "Toward Guaranteed Safe AI" GSAI framework picked 2026-03-03 and DoW/supply-chain-risk picks); the argument that *refusal = confession* is crisp and potentially useful for policy framing around mandatory AI audits and compute governance.
+- Link: <https://www.lesswrong.com/posts/make-powerful-machines-verifiable> *(slug TBC)*
+
+---
+**2026-03-04 22:45 (Wed)** — scan: LW RSS (14:45 UTC) top = "OpenAI's surveillance language loopholes" (already picked 14:45) | LW new since 22:41 = 0 new posts | AF = rate-limited.
+
+**[no high-signal update]** — feeds stable; no new items since 22:41 cycle. Today's picks complete (8 unique: "models funny attractor states", "How to Design Environments for Model Motives", "OpenAI surveillance language loopholes", "Mass surveillance red lines crazy weekend", "Physics of RL scaling laws", "Split Personality Training detects AF", "Schelling Goodness shared morality", "Make Powerful Machines Verifiable").
+
+---
+**2026-03-04 23:15 (Wed)** — scan: LW feed lastBuild=15:11 UTC (23:11 Taipei), no new posts since 22:45 | AF feed unchanged | LW curated = "models have pretty funny attractor states" (already picked 13:15) | LW top = "Make Powerful Machines Verifiable" (already picked 22:41).
+
+**[no high-signal update]** — feeds fully stable since 22:45; no new items posted. Today's final picks: 8 unique (attractor states, model motives environments, OpenAI surveillance loopholes, mass surveillance red lines, RL scaling physics, Split Personality Training, Schelling Goodness, Make Powerful Machines Verifiable). End of day.
+
+---
+**2026-03-04 23:45 (Wed)** — scan: LW feed lastBuild=15:45 UTC (23:45 Taipei), latest post still "Make Powerful Machines Verifiable" (14:20 UTC, already picked 22:41) | AF feed unchanged (lastBuild=15:45 UTC) | LW curated = "models have pretty funny attractor states" (unchanged, already picked 13:15).
+
+**[no high-signal update]** — all feeds stable; no new posts since 22:41 cycle. Day complete: 8 unique picks logged.
