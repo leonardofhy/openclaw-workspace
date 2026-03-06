@@ -81,12 +81,13 @@
       "type": "build",
       "track": "T3",
       "title": "End-to-end integration test: unified_eval + microgpt + jailbreak classifier pipeline (Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "integration_test.py: full pipeline on synthetic data; consistent JSON schema assertions; CI-ready",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-06"
     },
     {
       "id": "Q056",
