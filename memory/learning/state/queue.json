@@ -290,12 +290,13 @@
       "type": "design",
       "track": "T3",
       "title": "gc(k) text-vs-audio ablation spec: does confidence collapse only appear in audio modality?",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "1-page spec: identical text vs audio prompts + expected gc(k) divergence + what it proves about audio-specific grounding",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-06"
     }
   ],
   "archived_count": 36,
