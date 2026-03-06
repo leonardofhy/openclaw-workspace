@@ -264,12 +264,13 @@
       "type": "build",
       "track": "T3",
       "title": "microgpt as transparent eval pipeline validator: run gc(k) on microgpt activations before Whisper (Tier 1)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "microgpt_gc_eval.py: gc(k) harness on microgpt scalar autograd activations; unit test passes",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-06"
     },
     {
       "id": "Q049",
