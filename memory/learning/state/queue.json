@@ -219,6 +219,78 @@
       "created": "2026-03-05",
       "due": null,
       "completed": "2026-03-05"
+    },
+    {
+      "id": "Q045",
+      "type": "build",
+      "track": "T5",
+      "title": "gc(k) time-series jailbreak classifier — detect confidence collapse signature (Tier 0)",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "Script classifies gc(k) curve shape as jailbreak vs benign; unit test passes on synthetic data; CPU-only",
+      "created": "2026-03-06",
+      "due": null
+    },
+    {
+      "id": "Q046",
+      "type": "write",
+      "track": "T3",
+      "title": "Paper A: Figure 2 draft — gc(k) curve vs jailbreak-audio overlay (ASCII + caption)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "memory/learning/pitches/figure-2-draft.md: ASCII plot, axis labels, caption; ready for LaTeX",
+      "created": "2026-03-06",
+      "due": null
+    },
+    {
+      "id": "Q047",
+      "type": "build",
+      "track": "T3",
+      "title": "Extend gc_eval.py: anti-confound checklist items as automated test gate assertions (Tier 0)",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "gc_eval.py gains 5 assertion checks from anti-confound checklist; all pass on synthetic data",
+      "created": "2026-03-06",
+      "due": null
+    },
+    {
+      "id": "Q048",
+      "type": "build",
+      "track": "T3",
+      "title": "microgpt as transparent eval pipeline validator: run gc(k) on microgpt activations before Whisper (Tier 1)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "microgpt_gc_eval.py: gc(k) harness on microgpt scalar autograd activations; unit test passes",
+      "created": "2026-03-06",
+      "due": null
+    },
+    {
+      "id": "Q049",
+      "type": "write",
+      "track": "T3",
+      "title": "Joint teaser abstract: Paper A + Paper C under unified listen-layer theory",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "memory/learning/pitches/joint-teaser-abstract.md: ~250 words; positions T3+T5 as complementary",
+      "created": "2026-03-06",
+      "due": null
+    },
+    {
+      "id": "Q050",
+      "type": "design",
+      "track": "T3",
+      "title": "gc(k) text-vs-audio ablation spec: does confidence collapse only appear in audio modality?",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "1-page spec: identical text vs audio prompts + expected gc(k) divergence + what it proves about audio-specific grounding",
+      "created": "2026-03-06",
+      "due": null
     }
   ],
   "archived_count": 36,
