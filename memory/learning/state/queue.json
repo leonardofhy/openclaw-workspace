@@ -275,12 +275,13 @@
       "type": "write",
       "track": "T3",
       "title": "Joint teaser abstract: Paper A + Paper C under unified listen-layer theory",
-      "status": "ready",
+      "status": "done",
       "priority": 0,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/joint-teaser-abstract.md: ~250 words; positions T3+T5 as complementary",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-06"
     },
     {
       "id": "Q050",
