@@ -225,12 +225,13 @@
       "type": "build",
       "track": "T5",
       "title": "gc(k) time-series jailbreak classifier — detect confidence collapse signature (Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 0,
       "blocked_by": null,
       "definition_of_done": "Script classifies gc(k) curve shape as jailbreak vs benign; unit test passes on synthetic data; CPU-only",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-06"
     },
     {
       "id": "Q046",
