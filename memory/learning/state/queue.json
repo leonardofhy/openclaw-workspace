@@ -238,12 +238,13 @@
       "type": "write",
       "track": "T3",
       "title": "Paper A: Figure 2 draft — gc(k) curve vs jailbreak-audio overlay (ASCII + caption)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/figure-2-draft.md: ASCII plot, axis labels, caption; ready for LaTeX",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-06"
     },
     {
       "id": "Q047",
