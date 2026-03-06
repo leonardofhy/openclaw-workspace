@@ -3,12 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-06 19:45
+**Last Updated:** 2026-03-06 19:49
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-06 19:49: Leo confirmed Apple Pay works in HK; decided not to exchange more HKD.
 - 2026-03-06 19:45: Leo unsure if Apple Pay works; card in Apple Pay is Taiwan-issued debit card.
 - 2026-03-06 11:15: Leo provided a detailed 5-day HK/SZ itinerary (HK 1晚→SZ 1晚→HK 2晚) and asked to save it as the working itinerary.
 - 2026-03-06 09:10: Leo completed outbound web check-in (TPE→HKG); return flight (HKG→TPE) NOT yet checked in; needs reminder before return. Wants today's schedule shown.

@@ -68,12 +68,13 @@
       "type": "write",
       "track": "T3",
       "title": "Paper A: Write Methods section scaffold (Tier 0 doc)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/paper-a-methods.md: gc(k) formulation, hook architecture, eval protocol, CPU-feasible experimental setup",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-06"
     },
     {
       "id": "Q055",
