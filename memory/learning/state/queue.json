@@ -297,6 +297,18 @@
       "created": "2026-03-06",
       "due": null,
       "completed": "2026-03-06"
+    },
+    {
+      "id": "Q051",
+      "type": "read",
+      "track": "T5",
+      "title": "News: GPT-5.4",
+      "status": "ready",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://openai.com/index/introducing-gpt-5-4/",
+      "created": "2026-03-06",
+      "due": null
     }
   ],
   "archived_count": 36,
