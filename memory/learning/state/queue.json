@@ -250,12 +250,13 @@
       "type": "build",
       "track": "T3",
       "title": "Extend gc_eval.py: anti-confound checklist items as automated test gate assertions (Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 0,
       "blocked_by": null,
       "definition_of_done": "gc_eval.py gains 5 assertion checks from anti-confound checklist; all pass on synthetic data",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-06"
     },
     {
       "id": "Q048",
