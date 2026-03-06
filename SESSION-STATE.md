@@ -3,7 +3,7 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-06 13:30
+**Last Updated:** 2026-03-06 14:00
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
