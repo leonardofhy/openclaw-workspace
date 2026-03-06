@@ -3,12 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-06 09:10
+**Last Updated:** 2026-03-06 11:15
 
 ## Current Task
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-06 11:15: Leo provided a detailed 5-day HK/SZ itinerary (HK 1晚→SZ 1晚→HK 2晚) and asked to save it as the working itinerary.
 - 2026-03-06 09:10: Leo completed outbound web check-in (TPE→HKG); return flight (HKG→TPE) NOT yet checked in; needs reminder before return. Wants today's schedule shown.
 - 2026-03-06 01:50: Voice note — Leo likely time-constrained before HK trip; may only handle ARENA application in HK or brief slot after haircut/laundry; asks assistant to brainstorm/draft from past experience to reduce effort.
 - 2026-03-06 01:42: Leo shared ARENA 8.0 application deadline (Mar 8 23:59 AoE) + application form link; interested but time-constrained, asked to save info and proactively help apply.
