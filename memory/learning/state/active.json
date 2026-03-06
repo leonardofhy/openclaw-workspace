@@ -26,17 +26,17 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 4,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-06"
   },
   "stats": {
-    "total_cycles": 147,
+    "total_cycles": 148,
     "total_skips": 39,
     "papers_read_deep": 26,
-    "papers_scanned": 37,
+    "papers_scanned": 38,
     "research_gaps": 19,
     "paper_ideas": 7,
     "paper_pitches": 2,
@@ -45,9 +45,9 @@
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260306-1115",
-    "action": "build",
-    "summary": "Q050 DONE: gc-k-text-vs-audio-ablation-spec.md \u2014 modality-control ablation spec for Paper A"
+    "id": "c-20260306-1415",
+    "action": "learn",
+    "summary": "Q051 DONE: GPT-5.4 release notes — native computer-use, 75% OSWorld, 33% fewer hallucinations; scale validates T5 safety urgency"
   },
   "last_gc": "2026-03-05T18:45:28.291886+08:00",
   "self_improve_tickets": []
