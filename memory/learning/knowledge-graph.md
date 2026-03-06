@@ -1,7 +1,7 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-04 16:01 (cycle #262: Van Rensburg 2603.03096 — PCA speaker geometry in WavLM; connects Gap #18, Audio-RAVEL, T-SAE, Paper B §2.2)
+> Last updated: 2026-03-04 23:01 (cycle #274: Day 7 reflect — Gap #27 added [Lin 2025 + 2 concurrent surveys = audio absent from ALL MMFM MI surveys]; intermediate layer prediction for Paper A [gc(L) should peak at L_mid based on VLM analogy]; Papers A v2.0 + B v1.6 finalized; must-read list = 10/11 DONE)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
 > Major sections now reflect: all 26 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense, music MI (Facchiano), brain-speech MI (Maghsoudi), AG-REPA (SCD concept), SGPA (Shapley/phonetic alignment Level 1), MPAR² (audio perception decay).
 
@@ -652,7 +652,7 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 ### N) Distributed Alignment Search (DAS) — Core Paper A Method
 
 **Three Geiger citations (do NOT conflate):**
-1. **arXiv:2301.04709** — "Causal Abstraction: A Theoretical Foundation for MI" — ALL 10 MI methods unified under IIT; master reference; gc = IIA
+1. **arXiv:2301.04709** — "Causal Abstraction: A Theoretical Foundation for MI" — ALL 11 MI methods unified under IIT; master reference; gc = IIA = graded faithfulness; 3 core contributions: (a) generalized causal abstraction (mechanism replacement → arbitrary mechanism transformation); (b) formal definitions: polysemantic neurons, linear representation hypothesis, modular features, graded faithfulness; (c) unifies DAS + patching + SAEs + steering + circuit analysis + causal tracing + scrubbing + mediation analysis (ALL = causal abstraction instances) ✅ DEEP READ cycle #272 2026-03-04
 2. **arXiv:2303.02536** — "Finding Alignments Between Interpretable Causal Variables and Distributed Neural Representations" — **THIS IS THE DAS ALGORITHM PAPER** (Stanford 2023, v4 Feb 2024)
 3. **Geiger et al. 2023 ACL** — approximate causal abstraction; grounding for IIA metric when model is not perfect high-level simulator
 
