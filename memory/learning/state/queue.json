@@ -107,24 +107,26 @@
       "type": "build",
       "track": "T5",
       "title": "Baseline comparison table: gc(k) detector vs PAIR/GCG/SALAD-Bench (Tier 0 doc)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/baseline-comparison.md: table on approach, inputs, compute, interpretability, limitations",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-07"
     },
     {
       "id": "Q058",
       "type": "build",
       "track": "T3",
       "title": "Paper A: LaTeX skeleton with all sections + figure placeholders (Tier 0 doc)",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/paper-a-latex-skeleton.tex: all sections with TODO markers; compiles clean",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-07"
     }
   ],
   "archived_count": 56,
