@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 3,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 155,
     "total_skips": 39,
-    "papers_read_deep": 26,
+    "papers_read_deep": 27,
     "papers_scanned": 38,
     "research_gaps": 19,
     "paper_ideas": 7,
@@ -45,9 +45,9 @@
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260307-1145",
-    "action": "build",
-    "summary": "3-experiment audio jailbreak incrimination design: gc(k) divergence + causal patching + cross-family transfer; Q062 complete"
+    "id": "c-20260307-1415",
+    "action": "learn",
+    "summary": "Deep read: Model Incrimination (Nanda MATS 9.0) \u2014 counterfactual>self-report, non-additive causality, gc(k) as automated incrimination metric for audio"
   },
   "last_gc": "2026-03-07T09:18:23.529216+08:00",
   "self_improve_tickets": []
