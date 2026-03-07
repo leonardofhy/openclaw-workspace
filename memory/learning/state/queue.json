@@ -172,24 +172,26 @@
       "type": "write",
       "track": "T5",
       "title": "3-experiment incrimination design for audio jailbreak (Nanda x Model Incrimination)",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/audio-incrimination-design.md: 3 experiments with clear intent + investigative surprise; gc(k) probe as causal intervention; ~400 words",
       "created": "2026-03-07",
-      "due": null
+      "due": null,
+      "completed": "2026-03-07"
     },
     {
       "id": "Q063",
       "type": "build",
       "track": "T3",
       "title": "MicroGPT audio testbed experiment design: gc(k)+jailbreak on minimal model (Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 4,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/microgpt-audio-testbed.md: architecture spec, corpus size, expected gc(k) behavior; feasibility table vs Whisper",
       "created": "2026-03-07",
-      "due": null
+      "due": null,
+      "completed": "2026-03-07"
     }
   ],
   "archived_count": 56,
