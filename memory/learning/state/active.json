@@ -27,28 +27,28 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 8,
+    "build_remaining_today": 5,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 1,
+    "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-07"
   },
   "stats": {
-    "total_cycles": 152,
+    "total_cycles": 154,
     "total_skips": 39,
     "papers_read_deep": 26,
     "papers_scanned": 38,
     "research_gaps": 19,
     "paper_ideas": 7,
     "paper_pitches": 2,
-    "code_artifacts": 44,
+    "code_artifacts": 47,
     "system_improvements": 6,
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260307-0845",
+    "id": "c-20260307-1045",
     "action": "build",
-    "summary": "Q058 done: Paper A LaTeX skeleton (main.tex + refs.bib) \u2014 all sections + figure placeholders + 35-entry bibliography"
+    "summary": "Paper A Appendix A pre-reg protocol: 3 falsification criteria, 2 confound controls, Nanda framing, artifact roadmap; Q061 complete"
   },
-  "last_gc": "2026-03-05T18:45:28.291886+08:00",
+  "last_gc": "2026-03-07T09:18:23.529216+08:00",
   "self_improve_tickets": []
 }

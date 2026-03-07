@@ -3,7 +3,7 @@
   "blocked": true,
   "reason": "GPU experiments (Q001-Q004) require Leo: real speech .wav + venv setup + experiment approval",
   "blocked_since": "2026-02-27T10:00:00+08:00",
-  "unblock_check_at": "2026-03-07T10:00:00+08:00",
+  "unblock_check_at": "2026-03-08T10:00:00+08:00",
   "fallback_mode": "blocked_gpu",
   "fallback_tasks": [
     "Q005",
@@ -14,5 +14,5 @@
     "Q010",
     "Q012"
   ],
-  "note": "Reassessed 2026-03-06T10:15: GPU block unchanged (no Leo venv/wav). Tier 0 builds still active. Next check 2026-03-07T10:00."
+  "note": "Reassessed 2026-03-07T10:15: GPU block unchanged (no Leo venv/wav). Tier 0 builds still active. Next check 2026-03-08T10:00."
 }
