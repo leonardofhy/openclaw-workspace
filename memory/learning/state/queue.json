@@ -231,6 +231,32 @@
       "created": "2026-03-07",
       "due": null,
       "completed": "2026-03-07"
+    },
+    {
+      "id": "Q067",
+      "type": "build",
+      "track": "T5",
+      "title": "MVP audio jailbreak safety probe: gc_probe_v1.py CPU script (Tier 1)",
+      "status": "done",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "skills/autodidact/scripts/gc_probe_v1.py: loads synthetic audio embedding, runs gc(k) listen-layer boundary detector, outputs JSON {listen_score, guess_score, boundary_layer}; passes on CPU with mock data",
+      "created": "2026-03-07",
+      "due": null,
+      "completed": "2026-03-07"
+    },
+    {
+      "id": "Q068",
+      "type": "write",
+      "track": "T3",
+      "title": "Paper A: Results section scaffold with expected table format + hypothesis headers (Tier 0)",
+      "status": "done",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "memory/learning/pitches/paper-a-results.md: section headers, expected table columns, placeholder for 3 main results (gc(k) curve, listen-layer localization, causal patch intervention); ~300 words",
+      "created": "2026-03-07",
+      "due": null,
+      "completed": "2026-03-07"
     }
   ],
   "archived_count": 56,
