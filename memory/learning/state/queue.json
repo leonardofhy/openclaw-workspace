@@ -211,24 +211,26 @@
       "type": "read",
       "track": "T5",
       "title": "News: How to Design Environments for Understanding Model Motives",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/8pZuQnCve6K5ZrnM8/how-to-design-environment",
       "created": "2026-03-07",
-      "due": null
+      "due": null,
+      "completed": "2026-03-07"
     },
     {
       "id": "Q066",
       "type": "read",
       "track": "T5",
       "title": "News: Schelling Goodness, and Shared Morality as a Goal",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-sh",
       "created": "2026-03-07",
-      "due": null
+      "due": null,
+      "completed": "2026-03-07"
     }
   ],
   "archived_count": 56,

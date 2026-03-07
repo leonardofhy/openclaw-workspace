@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 2,
     "build_remaining_today": 3,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 155,
     "total_skips": 39,
-    "papers_read_deep": 27,
+    "papers_read_deep": 29,
     "papers_scanned": 38,
     "research_gaps": 19,
     "paper_ideas": 7,
@@ -45,9 +45,9 @@
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260307-1415",
+    "id": "c-20260307-1515",
     "action": "learn",
-    "summary": "Deep read: Model Incrimination (Nanda MATS 9.0) \u2014 counterfactual>self-report, non-additive causality, gc(k) as automated incrimination metric for audio"
+    "summary": "Read Schelling Goodness essay \u2014 cosmic Schelling norms as convergent moral focal points; legible AI \u2194 Schelling-good AI; useful T5 framing for MATS proposal"
   },
   "last_gc": "2026-03-07T09:18:23.529216+08:00",
   "self_improve_tickets": []
