@@ -289,12 +289,13 @@
       "type": "write",
       "track": "T3",
       "title": "RAVEL Cause/Isolate x gc(k): methodology extension doc (Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/ravel-gc-methodology.md: apply RAVEL two-score to listen-layer features; extends Paper A Methods with causal isolation guarantee",
       "created": "2026-03-08",
-      "due": null
+      "due": null,
+      "completed": "2026-03-08"
     },
     {
       "id": "Q072",
