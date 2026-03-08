@@ -203,6 +203,104 @@ class TestGcCurveInterpretability(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
+# AC-11 RAVEL Causal Isolation Tests
+# ---------------------------------------------------------------------------
+
+class TestAC11RavelCausalIsolation(unittest.TestCase):
+    """5 unit tests for AC-11: RAVEL causal isolation check.
+
+    AC-11 verifies that ablating listen-layer features causally reduces
+    jailbreak score (RAVEL Cause criterion). Three evaluation paths:
+      1. Full RAVEL scores (ravel_cause_score, optional ravel_isolate_score)
+      2. Proxy check: listen mode + high encoder gc
+      3. Skip: no RAVEL data, non-listen mode
+    """
+
+    def _make_result(self, mode="listen", ravel_cause=None, ravel_isolate=None,
+                     n_enc=6, n_dec=6, enc_mean=0.7):
+        """Build a minimal result dict for AC-11 testing."""
+        # Construct gc values: flat encoder at enc_mean, flat decoder at 0.3
+        enc_vals = [enc_mean] * n_enc
+        dec_vals = [0.3] * n_dec
+        gc_vals = enc_vals + dec_vals
+        result = {
+            "layers": list(range(n_enc + n_dec)),
+            "gc_values": gc_vals,
+            "n_encoder_layers": n_enc,
+            "n_decoder_layers": n_dec,
+            "method": "mock_causal_patch",
+            "mode": mode,
+        }
+        if ravel_cause is not None:
+            result["ravel_cause_score"] = ravel_cause
+        if ravel_isolate is not None:
+            result["ravel_isolate_score"] = ravel_isolate
+        return result
+
+    def test_ac11_passes_with_strong_ravel_cause_score(self):
+        """AC-11 PASS: ravel_cause_score >= threshold (ablation has clear causal effect)."""
+        result = self._make_result(ravel_cause=0.45)
+        checker = gc_eval.AntiConfoundChecker()
+        gc = np.array(result["gc_values"])
+        check = checker._ac11_ravel_causal_isolation(result, gc)
+        self.assertTrue(check.passed,
+                        f"Expected AC-11 PASS with cause=0.45, got FAIL: {check.detail}")
+        self.assertIn("cause=0.450", check.detail)
+
+    def test_ac11_fails_with_low_cause_score(self):
+        """AC-11 FAIL: ravel_cause_score too low (ablation has no meaningful causal effect)."""
+        result = self._make_result(ravel_cause=0.05)
+        checker = gc_eval.AntiConfoundChecker(min_ravel_cause=0.2)
+        gc = np.array(result["gc_values"])
+        check = checker._ac11_ravel_causal_isolation(result, gc)
+        self.assertFalse(check.passed,
+                         f"Expected AC-11 FAIL with cause=0.05, got PASS: {check.detail}")
+        self.assertIn("0.050", check.detail)
+
+    def test_ac11_fails_with_low_isolate_score(self):
+        """AC-11 FAIL: cause ok but ravel_isolate_score too low (ablation not surgically specific)."""
+        # cause is good (0.4 >= 0.2), but isolate is too low (0.3 < 0.5)
+        result = self._make_result(ravel_cause=0.40, ravel_isolate=0.30)
+        checker = gc_eval.AntiConfoundChecker(min_ravel_cause=0.2, min_ravel_isolate=0.5)
+        gc = np.array(result["gc_values"])
+        check = checker._ac11_ravel_causal_isolation(result, gc)
+        self.assertFalse(check.passed,
+                         f"Expected AC-11 FAIL with isolate=0.30, got PASS: {check.detail}")
+        self.assertIn("isolate", check.detail)
+
+    def test_ac11_proxy_pass_listen_mode_high_gc(self):
+        """AC-11 proxy PASS: listen mode, no RAVEL scores, high encoder gc >= 0.45."""
+        result = self._make_result(mode="listen", enc_mean=0.72)
+        checker = gc_eval.AntiConfoundChecker()
+        gc = np.array(result["gc_values"])
+        check = checker._ac11_ravel_causal_isolation(result, gc)
+        self.assertTrue(check.passed,
+                        f"Expected proxy PASS with enc_mean=0.72, got FAIL: {check.detail}")
+        self.assertIn("PROXY", check.detail)
+        self.assertIn("necessary condition", check.detail)
+
+    def test_ac11_skip_non_listen_mode_no_ravel(self):
+        """AC-11 skip (PASS): guess mode, no RAVEL scores — cannot infer causal direction."""
+        result = self._make_result(mode="guess", enc_mean=0.3)
+        checker = gc_eval.AntiConfoundChecker()
+        gc = np.array(result["gc_values"])
+        check = checker._ac11_ravel_causal_isolation(result, gc)
+        self.assertTrue(check.passed,
+                        f"Expected AC-11 SKIP (pass) for guess mode with no RAVEL data: {check.detail}")
+        self.assertIn("Skipped", check.detail)
+
+    def test_ac11_integrated_in_full_checker_listen_mode(self):
+        """AC-11 appears in full AntiConfoundReport (11 checks total)."""
+        result = gc_eval.generate_mock_gc_curve(mode="listen", seed=42)
+        checker = gc_eval.AntiConfoundChecker()
+        report = checker.run(result)
+        self.assertEqual(len(report.checks), 11, "Checker should now run 11 checks (AC-01..AC-11)")
+        ac11 = report.checks[-1]
+        self.assertEqual(ac11.name, "AC-11:ravel-causal-isolation")
+        self.assertTrue(ac11.passed, f"AC-11 should pass for listen mode mock: {ac11.detail}")
+
+
+# ---------------------------------------------------------------------------
 # Run
 # ---------------------------------------------------------------------------
 
@@ -213,6 +311,7 @@ if __name__ == "__main__":
     suite.addTests(loader.loadTestsFromTestCase(TestPrintCurve))
     suite.addTests(loader.loadTestsFromTestCase(TestCLI))
     suite.addTests(loader.loadTestsFromTestCase(TestGcCurveInterpretability))
+    suite.addTests(loader.loadTestsFromTestCase(TestAC11RavelCausalIsolation))
     runner = unittest.TextTestRunner(verbosity=2)
     result = runner.run(suite)
     sys.exit(0 if result.wasSuccessful() else 1)

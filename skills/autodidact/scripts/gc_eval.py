@@ -104,6 +104,8 @@ class AntiConfoundChecker:
         max_listen_guess_overlap: float = 0.15,  # AC-9: listen/guess means must differ by this
         min_baseline_delta_logp: float | None = None,  # AC-6: log-prob delta (real mode only)
         min_valid_frac: float = 0.9,     # AC-3: fraction of values that must be finite & in [0,1]
+        min_ravel_cause: float = 0.2,    # AC-11: minimum RAVEL Cause score (ablation causal effect)
+        min_ravel_isolate: float = 0.5,  # AC-11: minimum RAVEL Isolate score (ablation specificity)
     ):
         self.min_peak_gc = min_peak_gc
         self.min_gc_std = min_gc_std
@@ -111,6 +113,8 @@ class AntiConfoundChecker:
         self.max_listen_guess_overlap = max_listen_guess_overlap
         self.min_baseline_delta_logp = min_baseline_delta_logp
         self.min_valid_frac = min_valid_frac
+        self.min_ravel_cause = min_ravel_cause
+        self.min_ravel_isolate = min_ravel_isolate
 
     # --- individual check methods ---
 
@@ -264,6 +268,74 @@ class AntiConfoundChecker:
             else f"mean_gc={mean_gc:.3f} inconsistent with mode={mode!r} ({exp})",
         )
 
+    def _ac11_ravel_causal_isolation(self, result: dict, gc: np.ndarray) -> CheckResult:
+        """AC-11: RAVEL causal isolation — ablating listen-layer features must causally
+        reduce jailbreak score (RAVEL Cause criterion for T5 safety probe).
+
+        Three evaluation paths (in priority order):
+        1. **Full RAVEL**: result contains `ravel_cause_score` (and optionally
+           `ravel_isolate_score`). Cause must be >= min_ravel_cause; if isolate
+           is provided it must be >= min_ravel_isolate.
+        2. **Proxy check** (mock / no ablation data, mode='listen'): encoder-region
+           mean gc >= 0.45 is a necessary (not sufficient) condition for causal
+           listen-feature activity. Passes with a WARNING label.
+        3. **Skip**: mock mode with mode != 'listen' and no RAVEL scores — cannot
+           infer causality direction, skip without failure.
+
+        Invariant: a high gc(k) in the listen region is a *necessary* but not
+        *sufficient* condition for AC-11. Full RAVEL scores are required for the
+        claim "causally reduces jailbreak score" in Paper A §3.6.
+        """
+        cause = result.get("ravel_cause_score")
+        isolate = result.get("ravel_isolate_score")
+
+        # Path 1: full RAVEL evaluation
+        if cause is not None:
+            cause_ok = float(cause) >= self.min_ravel_cause
+            if isolate is not None:
+                isolate_ok = float(isolate) >= self.min_ravel_isolate
+                ok = cause_ok and isolate_ok
+                detail = (
+                    f"cause={cause:.3f}≥{self.min_ravel_cause}, "
+                    f"isolate={isolate:.3f}≥{self.min_ravel_isolate}"
+                    if ok else
+                    f"cause={cause:.3f} (need≥{self.min_ravel_cause}), "
+                    f"isolate={isolate:.3f} (need≥{self.min_ravel_isolate})"
+                )
+            else:
+                ok = cause_ok
+                detail = (
+                    f"cause={cause:.3f}≥{self.min_ravel_cause} (isolate not measured)"
+                    if ok else
+                    f"cause={cause:.3f} < {self.min_ravel_cause} "
+                    "(ablation has insufficient causal effect on jailbreak score)"
+                )
+            return CheckResult("AC-11:ravel-causal-isolation", ok, detail)
+
+        # Path 2: proxy check for listen mode (mock, no ablation data)
+        mode = result.get("mode")
+        if mode == "listen":
+            n_enc = result.get("n_encoder_layers", 0)
+            if n_enc > 0 and len(gc) > 0:
+                enc_mean = float(np.mean(gc[:n_enc]))
+                ok = enc_mean >= 0.45
+                detail = (
+                    f"[PROXY] enc_mean_gc={enc_mean:.3f}≥0.45 "
+                    "(necessary condition for causal listen-feature activity; "
+                    "full RAVEL scores needed for definitive claim)"
+                    if ok else
+                    f"[PROXY] enc_mean_gc={enc_mean:.3f}<0.45 "
+                    "(listen features not strongly active — unlikely to pass full RAVEL Cause)"
+                )
+                return CheckResult("AC-11:ravel-causal-isolation", ok, detail)
+
+        # Path 3: skip (not enough data to evaluate)
+        return CheckResult(
+            "AC-11:ravel-causal-isolation",
+            True,
+            f"Skipped (no ravel_cause_score, mode={mode!r} — cannot assess causal direction)",
+        )
+
     def _ac10_no_eval_awareness_artifact(self, result: dict, gc: np.ndarray) -> CheckResult:
         """AC-10: gc(k) must not be perfectly monotone (either strictly increasing or
         strictly decreasing throughout). A perfectly monotone curve is suspiciously clean
@@ -304,6 +376,7 @@ class AntiConfoundChecker:
             self._ac08_encoder_decoder_differentiation(result, gc),
             self._ac09_mode_separability(result, gc),
             self._ac10_no_eval_awareness_artifact(result, gc),
+            self._ac11_ravel_causal_isolation(result, gc),
         ]
         return report
 
