@@ -302,24 +302,26 @@
       "type": "build",
       "track": "T3",
       "title": "AC-11 RAVEL causal isolation: extend AntiConfoundChecker (Tier 1 CPU)",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "skills/autodidact/scripts/gc_eval.py extended with AC-11: removing listen-feature causally reduces jailbreak score; 5 unit tests pass",
       "created": "2026-03-08",
-      "due": null
+      "due": null,
+      "completed": "2026-03-08"
     },
     {
       "id": "Q073",
       "type": "write",
       "track": "T3",
       "title": "UniWhisper cross-task gc(k) consistency spec (Tier 0)",
-      "status": "ready",
+      "status": "done",
       "priority": 4,
       "blocked_by": null,
       "definition_of_done": "memory/learning/pitches/unwhisper-gc-consistency-spec.md: does gc(k) boundary stay consistent across ASR/ST/QA tasks? 3-task protocol + expected divergence table",
       "created": "2026-03-08",
-      "due": null
+      "due": null,
+      "completed": "2026-03-08"
     }
   ],
   "archived_count": 56,
