@@ -33,8 +33,8 @@
     "budget_reset_date": "2026-03-08"
   },
   "stats": {
-    "total_cycles": 158,
-    "total_skips": 39,
+    "total_cycles": 159,
+    "total_skips": 40,
     "papers_read_deep": 29,
     "papers_scanned": 38,
     "research_gaps": 19,
@@ -45,9 +45,9 @@
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260308-1115",
+    "id": "c-20260308-1416",
     "action": "skip",
-    "summary": "No READY tasks + ideate budget=0; ran GC, consolidated 2026-03-06 digest"
+    "summary": "News digest processed; Q005 added; 21 done tasks archived; learn blocked by site rate-limiting"
   },
   "last_gc": "2026-03-08T11:15:00+08:00",
   "self_improve_tickets": []
