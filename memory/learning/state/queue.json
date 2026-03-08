@@ -55,12 +55,13 @@
       "type": "read",
       "track": "T5",
       "title": "News: Can governments quickly and cheaply slow AI training?",
-      "status": "ready",
+      "status": "done",
       "priority": 4,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights on AI policy/compute governance. Source: https://www.alignmentforum.org/posts/Xzf3eMnhTko7AxnEy/can-governments-quickly-and-cheaply-slow-ai-training",
       "created": "2026-03-08",
-      "due": null
+      "due": null,
+      "completed": "2026-03-08"
     }
   ],
   "archived_count": 77,

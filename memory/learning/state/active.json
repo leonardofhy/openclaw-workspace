@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 5,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 159,
     "total_skips": 40,
-    "papers_read_deep": 29,
+    "papers_read_deep": 30,
     "papers_scanned": 38,
     "research_gaps": 19,
     "paper_ideas": 27,
@@ -45,9 +45,9 @@
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260308-1416",
-    "action": "skip",
-    "summary": "News digest processed; Q005 added; 21 done tasks archived; learn blocked by site rate-limiting"
+    "id": "c-20260308-1445",
+    "action": "learn",
+    "summary": "Read AF post on AI compute governance; Q005 complete. Queue now empty (all others GPU-blocked)."
   },
   "last_gc": "2026-03-08T11:15:00+08:00",
   "self_improve_tickets": []
