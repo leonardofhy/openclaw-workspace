@@ -1,8 +1,85 @@
 # 📄 Paper A Pitch: "Localizing the Listen Layer in Speech LLMs"
 
-> Version: 2.1 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-06 00:01 (cycle #300)
+> Version: 2.3 | Created: 2026-02-28 04:01 (cycle #57) | Updated: 2026-03-08 09:15 (cycle #158)
 > Status: Draft — for Leo's review. Not finalized.
 > Connects to: knowledge-graph.md sections H, K, Experiment 1
+
+---
+
+### ⚡ v2.3 Upgrade (cycle #158 — §4.8 Modality Collapse × gc(k) Predictions added; Q070 complete)
+
+**§4.8 Modality Collapse × gc(k): Testable Predictions from ALME Conflict Stimuli (new subsection, ~550 words)**
+
+> *Placement:* After §4.7 (Grounding Failure Diagnostic Protocol), before §5 Discussion. This section operationalizes the 3-Tier taxonomy (§4.6) into pre-registered predictions for the ALME conflict experiment (Q069), and introduces a novel prediction about RL-induced gc(k) shifts that positions Paper A as the mechanistic complement to MPAR².
+
+---
+
+**4.8.1 Framing: Modality Collapse as a gc(k) Prediction Engine**
+
+Zhao et al. (arXiv:2602.23136, "Modality Collapse") document that large audio-language models (LALMs) systematically default to text-prior predictions when audio and text conflict — a behavioral pattern they call Modality Collapse. The 3-Tier taxonomy (§4.6) predicts *where* in the forward pass this collapse originates: Tier 1 (codec), Tier 2 (connector), or Tier 3 (LLM backbone). Paper A's gc(k) metric converts these structural predictions into falsifiable, quantitative signatures observable on ALME's 57K audio-text conflict stimuli.
+
+**The key insight**: if Modality Collapse originates at Tier 3 (LLM backbone text-prior dominance), then the gc(k) curve must show a specific profile — not simply "low gc(k)" everywhere, but a characteristic **mid-peak + late-drop** pattern that distinguishes Tier 3 from Tier 1/2 alternatives. This is a prediction that Zhao et al. cannot make (they report behavioral outcomes, not layer-wise causal profiles) but Paper A can verify or falsify.
+
+---
+
+**4.8.2 Pre-Registered Predictions for ALME Conflict Experiment**
+
+For ALME conflict items stratified by modality outcome (follows_audio vs. follows_text), we pre-register the following gc(k) predictions at the ALME-item level:
+
+**Prediction P1 (Modality Collapse = Tier 3):** Items where the model follows-text will show a **late-layer gc(k) drop** relative to items where the model follows-audio. Specifically:
+- gc(L_mid) will NOT differ significantly between follows_audio and follows_text items (both are mid-layer)
+- gc(L_late) will be significantly LOWER for follows_text items (bootstrap 95% CI non-overlapping, per §3.8.1 protocol)
+- Effect size threshold: Δgc(L_late) ≥ 0.10 (Cohen's d ≥ 0.3)
+
+*Interpretation:* Tier 3 collapse is a late-layer phenomenon. Both outcome types show audio information entering the model (gc(L_mid) elevated), but follows_text items show it overridden at upper LLM layers. This is the mechanistic signature of "audio information present but ignored."
+
+**Prediction P2 (Per-class heterogeneity):** The Tier 3 late-layer drop will be **stronger for rare phoneme contrasts** than for common ones (voicing: [b]/[p], [d]/[t]):
+- Common contrasts: gc(L_late) drop ≤ 0.08 (frequent items, robust grounding)
+- Rare contrasts: gc(L_late) drop ≥ 0.15 (rare items, text priors dominate earlier)
+
+*Interpretation:* Modality Collapse is phoneme-class-conditional — a finer-grained claim than Zhao et al. (2026), who report aggregate behavioral collapse rates. Consistent with Risk A6 (§3.8.5): rare phoneme classes are more susceptible to Tier 3 failure.
+
+**Prediction P3 (Null condition for Tier 1 / Tier 2 items):** For ALME items where the audio signal is degraded (noise-corrupted, low-SNR — if ALME provides SNR metadata), gc(k) should be **flat near chance at ALL layers** (Tier 1 signature), not just depressed at late layers. This cross-validates the 3-Tier taxonomy: Tier 1 failure has a qualitatively different gc(k) shape from Tier 3, even though both yield "follows_text" behavioral outcomes.
+
+**Prediction P4 (Boundary shift on conflict items):** The listen-layer boundary (L* = argmax gc(L)) will occur **earlier** for conflict items relative to non-conflict baselines, if available in ALME. Earlier boundary = model "commits" to audio interpretation shallower in the network = less susceptible to late-layer text-prior override. Consistent with Triple Convergence (acoustic-to-semantic transition at ~50% depth).
+
+---
+
+**4.8.3 MPAR² RL Training: A Cross-Paper gc(k) Prediction**
+
+MPAR² (arXiv:2603.02266) shows that RL training rewarding audio-grounded reasoning increases perception accuracy from 31.74% → 63.51% on CAFE (audio reasoning benchmarks). This behavioral improvement has no mechanistic account in MPAR² itself.
+
+**Paper A prediction:** If MPAR²'s RL training increases audio-grounded outputs at the behavioral level, the gc(k) curve of an MPAR²-trained model should show one or both of:
+1. **Reduced late-layer drop**: gc(L_late) higher in MPAR²-trained model vs. base model on conflict items (Tier 3 failure partially resolved — RL training teaches upper layers to consult L_mid audio signal rather than overriding it)
+2. **L* shift toward shallower layers**: RL training may shift the audio consultation point earlier, making the listen layer more robust to late-layer text-prior competition
+
+This is a testable cross-paper prediction: Paper A provides the causal mechanism (gc(k) at L*), MPAR² provides the behavioral intervention (RL training), and the prediction is that the RL effect is visible in the gc(k) profile. If confirmed, Paper A §5 can claim: "We predict where in the network MPAR²'s RL training exerts its mechanistic effect — the late-layer gc(k) drop, not the mid-layer peak."
+
+If falsified (MPAR² RL does not change gc(k) profile despite behavioral improvement), this suggests the RL effect operates through a non-layer-local mechanism — equally valuable and novel finding.
+
+**Venue:** This cross-paper prediction is appropriate for §5.4 Discussion ("Grounding Profile Across Generation vs. Understanding") and constitutes a direct collaborative bridge to MPAR² authors if correspondence is initiated.
+
+---
+
+**4.8.4 Connection to Diagnostic Protocol (§4.7)**
+
+The ALME conflict experiment is NOT a standalone diagnostic: it uses the diagnostic tree (§4.7) as a pre-filter. Before analyzing ALME behavioral outcomes against gc(k) profiles, we apply:
+- Step 1 (Codec Probe): confirm ALME audio items are not Tier 1 failures (codec-reconstructed audio preserves the conflicting content)
+- Step 2 (Encoder sweep): confirm a Listen Layer exists in the encoder
+- Step 3 (Connector test, subset): spot-check 10% of items for connector transfer
+
+Only items confirmed to reach the LLM (not Tier 1 or Tier 2 filtered out) enter the Prediction P1–P4 analysis. This ensures the gc(k) vs. modality-outcome correlation is not confounded by codec or connector failures masquerading as Tier 3 behavioral collapse.
+
+---
+
+**Status of §4.8:** ✅ DRAFT COMPLETE. ~550 words, 4 sub-predictions + 1 cross-paper MPAR² prediction + §4.7 integration. All predictions tied to existing ALME spec (Q069) and 3-Tier taxonomy (§4.6). Pre-registration ready. LaTeX-ready (table in §4.8.2 omitted — predictions are enumerated and sufficient without a table; §4.6 Table 3 already covers the tier taxonomy).
+
+**Papers A progress summary (v2.3):**
+- §1 Introduction: ✅ LaTeX-ready (3 paragraphs, cycle #219; MPAR² v1.9 upgrade cycle #258)
+- §2 Related Work: ✅ LaTeX-ready (3 subsections, cycle #222)
+- §3 Method: ✅ LaTeX-ready (8 subsections including §3.8 Evaluation Protocol, cycle #300)
+- §4 Experiments/Results: ✅ LaTeX-ready (5 subsections + §4.6 Taxonomy + §4.7 Protocol + **§4.8 Modality Collapse Predictions**, cycles #228/#294/#302/this cycle)
+- §5 Discussion: ✅ SKELETON (5 headers + 2-sentence stubs — prose blocked until results)
 
 ---
 
