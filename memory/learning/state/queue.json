@@ -257,6 +257,66 @@
       "created": "2026-03-07",
       "due": null,
       "completed": "2026-03-07"
+    },
+    {
+      "id": "Q069",
+      "type": "write",
+      "track": "T3",
+      "title": "ALME conflict x gc(k): analysis spec for listen-layer collapse as modality predictor (Tier 0)",
+      "status": "ready",
+      "priority": 0,
+      "blocked_by": null,
+      "definition_of_done": "memory/learning/pitches/alme-gc-analysis-spec.md: predict which modality wins from gc(k) listen score; experiment design + expected results for Paper A H2",
+      "created": "2026-03-08",
+      "due": null
+    },
+    {
+      "id": "Q070",
+      "type": "write",
+      "track": "T3",
+      "title": "Modality Collapse x gc(k): write prediction section for Paper A (Tier 0)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "memory/learning/pitches/modality-collapse-gc-prediction.md: gc(k) listen score as predictor of text-bias/modality collapse; ~300 words for Paper A Discussion",
+      "created": "2026-03-08",
+      "due": null
+    },
+    {
+      "id": "Q071",
+      "type": "write",
+      "track": "T3",
+      "title": "RAVEL Cause/Isolate x gc(k): methodology extension doc (Tier 0)",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "memory/learning/pitches/ravel-gc-methodology.md: apply RAVEL two-score to listen-layer features; extends Paper A Methods with causal isolation guarantee",
+      "created": "2026-03-08",
+      "due": null
+    },
+    {
+      "id": "Q072",
+      "type": "build",
+      "track": "T3",
+      "title": "AC-11 RAVEL causal isolation: extend AntiConfoundChecker (Tier 1 CPU)",
+      "status": "ready",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "skills/autodidact/scripts/gc_eval.py extended with AC-11: removing listen-feature causally reduces jailbreak score; 5 unit tests pass",
+      "created": "2026-03-08",
+      "due": null
+    },
+    {
+      "id": "Q073",
+      "type": "write",
+      "track": "T3",
+      "title": "UniWhisper cross-task gc(k) consistency spec (Tier 0)",
+      "status": "ready",
+      "priority": 4,
+      "blocked_by": null,
+      "definition_of_done": "memory/learning/pitches/unwhisper-gc-consistency-spec.md: does gc(k) boundary stay consistent across ASR/ST/QA tasks? 3-task protocol + expected divergence table",
+      "created": "2026-03-08",
+      "due": null
     }
   ],
   "archived_count": 56,
