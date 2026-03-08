@@ -45,10 +45,10 @@
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260308-1045",
-    "action": "build",
-    "summary": "UniWhisper cross-task gc(k) consistency spec written: 3-task protocol (ASR/ST/QA), divergence table, mock plan"
+    "id": "c-20260308-1115",
+    "action": "skip",
+    "summary": "No READY tasks + ideate budget=0; ran GC, consolidated 2026-03-06 digest"
   },
-  "last_gc": "2026-03-07T09:18:23.529216+08:00",
+  "last_gc": "2026-03-08T11:15:00+08:00",
   "self_improve_tickets": []
 }
