@@ -16,8 +16,26 @@ def _load_config():
                 config[k.strip()] = v.strip()
     return config
 
+def _md_to_html(text):
+    """Convert markdown to styled HTML email body."""
+    try:
+        import markdown
+        html_body = markdown.markdown(text, extensions=['tables', 'fenced_code', 'nl2br'])
+    except ImportError:
+        # Fallback: wrap in <pre> if markdown not installed
+        import html
+        html_body = f"<pre>{html.escape(text)}</pre>"
+    return f"""<html><body style="font-family: -apple-system, Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #222; max-width: 680px; margin: 0 auto; padding: 16px;">
+{html_body}
+</body></html>"""
+
+
 def send_email(subject, body, sender_label=None, receiver=None):
-    """Send email using ops credentials from secrets/email_ops.env."""
+    """Send email using ops credentials from secrets/email_ops.env.
+    
+    Body is treated as markdown and converted to HTML automatically.
+    A plain-text fallback is also attached.
+    """
     cfg = _load_config()
     sender = cfg.get('EMAIL_SENDER', '')
     password = cfg.get('EMAIL_PASSWORD', '')
@@ -29,11 +47,14 @@ def send_email(subject, body, sender_label=None, receiver=None):
         return False
     
     try:
-        msg = MIMEMultipart()
+        msg = MIMEMultipart('alternative')
         msg['From'] = formataddr((sender_name, sender))
         msg['To'] = to
         msg['Subject'] = subject
+        # Plain text fallback
         msg.attach(MIMEText(body, 'plain', 'utf-8'))
+        # HTML version (preferred by email clients)
+        msg.attach(MIMEText(_md_to_html(body), 'html', 'utf-8'))
         
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
             server.login(sender, password)
