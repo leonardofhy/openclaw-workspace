@@ -133,12 +133,13 @@
       "type": "design",
       "track": "T3",
       "title": "Microgpt × Phonological DAS suite (fully inspectable phoneme circuits)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Implement toy transformer + DAS protocol; report IIA/Cause/Isolate on 6-phoneme task",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-09"
     },
     {
       "id": "Q039",
