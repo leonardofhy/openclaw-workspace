@@ -102,7 +102,7 @@
 | `sync_schedule_to_gcal.py` | daily-scheduler/scripts/ | 將最新 `memory/schedules/YYYY-MM-DD.md` 同步到 Google Calendar |
 | `sync_schedule_to_todoist.py` | daily-scheduler/scripts/ | 將最新 `memory/schedules/YYYY-MM-DD.md` 同步到 Todoist（支援去重） |
 | `weather_scout.py` | leo-diary/scripts/ | 天氣檢查+通知 |
-| `fetch_latest_diary.py` | memory/scripts/ | 拉取最新日記（供記憶反芻）|
+| `fetch_latest_diary.py` | leo-diary/scripts/ | 拉取最新日記（供記憶反芻）|
 | `append_memory.py` | remember/scripts/ | 寫入長期記憶 |
 | `sync_diary_to_memory.py` | ~/Workspace/little-leo-tools/scripts/ | 日記同步到 memory/*.md |
 
