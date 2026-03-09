@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "phase": "converge",
-  "phase_since": "2026-03-01",
+  "phase": "explore-fallback",
+  "phase_since": "2026-03-09",
   "phase_exit_criteria": {
     "converge_to_execute": [
       "eval_harness_exists_T3",
@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
-    "build_remaining_today": 6,
+    "learn_remaining_today": 8,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-05"
+    "ideate_remaining_today": 3,
+    "budget_reset_date": "2026-03-09"
   },
   "stats": {
-    "total_cycles": 143,
+    "total_cycles": 144,
     "total_skips": 39,
     "papers_read_deep": 25,
     "papers_scanned": 36,
     "research_gaps": 19,
-    "paper_ideas": 12,
+    "paper_ideas": 32,
     "paper_pitches": 2,
     "code_artifacts": 25,
     "system_improvements": 6,
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260305-1301",
-    "action": "build",
-    "summary": "Wrote Audio-RAVEL × ESN experiment spec: Cause/Isolate scoring protocol for AudioSAEBench Category 0; IEMOCAP 2×2 stimulus design; ESN leakage hypothesis (Isolate≈0.22 predicted); Paper A §4.3 emotion confound note identified."
+    "id": "c-20260309-2245",
+    "action": "ideate",
+    "summary": "Generated 20 cross-track ideas in explore-fallback; queued top 5 (Q038-Q042) with novelty+feasibility >= 7."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
