@@ -81,12 +81,13 @@
       "type": "build",
       "track": "T3+T5",
       "title": "SAE on MicroGPT listen-layer: design doc + scaffold (which SAE features align with gc(k) phase boundary?)",
-      "status": "ready",
+      "status": "done",
       "priority": 6,
       "blocked_by": null,
       "definition_of_done": "",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-09"
     },
     {
       "id": "Q008",
