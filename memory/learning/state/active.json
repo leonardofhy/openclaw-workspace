@@ -26,29 +26,29 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
-    "build_remaining_today": 3,
+    "learn_remaining_today": 5,
+    "build_remaining_today": 6,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-09"
+    "budget_reset_date": "2026-03-05"
   },
   "stats": {
-    "total_cycles": 166,
-    "total_skips": 40,
-    "papers_read_deep": 32,
-    "papers_scanned": 38,
+    "total_cycles": 143,
+    "total_skips": 39,
+    "papers_read_deep": 25,
+    "papers_scanned": 36,
     "research_gaps": 19,
-    "paper_ideas": 27,
+    "paper_ideas": 12,
     "paper_pitches": 2,
-    "code_artifacts": 65,
+    "code_artifacts": 25,
     "system_improvements": 6,
-    "days_active": 8
+    "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260309-2045",
+    "id": "c-20260305-1301",
     "action": "build",
-    "summary": "Q017: t5_safety_probe_v1.py \u2014 MVP CPU safety probe (gc_eval + classifier); benign/jailbreak discrimination confirmed"
+    "summary": "Wrote Audio-RAVEL × ESN experiment spec: Cause/Isolate scoring protocol for AudioSAEBench Category 0; IEMOCAP 2×2 stimulus design; ESN leakage hypothesis (Isolate≈0.22 predicted); Paper A §4.3 emotion confound note identified."
   },
-  "last_gc": "2026-03-09T11:15:00+08:00",
+  "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
 }

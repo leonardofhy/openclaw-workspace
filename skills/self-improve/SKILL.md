@@ -4,9 +4,10 @@ description: >
   Log learnings, errors, and corrections for continuous self-improvement.
   Use when: (1) a command or operation fails unexpectedly, (2) user corrects you,
   (3) you discover outdated knowledge, (4) you find a better approach than what you did,
-  (5) Leo says "記下來", "learn from this", "不要再犯". Complements debugger (which focuses on
-  RCA process) and remember (which focuses on facts/decisions). This skill focuses on
+  (5) Leo says "記下來", "learn from this", "不要再犯", (6) debugging/RCA needed (see references/debugging-guide.md).
+  Complements remember (which focuses on facts/decisions). This skill focuses on
   *systematic improvement* — tracking recurrence, detecting patterns, promoting to permanent files.
+  Includes the debugging/RCA framework (formerly the standalone debugger skill).
   NOT for: logging facts (use remember), daily events (use memory/*.md), feature requests (use task-board.md).
 ---
 
@@ -121,9 +122,13 @@ memory/learnings/
 
 Both use `JsonlStore` from `skills/shared/jsonl_store.py` — atomic writes, auto-IDs, filtering.
 
+## Debugging / RCA
+
+See `references/debugging-guide.md` for the full Root Cause Analysis framework:
+Reproduce → Isolate → Hypothesize → Fix → Record (via `learn.py error`).
+
 ## Relationship to Other Systems
 
-- **debugger** — Use debugger for RCA process (reproduce → isolate → hypothesize → fix). After fixing, log the lesson here via `learn.py error`.
 - **remember** — Use remember for facts, decisions, preferences. Use self-improve for *mistakes and lessons*.
 - **knowledge.md** — Quick append-only notes (via `append_memory.py`). Self-improve is for tracked, searchable, promotable entries.
 - **task-board.md** — Feature requests go there, not here.

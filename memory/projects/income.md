@@ -26,7 +26,7 @@
   - [ ] 
 
 ## Outreach templates
-- See: skills/income-scout/references/opportunity-matrix.md
+- (income-scout skill removed — templates archived)
 
 ## Weekly cadence (5h/week)
 - 2h: outreach + follow-ups
