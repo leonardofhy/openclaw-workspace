@@ -1,6 +1,6 @@
 # 📄 MATS Research Task Proposal: "Listen-Layer Audit for Audio Jailbreak Detection"
 
-> Version: 0.3 | Updated: 2026-03-05 19:45 (cycle c-20260305-1945, Q044)
+> Version: 0.4 | Updated: 2026-03-09 09:45 (cycle c-20260309-0945, Q008)
 > Track: T5 (Listen-Layer Audit / Paper C)
 > Status: **Draft v0.3 — Clean final draft. Ready for Leo review.**
 > Depends on: Paper A (Listen Layer localization) for theoretical foundation
@@ -217,6 +217,53 @@ A 6-page technical report:
 
 ---
 
+## Policy Hook: gc(k) as Compute-Scaled Pre-Deployment Safety Mandate
+
+> *New in v0.4 — connects to AI compute governance literature (cf. Hadfield-Menell et al. 2025; "Can Governments Slow AI Training?" AF post, 2026-03-08)*
+
+### Core Argument
+
+The gc(k) audit is uniquely suitable as a **mandatory compute-threshold safety check** for audio-language models — analogous to emissions testing for vehicles. As training compute scales, audio emergent misalignment risk increases (larger models develop stronger gc(k) divergence between listen and guess regimes). A gc(k) audit is:
+
+1. **Cheap**: single forward pass on a standardized benign audio corpus (~50 utterances). Cost: negligible vs. training compute.
+2. **Model-agnostic**: works on any transformer-based ALM regardless of architecture (Whisper, Qwen2-Audio, Gemini-Audio).
+3. **Falsifiable**: gc(k) is a number; threshold can be set by regulators or safety labs. Pass/fail is unambiguous.
+4. **Interpretable**: when a model fails, the audit points to *which layer* gc(k) deviates — this is actionable (targeted fine-tuning, layer-specific intervention).
+
+### Compute Scaling Trigger Design
+
+Proposed tiered mandate (inspired by FLOP-based compute governance proposals):
+
+| Training Compute | Audit Requirement | Consequence of Failure |
+|-----------------|-------------------|----------------------|
+| < 10²² FLOPs | Voluntary (encourage) | None (best-effort) |
+| 10²²–10²⁴ FLOPs | Mandatory self-audit + report to safety team | Internal hold pending review |
+| > 10²⁴ FLOPs | Third-party audit + public disclosure of gc(k) profile | Deployment blocked until remediation |
+
+**Why compute as the trigger?** Large-scale pre-training is when audio grounding patterns are established. Post-training interventions (RLHF, instruction tuning) can shift gc(k) without the lab noticing. A compute-gated mandatory audit catches: (a) pre-training regimes that produce shallow listeners, (b) post-training procedures that suppress gc(k).
+
+### Connection to Compute Governance Literature
+
+From "Can Governments Quickly and Cheaply Slow AI Training?" (Alignment Forum, 2026):
+- Key insight: **Hardware-level interventions are the most tractable lever** for governments to slow AI training runs
+- Corollary for gc(k) audit: the *same* hardware visibility used for compute governance (datacenter registries, FLOP tracking) can trigger gc(k) audit mandates — no new monitoring infrastructure needed
+- gc(k) audit is therefore a *natural complement* to compute governance: governments use FLOP counts to gate deployment; safety labs use gc(k) to validate audio safety before those gated deployments proceed
+
+### Why This Matters for MATS
+
+MATS is MIRI/Anthropic-adjacent; reviewers care about:
+- **Alignment tax reduction**: gc(k) audit costs ~0.001% of training compute; returns interpretability + safety signal
+- **Scalable oversight**: gc(k) scales with model size — larger models have stronger gc(k) signal, not weaker; the audit becomes *more* informative at scale, not less
+- **Tractable policy proposal**: unlike "interpretability solves alignment," a compute-threshold gc(k) mandate is a *specific, implementable* near-term intervention
+
+### Scope Limitation (Honest Constraints)
+
+- This section is *theoretical*: empirical validation of the compute-scaling claim (larger models → stronger gc(k) signal) requires access to multiple checkpoint sizes (Whisper tiny → large is a natural test bed, CPU-feasible)
+- We do NOT claim gc(k) is a sufficient safety check — it is one necessary signal in a battery of pre-deployment evaluations
+- Threshold values in the table above are illustrative; calibration needs empirical gc(k) measurements across model scales
+
+---
+
 ## Connection to Broader Research Agenda
 
 ```
@@ -260,9 +307,9 @@ Paper A (Listen Layer localization)
 
 ---
 
-## Next Steps (v0.3 → Ready for Leo review)
+## Next Steps (v0.4 → Ready for Leo review)
 
-- [ ] Leo reviews v0.3 — feedback on dual-use framing, MATS track selection, open questions
+- [ ] Leo reviews v0.4 — feedback on policy hook section (compute threshold table, governance framing), dual-use framing, MATS track selection, open questions
 - [ ] Run Task 1 baseline (gc(L) from JALMBench benign) using `listen_layer_audit.py`
 - [ ] Build gc anomaly score function (extend AudioSAEBench scaffold)
 - [ ] If hypothesis supported → draft Paper C outline

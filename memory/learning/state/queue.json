@@ -94,12 +94,13 @@
       "type": "build",
       "track": "T5",
       "title": "MATS proposal policy hook: add section on gc(k) as pre-deployment safety check tied to compute scaling",
-      "status": "ready",
+      "status": "done",
       "priority": 7,
       "blocked_by": null,
       "definition_of_done": "",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-09"
     },
     {
       "id": "Q009",
