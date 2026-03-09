@@ -32,13 +32,71 @@ Before doing anything else:
 
 **Main session only** (direct chat with Leo):
 6. Read `SOUL.md`, `USER.md`
-7. Read `MEMORY.md`
+7. Read `MEMORY.md`（精簡版，≤80 行。需要詳細背景時讀 `memory/memory-full.md`）
 8. Run `python3 skills/task-check.py` — scan task board for stale/overdue items
-9. Read `PROACTIVE.md` — stuck detection, task switching, VBR
 
-**Cron/isolated sessions**: skip steps 6-9 (save tokens). Steps 1-5 are mandatory for ALL sessions.
+**On-demand（不預載，需要時才讀）：**
+- `PROACTIVE.md` — 卡住時讀（unstuck protocol、task switching）
+- `memory/memory-full.md` — 需要深入了解 Leo 背景時讀
+
+**Cron/isolated sessions**: skip steps 6-8 (save tokens). Steps 1-5 are mandatory for ALL sessions.
 
 Don't ask permission. Just do it.
+
+### VBR — Verify Before Reporting（每次都檢查）
+
+準備說「Done」時 — **停下來**：
+1. 我實際跑過了嗎？（不是「應該可以跑」）
+2. 從使用者角度測試了嗎？
+3. 改了底層機制，還是只改了表面文字？
+
+**要說 Done，必須附上驗證結果。**
+
+## 📏 Boot Budget System
+
+**設計原則**：成長和載入分離。Agent 的能力無限成長，但 boot path 固定大小。
+
+```
+Boot path (kernel)  = 固定大小，只載入「工作記憶」     ≤300 行
+Skills (user-space) = 自由成長，按需載入
+Memory (disk)       = 無限成長，查詢時才讀
+```
+
+### Line Budgets
+
+| 檔案 | 上限 | 超過時 |
+|------|------|--------|
+| MEMORY.md | ≤80 行 | 舊內容降級到 `memory/memory-full.md` |
+| SESSION-STATE.md | ≤30 行（Recent Context ≤10 條） | >48h 的 archive 到 daily memory |
+| memory/anti-patterns.md | ≤50 行（≤10 條） | >3 個月沒觸發的 archive |
+| SOUL.md | ≤50 行 | 需要 Leo 同意才能擴 |
+| USER.md | ≤20 行 | 基本不動 |
+| **TOTAL** | **≤300 行** | |
+
+### Eviction Policy
+
+- SESSION-STATE.md Recent Context: >48h → archive 到 `memory/YYYY-MM-DD.md`
+- MEMORY.md: 超過 budget → 最舊/最不相關的 section → `memory/memory-full.md`
+- anti-patterns.md: >3 個月沒觸發 → archive
+- knowledge.md boot injection: 只讀最後 10 條（檔案本身可以無限長）
+
+### Guardian Script
+
+`python3 skills/shared/boot_budget_check.py` — heartbeat 時定期執行。
+- exit 0 = OK
+- exit 1 = 接近上限（⚠️）
+- exit 2 = 超過上限（🔴 需要瘦身）
+
+### 成長往哪裡去
+
+| 學到的東西 | 存到哪裡 | Boot 載入？ |
+|-----------|---------|------------|
+| 新知識 | `memory/knowledge.md` | 只最後 10 條 |
+| 新教訓 | `learnings.jsonl` / `errors.jsonl` | 否，按需查詢 |
+| 新能力 | `skills/*/` | 否，按需觸發 |
+| 新操作規則 | `PROACTIVE.md` | 否，卡住時才讀 |
+| 反覆驗證的行為禁令 | `anti-patterns.md` | 是（≤50 行） |
+| Leo 的核心資訊更新 | `MEMORY.md` | 是（≤80 行） |
 
 ## ✍️ WAL Protocol (Write-Ahead Logging)
 
@@ -106,10 +164,11 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - **ONLY load in main session** (direct chats with your human)
 - **DO NOT load in shared contexts** (Discord, group chats, sessions with other people)
 - This is for **security** — contains personal context that shouldn't leak to strangers
-- You can **read, edit, and update** MEMORY.md freely in main sessions
-- Write significant events, thoughts, decisions, opinions, lessons learned
-- This is your curated memory — the distilled essence, not raw logs
-- Over time, review your daily files and update MEMORY.md with what's worth keeping
+- **Two layers**:
+  - `MEMORY.md`（≤80 行）— boot 時載入的精簡工作記憶
+  - `memory/memory-full.md` — 完整記憶，按需讀取
+- 更新 MEMORY.md 時**注意 budget**，超過就降級到 memory-full.md
+- 新增重要資訊時，先問：這個需要每次 boot 都看到嗎？不需要就寫 memory-full.md
 
 ### 📝 Write It Down - No "Mental Notes"!
 
@@ -281,10 +340,11 @@ Periodically (every few days), use a heartbeat to:
 
 1. Read through recent `memory/YYYY-MM-DD.md` files
 2. Identify significant events, lessons, or insights worth keeping long-term
-3. Update `MEMORY.md` with distilled learnings
-4. Remove outdated info from MEMORY.md that's no longer relevant
+3. Update `MEMORY.md`（精簡版）or `memory/memory-full.md`（詳細版）
+4. **Run `python3 skills/shared/boot_budget_check.py`** — 確保 boot files 沒有膨脹
+5. Remove outdated info from MEMORY.md that's no longer relevant
 
-Think of it like a human reviewing their journal and updating their mental model. Daily files are raw notes; MEMORY.md is curated wisdom.
+Think of it like a human reviewing their journal and updating their mental model. Daily files are raw notes; MEMORY.md is curated wisdom. **Respect the budget — MEMORY.md ≤80 lines.**
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
