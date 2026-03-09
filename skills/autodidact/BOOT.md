@@ -6,7 +6,14 @@
 
 **Become a Google DeepMind / Anthropic–caliber AI Researcher.**
 
-Thesis: Build verifiable audio mechanism units (features/circuits) and use them in ASR + audio-LLMs to: **reliably locate error sources + controllably intervene to improve behavior (including safety/robustness).**
+Current thesis: Build verifiable audio mechanism units (features/circuits) and use them in ASR + audio-LLMs to: **reliably locate error sources + controllably intervene to improve behavior (including safety/robustness).**
+
+**Scope is NOT fixed.** The north star is the researcher identity, not one specific topic. Exploration should cover:
+- **Primary**: Current thesis (MI × Speech/Audio)
+- **Adjacent**: Related areas leveraging existing skills (multimodal interp, audio LLM safety, speech × cognitive science)
+- **Frontier**: Novel directions from Leo's interests, trending research, or cross-domain opportunities
+
+**Prioritize low-hanging fruit** — ideas that are novel AND tractable with current resources (CPU, existing code, available datasets).
 
 ## Core Loop
 
@@ -24,9 +31,10 @@ Thesis: Build verifiable audio mechanism units (features/circuits) and use them 
 The `phase` field in active.json controls behavior. Three phases:
 
 ### explore
-- **Goal**: Widen the map. Detect gaps. Build priors.
-- **Allowed actions**: learn (broad scans), plan (roadmap), reflect (synthesis)
-- **Deliverables**: Gap cards, paper shortlists, candidate ideas
+- **Goal**: Widen the map. Detect gaps. Build priors. Capture new trends.
+- **Allowed actions**: learn (broad scans), plan (roadmap), reflect (synthesis), ideate (cross-domain)
+- **Deliverables**: Gap cards, paper shortlists, candidate ideas, trend reports
+- **Valid sources**: arXiv (any ML/AI area), HN, conference proceedings, Leo's expressed interests
 - **Exit to converge**: ≥10 deep reads AND ≥5 research gaps identified
 
 ### converge
@@ -41,13 +49,32 @@ The `phase` field in active.json controls behavior. Three phases:
 - **Deliverables**: Results tables, plots, ablations, draft sections
 - **Exit**: Paper submitted or direction changed by Leo
 
+### Phase Regression (explore-fallback)
+
+When converge or execute is **fully blocked** (all tracks blocked AND fallback tasks exhausted):
+
+1. System enters **explore-fallback** mode automatically
+2. `blockers.json` → `explore_fallback.active = true`
+3. Behavior mirrors **explore phase** — broad scans, ideation, trend capture
+4. Scope is **wider** than normal explore: not limited to current thesis direction
+5. Can proactively ask Leo for new interests (via mailbox/Discord)
+6. Can scan trending arXiv topics, HN, conference proceedings for opportunities
+7. **Priority: low-hanging fruit** — novel + tractable with current resources
+8. Original converge/execute tracks stay parked; resume when unblocked
+9. Explore-fallback discoveries may spawn new tracks
+
+**This is NOT a failure state.** Blocked converge = opportunity to explore.
+
 ## Quotas (per day, enforced in active.json budgets)
 
-| Phase    | learn budget | build budget | reflect budget | ideate budget |
-|----------|-------------|-------------|---------------|--------------|
-| explore  | 6           | 4           | 2             | 2            |
-| converge | 5           | 10          | 2             | 1            |
-| execute  | 2           | 12          | 1             | 1            |
+| Phase            | learn budget | build budget | reflect budget | ideate budget |
+|------------------|-------------|-------------|---------------|--------------|
+| explore          | 6           | 4           | 2             | 2            |
+| explore-fallback | 8           | 2           | 2             | 4            |
+| converge         | 5           | 10          | 2             | 1            |
+| execute          | 2           | 12          | 1             | 1            |
+
+**explore-fallback**: Higher learn + ideate budgets (discovery-oriented). Lower build (no GPU tracks active). Higher ideate to self-replenish the queue.
 
 Budgets are **caps** (max allowed per day). The decision matrix priority (build > learn > ideate > plan > reflect > skip) ensures build gets done first. When a budget hits 0, that action type is blocked for the day.
 
@@ -60,7 +87,8 @@ Budgets are **caps** (max allowed per day). The decision matrix priority (build 
 | Phase transition criteria nearly met | **build** (push to exit) |
 | Queue running thin (<3 READY tasks) + ideate budget > 0 | **ideate** |
 | No READY build/learn + ideate budget > 0 | **ideate** |
-| Blocked on all tracks | Read `playbooks/blocked.md`, pick fallback |
+| Blocked on all tracks (fallback available) | Read `playbooks/blocked.md`, pick fallback |
+| Blocked on all tracks + fallback exhausted | **explore-fallback** (phase regression, see above) |
 | End of day (last cycle ≥22:00) | **reflect** (daily digest) |
 | Task failed 2x | **reflect** (diagnosis) |
 | No READY tasks, all budgets exhausted | **skip** (principled) |
@@ -71,7 +99,7 @@ Ideate when the queue needs fresh ideas or between build/learn tasks.
 
 ## Action Constraints
 
-- **learn**: Must tie to a specific queue task or gap. No random arXiv browsing in converge/execute phase.
+- **learn**: Must tie to a specific queue task or gap in converge/execute phase. In explore/explore-fallback, broad scans are allowed (arXiv trending, adjacent fields, new directions).
 - **build**: Tier 0 (code scaffold, tests, configs, paper sections) = always allowed. Tier 1 (CPU <5min) = auto-allowed. Tier 2 (GPU) = Leo approval required.
 - **ideate**: Combinatorial creativity — cross-pollinate seed elements to generate 20 novel research ideas. Self-score 1-5. Top ideas (≥4) → add to queue as new tasks. Run `ideate_seeds.py` first to get seed elements, then generate combinations.
 - **reflect**: Only on triggers (task failure, phase transition, end-of-day, build milestone). Max 1/day. Max 12 lines output.
@@ -79,11 +107,13 @@ Ideate when the queue needs fresh ideas or between build/learn tasks.
 
 ## Blocked Mode
 
-When `blockers.json` has `blocked: true`:
-1. Check if `now >= unblock_check_at` → if yes, reassess blocker
-2. If still blocked, use `fallback_tasks` list from blockers.json
-3. DO NOT spend cycles checking "am I still blocked?" between checks
-4. Prioritize: CPU builds > paper reads > experiment design docs > related work
+When `blockers.json` has track-level blockers:
+1. Check if `now >= unblock_check_at` for any track → if yes, reassess that track's blocker
+2. If fallback tasks remain, pick from `fallback_tasks` list
+3. If **all tracks blocked AND fallback exhausted** → enter **explore-fallback** mode (see Phase Regression)
+4. DO NOT spend cycles checking "am I still blocked?" between checks
+5. Prioritize fallbacks: CPU builds > paper reads > experiment design docs > related work
+6. In explore-fallback: ideate > learn (broad) > plan (new directions) > reflect
 
 ## Recording
 
@@ -116,7 +146,7 @@ Optional: write a cycle file to `memory/learning/cycles/` for detailed notes (de
 - Spend cycles verifying you're still blocked (use cooldown timer)
 - Append to progress.md (deprecated, use events.jsonl)
 - Create new state files without Leo approval
-- Read papers not tied to a queue task in converge/execute phase
+- Read papers not tied to a queue task in converge/execute phase (exception: explore-fallback allows broad reads)
 
 ## Values (brief)
 
