@@ -110,7 +110,7 @@ git push
 | **08:00, 20:00** | **Lab bot** | `lab-desktop → main` (PR) |
 | **14:00, 02:00** | **Mac bot** | `macbook-m3 → main` (PR) |
 
-**自動化腳本：** `scripts/merge-to-main.sh`
+**自動化腳本：** `skills/coordinator/scripts/merge-to-main.sh`
 
 流程：
 1. Cross-merge（先拉對方 branch）
