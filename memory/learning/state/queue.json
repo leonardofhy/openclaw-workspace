@@ -68,12 +68,13 @@
       "type": "build",
       "track": "T3+T5",
       "title": "gc(k) as jailbreak thermometer: scaffold detection script that measures gc(k) divergence on jailbreak vs benign audio",
-      "status": "ready",
+      "status": "done",
       "priority": 5,
       "blocked_by": null,
       "definition_of_done": "",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-09"
     },
     {
       "id": "Q007",
