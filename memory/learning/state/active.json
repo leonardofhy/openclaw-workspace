@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 4,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 165,
     "total_skips": 40,
-    "papers_read_deep": 30,
+    "papers_read_deep": 31,
     "papers_scanned": 38,
     "research_gaps": 19,
     "paper_ideas": 27,
@@ -45,9 +45,9 @@
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260309-1115",
-    "action": "build",
-    "summary": "Q011: t3_readiness_check.py — 5/5 checks pass, T3 harness confirmed production-ready, awaiting Leo CPU experiment approval"
+    "id": "c-20260309-1415",
+    "action": "learn",
+    "summary": "Q012: Read Neel Nanda MATS post on 5 env design principles for model-motive understanding; connected uncertain-causes + no-implicit-nudges to T5 audio jailbreak eval design"
   },
   "last_gc": "2026-03-09T11:15:00+08:00",
   "self_improve_tickets": []

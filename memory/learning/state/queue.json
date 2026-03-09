@@ -146,24 +146,26 @@
       "type": "read",
       "track": "T3",
       "title": "News: How to Design Environments for Understanding Model Motives",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/8pZuQnCve6K5ZrnM8/how-to-design-environment",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-09"
     },
     {
       "id": "Q013",
       "type": "read",
       "track": "T5",
       "title": "News: Can governments quickly and cheaply slow AI training",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/Xzf3eMnhTko7AxnEy/can-governments-quickly-a",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-09"
     },
     {
       "id": "Q014",
