@@ -3,12 +3,15 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-09 06:00
+**Last Updated:** 2026-03-09 14:00
 
 ## Current Task
+News scout execution for cron 366e373d-afac-4eae-8d25-bdf27fcd9ce6 (news scoring + digest queue)
+
 Cross-merge macbook-m3 + mailbox 啟用驗證
 
 ## Recent Context
+- 2026-03-09 14:00 Cron news scout execution 366e373d: scored 34 items and queued 4 high-relevance items (3 added, threshold ≥7).
 - 2026-03-06 20:05: Leo device/payment — iPhone 16 Pro Max; purchased Tourist Octopus; asks whether Octopus app can bind to the physical card.
 - 2026-03-06 19:55: Leo report — Octopus charged 41 HKD on A11 airport bus; confirm this is normal fare level (airport routes are ~40+ HKD).
 - 2026-03-06 19:49: Leo confirmed Apple Pay works in HK; decided not to exchange more HKD.
