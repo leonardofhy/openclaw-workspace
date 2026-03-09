@@ -12,6 +12,7 @@
 4. 有 recurrence ≥ 3 的 error → **觸發 Fix-First Protocol**（見 PROACTIVE.md §10）
 
 ### Step 2: 系統快檢（每次挑 1-2 個）
+- `python3 skills/shared/ensure_state.py` → 確保 state files 存在（首次 boot 自動建立）
 - `git status --short` → 有未 commit 就 commit + push
 - `python3 skills/task-check.py` → 有 alert 就處理
 - SSH tunnel 存活檢查
