@@ -127,6 +127,19 @@
       "created": "2026-03-09",
       "due": null,
       "completed": "2026-03-09"
+    },
+    {
+      "id": "Q011",
+      "type": "build",
+      "track": "T3",
+      "title": "t3_readiness_check.py: end-to-end demo (5 checks all pass, READY for Leo review + CPU experiment approval)",
+      "status": "done",
+      "priority": 10,
+      "blocked_by": null,
+      "definition_of_done": "Script runs, all 5 checks pass, added to repo",
+      "created": "2026-03-09",
+      "due": null,
+      "completed": "2026-03-09"
     }
   ],
   "archived_count": 77,
