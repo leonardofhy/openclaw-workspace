@@ -62,6 +62,66 @@
       "created": "2026-03-08",
       "due": null,
       "completed": "2026-03-08"
+    },
+    {
+      "id": "Q006",
+      "type": "build",
+      "track": "T3+T5",
+      "title": "gc(k) as jailbreak thermometer: scaffold detection script that measures gc(k) divergence on jailbreak vs benign audio",
+      "status": "ready",
+      "priority": 5,
+      "blocked_by": null,
+      "definition_of_done": "",
+      "created": "2026-03-09",
+      "due": null
+    },
+    {
+      "id": "Q007",
+      "type": "build",
+      "track": "T3+T5",
+      "title": "SAE on MicroGPT listen-layer: design doc + scaffold (which SAE features align with gc(k) phase boundary?)",
+      "status": "ready",
+      "priority": 6,
+      "blocked_by": null,
+      "definition_of_done": "",
+      "created": "2026-03-09",
+      "due": null
+    },
+    {
+      "id": "Q008",
+      "type": "build",
+      "track": "T5",
+      "title": "MATS proposal policy hook: add section on gc(k) as pre-deployment safety check tied to compute scaling",
+      "status": "ready",
+      "priority": 7,
+      "blocked_by": null,
+      "definition_of_done": "",
+      "created": "2026-03-09",
+      "due": null
+    },
+    {
+      "id": "Q009",
+      "type": "build",
+      "track": "T3+T5",
+      "title": "Joint pre-registration doc: combined falsification criteria for T3 and T5 papers",
+      "status": "ready",
+      "priority": 8,
+      "blocked_by": null,
+      "definition_of_done": "",
+      "created": "2026-03-09",
+      "due": null
+    },
+    {
+      "id": "Q010",
+      "type": "design",
+      "track": "T3",
+      "title": "Cross-modal gc(k) universality plan",
+      "status": "ready",
+      "priority": 9,
+      "blocked_by": null,
+      "definition_of_done": "",
+      "created": "2026-03-09",
+      "due": null
     }
   ],
   "archived_count": 77,
