@@ -179,6 +179,45 @@
       "created": "2026-03-09",
       "due": null,
       "completed": "2026-03-09"
+    },
+    {
+      "id": "Q015",
+      "type": "build",
+      "track": "T3",
+      "title": "T3 paper abstract + intro draft (Tier 0)",
+      "status": "done",
+      "priority": 11,
+      "blocked_by": null,
+      "definition_of_done": "Abstract + intro in memory/learning/pitches/t3_paper_draft.md",
+      "created": "2026-03-09",
+      "due": null,
+      "completed": "2026-03-09"
+    },
+    {
+      "id": "Q016",
+      "type": "build",
+      "track": "T3",
+      "title": "T3 experiment spec doc: CPU causal patching plan + expected results table",
+      "status": "done",
+      "priority": 12,
+      "blocked_by": null,
+      "definition_of_done": "memory/learning/pitches/t3_experiment_spec.md ready for Leo approval",
+      "created": "2026-03-09",
+      "due": null,
+      "completed": "2026-03-09"
+    },
+    {
+      "id": "Q017",
+      "type": "build",
+      "track": "T5",
+      "title": "T5 safety probe scaffold: minimal CPU script to compute gc(k) divergence signal from Whisper encoder layers",
+      "status": "done",
+      "priority": 13,
+      "blocked_by": null,
+      "definition_of_done": "skills/autodidact/scripts/t5_safety_probe.py runs on CPU toy data",
+      "created": "2026-03-09",
+      "due": null,
+      "completed": "2026-03-09"
     }
   ],
   "archived_count": 77,
