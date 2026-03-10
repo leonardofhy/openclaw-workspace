@@ -272,12 +272,13 @@
       "type": "build",
       "track": "T5",
       "title": "Interpret-Then-Defend: SAE feature-level audio jailbreak defense spec (extends Q041)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Spec written: feature-level patching for defense vs SPIRIT neuron-level; CPU-feasible; AUC comparison plan",
       "created": "2026-03-10",
-      "due": null
+      "due": null,
+      "completed": "2026-03-11"
     },
     {
       "id": "Q067",
