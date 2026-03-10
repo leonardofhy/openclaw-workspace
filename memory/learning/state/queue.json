@@ -253,6 +253,42 @@
       "created": "2026-03-10",
       "due": null,
       "completed": "2026-03-10"
+    },
+    {
+      "id": "Q065",
+      "type": "build",
+      "track": "T3",
+      "title": "SAEBench Grounding Sensitivity (M7): formal definition + Paper B §3 integration",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Formal ΔGS definition written; added to paper-b-s3-outline.md as M7; CPU-only using gc_eval",
+      "created": "2026-03-10",
+      "due": null
+    },
+    {
+      "id": "Q066",
+      "type": "build",
+      "track": "T5",
+      "title": "Interpret-Then-Defend: SAE feature-level audio jailbreak defense spec (extends Q041)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Spec written: feature-level patching for defense vs SPIRIT neuron-level; CPU-feasible; AUC comparison plan",
+      "created": "2026-03-10",
+      "due": null
+    },
+    {
+      "id": "Q067",
+      "type": "design",
+      "track": "T3",
+      "title": "gc(k) x instruction tuning: Qwen2-Audio base vs instruct on ALME stimuli",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Experiment design doc: compare gc(k) profile pre/post instruction tuning; Paper A §1 motivation",
+      "created": "2026-03-10",
+      "due": null
     }
   ],
   "archived_count": 54,

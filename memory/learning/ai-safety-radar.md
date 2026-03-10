@@ -1208,3 +1208,6 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *"Prologue to Terrified Comments on Claude's Constitution"* — LessWrong, 2026-03-09. Commentary on Anthropic's model spec/Claude constitution — directly relevant to AI governance and alignment: examines the spec's framing, incentives, and implications for how frontier models are instructed to behave and what safety properties the spec actually provides or fails to provide.
 - Link: <https://www.lesswrong.com/posts/o7e5C2Ev8JyyxHKNk/prologue-to-terrified-comments-on-claude-s-constitution>
+
+---
+**2026-03-10 23:45 (Tue)** — scan: LW-new lastBuildDate=15:45 UTC (23:45 Taipei); AF feed unchanged (top: "Censored LLMs", already picked 22:15). LW recent posts since 23:15 cycle: "Load-Bearing Walls" (karma:1, mixed tags), "Four Scenarios of Job-Reducing AI" (karma:9, economics framing) — neither safety-relevant. All AF backlog items captured. No high-signal update.
