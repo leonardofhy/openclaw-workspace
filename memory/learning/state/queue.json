@@ -185,12 +185,13 @@
       "type": "design",
       "track": "T2",
       "title": "Audio-RAVEL minimal pair stimuli plan: concrete stimulus table for 5 phonological contrasts × 4 languages using Choi et al. (Tier 0 design)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "memory/learning/cycles/audio-ravel-stimuli-plan.md: stimulus table, TTS source, 5 contrasts × 4 lang × 20 pairs each = 400 pairs spec",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-11"
     },
     {
       "id": "Q039",
@@ -221,24 +222,26 @@
       "type": "build",
       "track": "T5",
       "title": "SAE-guided adversarial detector calibration (SPIRIT-inspired)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Implement calibration script and evaluate alert precision/recall on synthetic attacks",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-10"
     },
     {
       "id": "Q042",
       "type": "write",
       "track": "T3",
       "title": "Critical-layer patching checklist for LALMs",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Draft reproducible checklist (AND/OR gates, denoising, AtP, top-k aggregate) with examples",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-11"
     },
     {
       "id": "Q064",
@@ -252,6 +255,44 @@
       "created": "2026-03-10",
       "due": null,
       "completed": "2026-03-10"
+    },
+    {
+      "id": "Q065",
+      "type": "build",
+      "track": "T3",
+      "title": "SAEBench Grounding Sensitivity (M7): formal definition + Paper B §3 integration",
+      "status": "done",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Formal ΔGS definition written; added to paper-b-s3-outline.md as M7; CPU-only using gc_eval",
+      "created": "2026-03-10",
+      "due": null,
+      "completed": "2026-03-11"
+    },
+    {
+      "id": "Q066",
+      "type": "build",
+      "track": "T5",
+      "title": "Interpret-Then-Defend: SAE feature-level audio jailbreak defense spec (extends Q041)",
+      "status": "done",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Spec written: feature-level patching for defense vs SPIRIT neuron-level; CPU-feasible; AUC comparison plan",
+      "created": "2026-03-10",
+      "due": null,
+      "completed": "2026-03-11"
+    },
+    {
+      "id": "Q067",
+      "type": "design",
+      "track": "T3",
+      "title": "gc(k) x instruction tuning: Qwen2-Audio base vs instruct on ALME stimuli",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Experiment design doc: compare gc(k) profile pre/post instruction tuning; Paper A §1 motivation",
+      "created": "2026-03-10",
+      "due": null
     }
   ],
   "archived_count": 54,
