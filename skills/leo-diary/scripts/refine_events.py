@@ -46,11 +46,11 @@ def _save_jsonl(path: Path, items: list[dict]):
         os.write(fd, content.encode("utf-8"))
         os.close(fd)
         os.replace(tmp, path)
-    except:
+    except Exception:
         try: os.close(fd)
-        except: pass
+        except Exception: pass
         try: os.unlink(tmp)
-        except: pass
+        except Exception: pass
         raise
 
 

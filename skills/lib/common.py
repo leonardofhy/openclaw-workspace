@@ -60,3 +60,15 @@ def is_quiet_hours() -> bool:
     """True if current time is between 23:00–08:00 (no proactive messages)."""
     h = now().hour
     return h >= 23 or h < 8
+
+
+def load_todoist_token():
+    token = os.environ.get('TODOIST_API_TOKEN')
+    if token:
+        return token
+    env_path = SECRETS / 'todoist.env'
+    if env_path.exists():
+        for line in env_path.read_text().splitlines():
+            if line.startswith('TODOIST_API_TOKEN='):
+                return line.split('=', 1)[1].strip()
+    raise RuntimeError('TODOIST_API_TOKEN not found')
