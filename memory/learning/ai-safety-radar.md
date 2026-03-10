@@ -1191,4 +1191,11 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 - Link: <https://www.alignmentforum.org/posts/Xzf3eMnhTko7AxnEy/can-governments-quickly-and-cheaply-slow-ai-training>
 
 **[new]** *"The case for AI safety capacity-building work"* — LessWrong (Coefficient Giving / Open Philanthropy), 2026-03-10. Field-meta post arguing capacity-building (MATS, 80kH, university groups) is massively underrated vs. direct technical work, backed by 2023 survey of ~329 people in AI safety showing 60% listed a capacity-building program in their top-4 career influences; useful calibration for how the field actually grows and where marginal talent should direct.
-- Link: <https://www.lesswrong.com/posts/capacity-building-ai-safety>
+- Link: <https://www.lesswrong.com/posts/RyKDbBkemNuRezTvt/the-case-for-ai-safety-capacity-building-work>
+
+---
+**2026-03-10 22:15 (Tue)** — scan: LW-new lastBuildDate=14:15 UTC (22:15 Taipei); AF lastBuildDate=14:15 UTC. One new LW post since 21:45 cycle ("Statisticism: How Cluster-Thinking About Data Creates Blind Spots" by Benquo, 13:59 UTC) — epistemics/data methodology, not AI-safety-specific; skipped. AF feed unchanged since last build. One missed AF backlog item surfaced (was unavailable due to 429 errors in earlier cycles):
+
+**[backlog-pick]** *"Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation"* — Alignment Forum (Bartosz Cywiński), 2026-03-09. Paper summary: treats Chinese censored LLMs as a natural analog for studying secret knowledge elicitation — tests honesty-elicitation and lie-detection techniques for detecting/removing model-generated falsehoods; directly relevant to the question of what hidden information lives in model weights and how to extract or suppress it.
+- arXiv: <https://arxiv.org/abs/2603.05494>
+- Link: <https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natural-testbed-for-secret-knowledge-2>

@@ -159,12 +159,13 @@
       "type": "design",
       "track": "T2",
       "title": "SAELens audio plugin design: 3-file implementation plan for Whisper/HuBERT SAE support (Gap #19 concrete plan) (Tier 0 design)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "memory/learning/cycles/saelens-audio-plugin-design.md: hook implementation approach, test plan, ~LOC estimate, SAELens PR scope",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-10"
     },
     {
       "id": "Q062",
@@ -237,6 +238,18 @@
       "blocked_by": null,
       "definition_of_done": "Draft reproducible checklist (AND/OR gates, denoising, AtP, top-k aggregate) with examples",
       "created": "2026-03-09",
+      "due": null
+    },
+    {
+      "id": "Q064",
+      "type": "build",
+      "track": "T2",
+      "title": "SAELens audio plugin: implement audio_model_hook.py Tier 0 scaffold (WhisperHookedEncoder, run_with_cache, pool_frames, unit tests on mock tensors)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "skills/autodidact/scripts/saelens_audio/audio_model_hook.py: WhisperHookedEncoder wrapper with run_with_cache() and hook_resid_post.{L} cache keys; pool_frames(); unit tests pass on mock tensors (no model download)",
+      "created": "2026-03-10",
       "due": null
     }
   ],
