@@ -221,12 +221,13 @@
       "type": "build",
       "track": "T5",
       "title": "SAE-guided adversarial detector calibration (SPIRIT-inspired)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Implement calibration script and evaluate alert precision/recall on synthetic attacks",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-10"
     },
     {
       "id": "Q042",
