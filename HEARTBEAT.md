@@ -12,6 +12,7 @@
 4. 有 recurrence ≥ 3 的 error → **觸發 Fix-First Protocol**（見 PROACTIVE.md §10）
 
 ### Step 2: 系統快檢（每次挑 1-2 個）
+- `python3 skills/shared/ensure_state.py` → 確保 state files 存在（首次 boot 自動建立）
 - `git status --short` → 有未 commit 就 commit + push
 - `python3 skills/task-check.py` → 有 alert 就處理
 - SSH tunnel 存活檢查
@@ -65,7 +66,13 @@ ELSE（什麼都沒發生，一切正常）
 
 ### 📝 記憶維護（每 2-3 天）
 - 今天的 memory/YYYY-MM-DD.md 是否存在
-- MEMORY.md 是否需要更新
+- MEMORY.md 是否需要更新（注意 ≤80 行 budget）
+
+### 📏 Boot Budget 檢查（每週一次）
+- 跑 `python3 skills/shared/boot_budget_check.py`
+- exit 1 (⚠️ 接近上限) → 主動瘦身（evict 舊內容到 memory-full.md 或 archive）
+- exit 2 (🔴 超過上限) → 立即處理，不等下次 heartbeat
+- SESSION-STATE.md: archive >48h 的 Recent Context 到 daily memory
 
 ### 🔄 Learnings 清理（每週一次，或 pending > 5 時）
 - 跑 `learn.py review`

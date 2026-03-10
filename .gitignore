@@ -1,5 +1,8 @@
 # === Secrets — NEVER track ===
 secrets/
+.env
+.env.*
+*.env
 
 # === OpenClaw internals ===
 .openclaw/

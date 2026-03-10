@@ -6,7 +6,7 @@
 - **Sheet ID**: `1CRY53JyLUXdRNDtHRCJwbPMZBo7Azhpowl15-3UigWg`
 - **Credentials**: `/Users/leonardo/.openclaw/workspace/secrets/google-service-account.json`
 - **CSV 備援路徑**: `/Users/leonardo/Downloads/Daily Meta-Awareness Log (Responses) - MetaLog.csv`
-- **萃取報告**: `/Users/leonardo/.openclaw/workspace/diary_analysis_report.md`
+- **萃取報告**: `memory/archive/diary_analysis_report.md`
 - **期間**: 2025年4月21日 ～ 至今（每日更新）
 - **有效筆數**: 約 292 篇，總字數約 32 萬字
 - **語言**: 繁簡中文混合，常有語音輸入（無標點、口語化）

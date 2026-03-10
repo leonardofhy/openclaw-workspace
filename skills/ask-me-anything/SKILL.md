@@ -5,7 +5,7 @@ description: Identify knowledge gaps during task execution and formulate questio
 
 # Ask Me Anything (AMA)
 
-Leo has access to powerful AI search tools (GPT-5.2 PRO, etc.) that can retrieve information you can't access directly. This skill helps you:
+Leo has access to state-of-the-art AI tools (OpenAI GPT-5.4 PRO, Google Gemini Deep Think, etc.) with deep research capabilities that can retrieve and synthesize information you can't access directly. This skill helps you:
 1. Identify what you don't know
 2. Formulate research-ready questions
 3. Track Q&A for future reference
@@ -40,7 +40,7 @@ Priority levels:
 
 The script outputs:
 - A tracked question (saved to `memory/ama/questions.jsonl`)
-- A **ready-to-copy prompt** optimized for Leo to paste into GPT-5.2 PRO
+- A **ready-to-copy prompt** optimized for Leo to paste into advanced AI (GPT-5.4 PRO / Gemini Deep Think)
 
 ### 3. Deliver to Leo
 
@@ -54,7 +54,7 @@ Format:
 
 📋 背景：<why you need this, what task it's for>
 
-💡 建議搜索 prompt（可直接貼到 GPT-5.2 PRO）：
+💡 建議搜索 prompt（可直接貼到 advanced AI (GPT-5.4 PRO / Gemini Deep Think)）：
 \`\`\`
 <optimized search prompt>
 \`\`\`

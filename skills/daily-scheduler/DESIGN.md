@@ -15,7 +15,7 @@ Leo needs a scheduling system that:
 - Schedule only exists when Leo manually asks "排行程"
 - No carry-over of unfinished tasks to next day
 - No conflict detection when new events are added
-- Dashboard (rpg-dashboard) shows calendar events, not the planned schedule
+- No dashboard integration for schedule display
 - Medication schedule is hardcoded in `schedule_data.py`
 
 ---
@@ -76,7 +76,7 @@ Leo needs a scheduling system that:
 ├──────────────────────────────────────────────────────────┤
 │ • Discord DM (via message tool)                          │
 │ • Webchat (direct reply)                                 │
-│ • Dashboard integration (rpg-dashboard reads file)       │
+│ • Schedule file (memory/schedules/YYYY-MM-DD.md)          │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -249,22 +249,9 @@ OUTPUT: blocks[]
 
 ---
 
-## 6. Dashboard Integration
+## 6. Schedule File as Output
 
-The `rpg-dashboard` currently shows raw calendar events. It should read from the schedule file instead:
-
-```python
-# In dashboard.py, add:
-def render_schedule_from_file(date_str):
-    """Read schedule from file instead of raw calendar."""
-    path = WORKSPACE / 'memory' / 'schedules' / f'{date_str}.md'
-    if path.exists():
-        schedule = parse_schedule(path)
-        return render_display(schedule, now_str)
-    else:
-        # Fallback to raw calendar
-        return render_schedule_from_calendar(data)
-```
+Schedule files at `memory/schedules/YYYY-MM-DD.md` serve as the single source of truth for daily plans.
 
 ---
 
@@ -280,7 +267,7 @@ def render_schedule_from_file(date_str):
 ### Phase 2: Smart Updates (next)
 - [ ] Spillover: 23:50 cron reads today, writes unfinished → tomorrow
 - [ ] `update_schedule()` — re-plan remaining time
-- [ ] Dashboard reads from schedule file
+- [ ] Schedule file rendering improvements
 
 ### Phase 3: Analytics (later)
 - [ ] 日終回顧 auto-generation

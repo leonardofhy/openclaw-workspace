@@ -12,17 +12,12 @@ import json
 import sys
 import os
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'shared'))
+from jsonl_store import find_workspace
 
 TZ = timezone(timedelta(hours=8))  # Asia/Taipei
-
-def find_workspace():
-    """Walk up from script location to find .git root."""
-    d = os.path.dirname(os.path.abspath(__file__))
-    for _ in range(10):
-        if os.path.isdir(os.path.join(d, '.git')):
-            return d
-        d = os.path.dirname(d)
-    return os.path.expanduser('~/.openclaw/workspace')
 
 def load_json(path):
     try:
@@ -77,8 +72,9 @@ def main():
         print(f"RUN {len(ready_tasks)} READY tasks in queue (top: {ready_tasks[0]['id']} {ready_tasks[0]['title'][:50]})")
         return
 
-    # --- Check 2: Blocker cooldown expired? (time to reassess) ---
+    # --- Check 2: Blocker handling ---
     if blockers and blockers.get('blocked'):
+        # Check 2a: Cooldown expired? (time to reassess)
         unblock_at = blockers.get('unblock_check_at')
         if unblock_at:
             try:
@@ -88,8 +84,27 @@ def main():
                     return
             except ValueError:
                 pass
-        # Note: fallback tasks are already caught by Check 1 (READY tasks).
-        # No separate fallback check needed here.
+
+        # Check 2b: Track-level unblock checks (v2 format)
+        track_blockers = blockers.get('track_blockers', {})
+        for tid, tb in track_blockers.items():
+            tb_unblock = tb.get('unblock_check_at')
+            if tb_unblock:
+                try:
+                    if now >= datetime.fromisoformat(tb_unblock):
+                        print(f"RUN track {tid} blocker cooldown expired — reassess")
+                        return
+                except ValueError:
+                    pass
+
+        # Check 2c: All blocked + fallback exhausted → explore-fallback mode
+        if blockers.get('fallback_exhausted'):
+            explore_fb = blockers.get('explore_fallback', {})
+            if explore_fb.get('active'):
+                # Explore-fallback: system keeps running in explore mode
+                # Budget checks still apply (handled by Check 0.5 above)
+                print("RUN explore-fallback — all tracks blocked, running exploration mode")
+                return
 
     # --- Check 3: New news digest? ---
     news_dir = os.path.join(ws, 'memory', 'learning', 'news')

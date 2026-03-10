@@ -28,10 +28,9 @@ import requests
 # workspace shared helpers
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
-from common import TZ, today_str as _today_str, WORKSPACE, SECRETS
+from common import TZ, today_str as _today_str, WORKSPACE, load_todoist_token
 
 API_BASE = 'https://api.todoist.com/api/v1'
-ENV_PATH = SECRETS / 'todoist.env'
 SCHEDULES_DIR = WORKSPACE / 'memory' / 'schedules'
 SYNC_MARKER = '[openclaw-schedule-sync]'
 
@@ -50,17 +49,6 @@ class Block:
     @property
     def slot(self) -> str:
         return f"{self.start}-{self.end}"
-
-
-def load_token() -> str:
-    token = os.environ.get('TODOIST_API_TOKEN')
-    if token:
-        return token
-    if ENV_PATH.exists():
-        for line in ENV_PATH.read_text().splitlines():
-            if line.startswith('TODOIST_API_TOKEN='):
-                return line.split('=', 1)[1].strip()
-    raise RuntimeError('TODOIST_API_TOKEN not found')
 
 
 def _req(method: str, path: str, token: str, payload: dict | None = None, params: dict | None = None):
@@ -171,7 +159,7 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
     blocks = _parse_blocks(latest_section)
     target_slots = {b.slot: b for b in blocks}
 
-    token = load_token()
+    token = load_todoist_token()
     tasks = _list_all_active_tasks(token)
 
     synced_existing_multi: dict[str, list[dict]] = {}

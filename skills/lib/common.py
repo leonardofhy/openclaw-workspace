@@ -8,6 +8,7 @@ Usage:
     t = now().strftime('%H:%M')  # → "13:47"
     d = today_str()            # → "2026-02-24"
 """
+import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -20,6 +21,16 @@ MEMORY    = WORKSPACE / 'memory'
 TAGS_DIR  = MEMORY / 'tags'
 SECRETS   = WORKSPACE / 'secrets'
 SCRIPTS   = WORKSPACE / 'skills' / 'leo-diary' / 'scripts'
+
+
+# --- External Service Config (centralized, not hardcoded in scripts) ---
+CAL_ID = os.environ.get('OPENCLAW_CAL_ID', 'leonardofoohy@gmail.com')
+SHEET_ID = os.environ.get('OPENCLAW_SHEET_ID', '1CRY53JyLUXdRNDtHRCJwbPMZBo7Azhpowl15-3UigWg')
+DISCORD_BOT_IDS = {
+    "lab": os.environ.get('OPENCLAW_DISCORD_BOT_LAB', '1476497627490025644'),
+    "mac": os.environ.get('OPENCLAW_DISCORD_BOT_MAC', '1473210706567495730'),
+}
+DISCORD_BOT_SYNC_CHANNEL = os.environ.get('OPENCLAW_DISCORD_CHANNEL', '1476624495702966506')
 
 
 # ── Time helpers ──
@@ -49,3 +60,15 @@ def is_quiet_hours() -> bool:
     """True if current time is between 23:00–08:00 (no proactive messages)."""
     h = now().hour
     return h >= 23 or h < 8
+
+
+def load_todoist_token():
+    token = os.environ.get('TODOIST_API_TOKEN')
+    if token:
+        return token
+    env_path = SECRETS / 'todoist.env'
+    if env_path.exists():
+        for line in env_path.read_text().splitlines():
+            if line.startswith('TODOIST_API_TOKEN='):
+                return line.split('=', 1)[1].strip()
+    raise RuntimeError('TODOIST_API_TOKEN not found')

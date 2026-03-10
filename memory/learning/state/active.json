@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "phase": "converge",
-  "phase_since": "2026-03-01",
+  "phase": "explore-fallback",
+  "phase_since": "2026-03-09",
   "phase_exit_criteria": {
     "converge_to_execute": [
       "eval_harness_exists_T3",
@@ -49,6 +49,6 @@
     "action": "build",
     "summary": "Q059 complete: Paper A full draft assembled (memory/learning/pitches/paper-a-draft.md) — §1-§4 LaTeX-ready (Abstract v0.7, §1 v1.9, §2 v1.4, §3 v2.1 8-subsections, §4 v2.2 7-subsections), §5 skeleton; cite key registry unified; budgets reset for 2026-03-10."
   },
-  "last_gc": "2026-03-05T18:45:28.291886+08:00",
+  "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
 }

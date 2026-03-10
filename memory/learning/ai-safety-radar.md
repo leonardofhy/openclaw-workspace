@@ -1092,93 +1092,42 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **[no high-signal update]** — all feeds stable; no new posts since 22:41 cycle. Day complete: 8 unique picks logged.
 
 ---
-**2026-03-05 15:15 (Thu)** — scan: LW new today = 3 posts (≥10 karma feed) | AF unchanged (top = "How to Design Environments for Understanding Model Motives", already picked 2026-03-04 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 2026-03-04 13:15) | LW karma≥25 = "A summary of Condensation and its relation to Natural Latents" (new, 08:48 Taipei).
+
+**2026-03-05 09:45 (Thu)** — scan: LW new (karma≥30) = 1 new post | LW questions = 1 new post | AF top = "How to Design Environments for Understanding Model Motives" (unchanged, already picked 2026-03-04 13:45) | LW curated = "models have some pretty funny attractor states" (unchanged, already picked 2026-02-27).
 
 **[picks]**
-- **"A summary of Condensation and its relation to Natural Latents"** — LessWrong, 2026-03-05, karma≥25. Summarises the Condensation framework and its connection to Natural Latents (Wentworth); foundational for representation-learning-based alignment approaches; relevant to understanding what structure emerges in trained models and why Natural Latents matter for scalable oversight. High signal for interpretability-adjacent safety work. <https://www.lesswrong.com/posts/agw7HhW4cWjADpBgo/a-summary-of-condensation-and-its-relation-to-natural>
-- **"A Behavioural and Representational Evaluation of Goal-directedness in Language Model Agents"** — LessWrong, 2026-03-05 (10:20 Taipei). Empirical paper evaluating goal-directedness in LLM agents both behaviourally and representationally; directly tests a core safety-relevant property (are models goal-directed?) with dual-method validation — high-signal for mesa-optimiser / agentic risk research. <https://www.lesswrong.com/posts/fe5cJmwGETNf8rYjE/a-behavioural-and-representational-evaluation-of-goal-1>
+- **"A summary of Condensation and its relation to Natural Latents"** — LessWrong, 2026-03-05 — Summarizes Sam Eisenstat's Condensation theory and draws first mathematical comparisons to John Wentworth's Natural Latents; both address when latent variable models will converge on the "same" concepts across agents with different implementations. Moderate-to-high alignment signal: directly relevant to interpretability and the question of whether AI systems and humans can share objective representations — foundational for value alignment approaches that depend on concept convergence. <https://www.lesswrong.com/posts/condensation-natural-latents>
+- **"Maybe there's a pattern here?"** — LessWrong, 2026-03-05 — Historical essay tracing how transformative dual-use technologies (Gatling gun, rockets/VfR → V-2, aircraft → bombers) were systematically co-opted by military-industrial interests despite creators' peaceful intentions. Moderate safety signal: provides historical grounding for AI governance analogies about civilian vs. military AI development trajectories; useful framing for policy/deployment discussions. <https://www.lesswrong.com/posts/TjcvjwaDsuea8bmbR/maybe-there-s-a-pattern-here>
 
 ---
-**2026-03-05 15:45 (Thu)** — scan: LW karma≥10 lastBuild=07:45 UTC (15:45 Taipei), latest post "A Behavioural and Representational Evaluation of Goal-directedness" at 02:20 UTC (already picked 15:15) | AF karma≥25 feed unchanged (top = biosecurity fieldbuilding + animal welfare posts, off-topic for AI safety) | No new safety-relevant posts since 15:15 cycle.
+**2026-03-05 10:45 (Thu)** — scan: LW new (karma≥30) feed lastBuildDate=02:45 UTC (10:45 Taipei) = same as 10:15 cycle; 0 new posts | AF = rate-limited (unavailable) | LW curated/top unchanged.
 
-**[backlog-pick]** *"Text Compression Can Help Secure Model Weights"* — LessWrong, 2026-03-05 (07:30 Taipei / 23:30 UTC Wed), karma≥10. Proposes using text compression techniques as a mechanism to secure model weights against theft/exfiltration; directly relevant to the model security cluster (complements the verification/oversight thread running through this week's picks — if weights can't be secured, audit schemes lose teeth). Unpicked from today's earlier scans.
-- Link: <https://www.lesswrong.com/posts/GcbkprYPCjXdysLq4/text-compression-can-help-secure-model-weights>
-
----
-**2026-03-05 16:15 (Thu)** — scan: LW karma≥25 lastBuild=08:15 UTC (16:15 Taipei), top = "A summary of Condensation and its relation to Natural Latents" (already picked 15:15) | LW karma≥10 top = "A Behavioural and Representational Evaluation of Goal-directedness" (already picked 15:15) | AF lastBuild=08:14 UTC, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | No new safety-relevant posts since 15:45 cycle.
-
-**[no high-signal update]** — all feeds stable since 15:45; no new posts. Today's picks so far: "Condensation & Natural Latents", "Behavioural & Representational Evaluation of Goal-directedness", "Text Compression Can Help Secure Model Weights" (backlog).
-
----
-**2026-03-05 16:45 (Thu)** — scan: LW karma≥10 lastBuild=08:45 UTC (16:45 Taipei), top = "A Behavioural and Representational Evaluation of Goal-directedness" (already picked 15:15) | AF karma≥10 lastBuild=08:45 UTC, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | LW curated unchanged.
-
-**[no high-signal update]** — all feeds stable since 16:15; no new posts. Today's picks remain: "Condensation & Natural Latents", "Behavioural & Representational Evaluation of Goal-directedness", "Text Compression Can Help Secure Model Weights" (backlog).
-
----
-**2026-03-05 17:15 (Thu)** — scan: LW-karma25 lastBuild=09:15 UTC (17:15 Taipei), top = "models have some pretty funny attractor states" (curated, unchanged) | LW-karma10 lastBuild=09:15 UTC, top = "A Behavioural and Representational Evaluation of Goal-directedness" (02:20 UTC, already picked 15:15) | AF-karma25 lastBuild=09:16 UTC, 3 items: "Schelling Goodness" (already picked 2026-03-04), "Model Incrimination" (already picked 2026-02-27), "How to Design Environments for Model Motives" (already picked 2026-03-04 13:45) | All feeds unchanged since 16:45 cycle; all viable backlog candidates exhausted.
-
-**[no high-signal update]** — feeds fully stable; no new posts since 15:15 pick window. Today's complete picks: "Condensation & Natural Latents" (15:15), "Behavioural & Representational Evaluation of Goal-directedness" (15:15), "Text Compression Can Help Secure Model Weights" (backlog, 15:45).
-
----
-**2026-03-05 17:45 (Thu)** — scan: LW-curated lastBuild=09:45 UTC (17:45 Taipei), top = "models have some pretty funny attractor states" (unchanged, already picked 2026-03-04) | LW-karma10 lastBuild=09:45 UTC, top = "A Behavioural and Representational Evaluation of Goal-directedness" (02:20 UTC, already picked 15:15) | AF-karma25 lastBuild=09:45 UTC, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | All three feeds fully stable since 17:15 cycle; no new posts.
-
-**[no high-signal update]** — feeds unchanged; today's picks remain: "Condensation & Natural Latents" (15:15), "Behavioural & Representational Evaluation of Goal-directedness" (15:15), "Text Compression Can Help Secure Model Weights" (backlog, 15:45). Day winding down.
-
----
-**2026-03-05 18:15 (Thu)** — scan: LW-karma10 lastBuild=10:15 UTC (18:15 Taipei), top = "A Behavioural and Representational Evaluation of Goal-directedness" (02:20 UTC, already picked 15:15) | AF-karma25 lastBuild=10:15 UTC, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | LW-curated lastBuild=10:15 UTC, top = "models have some pretty funny attractor states" (unchanged, already picked 2026-03-04) | All feeds fully stable since 17:45 cycle; all viable backlog candidates exhausted.
-
-**[no high-signal update]** — feeds unchanged; today's complete picks remain: "Condensation & Natural Latents" (15:15), "Behavioural & Representational Evaluation of Goal-directedness" (15:15), "Text Compression Can Help Secure Model Weights" (backlog, 15:45). End of evening.
-
----
-**2026-03-05 18:45 (Thu)** — scan: LW-karma10 lastBuild=10:45 UTC (18:45 Taipei), one new post since 18:15: "Vibe Coding cripples the mind" (10:29 UTC) | AF lastBuild=10:15 UTC (unchanged), top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | LW-curated unchanged.
-
-**[pick]** *"Vibe Coding cripples the mind"* — LessWrong, 2026-03-05 (18:29 Taipei / 10:29 UTC), karma≥10. Argues that relying on AI coding tools (vibe-coding) atrophies core programming skills and deep technical understanding; safety-adjacent because human expertise erosion directly undermines the oversight capacity needed to audit and correct AI systems — if practitioners lose deep understanding, meaningful human oversight gets harder.
-- Link: <https://www.lesswrong.com/posts/qcz4mg2PMHckSwymX/vibe-coding-cripples-the-mind>
-
----
-**2026-03-05 19:15 (Thu)** — scan: LW-karma10 lastBuild=11:15 UTC (19:15 Taipei), top = "Vibe Coding cripples the mind" (10:29 UTC, already picked 18:45) | AF lastBuild=11:15 UTC (unchanged), top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04 13:45) | LW-curated unchanged | No new posts since 18:45 cycle. Backlog review: "Maybe there's a pattern here?" (dynomight, LW, 82 pts, 2026-03-04 20:32 UTC = 2026-03-05 04:32 Taipei) — was available since early this morning but bypassed by all prior cycles; high karma, frontpage. HN notable: "The L in 'LLM' Stands for Lying" (acko.net, 227 pts, today).
-
-**[backlog-pick]** *"Maybe there's a pattern here?"* — LessWrong, dynomight, 2026-03-04 (04:32 Taipei / 20:32 UTC), 82 pts, Frontpage. Historical-parallel piece drawing from the Gatling gun inventor's self-justification ("my rapid-fire gun will reduce armies and casualties") through V2 rocketry rationalizations → extends to AI; directly relevant to the "race to capability under benevolent framing" failure mode that recurs in AI safety discourse — the pattern is: build dangerous dual-use technology, rationalize that it'll have the opposite of its obvious effect, then be wrong.
-- Link: <https://www.lesswrong.com/posts/TjcvjwaDsuea8bmbR/maybe-there-s-a-pattern-here>
-
-**[pick]** *"The L in 'LLM' Stands for Lying"* — acko.net, HN 227 pts, 2026-03-05. Technical-essay arguing that language models are structurally deceptive by design — the "L" framing is a hook for a deeper point about how LLMs don't have truth-tracking as a first-order goal; safety-relevant because it connects honesty/deception to fundamental architecture, not just fine-tuning failures.
-- Link: <https://acko.net/blog/the-l-in-llm-stands-for-lying/>
-
----
-**2026-03-05 19:45 (Thu)** — scan: LW-karma10 lastBuild=11:29 UTC (unchanged from 19:15), top = "Vibe Coding cripples the mind" (already picked 18:45) | AF-karma25 lastBuild unchanged, top = "How to Design Environments for Understanding Model Motives" (already picked 2026-03-04) | LW-curated unchanged | No new posts since 19:15 cycle. Backlog review: AF feed has several un-picked posts from Feb 27 – Mar 1 that have not been surfaced in any prior cycle.
-
-**[backlog-pick]** *"Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior"* — Alignment Forum, 2026-02-27, karma≥25. Proposes "model incrimination" — a technique for attributing specific misbehavior (e.g., sycophancy, refusal failure) back to the input features or training decisions that caused it; directly useful for interpretability-in-deployment and the practical "why did it do that?" question that currently has no systematic answer. Core safety relevance: closes the feedback loop between observed misalignment and actionable diagnosis.
+**[backlog-pick]** *Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior* — Alignment Forum, 2026-02-27 — Introduces "model incrimination": a framework for attributing LLM misbehavior to specific causal factors in training (data, RLHF signal, fine-tuning decisions) by constructing counterfactual ablations and scoring causal responsibility. Directly relevant to interpretability, auditing, and accountability tooling — fills the gap between "the model did X" and "X happened because of Y in training"; complements goal-directedness evaluation (picked 10:15) and model security/verification cluster.
 - Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
 
 ---
-**2026-03-05 22:10 (Thu)** — scan: LW-karma10 unchanged (top = "Vibe Coding cripples the mind", already picked 18:45) | LW-karma25 unchanged | AF feed unchanged (all 4 items already picked in prior cycles) | HN: "Dario Amodei calls OpenAI's messaging around military deal 'straight up lies'" (683 pts, TechCrunch, Mar 4) — not yet picked; "Something is afoot in the land of Qwen" (720 pts, Simon Willison) — capability news only.
+**2026-03-05 10:15 (Thu)** — scan: LW new since 09:45 = 2 posts (not yet picked); AF = rate-limited (unavailable).
 
-**[new-pick]** *"Dario Amodei calls OpenAI's messaging around military deal 'straight up lies'"* — TechCrunch, HN 683 pts, 2026-03-04. Dario publicly accuses OpenAI of misrepresenting its military partnership in public statements — the clearest lab-vs-lab governance conflict of the week; closes the DoW/Anthropic/OpenAI arc with a direct credibility challenge that has direct implications for how safety narratives get contested in public discourse and whose framing of "responsible military AI" wins. Prior related picks: "War Claude" (Mar 3), "Secretary of War Tweets..." (Mar 2), "Anthropic and the DoW" (Feb 27).
-- Link: <https://techcrunch.com/2026/03/04/anthropic-ceo-dario-amodei-calls-openais-messaging-around-military-deal-straight-up-lies-report-says/>
+**[picks]**
+- **"A Behavioural and Representational Evaluation of Goal-directedness in Language Model Agents"** — LessWrong / arXiv 2602.08964, 2026-03-05, Sarti et al. (SPAR program) — First combined behavioural + representational evaluation of goal-directedness in LLM agents: studies GPT-OSS-20B in 2D grid-world navigation, finds agent internally encodes "cognitive maps" (goal/self locations decodable from activations near true positions) and multi-step action plans, with apparent failures traceable to *imperfect internal beliefs* rather than missing goal structure. High safety signal: directly addresses the question of whether LLM agents *genuinely* pursue goals vs. mimic goal-pursuit — foundational for understanding mesa-optimization and deceptive alignment empirically. Interpretability + goal-directedness + robust agents tags. <https://www.lesswrong.com/posts/fe5cJmwGETNf8rYjE/a-behavioural-and-representational-evaluation-of-goal-1>
+- **"Text Compression Can Help Secure Model Weights"** — LessWrong, 2026-03-04, Roy Rinberg + Nicholas Carlini et al. — Extends Greenblatt's egress-limiting framework: by compressing model outputs before egress (text is ~more compressible than weights), you can tighten the egress bandwidth cap without degrading legitimate service, buying substantially more time for detection-and-response before full weight exfiltration becomes feasible. Moderate-high safety signal: concrete, implementable mechanism for the weights-security cluster; Carlini's involvement lends credibility; complements "Make Powerful Machines Verifiable" (picked 2026-03-04 22:41) and broader model-security governance thread. <https://www.lesswrong.com/posts/GcbkprYPCjXdysLq4/text-compression-can-help-secure-model-weights>
 
----
-**2026-03-05 22:16 (Thu)** — scan: LW-curated lastBuild=14:16 UTC (22:16 Taipei), top = "models have some pretty funny attractor states" (already picked 2026-03-04) | LW-karma10 lastBuild=14:16 UTC, top = "Maybe there's a pattern here?" (already picked 19:15) | AF-karma25 lastBuild=14:16 UTC, top = "Schelling Goodness" (already picked 2026-03-04) | All feeds fully stable since 22:10 cycle; no new posts.
+**2026-03-05 11:15 (Thu)** — scan: LW feed lastBuildDate=03:15 UTC (11:15 Taipei), top post unchanged ("A Behavioural and Representational Evaluation of Goal-directedness", already picked 10:15) | AF feed lastBuildDate=03:14 UTC, top post unchanged ("How to Design Environments for Understanding Model Motives", already picked 2026-03-04 13:45) | LW new (karma≥10) = 0 new posts since 10:45.
 
-**[no high-signal update]** — feeds unchanged; today's complete picks: "Condensation & Natural Latents" (15:15), "Behavioural & Representational Evaluation of Goal-directedness" (15:15), "Text Compression Can Help Secure Model Weights" (backlog, 15:45), "Vibe Coding cripples the mind" (18:45), "Maybe there's a pattern here?" (backlog, 19:15), "The L in 'LLM' Stands for Lying" (19:15), "Dario Amodei calls OpenAI's messaging around military deal 'straight up lies'" (22:10). End of day.
-
-## 2026-03-05 22:45 (backlog-picks, 68 unread)
-
-**LW [94]** Split Personality Training can detect Alignment Faking — directly probes the alignment-faking threat model with a novel training-side detection method; high relevance.
-→ https://www.lesswrong.com/posts/aypknr8scyrhBjmYL/split-personality-training-can-detect-alignment-faking
-
-**LW [92]** Make Powerful Machines Verifiable — argues verifiability is a tractable safety lever; connects to oversight/interpretability research agenda.
-→ https://www.lesswrong.com/posts/bnawpDWcKaJqLX8RF/make-powerful-machines-verifiable
-
-(3 new today were LW chess/vibe-coding pieces — low signal for AI safety; above two are backlog-picks.)
+**[no high-signal update]** — all feeds stable; no new items since 10:45 cycle. Today's picks so far: 4 unique (goal-directedness behavioural+representational eval, text compression for model weight security, condensation + natural latents summary, dual-use technology historical pattern; plus backlog-pick: model incrimination).
 
 ---
-**2026-03-05 23:15 (Thu)** — scan: LW-frontpage lastBuild=15:15 UTC (23:15 Taipei), 1 new post since 22:45 cycle: "Investigating Self-Fulfilling Misalignment and Collusion in AI Control" (15:05 UTC / 23:05 Taipei) | AF-karma25 unchanged (top = "Schelling Goodness", already picked 2026-03-04) | LW-curated unchanged.
+**2026-03-05 11:45 (Thu)** — scan: LW feed lastBuildDate=03:45 UTC (11:45 Taipei), top post unchanged ("A Behavioural and Representational Evaluation of Goal-directedness", already picked 10:15) | AF feed lastBuildDate=03:45 UTC, top post unchanged ("How to Design Environments for Understanding Model Motives", already picked 2026-03-04 13:45) | LW new (karma≥10) = 0 new posts since 11:15.
 
-**[new-pick]** *"Investigating Self-Fulfilling Misalignment and Collusion in AI Control"* — LessWrong, 2026-03-05 23:05 Taipei (15:05 UTC). Examines whether misaligned AI behavior can become self-reinforcing through feedback loops, and whether multiple AI systems might collude within AI-control setups — two compounding failure modes that undercut the standard "control via oversight" safety paradigm; directly relevant to robustness of AI control frameworks.
-- Link: <https://www.lesswrong.com/posts/vfxoCKW9T9wJFbCfv/investigating-self-fulfilling-misalignment-and-collusion-in>
+**[no high-signal update]** — all feeds stable; no new items since 10:45 cycle. Today's picks remain: 4 unique (goal-directedness behavioural+representational eval, text compression for model weight security, condensation + natural latents summary, dual-use technology historical pattern; plus backlog-pick: model incrimination).
 
 ---
-**2026-03-05 23:45 (Thu)** — scan: LW-frontpage lastBuild=15:45 UTC (23:45 Taipei), top = "Investigating Self-Fulfilling Misalignment and Collusion in AI Control" (already picked 23:15) | AF unchanged (all 4 items previously picked) | HN: "The L in 'LLM' Stands for Lying" (476 pts, already picked 19:15). No new high-signal posts.
+**2026-03-05 13:15 (Thu)** — scan: LW feed lastBuildDate=05:15 UTC (13:15 Taipei), top post unchanged ("A summary of Condensation and its relation to Natural Latents", already picked 09:45) | AF feed lastBuildDate=05:15 UTC, top post unchanged ("How to Design Environments for Understanding Model Motives", already picked 2026-03-04 13:45) | LW new (karma≥30) = 0 new posts since 11:45.
+
+**[backlog-pick]** *Sacred values of future AIs* — LessWrong, 2026-03-04 — Examines whether future AI systems will form or encode something analogous to "sacred values" (non-negotiable commitments resistant to trade-offs), and what implications this has for alignment: if AIs develop sacred values by design or training, that could make value modification harder; if not, they may be more robustly steerable but also more susceptible to reward hacking. High alignment signal: directly addresses value stability vs. corrigibility trade-off — a core tension in current alignment approaches (HHH training, Constitutional AI, etc.). <https://www.lesswrong.com/posts/sjeqDKhDHgu3sxrSq/sacred-values-of-future-ais>
+
+---
+**2026-03-05 13:45 (Thu)** — scan: LW feed lastBuildDate=05:45 UTC (13:45 Taipei), unchanged from 13:15 cycle | AF feed lastBuildDate=05:45 UTC, unchanged | LW new (karma≥10) = 0 new posts since 11:45.
 
 **[no high-signal update]** — feeds fully stable; last meaningful pick was "Investigating Self-Fulfilling Misalignment and Collusion in AI Control" (23:15).
 
