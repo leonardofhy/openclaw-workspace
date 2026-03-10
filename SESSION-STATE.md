@@ -9,6 +9,7 @@
 - 今晚前要：買 NTUAIS domain、review 廣告文案+表單
 - 本週：約週二課程組員 meeting、準備社團第零週 slides
 - 週三四 lab meeting 宣傳實驗室共用 Claude Code（OAuth access token 方式）
+- 理鏡 = 馬來西亞中學鐵哥們，友玲 = 理鏡老婆（住香港）
 - 需要問理鏡這幾天旅費要還多少
 - Evan 回信待處理（想法不錯但需要想怎麼回）
 - 想做決策思維圖梳理優先級
