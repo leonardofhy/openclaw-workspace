@@ -11,8 +11,10 @@ from datetime import datetime
 
 _WS = Path(__file__).resolve().parent.parent.parent.parent
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
+from common import SHEET_ID
+
 # Google Sheets 設定
-SHEET_ID = "1CRY53JyLUXdRNDtHRCJwbPMZBo7Azhpowl15-3UigWg"
 CREDS_PATH = str(_WS / 'secrets' / 'google-service-account.json')
 
 # CSV 備援路徑

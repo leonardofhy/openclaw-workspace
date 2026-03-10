@@ -8,6 +8,7 @@ Usage:
     t = now().strftime('%H:%M')  # → "13:47"
     d = today_str()            # → "2026-02-24"
 """
+import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -20,6 +21,16 @@ MEMORY    = WORKSPACE / 'memory'
 TAGS_DIR  = MEMORY / 'tags'
 SECRETS   = WORKSPACE / 'secrets'
 SCRIPTS   = WORKSPACE / 'skills' / 'leo-diary' / 'scripts'
+
+
+# --- External Service Config (centralized, not hardcoded in scripts) ---
+CAL_ID = os.environ.get('OPENCLAW_CAL_ID', 'leonardofoohy@gmail.com')
+SHEET_ID = os.environ.get('OPENCLAW_SHEET_ID', '1CRY53JyLUXdRNDtHRCJwbPMZBo7Azhpowl15-3UigWg')
+DISCORD_BOT_IDS = {
+    "lab": os.environ.get('OPENCLAW_DISCORD_BOT_LAB', '1476497627490025644'),
+    "mac": os.environ.get('OPENCLAW_DISCORD_BOT_MAC', '1473210706567495730'),
+}
+DISCORD_BOT_SYNC_CHANNEL = os.environ.get('OPENCLAW_DISCORD_CHANNEL', '1476624495702966506')
 
 
 # ── Time helpers ──
