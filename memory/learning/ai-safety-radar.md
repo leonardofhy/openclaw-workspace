@@ -1199,3 +1199,6 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **[backlog-pick]** *"Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation"* — Alignment Forum (Bartosz Cywiński), 2026-03-09. Paper summary: treats Chinese censored LLMs as a natural analog for studying secret knowledge elicitation — tests honesty-elicitation and lie-detection techniques for detecting/removing model-generated falsehoods; directly relevant to the question of what hidden information lives in model weights and how to extract or suppress it.
 - arXiv: <https://arxiv.org/abs/2603.05494>
 - Link: <https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natural-testbed-for-secret-knowledge-2>
+
+---
+**2026-03-10 22:45 (Tue)** — scan: LW-new lastBuildDate=14:45 UTC (22:45 Taipei), top item "The case for AI safety capacity-building work" (already picked 22:15). AF lastBuildDate=14:45 UTC, top item "Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation" (already picked 22:15). No new posts in the 22:15–22:45 window. No high-signal update.

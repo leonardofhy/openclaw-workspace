@@ -245,12 +245,13 @@
       "type": "build",
       "track": "T2",
       "title": "SAELens audio plugin: implement audio_model_hook.py Tier 0 scaffold (WhisperHookedEncoder, run_with_cache, pool_frames, unit tests on mock tensors)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "skills/autodidact/scripts/saelens_audio/audio_model_hook.py: WhisperHookedEncoder wrapper with run_with_cache() and hook_resid_post.{L} cache keys; pool_frames(); unit tests pass on mock tensors (no model download)",
       "created": "2026-03-10",
-      "due": null
+      "due": null,
+      "completed": "2026-03-10"
     }
   ],
   "archived_count": 54,
