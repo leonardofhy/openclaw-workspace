@@ -259,12 +259,13 @@
       "type": "build",
       "track": "T3",
       "title": "SAEBench Grounding Sensitivity (M7): formal definition + Paper B §3 integration",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Formal ΔGS definition written; added to paper-b-s3-outline.md as M7; CPU-only using gc_eval",
       "created": "2026-03-10",
-      "due": null
+      "due": null,
+      "completed": "2026-03-11"
     },
     {
       "id": "Q066",

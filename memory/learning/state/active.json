@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 6,
+    "build_remaining_today": 5,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-10"
   },
   "stats": {
-    "total_cycles": 165,
+    "total_cycles": 166,
     "total_skips": 40,
     "papers_read_deep": 27,
     "papers_scanned": 37,
     "research_gaps": 19,
     "paper_ideas": 12,
     "paper_pitches": 2,
-    "code_artifacts": 43,
+    "code_artifacts": 44,
     "system_improvements": 7,
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260310-2331",
-    "action": "ideate",
-    "summary": "20 combinatorial ideas generated; top 2 scored N+F=9 (Grounding Sensitivity M7, Interpret-Then-Defend); added Q065/Q066/Q067 to queue"
+    "id": "c-20260311-0001",
+    "action": "build",
+    "summary": "Q065: Formal \u0394GS (M7) definition + Paper B \u00a73.7 integration \u2014 Cohen's d of ALME consistent/conflict activation, GS_audio/text/anom metrics, CPU-feasible, gc(F) cross-validation predictions"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []

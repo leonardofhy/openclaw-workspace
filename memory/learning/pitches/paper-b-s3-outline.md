@@ -179,6 +179,44 @@ gc(F) = 0.5  → ambiguous / mixed modality
 
 **Encoder-only proxy (Whisper):** Use decoder text generation as the "text pathway" proxy for gc(F) computation. Noisier than LALM measurement but still informative.
 
+**M7: ΔGS — Grounding Sensitivity Contrast Score (secondary, patching-free)**
+
+While gc(F) (M5) requires activation patching on conflict stimuli, ΔGS(F) provides a
+patching-free proxy for grounding robustness using the same ALME stimulus pairs:
+
+```
+ΔGS(F) = (µ_c − µ_x) / σ_pool    [Cohen's d of activation contrast]
+
+where:
+  µ_c = mean activation of F on CONSISTENT stimuli (audio matches transcript context)
+  µ_x = mean activation of F on CONFLICT stimuli (audio contradicts transcript context)
+  σ_pool = sqrt((σ_c² + σ_x²) / 2)    [pooled std, Cohen's d denominator]
+
+Interpretation:
+  ΔGS(F) ≈ 0   → feature insensitive to audio-text conflict → AUDIO-GROUNDED
+  ΔGS(F) > 0.5 → feature more active on consistent stimuli → TEXT-GROUNDED
+  ΔGS(F) < -0.3 → feature more active on conflict stimuli → ANOMALOUS (error-detection?)
+```
+
+**Population-level summary metrics:**
+- `GS_audio` = fraction of features with |ΔGS| < 0.1 (audio-grounded cluster)
+- `GS_text`  = fraction of features with ΔGS > 0.5 (text-grounded cluster)
+- `GS_anom`  = fraction of features with ΔGS < -0.3 (conflict-preferring)
+
+**Predictions:**
+- Whisper encoder (all layers): GS_audio ≥ 0.70
+- Qwen2-Audio LLM backbone: GS_audio ≤ 0.30 (text pathway dominates)
+- GS_audio drops sharply at Listen Layer L* (Paper A cross-validation)
+
+**CPU-feasibility:** ΔGS requires only 2 forward passes per stimulus pair (no patching).
+200 ALME pairs, Whisper-small: ~2 min on MacBook Air M2. Tier 1 (auto-allowed).
+
+**Cross-metric validation:** Pearson r(gc(F), |ΔGS(F)|) < −0.4 predicted at encoder layers.
+If r > 0, both metrics are confounded (investigate feature sparsity / activation magnitude).
+
+**Implementation path:** Extend `skills/autodidact/scripts/gc_eval.py` with
+`compute_delta_gs_feature()` and `compute_gs_profile()` — Tier 0 code addition.
+
 **1-paragraph framing:**
 > Category 5 tests counterfactual isolation (Pearl Level 3): not just whether a feature responds to an acoustic attribute, but whether it responds to the *audio signal itself* versus the model's *linguistic predictions about audio*. We operationalize this as Grounding Sensitivity gc(F) — the IIT accuracy at feature granularity (Geiger et al. 2301.04709) estimated via activation patching on 57K audio-text conflict stimuli (ALME, Li et al. 2025). A feature with gc(F) = 1.0 fires on audio content regardless of text context; gc(F) = 0.0 fires on text-predictable patterns regardless of audio content. We predict a bimodal distribution for Qwen2-Audio-7B: a cluster at gc(F) > 0.8 (encoder/connector features) and a cluster at gc(F) < 0.2 (LLM backbone features), with the modality boundary aligning with the Listen Layer L* identified in Paper A — providing cross-paper validation. For Whisper-small (encoder-only), features are expected to cluster near gc(F) ≈ 1.0. gc(F) is directly analogous to Paper A's gc(L) at coarser resolution: gc(L) identifies *which layer* grounds to audio; gc(F) identifies *which features* ground to audio within each layer.
 
@@ -252,7 +290,7 @@ Relationship:
 | 2 | Disentanglement | L1 Observational | Partial (cross-model) | Mariotte completeness | VocalSet, IEMOCAP | Mariotte et al. |
 | 3 | Reconstruction | L1 Observational | No | task_preservation_ratio | LibriSpeech, IEMOCAP | AudioSAE |
 | 4 | Controllability | L2 Interventional | Partial (Hydra novel) | ablation_d, steering_precision, hydra_compensation | AudioSAE stimuli, SPIRIT | AudioSAE, SPIRIT |
-| 5 | Grounding Sensitivity | L3 Counterfactual | ✅ Novel | gc(F) | ALME 57K (Li et al. 2602.11488) | None (first) |
+| 5 | Grounding Sensitivity | L3 Counterfactual | ✅ Novel | gc(F) [M5], ΔGS(F) [M7] | ALME 57K (Li et al. 2602.11488) | None (first) |
 
 ---
 
