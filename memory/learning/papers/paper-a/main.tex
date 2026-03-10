@@ -1,0 +1,543 @@
+% Paper A: "Localizing the Listen Layer in Speech LLMs"
+% Status: LaTeX Skeleton v1.0 — all sections scaffolded, content blocks marked
+% Created: 2026-03-07 (cycle Q058)
+% Track: T3 (Listen vs Guess)
+%
+% HOW TO USE:
+%   - Content blocks marked %[CONTENT] are ready to paste from paper-a-pitch.md
+%   - %[RESULT] blocks are placeholders until experiments run
+%   - %[FIG] blocks = figure placeholders
+%   - Compile with: pdflatex main.tex (or overleaf)
+%
+% TARGET VENUE: NeurIPS 2026 (primary) / Interspeech 2026 (fallback)
+% FORMAT: NeurIPS 2026 template (swap \documentclass if targeting Interspeech)
+
+\documentclass{article}
+
+% ─── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[final]{neurips_2026}   % TODO: swap to interspeech_2026 if needed
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{todonotes}  % remove before final submission
+
+% ─── Convenience macros ────────────────────────────────────────────────────────
+\newcommand{\gc}{\text{gc}}
+\newcommand{\iia}{\text{IIA}}
+\newcommand{\Lstar}{L^*}
+\newcommand{\etal}{\textit{et al.}}
+\newcommand{\eg}{\textit{e.g.},}
+\newcommand{\ie}{\textit{i.e.},}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\result}[1]{\textcolor{blue}{[RESULT: #1]}}
+\newcommand{\figref}[1]{Figure~\ref{#1}}
+\newcommand{\tabref}[1]{Table~\ref{#1}}
+\newcommand{\secref}[1]{Section~\ref{#1}}
+
+% ─── Title & Authors ───────────────────────────────────────────────────────────
+\title{Localizing the Listen Layer in Speech Language Models}
+
+\author{
+  Leonardo Hu\thanks{Equal contribution.} \\
+  Graduate Institute of Communication Engineering \\
+  National Taiwan University \\
+  \texttt{leo@ntu.edu.tw} \\
+  \And
+  \todo{Co-author: 智凱哥 (AudioLens, ASRU 2025) — confirm collaboration} \\
+  \todo{Affiliation} \\
+  \texttt{\todo{email}} \\
+}
+
+\begin{document}
+
+\maketitle
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{abstract}
+% [CONTENT] Abstract v0.6 — paste from paper-a-pitch.md §Abstract
+%
+% Large audio-language models (LALMs) can answer questions about audio content,
+% but it remains unclear *where* in their forward pass audio information becomes
+% causally decisive. ...
+%
+% STATUS: v0.6 draft ready (paper-a-pitch.md §Abstract). Paste here.
+\todo{Paste abstract v0.6 from paper-a-pitch.md. ~150 words. Safe to share.}
+\end{abstract}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+
+% [CONTENT] §1 Introduction — 3 paragraphs, LaTeX-ready in paper-a-pitch.md §v1.2
+% Para 1: Problem motivation (behavioral dominance known, causal localization missing)
+% Para 2: Prior work gap (SCD — Store-Contribute Dissociation; probing ≠ causal)
+% Para 3: Contribution (Listen Layer, gc(L), DAS-IIT, experiments on Whisper + Qwen2-Audio)
+%
+% KEY CITES: ALME (Li et al. 2602.11488), Cascade Equivalence (2602.17598),
+%   MiSTER-E, DashengTokenizer (2602.23765), AG-REPA (2603.01006),
+%   Braun et al. 2025, Hase et al. 2023, AudioLens, FCCT (2511.05923),
+%   Geiger et al. (2301.04709, 2303.02536), Sutter et al. (2507.08802),
+%   Choi et al. (2602.18899), ALME (2602.11488), SpeechTokenizer (2506.04492),
+%   Joshi et al. (2602.16698), MPAR² (2603.02266)
+
+\todo{Paste §1 Introduction (3 paragraphs) from paper-a-pitch.md §v1.2/v1.9}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Related Work}
+\label{sec:related}
+
+% [CONTENT] §2 Related Work — 3 subsections, LaTeX-ready in paper-a-pitch.md §v1.3
+%
+% STRUCTURE:
+%   2.1 Modality Grounding in Audio-Language Models
+%   2.2 Mechanistic Interpretability of Audio and Multimodal Models
+%   2.3 Causal Abstraction and Distributed Alignment Search
+%
+% TABLE 1: 5-paper comparison table (EmbedLens, Liu et al. 2025, FCCT, AudioLens, Paper A)
+%   Columns: Paper | Modality | Method | Causal? | Grounded Metric?
+%   Rows: see paper-a-pitch.md §Connections to Related Work
+
+\todo{Paste §2 Related Work (3 subsections + Table 1) from paper-a-pitch.md §v1.3}
+
+\begin{table}[h]
+  \caption{Comparison of related work on audio/visual information localization.}
+  \label{tab:related}
+  \centering
+  \begin{tabular}{lllcc}
+    \toprule
+    \textbf{Paper} & \textbf{Modality} & \textbf{Method} & \textbf{Causal?} & \textbf{Grounded Metric?} \\
+    \midrule
+    EmbedLens \cite{fan2026embedlens}       & Vision  & Probing (sink/dead/alive) & \xmark & \xmark \\
+    Liu \etal\ 2025 \cite{liu2025kvflow}    & Vision  & KV-token flow (observational) & \xmark & \xmark \\
+    FCCT \cite{li2026fcct}                   & Vision  & Causal tracing (vanilla) & \cmark & \xmark \\
+    AudioLens \cite{audiolens2025}           & Speech  & Logit lens (observational) & \xmark & \xmark \\
+    \textbf{Paper A (ours)}                  & Speech  & DAS-IIT \gc(L)            & \cmark\cmark & \cmark \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Method}
+\label{sec:method}
+
+% [CONTENT] §3 Method — 8 subsections, LaTeX-ready in paper-a-pitch.md §v1.4 + §v2.1
+%
+% STRUCTURE:
+%   3.1 Task Formulation       (causal abstraction, gc(L) definition, L* definition)
+%   3.2 Stimuli                (phonological minimal pairs + ALME conflict pairs + RVQ corruption)
+%   3.3 Distributed Alignment Search (DAS algorithm, L_IIT loss, Cayley parametrization)
+%   3.4 Direction Extraction   (diff-of-means MMProbe, PROBE_LAYER vs INTERVENE_LAYER sweep)
+%   3.5 Decomposability Ablation (voicing ⊥ phoneme-identity subspace test)
+%   3.6 Connector Subspace Transfer Test (R_encoder applied at LLM layer 0)
+%   3.7 Experimental Setup     (Whisper-small + Qwen2-Audio-7B, NNsight, pyvene)
+%   3.8 Evaluation Protocol    (bootstrap 95% CI, peak condition, baselines B1–B4)
+
+\subsection{Task Formulation}
+\label{sec:task}
+
+% [CONTENT] §3.1 — paste from paper-a-pitch.md §v1.4 §3.1
+% Key equations to typeset:
+%   gc(L) = IIA_DAS(L; A)
+%   L* = argmax_L gc(L)
+
+\todo{Paste §3.1 Task Formulation}
+
+\begin{equation}
+  \gc(L) = \iia_{\text{DAS}}(L;\, A)
+  \label{eq:gc}
+\end{equation}
+
+\begin{equation}
+  \Lstar = \underset{L}{\arg\max}\; \gc(L)
+  \label{eq:lstar}
+\end{equation}
+
+\subsection{Stimuli}
+\label{sec:stimuli}
+
+% [CONTENT] §3.2 — paste from paper-a-pitch.md §v1.4 §3.2
+% Phase 1: Choi et al. phonological minimal pairs (voicing contrasts)
+% Phase 2: ALME 57K conflict stimuli + RVQ-layer-selective corruptions (SpeechTokenizer)
+
+\todo{Paste §3.2 Stimuli}
+
+\subsection{Distributed Alignment Search}
+\label{sec:das}
+
+% [CONTENT] §3.3 — paste from paper-a-pitch.md §v1.4 §3.3
+% Key equation to typeset (IIT loss):
+
+\todo{Paste §3.3 DAS algorithm}
+
+\begin{equation}
+  \mathcal{L}_{\text{IIT}}(R) =
+  \mathbb{E}_{(x^c, x^n, y^*)} \left[
+    \ell\!\left(
+      \mathcal{M}\!\left(x^n \,\big|\, h_L \leftarrow R^{-1} P R h_L^c \right),\, y^*
+    \right)
+  \right]
+  \label{eq:iit_loss}
+\end{equation}
+
+\subsection{Direction Extraction}
+\label{sec:direction}
+
+% [CONTENT] §3.4 — paste from paper-a-pitch.md §v1.4 §3.4
+% Difference-of-means estimator (MMProbe):
+
+\todo{Paste §3.4 Direction Extraction}
+
+\begin{equation}
+  \mathbf{d}_{\text{voicing}}^L =
+  \mathbb{E}\!\left[\mathbf{h}_L \mid \text{voiced}\right]
+  - \mathbb{E}\!\left[\mathbf{h}_L \mid \text{unvoiced}\right]
+  \label{eq:mmprobe}
+\end{equation}
+
+\subsection{Decomposability Ablation}
+\label{sec:decomp}
+
+% [CONTENT] §3.5 — paste from paper-a-pitch.md §v1.4 §3.5
+% Test: R_voicing ⊥ R_phoneme at L*?
+% decomp(L*) = 1 - |cos∠(R_voicing, R_phoneme)|
+
+\todo{Paste §3.5 Decomposability Ablation}
+
+\subsection{Connector Subspace Transfer Test}
+\label{sec:connector}
+
+% [CONTENT] §3.6 — paste from paper-a-pitch.md §v1.4 §3.6
+% IIA_transfer = IIA(M_LLM, R_encoder, L_LLM=0)
+% Three interpretations: volume-preserving / rotation-preserving / geometry-destroying
+
+\todo{Paste §3.6 Connector Subspace Transfer Test}
+
+\subsection{Experimental Setup}
+\label{sec:setup}
+
+% [CONTENT] §3.7 — paste from paper-a-pitch.md §v1.4 §3.7
+% Models: Whisper-small (244M, 6 encoder layers) + Qwen2-Audio-7B (32 LLM layers)
+% Tools: NNsight (NOT circuit-tracer — cross-attention), pyvene RotatedSpaceIntervention
+
+\todo{Paste §3.7 Experimental Setup}
+
+\subsection{Evaluation Protocol and Metrics}
+\label{sec:eval}
+
+% [CONTENT] §3.8 — paste from paper-a-pitch.md §v2.1
+% 3.8.1 Primary Metric: gc(L) definition + L* peak condition (bootstrap 95% CI)
+% 3.8.2 Bootstrap Protocol (1000 resamples, non-parametric)
+% 3.8.3 Baseline Comparisons (B1 random-init DAS, B2 vanilla patching, B3 MFA, B4 trivial flat-gc)
+% 3.8.4 Per-Experiment Evaluation Conditions (E1 passing/failure, E2 passing/failure)
+% 3.8.5 Per-Class Reporting (risk A6 mitigation)
+
+\todo{Paste §3.8 Evaluation Protocol (from paper-a-pitch.md §v2.1)}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Experiments and Results}
+\label{sec:experiments}
+
+% [CONTENT] §4 Experiments — 7 subsections, LaTeX-ready in paper-a-pitch.md §v1.5 + §v2.0 + §v2.2
+
+\subsection{E1: Whisper-small gc(L) Curve}
+\label{sec:e1_gc}
+
+% [CONTENT] §4.1 — paste from paper-a-pitch.md §v1.5 §4.1
+% Expected: gc(L) peaks at L ≈ 3 (50% encoder depth), Triple Convergence
+% Cites: AudioSAE (Aparin), "Beyond Transcription" (Glazer), whisper_hook_demo.py, SCD
+
+\todo{Paste §4.1 E1 gc(L) curve predictions}
+
+%[FIG] Figure 1: gc(L) curve for Whisper-small (6 encoder layers)
+%      x-axis: encoder layer L (0–5)
+%      y-axis: gc(L) = DAS-IIA
+%      error bars: bootstrap 95% CI (1000 resamples)
+%      baselines: B1 (random-init DAS), B4 (flat-gc = 0.5)
+%      annotation: L* marker at peak
+\begin{figure}[h]
+  \centering
+  \fbox{\parbox{0.75\textwidth}{\centering
+    \textbf{[FIGURE 1 PLACEHOLDER]}\\[1ex]
+    \textit{gc(L) curve for Whisper-small encoder (6 layers).}\\
+    x-axis: encoder layer $L$; y-axis: $\gc(L)$;\\
+    error bars: bootstrap 95\% CI; baselines B1 (random-init) and B4 (flat).\\
+    Expected: sharp peak at $L^* \approx 3$ ($\approx$50\% depth).
+  }}
+  \caption{Grounding coefficient \gc(L) across Whisper-small encoder layers (E1). 
+    The Listen Layer $\Lstar$ is identified by the peak satisfying the bootstrap 
+    CI isolation criterion (\S\ref{sec:eval}).}
+  \label{fig:e1_gc_curve}
+\end{figure}
+
+\subsection{E1: Decomposability Ablation at L*}
+\label{sec:e1_decomp}
+
+% [CONTENT] §4.2 — paste from paper-a-pitch.md §v1.5 §4.2
+% Expected: decomp(L*) ≈ 0.8–0.9 (voicing ⊥ phoneme-identity = abstract phonological encoding)
+
+\todo{Paste §4.2 Decomposability ablation predictions}
+
+%[FIG] Figure 2: 2D probe_layer × intervene_layer IIA heatmap (A4 check)
+%      "lower-triangular stripe" near L* as predicted in paper-a-pitch.md §Q16
+\begin{figure}[h]
+  \centering
+  \fbox{\parbox{0.75\textwidth}{\centering
+    \textbf{[FIGURE 2 PLACEHOLDER]}\\[1ex]
+    \textit{2D heatmap: probe\_layer $\times$ intervene\_layer IIA.}\\
+    Expected: lower-triangular stripe near $L^*$ (\S\ref{sec:direction}).\\
+    (Prediction: high IIA when probe\_layer $\leq L^*$ AND intervene\_layer $= L^*$.)
+  }}
+  \caption{Probe-layer × intervene-layer IIA heatmap for Whisper-small (E1).
+    The lower-triangular stripe pattern validates that causal direction is extracted
+    before $\Lstar$ and applied at $\Lstar$ (A4 assumption check, \S\ref{sec:related}).}
+  \label{fig:e1_heatmap}
+\end{figure}
+
+\subsection{E1: Connector Subspace Transfer}
+\label{sec:e1_connector}
+
+% [CONTENT] §4.3 — paste from paper-a-pitch.md §v1.5 §4.3
+% IIA_transfer outcomes: volume-preserving / rotation-preserving / geometry-destroying
+
+\todo{Paste §4.3 Connector subspace transfer predictions}
+
+%[TABLE] Table 2: Connector transfer results
+%   Rows: (a) IIA_transfer (no retraining), (b) Retrained IIA at LLM layer 0
+%   Columns: gc at encoder L*, IIA_transfer, Retrained IIA (L=0), Interpretation
+\begin{table}[h]
+  \caption{Connector subspace transfer test results (E1, Gap \#18).}
+  \label{tab:connector}
+  \centering
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Condition} & $\gc(L^*_\text{enc})$ & $\iia_\text{transfer}$ & Retrained IIA $(L=0)$ \\
+    \midrule
+    E1 Whisper-small & \result{---} & \result{---} & \result{---} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{E2: Qwen2-Audio-7B gc(L) Sweep}
+\label{sec:e2}
+
+% [CONTENT] §4.4 — paste from paper-a-pitch.md §v1.5 §4.4
+% Expected: gc(L) peaks at L ∈ {14–22} of LLM layers
+% Cites: Zhao et al. ESN clustering (2601.03115), MPAR² (2603.02266), Heimersheim & Nanda 2024
+
+\todo{Paste §4.4 E2 Qwen2-Audio-7B gc(L) prediction}
+
+%[FIG] Figure 3 (was Figure 4 in pitch): Full gc(L) curve for Qwen2-Audio-7B
+%      x-axis: LLM layer L (0–31) + encoder layers
+%      y-axis: gc(L) = DAS-IIA
+%      show encoder → connector → LLM boundary markers
+\begin{figure}[h]
+  \centering
+  \fbox{\parbox{0.75\textwidth}{\centering
+    \textbf{[FIGURE 3 PLACEHOLDER]}\\[1ex]
+    \textit{gc(L) curve for Qwen2-Audio-7B (32 LLM layers + Whisper encoder).}\\
+    x-axis: layer index; boundaries: Whisper encoder | connector | LLM backbone.\\
+    Expected: peak at $L \in \{14$–$22\}$ (middle-dominant SCD pattern).
+  }}
+  \caption{Grounding coefficient \gc(L) across Qwen2-Audio-7B (E2).
+    The \textit{middle-dominant} profile (peak at mid-LLM depth, drop at upper layers)
+    indicates Tier 3 grounding (text-prior dominance at late layers).}
+  \label{fig:e2_qwen}
+\end{figure}
+
+\subsection{Predicted Failures and Contingencies}
+\label{sec:contingencies}
+
+% [CONTENT] §4.5 — paste from paper-a-pitch.md §v1.5 §4.5
+% Risks A1–A6 with contingency plans
+
+\todo{Paste §4.5 Predicted failures and contingencies}
+
+\subsection{A Taxonomy of Grounding Failures}
+\label{sec:taxonomy}
+
+% [CONTENT] §4.6 — paste from paper-a-pitch.md §v2.0
+% 3-Tier Model: Tier 1 (Codec), Tier 2 (Connector Bottleneck), Tier 3 (LLM Modality Collapse)
+% Each tier: mechanism + empirical support + gc(k) signature + diagnostic + implication
+
+\todo{Paste §4.6 Grounding Failure Taxonomy (3-Tier Model) from paper-a-pitch.md §v2.0}
+
+%[TABLE] Table 3: Falsifiability summary — per-tier gc(k) signatures
+%   Columns: Tier | Failure Site | gc(k) Pattern | enc gc? | LLM L0? | L_mid? | L_late?
+\begin{table}[h]
+  \caption{Grounding failure taxonomy: gc(L) diagnostic signatures by tier.}
+  \label{tab:taxonomy}
+  \centering
+  \small
+  \begin{tabular}{llccccc}
+    \toprule
+    \textbf{Tier} & \textbf{Failure Site} & \textbf{gc(L) Pattern}
+      & \textbf{Enc $\gc(\Lstar)$}
+      & \textbf{LLM $L_0$}
+      & \textbf{$L_\text{mid}$}
+      & \textbf{$L_\text{late}$} \\
+    \midrule
+    \textbf{T1} & Codec (RVQ)        & Flat ($\approx$chance)       & $\approx$ch. & $\approx$ch. & $\approx$ch. & $\approx$ch. \\
+    \textbf{T2} & Connector          & Cliff at boundary             & HIGH         & $\approx$ch. & $\approx$ch. & $\approx$ch. \\
+    \textbf{T3} & LLM (text prior)   & Mid-peak + late drop          & HIGH         & Med.         & HIGH         & DROP         \\
+    \textbf{None} & No failure       & Rising plateau                & HIGH         & Med.         & HIGH         & HIGH         \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Grounding Failure Diagnostic Protocol}
+\label{sec:diagnostic}
+
+% [CONTENT] §4.7 — paste from paper-a-pitch.md §v2.2
+% Sequential protocol: Step 1 (Codec Probe) → Step 2 (Encoder gc sweep) →
+%   Step 3 (Connector Transfer) → Step 4 (LLM gc sweep)
+% Table 4: per-tier diagnostic tests + thresholds + time cost
+
+\todo{Paste §4.7 Diagnostic Protocol from paper-a-pitch.md §v2.2}
+
+%[TABLE] Table 4: Per-tier diagnostic tests
+%   Columns: Tier | Failure Site | Diagnostic Test | Passing Threshold | Time Cost
+\begin{table}[h]
+  \caption{Diagnostic protocol: per-tier tests, thresholds, and time cost.}
+  \label{tab:diagnostic}
+  \centering
+  \small
+  \begin{tabular}{llp{4.5cm}p{2.5cm}r}
+    \toprule
+    \textbf{Tier} & \textbf{Site} & \textbf{Diagnostic Test}
+      & \textbf{Threshold} & \textbf{Cost} \\
+    \midrule
+    T1a & Codec (RVQ)           & SpeechTokenizer L1 reconstruction preserves contrast? & probe acc. $<$ 0.55 & 2 min, CPU \\
+    T1b & Codec (encoder gc)    & max encoder $\gc(L)$ & $<$ 0.55 everywhere & 30 min, CPU \\
+    T2a & Connector (transfer)  & $\iia_\text{transfer}$ at LLM layer 0 & $<$ 0.55 & 5 min, CPU \\
+    T2b & Connector (retrained) & DAS retrained at LLM layer 0 & retrained IIA $<$ 0.55 & 10 min, CPU \\
+    T3  & LLM late-layer        & $\gc(L_\text{late})$ drop vs $\gc(L_\text{mid})$ & drop $\geq$ 0.10 (CI non-overlapping) & 1 day, GPU \\
+    None & No failure           & $\gc(L_\text{late}) \geq \gc(L_\text{mid}) - 0.05$ & plateau holds & 1 day, GPU \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Discussion}
+\label{sec:discussion}
+
+% [CONTENT] §5 skeleton — paste from paper-a-pitch.md §v1.6
+% PROSE BLOCKED until experimental results. Use stubs only.
+%
+% STRUCTURE:
+%   5.1 The Listen Layer as a Causal Bottleneck (SCD confirmation)
+%   5.2 Phonological Abstraction vs. Table-Lookup at L*
+%   5.3 What the Connector Does to Phonological Geometry (Gap #18)
+%   5.4 Grounding Profile Across Generation vs. Understanding
+%   5.5 Limitations and Future Work
+
+\subsection{The Listen Layer as a Causal Bottleneck}
+\label{sec:disc_bottleneck}
+
+% [CONTENT TRIGGER: Figure 1 gc(L) curve + Figure 2 heatmap — WRITE AFTER E1]
+\todo{Write §5.1 after E1 results. Key: SCD confirmation (storage ≠ causal contribution).
+  If decomp(L*) confirms abstract phonological encoding: discuss Store-Contribute Dissociation.}
+
+\subsection{Phonological Abstraction vs.\ Table-Lookup at $\Lstar$}
+\label{sec:disc_abstraction}
+
+% [CONTENT TRIGGER: Table 1 phono-init vs random-init DAS ablation — WRITE AFTER E1]
+\todo{Write §5.2 after E1 results. Key: if decomp(L*) ≈ 0.8–0.9 → abstract encoding confirmed;
+  contrast with text LLM factual recall (Meng et al. 2022).}
+
+\subsection{What the Connector Does to Phonological Geometry}
+\label{sec:disc_connector}
+
+% [CONTENT TRIGGER: Table 2 connector subspace transfer results — WRITE AFTER E1]
+\todo{Write §5.3 after Gap \#18 experiment. Key: connector as information bottleneck
+  vs. geometry-preserving rotation. Implications for Modality Collapse (2602.23136).}
+
+\subsection{Grounding Profile Across Generation vs.\ Understanding}
+\label{sec:disc_gen_vs_under}
+
+% [CONTENT TRIGGER: Figure 3 Qwen2-Audio gc(L) sweep — WRITE AFTER E2]
+\todo{Write §5.4 after E2. Key: middle-dominant (understanding) vs. early-dominant (generation,
+  AG-REPA 2603.01006) SCD asymmetry. Implications for interpretability method choice.}
+
+\subsection{Limitations and Future Work}
+\label{sec:limitations}
+
+% [CONTENT] §5.5 stub from paper-a-pitch.md §v1.6 — expand before final submission
+\todo{Paste §5.5 stub from pitch. Key limitations:
+  (1) linear alignment assumption (DAS) — non-linear connectors may need kernel DAS (Gap \#25);
+  (2) phonological features tested = voicing/manner/place only;
+  (3) Whisper-small + Qwen2-Audio-7B only.
+  Future: AudioSAEBench (Paper B), LoRA-adapted models (Track 4), adversarial audio (Track 5).}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+\label{sec:conclusion}
+
+\todo{Write conclusion after §5 discussion prose is complete (post-E1/E2).
+  Key: (1) introduced Listen Layer + gc(L); (2) causal DAS-IIT localization;
+  (3) 3-tier grounding failure taxonomy; (4) diagnostic protocol.}
+
+% ─────────────────────────────────────────────────────────────────────────────
+% ─── Bibliography ─────────────────────────────────────────────────────────────
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+% ─────────────────────────────────────────────────────────────────────────────
+% ─── Appendix ─────────────────────────────────────────────────────────────────
+\appendix
+
+\section{Supplementary Figures}
+\label{app:figures}
+
+%[FIG App-A] Per-phoneme-class gc(L) curves (risk A6 mitigation)
+\begin{figure}[h]
+  \centering
+  \fbox{\parbox{0.75\textwidth}{\centering
+    \textbf{[APPENDIX FIGURE A PLACEHOLDER]}\\[1ex]
+    \textit{Per-phoneme-class gc(L) curves.}\\
+    Classes: [b]/[p] voicing, [d]/[t] voicing (+ rare contrasts if available).\\
+    Expected: common phonemes maintain $\gc(L_\text{late})$; rare phonemes drop.
+  }}
+  \caption{Per-phoneme-class grounding coefficient curves (§3.8.5 — risk A6 mitigation).
+    Divergence between common and rare phoneme classes would indicate class-conditional
+    grounding failure at upper LLM layers.}
+  \label{fig:app_per_class}
+\end{figure}
+
+\section{Statistical Details}
+\label{app:stats}
+
+% Bootstrap protocol details, seed, number of resamples
+
+\todo{Add bootstrap protocol details: 1000 resamples, seed=42,
+  non-parametric CI, peak isolation criterion (§3.8.2).}
+
+\section{DAS Implementation Details}
+\label{app:das}
+
+% pyvene RotatedSpaceIntervention config, Cayley parametrization, optimizer
+
+\todo{Add pyvene implementation details, hyperparameters, training setup.}
+
+\section{Dataset Details}
+\label{app:data}
+
+% Choi et al. minimal pairs: 96 languages, voicing contrasts
+% ALME: 57K stimuli, split details
+% SpeechTokenizer RVQ-selective corruption construction
+
+\todo{Add dataset details, splits, preprocessing.}
+
+\end{document}

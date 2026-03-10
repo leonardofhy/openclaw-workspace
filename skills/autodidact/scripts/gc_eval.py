@@ -30,10 +30,355 @@ Low gc(k) throughout → model "guessing" from language prior.
 
 import argparse
 import json
+import math
 import sys
+from dataclasses import dataclass, field
 from typing import Optional
 
 import numpy as np
+
+
+# ---------------------------------------------------------------------------
+# Anti-confound checker (10 automated test gate assertions)
+# ---------------------------------------------------------------------------
+# These checks guard against common confounds in gc(k) causal patching:
+# bad baselines, degenerate curves, numerical artifacts, and eval-env issues.
+# Reference: T5 anti-confound checklist (Q037) + MATS proposal controls.
+#
+# Usage:
+#   result = generate_mock_gc_curve(mode="listen")
+#   report = AntiConfoundChecker().run(result)
+#   report.assert_pass()   # raises RuntimeError on any FAIL
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class CheckResult:
+    name: str
+    passed: bool
+    detail: str
+
+
+@dataclass
+class AntiConfoundReport:
+    checks: list[CheckResult] = field(default_factory=list)
+
+    @property
+    def passed(self) -> bool:
+        return all(c.passed for c in self.checks)
+
+    @property
+    def n_failed(self) -> int:
+        return sum(1 for c in self.checks if not c.passed)
+
+    def assert_pass(self) -> None:
+        if not self.passed:
+            failed = [c for c in self.checks if not c.passed]
+            lines = "\n".join(f"  FAIL [{c.name}]: {c.detail}" for c in failed)
+            raise RuntimeError(
+                f"Anti-confound gate: {self.n_failed}/{len(self.checks)} checks FAILED:\n{lines}"
+            )
+
+    def print_report(self) -> None:
+        print("\n=== Anti-Confound Checklist ===")
+        for c in self.checks:
+            tag = "✅ PASS" if c.passed else "❌ FAIL"
+            print(f"  {tag}  [{c.name}] {c.detail}")
+        overall = "ALL PASS" if self.passed else f"{self.n_failed} FAILED"
+        print(f"\nResult: {overall} ({len(self.checks)} checks)\n")
+
+
+class AntiConfoundChecker:
+    """
+    10-item automated anti-confound test gate for gc(k) curves.
+
+    Instantiate with custom thresholds if defaults are too strict/loose.
+    """
+
+    def __init__(
+        self,
+        *,
+        min_peak_gc: float = 0.3,       # AC-5: at least one layer must reach this gc
+        min_gc_std: float = 0.02,        # AC-4: curve must not be suspiciously flat
+        min_encoder_layers: int = 1,     # AC-7: must have at least this many encoder layers
+        max_listen_guess_overlap: float = 0.15,  # AC-9: listen/guess means must differ by this
+        min_baseline_delta_logp: float | None = None,  # AC-6: log-prob delta (real mode only)
+        min_valid_frac: float = 0.9,     # AC-3: fraction of values that must be finite & in [0,1]
+        min_ravel_cause: float = 0.2,    # AC-11: minimum RAVEL Cause score (ablation causal effect)
+        min_ravel_isolate: float = 0.5,  # AC-11: minimum RAVEL Isolate score (ablation specificity)
+    ):
+        self.min_peak_gc = min_peak_gc
+        self.min_gc_std = min_gc_std
+        self.min_encoder_layers = min_encoder_layers
+        self.max_listen_guess_overlap = max_listen_guess_overlap
+        self.min_baseline_delta_logp = min_baseline_delta_logp
+        self.min_valid_frac = min_valid_frac
+        self.min_ravel_cause = min_ravel_cause
+        self.min_ravel_isolate = min_ravel_isolate
+
+    # --- individual check methods ---
+
+    def _ac01_value_range(self, gc: np.ndarray) -> CheckResult:
+        """AC-01: All gc(k) values must be in [0, 1]."""
+        out_of_range = np.sum((gc < 0) | (gc > 1))
+        ok = int(out_of_range) == 0
+        return CheckResult(
+            "AC-01:value-range",
+            ok,
+            f"All {len(gc)} values in [0,1]" if ok
+            else f"{out_of_range}/{len(gc)} values outside [0,1]",
+        )
+
+    def _ac02_no_nan_inf(self, gc: np.ndarray) -> CheckResult:
+        """AC-02: No NaN or Inf values."""
+        n_bad = int(np.sum(~np.isfinite(gc)))
+        ok = n_bad == 0
+        return CheckResult(
+            "AC-02:no-nan-inf",
+            ok,
+            "No NaN/Inf detected" if ok else f"{n_bad} NaN/Inf values found",
+        )
+
+    def _ac03_valid_fraction(self, gc: np.ndarray) -> CheckResult:
+        """AC-03: ≥90% of values are finite and within [0,1]."""
+        finite = np.isfinite(gc)
+        in_range = (gc >= 0) & (gc <= 1)
+        valid_frac = float(np.mean(finite & in_range))
+        ok = valid_frac >= self.min_valid_frac
+        return CheckResult(
+            "AC-03:valid-fraction",
+            ok,
+            f"{valid_frac:.1%} valid (threshold {self.min_valid_frac:.0%})",
+        )
+
+    def _ac04_non_constant_curve(self, gc: np.ndarray) -> CheckResult:
+        """AC-04: Curve must not be suspiciously flat (std > threshold).
+        A constant gc(k) curve signals a bug or degenerate baseline."""
+        std = float(np.std(gc))
+        ok = std >= self.min_gc_std
+        return CheckResult(
+            "AC-04:non-constant-curve",
+            ok,
+            f"std={std:.4f} ≥ {self.min_gc_std}" if ok
+            else f"std={std:.4f} < {self.min_gc_std} (suspiciously flat curve)",
+        )
+
+    def _ac05_peak_reachability(self, gc: np.ndarray) -> CheckResult:
+        """AC-05: At least one layer must show gc(k) > threshold.
+        If every gc(k) is near zero, audio never contributes — likely a bad baseline."""
+        peak = float(np.max(gc))
+        ok = peak >= self.min_peak_gc
+        return CheckResult(
+            "AC-05:peak-reachability",
+            ok,
+            f"max gc={peak:.3f} ≥ {self.min_peak_gc}" if ok
+            else f"max gc={peak:.3f} < {self.min_peak_gc} (audio never causally active)",
+        )
+
+    def _ac06_baseline_delta(self, result: dict) -> CheckResult:
+        """AC-06: Clean-noisy log-prob delta must be non-trivial.
+        If delta≈0, causal patching measures noise not signal. Skipped in mock mode."""
+        if result.get("method") == "mock_causal_patch":
+            return CheckResult(
+                "AC-06:baseline-delta",
+                True,
+                "Skipped (mock mode — no real baseline delta)",
+            )
+        delta = result.get("baseline_delta_logp")
+        if delta is None:
+            return CheckResult("AC-06:baseline-delta", False, "baseline_delta_logp missing from result")
+        threshold = self.min_baseline_delta_logp or 0.1
+        ok = abs(delta) >= threshold
+        return CheckResult(
+            "AC-06:baseline-delta",
+            ok,
+            f"|Δlog-p|={abs(delta):.4f} ≥ {threshold}" if ok
+            else f"|Δlog-p|={abs(delta):.4f} < {threshold} (baseline too close — patching measures noise)",
+        )
+
+    def _ac07_layer_coverage(self, result: dict, gc: np.ndarray) -> CheckResult:
+        """AC-07: Number of encoder layers ≥ min_encoder_layers, and layer list is contiguous."""
+        n_enc = result.get("n_encoder_layers", 0)
+        layers = result.get("layers", [])
+        # Check contiguity
+        if len(layers) > 1:
+            diffs = [layers[i+1] - layers[i] for i in range(len(layers)-1)]
+            contiguous = all(d == 1 for d in diffs)
+        else:
+            contiguous = True
+        ok = n_enc >= self.min_encoder_layers and len(gc) == len(layers) and contiguous
+        detail_parts = []
+        if n_enc < self.min_encoder_layers:
+            detail_parts.append(f"n_encoder_layers={n_enc} < {self.min_encoder_layers}")
+        if len(gc) != len(layers):
+            detail_parts.append(f"gc length {len(gc)} ≠ layers length {len(layers)}")
+        if not contiguous:
+            detail_parts.append("layer indices not contiguous")
+        return CheckResult(
+            "AC-07:layer-coverage",
+            ok,
+            f"{len(layers)} layers, {n_enc} encoder, contiguous={contiguous}" if ok
+            else "; ".join(detail_parts),
+        )
+
+    def _ac08_encoder_decoder_differentiation(self, result: dict, gc: np.ndarray) -> CheckResult:
+        """AC-08: Encoder and decoder mean gc must differ (soft check).
+        If they are identical, enc/dec boundary detection may be broken."""
+        n_enc = result.get("n_encoder_layers", 0)
+        if n_enc == 0 or n_enc >= len(gc):
+            return CheckResult(
+                "AC-08:enc-dec-differentiation",
+                True,
+                "Skipped (no decoder layers to compare)",
+            )
+        enc_mean = float(np.mean(gc[:n_enc]))
+        dec_mean = float(np.mean(gc[n_enc:]))
+        diff = abs(enc_mean - dec_mean)
+        ok = diff > 0.02  # soft: just check they differ by > 2pp
+        return CheckResult(
+            "AC-08:enc-dec-differentiation",
+            ok,
+            f"enc_mean={enc_mean:.3f}, dec_mean={dec_mean:.3f}, |diff|={diff:.3f}" if ok
+            else f"enc/dec means nearly identical ({enc_mean:.3f} vs {dec_mean:.3f}) — possible bug",
+        )
+
+    def _ac09_mode_separability(self, result: dict, gc: np.ndarray) -> CheckResult:
+        """AC-09: If mode is labeled (listen/guess), the mean gc should
+        match expected direction. Prevents swapped labels or inverted curves."""
+        mode = result.get("mode")
+        if mode not in ("listen", "guess"):
+            return CheckResult(
+                "AC-09:mode-separability",
+                True,
+                f"Skipped (mode={mode!r} — no expected direction)",
+            )
+        mean_gc = float(np.mean(gc))
+        if mode == "listen":
+            # listen → should be higher; we just check > 0.4 as sanity
+            ok = mean_gc >= 0.4
+            exp = "≥0.40 for 'listen' mode"
+        else:
+            # guess → should be lower; check < 0.55
+            ok = mean_gc < 0.55
+            exp = "<0.55 for 'guess' mode"
+        return CheckResult(
+            "AC-09:mode-separability",
+            ok,
+            f"mean_gc={mean_gc:.3f} {exp}" if ok
+            else f"mean_gc={mean_gc:.3f} inconsistent with mode={mode!r} ({exp})",
+        )
+
+    def _ac11_ravel_causal_isolation(self, result: dict, gc: np.ndarray) -> CheckResult:
+        """AC-11: RAVEL causal isolation — ablating listen-layer features must causally
+        reduce jailbreak score (RAVEL Cause criterion for T5 safety probe).
+
+        Three evaluation paths (in priority order):
+        1. **Full RAVEL**: result contains `ravel_cause_score` (and optionally
+           `ravel_isolate_score`). Cause must be >= min_ravel_cause; if isolate
+           is provided it must be >= min_ravel_isolate.
+        2. **Proxy check** (mock / no ablation data, mode='listen'): encoder-region
+           mean gc >= 0.45 is a necessary (not sufficient) condition for causal
+           listen-feature activity. Passes with a WARNING label.
+        3. **Skip**: mock mode with mode != 'listen' and no RAVEL scores — cannot
+           infer causality direction, skip without failure.
+
+        Invariant: a high gc(k) in the listen region is a *necessary* but not
+        *sufficient* condition for AC-11. Full RAVEL scores are required for the
+        claim "causally reduces jailbreak score" in Paper A §3.6.
+        """
+        cause = result.get("ravel_cause_score")
+        isolate = result.get("ravel_isolate_score")
+
+        # Path 1: full RAVEL evaluation
+        if cause is not None:
+            cause_ok = float(cause) >= self.min_ravel_cause
+            if isolate is not None:
+                isolate_ok = float(isolate) >= self.min_ravel_isolate
+                ok = cause_ok and isolate_ok
+                detail = (
+                    f"cause={cause:.3f}≥{self.min_ravel_cause}, "
+                    f"isolate={isolate:.3f}≥{self.min_ravel_isolate}"
+                    if ok else
+                    f"cause={cause:.3f} (need≥{self.min_ravel_cause}), "
+                    f"isolate={isolate:.3f} (need≥{self.min_ravel_isolate})"
+                )
+            else:
+                ok = cause_ok
+                detail = (
+                    f"cause={cause:.3f}≥{self.min_ravel_cause} (isolate not measured)"
+                    if ok else
+                    f"cause={cause:.3f} < {self.min_ravel_cause} "
+                    "(ablation has insufficient causal effect on jailbreak score)"
+                )
+            return CheckResult("AC-11:ravel-causal-isolation", ok, detail)
+
+        # Path 2: proxy check for listen mode (mock, no ablation data)
+        mode = result.get("mode")
+        if mode == "listen":
+            n_enc = result.get("n_encoder_layers", 0)
+            if n_enc > 0 and len(gc) > 0:
+                enc_mean = float(np.mean(gc[:n_enc]))
+                ok = enc_mean >= 0.45
+                detail = (
+                    f"[PROXY] enc_mean_gc={enc_mean:.3f}≥0.45 "
+                    "(necessary condition for causal listen-feature activity; "
+                    "full RAVEL scores needed for definitive claim)"
+                    if ok else
+                    f"[PROXY] enc_mean_gc={enc_mean:.3f}<0.45 "
+                    "(listen features not strongly active — unlikely to pass full RAVEL Cause)"
+                )
+                return CheckResult("AC-11:ravel-causal-isolation", ok, detail)
+
+        # Path 3: skip (not enough data to evaluate)
+        return CheckResult(
+            "AC-11:ravel-causal-isolation",
+            True,
+            f"Skipped (no ravel_cause_score, mode={mode!r} — cannot assess causal direction)",
+        )
+
+    def _ac10_no_eval_awareness_artifact(self, result: dict, gc: np.ndarray) -> CheckResult:
+        """AC-10: gc(k) must not be perfectly monotone (either strictly increasing or
+        strictly decreasing throughout). A perfectly monotone curve is suspiciously clean
+        and may indicate the model is responding to eval structure rather than audio content.
+        Real causal patching results always show some non-monotone noise."""
+        if len(gc) < 4:
+            return CheckResult(
+                "AC-10:no-monotone-artifact",
+                True,
+                "Skipped (too few layers to test monotonicity)",
+            )
+        diffs = np.diff(gc)
+        strictly_increasing = bool(np.all(diffs > 0))
+        strictly_decreasing = bool(np.all(diffs < 0))
+        is_perfectly_monotone = strictly_increasing or strictly_decreasing
+        ok = not is_perfectly_monotone
+        return CheckResult(
+            "AC-10:no-monotone-artifact",
+            ok,
+            "Curve is non-monotone (expected for causal patching)" if ok
+            else "Curve is perfectly monotone — likely synthetic artifact or bug",
+        )
+
+    # --- main entry point ---
+
+    def run(self, result: dict) -> AntiConfoundReport:
+        """Run all 10 checks on a gc(k) result dict. Returns AntiConfoundReport."""
+        gc = np.array(result.get("gc_values", []), dtype=float)
+        report = AntiConfoundReport()
+        report.checks = [
+            self._ac01_value_range(gc),
+            self._ac02_no_nan_inf(gc),
+            self._ac03_valid_fraction(gc),
+            self._ac04_non_constant_curve(gc),
+            self._ac05_peak_reachability(gc),
+            self._ac06_baseline_delta(result),
+            self._ac07_layer_coverage(result, gc),
+            self._ac08_encoder_decoder_differentiation(result, gc),
+            self._ac09_mode_separability(result, gc),
+            self._ac10_no_eval_awareness_artifact(result, gc),
+            self._ac11_ravel_causal_isolation(result, gc),
+        ]
+        return report
 
 
 # ---------------------------------------------------------------------------
@@ -264,6 +609,14 @@ def main() -> None:
     parser.add_argument("--layer-range", nargs=2, type=int, default=[0, 6], metavar=("START", "END"))
     parser.add_argument("--plot", action="store_true", help="Save curve plot to /tmp/gc_curve.png")
     parser.add_argument("--json", action="store_true", help="Output raw JSON")
+    parser.add_argument(
+        "--check", action="store_true",
+        help="Run anti-confound checklist (10 assertions). Exit code 1 if any FAIL.",
+    )
+    parser.add_argument(
+        "--check-only", action="store_true",
+        help="Run --check and suppress curve output (gate mode).",
+    )
     args = parser.parse_args()
 
     if args.mock:
@@ -277,6 +630,15 @@ def main() -> None:
             audio_noisy=args.audio_noisy,
             layer_range=tuple(args.layer_range),
         )
+
+    if args.check or args.check_only:
+        report = AntiConfoundChecker().run(result)
+        report.print_report()
+        if not report.passed:
+            sys.exit(1)
+
+    if args.check_only:
+        return
 
     if args.json:
         print(json.dumps(result, indent=2))

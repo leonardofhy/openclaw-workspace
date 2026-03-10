@@ -235,6 +235,48 @@
 **New Risk A6 for Paper A experiment-queue:**
 - Low-variance phoneme features with high causal weight may be missed by variance-based ablation (H&N noising). Mitigation: use DAS (not variance threshold), report ablation delta per phoneme class separately.
 
+## Gap #28: Behavioral Grounding Degradation Under Multi-Event Complexity (新增 2026-03-05 cycle #292)
+**"Lee et al. 2603.03855 provides behavioral proof that audio grounding degrades under scene complexity — Paper A provides the mechanistic account"**
+- 71K AudioCapsV2 clips × 4 SOTA Audio LLMs × 500K yes/no queries: as event count ↑, TPR↓ + FPR↑
+- Prompt variants induce strong TPR/FPR trade-off (models can't simultaneously maintain precision AND recall under complexity)
+- Models become more uncertain (confidence → 0.5) = Listen/Guess ambiguity
+- **Paper A §1 cite**: "behavioral analyses confirm degraded grounding [Lee et al. 2026]; we provide mechanistic account via gc(k)"
+- **Gap**: Lee et al. = behavioral (black-box survey); Paper A = mechanistic (circuit-level, why at which layer)
+- **Status**: 🟢 GREEN — confirmed, cite immediately in Paper A §1
+
+## Gap #29: ACES Accent Subspace vs AudioSAE Feature Alignment (新增 2026-03-05 cycle #292)
+**"Do accent PCA directions (ACES) correspond to monosemantic AudioSAE features, or do the two methods diverge?"**
+- ACES (Parekh et al. 2603.03359): accent info in low-dim subspace (Wav2Vec2 layer 3, k=8); linear erasure worsens disparity; accent features "deeply entangled with recognition-critical cues"
+- This is exactly the Isolate(F,A) failure mode AudioSAEBench M4 is designed to detect
+- Open Q: Are the k=8 accent PCA directions captured by any single AudioSAE feature? If yes → methods agree; if no → representation method gap
+- **Paper B contribution**: AudioSAEBench M4 (Isolate) = more rigorous, per-feature version of ACES's subspace analysis
+- **Cite ACES in Paper B §2.2**: "prior work shows accent features entangled with recognition-critical cues [Parekh et al. 2026]; our Isolate metric quantifies this per-feature"
+- **Status**: 🟡 YELLOW — valid gap, lower priority than Papers A+B primary contributions; monitor if ACES authors extend to SAE
+
+## Gap #30: Modality Collapse as Measurable SAE Isolation Failure (新增 2026-03-05 cycle #293)
+**"Is modality collapse (Zhao et al. 2602.23136) mechanistically detectable as low SAE Isolate score?"**
+- Zhao et al.: LALMs default to text-prediction pathway even when audio contradicts text → behavioral phenomenon
+- Hypothesis: models with modality collapse have audio SAE features that score LOW on Isolate(F, audio_attribute) — i.e., "audio features" also encode text information (not isolated from text pathway)
+- **Test**: Use ALME stimuli (57K audio-text conflict pairs); extract AudioSAE features; measure Isolate score for audio-specific attributes; compare models with high vs low modality collapse rates
+- **Predicted result**: Isolate(audio SAE feature, audio attribute) correlates negatively with modality collapse rate
+- **Paper B contribution**: first mechanistic/quantitative correlate of behavioral modality collapse; connects AudioSAEBench M4 (Isolate metric) to established behavioral finding
+- **Connection**: AudioSAEBench Category 1 (M4 Isolate) + Modality Collapse (Zhao et al.) + ALME (stimuli source)
+- **Status**: 🟢 GREEN — high novelty (S=9 ideation cycle #293); Paper B §4 candidate; Q045 in queue
+
+## Gap #31: 3-Tier Grounding Failure Taxonomy (新增 2026-03-05 cycle #293)
+**"Can we unify codec/connector/LLM grounding failures into one mechanistic taxonomy?"**
+- Three separate prior-work failure modes:
+  1. **Codec failure**: information destroyed at RVQ tokenization (Sadok codec probe — semantic only survives in layer 1)
+  2. **Connector bottleneck**: multimodal projection loses phonological geometry (Gap #18 phonological vector arithmetic)
+  3. **LLM modality collapse**: model processes audio tokens but defaults to text priors (Zhao et al. 2602.23136, ALME)
+- Each tier has a distinct gc(k) signature:
+  - Tier 1 (codec): gc(k) = random at ALL layers → signal never enters model
+  - Tier 2 (connector): gc(k) peaks in encoder layers but collapses after connector → information present, then lost
+  - Tier 3 (LLM): gc(k) shows a peak at L_mid but drops at upper layers → information enters LLM but late layers default to text
+- **Paper A §4 contribution**: theoretical taxonomy + predicted gc(k) patterns = falsifiable predictions from the framework
+- **Connection**: Sadok Codec Probe + Gap #18 (phonological geometry) + T3 gc(k) + ALME + Modality Collapse + Listen Layer hypothesis
+- **Status**: 🟢 GREEN — high novelty (S=9); unifies 3 literatures; Q043 in queue (Tier 0 build)
+
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
 2. 🔧 **Deep Research**: 自主 AI agent 系統的可持續架構（已請求 2/26）

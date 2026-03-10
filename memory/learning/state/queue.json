@@ -127,6 +127,67 @@
       "created": "2026-03-05",
       "due": null,
       "completed": "2026-03-05"
+    },
+    {
+      "id": "Q038",
+      "type": "design",
+      "track": "T3",
+      "title": "Microgpt × Phonological DAS suite (fully inspectable phoneme circuits)",
+      "status": "done",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Implement toy transformer + DAS protocol; report IIA/Cause/Isolate on 6-phoneme task",
+      "created": "2026-03-09",
+      "due": null,
+      "completed": "2026-03-09"
+    },
+    {
+      "id": "Q039",
+      "type": "experiment",
+      "track": "T3",
+      "title": "Persona-conditioned gc(k) benchmark on audio-text conflict",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Run neutral/assistant/anti-ground conditions and quantify gc(k) shifts with stats table",
+      "created": "2026-03-09",
+      "due": null
+    },
+    {
+      "id": "Q040",
+      "type": "experiment",
+      "track": "T5",
+      "title": "Audio-RAVEL × ESN leakage causal scorecard",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Produce Cause/Isolate scores under 2x2 emotion-speaker controls; summarize leakage pattern",
+      "created": "2026-03-09",
+      "due": null
+    },
+    {
+      "id": "Q041",
+      "type": "build",
+      "track": "T5",
+      "title": "SAE-guided adversarial detector calibration (SPIRIT-inspired)",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Implement calibration script and evaluate alert precision/recall on synthetic attacks",
+      "created": "2026-03-09",
+      "due": null
+    },
+    {
+      "id": "Q042",
+      "type": "write",
+      "track": "T3",
+      "title": "Critical-layer patching checklist for LALMs",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Draft reproducible checklist (AND/OR gates, denoising, AtP, top-k aggregate) with examples",
+      "created": "2026-03-09",
+      "due": null
     }
   ],
   "archived_count": 36,
