@@ -30,3 +30,15 @@ Together, these results establish the Listen Layer as a mechanistically interpre
 - "Listen or Guess?" framing: accessible, catchy, maps directly to gc(k)
 - Contribution 3b ties to Paper A applications; contribution 3a bridges to T5/Paper C
 - Related work section will position vs: causal tracing (Meng et al.), layer-wise probing (tenney et al.), audio hallucination (maiti et al.)
+
+---
+
+## §2 Methodology Stub — Sutter Linearity Guard (v0.1, Q048, 2026-03-06)
+
+### Why Linear Alignment Maps? (Defending DAS)
+
+Causal abstraction \citep{geiger2021} provides the formal foundation for gc(k): the grounding coefficient measures whether a high-level causal variable (acoustic evidence) is *faithfully* realized in the model's internal representation at layer k. A natural concern is that non-linear alignment maps could trivially achieve high IIA even when no genuine grounding structure exists. Sutter et al. (NeurIPS 2025 Spotlight) establish this rigorously: with sufficiently expressive (non-linear) alignment maps, \emph{any} neural network can be made to appear causally consistent with \emph{any} algorithm, rendering causal abstraction vacuous as a scientific claim. We therefore restrict gc(k) estimation to \textbf{linear DAS} (distributed alignment search with linear rotation; \citealt{wu2024}): any increase in IIA observed under this constraint genuinely reflects linear acoustic feature structure in the representation, not an artifact of an expressive alignment function. This choice also aligns with the broader linear representation hypothesis for neural language models \citep{park2023} and with Asiaee et al.'s (2026) efficiency result showing that activation variance serves as a reliable pre-screen precisely because high-variance layers tend to have linearly readable features.
+
+**Key cite:** Sutter et al., "Causal Abstraction Requires Linear Alignment Maps," NeurIPS 2025 Spotlight (arXiv:2507.08802)
+**Placement:** §2.2 (after DAS definition, before gc(k) estimation algorithm)
+**Tone:** Weakness-turned-strength — "one might object... we address this by..."

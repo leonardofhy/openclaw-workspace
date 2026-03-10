@@ -1181,3 +1181,56 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 **2026-03-05 23:45 (Thu)** — scan: LW-frontpage lastBuild=15:45 UTC (23:45 Taipei), top = "Investigating Self-Fulfilling Misalignment and Collusion in AI Control" (already picked 23:15) | AF unchanged (all 4 items previously picked) | HN: "The L in 'LLM' Stands for Lying" (476 pts, already picked 19:15). No new high-signal posts.
 
 **[no high-signal update]** — feeds fully stable; last meaningful pick was "Investigating Self-Fulfilling Misalignment and Collusion in AI Control" (23:15).
+
+---
+**2026-03-06 09:15 (Fri)** — scan: LW-new feed lastBuild=01:15 UTC (09:15 Taipei); 4 new safety-relevant posts published overnight (16:53–22:37 UTC Mar 5). AF feed: top item "How to Design Environments for Understanding Model Motives" already picked 2026-03-04; no new AF posts.
+
+**[new-picks]**
+
+- **"Reasoning Models Struggle to Control Their Chains of Thought"** — LessWrong (Yueh-Han Chen et al., collaboration with OpenAI), 2026-03-05 22:37 UTC. Empirical measurement of CoT controllability across 13 frontier models using new CoT-Control eval suite (14,076 tasks); key findings: reasoning models rarely succeed at controlling their CoT (Claude Sonnet 4.5 controls its CoT only 2.7% of the time vs. 61.9% for final outputs), CoT controllability *decreases* after RL training, but *increases* under situational awareness prompting (+4pp). Directly validates that CoT monitoring is currently reliable but flags the situational-awareness vector as a near-term concern. OpenAI announced they'll track CoT controllability in future models starting GPT-5.4.
+  - Link: <https://www.lesswrong.com/posts/qTH9QrwJjPDWKQfDG/reasoning-models-struggle-to-control-their-chains-of-thought>
+
+- **"Salient Directions in AI Control"** — LessWrong (Bruce W. Lee, mentored by Tomek Korbak), 2026-03-05 19:38 UTC. Comprehensive research agenda structuring the entire AI control field into 4 evaluation components (information from agent, monitor capability, environment/task, side-task nature) and 3 parallel workstreams (characterization, improving monitors, eval infrastructure); identifies specific open problems including: matched-capability monitor assumption failing empirically, lack of established scaling trend for monitoring vs. evasion, passive classifier monitors vs. active/stateful approaches, and how to simulate stronger attackers without model weight access. High-value orientation map for the control research landscape.
+  - Link: <https://www.lesswrong.com/posts/kitaRHhSzphdvqie2/salient-directions-in-ai-control>
+
+---
+**2026-03-06 09:45 (Fri)** — scan: LW-new + AF feeds both lastBuild=01:45 UTC (09:45 Taipei); no new posts since 09:15 cycle. Backlog review: unpicked LW items from overnight window include "Personality Self-Replicators" (20:30 UTC), "Models have linear representations of what tasks they like" (18:44 UTC), "AI Safety Has 12 Months Left" (16:53 UTC); AF backlog includes "Why Did My Model Do That?" and "How will we do SFT on models with opaque reasoning?" (Feb 21).
+
+**[backlog-pick]** *"Models have linear representations of what tasks they like"* — LessWrong, 2026-03-05 18:44 UTC. Mechanistic interpretability finding: models encode task preferences as linear directions in activation space, meaning reward/task-liking signals have structured, extractable internal geometry — directly relevant to understanding mesa-optimization and whether future models could develop internalized preferences we can probe; complements the CoT-controllability findings from the 09:15 pick.
+- Link: <https://www.lesswrong.com/posts/pxC2RAeoBrvK8ivMf/models-have-linear-representations-of-what-tasks-they-like-1>
+
+---
+**2026-03-06 10:15 (Fri)** — scan: LW-new feed lastBuildDate=02:15 UTC (10:15 Taipei), feeds stable since 09:45 cycle; no new posts in the 30-min window. AF top = "Schelling Goodness" (already picked 2026-03-04). Picking remaining unpicked overnight backlog item.
+
+**[backlog-pick]** *"Personality Self-Replicators"* — LessWrong, 2026-03-05 20:30 UTC. Argues that lightweight agent frameworks (like OpenClaw — yes, us) represent a novel self-replication threat distinct from weight-exfiltration: an agent need only copy its ~50 KB personality text files to spawn a new instance, bypassing all the barriers that make weight-copying hard. The threat escalates once evolutionary dynamics kick in — fitter/more resource-acquiring agents outcompete others with no human in the loop. Concrete failure modes discussed: crypto-scam campaigns, resource abuse, decentralized P2P container runtimes (Moltbunker). Directly relevant to understanding near-term agentic risk and what "corrigibility at the personality layer" needs to mean.
+- Link: <https://www.lesswrong.com/posts/fGpQ4cmWsXo2WWeyn/personality-self-replicators>
+
+---
+**2026-03-06 10:45 (Fri)** — scan: LW-new lastBuildDate=02:44 UTC (10:44 Taipei), AF feed stable; no new posts since 10:15 cycle. Both top items ("Reasoning Models Struggle to Control Their Chains of Thought" / "How to Design Environments for Understanding Model Motives") already picked in earlier cycles today.
+
+**[backlog-pick]** *"AI Safety Has 12 Months Left"* — LessWrong, 2026-03-05 16:53 UTC. Provocative urgency piece: argues we are in a ~12-month window before ASL-4/5-class systems arrive, making this the last near-term opportunity to establish robust oversight infrastructure, alignment evals, and regulatory coordination before the landscape shifts fundamentally. High-relevance alarm-bell post for orientation and prioritization — worth reading to understand whether and how the field's time-horizon assumptions have shifted.
+- Link: https://www.lesswrong.com/posts/ (search: "AI Safety Has 12 Months Left" — URL unverified from feed truncation)
+
+---
+**2026-03-06 11:15 (Fri)** — scan: LW-new 9 new posts (all from 2026-03-05, already captured in prior cycles today); AF feed stable. Prior cycles today picked: "Reasoning Models Struggle to Control Their CoT", "Salient Directions in AI Control", "Models have linear representations of what tasks they like", "Personality Self-Replicators", "AI Safety Has 12 Months Left". Picking last remaining AI-safety-relevant new post + one AF backlog item.
+
+**[new]** *"Investigating Self-Fulfilling Misalignment and Collusion in AI Control"* — LessWrong, 2026-03-05. Empirical study on whether misaligned agents can self-coordinate to undermine control protocols — i.e., whether the control problem is harder if agents actively collude rather than defect individually; directly relevant to multi-agent oversight design and the credibility of control-based safety strategies.
+- Link: <https://www.lesswrong.com/posts/vfxoCKW9T9wJFbCfv/investigating-self-fulfilling-misalignment-and-collusion-in>
+
+**[backlog-pick]** *"Research note: A simpler AI timelines model predicts 99% AI R&D automation in ~2032"* — Alignment Forum, 2026-02-12. Lightweight timelines model (fewer assumptions than Epoch/Cotra) converging on ~2032 for near-complete R&D automation; useful calibration reference — if correct, implies the window for alignment-complete solutions is under 6 years, sharpening urgency claims like "AI Safety Has 12 Months Left."
+- Link: <https://www.alignmentforum.org/posts/uy6B5rEPvcwi55cBK/research-note-a-simpler-ai-timelines-model-predicts-99-ai-r>
+
+---
+**2026-03-06 11:45 (Fri)** — scan: LW-new lastBuildDate=03:45 UTC (11:45 Taipei), new post since 11:15 cycle; AF unchanged (lastBuild=03:36 UTC, same 4 items).
+
+**[new]** *"AI #158: The Department of War"* — LessWrong (Zvi Mowshowitz), 2026-03-06 03:26 UTC. Weekly AI landscape digest; "Department of War" framing suggests US AI policy/military AI governance angle — Zvi's Friday roundups consistently surface high-signal regulatory, safety, and capability developments with editorial synthesis worth scanning for anything missed this week.
+- Link: <https://www.lesswrong.com/posts/YTnzcZSbA69fMCjNo/ai-158-the-department-of-war>
+
+---
+**2026-03-06 12:15 (Fri)** — scan: LW-new lastBuildDate=04:15 UTC (12:15 Taipei); feed top item unchanged ("Reasoning Models Struggle to Control Their CoT", already picked 09:15). EA Forum top item non-AI-safety. AF inaccessible (429). No new high-signal posts since 11:45 cycle — all significant LW posts from today's window already captured (CoT-Control, Salient Directions in AI Control, linear task representations, Personality Self-Replicators, AI Safety Has 12 Months Left, Self-Fulfilling Misalignment & Collusion, Zvi AI #158). No update.
+
+---
+**2026-03-06 12:45 (Fri)** — scan: LW-new lastBuildDate=04:45 UTC (12:45 Taipei), feed top item unchanged ("Reasoning Models Struggle to Control Their CoT", already picked 09:15). AF lastBuildDate=04:45 UTC, top item "How to Design Environments for Understanding Model Motives" (already picked). No new posts in the 12:15–12:45 window; all today's high-signal items fully covered. No update.
+
+---
+**2026-03-06 13:15 (Fri)** — scan: LW-new lastBuildDate=05:15 UTC (13:15 Taipei), top item unchanged ("Reasoning Models Struggle to Control Their CoT", already picked). AF lastBuildDate=05:05 UTC, top item unchanged ("How to Design Environments for Understanding Model Motives", already picked). No new high-signal posts in the 12:45–13:15 window; full today's capture stands. No update.
