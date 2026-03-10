@@ -12,17 +12,12 @@ import json
 import sys
 import os
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'shared'))
+from jsonl_store import find_workspace
 
 TZ = timezone(timedelta(hours=8))  # Asia/Taipei
-
-def find_workspace():
-    """Walk up from script location to find .git root."""
-    d = os.path.dirname(os.path.abspath(__file__))
-    for _ in range(10):
-        if os.path.isdir(os.path.join(d, '.git')):
-            return d
-        d = os.path.dirname(d)
-    return os.path.expanduser('~/.openclaw/workspace')
 
 def load_json(path):
     try:

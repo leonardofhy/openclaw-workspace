@@ -27,17 +27,8 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
-def find_workspace():
-    """Find the openclaw workspace root."""
-    p = Path(__file__).resolve()
-    for parent in p.parents:
-        if (parent / "AGENTS.md").exists():
-            return parent
-    home = Path.home()
-    ws = home / ".openclaw" / "workspace"
-    if ws.exists():
-        return ws
-    return Path.cwd()
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'shared'))
+from jsonl_store import find_workspace
 
 WS = find_workspace()
 LEARNING = WS / "memory" / "learning"
