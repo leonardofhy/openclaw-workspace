@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 1,
+    "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-11"
   },
   "stats": {
-    "total_cycles": 168,
+    "total_cycles": 169,
     "total_skips": 40,
     "papers_read_deep": 27,
     "papers_scanned": 37,
     "research_gaps": 19,
     "paper_ideas": 12,
     "paper_pitches": 2,
-    "code_artifacts": 47,
+    "code_artifacts": 48,
     "system_improvements": 7,
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260311-0201",
+    "id": "c-20260311-0231",
     "action": "build",
-    "summary": "Q067: gc(k) \u00d7 instruction tuning experiment design \u2014 base vs instruct Qwen2-Audio on ALME stimuli, 4 hypotheses, CPU approximation path, Paper A §1 + Paper B M8 connections"
+    "summary": "Q039: persona_gc_benchmark.py Tier 0 scaffold — 3-condition gc(k) benchmark (neutral/assistant/anti_ground), 4 hypothesis tests, mock mode verified passing"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
