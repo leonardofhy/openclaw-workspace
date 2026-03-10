@@ -1183,3 +1183,12 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 ---
 **2026-03-06 13:15 (Fri)** — scan: LW-new lastBuildDate=05:15 UTC (13:15 Taipei), top item unchanged ("Reasoning Models Struggle to Control Their CoT", already picked). AF lastBuildDate=05:05 UTC, top item unchanged ("How to Design Environments for Understanding Model Motives", already picked). No new high-signal posts in the 12:45–13:15 window; full today's capture stands. No update.
+
+---
+**2026-03-10 21:45 (Tue)** — scan: LW-new lastBuildDate=13:45 UTC; AF lastBuildDate=13:45 UTC. Two new high-signal posts since last capture (2026-03-06 13:15).
+
+**[new]** *"Can governments quickly and cheaply slow AI training?"* — Alignment Forum, 2026-03-10. Technical analysis of inference-verification as an emergency "circuit breaker" for AI development: author argues current prototypes are insufficient (RL-heavy training can largely route around communication restrictions), but that proof-of-work/memory, memory wipes, and output recomputation at aggressive thresholds could buy ≥1 year — a rare bird's-eye-view of a nascent and critically important compute-governance mechanism.
+- Link: <https://www.alignmentforum.org/posts/Xzf3eMnhTko7AxnEy/can-governments-quickly-and-cheaply-slow-ai-training>
+
+**[new]** *"The case for AI safety capacity-building work"* — LessWrong (Coefficient Giving / Open Philanthropy), 2026-03-10. Field-meta post arguing capacity-building (MATS, 80kH, university groups) is massively underrated vs. direct technical work, backed by 2023 survey of ~329 people in AI safety showing 60% listed a capacity-building program in their top-4 career influences; useful calibration for how the field actually grows and where marginal talent should direct.
+- Link: <https://www.lesswrong.com/posts/capacity-building-ai-safety>
