@@ -5,21 +5,9 @@ from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
-from common import TZ, now as _now, SECRETS
+from common import TZ, now as _now, load_todoist_token
 
-ENV_PATH = SECRETS / 'todoist.env'
 API_BASE = 'https://api.todoist.com/api/v1'
-
-
-def load_token():
-    token = os.environ.get('TODOIST_API_TOKEN')
-    if token:
-        return token
-    if ENV_PATH.exists():
-        for line in ENV_PATH.read_text().splitlines():
-            if line.startswith('TODOIST_API_TOKEN='):
-                return line.split('=', 1)[1].strip()
-    raise RuntimeError('TODOIST_API_TOKEN not found')
 
 
 def get(path, token, params=None):
@@ -73,7 +61,7 @@ def main():
                     help='Include tasks completed today')
     args = ap.parse_args()
 
-    token = load_token()
+    token = load_todoist_token()
     tasks = get('/tasks', token).get('results', [])
     projects = {p['id']: p for p in get('/projects', token).get('results', [])}
 

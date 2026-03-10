@@ -27,9 +27,8 @@ from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
-from common import TZ, today_str as _today_str, WORKSPACE, SECRETS
+from common import TZ, today_str as _today_str, WORKSPACE, SECRETS, CAL_ID
 
-CAL_ID = 'leonardofoohy@gmail.com'
 CREDS_PATH = SECRETS / 'google-service-account.json'
 SCHEDULES_DIR = WORKSPACE / 'memory' / 'schedules'
 META_DIR = SCHEDULES_DIR / '.meta'

@@ -30,6 +30,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "shared"))
 from jsonl_store import JsonlStore, find_workspace
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "lib"))
+from common import DISCORD_BOT_IDS as BOT_IDS, DISCORD_BOT_SYNC_CHANNEL as BOT_SYNC_CHANNEL
+
 WORKSPACE = find_workspace()
 MAILBOX_REL = "memory/mailbox/messages.jsonl"
 store = JsonlStore(MAILBOX_REL, prefix="MB")
@@ -39,15 +42,6 @@ BRANCH_MAP = {
     "lab-desktop": "macbook-m3",
     "macbook-m3": "lab-desktop",
 }
-
-# Discord bot IDs for @mention generation
-BOT_IDS = {
-    "lab": "1476497627490025644",
-    "mac": "1473210706567495730",
-}
-
-BOT_SYNC_CHANNEL = "1476624495702966506"
-
 
 def now_iso() -> str:
     return datetime.now().strftime("%Y-%m-%dT%H:%M:%S")

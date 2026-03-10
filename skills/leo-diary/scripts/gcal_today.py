@@ -7,10 +7,9 @@ from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
-from common import TZ, now as _now, SECRETS
+from common import TZ, now as _now, SECRETS, CAL_ID
 
 CREDS_PATH = str(SECRETS / 'google-service-account.json')
-CAL_ID = 'leonardofoohy@gmail.com'
 
 
 def get_events(days_ahead=0, days_range=1):
