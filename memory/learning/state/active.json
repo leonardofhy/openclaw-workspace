@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 4,
+    "build_remaining_today": 3,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-10"
+    "budget_reset_date": "2026-03-11"
   },
   "stats": {
-    "total_cycles": 166,
+    "total_cycles": 167,
     "total_skips": 40,
     "papers_read_deep": 27,
     "papers_scanned": 37,
     "research_gaps": 19,
     "paper_ideas": 12,
     "paper_pitches": 2,
-    "code_artifacts": 45,
+    "code_artifacts": 46,
     "system_improvements": 7,
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260311-0031",
-    "action": "build",
-    "summary": "Q066: Interpret-Then-Defend spec \u2014 SAE feature-level audio jailbreak defense, 2-stage pipeline (INTERPRET+DEFEND), AUC vs SPIRIT comparison plan, MATS proposal framing, Paper A\u2192B\u2192ITD chain"
+    "id": "c-20260311-0101",
+    "action": "design",
+    "summary": "Q063: Audio-RAVEL stimuli plan — 5 contrasts × 4 languages (EN/ZH/DE/JA) × 20 pairs = 400 pairs; TTS fallback; orthogonality matrix; metadata schema; unblocks Phase 1"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []

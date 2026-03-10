@@ -185,12 +185,13 @@
       "type": "design",
       "track": "T2",
       "title": "Audio-RAVEL minimal pair stimuli plan: concrete stimulus table for 5 phonological contrasts × 4 languages using Choi et al. (Tier 0 design)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "memory/learning/cycles/audio-ravel-stimuli-plan.md: stimulus table, TTS source, 5 contrasts × 4 lang × 20 pairs each = 400 pairs spec",
       "created": "2026-03-06",
-      "due": null
+      "due": null,
+      "completed": "2026-03-11"
     },
     {
       "id": "Q039",
