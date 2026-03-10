@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 3,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-11"
@@ -40,14 +40,14 @@
     "research_gaps": 19,
     "paper_ideas": 12,
     "paper_pitches": 2,
-    "code_artifacts": 46,
+    "code_artifacts": 47,
     "system_improvements": 7,
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260311-0101",
-    "action": "design",
-    "summary": "Q063: Audio-RAVEL stimuli plan — 5 contrasts × 4 languages (EN/ZH/DE/JA) × 20 pairs = 400 pairs; TTS fallback; orthogonality matrix; metadata schema; unblocks Phase 1"
+    "id": "c-20260311-0131",
+    "action": "build",
+    "summary": "Q042: Critical-layer patching checklist \u2014 4-phase protocol with DAS denoising correction, AtP pre-screen, top-k gc(k) aggregation, 3-tier diagnosis table"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []

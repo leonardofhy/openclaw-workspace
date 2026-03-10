@@ -235,12 +235,13 @@
       "type": "write",
       "track": "T3",
       "title": "Critical-layer patching checklist for LALMs",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Draft reproducible checklist (AND/OR gates, denoising, AtP, top-k aggregate) with examples",
       "created": "2026-03-09",
-      "due": null
+      "due": null,
+      "completed": "2026-03-11"
     },
     {
       "id": "Q064",
