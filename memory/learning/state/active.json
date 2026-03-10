@@ -27,13 +27,13 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 2,
+    "build_remaining_today": 1,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-11"
   },
   "stats": {
-    "total_cycles": 167,
+    "total_cycles": 168,
     "total_skips": 40,
     "papers_read_deep": 27,
     "papers_scanned": 37,
@@ -45,9 +45,9 @@
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260311-0131",
+    "id": "c-20260311-0201",
     "action": "build",
-    "summary": "Q042: Critical-layer patching checklist \u2014 4-phase protocol with DAS denoising correction, AtP pre-screen, top-k gc(k) aggregation, 3-tier diagnosis table"
+    "summary": "Q067: gc(k) \u00d7 instruction tuning experiment design \u2014 base vs instruct Qwen2-Audio on ALME stimuli, 4 hypotheses, CPU approximation path, Paper A §1 + Paper B M8 connections"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []

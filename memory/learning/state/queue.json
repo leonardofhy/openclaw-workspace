@@ -287,12 +287,13 @@
       "type": "design",
       "track": "T3",
       "title": "gc(k) x instruction tuning: Qwen2-Audio base vs instruct on ALME stimuli",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Experiment design doc: compare gc(k) profile pre/post instruction tuning; Paper A §1 motivation",
       "created": "2026-03-10",
-      "due": null
+      "due": null,
+      "completed": "2026-03-11"
     }
   ],
   "archived_count": 54,
