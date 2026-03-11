@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -35,9 +35,9 @@
   "stats": {
     "total_cycles": 170,
     "total_skips": 40,
-    "papers_read_deep": 28,
+    "papers_read_deep": 29,
     "papers_scanned": 37,
-    "research_gaps": 19,
+    "research_gaps": 20,
     "paper_ideas": 12,
     "paper_pitches": 2,
     "code_artifacts": 48,
@@ -45,9 +45,9 @@
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260311-1215",
+    "id": "c-20260311-1232",
     "action": "learn",
-    "summary": "Maghsoudi & Mishra 2602.01247: compact layer-specific causal subspaces in B2S models; direction asymmetry finding; Paper A \u00a72.2 already cites; Gap #32 candidate noted"
+    "summary": "Q039 design: Simulated Adoption (Zhang & Lin 2026) = Paper A \u00a72 precedent; 4 hypotheses formalized (incl H4 direction-asymmetry); Gap #33 (no audio-text conflict resolution mechanistic study); Paper B M8 candidate: Persona Sensitivity metric"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []

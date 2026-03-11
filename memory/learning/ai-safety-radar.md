@@ -3,6 +3,12 @@
 > Purpose: 30-min internal scan + balanced recommendations for Leo.
 > Sources: Alignment Forum, LessWrong (blogwatcher)
 
+---
+**2026-03-11 12:45 (Wed)** — scan: LW-new lastBuildDate=04:45 UTC (12:45 Taipei); AF lastBuildDate=04:36 UTC. No new posts since 12:17 cycle. AF backlog still has uncaptured items from early March.
+
+**[backlog-pick]** *"How to Design Environments for Understanding Model Motives"* — Alignment Forum, 2026-03-02. Proposes principled methodology for constructing test environments that reveal an AI model's underlying motives (vs. surface behavior) — directly relevant to deceptive alignment detection, model evaluation, and interpretability; complements censored-LLMs elicitation work picked in 12:17 cycle.
+- Link: <https://www.alignmentforum.org/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
+
 ## Operating Rules
 - Scan every 30 minutes during daytime/evening.
 - Do NOT spam Leo on every cycle.
