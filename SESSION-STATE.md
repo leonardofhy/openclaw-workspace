@@ -14,6 +14,7 @@ Post-downtime review & deadline cleanup
 - [3/11 21:10] Pathfinder follow-up：明天處理（3/12）
 - [3/11 21:08] NTU 僑生獎學金確認 due today（原始 3/15）
 - [3/11] API 停機整天（Anthropic cooldown），傍晚恢復
+- [3/12 00:43] Leo 考慮研究方向：要不要改成 metric optimization 類的研究（scope 小、容易成功，但他自己覺得比較無聊）
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: 交由 Lab Leo 執行（Leo 已同意要開）

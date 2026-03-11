@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 8,
-    "build_remaining_today": 1,
+    "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 4,
+    "ideate_remaining_today": 3,
     "budget_reset_date": "2026-03-12"
   },
   "stats": {
-    "total_cycles": 174,
+    "total_cycles": 175,
     "total_skips": 40,
     "papers_read_deep": 30,
     "papers_scanned": 37,
     "research_gaps": 22,
     "paper_ideas": 12,
     "paper_pitches": 2,
-    "code_artifacts": 50,
+    "code_artifacts": 51,
     "system_improvements": 7,
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-0001",
-    "action": "build",
-    "summary": "Q068 done: directed_isolate_mock.py (4-condition IN/OUT causal scoring + scorecard) + compute_asymmetry_delta() in persona_gc_benchmark.py; both unit tests pass on mock tensors."
+    "id": "c-20260312-0101",
+    "action": "ideate",
+    "summary": "Generated 20 ideas, 18 qualifying (N+F≥7), 8 high-priority (sum=9). Added Q069-Q076 to queue. Queue cleaned: 19 done tasks evicted, 9 READY tasks ready."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
