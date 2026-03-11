@@ -307,12 +307,13 @@
       "type": "build",
       "track": "T3",
       "title": "SAE x phoneme circuits in microgpt — first fully-transparent phoneme SAE (N=4,F=5=9)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "SAE trained on microgpt activations; ≥1 sparse feature identified as phoneme-selective",
       "created": "2026-03-10",
-      "due": null
+      "due": null,
+      "completed": "2026-03-11"
     },
     {
       "id": "Q053",
