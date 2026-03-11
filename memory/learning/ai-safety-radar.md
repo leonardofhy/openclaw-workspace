@@ -1,6 +1,15 @@
 # AI Safety Radar
 
 ---
+**2026-03-11 23:45 (Wed)** — scan: 0 new posts; backlog 75 LW + 4 AF unread.
+
+**[backlog-pick-1]** *"Models have linear representations of what tasks they like"* — LessWrong, 2026-03-05. Linear probes find task-preference directions in activation space — directly relevant to mechanistic interp and understanding goal representations.
+- Link: <https://www.lesswrong.com/posts/pxC2RAeoBrvK8ivMf/models-have-linear-representations-of-what-tasks-they-like-1>
+
+**[backlog-pick-2]** *"AI Safety Has 12 Months Left"* — LessWrong, 2026-03-05. Strategic alarm post arguing the window for meaningful safety work is closing fast; worth tracking for field-level situational awareness.
+- Link: <https://www.lesswrong.com/posts/rWc6BT8BcoPhwcbSs/ai-safety-has-12-months-left>
+
+---
 **2026-03-11 22:15 (Wed)** — scan: LW 1 new post today; AF no new since yesterday. 85 unread in backlog.
 
 **[pick-1]** *"AIs will be used in 'unhinged' configurations"* — LessWrong, 2026-03-11. Argues that deployment diversity means safety labs can't assume sane usage contexts — adversarial/jailbroken/misaligned configurations will be the norm for some fraction of deployments; relevant to robustness and worst-case alignment.

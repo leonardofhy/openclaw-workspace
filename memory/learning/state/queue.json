@@ -300,12 +300,13 @@
       "type": "build",
       "track": "T2",
       "title": "Directed Isolate mock: directed_isolate_mock.py + compute_asymmetry_delta() in persona_gc_benchmark.py (Tier 0, Gap #35+#36)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "skills/autodidact/scripts/directed_isolate_mock.py: 4-condition mock activations, compute_isolate_in(), compute_isolate_out(), scorecard(); compute_asymmetry_delta() added to persona_gc_benchmark.py; all unit tests pass on mock tensors",
       "created": "2026-03-11",
-      "due": null
+      "due": null,
+      "completed": "2026-03-12"
     }
   ],
   "archived_count": 54,

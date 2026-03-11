@@ -236,6 +236,75 @@ def print_stats_table(stats: dict[str, BenchmarkStats], results: dict[str, Condi
     print("=" * 70)
 
 
+def compute_asymmetry_delta(
+    stats: dict[str, BenchmarkStats],
+    results: dict[str, ConditionResult],
+    gap35_threshold: float = 0.05,
+) -> dict[str, dict]:
+    """
+    Compute direction-asymmetry delta for each condition vs neutral.
+
+    Extends Q039 with Gap #35/36 (Direction Asymmetry):
+      - For each condition, measure how much the gc(k) profile shifts
+        toward early layers (IN-dominant → audio pulled at encoder level)
+        vs late layers (OUT-dominant → audio relayed through connector to LLM)
+      - delta_early:  mean gc(k) over first half of encoder layers, relative to neutral
+      - delta_late:   mean gc(k) over second half of encoder layers, relative to neutral
+      - asymmetry:    delta_early - delta_late (positive = IN-dominant shift)
+      - h35_footprint: |asymmetry| > gap35_threshold
+
+    Integration note:
+      For full Directed Isolate (encoder→connector→decoder activations),
+      use directed_isolate_mock.py::scorecard(). This function is a gc(k)-only
+      proxy, valid without activation access.
+
+    Args:
+        stats:  dict condition → BenchmarkStats (from run_hypothesis_tests())
+        results: dict condition → ConditionResult (from mock_gc_for_condition())
+        gap35_threshold: asymmetry magnitude threshold for flagging H35 footprint
+
+    Returns:
+        dict condition → {
+            delta_early: float,
+            delta_late: float,
+            asymmetry: float,       # delta_early - delta_late
+            direction: str,         # "in_dominant" | "out_dominant" | "balanced"
+            h35_footprint: bool,    # |asymmetry| > threshold
+        }
+    """
+    n_layers = len(next(iter(results.values())).gc_mean)
+    mid = n_layers // 2
+    neutral_gc = results["neutral"].gc_mean
+
+    neutral_early = float(neutral_gc[:mid].mean())
+    neutral_late = float(neutral_gc[mid:].mean())
+
+    out: dict[str, dict] = {}
+    for cond, res in results.items():
+        gc = res.gc_mean
+        d_early = float(gc[:mid].mean()) - neutral_early
+        d_late = float(gc[mid:].mean()) - neutral_late
+        asym = d_early - d_late
+
+        if abs(asym) < 0.01:
+            direction = "balanced"
+        elif asym > 0:
+            direction = "in_dominant"  # early layers amplified → audio pulled early
+        else:
+            direction = "out_dominant"  # late layers amplified → audio persists to LLM
+
+        out[cond] = {
+            "condition": cond,
+            "delta_early": round(d_early, 4),
+            "delta_late": round(d_late, 4),
+            "asymmetry": round(asym, 4),
+            "direction": direction,
+            "h35_footprint": abs(asym) > gap35_threshold,
+        }
+
+    return out
+
+
 def to_json_safe(stats: dict, results: dict) -> dict:
     """Convert results to JSON-serializable dict."""
     out = {"conditions": {}}
@@ -319,10 +388,25 @@ def main():
 
     stats = run_hypothesis_tests(results)
 
+    asym_deltas = compute_asymmetry_delta(stats, results)
+
     if args.json:
-        print(json.dumps(to_json_safe(stats, results), indent=2))
+        json_out = to_json_safe(stats, results)
+        json_out["asymmetry_delta"] = asym_deltas
+        print(json.dumps(json_out, indent=2))
     else:
         print_stats_table(stats, results)
+        # Print asymmetry delta (Gap #35 proxy)
+        print("\n  Gap #35 Asymmetry Delta (gc(k)-proxy, IN vs OUT shift):")
+        print(f"  {'Condition':<16} {'ΔEarly':>9} {'ΔLate':>9} {'Asymmetry':>11} {'Direction':<16} {'H35?':>5}")
+        print(f"  {'─' * 72}")
+        for cond in PERSONA_CONDITIONS:
+            d = asym_deltas[cond]
+            h35 = "✅" if d["h35_footprint"] else "❌"
+            print(f"  {cond:<16} {d['delta_early']:>+9.4f} {d['delta_late']:>+9.4f} "
+                  f"{d['asymmetry']:>+11.4f} {d['direction']:<16} {h35:>5}")
+        print("  (Use directed_isolate_mock.py for full IN/OUT with activation patching)")
+        print("=" * 70)
 
     if args.plot:
         plot_curves(results)
