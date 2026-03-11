@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 7,
+    "learn_remaining_today": 6,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 2,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 149,
     "total_skips": 39,
-    "papers_read_deep": 28,
+    "papers_read_deep": 29,
     "papers_scanned": 36,
     "research_gaps": 19,
     "paper_ideas": 112,
@@ -45,9 +45,9 @@
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260311-1515",
-    "action": "ideate",
-    "summary": "20 combinatorial ideas; added Q059 (ESN×gc(k) co-location, N+F=10) and Q060 (Persona×Safety×gc(k), N+F=9)"
+    "id": "c-20260311-1545",
+    "action": "learn",
+    "summary": "Q040: Audio-RAVEL × ESN leakage synthesis — Cause~0.65-0.75, Isolate~0.20-0.35; layer-specific predictions; gc(k)+ESN co-analysis plan"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
