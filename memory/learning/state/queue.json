@@ -283,6 +283,30 @@
       "definition_of_done": "Spec: compare Dasheng vs Whisper tokenizer gc(k) profiles via microgpt variant",
       "created": "2026-03-11",
       "due": null
+    },
+    {
+      "id": "Q059",
+      "type": "design",
+      "track": "T5",
+      "title": "ESN x gc(k) co-location probe — emotion IS the listen layer? (N=5,F=5=10)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Spec: measure ESN peak-layer positions vs gc(k) peak layer on same LALM; if co-located, ESNs = listen layer, unifying T3+T5 mechanistically",
+      "created": "2026-03-11",
+      "due": null
+    },
+    {
+      "id": "Q060",
+      "type": "design",
+      "track": "T5",
+      "title": "Persona suppression × Safety fine-tuning × gc(k) — same mechanism? (N=5,F=4=9)",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Spec: compare persona-induced gc(k) drop vs safety-RLHF gc(k) drop on same model; if mechanistically identical, safety fine-tuning = forced modality collapse",
+      "created": "2026-03-11",
+      "due": null
     }
   ],
   "archived_count": 36,
