@@ -2,24 +2,19 @@
 > Last Updated: 2026-03-10 12:30
 
 ## Recent Context
-- Leo 從香港深圳旅行回來，今天下午 13:40 飛機回台北
-- Pathfinder grant 不急，週末再處理
-- Ted 社團分歧已在週六聊過
-- NTUAIS meeting 改到今晚 22:30
-- 今晚前要：買 NTUAIS domain、review 廣告文案+表單
-- 本週：約週二課程組員 meeting、準備社團第零週 slides
-- 週三四 lab meeting 宣傳實驗室共用 Claude Code（OAuth access token 方式）
-- 理鏡 = 馬來西亞中學鐵哥們，友玲 = 理鏡老婆（住香港）
-- 需要問理鏡這幾天旅費要還多少
-- Evan 回信待處理（想法不錯但需要想怎麼回）
-- 想做決策思維圖梳理優先級
-- 儘快申請 EA Global London（早申請才有 travel support） — Active Working Memory
+- SSH tunnels (iso_leo:2222, battleship:2223) 維修中，預計 3/13 修好 — 不用處理
+- 停機一整天 (3/11)，做了全面 review
+- 最急：NTU 國際傑出研究生獎學金確認（今天 deadline）
+- Pathfinder follow-up 逾期 1 天（原始 3/13）
+- NTUAIS domain + 廣告文案+表單 逾期
+- 僑委會信、留華轉賬 逾期
+- 儘快申請 EA Global London（早申請才有 travel support）
 
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 > ⚠️ Line budget: ≤30 行。Recent Context ≤10 條。>48h 的 archive 到 daily memory。
 
-**Last Updated:** 2026-03-09
+**Last Updated:** 2026-03-11
 
 ## Current Task
 (none — skills audit + boot flow optimization session with Leo)
