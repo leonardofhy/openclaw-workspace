@@ -76,32 +76,6 @@
       "due": null
     },
     {
-      "id": "Q042",
-      "type": "write",
-      "track": "T3",
-      "title": "Critical-layer patching checklist for LALMs",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Draft reproducible checklist (AND/OR gates, denoising, AtP, top-k aggregate) with examples",
-      "created": "2026-03-09",
-      "due": null,
-      "completed": "2026-03-10"
-    },
-    {
-      "id": "Q043",
-      "type": "design",
-      "track": "T3",
-      "title": "Microgpt x RAVEL — first fully-transparent AudioRAVEL validation (N=5,F=4=9)",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Build 30-node microgpt on semantic-audio task; run RAVEL Cause/Isolate on known ground-truth circuits; validate RAVEL methodology",
-      "created": "2026-03-10",
-      "due": null,
-      "completed": "2026-03-10"
-    },
-    {
       "id": "Q044",
       "type": "design",
       "track": "T3",
@@ -186,45 +160,6 @@
       "due": null
     },
     {
-      "id": "Q051",
-      "type": "read",
-      "track": "T3",
-      "title": "FAD encoder bias x gc(k) — Whisper text-prediction bias mechanistically located? (N=4,F=4=8)",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Read Gui et al. 2602.23958 + map layer bias profile to gc(k) hypothesis",
-      "created": "2026-03-10",
-      "due": null,
-      "completed": "2026-03-10"
-    },
-    {
-      "id": "Q052",
-      "type": "build",
-      "track": "T3",
-      "title": "SAE x phoneme circuits in microgpt — first fully-transparent phoneme SAE (N=4,F=5=9)",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "SAE trained on microgpt activations; ≥1 sparse feature identified as phoneme-selective",
-      "created": "2026-03-10",
-      "due": null,
-      "completed": "2026-03-11"
-    },
-    {
-      "id": "Q053",
-      "type": "build",
-      "track": "T3",
-      "title": "Build microgpt_ravel.py — Tier-1 CPU RAVEL validation (implement Q043 spec)",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "microgpt trains in <60s CPU; Cause/Isolate table printed; known circuit nodes score >=0.8 on both metrics",
-      "created": "2026-03-10",
-      "due": null,
-      "completed": "2026-03-11"
-    },
-    {
       "id": "Q054",
       "type": "experiment",
       "track": "T3",
@@ -307,8 +242,68 @@
       "definition_of_done": "Spec: compare persona-induced gc(k) drop vs safety-RLHF gc(k) drop on same model; if mechanistically identical, safety fine-tuning = forced modality collapse",
       "created": "2026-03-11",
       "due": null
+    },
+    {
+      "id": "Q061",
+      "type": "design",
+      "track": "T5",
+      "title": "ESN × gc(k) co-location probe — emotion IS the listen layer? (N=5,F=5=10)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Spec: measure ESN peak-layer positions vs gc(k) peak layer on same LALM; if co-located, ESNs = listen layer, unifying T3+T5 mechanistically",
+      "created": "2026-03-11",
+      "due": null
+    },
+    {
+      "id": "Q062",
+      "type": "experiment",
+      "track": "T3",
+      "title": "Persona × SAE suppression — assistant persona turns off adversarial-detector features? (N=5,F=5=10)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Retrain SAE calibrator with persona prefix; check if same features that detect adversarial audio are suppressed under assistant persona",
+      "created": "2026-03-11",
+      "due": null
+    },
+    {
+      "id": "Q063",
+      "type": "design",
+      "track": "T5",
+      "title": "MicroGPT transparent jailbreak anatomy — circuit-level audio jailbreak in CPU-scale model (N=5,F=5=10)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Craft minimal MicroGPT input that suppresses phoneme-SAE features → harmful token; trace exact circuit; fully observable",
+      "created": "2026-03-11",
+      "due": null
+    },
+    {
+      "id": "Q064",
+      "type": "design",
+      "track": "T3",
+      "title": "Persona gc(k) == CoT gc(k) — same text-hijack suppression mechanism? (N=4,F=5=9)",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Layer-wise gc(k) fingerprint comparison: persona-suppressed vs CoT-decayed on same model",
+      "created": "2026-03-11",
+      "due": null
+    },
+    {
+      "id": "Q065",
+      "type": "design",
+      "track": "T5",
+      "title": "gc(k) as EM early-warning — mechanistic leading indicator before behavioral failure (N=5,F=4=9)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Spec: LoRA fine-tune narrow audio-harm task; measure gc(k) per checkpoint; does collapse precede behavioral failure?",
+      "created": "2026-03-11",
+      "due": null
     }
   ],
-  "archived_count": 36,
+  "archived_count": 41,
   "last_archived": "2026-03-05T10:01:00+08:00"
 }
