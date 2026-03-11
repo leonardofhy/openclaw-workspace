@@ -103,12 +103,13 @@
       "type": "write",
       "track": "T5",
       "title": "Causal Abstraction Consistency M9: Paper B metric formal definition + mock example",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "M9 formula written, mock example computed, Paper B §3 updated",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-12"
     },
     {
       "id": "Q073",

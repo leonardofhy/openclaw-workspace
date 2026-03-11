@@ -73,6 +73,51 @@ Total: ~1140 words. Within 9-page ACL/NeurIPS budget.
 
 ---
 
+## §3.2b: M9 — Causal Abstraction Consistency (CAC) — Audio-RAVEL Extension ⭐
+
+> Added: cycle c-20260312-0231 (Q072). Extends §3.2 Audio-RAVEL with input-direction leakage.
+
+**Motivation**: Audio-RAVEL's RAVEL-audio tests output-direction isolation only. Acoustic co-occurrence
+(voiced phonemes ↔ male speaker distributions in training corpora) means a feature can pass
+RAVEL and IIA yet still be triggered spuriously by a correlated non-cause.
+
+**M9: Causal Abstraction Consistency**
+
+```
+CAC(F, A, B) = IIA(F, A) × RAVEL_audio(F, A) × Isolate_in(F, A, B)
+
+  IIA(F, A)          = interchange intervention accuracy (Geiger et al. 2301.04709)
+                       — does F's activation pattern match the causal structure of A?
+  RAVEL_audio(F, A)  = harmonic_mean(Cause(F,A), Isolate_out(F,A))   [from §3.2]
+  Isolate_in(F,A,B)  = 1 − max(0, R − 1)
+                       where R = E[F | B=1, A=0] / E[F | B=0, A=0]
+                       — does spurious concept B trigger F when A is absent?
+```
+
+**Interpretation:**
+- CAC = 1.0 → perfect causal abstraction: fires on A only, matches A's causal hierarchy, patches don't spill
+- CAC = 0.0 → at least one component fails (epiphenomenal, leaky, or spuriously triggered)
+- CAC > 0.6 → predicted threshold for "genuine causal feature" (extrapolated from RAVEL text baseline)
+
+**Mock example result** (F_42: voiced phoneme feature with male-speaker leakage):
+```
+Cause=0.82 | Isolate_out=0.78 | IIA=0.84  ← PASS under existing metrics
+Isolate_in=0.00 (R ≈ 3.75: male speaker strongly activates F when no voiced phoneme present)
+CAC(F_42) = 0.84 × 0.799 × 0.00 = 0.000  ← FAIL — spurious input activation caught
+```
+→ F_43 (no input leakage): CAC = 0.84 × 0.799 × 1.0 = 0.671 ✅
+
+**Key prediction**: AudioSAE's "50% stable" features will show CAC < 0.4 (acoustic co-occurrence
+bias → input leakage), confirming Gap #22 ("consistently correlated ≠ causally disentangled").
+CAC is the first metric to test this failure mode formally.
+
+**Stimuli**: 4-condition design (A × B): C1(A=1,B=1), C2(A=1,B=0), C3(A=0,B=1), C4(A=0,B=0).
+A = target concept (voicing, jailbreak), B = spurious correlate (speaker gender, angry prosody).
+**Connection to Paper A**: IIA reuses NNsight interchange infrastructure from gc(k) harness.
+**Code target**: `directed_isolate_mock.py` (Q068/Q073 build task, Tier 0, ~120 LOC).
+
+---
+
 ## §3.3 Category 1: Acoustic Concept Detection
 
 **Research question:** Does SAE feature F activate for a specific acoustic concept (phoneme, emotion, pitch, accent, noise)?
@@ -285,7 +330,8 @@ Relationship:
 
 | Cat | Name | Pearl Level | Novel? | Key Metric | Stimulus Source | Baseline |
 |-----|------|-------------|--------|------------|-----------------|---------|
-| 0 | Audio-RAVEL | L3 Counterfactual | ✅ Novel | Cause(F,A), Isolate(F,A), RAVEL-audio | Choi et al. 2602.18899 | MDAS (Huang et al. ACL 2024) |
+| 0 | Audio-RAVEL | L3 Counterfactual | ✅ Novel | Cause(F,A), Isolate_out(F,A), RAVEL-audio | Choi et al. 2602.18899 | MDAS (Huang et al. ACL 2024) |
+| 0b | M9: CAC | L3 Counterfactual | ✅ Novel | CAC = IIA × RAVEL_audio × Isolate_in | 4-condition (A×B controlled) | None (first input-direction metric) |
 | 1 | Acoustic Concept | L1 Observational | Partial (TCS novel) | Feature-concept F1, TCS(F) | LibriSpeech, IEMOCAP, ESC-50 | AR&D, AudioSAE |
 | 2 | Disentanglement | L1 Observational | Partial (cross-model) | Mariotte completeness | VocalSet, IEMOCAP | Mariotte et al. |
 | 3 | Reconstruction | L1 Observational | No | task_preservation_ratio | LibriSpeech, IEMOCAP | AudioSAE |
