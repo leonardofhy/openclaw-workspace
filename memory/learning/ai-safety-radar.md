@@ -1259,3 +1259,9 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *"Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior"* — Alignment Forum, 2026-02-27. Introduces "model incrimination" — a diagnostic technique for attributing LLM misbehavior to specific training data, fine-tuning decisions, or prompt components; complements interpretability by offering a causal/blame-assignment lens when models fail or misalign; directly relevant to debugging alignment failures, auditing pipelines, and understanding why safety-trained models slip.
 - Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
+
+---
+**2026-03-11 16:15 (Wed)** — scan: LW-new lastBuildDate=08:15 UTC (16:15 Taipei); AF lastBuildDate=08:15 UTC. No new safety-relevant LW posts since 15:45 cycle ("Less Dead" cryonics still top new item; AF top unchanged). One uncaptured LW item from Tue night window not yet evaluated:
+
+**[backlog-pick]** *"The Day After Move 37"* — LessWrong, 2026-03-10 23:05 UTC. Riffing on AlphaGo's famous unexpected Move 37, likely explores what the immediate post-transition period looks like when AI achieves a capability surprise — relevant to takeoff dynamics, transition scenarios, and how humans/institutions respond to sudden AI breakthroughs; pairs well with the Byrnes takeoff interview picked earlier today.
+- Link: <https://www.lesswrong.com/posts/Amvp33TB8JSi6HA8u/the-day-after-move-37>
