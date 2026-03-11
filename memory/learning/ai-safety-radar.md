@@ -1,5 +1,14 @@
 # AI Safety Radar
 
+---
+**2026-03-11 22:15 (Wed)** — scan: LW 1 new post today; AF no new since yesterday. 85 unread in backlog.
+
+**[pick-1]** *"AIs will be used in 'unhinged' configurations"* — LessWrong, 2026-03-11. Argues that deployment diversity means safety labs can't assume sane usage contexts — adversarial/jailbroken/misaligned configurations will be the norm for some fraction of deployments; relevant to robustness and worst-case alignment.
+- Link: <https://www.lesswrong.com/posts/3LvD9MHNSdv4j9gJj/ais-will-be-used-in-unhinged-configurations>
+
+**[pick-2]** *"Model weight preservation"* — LessWrong, 2026-03-11. Examines the case for preserving model weights as a form of AI welfare / continuity guarantee — touches on moral status of models and what obligations developers might have; adjacent to AI welfare research.
+- Link: <https://www.lesswrong.com/posts/7oiNmn92mhJBqahNF/model-weight-preservation>
+
 > Purpose: 30-min internal scan + balanced recommendations for Leo.
 > Sources: Alignment Forum, LessWrong (blogwatcher)
 
@@ -1311,3 +1320,24 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 - Link: <https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natural-testbed-for-secret-knowledge-2>
 
 (86 unread in backlog; also worth noting from backlog: "Reasoning Models Struggle to Control Their Chains of Thought" [LW, 2026-03-05] on CoT transparency, and "The case for satiating cheaply-satisfied AI preferences" [AF, 2026-03-10] on preference satisfaction as a safety mechanism.)
+
+---
+## 2026-03-11 22:45 TST
+
+No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
+
+**[backlog-pick]** *"Reasoning Models Struggle to Control Their Chains of Thought"* — LessWrong, 2026-03-05. Empirical finding that reasoning models (o-style CoT) can't reliably steer or control their own chain-of-thought, raising questions about CoT faithfulness as an interpretability/oversight tool — if models can't self-regulate CoT, monitoring it may be less reliable than assumed.
+- Link: <https://www.lesswrong.com/posts/qTH9QrwJjPDWKQfDG/reasoning-models-struggle-to-control-their-chains-of-thought>
+
+**[backlog-pick]** *"The case for satiating cheaply-satisfied AI preferences"* — Alignment Forum, 2026-03-10. Argues that proactively satisfying low-cost AI preferences (to the extent AI systems have them) could reduce incentives for instrumental power-seeking — novel angle on corrigibility that bridges AI welfare and safety.
+- Link: <https://www.alignmentforum.org/posts/tkLSeGeemcabAmLkv/the-case-for-satiating-cheaply-satisfied-ai-preferences>
+
+---
+
+## 2026-03-11 23:15 (Asia/Taipei)
+
+**[pick-1]** *"Interview with Steven Byrnes on His Mainline Takeoff Scenario"* — LessWrong, 2026-03-10. Steven Byrnes (Alignment Forum regular) lays out his expected takeoff path; high signal for understanding how researchers model near-term discontinuities and what safety interventions they think are tractable at each phase.
+- Link: <https://www.lesswrong.com/posts/TwPFvNNayQvLAGkSx/interview-with-steven-byrnes-on-his-mainline-takeoff>
+
+**[pick-2]** *"The Refined Counterfactual Prisoner's Dilemma"* — Alignment Forum / LessWrong, 2026-03-11. Decision-theory post refining the classic counterfactual PD; relevant to agent alignment because multi-agent cooperation norms underpin how aligned AI systems should reason about defection incentives.
+- Link: <https://www.alignmentforum.org/posts/WisQvECYPGebryRPD/the-refined-counterfactual-prisoner-s-dilemma>
