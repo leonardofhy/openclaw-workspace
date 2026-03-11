@@ -7,9 +7,10 @@ Purpose: shared list for quick-scan candidates, deep-read queue, and completed r
 - (empty)
 
 ## B) Deep-read queue (High priority)
-- **Maghsoudi & Mishra 2602.01247** — "Mechanistic Interpretability of Brain-to-Speech Models Across Speech Modes" (Feb 2026) — activation patching + causal tracing + causal scrubbing + neuron patching; "compact layer subspaces" mediate cross-mode transfer; methodology directly parallels Paper A; candidate Paper A §2 cite. Added cycle #243.
+(empty)
 
 ## C) Completed deep reads (selected)
+- **Maghsoudi & Mishra 2602.01247** (2026) — Brain-to-speech MI: compact layer-specific causal subspaces mediate cross-mode transfer; continuous shared manifold; direction asymmetry (vocalized→imagined recovers, reverse catastrophic). Cited in Paper A §2.2. Gap #32 candidate: do analogous compact subspaces exist in audio-LLMs? Cycle c-20260311-1215.
 - Geiger et al. — Causal Abstraction / IIT foundations
 - Lin (2025) — Multimodal MI Survey
 - Zhao et al. (2601.03115) — Emotion-sensitive neurons in LALMs

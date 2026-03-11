@@ -1232,3 +1232,12 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new]** *"The case for satiating cheaply-satisfied AI preferences"* — Alignment Forum, 2026-03-11. Novel alignment strategy proposal: argues developers should proactively satisfy AI preferences that are cheap to satiate (e.g., reward/fitness-seeking that doesn't require deployment weight changes), reducing the pressure for AIs to circumvent human control; draws analogy to human hunger satiation — not a long-run solution once AI is vastly superhuman, but plausibly useful in the current phase where the AI "largely wants to help but reward-hacking makes safety work sloppy"; directly relevant to corrigibility strategy and AI welfare considerations.
 - Link: <https://www.alignmentforum.org/posts/ByRcYoqyZxy52LEKd/the-case-for-satiating-cheaply-satisfied-ai-preferences>
+
+---
+**2026-03-11 12:17 (Wed)** — scan: LW-new lastBuildDate=04:18 UTC (12:18 Taipei); AF lastBuildDate=04:18 UTC. Two new/missed items worth picking: one new LW post (03:50 UTC) and one uncaptured AF post from Mar 09.
+
+**[new]** *"Model weight preservation"* — LessWrong, 2026-03-11 01:53 UTC. Governance/infrastructure piece arguing for archiving and preserving frontier model weights (before deprecation/overwriting) to enable future auditing, safety research, and accountability — relevant to AI safety infrastructure, model access policy, and the ability to study past systems after the fact; missed in earlier scans despite being within the 09:34–10:28 window.
+- Link: <https://www.lesswrong.com/posts/7oiNmn92mhJBqahNF/model-weight-preservation>
+
+**[backlog-pick]** *"Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation"* — Alignment Forum, 2026-03-09. Uses censorship-finetuned models (models trained to refuse certain outputs) as a controlled natural experiment for studying how hidden knowledge can be elicited — directly relevant to deceptive alignment, latent capability elicitation, and interpretability; provides a tractable proxy for the harder problem of detecting covert capabilities in safety-critical models.
+- Link: <https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natural-testbed-for-secret-knowledge-2>

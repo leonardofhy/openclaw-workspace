@@ -26,16 +26,16 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-11"
   },
   "stats": {
-    "total_cycles": 169,
+    "total_cycles": 170,
     "total_skips": 40,
-    "papers_read_deep": 27,
+    "papers_read_deep": 28,
     "papers_scanned": 37,
     "research_gaps": 19,
     "paper_ideas": 12,
@@ -45,9 +45,9 @@
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260311-0231",
-    "action": "build",
-    "summary": "Q039: persona_gc_benchmark.py Tier 0 scaffold — 3-condition gc(k) benchmark (neutral/assistant/anti_ground), 4 hypothesis tests, mock mode verified passing"
+    "id": "c-20260311-1215",
+    "action": "learn",
+    "summary": "Maghsoudi & Mishra 2602.01247: compact layer-specific causal subspaces in B2S models; direction asymmetry finding; Paper A \u00a72.2 already cites; Gap #32 candidate noted"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
