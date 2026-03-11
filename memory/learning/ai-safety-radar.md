@@ -1289,3 +1289,25 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new]** *"Negligent AI: Reasonable Care for AI Safety"* — LessWrong, 2026-03-11. Frames AI safety obligations through a legal negligence standard ("reasonable care"), proposing that developers/deployers should be held to duty-of-care norms analogous to product liability — a governance approach that could create enforceable safety floors without requiring explicit regulation of capabilities.
 - Link: <https://www.lesswrong.com/posts/qdmRYGvkfLfcjfxpQ/negligent-ai-reasonable-care-for-ai-safety>
+
+---
+## 2026-03-11 21:15 (scan)
+
+**[new]** *"Helping Friends, Harming Foes: Testing Tribalism in Language Models"* — LessWrong, 2026-03-11. Empirical study of in-group/out-group bias in LLMs — models systematically helped "friends" and harmed "foes" based on framing, revealing latent tribalism that could matter for alignment in multi-stakeholder deployments.
+- Link: <https://www.lesswrong.com/posts/XNe26D9CbWkEHo3gi/helping-friends-harming-foes-testing-tribalism-in-language>
+
+**[backlog-pick]** *"Salient Directions in AI Control"* — LessWrong, 2026-03-05. Maps the key open problems and tractable research directions in AI control (oversight, containment, tripwires) — useful as a research landscape reference for anyone doing control-adjacent work.
+- Link: <https://www.lesswrong.com/posts/kitaRHhSzphdvqie2/salient-directions-in-ai-control>
+
+(88 unread items in backlog total — also notable today: "Model weight preservation" on long-term model stewardship, and "The Refined Counterfactual Prisoner's Dilemma" on AF for decision theory.)
+
+---
+## 2026-03-11 21:50 TST
+
+**[new]** *"Letting Claude do Autonomous Research to Improve SAEs"* — LessWrong, 2026-03-10. Claude autonomously runs experiments to improve sparse autoencoder (SAE) quality — directly bridges agentic AI research with mechanistic interpretability; if AI-assisted interpretability scales, it could become a key lever for alignment work.
+- Link: <https://www.lesswrong.com/posts/rbqJoxFZtae9x93mx/letting-claude-do-autonomous-research-to-improve-saes>
+
+**[new]** *"Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation"* — Alignment Forum, 2026-03-09. Uses censored (refusal-trained) models as a controlled environment to study eliciting suppressed knowledge; methodology has direct implications for understanding deceptive alignment and hidden capabilities.
+- Link: <https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natural-testbed-for-secret-knowledge-2>
+
+(86 unread in backlog; also worth noting from backlog: "Reasoning Models Struggle to Control Their Chains of Thought" [LW, 2026-03-05] on CoT transparency, and "The case for satiating cheaply-satisfied AI preferences" [AF, 2026-03-10] on preference satisfaction as a safety mechanism.)
