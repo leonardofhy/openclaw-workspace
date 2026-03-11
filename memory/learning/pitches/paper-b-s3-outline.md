@@ -13,7 +13,9 @@
 ```
 §3.1  Framework Overview               (~120 words)
 §3.2  Category 0: Audio-RAVEL          (~200 words) ← most novel
+§3.2b M9: Causal Abstraction Consistency (~150 words) [added c-20260312-0231]
 §3.3  Category 1: Acoustic Concept Detection  (~150 words)
+§3.3b M10: Schelling SAE Features      (~180 words) [added c-20260312-0401] ← NEW
 §3.4  Category 2: Disentanglement & Completeness (~100 words)
 §3.5  Category 3: Reconstruction Fidelity  (~80 words)
 §3.6  Category 4: Causal Controllability   (~160 words)
@@ -22,7 +24,7 @@
 §3.9  Experimental Setup               (~80 words)
 ```
 
-Total: ~1140 words. Within 9-page ACL/NeurIPS budget.
+Total: ~1470 words (with M9+M10 extensions). May need §§ trimming for 9-page budget — M9+M10 can move to supplementary if space-constrained; keep 1-paragraph framing in main text only.
 
 ---
 
@@ -140,6 +142,108 @@ A = target concept (voicing, jailbreak), B = spurious correlate (speaker gender,
 
 **1-paragraph framing:**
 > Category 1 tests observational concept alignment — Pearl Level 1 evidence. For each SAE feature, we compute time-resolved feature-concept F1 across 4 stimulus types (phoneme, emotion, sound event, vocal technique). Unlike prior work that pools activations over the full utterance, we compute F1 per 30ms frame, enabling detection of temporally localized features that prior pooled evaluations would miss. Category 1b adds the Temporal Coherence Score TCS(F): the ratio of within-phoneme activation variance to across-phoneme-boundary variance. A standard TopK SAE is expected to score TCS ≈ 1.0 (no temporal structure exploitation); an Audio T-SAE (Bhalla et al. arXiv:2511.05541) trained with multi-scale contrastive loss is predicted to score TCS ≥ 3.0 for phoneme-level features. TCS is the first audio-native SAE metric with no text equivalent.
+
+---
+
+## §3.3b: M10 — Schelling SAE Features (Cross-Seed Stability) — Category 1 Extension ⭐
+
+> Added: cycle c-20260312-0401 (Q076). Extends §3.3 Acoustic Concept Detection with cross-seed convergence measure.
+
+**Motivation**: AudioSAE (Aparin et al., EACL 2026) trains SAEs across multiple random seeds and finds that
+only ~50% of features are "consistent" — they appear across seeds with similar concept alignment. But this
+consistency score is defined heuristically (cosine similarity > θ between activation patterns) without a
+principled theoretical grounding. The question left unanswered: *why* do only 50% of features converge?
+Are the stable features genuinely capturing the model's representational structure, or are they merely
+capturing the most salient correlations in training data?
+
+**Schelling focal-point framing**: Schelling (1960) observed that rational agents can coordinate on a
+"focal point" — a solution that stands out as natural even without communication. We apply this to SAE
+features: a **Schelling feature** is a feature that independently emerges across SAE training runs (seeds,
+hyperparameter variations, training data orderings) because it corresponds to a natural partition of the
+representation space — a "focal" decomposition that any decomposition algorithm would rediscover. Schelling
+features are not artifacts of initialization; they reflect genuine structure in the underlying computation.
+
+**M10: Schelling Stability Score**
+
+```
+SchwellScore(F, S) = (1 / |S|-1) × Σ_{s' ≠ s} max_{F' ∈ SAE_s'} cos_sim(act_F, act_{F'})
+
+where:
+  F          = candidate feature from SAE trained with seed s
+  S          = set of training seeds {s₁, s₂, ..., sₖ}
+  SAE_s'     = the SAE trained with seed s' (same architecture, different initialization)
+  act_F      = activation vector of F across the evaluation corpus (frame-level, N frames)
+  cos_sim    = cosine similarity of activation vectors across the same corpus
+
+SchellScore(F, S) ∈ [0, 1]:
+  ≥ 0.85 → Schelling feature (converges across seeds)
+  0.50–0.84 → semi-stable feature (partial convergence)
+  < 0.50 → unstable feature (seed-specific, possibly noise or superposition artifact)
+
+Population metrics:
+  SchellFraction(SAE) = |{F : SchellScore(F,S) ≥ 0.85}| / |F_total|
+  SchellMeanScore(SAE) = mean SchellScore over all features
+```
+
+**M10b: Causal Validation of Schelling Stability**
+
+The critical claim is: *Schelling features are not merely consistently observed — they are causally
+significant*. To validate, we cross-reference M10 with Audio-RAVEL (M_Cat0):
+
+```
+SchellCAC_correlation = Pearson r(SchellScore(F), CAC(F, A))
+
+where CAC is the Causal Abstraction Consistency score (M9) for the same feature F and its
+primary concept A (assigned by Category 1 concept F1 maximizer).
+
+Prediction: r ≥ +0.5  →  Schelling features are causally grounded (converge because they're real)
+             r ≈ 0     →  Stability is independent of causal quality (possible in noisy corpora)
+             r < 0     →  Stable features are epiphenomenal (convergence via spurious correlation)
+```
+
+**Mock example result** (Whisper-small, k=3 seeds, N=1000 evaluation frames):
+
+| Feature | Primary Concept | SchellScore | RAVEL-audio | CAC   | Schelling? |
+|---------|----------------|-------------|-------------|-------|------------|
+| F_88    | voicing        | 0.91        | 0.73        | 0.61  | ✅ Schelling |
+| F_42    | voiced + male  | 0.87        | 0.44        | 0.000 | ✅ Schelling but causally broken (I/O leakage) |
+| F_201   | pitch contour  | 0.79        | 0.51        | 0.39  | semi-stable |
+| F_337   | noise burst    | 0.31        | 0.22        | 0.08  | ❌ unstable |
+
+→ Overall SchellFraction = 0.50 (consistent with AudioSAE's empirical finding)
+→ SchellCAC_correlation = 0.48 (approaching +0.5 threshold — partial validation)
+→ F_42: high Schelling + low CAC = "spurious Schelling feature" — stable because acoustic
+  co-occurrence is stable in the training corpus, NOT because the feature captures a
+  causally independent phonological attribute. This is the critical finding M10 adds.
+
+**Key prediction**: AudioSAE's 50% stable features will split into two subgroups:
+  ~35% genuine Schelling features (high SchellScore + high CAC) — encode real phonological units
+  ~15% spurious Schelling features (high SchellScore + low CAC) — encode correlated acoustic surface forms
+
+This prediction is falsifiable with existing AudioSAE cross-seed checkpoints (Aparin et al. released code).
+
+**Why this matters for AudioSAEBench**: M10 closes the loop between AudioSAE's empirical finding and
+Audio-RAVEL's causal test. An SAE can score well on M10 (stable features) while failing Category 0
+(leaky features). The combination M10 + Cat0 distinguishes:
+  - **Genuine** Schelling features: stable + causally isolated (the gold standard)
+  - **Spurious** Schelling features: stable + leaky (consistent because correlates are consistent)
+  - **Genuine unstable** features: unstable + causally isolated (real but not robust)
+  - **Noise** features: unstable + leaky (seed-specific superposition artifacts)
+
+**Implementation**: `compute_schelling_score.py` (Tier 0, ~60 LOC):
+  1. Load activation vectors for each feature across the evaluation corpus
+  2. For each feature, compute max cosine similarity to all features in alternate-seed SAEs
+  3. Average across seeds → SchellScore
+  4. Compute SchellFraction, SchellMeanScore, SchellCAC_correlation
+  - No GPU required; Whisper-small activations on 1000 frames ≈ 2 min on MacBook Air M2
+
+**1-paragraph framing for Paper B §3.3b:**
+> AudioSAE (Aparin et al., EACL 2026) reports that approximately 50% of SAE features trained on Whisper representations are "consistent" across training seeds — they re-emerge independently when the same architecture is trained from a different initialization. We formalize this observation as the Schelling Stability Score (M10): for each feature F, the average maximum cosine similarity between F's activation vector and any feature in an alternate-seed SAE, evaluated over a shared corpus of N frames. A feature with M10 ≥ 0.85 is a *Schelling feature* — a natural focal point in representation space that SAE training independently rediscovers, analogous to Schelling's (1960) focal-point solutions in coordination games. The critical question M10 raises — which AudioSAE does not answer — is whether stable features are causally significant or merely stably spurious. We cross-reference M10 with Category 0 (Audio-RAVEL CAC score) via Pearson correlation. Our prediction: stable Schelling features will split into a genuine group (high M10 + high CAC, ~35% of total features) and a spurious group (high M10 + low CAC, ~15%) — the latter stable precisely because acoustic co-occurrence patterns in training data are themselves stable, not because the features encode causally independent attributes. M10 is the first formalization of SAE feature convergence as a testable causal claim rather than an empirical observation.
+
+**Connection to §3.2b M9 (CAC)**: M9 tests per-feature causal isolation (within a single training run).
+M10 tests cross-seed convergence (across training runs). Together M9 + M10 answer:
+  - M9: "Does this feature causally isolate its claimed attribute?" (within-run quality)
+  - M10: "Does this feature consistently emerge, and is its stability causally grounded?" (cross-run quality)
 
 ---
 
