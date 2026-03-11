@@ -10,7 +10,7 @@
 Large audio-language models (LALMs) process both speech and text, yet it remains unclear *where* in the forward pass audio representations become causally decisive for the model's output.
 
 <!-- GAP/PROBLEM: 1–2 sentences. What prior work does + what it can't answer. -->
-Prior work characterizes audio-vs-text modality dominance behaviorally (ALME, AudioLens, Cascade Equivalence) but does not localize the *causal* locus of audio consultation to specific layers or components.
+Prior work characterizes audio-vs-text modality dominance behaviorally (ALME, AudioLens; Billa 2026 formalizes this as the Cascade Equivalence Hypothesis — speech LLMs behave like ASR+LLM pipelines on text-sufficient tasks and lose to cascades under 0dB noise) but does not localize the *causal* locus of audio consultation to specific layers or components.
 
 <!-- METHOD: 2–3 sentences. What we do + key concepts. -->
 We introduce the **grounding coefficient** gc(k), a layer-wise interchange-intervention metric grounded in IIT theory (Geiger et al., 2023), and use it to identify the **Listen Layer** — the network depth at which patching audio-stream activations most strongly flips model behavior from text-dominated to audio-grounded. We evaluate on [N] audio-text conflict stimuli from ALME (Li et al., 2025) using [MODEL_NAME].

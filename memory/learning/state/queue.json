@@ -157,6 +157,19 @@
       "definition_of_done": "M10 Schelling stability formula, AudioSAE 50% stability data cited, Paper B §3 integrated",
       "created": "2026-03-12",
       "due": null
+    },
+    {
+      "id": "Q077",
+      "type": "write",
+      "track": "T3",
+      "title": "Paper A §1 rewrite: incorporate Billa (2026) CEH + Lee (2026) as behavioral motivation",
+      "status": "done",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Paper A §1 updated with Billa arXiv:2602.17598 cite + abstract v08 mentions behavioral baseline",
+      "created": "2026-03-12",
+      "due": null,
+      "completed": "2026-03-12"
     }
   ],
   "archived_count": 54,
