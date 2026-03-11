@@ -407,21 +407,18 @@ def main():
         print("WARNING: model acc < 0.7 — check circuit construction. "
               "RAVEL scores may be unreliable.")
 
-    # --- RAVEL ---
-    print(f"\nRunning RAVEL ({args.n_ravel_trials} trials per node × attribute)...")
+    # --- RAVEL (component-level) ---
+    print(f"\nRunning RAVEL ({args.n_ravel_trials} trials per component × attribute)...")
     t1 = time.time()
-    results = ravel_score(model, X_eval, y_class_eval, y_gender_eval,
-                          n_trials=args.n_ravel_trials, seed=99)
+    results = ravel_score_components(model, X_eval, y_class_eval, y_gender_eval,
+                                     n_trials=args.n_ravel_trials, seed=99)
     t_ravel = time.time() - t1
     print(f"RAVEL done in {t_ravel:.1f}s")
 
     # --- Report ---
-    if args.verbose:
-        print_table(results, threshold=args.threshold)
+    passed = print_component_table(results, threshold=args.threshold)
 
-    summarize_by_layer(results, threshold=args.threshold)
-
-    # Count top nodes per attribute
+    # Count passing components per attribute
     ac_pass = [r for r in results
                if r.attribute == "audio_class"
                and r.cause >= args.threshold and r.isolate >= args.threshold]
@@ -431,8 +428,8 @@ def main():
 
     print(f"\n{'='*50}")
     print(f"RAVEL SUMMARY")
-    print(f"  audio_class  nodes passing: {len(ac_pass)}/{len([r for r in results if r.attribute=='audio_class'])}")
-    print(f"  speaker_gender nodes passing: {len(gen_pass)}/{len([r for r in results if r.attribute=='speaker_gender'])}")
+    print(f"  audio_class  components passing: {len(ac_pass)}/{len([r for r in results if r.attribute=='audio_class'])}")
+    print(f"  speaker_gender components passing: {len(gen_pass)}/{len([r for r in results if r.attribute=='speaker_gender'])}")
 
     total_pass = len(ac_pass) + len(gen_pass)
     total = len(results)
@@ -442,28 +439,29 @@ def main():
     print(f"  Total wall time: {t_total:.1f}s")
 
     # --- Success criterion ---
+    # Known circuit: C_audio should score high on audio_class at every layer
     success = len(ac_pass) >= 1
     print(f"\n{'✅ PASS' if success else '❌ FAIL'}: "
-          f"{'At least 1 audio_class node scores Cause≥0.8 AND Isolate≥0.8' if success else 'No qualifying nodes found'}")
+          f"{'At least 1 audio_class component scores Cause≥0.8 AND Isolate≥0.8' if success else 'No qualifying components found'}")
 
     # --- JSON output ---
     if args.json_out:
         out = {
             "config": vars(args),
             "eval_acc": acc,
-            "train_time_sec": round(t_train, 2),
             "ravel_time_sec": round(t_ravel, 2),
             "total_time_sec": round(t_total, 2),
             "audio_class_passing": len(ac_pass),
             "speaker_gender_passing": len(gen_pass),
             "success": success,
-            "nodes": [
+            "components": [
                 {
                     "layer": r.layer,
-                    "neuron": r.neuron,
+                    "component": r.component,
                     "attribute": r.attribute,
                     "cause": round(r.cause, 4),
                     "isolate": round(r.isolate, 4),
+                    "n_trials": r.n_trials,
                 }
                 for r in results
             ],
