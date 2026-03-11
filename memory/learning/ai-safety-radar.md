@@ -1220,3 +1220,9 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[new]** *"Interview with Steven Byrnes on His Mainline Takeoff Scenario"* — LessWrong, 2026-03-10 23:14 UTC. Interview with a credible AI safety researcher detailing his expected takeoff dynamics — useful calibration on timelines and discontinuity assumptions from a mechanistic-interpretability-adjacent perspective.
 - Link: <https://www.lesswrong.com/posts/TwPFvNNayQvLAGkSx/interview-with-steven-byrnes-on-his-mainline-takeoff>
+
+---
+**2026-03-11 10:28 (Wed)** — scan: LW-new lastBuildDate=02:28 UTC (10:28 Taipei); AF lastBuildDate=02:28 UTC. No new posts since 09:34 cycle (last captured: AuditBench + Byrnes interview). One uncaptured LW item from the Tue 10 Mar window:
+
+**[backlog-pick]** *"Letting Claude do Autonomous Research to Improve SAEs"* — LessWrong, 2026-03-10 21:19 UTC. Uses Claude as an autonomous research agent to iteratively improve sparse autoencoders — sits at the intersection of interpretability (SAEs as a core mech-interp tool) and agentic AI research; directly relevant to Leo's GC/SAE work and the broader question of how well AI can accelerate safety research on itself.
+- Link: <https://www.lesswrong.com/posts/rbqJoxFZtae9x93mx/letting-claude-do-autonomous-research-to-improve-saes>
