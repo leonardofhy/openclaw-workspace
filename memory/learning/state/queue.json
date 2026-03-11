@@ -116,12 +116,13 @@
       "type": "design",
       "track": "T3",
       "title": "Heimersheim AND/OR patching protocol applied to gc(k) — methodological Tier-0 spec (N=3,F=5=8)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Write spec applying best-practice patching (AND/OR gates, denoising, AtP, top-k) to gc(k) computation; replaces naive AtP baseline",
       "created": "2026-03-10",
-      "due": null
+      "due": null,
+      "completed": "2026-03-11"
     },
     {
       "id": "Q048",
