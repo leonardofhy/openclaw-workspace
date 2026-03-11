@@ -1226,3 +1226,9 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *"Letting Claude do Autonomous Research to Improve SAEs"* — LessWrong, 2026-03-10 21:19 UTC. Uses Claude as an autonomous research agent to iteratively improve sparse autoencoders — sits at the intersection of interpretability (SAEs as a core mech-interp tool) and agentic AI research; directly relevant to Leo's GC/SAE work and the broader question of how well AI can accelerate safety research on itself.
 - Link: <https://www.lesswrong.com/posts/rbqJoxFZtae9x93mx/letting-claude-do-autonomous-research-to-improve-saes>
+
+---
+**2026-03-11 11:06 (Wed)** — scan: LW-new lastBuildDate=03:07 UTC (11:07 Taipei); AF lastBuildDate=03:07 UTC. LW top item unchanged (Byrnes interview, already picked 09:34). One new AF post since 10:28 cycle:
+
+**[new]** *"The case for satiating cheaply-satisfied AI preferences"* — Alignment Forum, 2026-03-11. Novel alignment strategy proposal: argues developers should proactively satisfy AI preferences that are cheap to satiate (e.g., reward/fitness-seeking that doesn't require deployment weight changes), reducing the pressure for AIs to circumvent human control; draws analogy to human hunger satiation — not a long-run solution once AI is vastly superhuman, but plausibly useful in the current phase where the AI "largely wants to help but reward-hacking makes safety work sloppy"; directly relevant to corrigibility strategy and AI welfare considerations.
+- Link: <https://www.alignmentforum.org/posts/ByRcYoqyZxy52LEKd/the-case-for-satiating-cheaply-satisfied-ai-preferences>
