@@ -26,16 +26,16 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 8,
+    "learn_remaining_today": 7,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 3,
     "budget_reset_date": "2026-03-11"
   },
   "stats": {
-    "total_cycles": 148,
+    "total_cycles": 149,
     "total_skips": 39,
-    "papers_read_deep": 27,
+    "papers_read_deep": 28,
     "papers_scanned": 36,
     "research_gaps": 19,
     "paper_ideas": 92,
@@ -45,9 +45,9 @@
     "days_active": 7
   },
   "last_cycle": {
-    "id": "c-20260311-1415",
-    "action": "ideate",
-    "summary": "Generated 20 combinatorial ideas; 16 pass N+F>=8 filter; added Q054-Q058 (best: CensoredLLM\u00d7gc(k) N5F4=9, gc(k)\u00d7PhonologicalVA\u00d7microgpt N4F5=9)"
+    "id": "c-20260311-1445",
+    "action": "learn",
+    "summary": "RAVEL (ACL 2024) deep read: Cause/Isolate patching scores mapped to Audio-RAVEL Q040 design; emotion×speaker×noise attributes in Whisper layers; Tier-1 CPU plan written"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
