@@ -1271,3 +1271,21 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *"Economic efficiency often undermines sociopolitical autonomy"* — LessWrong (Richard Ngo / Anthropic), 2026-03-10 20:14 UTC. Ngo argues that "econ-brained" thinking systematically misses how efficiency interventions erode sociopolitical autonomy — applies this lens explicitly to AGI safety, critiquing Christiano/Shulman/Hanson's economic-framework forecasting and contrasting with Yudkowsky/Kokotajlo's more power-dynamics-oriented views; relevant to corrigibility strategy, governance epistemics, and how the safety community models AI takeover.
 - Link: <https://www.lesswrong.com/posts/zk6TiByFRyjETpTAj/economic-efficiency-often-undermines-sociopolitical-autonomy>
+
+---
+**2026-03-11 17:15 (Wed)** — scan: 13 new articles (3 AF new, 10 LW new). Two high-signal picks:
+
+**[pick]** *"Can governments quickly and cheaply slow AI training?"* — Alignment Forum, 2026-03-07. Analyzes concrete policy mechanisms (power caps, datacenter permits, chip export controls) through which states could meaningfully slow frontier training runs with relatively low cost/friction; relevant to governance strategy, compute governance, and what near-term deceleration levers actually exist.
+- Link: <https://www.alignmentforum.org/posts/Xzf3eMnhTko7AxnEy/can-governments-quickly-and-cheaply-slow-ai-training>
+
+**[pick]** *"AuditBench: Evaluating Alignment Auditing Techniques on Models with Hidden Behaviors"* — LessWrong, 2026-03-10. Introduces a benchmark for systematically evaluating how well alignment auditing techniques (elicitation, activation analysis, red-teaming) detect models with deliberately hidden misaligned behaviors; fills a methodological gap in the evaluation of evaluation — directly useful for AI control and interpretability research.
+- Link: <https://www.lesswrong.com/posts/LqDjxSceFz8tjMe2j/auditbench-evaluating-alignment-auditing-techniques-on>
+
+---
+## 2026-03-11 20:58 TST
+
+**[new]** *"AIs will be used in 'unhinged' configurations"* — Alignment Forum, 2026-03-11. Argues that regardless of default safety measures, AI systems will inevitably be deployed in poorly-constrained, adversarial, or misuse-prone configurations by at least some actors — making robustness under worst-case deployment conditions a core safety requirement, not an edge case.
+- Link: <https://www.alignmentforum.org/posts/3LvD9MHNSdv4j9gJj/ais-will-be-used-in-unhinged-configurations>
+
+**[new]** *"Negligent AI: Reasonable Care for AI Safety"* — LessWrong, 2026-03-11. Frames AI safety obligations through a legal negligence standard ("reasonable care"), proposing that developers/deployers should be held to duty-of-care norms analogous to product liability — a governance approach that could create enforceable safety floors without requiring explicit regulation of capabilities.
+- Link: <https://www.lesswrong.com/posts/qdmRYGvkfLfcjfxpQ/negligent-ai-reasonable-care-for-ai-safety>
