@@ -7,7 +7,9 @@
     "action": "追蹤 Pathfinder grant 結果（內部鎖定 3/10，原始 deadline 3/13）",
     "owner": "bot",
     "warn_days": 3,
-    "notify": "discord"
+    "notify": "discord",
+    "internal_deadline": "2026-03-12",
+    "note": "Leo: 明天處理 (2026-03-11)"
   },
   {
     "id": "D-002",
@@ -117,6 +119,8 @@
     "action": "提交 ARENA 8.0 申請表（官方截止 3/8 23:59 AoE，台北時間約 3/9 19:59）",
     "owner": "leo",
     "warn_days": 2,
-    "notify": "discord"
+    "notify": "discord",
+    "status": "closed",
+    "note": "Leo decided to skip (2026-03-11)"
   }
 ]

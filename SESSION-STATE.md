@@ -4,13 +4,16 @@
 > This is your RAM — survives compaction, survives session restart.
 > ⚠️ Line budget: ≤30 行。Recent Context ≤10 條。>48h 的 archive 到 daily memory。
 
-**Last Updated:** 2026-03-09
+**Last Updated:** 2026-03-11
 
 ## Current Task
-(none — skills audit + boot flow optimization session with Leo)
+Post-downtime review & deadline cleanup
 
 ## Recent Context
-(cleaned: all entries were >48h old and archived)
+- [3/11 21:10] ARENA 8.0：Leo 決定放棄
+- [3/11 21:10] Pathfinder follow-up：明天處理（3/12）
+- [3/11 21:08] NTU 僑生獎學金確認 due today（原始 3/15）
+- [3/11] API 停機整天（Anthropic cooldown），傍晚恢復
 
 ## Pending Decisions
 - Weekly OpenClaw auto-update cron: 交由 Lab Leo 執行（Leo 已同意要開）
