@@ -1211,3 +1211,12 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 ---
 **2026-03-10 23:45 (Tue)** — scan: LW-new lastBuildDate=15:45 UTC (23:45 Taipei); AF feed unchanged (top: "Censored LLMs", already picked 22:15). LW recent posts since 23:15 cycle: "Load-Bearing Walls" (karma:1, mixed tags), "Four Scenarios of Job-Reducing AI" (karma:9, economics framing) — neither safety-relevant. All AF backlog items captured. No high-signal update.
+
+---
+**2026-03-11 09:34 (Wed)** — scan: LW-new lastBuildDate=01:34 UTC (09:34 Taipei); AF lastBuildDate=01:34 UTC. Two new high-signal LW posts since last capture (2026-03-10 23:45).
+
+**[new]** *"AuditBench: Evaluating Alignment Auditing Techniques on Models with Hidden Behaviors"* — LessWrong, 2026-03-11 00:42 UTC. Benchmark release: 56 LMs with implanted hidden behaviors (sycophancy, deception, etc.) to evaluate alignment auditing methods — directly relevant to scalable oversight and red-teaming; one of the first systematic testbeds for detecting hidden model behaviors.
+- Link: <https://www.lesswrong.com/posts/LqDjxSceFz8tjMe2j/auditbench-evaluating-alignment-auditing-techniques-on>
+
+**[new]** *"Interview with Steven Byrnes on His Mainline Takeoff Scenario"* — LessWrong, 2026-03-10 23:14 UTC. Interview with a credible AI safety researcher detailing his expected takeoff dynamics — useful calibration on timelines and discontinuity assumptions from a mechanistic-interpretability-adjacent perspective.
+- Link: <https://www.lesswrong.com/posts/TwPFvNNayQvLAGkSx/interview-with-steven-byrnes-on-his-mainline-takeoff>
