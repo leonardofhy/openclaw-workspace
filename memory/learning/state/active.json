@@ -26,11 +26,11 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
-    "build_remaining_today": 0,
+    "learn_remaining_today": 8,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-10"
+    "ideate_remaining_today": 4,
+    "budget_reset_date": "2026-03-11"
   },
   "stats": {
     "total_cycles": 148,
@@ -47,7 +47,7 @@
   "last_cycle": {
     "id": "c-20260310-1345",
     "action": "plan",
-    "summary": "Wrote full Microgpt\u00d7RAVEL experiment spec (Q043); added Q053 build task for implementation"
+    "summary": "Wrote full Microgpt×RAVEL experiment spec (Q043); added Q053 build task for implementation"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
