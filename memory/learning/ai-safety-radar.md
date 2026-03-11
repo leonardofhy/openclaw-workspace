@@ -1253,3 +1253,9 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *"Schelling Goodness, and Shared Morality as a Goal"* — Alignment Forum (Andrew Critch), 2026-02-28. Critch (CHAI / governance-adjacent) proposes "Schelling Goodness" as a framework for shared moral coordination between agents with heterogeneous values — frames alignment not as optimizing a single value function but as achieving a stable Schelling point in moral/value space that agents with different preferences can converge on; relevant to multi-agent alignment, cooperative AI, and the question of what "aligned with humanity" even means across diverse stakeholders.
 - Link: <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
+
+---
+**2026-03-11 15:45 (Wed)** — scan: LW-new lastBuildDate=07:45 UTC (15:45 Taipei); AF lastBuildDate=07:45 UTC. Only new LW item since 13:24 cycle: "Less Dead" (cryonics/Nectome whole-brain preservation — community-interest, not AI safety). AF feed unchanged. No new high-signal safety posts.
+
+**[backlog-pick]** *"Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior"* — Alignment Forum, 2026-02-27. Introduces "model incrimination" — a diagnostic technique for attributing LLM misbehavior to specific training data, fine-tuning decisions, or prompt components; complements interpretability by offering a causal/blame-assignment lens when models fail or misalign; directly relevant to debugging alignment failures, auditing pipelines, and understanding why safety-trained models slip.
+- Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>

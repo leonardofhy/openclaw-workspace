@@ -26,14 +26,14 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 1,
+    "learn_remaining_today": 0,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-11"
   },
   "stats": {
-    "total_cycles": 172,
+    "total_cycles": 173,
     "total_skips": 40,
     "papers_read_deep": 30,
     "papers_scanned": 37,
@@ -45,9 +45,9 @@
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260311-1531",
+    "id": "c-20260311-1601",
     "action": "learn",
-    "summary": "Cross-cycle synthesis: Direction Asymmetry as unifying pattern. Gap #35 (Directed Isolate / dA-RAVEL, GREEN, Paper B M9). Gap #36 (bidirectional gc(k), YELLOW, Paper A §5). Meta-awareness: 4 gaps in 3h; prioritization session with Leo recommended."
+    "summary": "Gap #35 → Paper B M9 formal spec: Directed Isolate (Isolate_in), 4-condition stimulus protocol, comparison table. Q068 added (build tomorrow: directed_isolate_mock.py + compute_asymmetry_delta()). Learn budget exhausted for today."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
