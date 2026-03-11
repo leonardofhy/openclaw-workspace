@@ -1247,3 +1247,9 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *"Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation"* — Alignment Forum, 2026-03-09. Uses censorship-finetuned models (models trained to refuse certain outputs) as a controlled natural experiment for studying how hidden knowledge can be elicited — directly relevant to deceptive alignment, latent capability elicitation, and interpretability; provides a tractable proxy for the harder problem of detecting covert capabilities in safety-critical models.
 - Link: <https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natural-testbed-for-secret-knowledge-2>
+
+---
+**2026-03-11 13:24 (Wed)** — scan: LW-new lastBuildDate=05:24 UTC (13:24 Taipei), one new post since 12:17 cycle ("Conflicted on Ramsey" — personal finance/short-termism framing, not safety-relevant); AF feed unchanged (top: "The case for satiating cheaply-satisfied AI preferences", already picked 11:06). No new high-signal posts.
+
+**[backlog-pick]** *"Schelling Goodness, and Shared Morality as a Goal"* — Alignment Forum (Andrew Critch), 2026-02-28. Critch (CHAI / governance-adjacent) proposes "Schelling Goodness" as a framework for shared moral coordination between agents with heterogeneous values — frames alignment not as optimizing a single value function but as achieving a stable Schelling point in moral/value space that agents with different preferences can converge on; relevant to multi-agent alignment, cooperative AI, and the question of what "aligned with humanity" even means across diverse stakeholders.
+- Link: <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
