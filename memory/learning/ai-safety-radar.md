@@ -1265,3 +1265,9 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 
 **[backlog-pick]** *"The Day After Move 37"* — LessWrong, 2026-03-10 23:05 UTC. Riffing on AlphaGo's famous unexpected Move 37, likely explores what the immediate post-transition period looks like when AI achieves a capability surprise — relevant to takeoff dynamics, transition scenarios, and how humans/institutions respond to sudden AI breakthroughs; pairs well with the Byrnes takeoff interview picked earlier today.
 - Link: <https://www.lesswrong.com/posts/Amvp33TB8JSi6HA8u/the-day-after-move-37>
+
+---
+**2026-03-11 16:45 (Wed)** — scan: LW-new lastBuildDate=08:45 UTC (16:45 Taipei); AF lastBuildDate=08:45 UTC. No new posts in the 30-min window since 16:15 cycle. AF top unchanged; LW top still "Less Dead" (cryonics, non-safety). One uncaptured LW piece from Tue evening worth surfacing:
+
+**[backlog-pick]** *"Economic efficiency often undermines sociopolitical autonomy"* — LessWrong (Richard Ngo / Anthropic), 2026-03-10 20:14 UTC. Ngo argues that "econ-brained" thinking systematically misses how efficiency interventions erode sociopolitical autonomy — applies this lens explicitly to AGI safety, critiquing Christiano/Shulman/Hanson's economic-framework forecasting and contrasting with Yudkowsky/Kokotajlo's more power-dynamics-oriented views; relevant to corrigibility strategy, governance epistemics, and how the safety community models AI takeover.
+- Link: <https://www.lesswrong.com/posts/zk6TiByFRyjETpTAj/economic-efficiency-often-undermines-sociopolitical-autonomy>

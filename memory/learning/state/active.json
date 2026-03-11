@@ -28,7 +28,7 @@
   "budgets": {
     "learn_remaining_today": 0,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
+    "reflect_remaining_today": 0,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-11"
   },
@@ -45,9 +45,9 @@
     "days_active": 8
   },
   "last_cycle": {
-    "id": "c-20260311-1631",
-    "action": "reflect",
-    "summary": "Daily arc: Direction Asymmetry unifies gc(k)/RAVEL Isolate/SPIRIT \u2192 Paper B M9. Q068 (directed_isolate_mock.py) is tomorrow priority. 10 cycles today."
+    "id": "c-20260311-1701",
+    "action": "skip",
+    "summary": "All budgets exhausted. Daily reflect already done at 16:31 (Direction Asymmetry \u2192 Paper B M9). Q068 tomorrow."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
