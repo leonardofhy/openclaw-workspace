@@ -26,6 +26,7 @@
 - **智凱哥** — 最常互動的 labmate，AudioMatters 共同一作
 - **晨安哥** — AudioMatters 二作
 - **明淵、朗軒** — 大學好友，每週聚餐
+- **理鏡** — 馬來西亞中學鐵哥們，現居香港，老婆友玲，養兩隻貓（豆花、豆奶）
 - **Rocky** — 馬來西亞好友
 - **David / Ziya** — AI Safety 社群聯絡人
 - **Christine / Teddy / Zen** — NTU AI Safety 團隊
