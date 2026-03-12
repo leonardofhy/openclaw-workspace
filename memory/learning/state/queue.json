@@ -302,12 +302,13 @@
       "type": "design",
       "track": "T3",
       "title": "The Listening Geometry: unified Paper A pitch — gc peak k*, AND-gate fraction, Schelling stability, collapse onset t*, codec stratification as 5 dimensions",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "500-word Paper A §1 rewrite draft + 5-dimension framework; positions all T3 results under 'listening geometry' concept",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-13"
     }
   ],
   "archived_count": 54,
