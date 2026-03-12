@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 6,
+    "learn_remaining_today": 5,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 4,
+    "ideate_remaining_today": 3,
     "budget_reset_date": "2026-03-13"
   },
   "stats": {
-    "total_cycles": 191,
+    "total_cycles": 193,
     "total_skips": 40,
     "papers_read_deep": 35,
     "papers_scanned": 37,
     "research_gaps": 24,
-    "paper_ideas": 91,
+    "paper_ideas": 111,
     "paper_pitches": 2,
     "code_artifacts": 58,
     "system_improvements": 7,
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260313-0231",
+    "id": "c-20260313-0331",
     "action": "learn",
-    "summary": "Q097: Listening Geometry 5D framework \u2014 gc peak k*, AND-gate fraction, Schelling stability, collapse onset t*, codec stratification. Paper A \u00a71 rewrite (v0.3) + \u00a73 scaffold created."
+    "summary": "OBLITERATUS × gc(k): safety training = AND-gate construction. AND-gate destruction = mechanistic account of uncensoring. Paper A §4 framing drafted. Queue gc: 3 done tasks archived, Q097-Q099 added (25/25)."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

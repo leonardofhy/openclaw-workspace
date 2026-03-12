@@ -51,32 +51,6 @@
       "due": null
     },
     {
-      "id": "Q071",
-      "type": "build",
-      "track": "T5",
-      "title": "delta_GS single-layer proxy: GPU-free M7 estimate on semantic-token mock SAE",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Script computes delta_GS on mock single-layer SAE; correlation with full-stack mock verified",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-13T00:37:06.468458+08:00"
-    },
-    {
-      "id": "Q073",
-      "type": "build",
-      "track": "T3",
-      "title": "Persona x Temporal gc(k): extend persona_gc_benchmark.py to 2D (persona x CoT step)",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "2D gc(k,t) x persona heatmap from mock; delta_persona_decay metric defined",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-13"
-    },
-    {
       "id": "Q074",
       "type": "design",
       "track": "T3",
@@ -300,18 +274,41 @@
     {
       "id": "Q097",
       "type": "design",
+      "track": "T5",
+      "title": "OBLITERATUS x gc(k): safety training = AND-gate construction — design doc",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc: how safety training modifies gc(k) peak position + AND/OR gate topology; mock test showing OBLITERATUS-style uncensoring maps to AND-gate destruction; T5 paper framing",
+      "created": "2026-03-13",
+      "due": null
+    },
+    {
+      "id": "Q098",
+      "type": "design",
       "track": "T3",
-      "title": "The Listening Geometry: unified Paper A pitch — gc peak k*, AND-gate fraction, Schelling stability, collapse onset t*, codec stratification as 5 dimensions",
-      "status": "done",
+      "title": "Motive-attribution environments for audio: gc(k) as behavioral motive test",
+      "status": "ready",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "500-word Paper A §1 rewrite draft + 5-dimension framework; positions all T3 results under 'listening geometry' concept",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-13"
+      "definition_of_done": "Design doc: 3-4 controlled audio environments where gc(k) pattern distinguishes model-followed-audio vs defaulted-to-prior; connects to Q086 behavioral benchmark",
+      "created": "2026-03-13",
+      "due": null
+    },
+    {
+      "id": "Q099",
+      "type": "build",
+      "track": "T3",
+      "title": "RAVEL Cause/Isolate x Schelling stability: stable features = isolated features?",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Mock script: compute RAVEL-style Cause/Isolate metrics on MicroGPT features; correlate with cross-seed Schelling stability score; prediction: high-Isolate features are cross-seed stable",
+      "created": "2026-03-13",
+      "due": null
     }
   ],
-  "archived_count": 54,
-  "last_archived": "2026-03-06T05:33:34.401204+08:00",
-  "last_updated": "2026-03-12T23:04:46.430788+08:00"
+  "archived_count": 57,
+  "last_archived": "2026-03-13T03:34:21.014327+08:00",
+  "last_updated": "2026-03-13T03:34:21.014327+08:00"
 }
