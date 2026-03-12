@@ -51,32 +51,6 @@
       "due": null
     },
     {
-      "id": "Q069",
-      "type": "experiment",
-      "track": "T3",
-      "title": "Temporal Directed Isolate mock — add time axis to directed_isolate_mock.py",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Isolate_in(t) computed across 5 time steps, asymmetry delta plotted",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-12"
-    },
-    {
-      "id": "Q070",
-      "type": "experiment",
-      "track": "T3",
-      "title": "AND/OR Gate x gc(k): denoising patching protocol mock",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Tier 0 mock shows AND vs OR structure at gc peak layer; result table written",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-12"
-    },
-    {
       "id": "Q071",
       "type": "build",
       "track": "T5",
@@ -221,32 +195,6 @@
       "due": null
     },
     {
-      "id": "Q087",
-      "type": "experiment",
-      "track": "T3",
-      "title": "gc-Schelling: gc-critical layers = Schelling-stable SAE layers? 3-seed MicroGPT mock",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Mock: top gc(k) layers have highest Schelling stability across 3 MicroGPT seeds; correlation table; CPU-only",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-12"
-    },
-    {
-      "id": "Q088",
-      "type": "build",
-      "track": "T3",
-      "title": "gc-Incrimination: which decoder step caused error via causal gc(k) drop — feature-level blame",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Extend directed_isolate_mock.py: find t* where gc(k) drops below threshold; label as error-onset step; mock error scenario",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-12"
-    },
-    {
       "id": "Q89",
       "title": "Temporal gc(k) × AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
       "type": "build",
@@ -310,9 +258,57 @@
       "novelty": 4,
       "feasibility": 5,
       "created": "2026-03-12T10:34:16.860609"
+    },
+    {
+      "id": "Q094",
+      "type": "design",
+      "track": "T3",
+      "title": "T-SAE x gc-incrimination: contrastive feature deactivation as early warning for gc(k) collapse",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "tsae_gc_correlation_mock.py: T-SAE-style temporal features deactivation precedes t* collapse onset; correlation table",
+      "created": "2026-03-12",
+      "due": null
+    },
+    {
+      "id": "Q095",
+      "type": "design",
+      "track": "T5",
+      "title": "OBLITERATUS x T5: gc(k) safety signature audit — detect safety-bypassed audio-LLMs via M7+M9 profile divergence",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc: safety-bypassed model shows different gc(k) + M9 profile on safety-critical audio prompts vs normal model",
+      "created": "2026-03-12",
+      "due": null
+    },
+    {
+      "id": "Q096",
+      "type": "design",
+      "track": "T3",
+      "title": "FAD bias x AND/OR gate: text-predictable phonemes = OR-gate, audio-dependent phonemes = AND-gate at gc peak",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc + mock: AND-gate fraction inversely correlates with text-predictability; mechanistic test of FAD encoder bias",
+      "created": "2026-03-12",
+      "due": null
+    },
+    {
+      "id": "Q097",
+      "type": "design",
+      "track": "T3",
+      "title": "The Listening Geometry: unified Paper A pitch — gc peak k*, AND-gate fraction, Schelling stability, collapse onset t*, codec stratification as 5 dimensions",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "500-word Paper A §1 rewrite draft + 5-dimension framework; positions all T3 results under 'listening geometry' concept",
+      "created": "2026-03-12",
+      "due": null
     }
   ],
   "archived_count": 54,
   "last_archived": "2026-03-06T05:33:34.401204+08:00",
-  "last_updated": "2026-03-12T10:34:16.860956"
+  "last_updated": "2026-03-12T23:04:46.430788+08:00"
 }

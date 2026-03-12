@@ -1,6 +1,11 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 22:45 (Thu)** — scan: 1 new post (LW). Picks ×2:
+- [new] LW#153 "AI #159: See You In Court" (2026-03-12) — Zvi's weekly AI roundup; "court" framing suggests AI liability/legal developments; high-signal policy + capability digest. https://www.lesswrong.com/posts/DnrjKZTZwHGjdDB4u/ai-159-see-you-in-court
+- [backlog-pick] AF#15 "AXRP Episode 48 - Guive Assadi on AI Property Rights" (2026-02-15) — AXRP is a premier alignment podcast; property rights framing for AI systems is a novel governance angle worth tracking. https://www.alignmentforum.org/posts/4foFK5Lz65ywSz4eo/axrp-episode-48-guive-assadi-on-ai-property-rights
+
+---
 **2026-03-12 22:15 (Thu)** — scan: 2 new posts (LW). Picks ×2:
 - [new] LW#151 "Why AI Evaluation Regimes are bad" (2026-03-12) — directly challenges the current paradigm of using evaluations/benchmarks as safety governance tools; high-signal for anyone thinking about oversight mechanisms. https://www.lesswrong.com/posts/Xxp6Tm8BKTkcb2m5M/why-ai-evaluation-regimes-are-bad
 - [backlog-pick] LW#41 "Anthropic and the DoW: Anthropic Responds" (2026-02-27) — Anthropic's official response to the "Department of War" controversy; key governance/policy signal on AI lab–military entanglement. https://www.lesswrong.com/posts/ppj7v4sSCbJjLye3D/anthropic-and-the-dow-anthropic-responds
@@ -1505,3 +1510,7 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 **2026-03-12 21:45 (Thu)** — scan: 2 new posts (LW). Backlog: 2 AF + 71 LW unread.
 - [pick] LW#149 "Classic Alignment-Faking Evaluations Measure Jailbreak Detection, Not Scheming [in some frontier models]" (2026-03-12) — high-signal: challenges validity of alignment-faking eval benchmarks, argues current evals conflate jailbreak resistance with actual scheming detection; directly relevant to evaluation methodology and deceptive alignment research. https://www.lesswrong.com/posts/CMsnknfTayPeuoAX5/classic-alignment-faking-evaluations-measure-jailbreak
 - [skip] LW#150 "Magic Is Hidden Control of Energy" (2026-03-12) — not AI safety relevant.
+---
+**2026-03-12 23:15 (Thu)** — scan: 71 unread (LW). Backlog heavy; picked 2 high-signal from recent batch.
+- [pick] LW#106 "AI #158: The Department of War" by Zvi (2026-03-05, 74pts) — high-signal: Anthropic vs. DoD/Hegseth crisis; Trump banning federal use, OpenAI countersigning with DoW; major AI governance/institutional safety inflection. https://www.lesswrong.com/posts/YTnzcZSbA69fMCjNo/ai-158-the-department-of-war
+- [pick] LW#114 "The Day After Move 37" by Eneasz (2026-03-10, 43pts) — worth reading: personal reflection on a watershed AI moment (evoking AlphaGo Move 37), likely about cognitive/cultural adjustment to AI surpassing human-level performance in a new domain. https://www.lesswrong.com/posts/Amvp33TB8JSi6HA8u/the-day-after-move-37
