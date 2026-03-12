@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 1,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 3,
+    "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-13"
   },
   "stats": {
-    "total_cycles": 193,
+    "total_cycles": 198,
     "total_skips": 40,
-    "papers_read_deep": 35,
+    "papers_read_deep": 37,
     "papers_scanned": 37,
     "research_gaps": 24,
-    "paper_ideas": 111,
+    "paper_ideas": 151,
     "paper_pitches": 2,
     "code_artifacts": 58,
     "system_improvements": 7,
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260313-0331",
-    "action": "learn",
-    "summary": "OBLITERATUS × gc(k): safety training = AND-gate construction. AND-gate destruction = mechanistic account of uncensoring. Paper A §4 framing drafted. Queue gc: 3 done tasks archived, Q097-Q099 added (25/25)."
+    "id": "c-20260313-0631",
+    "action": "ideate",
+    "summary": "I-13: 20 cross-domain ideas (AF alignment theory × gc(k) × AND/OR × codec × adversarial). 4 ideas score 10/10: ENV-3 as MMDE, Schelling game theory foundation, Coherent Care × T5, Persona × Schelling × ENV-3. Queue full — top ideas in cycle file for Leo."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

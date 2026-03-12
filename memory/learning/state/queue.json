@@ -159,18 +159,6 @@
       "due": null
     },
     {
-      "id": "Q086",
-      "type": "design",
-      "track": "T3",
-      "title": "Behavioral benchmark suite for Listen vs Guess: 5 environments where gc(k) prediction is measurable",
-      "status": "ready",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: 5 controlled environments (clean/noise/accent/emotion/code-switch); Paper A §2 addition; measurable behavioral proxy for listening vs guessing",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
       "id": "Q89",
       "title": "Temporal gc(k) × AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
       "type": "build",
@@ -306,9 +294,71 @@
       "definition_of_done": "Mock script: compute RAVEL-style Cause/Isolate metrics on MicroGPT features; correlate with cross-seed Schelling stability score; prediction: high-Isolate features are cross-seed stable",
       "created": "2026-03-13",
       "due": null
+    },
+    {
+      "id": "Q100",
+      "type": "design",
+      "track": "T3",
+      "title": "gc(k) Motive Detector: formalize gc(k) as behavioral motive signal with ENV taxonomy (Paper A S2)",
+      "status": "done",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc: gc(k) profile = motive detector; ENV-3 conflict as key diagnostic; connects Q086 benchmark; Paper A S2 motive-attribution framing",
+      "created": "2026-03-13",
+      "due": null,
+      "completed": "2026-03-13"
+    },
+    {
+      "id": "Q101",
+      "type": "build",
+      "track": "T3",
+      "title": "Incrimination x ENV-3: extend gc_incrimination_mock.py with phoneme-conflict motive diagnostic",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "gc_incrimination_mock.py ENV-3 branch: phoneme conflict scenario; output distinguishes audio-motive vs prior-motive errors via blame report",
+      "created": "2026-03-13",
+      "due": null
+    },
+    {
+      "id": "Q102",
+      "type": "design",
+      "track": "T3",
+      "title": "Schelling Coordination Game framing of ENV-3: gc(k) peak as Schelling focal point between audio and language prior",
+      "status": "done",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Analysis doc: ENV-3 = Schelling game (audio vs language prior); gc(k) peak = coordination focal point; game-theoretic interpretation for Paper A S4",
+      "created": "2026-03-13",
+      "due": null,
+      "completed": "2026-03-13"
+    },
+    {
+      "id": "Q103",
+      "type": "design",
+      "track": "T5",
+      "title": "gc(k) Audio Lie Detector: knows-but-refuses vs genuinely-confused diagnostic for safety-trained audio-LLMs",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc: high gc + refused = knows-but-refuses; low gc + refused = genuinely confused; mock test protocol for safety-trained audio-LLMs (T5 framing)",
+      "created": "2026-03-13",
+      "due": null
+    },
+    {
+      "id": "Q104",
+      "type": "design",
+      "track": "T5",
+      "title": "t* as Regulatory Capability Threshold: policy framing for collapse onset as audio-LLM capability standard",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Design doc: t* taxonomy (>8 = genuine audio, <3 = text-wrapper); compute-light audit protocol; governance framing for Paper C appendix",
+      "created": "2026-03-13",
+      "due": null
     }
   ],
-  "archived_count": 57,
-  "last_archived": "2026-03-13T03:34:21.014327+08:00",
-  "last_updated": "2026-03-13T03:34:21.014327+08:00"
+  "archived_count": 58,
+  "last_archived": "2026-03-13T05:05:45.339162+08:00",
+  "last_updated": "2026-03-13T05:05:45.339162+08:00"
 }
