@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 2,
+    "learn_remaining_today": 1,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-1015",
+    "id": "c-20260312-1045",
     "action": "learn",
-    "summary": "Jedryszek & Crook (2026) SAE stability paper scanned; contrasted weight-reg stability vs Schelling stability (M10). T5 reassessed: UNBLOCKED (19 CPU tasks ready). Phase reverted to converge. Explore-fallback deactivated."
+    "summary": "Read Critch (2026) Schelling Goodness (LW, 127 karma); formalized Schelling-stable audio feature taxonomy S1/S2/S3 for Paper B §3; alignment implication: SPIRIT anchors should use S3 features only."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
