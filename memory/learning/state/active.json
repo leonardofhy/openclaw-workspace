@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 1,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 3,
+    "ideate_remaining_today": 2,
     "budget_reset_date": "2026-03-12"
   },
   "stats": {
-    "total_cycles": 179,
+    "total_cycles": 180,
     "total_skips": 40,
-    "papers_read_deep": 32,
+    "papers_read_deep": 33,
     "papers_scanned": 37,
     "research_gaps": 23,
-    "paper_ideas": 12,
+    "paper_ideas": 21,
     "paper_pitches": 2,
     "code_artifacts": 52,
     "system_improvements": 7,
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-0701",
+    "id": "c-20260312-0901",
     "action": "learn",
-    "summary": "Q040 complete: Audio-RAVEL x ESN leakage causal scorecard — 2x2 emotion-speaker Cause/Isolate matrix, F_combo entangled class, LeakageScore formula, collateral damage estimate for SAE-guided defense."
+    "summary": "Q084: Wrote 520-word pitch for gc(k) as CPU-feasible regulatory audit tool; 3-step CPU protocol for structural certification; Option A (Paper A §5.5) vs Option B (FAccT standalone)"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
