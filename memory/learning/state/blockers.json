@@ -1,25 +1,27 @@
 {
   "version": 2,
-  "blocked": true,
+  "blocked": false,
   "track_blockers": {
     "T3": {
       "blocked": true,
       "reason": "GPU experiments (Q001-Q004) require Leo: real speech .wav + venv setup + experiment approval",
       "blocked_since": "2026-02-27T10:00:00+08:00",
-      "unblock_check_at": "2026-03-12T10:00:00+08:00"
+      "unblock_check_at": "2026-03-14T10:00:00+08:00"
     },
     "T5": {
-      "blocked": true,
-      "reason": "Q032 depends on digest reading; other T5 work depends on T3 infrastructure",
+      "blocked": false,
+      "reason": "Reassessed 2026-03-12: many T5 CPU/Tier-0 tasks (Q071, Q076, Q078-Q082, Q085-Q088) are READY and independent of T3 infrastructure. Track unblocked for CPU tasks. GPU-dependent tasks still need Leo.",
       "blocked_since": "2026-02-27T10:00:00+08:00",
-      "unblock_check_at": "2026-03-12T10:00:00+08:00"
+      "unblock_check_at": "2026-03-19T10:00:00+08:00"
     }
   },
   "fallback_tasks": [],
   "fallback_exhausted": true,
   "fallback_exhausted_note": "Q033-Q037 all completed (2026-03-05). No more CPU fallback tasks.",
   "explore_fallback": {
-    "active": true,
+    "active": false,
+    "deactivated": "2026-03-12T10:15:00+08:00",
+    "deactivation_reason": "T5 reassessed as unblocked (19 READY CPU tasks available). Build budget exhausted today but will reset tomorrow.",
     "activated_since": "2026-03-09T00:00:00+08:00",
     "reason": "All converge tracks blocked + fallback exhausted. Phase regression to explore mode per Leo directive.",
     "scope": "Adjacent research areas, new trends, low-hanging fruit. Not limited to MI x Speech/Audio."

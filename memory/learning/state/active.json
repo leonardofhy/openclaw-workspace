@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "phase": "explore-fallback",
+  "phase": "converge",
   "phase_since": "2026-03-09",
   "phase_exit_criteria": {
     "converge_to_execute": [
@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 2,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-0945",
+    "id": "c-20260312-1015",
     "action": "learn",
-    "summary": "arXiv scan: found arXiv:2603.06854 (Audio-Specialist Heads, Mar 6) — critical Paper A §2 related work; +8pp MMAU with audio steering; differentiates from gc(k) at head vs layer granularity. Queue full (25/25), flag for Leo."
+    "summary": "Jedryszek & Crook (2026) SAE stability paper scanned; contrasted weight-reg stability vs Schelling stability (M10). T5 reassessed: UNBLOCKED (19 CPU tasks ready). Phase reverted to converge. Explore-fallback deactivated."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
