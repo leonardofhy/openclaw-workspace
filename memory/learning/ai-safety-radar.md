@@ -1384,3 +1384,18 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 
 **[backlog-pick]** *"Models have linear representations of what tasks they like"* — LessWrong, 2026-03-05. Empirical finding that LLM task-preference is linearly structured in activation space — directly relevant to understanding model motivation and reward hacking risk.
 - Link: <https://www.lesswrong.com/posts/pxC2RAeoBrvK8ivMf/models-have-linear-representations-of-what-tasks-they-like-1>
+
+---
+## 2026-03-12 11:27 (Asia/Taipei)
+
+**[new]** *"Cycle-Consistent Activation Oracles"* — LessWrong, 2026-03-12. Proposes a new interpretability framework using cycle-consistent oracles to verify that activation-level explanations faithfully correspond to model behavior; directly relevant to mech-interp reliability.
+- Link: <https://www.lesswrong.com/posts/Nf2sKaNNdxE2ssxbp/cycle-consistent-activation-oracles-1>
+
+**[new]** *"AI Safety Has 12 Months Left"* — LessWrong, 2026-03-05. Argues the window for meaningful safety intervention is ~12 months before deployment norms lock in; strong urgency framing worth stress-testing against Leo's own timeline models.
+- Link: <https://www.lesswrong.com/posts/rWc6BT8BcoPhwcbSs/ai-safety-has-12-months-left>
+
+---
+## 2026-03-12 11:27 (2nd cycle)
+
+**[no-new]** No fresh posts. Backlog pick: **"Current activation oracles are hard to use"** — LessWrong. Practical constraints on state-of-the-art interpretability methods; pairs well with today's cycle-consistent oracles post.
+- Link: <https://www.lesswrong.com/posts/>
