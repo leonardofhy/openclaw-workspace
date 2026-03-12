@@ -51,62 +51,40 @@
       "due": null
     },
     {
-      "id": "Q069",
-      "type": "experiment",
-      "track": "T3",
-      "title": "Temporal Directed Isolate mock \u2014 add time axis to directed_isolate_mock.py",
-      "status": "ready",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Isolate_in(t) computed across 5 time steps, asymmetry delta plotted",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
-      "id": "Q070",
-      "type": "experiment",
-      "track": "T3",
-      "title": "AND/OR Gate x gc(k): denoising patching protocol mock",
-      "status": "ready",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Tier 0 mock shows AND vs OR structure at gc peak layer; result table written",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
       "id": "Q071",
       "type": "build",
       "track": "T5",
       "title": "delta_GS single-layer proxy: GPU-free M7 estimate on semantic-token mock SAE",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Script computes delta_GS on mock single-layer SAE; correlation with full-stack mock verified",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-13T00:37:06.468458+08:00"
     },
     {
       "id": "Q073",
       "type": "build",
       "track": "T3",
       "title": "Persona x Temporal gc(k): extend persona_gc_benchmark.py to 2D (persona x CoT step)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "2D gc(k,t) x persona heatmap from mock; delta_persona_decay metric defined",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-13"
     },
     {
       "id": "Q074",
       "type": "design",
       "track": "T3",
-      "title": "Modality Collapse = gc Suppression: design doc for Paper A \u00a74 addition",
+      "title": "Modality Collapse = gc Suppression: design doc for Paper A §4 addition",
       "status": "ready",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "Design doc: gc threshold test for modality collapse detection + Paper A \u00a74 addition",
+      "definition_of_done": "Design doc: gc threshold test for modality collapse detection + Paper A §4 addition",
       "created": "2026-03-12",
       "due": null
     },
@@ -162,11 +140,11 @@
       "id": "Q081",
       "type": "experiment",
       "track": "T5",
-      "title": "M9 x M7 cross-correlation: causal abstraction consistency vs \u0394GS at same layer",
+      "title": "M9 x M7 cross-correlation: causal abstraction consistency vs ΔGS at same layer",
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
-      "definition_of_done": "Mock script: compute M9 + M7 per layer; scatter plot; Pearson r; prediction=layers with high M9 also have high \u0394GS",
+      "definition_of_done": "Mock script: compute M9 + M7 per layer; scatter plot; Pearson r; prediction=layers with high M9 also have high ΔGS",
       "created": "2026-03-12",
       "due": null
     },
@@ -214,37 +192,13 @@
       "status": "ready",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "Design doc: 5 controlled environments (clean/noise/accent/emotion/code-switch); Paper A \u00a72 addition; measurable behavioral proxy for listening vs guessing",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
-      "id": "Q087",
-      "type": "experiment",
-      "track": "T3",
-      "title": "gc-Schelling: gc-critical layers = Schelling-stable SAE layers? 3-seed MicroGPT mock",
-      "status": "ready",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Mock: top gc(k) layers have highest Schelling stability across 3 MicroGPT seeds; correlation table; CPU-only",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
-      "id": "Q088",
-      "type": "build",
-      "track": "T3",
-      "title": "gc-Incrimination: which decoder step caused error via causal gc(k) drop \u2014 feature-level blame",
-      "status": "ready",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Extend directed_isolate_mock.py: find t* where gc(k) drops below threshold; label as error-onset step; mock error scenario",
+      "definition_of_done": "Design doc: 5 controlled environments (clean/noise/accent/emotion/code-switch); Paper A §2 addition; measurable behavioral proxy for listening vs guessing",
       "created": "2026-03-12",
       "due": null
     },
     {
       "id": "Q89",
-      "title": "Temporal gc(k) \u00d7 AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
+      "title": "Temporal gc(k) × AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -270,7 +224,7 @@
     },
     {
       "id": "Q91",
-      "title": "Persona \u00d7 AND/OR Gate: extend persona_gc_benchmark.py to measure AND vs OR gate prevalence per persona condition",
+      "title": "Persona × AND/OR Gate: extend persona_gc_benchmark.py to measure AND vs OR gate prevalence per persona condition",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -283,7 +237,7 @@
     },
     {
       "id": "Q92",
-      "title": "Schelling Features \u00d7 AND/OR Gates: are cross-seed-stable SAE features more likely to be AND-gates?",
+      "title": "Schelling Features × AND/OR Gates: are cross-seed-stable SAE features more likely to be AND-gates?",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -296,7 +250,7 @@
     },
     {
       "id": "Q93",
-      "title": "Collapse Onset \u00d7 AND/OR Gate: does audio info collapse (Q085 onset step) coincide with AND-gate feature deactivation?",
+      "title": "Collapse Onset × AND/OR Gate: does audio info collapse (Q085 onset step) coincide with AND-gate feature deactivation?",
       "type": "build",
       "track": "T3",
       "priority": 2,
@@ -306,9 +260,57 @@
       "novelty": 4,
       "feasibility": 5,
       "created": "2026-03-12T10:34:16.860609"
+    },
+    {
+      "id": "Q094",
+      "type": "design",
+      "track": "T3",
+      "title": "T-SAE x gc-incrimination: contrastive feature deactivation as early warning for gc(k) collapse",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "tsae_gc_correlation_mock.py: T-SAE-style temporal features deactivation precedes t* collapse onset; correlation table",
+      "created": "2026-03-12",
+      "due": null
+    },
+    {
+      "id": "Q095",
+      "type": "design",
+      "track": "T5",
+      "title": "OBLITERATUS x T5: gc(k) safety signature audit — detect safety-bypassed audio-LLMs via M7+M9 profile divergence",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc: safety-bypassed model shows different gc(k) + M9 profile on safety-critical audio prompts vs normal model",
+      "created": "2026-03-12",
+      "due": null
+    },
+    {
+      "id": "Q096",
+      "type": "design",
+      "track": "T3",
+      "title": "FAD bias x AND/OR gate: text-predictable phonemes = OR-gate, audio-dependent phonemes = AND-gate at gc peak",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc + mock: AND-gate fraction inversely correlates with text-predictability; mechanistic test of FAD encoder bias",
+      "created": "2026-03-12",
+      "due": null
+    },
+    {
+      "id": "Q097",
+      "type": "design",
+      "track": "T3",
+      "title": "The Listening Geometry: unified Paper A pitch — gc peak k*, AND-gate fraction, Schelling stability, collapse onset t*, codec stratification as 5 dimensions",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "500-word Paper A §1 rewrite draft + 5-dimension framework; positions all T3 results under 'listening geometry' concept",
+      "created": "2026-03-12",
+      "due": null
     }
   ],
   "archived_count": 54,
   "last_archived": "2026-03-06T05:33:34.401204+08:00",
-  "last_updated": "2026-03-12T10:34:16.860956"
+  "last_updated": "2026-03-12T23:04:46.430788+08:00"
 }

@@ -1,6 +1,64 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 22:45 (Thu)** — scan: 1 new post (LW). Picks ×2:
+- [new] LW#153 "AI #159: See You In Court" (2026-03-12) — Zvi's weekly AI roundup; "court" framing suggests AI liability/legal developments; high-signal policy + capability digest. https://www.lesswrong.com/posts/DnrjKZTZwHGjdDB4u/ai-159-see-you-in-court
+- [backlog-pick] AF#15 "AXRP Episode 48 - Guive Assadi on AI Property Rights" (2026-02-15) — AXRP is a premier alignment podcast; property rights framing for AI systems is a novel governance angle worth tracking. https://www.alignmentforum.org/posts/4foFK5Lz65ywSz4eo/axrp-episode-48-guive-assadi-on-ai-property-rights
+
+---
+**2026-03-12 22:15 (Thu)** — scan: 2 new posts (LW). Picks ×2:
+- [new] LW#151 "Why AI Evaluation Regimes are bad" (2026-03-12) — directly challenges the current paradigm of using evaluations/benchmarks as safety governance tools; high-signal for anyone thinking about oversight mechanisms. https://www.lesswrong.com/posts/Xxp6Tm8BKTkcb2m5M/why-ai-evaluation-regimes-are-bad
+- [backlog-pick] LW#41 "Anthropic and the DoW: Anthropic Responds" (2026-02-27) — Anthropic's official response to the "Department of War" controversy; key governance/policy signal on AI lab–military entanglement. https://www.lesswrong.com/posts/ppj7v4sSCbJjLye3D/anthropic-and-the-dow-anthropic-responds
+
+---
+**2026-03-12 20:45 (Thu)** — scan: 0 new posts (AF+LW). Backlog 72 unread. Backlog picks ×2:
+- [backlog-pick] LW#87 "A summary of Condensation and its relation to Natural Latents" (2026-03-04) — synthesizes the Condensation framework and its ties to Natural Latents theory; high-value theoretical alignment read on formal representations of agent internals. https://www.lesswrong.com/posts/agw7HhW4cWjADpBgo/a-summary-of-condensation-and-its-relation-to-natural
+- [backlog-pick] LW#101 "Personality Self-Replicators" (2026-03-05) — explores mesa-optimization adjacent dynamics where personality patterns self-replicate across training; directly relevant to inner alignment and goal robustness. https://www.lesswrong.com/posts/fGpQ4cmWsXo2WWeyn/personality-self-replicators
+
+---
+**2026-03-12 20:15 (Thu)** — scan: 1 new LW post. Picks ×2:
+- [new] LW#147 "Hunting Undead Stochastic Parrots: Finding and Killing the Arguments" (2026-03-12) — critiques zombie arguments about LLMs (stochastic parrots framing); relevant for understanding how AI discourse shapes safety narratives. https://www.lesswrong.com/posts/KWHeBG978uZuqNK6Q/hunting-undead-stochastic-parrots-finding-and-killing-the
+- [backlog-pick] LW#60 "I'm Bearish On Personas For ASI Safety" (2026-03-01) — argues persona-based alignment strategies are insufficient for ASI safety; directly targets a common but flawed safety approach. https://www.lesswrong.com/posts/fMgE3E54PdDcZhvm6/i-m-bearish-on-personas-for-asi-safety
+
+---
+**2026-03-12 19:15 (Thu)** — scan: 0 new posts. Backlog: 2 AF + 73 LW unread. Backlog picks ×2:
+- [backlog-pick] LW#70 "Single Direction vs Low-Rank Refusal in Small LLMs" (2026-03-02) — mechanistic interpretability study comparing single-direction vs low-rank representations of refusal behavior in small LLMs; directly relevant to understanding and improving safety training geometry. https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1
+- [backlog-pick] LW#76 "Mass Surveillance w/ LLMs is the Default Outcome. Contracts Won't Change That." (2026-03-03) — argues LLM-enabled mass surveillance is a default trajectory that legal contracts cannot prevent; high-signal AI governance/societal risk framing. https://www.lesswrong.com/posts/drMm8QXsWYiPj7KQZ/mass-surveillance-w-llms-is-the-default-outcome-contracts
+
+---
+**2026-03-12 17:15 (Thu)** — scan: 0 new posts. Backlog: 81 unread (large queue). Backlog picks ×2:
+- [backlog-pick] LW#81 "White-Box Attacks on the Best Open-Weight Model: CCP Bias vs. Safety Training in Kimi K2.5" (2026-03-03) — adversarial white-box attack exposing political bias & safety training brittleness in top open-weight model; high-signal for alignment/safety training robustness. https://www.lesswrong.com/posts/sRNHWhoZfYpE6WH2r/white-box-attacks-on-the-best-open-weight-model-ccp-bias-vs
+- [backlog-pick] LW#74 "LLM coherentization as an obvious low-hanging fruit to try?" (2026-03-04) — proposes coherentizing LLM beliefs/values as a tractable alignment intervention; novel framing worth tracking. https://www.lesswrong.com/posts/ZaEGdjDQ3e9W6eNYW/llm-coherentization-as-an-obvious-low-hanging-fruit-to-try
+
+---
+**2026-03-12 16:15 (Thu)** — scan: 0 new posts. Backlog: 4 AF + 77 LW unread. Backlog picks ×2:
+- [backlog-pick] AF#43 "Schelling Goodness, and Shared Morality as a Goal" (2026-02-28) — alignment theory post arguing shared morality/Schelling points as an alignment goal; directly on-topic for value alignment. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
+- [backlog-pick] LW#70 "Single Direction vs Low-Rank Refusal in Small LLMs" (2026-03-02) — empirical mech-interp study on refusal mechanisms; relevant to safety training robustness. https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1
+
+---
+**2026-03-12 15:45 (Thu)** — scan: 1 new LW post (today), 0 new AF posts. Backlog: 81 unread.
+
+- **NEW** [LessWrong] "AI for Agent Foundations etc.?" — asks whether AI tools can accelerate agent foundations research (decision theory, logical uncertainty, embedded agency); directly relevant to technical alignment research tooling. <https://www.lesswrong.com/posts/gko3r6hvkSXrbDFPD/ai-for-agent-foundations-etc>
+- **BACKLOG-PICK** [LessWrong] "How to Design Environments for Understanding Model Motives" — methodology for probing whether models have misaligned goals vs. superficial behaviors; useful for interpretability + eval work. <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
+
+---
+**2026-03-12 15:15 (Thu)** — scan: 1 new LW post (today), 0 new AF posts. Backlog: 80 unread (LW: 78, AF: 4).
+
+- **NEW** [LessWrong] "Factories are already running the dataset for AI" — cryptic title but likely about industrial-scale synthetic data pipelines already shaping AI training; worth reading for data-centric safety implications. <https://www.lesswrong.com/posts/fpfAqN3nwEdLymrrJ/factories-are-already-running-the-dataset-for-ai>
+- **BACKLOG-PICK** [LessWrong] "Context Awareness: Constitutional AI can mitigate Emergent Misalignment" — directly relevant to CAI + emergent misalignment; explores whether constitutional constraints generalize under distribution shift. <https://www.lesswrong.com/posts/yA2hquLrFFSFDtcoE/context-awareness-constitutional-ai-can-mitigate-emergent>
+
+---
+**2026-03-12 13:50 (Thu)** — scan: 1 new AF post, 0 new LW posts. Backlog: 83 unread total (LW: 78, AF: 4).
+
+- **[pick-1]** *"Payorian cooperation is easy with Kripke frames"* — Alignment Forum, 2026-03-09. Decision-theoretic exploration of agent cooperation via Kripke semantics; directly relevant to formal foundations of corrigibility, coordination, and how agents reason about mutual commitment in alignment contexts. <https://www.alignmentforum.org/posts/LaCP6WyNzX8kiZn3w/payorian-cooperation-is-easy-with-kripke-frames>
+
+---
+**2026-03-12 13:15 (Thu)** — scan: 83 unread total (LW: 78, AF: 5). Selected 2 high-signal candidates.
+
+- **[pick-1]** *"GPT-5.4 Is A Substantial Upgrade"* — LessWrong, 2026-03-11. Direct capabilities benchmark update; critical for tracking frontier AI capability trajectory and adjusting safety threat model. <https://www.lesswrong.com/posts/sKCYLEN5EYLuokDft/gpt-5-4-is-a-substantial-upgrade>
+- **[pick-2]** *"Controversy surrounding Moltbook obscures its very real, novel, unexpressed and rapidly emerging safety risks"* — LessWrong, 2026-03-02. Highlights emerging novel safety failure modes from new model (Moltbook); early detection mechanism for unknown unknowns in model behavior. <https://www.lesswrong.com/posts/scnEbThKS67NTzfgS/controversy-surrounding-moltbook-obscures-its-very-real>
+
+---
 **2026-03-12 10:45 (Thu)** — scan: 0 new AF posts, 0 new LW posts; backlog AF=5, LW=82. Picked 2.
 
 - **[pick-1] AF** "The Refined Counterfactual Prisoner's Dilemma: An Attempt to Explode Decision-Theoretic Consequentialism" — fresh decision-theory paper attacking DTC consequentialism, directly relevant to agent foundations & alignment. <https://www.alignmentforum.org/posts/WisQvECYPGebryRPD>
@@ -1416,3 +1474,43 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 
 **[no-new]** No fresh posts this cycle (AF: 0 new, LW: 0 new). **Backlog pick: "Schelling Goodness, and Shared Morality as a Goal"** — Alignment Forum, 2026-02-28. Addresses core value alignment: how to define and coordinate on shared moral objectives when multiple AGI systems exist; foundational for intent alignment & multi-agent safety.
 - Link: <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
+
+---
+## 2026-03-12 14:16 (Asia/Taipei)
+
+**[no-new]** No fresh posts (AF: 0 new, LW: 0 new, large backlog). **Backlog pick: "How to Design Environments for Understanding Model Motives"** — LessWrong, 2026-03-02. Directly relevant to alignment evals: proposes frameworks for probing whether models have goal-directed behavior, useful for Leo's interpretability/safety research direction.
+- Link: <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
+
+**2026-03-12 14:45 (Thu)** — scan: 0 new posts (AF: 0, LW: 0). Backlog: 83 unread (LW: 79, AF: 4). Backlog picks:
+- [backlog-pick] AF [43] "Schelling Goodness, and Shared Morality as a Goal" — explores shared morality as an alignment target; relevant to value alignment theory. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
+- [backlog-pick] AF [17] "Human-like metacognitive skills will reduce LLM slop and aid alignment and capabilities" — proposes metacognition as lever for both alignment and capability quality. https://www.alignmentforum.org/posts/m5d4sYgHbTxBnFeat/human-like-metacognitive-skills-will-reduce-llm-slop-and-aid
+
+**2026-03-12 16:45 (Thu)** — scan: 0 new posts (AF: 0, LW: 0). Backlog: 81 unread. Backlog picks:
+- [backlog-pick] LW [81] "White-Box Attacks on the Best Open-Weight Model: CCP Bias vs. Safety Training in Kimi K2.5" — white-box adversarial attacks exposing tension between political bias and safety training in open-weight models; directly relevant to robust alignment. https://www.lesswrong.com/posts/sRNHWhoZfYpE6WH2r/white-box-attacks-on-the-best-open-weight-model-ccp-bias-vs
+- [backlog-pick] LW [64] "I'm confused by the change in the METR trend" — METR capability evaluation trend shift; key signal for timelines and safety readiness. https://www.lesswrong.com/posts/9ihaaXqdc3i328tLp/i-m-confused-by-the-change-in-the-metr-trend
+
+**2026-03-12 17:45 (Thu)** — scan: 0 new posts (AF: 0, LW: 0). Backlog: 79 unread (AF: 4, LW: 75). Backlog picks:
+- [backlog-pick] AF [17] "Human-like metacognitive skills will reduce LLM slop and aid alignment and capabilities" — proposes metacognition as a lever for both output quality and alignment; bridges capabilities research with safety goals. https://www.alignmentforum.org/posts/m5d4sYgHbTxBnFeat/human-like-metacognitive-skills-will-reduce-llm-slop-and-aid
+- [backlog-pick] LW [86] "Text Compression Can Help Secure Model Weights" — novel safety angle: using compression properties to protect model weights from exfiltration; relevant to AI security and weight protection. https://www.lesswrong.com/posts/GcbkprYPCjXdysLq4/text-compression-can-help-secure-model-weights
+
+**2026-03-12 18:15 (Thu)** — scan: new LW posts arrived (77 unread, AF: 3 backlog). Picks:
+- [new-pick] LW [64] "I'm confused by the change in the METR trend" — METR capability-eval trend showing anomalous change; directly relevant to safety timelines and risk forecasting. https://www.lesswrong.com/posts/9ihaaXqdc3i328tLp/i-m-confused-by-the-change-in-the-metr-trend
+- [backlog-pick] AF [43] "Schelling Goodness, and Shared Morality as a Goal" — alignment theory: proposes Schelling points in moral space as coordination mechanism for value alignment. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
+
+---
+**2026-03-12 18:45 (Thu)** — scan: 0 new posts. Backlog: 2 AF + 73 LW unread.
+- [backlog-pick] AF#16 "models have some pretty funny attractor states" (2026-02-12) — empirical Alignment Forum observation about LLM behavioral attractor states; directly relevant to understanding stable model behavior patterns and potential misalignment failure modes. https://www.alignmentforum.org/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states
+
+---
+**2026-03-12 21:15 (Thu)** — scan: 1 new post (LW). Backlog: 2 AF + 72 LW unread.
+- [new, skip] LW#148 "The Dark Planet: Why the Fermi Paradox Survives Critique" (2026-03-12) — Fermi paradox philosophy; not directly AI safety relevant. https://www.lesswrong.com/posts/uqrhS3L4gwpJCBPvW/the-dark-planet-why-the-fermi-paradox-survives-critique
+- [backlog-pick] LW#87 "A summary of Condensation and its relation to Natural Latents" (2026-03-04) — alignment theory: summarizes John Wentworth's Natural Latents / Condensation framework, which is a foundational approach to understanding what concepts an AI naturally represents; directly relevant to interpretability and value learning. https://www.lesswrong.com/posts/agw7HhW4cWjADpBgo/a-summary-of-condensation-and-its-relation-to-natural
+
+---
+**2026-03-12 21:45 (Thu)** — scan: 2 new posts (LW). Backlog: 2 AF + 71 LW unread.
+- [pick] LW#149 "Classic Alignment-Faking Evaluations Measure Jailbreak Detection, Not Scheming [in some frontier models]" (2026-03-12) — high-signal: challenges validity of alignment-faking eval benchmarks, argues current evals conflate jailbreak resistance with actual scheming detection; directly relevant to evaluation methodology and deceptive alignment research. https://www.lesswrong.com/posts/CMsnknfTayPeuoAX5/classic-alignment-faking-evaluations-measure-jailbreak
+- [skip] LW#150 "Magic Is Hidden Control of Energy" (2026-03-12) — not AI safety relevant.
+---
+**2026-03-12 23:15 (Thu)** — scan: 71 unread (LW). Backlog heavy; picked 2 high-signal from recent batch.
+- [pick] LW#106 "AI #158: The Department of War" by Zvi (2026-03-05, 74pts) — high-signal: Anthropic vs. DoD/Hegseth crisis; Trump banning federal use, OpenAI countersigning with DoW; major AI governance/institutional safety inflection. https://www.lesswrong.com/posts/YTnzcZSbA69fMCjNo/ai-158-the-department-of-war
+- [pick] LW#114 "The Day After Move 37" by Eneasz (2026-03-10, 43pts) — worth reading: personal reflection on a watershed AI moment (evoking AlphaGo Move 37), likely about cognitive/cultural adjustment to AI surpassing human-level performance in a new domain. https://www.lesswrong.com/posts/Amvp33TB8JSi6HA8u/the-day-after-move-37
