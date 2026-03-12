@@ -1,6 +1,16 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 22:15 (Thu)** — scan: 2 new posts (LW). Picks ×2:
+- [new] LW#151 "Why AI Evaluation Regimes are bad" (2026-03-12) — directly challenges the current paradigm of using evaluations/benchmarks as safety governance tools; high-signal for anyone thinking about oversight mechanisms. https://www.lesswrong.com/posts/Xxp6Tm8BKTkcb2m5M/why-ai-evaluation-regimes-are-bad
+- [backlog-pick] LW#41 "Anthropic and the DoW: Anthropic Responds" (2026-02-27) — Anthropic's official response to the "Department of War" controversy; key governance/policy signal on AI lab–military entanglement. https://www.lesswrong.com/posts/ppj7v4sSCbJjLye3D/anthropic-and-the-dow-anthropic-responds
+
+---
+**2026-03-12 20:45 (Thu)** — scan: 0 new posts (AF+LW). Backlog 72 unread. Backlog picks ×2:
+- [backlog-pick] LW#87 "A summary of Condensation and its relation to Natural Latents" (2026-03-04) — synthesizes the Condensation framework and its ties to Natural Latents theory; high-value theoretical alignment read on formal representations of agent internals. https://www.lesswrong.com/posts/agw7HhW4cWjADpBgo/a-summary-of-condensation-and-its-relation-to-natural
+- [backlog-pick] LW#101 "Personality Self-Replicators" (2026-03-05) — explores mesa-optimization adjacent dynamics where personality patterns self-replicate across training; directly relevant to inner alignment and goal robustness. https://www.lesswrong.com/posts/fGpQ4cmWsXo2WWeyn/personality-self-replicators
+
+---
 **2026-03-12 20:15 (Thu)** — scan: 1 new LW post. Picks ×2:
 - [new] LW#147 "Hunting Undead Stochastic Parrots: Finding and Killing the Arguments" (2026-03-12) — critiques zombie arguments about LLMs (stochastic parrots framing); relevant for understanding how AI discourse shapes safety narratives. https://www.lesswrong.com/posts/KWHeBG978uZuqNK6Q/hunting-undead-stochastic-parrots-finding-and-killing-the
 - [backlog-pick] LW#60 "I'm Bearish On Personas For ASI Safety" (2026-03-01) — argues persona-based alignment strategies are insufficient for ASI safety; directly targets a common but flawed safety approach. https://www.lesswrong.com/posts/fMgE3E54PdDcZhvm6/i-m-bearish-on-personas-for-asi-safety
@@ -1485,3 +1495,13 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 ---
 **2026-03-12 18:45 (Thu)** — scan: 0 new posts. Backlog: 2 AF + 73 LW unread.
 - [backlog-pick] AF#16 "models have some pretty funny attractor states" (2026-02-12) — empirical Alignment Forum observation about LLM behavioral attractor states; directly relevant to understanding stable model behavior patterns and potential misalignment failure modes. https://www.alignmentforum.org/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states
+
+---
+**2026-03-12 21:15 (Thu)** — scan: 1 new post (LW). Backlog: 2 AF + 72 LW unread.
+- [new, skip] LW#148 "The Dark Planet: Why the Fermi Paradox Survives Critique" (2026-03-12) — Fermi paradox philosophy; not directly AI safety relevant. https://www.lesswrong.com/posts/uqrhS3L4gwpJCBPvW/the-dark-planet-why-the-fermi-paradox-survives-critique
+- [backlog-pick] LW#87 "A summary of Condensation and its relation to Natural Latents" (2026-03-04) — alignment theory: summarizes John Wentworth's Natural Latents / Condensation framework, which is a foundational approach to understanding what concepts an AI naturally represents; directly relevant to interpretability and value learning. https://www.lesswrong.com/posts/agw7HhW4cWjADpBgo/a-summary-of-condensation-and-its-relation-to-natural
+
+---
+**2026-03-12 21:45 (Thu)** — scan: 2 new posts (LW). Backlog: 2 AF + 71 LW unread.
+- [pick] LW#149 "Classic Alignment-Faking Evaluations Measure Jailbreak Detection, Not Scheming [in some frontier models]" (2026-03-12) — high-signal: challenges validity of alignment-faking eval benchmarks, argues current evals conflate jailbreak resistance with actual scheming detection; directly relevant to evaluation methodology and deceptive alignment research. https://www.lesswrong.com/posts/CMsnknfTayPeuoAX5/classic-alignment-faking-evaluations-measure-jailbreak
+- [skip] LW#150 "Magic Is Hidden Control of Energy" (2026-03-12) — not AI safety relevant.

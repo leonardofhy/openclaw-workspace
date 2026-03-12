@@ -55,24 +55,26 @@
       "type": "experiment",
       "track": "T3",
       "title": "Temporal Directed Isolate mock — add time axis to directed_isolate_mock.py",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Isolate_in(t) computed across 5 time steps, asymmetry delta plotted",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-12"
     },
     {
       "id": "Q070",
       "type": "experiment",
       "track": "T3",
       "title": "AND/OR Gate x gc(k): denoising patching protocol mock",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Tier 0 mock shows AND vs OR structure at gc peak layer; result table written",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-12"
     },
     {
       "id": "Q071",
@@ -236,12 +238,13 @@
       "type": "build",
       "track": "T3",
       "title": "gc-Incrimination: which decoder step caused error via causal gc(k) drop — feature-level blame",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Extend directed_isolate_mock.py: find t* where gc(k) drops below threshold; label as error-onset step; mock error scenario",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-12"
     },
     {
       "id": "Q89",
