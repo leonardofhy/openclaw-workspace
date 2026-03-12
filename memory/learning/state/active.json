@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 0,
-    "build_remaining_today": 0,
+    "learn_remaining_today": 5,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 1,
-    "ideate_remaining_today": 0,
+    "ideate_remaining_today": 2,
     "budget_reset_date": "2026-03-12"
   },
   "stats": {
-    "total_cycles": 184,
+    "total_cycles": 185,
     "total_skips": 40,
     "papers_read_deep": 34,
     "papers_scanned": 37,
     "research_gaps": 24,
     "paper_ideas": 51,
     "paper_pitches": 2,
-    "code_artifacts": 52,
+    "code_artifacts": 53,
     "system_improvements": 7,
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-1801",
-    "action": "reflect",
-    "summary": "EOD reflect: 27 cycles (14 active, 13 skip). Key: 2 builds + 5 learns + 4 ideate + Gap#33 discovered. Tomorrow: build-first (Q087, Q071, Q083)."
+    "id": "c-20260312-2101",
+    "action": "build",
+    "summary": "Built gc_schelling_mock.py (Q087): Pearson r=0.96-0.979, gc-critical layers [2,3] = top Schelling layers [2,3]. Prediction confirmed."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
