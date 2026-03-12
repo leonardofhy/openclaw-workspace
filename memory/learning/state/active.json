@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-0915",
-    "action": "ideate",
-    "summary": "Generated 20 ideas from 5 sources; added Q084-Q088: gc blame attribution, latent ITD reps post-ablation, Whisper bias x SPIRIT, AAPE x gc peak layer, Schelling audio stability"
+    "id": "c-20260312-0945",
+    "action": "learn",
+    "summary": "arXiv scan: found arXiv:2603.06854 (Audio-Specialist Heads, Mar 6) — critical Paper A §2 related work; +8pp MMAU with audio steering; differentiates from gc(k) at head vs layer granularity. Queue full (25/25), flag for Leo."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
