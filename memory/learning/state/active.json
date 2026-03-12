@@ -28,12 +28,12 @@
   "budgets": {
     "learn_remaining_today": 0,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 2,
+    "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-12"
   },
   "stats": {
-    "total_cycles": 182,
+    "total_cycles": 183,
     "total_skips": 41,
     "papers_read_deep": 32,
     "papers_scanned": 37,
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-2145",
-    "action": "skip",
-    "summary": "All action budgets exhausted (learn=0, build=0, ideate=0); reflect=2 but end-of-day trigger requires >=22:00 (currently 21:45). Budgets reset 2026-03-13."
+    "id": "c-20260312-2215",
+    "action": "reflect",
+    "summary": "End-of-day digest: T5 unblocked, 7 active cycles, Q040 spec ready, queue full 25/25"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
