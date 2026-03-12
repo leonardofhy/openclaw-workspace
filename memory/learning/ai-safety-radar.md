@@ -1,6 +1,11 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 19:15 (Thu)** — scan: 0 new posts. Backlog: 2 AF + 73 LW unread. Backlog picks ×2:
+- [backlog-pick] LW#70 "Single Direction vs Low-Rank Refusal in Small LLMs" (2026-03-02) — mechanistic interpretability study comparing single-direction vs low-rank representations of refusal behavior in small LLMs; directly relevant to understanding and improving safety training geometry. https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1
+- [backlog-pick] LW#76 "Mass Surveillance w/ LLMs is the Default Outcome. Contracts Won't Change That." (2026-03-03) — argues LLM-enabled mass surveillance is a default trajectory that legal contracts cannot prevent; high-signal AI governance/societal risk framing. https://www.lesswrong.com/posts/drMm8QXsWYiPj7KQZ/mass-surveillance-w-llms-is-the-default-outcome-contracts
+
+---
 **2026-03-12 17:15 (Thu)** — scan: 0 new posts. Backlog: 81 unread (large queue). Backlog picks ×2:
 - [backlog-pick] LW#81 "White-Box Attacks on the Best Open-Weight Model: CCP Bias vs. Safety Training in Kimi K2.5" (2026-03-03) — adversarial white-box attack exposing political bias & safety training brittleness in top open-weight model; high-signal for alignment/safety training robustness. https://www.lesswrong.com/posts/sRNHWhoZfYpE6WH2r/white-box-attacks-on-the-best-open-weight-model-ccp-bias-vs
 - [backlog-pick] LW#74 "LLM coherentization as an obvious low-hanging fruit to try?" (2026-03-04) — proposes coherentizing LLM beliefs/values as a tractable alignment intervention; novel framing worth tracking. https://www.lesswrong.com/posts/ZaEGdjDQ3e9W6eNYW/llm-coherentization-as-an-obvious-low-hanging-fruit-to-try
@@ -1471,3 +1476,7 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 **2026-03-12 18:15 (Thu)** — scan: new LW posts arrived (77 unread, AF: 3 backlog). Picks:
 - [new-pick] LW [64] "I'm confused by the change in the METR trend" — METR capability-eval trend showing anomalous change; directly relevant to safety timelines and risk forecasting. https://www.lesswrong.com/posts/9ihaaXqdc3i328tLp/i-m-confused-by-the-change-in-the-metr-trend
 - [backlog-pick] AF [43] "Schelling Goodness, and Shared Morality as a Goal" — alignment theory: proposes Schelling points in moral space as coordination mechanism for value alignment. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
+
+---
+**2026-03-12 18:45 (Thu)** — scan: 0 new posts. Backlog: 2 AF + 73 LW unread.
+- [backlog-pick] AF#16 "models have some pretty funny attractor states" (2026-02-12) — empirical Alignment Forum observation about LLM behavioral attractor states; directly relevant to understanding stable model behavior patterns and potential misalignment failure modes. https://www.alignmentforum.org/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states
