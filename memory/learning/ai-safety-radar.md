@@ -1,6 +1,12 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 10:45 (Thu)** — scan: 0 new AF posts, 0 new LW posts; backlog AF=5, LW=82. Picked 2.
+
+- **[pick-1] AF** "The Refined Counterfactual Prisoner's Dilemma: An Attempt to Explode Decision-Theoretic Consequentialism" — fresh decision-theory paper attacking DTC consequentialism, directly relevant to agent foundations & alignment. <https://www.alignmentforum.org/posts/WisQvECYPGebryRPD>
+- **[pick-2] LW** "Dwarkesh Patel on the Anthropic DoW dispute" — timely commentary on Anthropic governance/internal dynamics, relevant for understanding field politics. <https://www.lesswrong.com/posts/PDWFed8JT9FitPkzQ>
+
+---
 **2026-03-12 10:15 (Thu)** — scan: 1 new post (LW, off-topic); backlog 88 unread. Picked 2 from backlog.
 
 **[backlog-pick-1]** *"The Refined Counterfactual Prisoner's Dilemma: An Attempt to Explode Decision-Theoretic Consequentialism"* — Alignment Forum, 2026-03-11. Challenges decision-theoretic consequentialism via a refined CPD; core decision theory is foundational to alignment (corrigibility, value learning, shutdown problems).

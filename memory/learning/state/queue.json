@@ -51,23 +51,10 @@
       "due": null
     },
     {
-      "id": "Q040",
-      "type": "experiment",
-      "track": "T5",
-      "title": "Audio-RAVEL × ESN leakage causal scorecard",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Produce Cause/Isolate scores under 2x2 emotion-speaker controls; summarize leakage pattern",
-      "created": "2026-03-09",
-      "due": null,
-      "completed": "2026-03-12"
-    },
-    {
       "id": "Q069",
       "type": "experiment",
       "track": "T3",
-      "title": "Temporal Directed Isolate mock — add time axis to directed_isolate_mock.py",
+      "title": "Temporal Directed Isolate mock \u2014 add time axis to directed_isolate_mock.py",
       "status": "ready",
       "priority": 2,
       "blocked_by": null,
@@ -100,19 +87,6 @@
       "due": null
     },
     {
-      "id": "Q072",
-      "type": "write",
-      "track": "T5",
-      "title": "Causal Abstraction Consistency M9: Paper B metric formal definition + mock example",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "M9 formula written, mock example computed, Paper B §3 updated",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-12"
-    },
-    {
       "id": "Q073",
       "type": "build",
       "track": "T3",
@@ -128,11 +102,11 @@
       "id": "Q074",
       "type": "design",
       "track": "T3",
-      "title": "Modality Collapse = gc Suppression: design doc for Paper A §4 addition",
+      "title": "Modality Collapse = gc Suppression: design doc for Paper A \u00a74 addition",
       "status": "ready",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "Design doc: gc threshold test for modality collapse detection + Paper A §4 addition",
+      "definition_of_done": "Design doc: gc threshold test for modality collapse detection + Paper A \u00a74 addition",
       "created": "2026-03-12",
       "due": null
     },
@@ -147,32 +121,6 @@
       "definition_of_done": "IIA scores before/after simulated instruction tuning; circuit integrity vs accuracy table",
       "created": "2026-03-12",
       "due": null
-    },
-    {
-      "id": "Q076",
-      "type": "write",
-      "track": "T5",
-      "title": "Schelling SAE Features M10: Paper B metric for cross-seed feature stability",
-      "status": "done",
-      "priority": 3,
-      "blocked_by": null,
-      "definition_of_done": "M10 Schelling stability formula, AudioSAE 50% stability data cited, Paper B §3 integrated",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-12"
-    },
-    {
-      "id": "Q077",
-      "type": "write",
-      "track": "T3",
-      "title": "Paper A §1 rewrite: incorporate Billa (2026) CEH + Lee (2026) as behavioral motivation",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Paper A §1 updated with Billa arXiv:2602.17598 cite + abstract v08 mentions behavioral baseline",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-12"
     },
     {
       "id": "Q078",
@@ -214,11 +162,11 @@
       "id": "Q081",
       "type": "experiment",
       "track": "T5",
-      "title": "M9 x M7 cross-correlation: causal abstraction consistency vs ΔGS at same layer",
+      "title": "M9 x M7 cross-correlation: causal abstraction consistency vs \u0394GS at same layer",
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
-      "definition_of_done": "Mock script: compute M9 + M7 per layer; scatter plot; Pearson r; prediction=layers with high M9 also have high ΔGS",
+      "definition_of_done": "Mock script: compute M9 + M7 per layer; scatter plot; Pearson r; prediction=layers with high M9 also have high \u0394GS",
       "created": "2026-03-12",
       "due": null
     },
@@ -247,19 +195,6 @@
       "due": null
     },
     {
-      "id": "Q084",
-      "type": "write",
-      "track": "T3",
-      "title": "Paper pitch: gc(k) as CPU-feasible regulatory audit tool (no GPU required)",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "500-word pitch: gc(k) for regulators — checkpoint auditing without GPU; cite compute-constrained MI angle; Paper A §5 or standalone note",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-12"
-    },
-    {
       "id": "Q085",
       "type": "build",
       "track": "T3",
@@ -279,7 +214,7 @@
       "status": "ready",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "Design doc: 5 controlled environments (clean/noise/accent/emotion/code-switch); Paper A §2 addition; measurable behavioral proxy for listening vs guessing",
+      "definition_of_done": "Design doc: 5 controlled environments (clean/noise/accent/emotion/code-switch); Paper A \u00a72 addition; measurable behavioral proxy for listening vs guessing",
       "created": "2026-03-12",
       "due": null
     },
@@ -299,15 +234,81 @@
       "id": "Q088",
       "type": "build",
       "track": "T3",
-      "title": "gc-Incrimination: which decoder step caused error via causal gc(k) drop — feature-level blame",
+      "title": "gc-Incrimination: which decoder step caused error via causal gc(k) drop \u2014 feature-level blame",
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Extend directed_isolate_mock.py: find t* where gc(k) drops below threshold; label as error-onset step; mock error scenario",
       "created": "2026-03-12",
       "due": null
+    },
+    {
+      "id": "Q89",
+      "title": "Temporal gc(k) \u00d7 AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
+      "type": "build",
+      "track": "T3",
+      "priority": 1,
+      "status": "ready",
+      "dod": "Script extends Q069 temporal directed isolate + Q087 AND/OR gate tagging; plot temporal onset distribution per gate type on mock data",
+      "ideation_id": "I05",
+      "novelty": 5,
+      "feasibility": 4,
+      "created": "2026-03-12T10:34:16.860596"
+    },
+    {
+      "id": "Q90",
+      "title": "Audio Incrimination Graph: scaffold Tier-0 script that traces jailbreak SAE feature activation back to causal gc(k) step",
+      "type": "build",
+      "track": "T5",
+      "priority": 1,
+      "status": "ready",
+      "dod": "incrimination_graph.py runs on mock data; outputs blame dict {layer: feature_ids} from SAE patrol + gc(k) step-drop detection",
+      "ideation_id": "I07",
+      "novelty": 5,
+      "feasibility": 4,
+      "created": "2026-03-12T10:34:16.860603"
+    },
+    {
+      "id": "Q91",
+      "title": "Persona \u00d7 AND/OR Gate: extend persona_gc_benchmark.py to measure AND vs OR gate prevalence per persona condition",
+      "type": "build",
+      "track": "T3",
+      "priority": 1,
+      "status": "ready",
+      "dod": "persona_gate_analysis.py extends existing script; measures AND/OR ratio per persona; mock mode passes",
+      "ideation_id": "I09",
+      "novelty": 4,
+      "feasibility": 5,
+      "created": "2026-03-12T10:34:16.860606"
+    },
+    {
+      "id": "Q92",
+      "title": "Schelling Features \u00d7 AND/OR Gates: are cross-seed-stable SAE features more likely to be AND-gates?",
+      "type": "build",
+      "track": "T3",
+      "priority": 1,
+      "status": "ready",
+      "dod": "Script combines Q080 AND-gate Schelling + Q082 phoneme Schelling outputs; computes AND vs OR fraction among top-k stable features",
+      "ideation_id": "I13",
+      "novelty": 4,
+      "feasibility": 5,
+      "created": "2026-03-12T10:34:16.860607"
+    },
+    {
+      "id": "Q93",
+      "title": "Collapse Onset \u00d7 AND/OR Gate: does audio info collapse (Q085 onset step) coincide with AND-gate feature deactivation?",
+      "type": "build",
+      "track": "T3",
+      "priority": 2,
+      "status": "ready",
+      "dod": "collapse_gate_analysis.py: detect Q085 collapse step on mock data, check if AND-gate features deactivate at same step vs OR-gates; plot deactivation profile",
+      "ideation_id": "I17",
+      "novelty": 4,
+      "feasibility": 5,
+      "created": "2026-03-12T10:34:16.860609"
     }
   ],
   "archived_count": 54,
-  "last_archived": "2026-03-06T05:33:34.401204+08:00"
+  "last_archived": "2026-03-06T05:33:34.401204+08:00",
+  "last_updated": "2026-03-12T10:34:16.860956"
 }
