@@ -1,6 +1,12 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 15:15 (Thu)** — scan: 1 new LW post (today), 0 new AF posts. Backlog: 80 unread (LW: 78, AF: 4).
+
+- **NEW** [LessWrong] "Factories are already running the dataset for AI" — cryptic title but likely about industrial-scale synthetic data pipelines already shaping AI training; worth reading for data-centric safety implications. <https://www.lesswrong.com/posts/fpfAqN3nwEdLymrrJ/factories-are-already-running-the-dataset-for-ai>
+- **BACKLOG-PICK** [LessWrong] "Context Awareness: Constitutional AI can mitigate Emergent Misalignment" — directly relevant to CAI + emergent misalignment; explores whether constitutional constraints generalize under distribution shift. <https://www.lesswrong.com/posts/yA2hquLrFFSFDtcoE/context-awareness-constitutional-ai-can-mitigate-emergent>
+
+---
 **2026-03-12 13:50 (Thu)** — scan: 1 new AF post, 0 new LW posts. Backlog: 83 unread total (LW: 78, AF: 4).
 
 - **[pick-1]** *"Payorian cooperation is easy with Kripke frames"* — Alignment Forum, 2026-03-09. Decision-theoretic exploration of agent cooperation via Kripke semantics; directly relevant to formal foundations of corrigibility, coordination, and how agents reason about mutual commitment in alignment contexts. <https://www.alignmentforum.org/posts/LaCP6WyNzX8kiZn3w/payorian-cooperation-is-easy-with-kripke-frames>
@@ -1433,3 +1439,7 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 
 **[no-new]** No fresh posts (AF: 0 new, LW: 0 new, large backlog). **Backlog pick: "How to Design Environments for Understanding Model Motives"** — LessWrong, 2026-03-02. Directly relevant to alignment evals: proposes frameworks for probing whether models have goal-directed behavior, useful for Leo's interpretability/safety research direction.
 - Link: <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
+
+**2026-03-12 14:45 (Thu)** — scan: 0 new posts (AF: 0, LW: 0). Backlog: 83 unread (LW: 79, AF: 4). Backlog picks:
+- [backlog-pick] AF [43] "Schelling Goodness, and Shared Morality as a Goal" — explores shared morality as an alignment target; relevant to value alignment theory. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
+- [backlog-pick] AF [17] "Human-like metacognitive skills will reduce LLM slop and aid alignment and capabilities" — proposes metacognition as lever for both alignment and capability quality. https://www.alignmentforum.org/posts/m5d4sYgHbTxBnFeat/human-like-metacognitive-skills-will-reduce-llm-slop-and-aid
