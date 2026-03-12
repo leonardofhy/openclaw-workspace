@@ -33,8 +33,8 @@
     "budget_reset_date": "2026-03-12"
   },
   "stats": {
-    "total_cycles": 181,
-    "total_skips": 40,
+    "total_cycles": 182,
+    "total_skips": 41,
     "papers_read_deep": 32,
     "papers_scanned": 37,
     "research_gaps": 23,
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-1145",
-    "action": "ideate",
-    "summary": "Generated 20 cross-pollination ideas (all N+F>=7); Q089 Audio-Incrimination and Q090 Subspace-Ablation-Defense added; queue full at 25; 4 top ideas pending for next slot"
+    "id": "c-20260312-1345",
+    "action": "skip",
+    "summary": "All budgets exhausted (learn=0, build=0, ideate=0); no reflect trigger active. Principled skip. Budgets reset tomorrow."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
