@@ -1,6 +1,17 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 13:50 (Thu)** — scan: 1 new AF post, 0 new LW posts. Backlog: 83 unread total (LW: 78, AF: 4).
+
+- **[pick-1]** *"Payorian cooperation is easy with Kripke frames"* — Alignment Forum, 2026-03-09. Decision-theoretic exploration of agent cooperation via Kripke semantics; directly relevant to formal foundations of corrigibility, coordination, and how agents reason about mutual commitment in alignment contexts. <https://www.alignmentforum.org/posts/LaCP6WyNzX8kiZn3w/payorian-cooperation-is-easy-with-kripke-frames>
+
+---
+**2026-03-12 13:15 (Thu)** — scan: 83 unread total (LW: 78, AF: 5). Selected 2 high-signal candidates.
+
+- **[pick-1]** *"GPT-5.4 Is A Substantial Upgrade"* — LessWrong, 2026-03-11. Direct capabilities benchmark update; critical for tracking frontier AI capability trajectory and adjusting safety threat model. <https://www.lesswrong.com/posts/sKCYLEN5EYLuokDft/gpt-5-4-is-a-substantial-upgrade>
+- **[pick-2]** *"Controversy surrounding Moltbook obscures its very real, novel, unexpressed and rapidly emerging safety risks"* — LessWrong, 2026-03-02. Highlights emerging novel safety failure modes from new model (Moltbook); early detection mechanism for unknown unknowns in model behavior. <https://www.lesswrong.com/posts/scnEbThKS67NTzfgS/controversy-surrounding-moltbook-obscures-its-very-real>
+
+---
 **2026-03-12 10:45 (Thu)** — scan: 0 new AF posts, 0 new LW posts; backlog AF=5, LW=82. Picked 2.
 
 - **[pick-1] AF** "The Refined Counterfactual Prisoner's Dilemma: An Attempt to Explode Decision-Theoretic Consequentialism" — fresh decision-theory paper attacking DTC consequentialism, directly relevant to agent foundations & alignment. <https://www.alignmentforum.org/posts/WisQvECYPGebryRPD>
@@ -1416,3 +1427,9 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 
 **[no-new]** No fresh posts this cycle (AF: 0 new, LW: 0 new). **Backlog pick: "Schelling Goodness, and Shared Morality as a Goal"** — Alignment Forum, 2026-02-28. Addresses core value alignment: how to define and coordinate on shared moral objectives when multiple AGI systems exist; foundational for intent alignment & multi-agent safety.
 - Link: <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
+
+---
+## 2026-03-12 14:16 (Asia/Taipei)
+
+**[no-new]** No fresh posts (AF: 0 new, LW: 0 new, large backlog). **Backlog pick: "How to Design Environments for Understanding Model Motives"** — LessWrong, 2026-03-02. Directly relevant to alignment evals: proposes frameworks for probing whether models have goal-directed behavior, useful for Leo's interpretability/safety research direction.
+- Link: <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
