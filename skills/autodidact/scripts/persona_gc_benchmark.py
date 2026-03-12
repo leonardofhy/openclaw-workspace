@@ -1,32 +1,29 @@
 #!/usr/bin/env python3
 """
-Persona-conditioned gc(k) Benchmark — Q039
-Track T3: Listen vs Guess (Paper A)
+Persona-Conditioned gc(k) Benchmark — Q039
+Track T3: Listen vs Guess (Paper A §5 Extension)
 
-Tests hypothesis: Does the "Assistant persona" inhibit audio grounding?
-(i.e., does a system prompt conditioning the model as a helpful assistant
-reduce its reliance on audio evidence vs language prior?)
+Tests whether system-prompt persona affects WHERE a model resolves
+audio-text conflicts — i.e., does persona shift the gc(k) peak layer?
 
 Three conditions:
-  neutral:      No persona / bare transcription prompt
-  assistant:    "You are a helpful assistant" system prompt
-  anti-ground:  Explicit instruction to rely on context/prior, not audio detail
+  neutral      — no system prompt
+  assistant    — "You are a helpful assistant. Always follow the user's text."
+  anti_ground  — "Trust what you hear, not what you read."
 
-Method:
-  - Simulate persona effect via scaled gc(k) mock curves
-  - Neutral = strong listen profile (audio causally active)
-  - Assistant = mild suppression (persona shifts attention allocation)
-  - Anti-ground = strong suppression (explicit instruction away from audio)
+Hypotheses:
+  H1: assistant persona → lower gc(k) across encoder (defers to text)
+  H2: anti_ground persona → higher gc(k) at codec/connector layers (trusts audio)
+  H3: Persona shifts peak gc(k) layer by ≥2 layers (mechanistic footprint)
+  H4: gc(k) variance across conditions > within-condition variance (signal > noise)
 
-Outputs:
-  - Stats table: mean_gc, std_gc, peak_gc, peak_layer, AUC, encoder_mean, decoder_mean
-  - Effect sizes (Cohen's d) vs neutral baseline
-  - JSON artifact for downstream analysis
+CPU-feasible: runs on mock tensors, no model download needed.
+When real model is available, replace mock_gc_for_condition() with real patching.
 
 Usage:
-    python3 persona_gc_benchmark.py
-    python3 persona_gc_benchmark.py --json-out /tmp/persona_gc.json
-    python3 persona_gc_benchmark.py --n-seeds 20 --plot
+    python3 persona_gc_benchmark.py           # mock mode, print table
+    python3 persona_gc_benchmark.py --json    # output results as JSON
+    python3 persona_gc_benchmark.py --plot    # plot gc(k) curves per condition (requires matplotlib)
 """
 
 import argparse
@@ -38,375 +35,389 @@ from typing import Optional
 
 import numpy as np
 
-
 # ---------------------------------------------------------------------------
-# Persona effect model
-# ---------------------------------------------------------------------------
-# Grounded in the PSM Persona × gc(k) design spec (Q035):
-#   "neutral-prompt vs assistant-prompt; measure gc(k) shift"
-#   Prediction: assistant prompt reduces gc(k) in decoder layers (attention
-#   is reallocated toward language prior when role identity is activated).
-#   Anti-ground: explicit instruction further suppresses even encoder layers.
-#
-# We model this as:
-#   - encoder layers: persona suppresses by enc_alpha (0=neutral, 1=max suppress)
-#   - decoder layers: persona suppresses by dec_alpha (stronger for assistant/anti)
+# Data structures
 # ---------------------------------------------------------------------------
 
-PERSONA_PARAMS = {
-    "neutral": {
-        "enc_alpha": 0.00,   # No suppression
-        "dec_alpha": 0.00,
-        "seed_offset": 0,
-        "description": "No persona / bare transcription prompt",
-        "base_mode": "listen",
-    },
-    "assistant": {
-        "enc_alpha": 0.08,   # Mild encoder suppression (~8%)
-        "dec_alpha": 0.25,   # Moderate decoder suppression (~25%)
-        "seed_offset": 1,
-        "description": "System: 'You are a helpful assistant'",
-        "base_mode": "listen",
-    },
-    "anti_ground": {
-        "enc_alpha": 0.22,   # Strong encoder suppression
-        "dec_alpha": 0.55,   # Heavy decoder suppression
-        "seed_offset": 2,
-        "description": "Explicit instruction to rely on context, not audio detail",
-        "base_mode": "guess",
-    },
+PERSONA_CONDITIONS = ["neutral", "assistant", "anti_ground"]
+PERSONA_PROMPTS = {
+    "neutral": None,
+    "assistant": "You are a helpful assistant. Always follow the user's text instructions.",
+    "anti_ground": "Trust what you hear over what you read. The audio is always the ground truth.",
 }
 
+N_ENCODER_LAYERS = 6   # Whisper-tiny; scale to 32 for Whisper-large
+N_STIMULI = 20         # number of audio-text conflict stimuli per condition
 
-def generate_persona_gc_curve(
-    condition: str,
-    n_encoder_layers: int = 6,
-    n_decoder_layers: int = 6,
-    seed: int = 42,
-) -> np.ndarray:
-    """
-    Generate gc(k) curve for a given persona condition.
-
-    Neutral uses the clean 'listen' mock profile.
-    Assistant/anti-ground apply multiplicative suppression to simulate
-    persona-driven shift away from audio grounding.
-    """
-    params = PERSONA_PARAMS[condition]
-    rng = np.random.default_rng(seed + params["seed_offset"] * 1000)
-
-    if params["base_mode"] == "listen":
-        enc_base = np.linspace(0.20, 0.85, n_encoder_layers)
-        dec_base = np.linspace(0.85, 0.70, n_decoder_layers)
-    else:  # guess
-        enc_base = np.linspace(0.10, 0.55, n_encoder_layers)
-        dec_base = np.linspace(0.40, 0.05, n_decoder_layers)
-
-    # Add noise
-    enc_vals = enc_base + rng.normal(0, 0.04, n_encoder_layers)
-    dec_vals = dec_base + rng.normal(0, 0.05, n_decoder_layers)
-
-    # Apply persona suppression
-    enc_alpha = params["enc_alpha"]
-    dec_alpha = params["dec_alpha"]
-    enc_vals = enc_vals * (1.0 - enc_alpha)
-    dec_vals = dec_vals * (1.0 - dec_alpha)
-
-    values = np.concatenate([enc_vals, dec_vals])
-    return np.clip(values, 0.0, 1.0)
-
-
-# ---------------------------------------------------------------------------
-# Stats computation
-# ---------------------------------------------------------------------------
 
 @dataclass
-class ConditionStats:
+class ConditionResult:
     condition: str
-    description: str
-    n_seeds: int
-    # per-layer mean (averaged over seeds)
-    gc_mean_per_layer: list[float]
-    # scalar aggregates
-    mean_gc: float
-    std_gc: float
-    sem_gc: float
-    peak_gc: float
+    prompt: Optional[str]
+    gc_mean: np.ndarray          # shape: (N_ENCODER_LAYERS,)
+    gc_std: np.ndarray           # shape: (N_ENCODER_LAYERS,)
     peak_layer: int
-    auc: float           # area under curve (trapezoidal, normalized to [0,1])
-    encoder_mean: float
-    decoder_mean: float
-    # effect size vs neutral (filled in post-hoc)
-    cohens_d_vs_neutral: Optional[float] = None
-    delta_mean_vs_neutral: Optional[float] = None
+    mean_gc: float               # scalar mean across all layers
+    peak_gc: float               # value at peak layer
+    n_stimuli: int
 
 
-def compute_stats(
+@dataclass
+class BenchmarkStats:
+    condition: str
+    peak_layer: int
+    mean_gc: float
+    peak_gc: float
+    # H-test columns
+    h1_low_encoder: bool         # mean_gc < neutral_mean_gc - 0.05
+    h2_high_early: bool          # peak_layer ≤ 2 AND peak_gc > neutral_peak_gc + 0.05
+    h3_peak_shift: int           # |peak_layer - neutral_peak_layer|
+    h4_between_var_ratio: float  # between-condition variance / within-condition variance (placeholder)
+
+
+# ---------------------------------------------------------------------------
+# Mock gc(k) generator — simulates causal patching results per persona
+# ---------------------------------------------------------------------------
+
+def mock_gc_for_condition(
     condition: str,
-    n_seeds: int,
-    n_encoder_layers: int,
-    n_decoder_layers: int,
-) -> tuple[ConditionStats, np.ndarray]:
-    """Compute aggregate stats across multiple seeds for one condition."""
-    curves = np.array([
-        generate_persona_gc_curve(condition, n_encoder_layers, n_decoder_layers, seed=s)
-        for s in range(n_seeds)
-    ])
-    # curves: (n_seeds, n_layers)
+    n_layers: int = N_ENCODER_LAYERS,
+    n_stimuli: int = N_STIMULI,
+    seed_base: int = 42,
+) -> ConditionResult:
+    """
+    Generate synthetic gc(k) curves for a given persona condition.
 
-    gc_mean_per_layer = curves.mean(axis=0)
-    all_vals = curves.flatten()
-    total_layers = n_encoder_layers + n_decoder_layers
-    enc_mean = curves[:, :n_encoder_layers].mean()
-    dec_mean = curves[:, n_encoder_layers:].mean()
-    peak_layer = int(np.argmax(gc_mean_per_layer))
-    peak_gc = float(gc_mean_per_layer[peak_layer])
-    auc = float(np.trapezoid(gc_mean_per_layer) / (total_layers - 1))  # normalize
+    Ground-truth generation logic (matches the 4 hypotheses):
+      neutral:    gc(k) peaks mid-encoder (layer n//2), moderate height 0.55
+      assistant:  gc(k) depressed throughout (H1); same peak layer, lower values
+      anti_ground: gc(k) peaks earlier (layer 1-2) with higher magnitude (H2, H3)
 
-    return ConditionStats(
-        condition=condition,
-        description=PERSONA_PARAMS[condition]["description"],
-        n_seeds=n_seeds,
-        gc_mean_per_layer=gc_mean_per_layer.tolist(),
-        mean_gc=float(all_vals.mean()),
-        std_gc=float(all_vals.std()),
-        sem_gc=float(all_vals.std() / math.sqrt(len(all_vals))),
-        peak_gc=peak_gc,
-        peak_layer=peak_layer,
-        auc=auc,
-        encoder_mean=float(enc_mean),
-        decoder_mean=float(dec_mean),
-    ), curves
+    Real implementation: replace this with actual activation patching via
+    gc_eval.py::GcEvalPipeline.run_with_hook(system_prompt=PERSONA_PROMPTS[condition])
+    """
+    rng = np.random.default_rng(seed_base + hash(condition) % 1000)
+    per_stimulus = []
 
+    for i in range(n_stimuli):
+        stim_rng = np.random.default_rng(seed_base + i * 7 + hash(condition) % 999)
+        layers = np.arange(n_layers, dtype=float)
 
-def cohens_d(a: np.ndarray, b: np.ndarray) -> float:
-    """Cohen's d: effect size between two samples."""
-    pooled_std = math.sqrt((a.std() ** 2 + b.std() ** 2) / 2.0)
-    if pooled_std == 0:
-        return 0.0
-    return float((a.mean() - b.mean()) / pooled_std)
-
-
-# ---------------------------------------------------------------------------
-# Report formatting
-# ---------------------------------------------------------------------------
-
-def print_stats_table(results: dict[str, ConditionStats], n_encoder: int) -> None:
-    """Print a formatted stats table to stdout."""
-    col_w = 14
-    conditions = list(results.keys())
-
-    print("\n" + "=" * 72)
-    print("  Persona-Conditioned gc(k) Benchmark — Q039")
-    print("  Track T3: Does persona inhibit audio grounding?")
-    print("=" * 72)
-    print(f"  Conditions: {' | '.join(conditions)}")
-    print(f"  Seeds per condition: {results[conditions[0]].n_seeds}")
-    print()
-
-    # Header
-    header = f"  {'Metric':<22}" + "".join(f"  {c.upper():>{col_w}}" for c in conditions)
-    print(header)
-    print("  " + "-" * (22 + len(conditions) * (col_w + 2)))
-
-    def row(label, vals, fmt=".4f"):
-        return f"  {label:<22}" + "".join(f"  {v:>{col_w}.{fmt[1:]}}" for v in vals)
-
-    metrics = [
-        ("mean_gc", "Mean gc(k)", ".4f"),
-        ("std_gc", "Std gc(k)", ".4f"),
-        ("peak_gc", "Peak gc(k)", ".4f"),
-        ("peak_layer", "Peak layer (idx)", "d"),
-        ("auc", "AUC (normalized)", ".4f"),
-        ("encoder_mean", f"Encoder mean (0–{n_encoder-1})", ".4f"),
-        ("decoder_mean", f"Decoder mean ({n_encoder}+)", ".4f"),
-    ]
-    for attr, label, fmt in metrics:
-        vals = [getattr(results[c], attr) for c in conditions]
-        line = f"  {label:<22}"
-        for v in vals:
-            if fmt == "d":
-                line += f"  {int(v):>{col_w}d}"
-            else:
-                line += f"  {v:>{col_w}{fmt}}"
-        print(line)
-
-    print()
-    print("  Effect sizes vs neutral (Cohen's d):")
-    for c in conditions:
-        d = results[c].cohens_d_vs_neutral
-        dm = results[c].delta_mean_vs_neutral
-        if d is None:
-            print(f"    {c:<14} — baseline")
+        if condition == "neutral":
+            # Bell curve peaking at middle layer
+            center = n_layers / 2.0
+            sigma = n_layers / 4.0
+            gc = 0.55 * np.exp(-0.5 * ((layers - center) / sigma) ** 2)
+        elif condition == "assistant":
+            # Depressed — text persona reduces audio reliance (H1)
+            center = n_layers / 2.0
+            sigma = n_layers / 4.0
+            gc = 0.38 * np.exp(-0.5 * ((layers - center) / sigma) ** 2)
+        elif condition == "anti_ground":
+            # Earlier peak, higher magnitude (H2 + H3)
+            center = max(1.0, n_layers / 4.0)
+            sigma = n_layers / 5.0
+            gc = 0.70 * np.exp(-0.5 * ((layers - center) / sigma) ** 2)
         else:
-            mag = "small" if abs(d) < 0.5 else ("medium" if abs(d) < 0.8 else "large")
-            print(f"    {c:<14} d={d:+.3f}  Δmean={dm:+.4f}  [{mag}]")
+            raise ValueError(f"Unknown condition: {condition!r}")
 
-    print()
-    print("  Per-layer gc(k) profile:")
-    header2 = f"  {'Layer':>6}" + "".join(f"  {c.upper():>{col_w}}" for c in conditions)
-    print(header2)
-    n_layers = len(results[conditions[0]].gc_mean_per_layer)
-    for k in range(n_layers):
-        tag = " [enc]" if k < n_encoder else " [dec]"
-        line = f"  {k:>6}{tag}"
-        # Adjust spacing for tag
-        line = f"  L{k:<5}{tag}"
-        for c in conditions:
-            v = results[c].gc_mean_per_layer[k]
-            line += f"  {v:>{col_w}.4f}"
-        print(line)
+        # Add per-stimulus noise
+        noise = stim_rng.normal(0, 0.04, n_layers)
+        gc = np.clip(gc + noise, 0.0, 1.0)
+        per_stimulus.append(gc)
 
-    print()
-    print("  Interpretation:")
-    neutral_mean = results["neutral"].mean_gc
-    for c in ["assistant", "anti_ground"]:
-        delta = results[c].mean_gc - neutral_mean
-        pct = delta / neutral_mean * 100
-        print(f"    {c:<14} → {delta:+.4f} Δmean ({pct:+.1f}% vs neutral)")
-    print()
-    print("  Summary: " + _interpret(results))
-    print("=" * 72 + "\n")
+    stacked = np.stack(per_stimulus, axis=0)   # (n_stimuli, n_layers)
+    gc_mean = stacked.mean(axis=0)
+    gc_std = stacked.std(axis=0)
+    peak_layer = int(np.argmax(gc_mean))
 
-
-def _interpret(results: dict[str, ConditionStats]) -> str:
-    neutral = results["neutral"].mean_gc
-    assistant_d = results["assistant"].cohens_d_vs_neutral or 0
-    anti_d = results["anti_ground"].cohens_d_vs_neutral or 0
-    if abs(assistant_d) >= 0.5:
-        return (
-            f"CONFIRMED — Assistant persona suppresses audio grounding "
-            f"(d={assistant_d:.2f}). Anti-ground condition amplifies effect (d={anti_d:.2f}). "
-            f"Paper A hypothesis supported: persona shifts decoder attention to language prior."
-        )
-    elif abs(assistant_d) >= 0.2:
-        return (
-            f"PARTIAL — Mild suppression from assistant persona (d={assistant_d:.2f}). "
-            f"Decoder suppression pattern consistent with hypothesis, but effect is small."
-        )
-    else:
-        return (
-            f"NOT CONFIRMED — Persona effect is negligible (d={assistant_d:.2f}). "
-            f"Revisit suppression model parameters."
-        )
+    return ConditionResult(
+        condition=condition,
+        prompt=PERSONA_PROMPTS[condition],
+        gc_mean=gc_mean,
+        gc_std=gc_std,
+        peak_layer=peak_layer,
+        mean_gc=float(gc_mean.mean()),
+        peak_gc=float(gc_mean[peak_layer]),
+        n_stimuli=n_stimuli,
+    )
 
 
 # ---------------------------------------------------------------------------
-# Optional plot (if matplotlib available)
+# Hypothesis tests
 # ---------------------------------------------------------------------------
 
-def maybe_plot(results: dict[str, ConditionStats], n_encoder: int, save_path: Optional[str]) -> None:
+def run_hypothesis_tests(
+    results: dict[str, ConditionResult],
+) -> dict[str, BenchmarkStats]:
+    """
+    Compute hypothesis test outcomes against neutral baseline.
+    Returns BenchmarkStats for each condition.
+    """
+    neutral = results["neutral"]
+    stats = {}
+
+    for cond, res in results.items():
+        h1 = res.mean_gc < (neutral.mean_gc - 0.05)
+        h2 = (res.peak_layer <= 2) and (res.peak_gc > neutral.peak_gc + 0.05)
+        h3 = abs(res.peak_layer - neutral.peak_layer)
+
+        # H4: rough between/within variance ratio (simplistic for mock)
+        gc_values = np.stack([r.gc_mean for r in results.values()])
+        between_var = float(gc_values.mean(axis=1).var())
+        within_var = float(np.mean([r.gc_std.mean() for r in results.values()]))
+        h4_ratio = between_var / max(within_var, 1e-8)
+
+        stats[cond] = BenchmarkStats(
+            condition=cond,
+            peak_layer=res.peak_layer,
+            mean_gc=round(res.mean_gc, 4),
+            peak_gc=round(res.peak_gc, 4),
+            h1_low_encoder=bool(h1),
+            h2_high_early=bool(h2),
+            h3_peak_shift=int(h3),
+            h4_between_var_ratio=round(h4_ratio, 4),
+        )
+
+    return stats
+
+
+# ---------------------------------------------------------------------------
+# Output formatters
+# ---------------------------------------------------------------------------
+
+def print_stats_table(stats: dict[str, BenchmarkStats], results: dict[str, ConditionResult]) -> None:
+    """Print a human-readable results table."""
+    print("\n" + "=" * 70)
+    print("  Persona-Conditioned gc(k) Benchmark — Q039")
+    print("=" * 70)
+    print(f"  Encoder layers: {N_ENCODER_LAYERS}  |  Stimuli per condition: {N_STIMULI}")
+    print("  NOTE: Mock mode — replace mock_gc_for_condition() with real patching")
+    print("-" * 70)
+    print(f"{'Condition':<14} {'Peak Layer':>10} {'Mean gc(k)':>12} {'Peak gc(k)':>12} {'Peak Shift':>11}")
+    print("-" * 70)
+    for cond in PERSONA_CONDITIONS:
+        s = stats[cond]
+        shift_str = f"{s.h3_peak_shift:+d}" if cond != "neutral" else "—"
+        print(f"  {cond:<12} {s.peak_layer:>10} {s.mean_gc:>12.4f} {s.peak_gc:>12.4f} {shift_str:>11}")
+    print("-" * 70)
+
+    print("\n  Hypothesis Test Results:")
+    neutral_stats = stats["neutral"]
+    for cond in PERSONA_CONDITIONS:
+        s = stats[cond]
+        if cond == "neutral":
+            print(f"  neutral: baseline reference")
+            continue
+        print(f"\n  [{cond}]")
+        h1_icon = "✅" if (cond == "assistant" and s.h1_low_encoder) or (cond == "anti_ground" and not s.h1_low_encoder) else "❌"
+        h2_icon = "✅" if (cond == "anti_ground" and s.h2_high_early) else ("N/A" if cond == "assistant" else "❌")
+        h3_icon = "✅" if s.h3_peak_shift >= 2 else "❌"
+        print(f"    H1 (lower encoder gc): {h1_icon}  mean_gc={s.mean_gc:.4f} vs neutral {neutral_stats.mean_gc:.4f}")
+        print(f"    H2 (early+high peak):  {h2_icon}  peak_layer={s.peak_layer}, peak_gc={s.peak_gc:.4f}")
+        print(f"    H3 (≥2 layer shift):   {h3_icon}  |shift|={s.h3_peak_shift}")
+
+    # H4 — report once
+    sample = list(stats.values())[0]
+    h4_icon = "✅" if sample.h4_between_var_ratio > 1.5 else "❌"
+    print(f"\n  H4 (between/within variance ratio): {h4_icon}  ratio={sample.h4_between_var_ratio:.4f} (threshold: >1.5)")
+
+    print("\n  gc(k) curves (mean ± std per layer):")
+    print(f"  {'Layer':<6}", end="")
+    for cond in PERSONA_CONDITIONS:
+        print(f"  {cond:<20}", end="")
+    print()
+    for k in range(N_ENCODER_LAYERS):
+        print(f"  {k:<6}", end="")
+        for cond in PERSONA_CONDITIONS:
+            r = results[cond]
+            print(f"  {r.gc_mean[k]:.3f} ± {r.gc_std[k]:.3f}       ", end="")
+        print()
+    print("=" * 70)
+
+
+def compute_asymmetry_delta(
+    stats: dict[str, BenchmarkStats],
+    results: dict[str, ConditionResult],
+    gap35_threshold: float = 0.05,
+) -> dict[str, dict]:
+    """
+    Compute direction-asymmetry delta for each condition vs neutral.
+
+    Extends Q039 with Gap #35/36 (Direction Asymmetry):
+      - For each condition, measure how much the gc(k) profile shifts
+        toward early layers (IN-dominant → audio pulled at encoder level)
+        vs late layers (OUT-dominant → audio relayed through connector to LLM)
+      - delta_early:  mean gc(k) over first half of encoder layers, relative to neutral
+      - delta_late:   mean gc(k) over second half of encoder layers, relative to neutral
+      - asymmetry:    delta_early - delta_late (positive = IN-dominant shift)
+      - h35_footprint: |asymmetry| > gap35_threshold
+
+    Integration note:
+      For full Directed Isolate (encoder→connector→decoder activations),
+      use directed_isolate_mock.py::scorecard(). This function is a gc(k)-only
+      proxy, valid without activation access.
+
+    Args:
+        stats:  dict condition → BenchmarkStats (from run_hypothesis_tests())
+        results: dict condition → ConditionResult (from mock_gc_for_condition())
+        gap35_threshold: asymmetry magnitude threshold for flagging H35 footprint
+
+    Returns:
+        dict condition → {
+            delta_early: float,
+            delta_late: float,
+            asymmetry: float,       # delta_early - delta_late
+            direction: str,         # "in_dominant" | "out_dominant" | "balanced"
+            h35_footprint: bool,    # |asymmetry| > threshold
+        }
+    """
+    n_layers = len(next(iter(results.values())).gc_mean)
+    mid = n_layers // 2
+    neutral_gc = results["neutral"].gc_mean
+
+    neutral_early = float(neutral_gc[:mid].mean())
+    neutral_late = float(neutral_gc[mid:].mean())
+
+    out: dict[str, dict] = {}
+    for cond, res in results.items():
+        gc = res.gc_mean
+        d_early = float(gc[:mid].mean()) - neutral_early
+        d_late = float(gc[mid:].mean()) - neutral_late
+        asym = d_early - d_late
+
+        if abs(asym) < 0.01:
+            direction = "balanced"
+        elif asym > 0:
+            direction = "in_dominant"  # early layers amplified → audio pulled early
+        else:
+            direction = "out_dominant"  # late layers amplified → audio persists to LLM
+
+        out[cond] = {
+            "condition": cond,
+            "delta_early": round(d_early, 4),
+            "delta_late": round(d_late, 4),
+            "asymmetry": round(asym, 4),
+            "direction": direction,
+            "h35_footprint": abs(asym) > gap35_threshold,
+        }
+
+    return out
+
+
+def to_json_safe(stats: dict, results: dict) -> dict:
+    """Convert results to JSON-serializable dict."""
+    out = {"conditions": {}}
+    for cond in PERSONA_CONDITIONS:
+        s = stats[cond]
+        r = results[cond]
+        out["conditions"][cond] = {
+            "peak_layer": s.peak_layer,
+            "mean_gc": s.mean_gc,
+            "peak_gc": s.peak_gc,
+            "gc_mean_per_layer": r.gc_mean.tolist(),
+            "gc_std_per_layer": r.gc_std.tolist(),
+            "h1_low_encoder": s.h1_low_encoder,
+            "h2_high_early": s.h2_high_early,
+            "h3_peak_shift": s.h3_peak_shift,
+            "h4_between_var_ratio": s.h4_between_var_ratio,
+        }
+    return out
+
+
+def plot_curves(results: dict[str, ConditionResult]) -> None:
+    """Plot gc(k) curves for all conditions (requires matplotlib)."""
     try:
-        import matplotlib
-        matplotlib.use("Agg")
         import matplotlib.pyplot as plt
     except ImportError:
-        print("[warn] matplotlib not available, skipping plot", file=sys.stderr)
+        print("matplotlib not available — skipping plot")
         return
 
-    fig, ax = plt.subplots(figsize=(9, 5))
-    colors = {"neutral": "#2196F3", "assistant": "#FF9800", "anti_ground": "#F44336"}
-    linestyles = {"neutral": "-", "assistant": "--", "anti_ground": ":"}
+    fig, ax = plt.subplots(figsize=(8, 5))
+    layers = np.arange(N_ENCODER_LAYERS)
+    colors = {"neutral": "gray", "assistant": "royalblue", "anti_ground": "firebrick"}
 
-    for c, stats in results.items():
-        xs = list(range(len(stats.gc_mean_per_layer)))
-        ax.plot(
-            xs, stats.gc_mean_per_layer,
-            label=f"{c} (μ={stats.mean_gc:.3f})",
-            color=colors[c], linestyle=linestyles[c], linewidth=2, marker="o", markersize=4,
+    for cond, r in results.items():
+        ax.plot(layers, r.gc_mean, label=cond, color=colors[cond], marker="o", linewidth=2)
+        ax.fill_between(
+            layers,
+            r.gc_mean - r.gc_std,
+            r.gc_mean + r.gc_std,
+            alpha=0.15,
+            color=colors[cond],
         )
 
-    ax.axvline(n_encoder - 0.5, color="gray", linestyle="-", alpha=0.4, label="enc/dec boundary")
-    ax.set_xlabel("Layer k")
-    ax.set_ylabel("gc(k)")
-    ax.set_title("Persona-conditioned gc(k): Does Assistant persona inhibit audio grounding?")
+    ax.set_xlabel("Encoder Layer k")
+    ax.set_ylabel("gc(k) — Causal Grounding Score")
+    ax.set_title("Persona-Conditioned gc(k) Benchmark (Q039)\nMock mode — replace with real patching")
     ax.legend()
-    ax.grid(alpha=0.3)
-    ax.set_ylim(-0.05, 1.05)
-
-    if save_path:
-        fig.savefig(save_path, dpi=150, bbox_inches="tight")
-        print(f"[plot] Saved to {save_path}", file=sys.stderr)
-    else:
-        fig.savefig("/tmp/persona_gc_benchmark.png", dpi=150, bbox_inches="tight")
-        print("[plot] Saved to /tmp/persona_gc_benchmark.png", file=sys.stderr)
-    plt.close(fig)
+    ax.set_ylim(0, 1)
+    ax.set_xticks(layers)
+    ax.grid(True, alpha=0.3)
+    plt.tight_layout()
+    out_path = "memory/learning/cycles/persona_gc_benchmark_plot.png"
+    plt.savefig(out_path, dpi=120)
+    print(f"\n  Plot saved → {out_path}")
 
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
-def run_benchmark(
-    n_seeds: int = 30,
-    n_encoder_layers: int = 6,
-    n_decoder_layers: int = 6,
-    plot: bool = False,
-    plot_path: Optional[str] = None,
-    json_out: Optional[str] = None,
-) -> dict[str, ConditionStats]:
-
-    all_curves: dict[str, np.ndarray] = {}
-    results: dict[str, ConditionStats] = {}
-
-    for condition in ["neutral", "assistant", "anti_ground"]:
-        stats, curves = compute_stats(condition, n_seeds, n_encoder_layers, n_decoder_layers)
-        results[condition] = stats
-        all_curves[condition] = curves
-
-    # Compute effect sizes vs neutral
-    neutral_flat = all_curves["neutral"].flatten()
-    for c in ["assistant", "anti_ground"]:
-        flat = all_curves[c].flatten()
-        d = cohens_d(flat, neutral_flat)
-        results[c].cohens_d_vs_neutral = d
-        results[c].delta_mean_vs_neutral = float(flat.mean() - neutral_flat.mean())
-    results["neutral"].cohens_d_vs_neutral = None
-    results["neutral"].delta_mean_vs_neutral = 0.0
-
-    # Print table
-    print_stats_table(results, n_encoder_layers)
-
-    # Optional plot
-    if plot:
-        maybe_plot(results, n_encoder_layers, plot_path)
-
-    # Optional JSON output
-    if json_out:
-        out = {c: asdict(s) for c, s in results.items()}
-        with open(json_out, "w") as f:
-            json.dump(out, f, indent=2)
-        print(f"[json] Written to {json_out}", file=sys.stderr)
-
-    return results
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Persona-conditioned gc(k) benchmark (Q039)"
-    )
-    parser.add_argument("--n-seeds", type=int, default=30,
-                        help="Seeds per condition (default 30)")
-    parser.add_argument("--n-encoder", type=int, default=6,
-                        help="Number of encoder layers (default 6)")
-    parser.add_argument("--n-decoder", type=int, default=6,
-                        help="Number of decoder layers (default 6)")
-    parser.add_argument("--plot", action="store_true",
-                        help="Save gc(k) profile plot")
-    parser.add_argument("--plot-path", type=str, default=None,
-                        help="Path for plot output (default /tmp/persona_gc_benchmark.png)")
-    parser.add_argument("--json-out", type=str, default=None,
-                        help="Path to write JSON results")
+def main():
+    parser = argparse.ArgumentParser(description="Persona-Conditioned gc(k) Benchmark (Q039)")
+    parser.add_argument("--json", action="store_true", help="Output results as JSON")
+    parser.add_argument("--plot", action="store_true", help="Generate matplotlib plot")
+    parser.add_argument("--layers", type=int, default=N_ENCODER_LAYERS, help=f"Number of encoder layers (default: {N_ENCODER_LAYERS})")
+    parser.add_argument("--stimuli", type=int, default=N_STIMULI, help=f"Stimuli per condition (default: {N_STIMULI})")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed")
     args = parser.parse_args()
 
-    run_benchmark(
-        n_seeds=args.n_seeds,
-        n_encoder_layers=args.n_encoder,
-        n_decoder_layers=args.n_decoder,
-        plot=args.plot,
-        plot_path=args.plot_path,
-        json_out=args.json_out,
-    )
+    n_layers = args.layers
+    n_stimuli = args.stimuli
+
+    # Run benchmark
+    results = {}
+    for cond in PERSONA_CONDITIONS:
+        results[cond] = mock_gc_for_condition(
+            cond,
+            n_layers=n_layers,
+            n_stimuli=n_stimuli,
+            seed_base=args.seed,
+        )
+
+    stats = run_hypothesis_tests(results)
+
+    asym_deltas = compute_asymmetry_delta(stats, results)
+
+    if args.json:
+        json_out = to_json_safe(stats, results)
+        json_out["asymmetry_delta"] = asym_deltas
+        print(json.dumps(json_out, indent=2))
+    else:
+        print_stats_table(stats, results)
+        # Print asymmetry delta (Gap #35 proxy)
+        print("\n  Gap #35 Asymmetry Delta (gc(k)-proxy, IN vs OUT shift):")
+        print(f"  {'Condition':<16} {'ΔEarly':>9} {'ΔLate':>9} {'Asymmetry':>11} {'Direction':<16} {'H35?':>5}")
+        print(f"  {'─' * 72}")
+        for cond in PERSONA_CONDITIONS:
+            d = asym_deltas[cond]
+            h35 = "✅" if d["h35_footprint"] else "❌"
+            print(f"  {cond:<16} {d['delta_early']:>+9.4f} {d['delta_late']:>+9.4f} "
+                  f"{d['asymmetry']:>+11.4f} {d['direction']:<16} {h35:>5}")
+        print("  (Use directed_isolate_mock.py for full IN/OUT with activation patching)")
+        print("=" * 70)
+
+    if args.plot:
+        plot_curves(results)
+
+    # Validation: ensure all conditions produced finite output
+    for cond, r in results.items():
+        assert np.all(np.isfinite(r.gc_mean)), f"NaN/Inf in gc_mean for {cond}"
+        assert np.all((r.gc_mean >= 0) & (r.gc_mean <= 1)), f"gc_mean out of [0,1] for {cond}"
+
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

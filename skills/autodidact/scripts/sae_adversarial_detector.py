@@ -373,7 +373,8 @@ def compute_auc_pr(precisions: np.ndarray, recalls: np.ndarray) -> float:
     idx = np.argsort(recalls)
     r = recalls[idx]
     p = precisions[idx]
-    return float(np.trapz(p, r))
+    trapz = getattr(np, "trapezoid", None) or getattr(np, "trapz", None)
+    return float(trapz(p, r))
 
 
 def calibrate(

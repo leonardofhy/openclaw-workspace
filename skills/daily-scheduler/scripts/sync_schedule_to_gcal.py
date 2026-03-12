@@ -193,6 +193,49 @@ def _parse_legacy_blocks(md_text: str, date_str: str) -> list[Block]:
     return blocks
 
 
+def _parse_plan_blocks(md_text: str, date_str: str) -> list[Block]:
+    """Parse ## PLAN section with `- [P] HH:MM-HH:MM title {uid:..., status:...}` lines."""
+    m_plan = re.search(r'^##\s+PLAN\s*\n(.*?)(?=^##\s+|\Z)', md_text, flags=re.M | re.S)
+    if not m_plan:
+        return []
+
+    section = m_plan.group(1)
+    pat = re.compile(
+        r'^\s*-\s*\[P\]\s*'
+        r'(\d{2}:\d{2})[–-](\d{2}:\d{2})\s+'
+        r'(.+?)\s*'
+        r'(\{.*?\})?\s*$',
+        flags=re.M,
+    )
+
+    SKIP_KEYWORDS_LOWER = {k.lower() for k in SKIP_KEYWORDS}
+
+    blocks: list[Block] = []
+    for i, m in enumerate(pat.finditer(section), start=1):
+        start_hhmm, end_hhmm, title_raw, meta_raw = m.groups()
+        meta = _parse_meta_object(meta_raw or '')
+
+        status = meta.get('status', 'planned')
+        if status in {'skipped', 'cancelled', 'superseded'}:
+            continue
+
+        # Strip trailing inline metadata from title
+        title = re.sub(r'\{.*?\}', '', title_raw).strip()
+        # Strip markdown bold
+        title = re.sub(r'\*\*(.*?)\*\*', r'\1', title).strip()
+
+        lower_title = title.lower()
+        if any(k.lower() in lower_title for k in SKIP_KEYWORDS):
+            continue
+
+        uid = meta.get('uid') or _mint_uid(date_str, title, start_hhmm, i)
+        start_dt, end_dt = _normalize_range(date_str, start_hhmm, end_hhmm, plus_1d=False)
+
+        blocks.append(Block(uid=uid, start_dt=start_dt, end_dt=end_dt, title=title, status=status))
+
+    return blocks
+
+
 # --------------------------
 # Google Calendar helpers
 # --------------------------
@@ -277,6 +320,10 @@ def sync(date_str: str, dry_run: bool = False) -> dict:
         # Phase-1 fallback for legacy files
         blocks = _parse_legacy_blocks(text, date_str)
         source_mode = 'legacy_vN_fallback'
+    if not blocks:
+        # Phase-2 fallback: new ## PLAN section format
+        blocks = _parse_plan_blocks(text, date_str)
+        source_mode = 'plan_v2_fallback'
 
     creds = Credentials.from_service_account_file(
         str(CREDS_PATH), scopes=['https://www.googleapis.com/auth/calendar']

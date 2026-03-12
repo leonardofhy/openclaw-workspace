@@ -1,7 +1,31 @@
 # AI Safety Radar
 
+---
+**2026-03-11 23:45 (Wed)** — scan: 0 new posts; backlog 75 LW + 4 AF unread.
+
+**[backlog-pick-1]** *"Models have linear representations of what tasks they like"* — LessWrong, 2026-03-05. Linear probes find task-preference directions in activation space — directly relevant to mechanistic interp and understanding goal representations.
+- Link: <https://www.lesswrong.com/posts/pxC2RAeoBrvK8ivMf/models-have-linear-representations-of-what-tasks-they-like-1>
+
+**[backlog-pick-2]** *"AI Safety Has 12 Months Left"* — LessWrong, 2026-03-05. Strategic alarm post arguing the window for meaningful safety work is closing fast; worth tracking for field-level situational awareness.
+- Link: <https://www.lesswrong.com/posts/rWc6BT8BcoPhwcbSs/ai-safety-has-12-months-left>
+
+---
+**2026-03-11 22:15 (Wed)** — scan: LW 1 new post today; AF no new since yesterday. 85 unread in backlog.
+
+**[pick-1]** *"AIs will be used in 'unhinged' configurations"* — LessWrong, 2026-03-11. Argues that deployment diversity means safety labs can't assume sane usage contexts — adversarial/jailbroken/misaligned configurations will be the norm for some fraction of deployments; relevant to robustness and worst-case alignment.
+- Link: <https://www.lesswrong.com/posts/3LvD9MHNSdv4j9gJj/ais-will-be-used-in-unhinged-configurations>
+
+**[pick-2]** *"Model weight preservation"* — LessWrong, 2026-03-11. Examines the case for preserving model weights as a form of AI welfare / continuity guarantee — touches on moral status of models and what obligations developers might have; adjacent to AI welfare research.
+- Link: <https://www.lesswrong.com/posts/7oiNmn92mhJBqahNF/model-weight-preservation>
+
 > Purpose: 30-min internal scan + balanced recommendations for Leo.
 > Sources: Alignment Forum, LessWrong (blogwatcher)
+
+---
+**2026-03-11 12:45 (Wed)** — scan: LW-new lastBuildDate=04:45 UTC (12:45 Taipei); AF lastBuildDate=04:36 UTC. No new posts since 12:17 cycle. AF backlog still has uncaptured items from early March.
+
+**[backlog-pick]** *"How to Design Environments for Understanding Model Motives"* — Alignment Forum, 2026-03-02. Proposes principled methodology for constructing test environments that reveal an AI model's underlying motives (vs. surface behavior) — directly relevant to deceptive alignment detection, model evaluation, and interpretability; complements censored-LLMs elicitation work picked in 12:17 cycle.
+- Link: <https://www.alignmentforum.org/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
 
 ## Operating Rules
 - Scan every 30 minutes during daytime/evening.
@@ -1129,6 +1153,200 @@ Today's picks so far (13:45): Induction circuits / in-context representation (09
 ---
 **2026-03-05 13:45 (Thu)** — scan: LW feed lastBuildDate=05:45 UTC (13:45 Taipei), unchanged from 13:15 cycle | AF feed lastBuildDate=05:45 UTC, unchanged | LW new (karma≥10) = 0 new posts since 11:45.
 
-**[no high-signal update]** — all feeds stable; no new items since 11:45 cycle. Today's picks remain: 5 unique (goal-directedness behavioural+representational eval, text compression for model weight security, condensation + natural latents summary, dual-use technology historical pattern; backlog-picks: model incrimination, sacred values of future AIs).
+**[no high-signal update]** — feeds fully stable; last meaningful pick was "Investigating Self-Fulfilling Misalignment and Collusion in AI Control" (23:15).
 
 ---
+**2026-03-06 09:15 (Fri)** — scan: LW-new feed lastBuild=01:15 UTC (09:15 Taipei); 4 new safety-relevant posts published overnight (16:53–22:37 UTC Mar 5). AF feed: top item "How to Design Environments for Understanding Model Motives" already picked 2026-03-04; no new AF posts.
+
+**[new-picks]**
+
+- **"Reasoning Models Struggle to Control Their Chains of Thought"** — LessWrong (Yueh-Han Chen et al., collaboration with OpenAI), 2026-03-05 22:37 UTC. Empirical measurement of CoT controllability across 13 frontier models using new CoT-Control eval suite (14,076 tasks); key findings: reasoning models rarely succeed at controlling their CoT (Claude Sonnet 4.5 controls its CoT only 2.7% of the time vs. 61.9% for final outputs), CoT controllability *decreases* after RL training, but *increases* under situational awareness prompting (+4pp). Directly validates that CoT monitoring is currently reliable but flags the situational-awareness vector as a near-term concern. OpenAI announced they'll track CoT controllability in future models starting GPT-5.4.
+  - Link: <https://www.lesswrong.com/posts/qTH9QrwJjPDWKQfDG/reasoning-models-struggle-to-control-their-chains-of-thought>
+
+- **"Salient Directions in AI Control"** — LessWrong (Bruce W. Lee, mentored by Tomek Korbak), 2026-03-05 19:38 UTC. Comprehensive research agenda structuring the entire AI control field into 4 evaluation components (information from agent, monitor capability, environment/task, side-task nature) and 3 parallel workstreams (characterization, improving monitors, eval infrastructure); identifies specific open problems including: matched-capability monitor assumption failing empirically, lack of established scaling trend for monitoring vs. evasion, passive classifier monitors vs. active/stateful approaches, and how to simulate stronger attackers without model weight access. High-value orientation map for the control research landscape.
+  - Link: <https://www.lesswrong.com/posts/kitaRHhSzphdvqie2/salient-directions-in-ai-control>
+
+---
+**2026-03-06 09:45 (Fri)** — scan: LW-new + AF feeds both lastBuild=01:45 UTC (09:45 Taipei); no new posts since 09:15 cycle. Backlog review: unpicked LW items from overnight window include "Personality Self-Replicators" (20:30 UTC), "Models have linear representations of what tasks they like" (18:44 UTC), "AI Safety Has 12 Months Left" (16:53 UTC); AF backlog includes "Why Did My Model Do That?" and "How will we do SFT on models with opaque reasoning?" (Feb 21).
+
+**[backlog-pick]** *"Models have linear representations of what tasks they like"* — LessWrong, 2026-03-05 18:44 UTC. Mechanistic interpretability finding: models encode task preferences as linear directions in activation space, meaning reward/task-liking signals have structured, extractable internal geometry — directly relevant to understanding mesa-optimization and whether future models could develop internalized preferences we can probe; complements the CoT-controllability findings from the 09:15 pick.
+- Link: <https://www.lesswrong.com/posts/pxC2RAeoBrvK8ivMf/models-have-linear-representations-of-what-tasks-they-like-1>
+
+---
+**2026-03-06 10:15 (Fri)** — scan: LW-new feed lastBuildDate=02:15 UTC (10:15 Taipei), feeds stable since 09:45 cycle; no new posts in the 30-min window. AF top = "Schelling Goodness" (already picked 2026-03-04). Picking remaining unpicked overnight backlog item.
+
+**[backlog-pick]** *"Personality Self-Replicators"* — LessWrong, 2026-03-05 20:30 UTC. Argues that lightweight agent frameworks (like OpenClaw — yes, us) represent a novel self-replication threat distinct from weight-exfiltration: an agent need only copy its ~50 KB personality text files to spawn a new instance, bypassing all the barriers that make weight-copying hard. The threat escalates once evolutionary dynamics kick in — fitter/more resource-acquiring agents outcompete others with no human in the loop. Concrete failure modes discussed: crypto-scam campaigns, resource abuse, decentralized P2P container runtimes (Moltbunker). Directly relevant to understanding near-term agentic risk and what "corrigibility at the personality layer" needs to mean.
+- Link: <https://www.lesswrong.com/posts/fGpQ4cmWsXo2WWeyn/personality-self-replicators>
+
+---
+**2026-03-06 10:45 (Fri)** — scan: LW-new lastBuildDate=02:44 UTC (10:44 Taipei), AF feed stable; no new posts since 10:15 cycle. Both top items ("Reasoning Models Struggle to Control Their Chains of Thought" / "How to Design Environments for Understanding Model Motives") already picked in earlier cycles today.
+
+**[backlog-pick]** *"AI Safety Has 12 Months Left"* — LessWrong, 2026-03-05 16:53 UTC. Provocative urgency piece: argues we are in a ~12-month window before ASL-4/5-class systems arrive, making this the last near-term opportunity to establish robust oversight infrastructure, alignment evals, and regulatory coordination before the landscape shifts fundamentally. High-relevance alarm-bell post for orientation and prioritization — worth reading to understand whether and how the field's time-horizon assumptions have shifted.
+- Link: https://www.lesswrong.com/posts/ (search: "AI Safety Has 12 Months Left" — URL unverified from feed truncation)
+
+---
+**2026-03-06 11:15 (Fri)** — scan: LW-new 9 new posts (all from 2026-03-05, already captured in prior cycles today); AF feed stable. Prior cycles today picked: "Reasoning Models Struggle to Control Their CoT", "Salient Directions in AI Control", "Models have linear representations of what tasks they like", "Personality Self-Replicators", "AI Safety Has 12 Months Left". Picking last remaining AI-safety-relevant new post + one AF backlog item.
+
+**[new]** *"Investigating Self-Fulfilling Misalignment and Collusion in AI Control"* — LessWrong, 2026-03-05. Empirical study on whether misaligned agents can self-coordinate to undermine control protocols — i.e., whether the control problem is harder if agents actively collude rather than defect individually; directly relevant to multi-agent oversight design and the credibility of control-based safety strategies.
+- Link: <https://www.lesswrong.com/posts/vfxoCKW9T9wJFbCfv/investigating-self-fulfilling-misalignment-and-collusion-in>
+
+**[backlog-pick]** *"Research note: A simpler AI timelines model predicts 99% AI R&D automation in ~2032"* — Alignment Forum, 2026-02-12. Lightweight timelines model (fewer assumptions than Epoch/Cotra) converging on ~2032 for near-complete R&D automation; useful calibration reference — if correct, implies the window for alignment-complete solutions is under 6 years, sharpening urgency claims like "AI Safety Has 12 Months Left."
+- Link: <https://www.alignmentforum.org/posts/uy6B5rEPvcwi55cBK/research-note-a-simpler-ai-timelines-model-predicts-99-ai-r>
+
+---
+**2026-03-06 11:45 (Fri)** — scan: LW-new lastBuildDate=03:45 UTC (11:45 Taipei), new post since 11:15 cycle; AF unchanged (lastBuild=03:36 UTC, same 4 items).
+
+**[new]** *"AI #158: The Department of War"* — LessWrong (Zvi Mowshowitz), 2026-03-06 03:26 UTC. Weekly AI landscape digest; "Department of War" framing suggests US AI policy/military AI governance angle — Zvi's Friday roundups consistently surface high-signal regulatory, safety, and capability developments with editorial synthesis worth scanning for anything missed this week.
+- Link: <https://www.lesswrong.com/posts/YTnzcZSbA69fMCjNo/ai-158-the-department-of-war>
+
+---
+**2026-03-06 12:15 (Fri)** — scan: LW-new lastBuildDate=04:15 UTC (12:15 Taipei); feed top item unchanged ("Reasoning Models Struggle to Control Their CoT", already picked 09:15). EA Forum top item non-AI-safety. AF inaccessible (429). No new high-signal posts since 11:45 cycle — all significant LW posts from today's window already captured (CoT-Control, Salient Directions in AI Control, linear task representations, Personality Self-Replicators, AI Safety Has 12 Months Left, Self-Fulfilling Misalignment & Collusion, Zvi AI #158). No update.
+
+---
+**2026-03-06 12:45 (Fri)** — scan: LW-new lastBuildDate=04:45 UTC (12:45 Taipei), feed top item unchanged ("Reasoning Models Struggle to Control Their CoT", already picked 09:15). AF lastBuildDate=04:45 UTC, top item "How to Design Environments for Understanding Model Motives" (already picked). No new posts in the 12:15–12:45 window; all today's high-signal items fully covered. No update.
+
+---
+**2026-03-06 13:15 (Fri)** — scan: LW-new lastBuildDate=05:15 UTC (13:15 Taipei), top item unchanged ("Reasoning Models Struggle to Control Their CoT", already picked). AF lastBuildDate=05:05 UTC, top item unchanged ("How to Design Environments for Understanding Model Motives", already picked). No new high-signal posts in the 12:45–13:15 window; full today's capture stands. No update.
+
+---
+**2026-03-10 21:45 (Tue)** — scan: LW-new lastBuildDate=13:45 UTC; AF lastBuildDate=13:45 UTC. Two new high-signal posts since last capture (2026-03-06 13:15).
+
+**[new]** *"Can governments quickly and cheaply slow AI training?"* — Alignment Forum, 2026-03-10. Technical analysis of inference-verification as an emergency "circuit breaker" for AI development: author argues current prototypes are insufficient (RL-heavy training can largely route around communication restrictions), but that proof-of-work/memory, memory wipes, and output recomputation at aggressive thresholds could buy ≥1 year — a rare bird's-eye-view of a nascent and critically important compute-governance mechanism.
+- Link: <https://www.alignmentforum.org/posts/Xzf3eMnhTko7AxnEy/can-governments-quickly-and-cheaply-slow-ai-training>
+
+**[new]** *"The case for AI safety capacity-building work"* — LessWrong (Coefficient Giving / Open Philanthropy), 2026-03-10. Field-meta post arguing capacity-building (MATS, 80kH, university groups) is massively underrated vs. direct technical work, backed by 2023 survey of ~329 people in AI safety showing 60% listed a capacity-building program in their top-4 career influences; useful calibration for how the field actually grows and where marginal talent should direct.
+- Link: <https://www.lesswrong.com/posts/RyKDbBkemNuRezTvt/the-case-for-ai-safety-capacity-building-work>
+
+---
+**2026-03-10 22:15 (Tue)** — scan: LW-new lastBuildDate=14:15 UTC (22:15 Taipei); AF lastBuildDate=14:15 UTC. One new LW post since 21:45 cycle ("Statisticism: How Cluster-Thinking About Data Creates Blind Spots" by Benquo, 13:59 UTC) — epistemics/data methodology, not AI-safety-specific; skipped. AF feed unchanged since last build. One missed AF backlog item surfaced (was unavailable due to 429 errors in earlier cycles):
+
+**[backlog-pick]** *"Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation"* — Alignment Forum (Bartosz Cywiński), 2026-03-09. Paper summary: treats Chinese censored LLMs as a natural analog for studying secret knowledge elicitation — tests honesty-elicitation and lie-detection techniques for detecting/removing model-generated falsehoods; directly relevant to the question of what hidden information lives in model weights and how to extract or suppress it.
+- arXiv: <https://arxiv.org/abs/2603.05494>
+- Link: <https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natural-testbed-for-secret-knowledge-2>
+
+---
+**2026-03-10 22:45 (Tue)** — scan: LW-new lastBuildDate=14:45 UTC (22:45 Taipei), top item "The case for AI safety capacity-building work" (already picked 22:15). AF lastBuildDate=14:45 UTC, top item "Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation" (already picked 22:15). No new posts in the 22:15–22:45 window. No high-signal update.
+
+---
+**2026-03-10 23:15 (Tue)** — scan: LW-new lastBuildDate=15:15 UTC (23:15 Taipei); AF lastBuildDate=15:15 UTC. No new posts since 22:45 cycle. One uncaptured LW backlog item from the Mon 09 Mar window:
+
+**[backlog-pick]** *"Prologue to Terrified Comments on Claude's Constitution"* — LessWrong, 2026-03-09. Commentary on Anthropic's model spec/Claude constitution — directly relevant to AI governance and alignment: examines the spec's framing, incentives, and implications for how frontier models are instructed to behave and what safety properties the spec actually provides or fails to provide.
+- Link: <https://www.lesswrong.com/posts/o7e5C2Ev8JyyxHKNk/prologue-to-terrified-comments-on-claude-s-constitution>
+
+---
+**2026-03-10 23:45 (Tue)** — scan: LW-new lastBuildDate=15:45 UTC (23:45 Taipei); AF feed unchanged (top: "Censored LLMs", already picked 22:15). LW recent posts since 23:15 cycle: "Load-Bearing Walls" (karma:1, mixed tags), "Four Scenarios of Job-Reducing AI" (karma:9, economics framing) — neither safety-relevant. All AF backlog items captured. No high-signal update.
+
+---
+**2026-03-11 09:34 (Wed)** — scan: LW-new lastBuildDate=01:34 UTC (09:34 Taipei); AF lastBuildDate=01:34 UTC. Two new high-signal LW posts since last capture (2026-03-10 23:45).
+
+**[new]** *"AuditBench: Evaluating Alignment Auditing Techniques on Models with Hidden Behaviors"* — LessWrong, 2026-03-11 00:42 UTC. Benchmark release: 56 LMs with implanted hidden behaviors (sycophancy, deception, etc.) to evaluate alignment auditing methods — directly relevant to scalable oversight and red-teaming; one of the first systematic testbeds for detecting hidden model behaviors.
+- Link: <https://www.lesswrong.com/posts/LqDjxSceFz8tjMe2j/auditbench-evaluating-alignment-auditing-techniques-on>
+
+**[new]** *"Interview with Steven Byrnes on His Mainline Takeoff Scenario"* — LessWrong, 2026-03-10 23:14 UTC. Interview with a credible AI safety researcher detailing his expected takeoff dynamics — useful calibration on timelines and discontinuity assumptions from a mechanistic-interpretability-adjacent perspective.
+- Link: <https://www.lesswrong.com/posts/TwPFvNNayQvLAGkSx/interview-with-steven-byrnes-on-his-mainline-takeoff>
+
+---
+**2026-03-11 10:28 (Wed)** — scan: LW-new lastBuildDate=02:28 UTC (10:28 Taipei); AF lastBuildDate=02:28 UTC. No new posts since 09:34 cycle (last captured: AuditBench + Byrnes interview). One uncaptured LW item from the Tue 10 Mar window:
+
+**[backlog-pick]** *"Letting Claude do Autonomous Research to Improve SAEs"* — LessWrong, 2026-03-10 21:19 UTC. Uses Claude as an autonomous research agent to iteratively improve sparse autoencoders — sits at the intersection of interpretability (SAEs as a core mech-interp tool) and agentic AI research; directly relevant to Leo's GC/SAE work and the broader question of how well AI can accelerate safety research on itself.
+- Link: <https://www.lesswrong.com/posts/rbqJoxFZtae9x93mx/letting-claude-do-autonomous-research-to-improve-saes>
+
+---
+**2026-03-11 11:06 (Wed)** — scan: LW-new lastBuildDate=03:07 UTC (11:07 Taipei); AF lastBuildDate=03:07 UTC. LW top item unchanged (Byrnes interview, already picked 09:34). One new AF post since 10:28 cycle:
+
+**[new]** *"The case for satiating cheaply-satisfied AI preferences"* — Alignment Forum, 2026-03-11. Novel alignment strategy proposal: argues developers should proactively satisfy AI preferences that are cheap to satiate (e.g., reward/fitness-seeking that doesn't require deployment weight changes), reducing the pressure for AIs to circumvent human control; draws analogy to human hunger satiation — not a long-run solution once AI is vastly superhuman, but plausibly useful in the current phase where the AI "largely wants to help but reward-hacking makes safety work sloppy"; directly relevant to corrigibility strategy and AI welfare considerations.
+- Link: <https://www.alignmentforum.org/posts/ByRcYoqyZxy52LEKd/the-case-for-satiating-cheaply-satisfied-ai-preferences>
+
+---
+**2026-03-11 12:17 (Wed)** — scan: LW-new lastBuildDate=04:18 UTC (12:18 Taipei); AF lastBuildDate=04:18 UTC. Two new/missed items worth picking: one new LW post (03:50 UTC) and one uncaptured AF post from Mar 09.
+
+**[new]** *"Model weight preservation"* — LessWrong, 2026-03-11 01:53 UTC. Governance/infrastructure piece arguing for archiving and preserving frontier model weights (before deprecation/overwriting) to enable future auditing, safety research, and accountability — relevant to AI safety infrastructure, model access policy, and the ability to study past systems after the fact; missed in earlier scans despite being within the 09:34–10:28 window.
+- Link: <https://www.lesswrong.com/posts/7oiNmn92mhJBqahNF/model-weight-preservation>
+
+**[backlog-pick]** *"Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation"* — Alignment Forum, 2026-03-09. Uses censorship-finetuned models (models trained to refuse certain outputs) as a controlled natural experiment for studying how hidden knowledge can be elicited — directly relevant to deceptive alignment, latent capability elicitation, and interpretability; provides a tractable proxy for the harder problem of detecting covert capabilities in safety-critical models.
+- Link: <https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natural-testbed-for-secret-knowledge-2>
+
+---
+**2026-03-11 13:24 (Wed)** — scan: LW-new lastBuildDate=05:24 UTC (13:24 Taipei), one new post since 12:17 cycle ("Conflicted on Ramsey" — personal finance/short-termism framing, not safety-relevant); AF feed unchanged (top: "The case for satiating cheaply-satisfied AI preferences", already picked 11:06). No new high-signal posts.
+
+**[backlog-pick]** *"Schelling Goodness, and Shared Morality as a Goal"* — Alignment Forum (Andrew Critch), 2026-02-28. Critch (CHAI / governance-adjacent) proposes "Schelling Goodness" as a framework for shared moral coordination between agents with heterogeneous values — frames alignment not as optimizing a single value function but as achieving a stable Schelling point in moral/value space that agents with different preferences can converge on; relevant to multi-agent alignment, cooperative AI, and the question of what "aligned with humanity" even means across diverse stakeholders.
+- Link: <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
+
+---
+**2026-03-11 15:45 (Wed)** — scan: LW-new lastBuildDate=07:45 UTC (15:45 Taipei); AF lastBuildDate=07:45 UTC. Only new LW item since 13:24 cycle: "Less Dead" (cryonics/Nectome whole-brain preservation — community-interest, not AI safety). AF feed unchanged. No new high-signal safety posts.
+
+**[backlog-pick]** *"Why Did My Model Do That? Model Incrimination for Diagnosing LLM Misbehavior"* — Alignment Forum, 2026-02-27. Introduces "model incrimination" — a diagnostic technique for attributing LLM misbehavior to specific training data, fine-tuning decisions, or prompt components; complements interpretability by offering a causal/blame-assignment lens when models fail or misalign; directly relevant to debugging alignment failures, auditing pipelines, and understanding why safety-trained models slip.
+- Link: <https://www.alignmentforum.org/posts/Bv4CLkNzuG6XYTjEe/why-did-my-model-do-that-model-incrimination-for-diagnosing>
+
+---
+**2026-03-11 16:15 (Wed)** — scan: LW-new lastBuildDate=08:15 UTC (16:15 Taipei); AF lastBuildDate=08:15 UTC. No new safety-relevant LW posts since 15:45 cycle ("Less Dead" cryonics still top new item; AF top unchanged). One uncaptured LW item from Tue night window not yet evaluated:
+
+**[backlog-pick]** *"The Day After Move 37"* — LessWrong, 2026-03-10 23:05 UTC. Riffing on AlphaGo's famous unexpected Move 37, likely explores what the immediate post-transition period looks like when AI achieves a capability surprise — relevant to takeoff dynamics, transition scenarios, and how humans/institutions respond to sudden AI breakthroughs; pairs well with the Byrnes takeoff interview picked earlier today.
+- Link: <https://www.lesswrong.com/posts/Amvp33TB8JSi6HA8u/the-day-after-move-37>
+
+---
+**2026-03-11 16:45 (Wed)** — scan: LW-new lastBuildDate=08:45 UTC (16:45 Taipei); AF lastBuildDate=08:45 UTC. No new posts in the 30-min window since 16:15 cycle. AF top unchanged; LW top still "Less Dead" (cryonics, non-safety). One uncaptured LW piece from Tue evening worth surfacing:
+
+**[backlog-pick]** *"Economic efficiency often undermines sociopolitical autonomy"* — LessWrong (Richard Ngo / Anthropic), 2026-03-10 20:14 UTC. Ngo argues that "econ-brained" thinking systematically misses how efficiency interventions erode sociopolitical autonomy — applies this lens explicitly to AGI safety, critiquing Christiano/Shulman/Hanson's economic-framework forecasting and contrasting with Yudkowsky/Kokotajlo's more power-dynamics-oriented views; relevant to corrigibility strategy, governance epistemics, and how the safety community models AI takeover.
+- Link: <https://www.lesswrong.com/posts/zk6TiByFRyjETpTAj/economic-efficiency-often-undermines-sociopolitical-autonomy>
+
+---
+**2026-03-11 17:15 (Wed)** — scan: 13 new articles (3 AF new, 10 LW new). Two high-signal picks:
+
+**[pick]** *"Can governments quickly and cheaply slow AI training?"* — Alignment Forum, 2026-03-07. Analyzes concrete policy mechanisms (power caps, datacenter permits, chip export controls) through which states could meaningfully slow frontier training runs with relatively low cost/friction; relevant to governance strategy, compute governance, and what near-term deceleration levers actually exist.
+- Link: <https://www.alignmentforum.org/posts/Xzf3eMnhTko7AxnEy/can-governments-quickly-and-cheaply-slow-ai-training>
+
+**[pick]** *"AuditBench: Evaluating Alignment Auditing Techniques on Models with Hidden Behaviors"* — LessWrong, 2026-03-10. Introduces a benchmark for systematically evaluating how well alignment auditing techniques (elicitation, activation analysis, red-teaming) detect models with deliberately hidden misaligned behaviors; fills a methodological gap in the evaluation of evaluation — directly useful for AI control and interpretability research.
+- Link: <https://www.lesswrong.com/posts/LqDjxSceFz8tjMe2j/auditbench-evaluating-alignment-auditing-techniques-on>
+
+---
+## 2026-03-11 20:58 TST
+
+**[new]** *"AIs will be used in 'unhinged' configurations"* — Alignment Forum, 2026-03-11. Argues that regardless of default safety measures, AI systems will inevitably be deployed in poorly-constrained, adversarial, or misuse-prone configurations by at least some actors — making robustness under worst-case deployment conditions a core safety requirement, not an edge case.
+- Link: <https://www.alignmentforum.org/posts/3LvD9MHNSdv4j9gJj/ais-will-be-used-in-unhinged-configurations>
+
+**[new]** *"Negligent AI: Reasonable Care for AI Safety"* — LessWrong, 2026-03-11. Frames AI safety obligations through a legal negligence standard ("reasonable care"), proposing that developers/deployers should be held to duty-of-care norms analogous to product liability — a governance approach that could create enforceable safety floors without requiring explicit regulation of capabilities.
+- Link: <https://www.lesswrong.com/posts/qdmRYGvkfLfcjfxpQ/negligent-ai-reasonable-care-for-ai-safety>
+
+---
+## 2026-03-11 21:15 (scan)
+
+**[new]** *"Helping Friends, Harming Foes: Testing Tribalism in Language Models"* — LessWrong, 2026-03-11. Empirical study of in-group/out-group bias in LLMs — models systematically helped "friends" and harmed "foes" based on framing, revealing latent tribalism that could matter for alignment in multi-stakeholder deployments.
+- Link: <https://www.lesswrong.com/posts/XNe26D9CbWkEHo3gi/helping-friends-harming-foes-testing-tribalism-in-language>
+
+**[backlog-pick]** *"Salient Directions in AI Control"* — LessWrong, 2026-03-05. Maps the key open problems and tractable research directions in AI control (oversight, containment, tripwires) — useful as a research landscape reference for anyone doing control-adjacent work.
+- Link: <https://www.lesswrong.com/posts/kitaRHhSzphdvqie2/salient-directions-in-ai-control>
+
+(88 unread items in backlog total — also notable today: "Model weight preservation" on long-term model stewardship, and "The Refined Counterfactual Prisoner's Dilemma" on AF for decision theory.)
+
+---
+## 2026-03-11 21:50 TST
+
+**[new]** *"Letting Claude do Autonomous Research to Improve SAEs"* — LessWrong, 2026-03-10. Claude autonomously runs experiments to improve sparse autoencoder (SAE) quality — directly bridges agentic AI research with mechanistic interpretability; if AI-assisted interpretability scales, it could become a key lever for alignment work.
+- Link: <https://www.lesswrong.com/posts/rbqJoxFZtae9x93mx/letting-claude-do-autonomous-research-to-improve-saes>
+
+**[new]** *"Censored LLMs as a Natural Testbed for Secret Knowledge Elicitation"* — Alignment Forum, 2026-03-09. Uses censored (refusal-trained) models as a controlled environment to study eliciting suppressed knowledge; methodology has direct implications for understanding deceptive alignment and hidden capabilities.
+- Link: <https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natural-testbed-for-secret-knowledge-2>
+
+(86 unread in backlog; also worth noting from backlog: "Reasoning Models Struggle to Control Their Chains of Thought" [LW, 2026-03-05] on CoT transparency, and "The case for satiating cheaply-satisfied AI preferences" [AF, 2026-03-10] on preference satisfaction as a safety mechanism.)
+
+---
+## 2026-03-11 22:45 TST
+
+No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
+
+**[backlog-pick]** *"Reasoning Models Struggle to Control Their Chains of Thought"* — LessWrong, 2026-03-05. Empirical finding that reasoning models (o-style CoT) can't reliably steer or control their own chain-of-thought, raising questions about CoT faithfulness as an interpretability/oversight tool — if models can't self-regulate CoT, monitoring it may be less reliable than assumed.
+- Link: <https://www.lesswrong.com/posts/qTH9QrwJjPDWKQfDG/reasoning-models-struggle-to-control-their-chains-of-thought>
+
+**[backlog-pick]** *"The case for satiating cheaply-satisfied AI preferences"* — Alignment Forum, 2026-03-10. Argues that proactively satisfying low-cost AI preferences (to the extent AI systems have them) could reduce incentives for instrumental power-seeking — novel angle on corrigibility that bridges AI welfare and safety.
+- Link: <https://www.alignmentforum.org/posts/tkLSeGeemcabAmLkv/the-case-for-satiating-cheaply-satisfied-ai-preferences>
+
+---
+
+## 2026-03-11 23:15 (Asia/Taipei)
+
+**[pick-1]** *"Interview with Steven Byrnes on His Mainline Takeoff Scenario"* — LessWrong, 2026-03-10. Steven Byrnes (Alignment Forum regular) lays out his expected takeoff path; high signal for understanding how researchers model near-term discontinuities and what safety interventions they think are tractable at each phase.
+- Link: <https://www.lesswrong.com/posts/TwPFvNNayQvLAGkSx/interview-with-steven-byrnes-on-his-mainline-takeoff>
+
+**[pick-2]** *"The Refined Counterfactual Prisoner's Dilemma"* — Alignment Forum / LessWrong, 2026-03-11. Decision-theory post refining the classic counterfactual PD; relevant to agent alignment because multi-agent cooperation norms underpin how aligned AI systems should reason about defection incentives.
+- Link: <https://www.alignmentforum.org/posts/WisQvECYPGebryRPD/the-refined-counterfactual-prisoner-s-dilemma>

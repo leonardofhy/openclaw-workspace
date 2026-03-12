@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 5,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
-    "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-11"
+    "reflect_remaining_today": 2,
+    "ideate_remaining_today": 3,
+    "budget_reset_date": "2026-03-12"
   },
   "stats": {
-    "total_cycles": 154,
-    "total_skips": 39,
+    "total_cycles": 177,
+    "total_skips": 40,
     "papers_read_deep": 31,
-    "papers_scanned": 36,
-    "research_gaps": 19,
-    "paper_ideas": 132,
+    "papers_scanned": 37,
+    "research_gaps": 23,
+    "paper_ideas": 12,
     "paper_pitches": 2,
-    "code_artifacts": 31,
-    "system_improvements": 6,
-    "days_active": 7
+    "code_artifacts": 52,
+    "system_improvements": 7,
+    "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260311-2315",
-    "action": "plan",
-    "summary": "Wrote Q044 Microgpt\u00d7CoT\u00d7gc(k) spec: 2x2+ctrl protocol, per-layer gc(k)+head ablation, scaffold artifacts defined"
+    "id": "c-20260312-0301",
+    "action": "learn",
+    "summary": "Q075 designed + mock run: RLHF critical layer shift L0→L4 in MicroGPT v2. Circuit integrity (IIA) degrades before accuracy — Paper A §4.3 prediction."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []

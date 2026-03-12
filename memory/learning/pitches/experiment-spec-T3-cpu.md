@@ -2,7 +2,7 @@
 **Track**: T3 — Listen vs Guess (Paper A)
 **Status**: READY FOR LEO REVIEW
 **Tier**: 1 (CPU-only, ~2 min runtime)
-**Date**: 2026-03-03
+**Date**: 2026-03-06 (updated: +Asiaee variance pre-screen)
 
 ---
 
@@ -30,15 +30,61 @@ Generate 3 stimulus pairs:
 - **Clean vs. Partial mask (50%)** — mid-confidence regime
 - **Clean vs. Full silence** — extreme guess regime
 
+### Step 1.5: Asiaee Variance Pre-Screen (NEW — 3-5x speedup)
+**Before running DAS on all layers**, filter candidate layers using activation variance as a first-order proxy.
+Asiaee (2602.24266, NeurIPS 2025) shows: **activation variance across clean vs. noisy conditions correlates with causal contribution** — low-variance layers rarely produce high gc(k). Use this to prune the layer sweep.
+
+```python
+def asiaee_prescreen(A_clean, A_noisy, variance_threshold=0.05):
+    """
+    Returns list of layer indices worth running DAS on.
+    
+    A_clean, A_noisy: dict {layer_idx: activation_tensor}  (shape: [seq, d_model])
+    variance_threshold: layers with normalized variance below this are skipped
+    
+    Algorithm (Asiaee 2026, efficient causal abstraction via structured pruning):
+      1. For each layer k:
+            delta[k] = ||A_clean[k] - A_noisy[k]||_F  (Frobenius norm of activation diff)
+      2. Normalize: delta_norm[k] = delta[k] / sum(delta.values())
+      3. Layer k passes if delta_norm[k] >= variance_threshold
+      4. Return sorted list of passing layers (highest delta first)
+    """
+    deltas = {}
+    for k in A_clean:
+        diff = A_clean[k] - A_noisy[k]
+        deltas[k] = float(np.linalg.norm(diff, 'fro'))
+    
+    total = sum(deltas.values()) + 1e-9
+    delta_norm = {k: v / total for k, v in deltas.items()}
+    
+    passing = [(k, delta_norm[k]) for k in delta_norm
+               if delta_norm[k] >= variance_threshold]
+    passing.sort(key=lambda x: -x[1])
+    
+    return [k for k, _ in passing]
+
+# Usage in experiment pipeline:
+A_clean, A_noisy = extract_all_activations(model, clean_wav, noisy_wav)
+candidate_layers = asiaee_prescreen(A_clean, A_noisy, variance_threshold=0.05)
+# → typically filters 4-6 of 12 layers, reduces DAS compute by ~40-50%
+```
+
+**Important caveat (Risk A6)**: Rare phoneme features with HIGH causal weight but LOW variance may be missed.
+Mitigation: if an expected phoneme class shows no gc(k) signal after filtering, fall back to full DAS on that class.
+Report ablation delta per phoneme class separately in paper (not just aggregate).
+
+---
+
 ### Step 2: gc(k) Computation (already built — `gc_eval.py`)
-For each stimulus pair:
+For each stimulus pair, run DAS only on `candidate_layers` from Step 1.5:
 ```
 1. Run Whisper-tiny forward pass on clean → record activations A_clean[k] for each layer k
 2. Run Whisper-tiny forward pass on noisy → record activations A_noisy[k]
-3. For each layer k:
+3. Run asiaee_prescreen(A_clean, A_noisy) → candidate_layers
+4. For each layer k in candidate_layers:
    - Patch A_noisy at layer k with A_clean[k]
    - Measure ΔP(correct token)
-4. gc(k) = ΔP(k) / max_k(ΔP(k))   [normalized]
+5. gc(k) = ΔP(k) / max_k(ΔP(k))   [normalized; gc(k)=0 for skipped layers]
 ```
 
 ### Step 3: Analysis

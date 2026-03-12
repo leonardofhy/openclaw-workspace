@@ -277,6 +277,18 @@
 - **Connection**: Sadok Codec Probe + Gap #18 (phonological geometry) + T3 gc(k) + ALME + Modality Collapse + Listen Layer hypothesis
 - **Status**: 🟢 GREEN — high novelty (S=9); unifies 3 literatures; Q043 in queue (Tier 0 build)
 
+## Gap #32: No Layer-Level Account of Cascade Equivalence Transition (新增 2026-03-12 cycle #176+)
+**"Billa (2026) shows cascade equivalence behaviorally; no paper provides the mechanistic account of WHEN text dominates over audio inside speech LLMs"**
+- Billa et al. (arXiv:2602.17598, Interspeech 2026): matched-backbone testing + LEACE erasure shows speech LLMs ARE behaviorally equivalent to cascades on text-sufficient tasks (Cohen's κ); text representations are causally necessary; under noise, cascades WIN by 7.6% at 0dB
+- **Key gap**: Billa has no layer-level mechanistic account — LEACE erases all layers simultaneously, logit lens = descriptive; neither tells you at WHICH layer audio processing hands off to text
+- **Paper A fills this gap**: gc(L) curve = first layer-by-layer mechanistic account of the cascade transition inside the model
+- **Prediction**: gc(L) is HIGH in encoder, drops at connector, shows temporary recovery then full collapse in LLM upper layers (matches Gap #31 Tier 2/3 taxonomy)
+- **Paper A §1 cite**: "Billa (2026) establishes cascade equivalence behaviorally; we provide the first mechanistic account via gc(L)"
+- **ΔI_Y (Billa) ↔ gc(k) (Paper A)**: acoustic surplus = task-level signal; gc(k) = layer-level mechanism — Paper A provides the mechanistic WHY
+- **Method note**: Billa's matched-backbone testing = behavioral control; Paper A's audio-vs-text patching = mechanistic control — complementary, not competing
+- **Status**: 🟢 GREEN — Billa has no mechanistic follow-up; Paper A is the natural continuation; strengthens Paper A §1 motivation enormously
+- Priority: HIGH — add to Paper A §1 rewrite + abstract v08
+
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
 2. 🔧 **Deep Research**: 自主 AI agent 系統的可持續架構（已請求 2/26）
