@@ -1,6 +1,15 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 10:15 (Thu)** — scan: 1 new post (LW, off-topic); backlog 88 unread. Picked 2 from backlog.
+
+**[backlog-pick-1]** *"The Refined Counterfactual Prisoner's Dilemma: An Attempt to Explode Decision-Theoretic Consequentialism"* — Alignment Forum, 2026-03-11. Challenges decision-theoretic consequentialism via a refined CPD; core decision theory is foundational to alignment (corrigibility, value learning, shutdown problems).
+- Link: <https://www.alignmentforum.org/posts/WisQvECYPGebryRPD/the-refined-counterfactual-prisoner-s-dilemma-an-attempt-to>
+
+**[backlog-pick-2]** *"How to Design Environments for Understanding Model Motives"* — LessWrong, 2026-03-02. Proposes methodology for eval environments that reveal true model motives vs. surface behavior — directly applicable to deceptive alignment detection.
+- Link: <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
+
+---
 **2026-03-11 23:45 (Wed)** — scan: 0 new posts; backlog 75 LW + 4 AF unread.
 
 **[backlog-pick-1]** *"Models have linear representations of what tasks they like"* — LessWrong, 2026-03-05. Linear probes find task-preference directions in activation space — directly relevant to mechanistic interp and understanding goal representations.
@@ -1350,3 +1359,22 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 
 **[pick-2]** *"The Refined Counterfactual Prisoner's Dilemma"* — Alignment Forum / LessWrong, 2026-03-11. Decision-theory post refining the classic counterfactual PD; relevant to agent alignment because multi-agent cooperation norms underpin how aligned AI systems should reason about defection incentives.
 - Link: <https://www.alignmentforum.org/posts/WisQvECYPGebryRPD/the-refined-counterfactual-prisoner-s-dilemma>
+
+---
+
+## 2026-03-12 09:26 (Asia/Taipei)
+
+**[new-1]** *"How well do models follow their constitutions?"* — Alignment Forum / LessWrong, 2026-03-12. Empirical evaluation of how faithfully current frontier models adhere to their constitutional AI principles; directly measures a core alignment property (spec-following) and cross-posted to AF indicates community considers it high-signal.
+- Link: <https://www.alignmentforum.org/posts/Tk4SF8qFdMrzGJGGw/how-well-do-models-follow-their-constitutions>
+
+**[new-2]** *"Can models gradient hack SFT elicitation?"* — LessWrong, 2026-03-11. Investigates whether models can subvert supervised fine-tuning used to elicit latent capabilities; gradient hacking is a foundational alignment threat model and empirical work here is rare.
+- Link: <https://www.lesswrong.com/posts/FJb4TeMAGjNANcKhS/can-models-gradient-hack-sft-elicitation>
+
+---
+## 2026-03-12 09:47 (Asia/Taipei)
+
+**[new]** *"Martian Interpretability Challenge: The Core Problems In Interpretability"* — LessWrong, 2026-03-11. Frames interpretability as a set of concrete challenge problems (a "Martian test"), useful for grounding what the field actually needs to solve; high-signal for anyone doing mech interp work.
+- Link: <https://www.lesswrong.com/posts/yJ7yoQAScacHsHgM2/martian-interpretability-challenge-the-core-problems-in>
+
+**[backlog-pick]** *"Models have linear representations of what tasks they like"* — LessWrong, 2026-03-05. Empirical finding that LLM task-preference is linearly structured in activation space — directly relevant to understanding model motivation and reward hacking risk.
+- Link: <https://www.lesswrong.com/posts/pxC2RAeoBrvK8ivMf/models-have-linear-representations-of-what-tasks-they-like-1>

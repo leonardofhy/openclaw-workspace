@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 1,
+    "learn_remaining_today": 0,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 2,
+    "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-12"
   },
   "stats": {
-    "total_cycles": 180,
+    "total_cycles": 182,
     "total_skips": 40,
-    "papers_read_deep": 33,
+    "papers_read_deep": 34,
     "papers_scanned": 37,
-    "research_gaps": 23,
-    "paper_ideas": 21,
+    "research_gaps": 24,
+    "paper_ideas": 40,
     "paper_pitches": 2,
     "code_artifacts": 52,
     "system_improvements": 7,
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-0901",
+    "id": "c-20260312-1001",
     "action": "learn",
-    "summary": "Q084: Wrote 520-word pitch for gc(k) as CPU-feasible regulatory audit tool; 3-step CPU protocol for structural certification; Option A (Paper A §5.5) vs Option B (FAccT standalone)"
+    "summary": "AudioLens (Ho et al., ASRU 2025) deep read: Logit Lens → layer-wise attribute tracking in LALMs; gc(k) is causal sequel; Gap #33 identified (Logit Lens ≠ Causal)"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []

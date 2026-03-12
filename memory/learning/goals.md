@@ -81,7 +81,7 @@
 - [ ] Causal abstraction 理論基礎
 
 ## Must-Read List（按優先級）
-1. [ ] **AudioLens** (智凱哥 2025, NTU) — lab 自己的工作！[arXiv:2506.05140]
+1. [x] **AudioLens** (Ho, Lee, Hung-yi Lee, ASRU 2025, NTU) — lab 自己的工作！[arXiv:2506.05140] ✅ 2026-03-12 deep read cycle #182 → Gap #33; Paper A §2 causal sequel framing; earlier resolution=higher accuracy; models query audio tokens (but only observationally—gc(k) is the causal test)
 2. [x] **Beyond Transcription** (Glazer 2025) — ASR MI 基礎方法論 [arXiv:2508.15882] ✅ 2026-02-26 deep read cycle #6
 3. [x] **AudioSAE** (Aparin 2026, EACL) — SAE for speech + steering [arXiv:2602.05027] ✅ 2026-03-02 full deep read cycle #177
    → **Paper B v1.3 milestone**: §1+§2+§3 all LaTeX-ready ✅ (cycle #225, 2026-03-03)
@@ -288,6 +288,18 @@
 - **Method note**: Billa's matched-backbone testing = behavioral control; Paper A's audio-vs-text patching = mechanistic control — complementary, not competing
 - **Status**: 🟢 GREEN — Billa has no mechanistic follow-up; Paper A is the natural continuation; strengthens Paper A §1 motivation enormously
 - Priority: HIGH — add to Paper A §1 rewrite + abstract v08
+
+## Gap #33: Logit Lens ≠ Causal — AudioLens Finding #3 Needs Causal Verification (新增 2026-03-12 cycle #182)
+**"AudioLens (Ho et al., ASRU 2025) shows models query audio tokens directly via Logit Lens — but Logit Lens is observational, not causal. gc(k) is the causal test."**
+- AudioLens: LALMs "heavily rely on querying auditory inputs for predicting attributes instead of aggregating necessary information in hidden states at attribute-mentioning positions" → Logit Lens evidence
+- **But Logit Lens is correlational**: high I_i^ℓ at audio token positions doesn't prove audio tokens CAUSED the prediction. A model could show high Logit Lens scores at audio tokens AND still be text-driven causally (if text pathway produces the same prediction).
+- **gc(k) = first causal test of AudioLens finding #3**: does patching audio tokens vs text tokens CAUSALLY shift attribute prediction? If yes → listening confirmed; if text wins → behavioral correlate ≠ causal mechanism
+- **AudioLens I_i^ℓ ≈ observational gc** — same conceptual measurement, different causal strength
+- **Paper A §2 positioning**: "AudioLens [Ho et al. 2025] tracks auditory attribute information using Logit Lens (observational). We extend this to causal analysis via activation patching, isolating the mechanistic contribution of audio vs. text pathways."
+- **Falsifiable prediction**: gc(k) peak at audio-token positions, not text positions → confirms AudioLens #3 causally; if contradicted → models LOOK like they listen but causally don't (major finding)
+- **Connection to Gap #32 (Billa)**: AudioLens = non-causal layer tracking; Billa = behavioral equivalence; Paper A = causal mechanism; three papers form perfect three-tier motivation
+- **Status**: 🟢 GREEN — opens Paper A as explicit mechanistic sequel to AudioLens; strengthens §1+§2 significantly
+- **Must-read #1** ✅ AudioLens fully read (cycle #182, 2026-03-12); cite in Paper A §1+§2
 
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
