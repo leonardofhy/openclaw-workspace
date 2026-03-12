@@ -1,6 +1,17 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 16:15 (Thu)** — scan: 0 new posts. Backlog: 4 AF + 77 LW unread. Backlog picks ×2:
+- [backlog-pick] AF#43 "Schelling Goodness, and Shared Morality as a Goal" (2026-02-28) — alignment theory post arguing shared morality/Schelling points as an alignment goal; directly on-topic for value alignment. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
+- [backlog-pick] LW#70 "Single Direction vs Low-Rank Refusal in Small LLMs" (2026-03-02) — empirical mech-interp study on refusal mechanisms; relevant to safety training robustness. https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1
+
+---
+**2026-03-12 15:45 (Thu)** — scan: 1 new LW post (today), 0 new AF posts. Backlog: 81 unread.
+
+- **NEW** [LessWrong] "AI for Agent Foundations etc.?" — asks whether AI tools can accelerate agent foundations research (decision theory, logical uncertainty, embedded agency); directly relevant to technical alignment research tooling. <https://www.lesswrong.com/posts/gko3r6hvkSXrbDFPD/ai-for-agent-foundations-etc>
+- **BACKLOG-PICK** [LessWrong] "How to Design Environments for Understanding Model Motives" — methodology for probing whether models have misaligned goals vs. superficial behaviors; useful for interpretability + eval work. <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
+
+---
 **2026-03-12 15:15 (Thu)** — scan: 1 new LW post (today), 0 new AF posts. Backlog: 80 unread (LW: 78, AF: 4).
 
 - **NEW** [LessWrong] "Factories are already running the dataset for AI" — cryptic title but likely about industrial-scale synthetic data pipelines already shaping AI training; worth reading for data-centric safety implications. <https://www.lesswrong.com/posts/fpfAqN3nwEdLymrrJ/factories-are-already-running-the-dataset-for-ai>
