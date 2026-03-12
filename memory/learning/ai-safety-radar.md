@@ -1,6 +1,11 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 17:15 (Thu)** — scan: 0 new posts. Backlog: 81 unread (large queue). Backlog picks ×2:
+- [backlog-pick] LW#81 "White-Box Attacks on the Best Open-Weight Model: CCP Bias vs. Safety Training in Kimi K2.5" (2026-03-03) — adversarial white-box attack exposing political bias & safety training brittleness in top open-weight model; high-signal for alignment/safety training robustness. https://www.lesswrong.com/posts/sRNHWhoZfYpE6WH2r/white-box-attacks-on-the-best-open-weight-model-ccp-bias-vs
+- [backlog-pick] LW#74 "LLM coherentization as an obvious low-hanging fruit to try?" (2026-03-04) — proposes coherentizing LLM beliefs/values as a tractable alignment intervention; novel framing worth tracking. https://www.lesswrong.com/posts/ZaEGdjDQ3e9W6eNYW/llm-coherentization-as-an-obvious-low-hanging-fruit-to-try
+
+---
 **2026-03-12 16:15 (Thu)** — scan: 0 new posts. Backlog: 4 AF + 77 LW unread. Backlog picks ×2:
 - [backlog-pick] AF#43 "Schelling Goodness, and Shared Morality as a Goal" (2026-02-28) — alignment theory post arguing shared morality/Schelling points as an alignment goal; directly on-topic for value alignment. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
 - [backlog-pick] LW#70 "Single Direction vs Low-Rank Refusal in Small LLMs" (2026-03-02) — empirical mech-interp study on refusal mechanisms; relevant to safety training robustness. https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1
@@ -1454,3 +1459,7 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 **2026-03-12 14:45 (Thu)** — scan: 0 new posts (AF: 0, LW: 0). Backlog: 83 unread (LW: 79, AF: 4). Backlog picks:
 - [backlog-pick] AF [43] "Schelling Goodness, and Shared Morality as a Goal" — explores shared morality as an alignment target; relevant to value alignment theory. https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal
 - [backlog-pick] AF [17] "Human-like metacognitive skills will reduce LLM slop and aid alignment and capabilities" — proposes metacognition as lever for both alignment and capability quality. https://www.alignmentforum.org/posts/m5d4sYgHbTxBnFeat/human-like-metacognitive-skills-will-reduce-llm-slop-and-aid
+
+**2026-03-12 16:45 (Thu)** — scan: 0 new posts (AF: 0, LW: 0). Backlog: 81 unread. Backlog picks:
+- [backlog-pick] LW [81] "White-Box Attacks on the Best Open-Weight Model: CCP Bias vs. Safety Training in Kimi K2.5" — white-box adversarial attacks exposing tension between political bias and safety training in open-weight models; directly relevant to robust alignment. https://www.lesswrong.com/posts/sRNHWhoZfYpE6WH2r/white-box-attacks-on-the-best-open-weight-model-ccp-bias-vs
+- [backlog-pick] LW [64] "I'm confused by the change in the METR trend" — METR capability evaluation trend shift; key signal for timelines and safety readiness. https://www.lesswrong.com/posts/9ihaaXqdc3i328tLp/i-m-confused-by-the-change-in-the-metr-trend
