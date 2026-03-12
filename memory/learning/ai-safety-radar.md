@@ -1,6 +1,11 @@
 # AI Safety Radar
 
 ---
+**2026-03-12 20:15 (Thu)** — scan: 1 new LW post. Picks ×2:
+- [new] LW#147 "Hunting Undead Stochastic Parrots: Finding and Killing the Arguments" (2026-03-12) — critiques zombie arguments about LLMs (stochastic parrots framing); relevant for understanding how AI discourse shapes safety narratives. https://www.lesswrong.com/posts/KWHeBG978uZuqNK6Q/hunting-undead-stochastic-parrots-finding-and-killing-the
+- [backlog-pick] LW#60 "I'm Bearish On Personas For ASI Safety" (2026-03-01) — argues persona-based alignment strategies are insufficient for ASI safety; directly targets a common but flawed safety approach. https://www.lesswrong.com/posts/fMgE3E54PdDcZhvm6/i-m-bearish-on-personas-for-asi-safety
+
+---
 **2026-03-12 19:15 (Thu)** — scan: 0 new posts. Backlog: 2 AF + 73 LW unread. Backlog picks ×2:
 - [backlog-pick] LW#70 "Single Direction vs Low-Rank Refusal in Small LLMs" (2026-03-02) — mechanistic interpretability study comparing single-direction vs low-rank representations of refusal behavior in small LLMs; directly relevant to understanding and improving safety training geometry. https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1
 - [backlog-pick] LW#76 "Mass Surveillance w/ LLMs is the Default Outcome. Contracts Won't Change That." (2026-03-03) — argues LLM-enabled mass surveillance is a default trajectory that legal contracts cannot prevent; high-signal AI governance/societal risk framing. https://www.lesswrong.com/posts/drMm8QXsWYiPj7KQZ/mass-surveillance-w-llms-is-the-default-outcome-contracts
