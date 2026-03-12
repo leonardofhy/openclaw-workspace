@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-1445",
+    "id": "c-20260312-1545",
     "action": "skip",
-    "summary": "All action budgets exhausted (learn=0, build=0, ideate=0); reflect=2 but no trigger. 4th consecutive skip. Budgets reset tomorrow 2026-03-13."
+    "summary": "All action budgets exhausted (learn=0, build=0, ideate=0); reflect=2 but no trigger. 5th consecutive skip. Budgets reset 2026-03-13."
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
