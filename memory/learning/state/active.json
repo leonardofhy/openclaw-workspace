@@ -29,11 +29,11 @@
     "learn_remaining_today": 0,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 1,
+    "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-12"
   },
   "stats": {
-    "total_cycles": 180,
+    "total_cycles": 181,
     "total_skips": 40,
     "papers_read_deep": 32,
     "papers_scanned": 37,
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260312-1115",
-    "action": "learn",
-    "summary": "Synthesized RAVEL Cause/Isolate × ESN leakage design for Q040: 2x2 emotion-speaker control matrix, mock scorecard spec ready; Q040 flagged as priority-1 build for tomorrow."
+    "id": "c-20260312-1145",
+    "action": "ideate",
+    "summary": "Generated 20 cross-pollination ideas (all N+F>=7); Q089 Audio-Incrimination and Q090 Subspace-Ablation-Defense added; queue full at 25; 4 top ideas pending for next slot"
   },
   "last_gc": "2026-03-05T10:07:04.002383+08:00",
   "self_improve_tickets": []
