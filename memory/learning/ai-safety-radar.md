@@ -1399,3 +1399,20 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 
 **[no-new]** No fresh posts. Backlog pick: **"Current activation oracles are hard to use"** — LessWrong. Practical constraints on state-of-the-art interpretability methods; pairs well with today's cycle-consistent oracles post.
 - Link: <https://www.lesswrong.com/posts/>
+
+---
+## 2026-03-12 12:45 (Asia/Taipei)
+
+**[no-new]** No fresh posts (AF: 0 new, LW: 0 new). Two backlog picks:
+
+**[backlog-pick]** *"Single Direction vs Low-Rank Refusal in Small LLMs"* — LessWrong, 2026-03-02. Mechanistic study of refusal circuits in small models: whether safety training encodes refusal as a single direction vs. distributed low-rank structure; directly relevant to robustness of safety training and jailbreak surface.
+- Link: <https://www.lesswrong.com/posts/LMkvjDTLKFrgdzJdG/single-direction-vs-low-rank-refusal-in-small-llms-1>
+
+**[backlog-pick]** *"How to Design Environments for Understanding Model Motives"* — LessWrong, 2026-03-02. Proposes evaluation environment design principles for eliciting and measuring model motives (vs. surface behaviors); useful for interpretability + inner-alignment evals.
+- Link: <https://www.lesswrong.com/posts/8pZuQnCve6K5ZrnM8/how-to-design-environments-for-understanding-model-motives>
+
+---
+## 2026-03-12 12:28 (Asia/Taipei)
+
+**[no-new]** No fresh posts this cycle (AF: 0 new, LW: 0 new). **Backlog pick: "Schelling Goodness, and Shared Morality as a Goal"** — Alignment Forum, 2026-02-28. Addresses core value alignment: how to define and coordinate on shared moral objectives when multiple AGI systems exist; foundational for intent alignment & multi-agent safety.
+- Link: <https://www.alignmentforum.org/posts/TkBCR8XRGw7qmao6z/schelling-goodness-and-shared-morality-as-a-goal>
