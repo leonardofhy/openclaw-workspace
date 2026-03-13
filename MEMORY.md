@@ -15,7 +15,7 @@
 
 ## Current Research
 
-- **AudioMatters** — Interspeech 2026 一作（已投稿）
+- **AudioMatters** — Interspeech 2026 一作（已投稿，智凱哥要確認數據放 arxiv）
 - **主方向**：Mechanistic Interpretability × Speech/Multimodal LM
 - **次方向**：AI Safety × Speech
 - **北極星**：成為 Google DeepMind / Anthropic 等級的 AI Researcher
@@ -54,3 +54,9 @@
 - **GPU**：2x RTX PRO 6000（實驗室）
 - **日記**：Google Form → Google Sheets，2025-04-21 起每日記錄未中斷
 - **Discord**：主要管道（user id: 756053339913060392）
+
+## Current Activities
+
+- **NTUAIS**：第三屆 AI Safety 讀書會 organizer，3/16（一）第一次活動 19:00 德田 601
+- **實驗室網管**：戰艦(battleship)維護
+- **AI 帳號共享方案**：$200/人，3 人一組申請，宏毅老師已認可，下週發布

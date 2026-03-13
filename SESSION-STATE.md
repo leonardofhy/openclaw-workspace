@@ -6,7 +6,7 @@
 **Last Updated:** 2026-03-13
 
 ## Current Task
-30-min API sprint: 系統維護 + Leo 支援
+Extended API sprint: 系統維護 + Leo 支援（budget 重置）
 
 ## Recent Context
 - [3/13 11:25] Leo 給 30 分鐘 API time
