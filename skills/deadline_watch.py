@@ -42,6 +42,9 @@ def check_deadlines(deadlines: list[dict], today: date | None = None,
     upcoming: list[dict] = []
 
     for d in deadlines:
+        # Skip closed/done deadlines
+        if d.get("status") in ("closed", "done", "cancelled"):
+            continue
         dl = datetime.strptime(d["deadline"], "%Y-%m-%d").date()
         days_left = (dl - today).days
         entry = {**d, "days_left": days_left, "deadline_date": dl}
