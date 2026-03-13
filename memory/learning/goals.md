@@ -304,3 +304,13 @@
 ## 待請求 Leo 的任務隊列
 1. 🔬 **Deep Research**: Mech Interp × Speech 領域深度掃描（已請求 2/26）
 2. 🔧 **Deep Research**: 自主 AI agent 系統的可持續架構（已請求 2/26）
+
+## Gap #34: AAPE Neuron Atlas × gc(k) Causal Gap (新增 2026-03-13 cycle #199)
+**"Kawamura et al. 2602.15307 identify class-specific neurons via AAPE (observational); gc(k) is the causal test"**
+- Kawamura et al. (EUSIPCO 2026): first systematic neuron-level analysis of general-purpose audio SSL (M2D ViT). AAPE = Audio Activation Probability Entropy, adapted from LAPE. SSL achieves ~100% class coverage across novel tasks; SL covers only 49%. Gender/pitch neurons shared cross-task. Ablation confirms neurons are functionally causal.
+- **Key gap**: AAPE identifies neurons that *tend to activate* for certain classes — observational (correlation). Same issue as AudioLens Logit Lens (Gap #33): high AAPE specificity does not guarantee those neurons CAUSE the behavior.
+- **gc(k) = causal complement**: patch AAPE-identified neurons → does the classification behavior change (and by how much)? If low-AAPE (high-specificity) neurons are also high-gc → attribution is validated. If not → model uses a different circuit (polysemanticity + composition problem).
+- **AudioSAEBench connection**: AAPE neurons = pre-monosemantic baseline (Category -1). AudioSAE features = more interpretable decomposition. Paper B §2 cite Kawamura as: "neuron-level approach does not decompose polysemantic neurons; SAE provides monosemantic features + Cause/Isolate causal evaluation"
+- **Open Q**: Are M2D's class-specific neurons polysemantic? If ~100% class coverage achieved with a subset of neurons → likely distributed polysemantic, not monosemantic
+- **Status**: 🟢 GREEN — direct extension; no new experiments needed; Paper B §2 baseline + Paper A §2 observational→causal motivation chain (AudioLens #3 → Kawamura AAPE → gap → gc(k))
+- Venue: same as AudioSAEBench (Paper B)
