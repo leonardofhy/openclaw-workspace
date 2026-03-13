@@ -2,7 +2,7 @@
 
 > ⚠️ Line budget: ≤80 行。超過時降級舊內容到 `memory/memory-full.md`。
 > 完整記憶見 `memory/memory-full.md`（按需載入）。
-> 最後更新：2026-03-09
+> 最後更新：2026-03-13
 
 ## About Leo
 
@@ -25,11 +25,14 @@
 - **李宏毅老師** — 指導教授
 - **智凱哥** — 最常互動的 labmate，AudioMatters 共同一作
 - **晨安哥** — AudioMatters 二作
+- **奇恩哥** — 實驗室網管資深成員
+- **彤恩姐** — 實驗室行政/管理
 - **明淵、朗軒** — 大學好友，每週聚餐
 - **理鏡** — 馬來西亞中學鐵哥們，現居香港，老婆友玲，養兩隻貓（豆花、豆奶）
 - **Rocky** — 馬來西亞好友
 - **David / Ziya** — AI Safety 社群聯絡人
 - **Christine / Teddy / Zen** — NTU AI Safety 團隊
+- **Jim / Gary** — Project Parallax 夥伴（資訊落差彌補）
 
 ## Key Patterns
 
