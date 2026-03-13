@@ -1536,6 +1536,11 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 - [pick] LW#166 "Modeling a Constant-Compute Automated AI R&D Process" (2026-03-12) — models automated AI R&D under fixed compute, informing timelines and recursive self-improvement risk estimates. https://www.lesswrong.com/posts/9Dn5wFGhwN3taHiTM/modeling-a-constant-compute-automated-ai-r-and-d-process
 - [new] LW#162 "A Plan 'B' for AI safety" (2026-03-12) — proposes fallback strategy when primary alignment plans fail; practically useful for thinking about robustness under uncertainty. https://www.lesswrong.com/posts/Huu732uEvJQ9JEhXJ/a-plan-b-for-ai-safety
 ---
+**2026-03-13 11:45 (Fri)** — scan: 74 unread (LW); picked 2 high-signal from today's new batch.
+- [pick] LW#157 "Operationalizing FDT" (2026-03-13) — applies Functional Decision Theory to concrete decision scenarios; directly relevant to alignment-adjacent work on rational agency and goal-directed AI behavior. https://www.lesswrong.com/posts/RyDkpWGLQsCnABE78/operationalizing-fdt
+- [pick] LW#163 "Ideologies Embed Taboos Against Common Knowledge Formation: a Case Study with LLMs" (2026-03-12) — empirical study of how ideological pressure suppresses epistemic convergence in LLMs; safety-relevant for honesty, corrigibility, and robustness under social/political priors. https://www.lesswrong.com/posts/6wNwj7xANPmTwWkX6/ideologies-embed-taboos-against-common-knowledge-formation-a
+
+---
 **2026-03-13 10:45 (Fri)** — scan: 0 new (AF 0, LW 0), backlog 79 items. Picks ×2:
 - [backlog-pick] LW#160 "All technical alignment plans are steps in the dark" (2026-03-12) — epistemic humility post arguing no current alignment plan has strong theoretical grounding; relevant for calibrating confidence in the field. https://www.lesswrong.com/posts/QygXWZbncbveZhWqH/all-technical-alignment-plans-are-steps-in-the-dark
 - [backlog-pick] AF#16 "models have some pretty funny attractor states" (2026-02-12) — empirical observation of LLM behavioral attractors; mechanistic insight potentially relevant to mesa-optimization / goal stability research. https://www.alignmentforum.org/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states
