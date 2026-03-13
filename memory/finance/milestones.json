@@ -1,0 +1,178 @@
+[
+  {
+    "id": "M1-1",
+    "month": 1,
+    "phase": "plug-the-leak",
+    "task": "申請工作證 (ezwp.wda.gov.tw)",
+    "due": "2026-03-31",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "Legal prerequisite for all paid work",
+    "effort": "30 min application + 7 days processing, NT$100"
+  },
+  {
+    "id": "M1-2",
+    "month": 1,
+    "phase": "plug-the-leak",
+    "task": "開始家教 (ML/Python, 2-3 hr/week)",
+    "due": "2026-03-31",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "+6,400-14,400 TWD/month — covers the deficit",
+    "effort": "Post on NTU forums + EECS LINE groups"
+  },
+  {
+    "id": "M1-3",
+    "month": 1,
+    "phase": "plug-the-leak",
+    "task": "啟動 Substack newsletter (free, AI Safety)",
+    "due": "2026-03-31",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "Foundation for future paid subscribers",
+    "effort": "2-3 posts this month, ~3 hr total"
+  },
+  {
+    "id": "M1-4",
+    "month": 1,
+    "phase": "plug-the-leak",
+    "task": "Hahow 課程大綱 (Speech AI 實戰)",
+    "due": "2026-03-31",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "Prep for M2 proposal submission",
+    "effort": "Outline + competitor research, ~2 hr"
+  },
+  {
+    "id": "M2-1",
+    "month": 2,
+    "phase": "launch-content",
+    "task": "Submit LTFF grant application (AI Safety community building)",
+    "due": "2026-04-30",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "$5K-20K USD — single biggest potential win",
+    "effort": "2-page research proposal, ~4 hr"
+  },
+  {
+    "id": "M2-2",
+    "month": 2,
+    "phase": "launch-content",
+    "task": "Contact Kairos/Open Phil for organizer funding",
+    "due": "2026-04-30",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "Get paid for work already doing (NTUAIS)",
+    "effort": "1 email + follow-up"
+  },
+  {
+    "id": "M2-3",
+    "month": 2,
+    "phase": "launch-content",
+    "task": "Set up Upwork profile (Speech AI / ML)",
+    "due": "2026-04-30",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "Pipeline for $40-65/hr freelancing",
+    "effort": "Profile + 3 proposals, ~3 hr"
+  },
+  {
+    "id": "M2-4",
+    "month": 2,
+    "phase": "launch-content",
+    "task": "Submit Hahow course proposal video",
+    "due": "2026-04-30",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "Unlocks crowdfunding → TWD 240K+ potential",
+    "effort": "1-3 min video + outline, ~4 hr"
+  },
+  {
+    "id": "M2-5",
+    "month": 2,
+    "phase": "launch-content",
+    "task": "Substack: 4 posts published this month",
+    "due": "2026-04-30",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "Growing to ~200 subscribers",
+    "effort": "1 post/week, ~1.5 hr each"
+  },
+  {
+    "id": "M3-1",
+    "month": 3,
+    "phase": "first-income",
+    "task": "Land first Upwork project ($300-500)",
+    "due": "2026-05-31",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "First non-stipend income, +25K-40K TWD",
+    "effort": "5-8 hrs project work"
+  },
+  {
+    "id": "M3-2",
+    "month": 3,
+    "phase": "first-income",
+    "task": "Apply NSTC Conference Travel Grant (Interspeech)",
+    "due": "2026-05-31",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "Covers Interspeech travel costs",
+    "effort": "NTU application form, ~2 hr"
+  },
+  {
+    "id": "M4-1",
+    "month": 4,
+    "phase": "scale-up",
+    "task": "Hahow course production (if crowdfunding succeeds)",
+    "due": "2026-06-30",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "Deliver course → first payout",
+    "effort": "15-20 hrs total recording + editing"
+  },
+  {
+    "id": "M4-2",
+    "month": 4,
+    "phase": "scale-up",
+    "task": "CTCI 研究獎學金 preparation starts",
+    "due": "2026-06-01",
+    "status": "pending",
+    "owner": "bot",
+    "impact": "TWD 150,000 — strong candidate with Interspeech pub",
+    "effort": "Research plan + advisor recommendation"
+  },
+  {
+    "id": "M5-1",
+    "month": 5,
+    "phase": "passive-income",
+    "task": "Convert 5% Substack free → paid (~25 paid subs)",
+    "due": "2026-07-31",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "+6,250 TWD/month recurring",
+    "effort": "Launch paid tier + promote"
+  },
+  {
+    "id": "M5-2",
+    "month": 5,
+    "phase": "passive-income",
+    "task": "Pitch first corporate AI workshop",
+    "due": "2026-07-31",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "TWD 40K-120K per workshop day",
+    "effort": "LinkedIn outreach + NTU alumni network"
+  },
+  {
+    "id": "M6-1",
+    "month": 6,
+    "phase": "diversified",
+    "task": "Monthly income ≥ TWD 60,000 (cash-flow positive)",
+    "due": "2026-08-31",
+    "status": "pending",
+    "owner": "leo",
+    "impact": "🎯 GOAL: sustainable financial position",
+    "effort": "All streams running"
+  }
+]

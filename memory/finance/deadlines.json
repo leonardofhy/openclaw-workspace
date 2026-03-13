@@ -122,5 +122,56 @@
     "notify": "discord",
     "status": "closed",
     "note": "Leo decided to skip (2026-03-11)"
+  },
+  {
+    "id": "D-013",
+    "name": "申請工作證",
+    "deadline": "2026-03-31",
+    "category": "admin",
+    "action": "到 ezwp.wda.gov.tw 申請，經 NTU 僑生輔導組，NT$100，7天處理",
+    "owner": "leo",
+    "warn_days": 7,
+    "notify": "discord"
+  },
+  {
+    "id": "D-014",
+    "name": "LTFF Grant Application (Q2)",
+    "deadline": "2026-04-30",
+    "category": "funding",
+    "action": "Submit 2-page proposal: AI Safety community building in Taiwan. funds.effectivealtruism.org/funds/far-future",
+    "owner": "leo",
+    "warn_days": 14,
+    "notify": "discord"
+  },
+  {
+    "id": "D-015",
+    "name": "Contact Kairos for organizer funding",
+    "deadline": "2026-04-15",
+    "category": "funding",
+    "action": "Email Kairos/Open Phil about NTUAIS university group organizer funding",
+    "owner": "leo",
+    "warn_days": 7,
+    "notify": "discord"
+  },
+  {
+    "id": "D-016",
+    "name": "ISCA Student Travel Grant (Interspeech)",
+    "deadline": "2026-06-30",
+    "category": "funding",
+    "action": "Apply after paper acceptance confirmed. Preference for underrepresented regions.",
+    "owner": "leo",
+    "warn_days": 14,
+    "notify": "discord",
+    "note": "Exact deadline TBD — depends on Interspeech notification date"
+  },
+  {
+    "id": "D-017",
+    "name": "NSTC Conference Travel Grant",
+    "deadline": "2026-07-31",
+    "category": "funding",
+    "action": "Apply through NTU for Interspeech 2026 travel costs. Nearly automatic with accepted paper.",
+    "owner": "leo",
+    "warn_days": 14,
+    "notify": "discord"
   }
 ]
