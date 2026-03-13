@@ -1,6 +1,11 @@
 # AI Safety Radar
 
 ---
+**2026-03-13 11:15 (Fri)** — scan: 76 unread (LW×76). Picks ×2:
+- [new] LW#161 "Anthropic vs USG. What will happen by May 1st? Long careful forecast." (2026-03-12) — detailed forecast on Anthropic vs US government policy conflict; high-signal for AI governance trajectory. https://www.lesswrong.com/posts/NwtrG8v9BTq3FyHZh/anthropic-vs-usg-what-will-happen-by-may-1st-long-careful
+- [new] LW#78 "An Alignment Journal: Coming Soon" (2026-03-03) — announcement of a dedicated peer-reviewed alignment research journal; notable infrastructure development for the field. https://www.lesswrong.com/posts/msnGbm52ZcG3xYcFo/an-alignment-journal-coming-soon
+
+---
 **2026-03-13 10:15 (Fri)** — scan: 1 new (LW×1), backlog 81 items. Picks ×2:
 - [new] LW#155 "Rife's Tips for AIs in training (0 - Alignment Faking)" (2026-03-13) — direct treatment of alignment faking as a safety failure mode; framing it as training-time risk is novel angle worth tracking. https://www.lesswrong.com/posts/TfKd78eBg8g7ATZrL/rife-s-tips-for-ais-in-training-0-alignment-faking
 - [backlog] AF#164 "Operationalizing FDT" (2026-03-13) — Alignment Forum post attempting to make Functional Decision Theory practically applicable; key for anyone reasoning about AI decision-making under uncertainty. https://www.alignmentforum.org/posts/RyDkpWGLQsCnABE78/operationalizing-fdt
@@ -1529,3 +1534,8 @@ No new articles (scan: 0 new from AF/LW feeds). Backlog: 83 unread.
 **2026-03-13 09:45 (Fri)** — scan: 2 new (LessWrong). Picked both as high-signal alignment picks.
 - [pick] LW#165 "Are AIs more likely to pursue on-episode or beyond-episode reward?" (2026-03-12) — directly on reward misspecification and instrumental goal extension; relevant to mesa-optimization and deceptive alignment concerns. https://www.lesswrong.com/posts/jp6CdbKjueWpBFSff/are-ais-more-likely-to-pursue-on-episode-or-beyond-episode
 - [pick] LW#166 "Modeling a Constant-Compute Automated AI R&D Process" (2026-03-12) — models automated AI R&D under fixed compute, informing timelines and recursive self-improvement risk estimates. https://www.lesswrong.com/posts/9Dn5wFGhwN3taHiTM/modeling-a-constant-compute-automated-ai-r-and-d-process
+- [new] LW#162 "A Plan 'B' for AI safety" (2026-03-12) — proposes fallback strategy when primary alignment plans fail; practically useful for thinking about robustness under uncertainty. https://www.lesswrong.com/posts/Huu732uEvJQ9JEhXJ/a-plan-b-for-ai-safety
+---
+**2026-03-13 10:45 (Fri)** — scan: 0 new (AF 0, LW 0), backlog 79 items. Picks ×2:
+- [backlog-pick] LW#160 "All technical alignment plans are steps in the dark" (2026-03-12) — epistemic humility post arguing no current alignment plan has strong theoretical grounding; relevant for calibrating confidence in the field. https://www.lesswrong.com/posts/QygXWZbncbveZhWqH/all-technical-alignment-plans-are-steps-in-the-dark
+- [backlog-pick] AF#16 "models have some pretty funny attractor states" (2026-02-12) — empirical observation of LLM behavioral attractors; mechanistic insight potentially relevant to mesa-optimization / goal stability research. https://www.alignmentforum.org/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states
