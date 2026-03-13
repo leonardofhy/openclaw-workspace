@@ -43,12 +43,13 @@
       "type": "experiment",
       "track": "T3",
       "title": "Real speech validation of whisper_hook_demo.py",
-      "status": "blocked",
+      "status": "done",
       "priority": 3,
       "blocked_by": "Real speech .wav file",
       "definition_of_done": "CKA cluster separation confirmed with real speech",
       "created": "2026-02-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-13"
     },
     {
       "id": "Q074",
@@ -67,12 +68,13 @@
       "type": "experiment",
       "track": "T3",
       "title": "Phonological DAS x Instruction Tuning: IIA before/after simulated RLHF in MicroGPT",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "IIA scores before/after simulated instruction tuning; circuit integrity vs accuracy table",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-13"
     },
     {
       "id": "Q078",
