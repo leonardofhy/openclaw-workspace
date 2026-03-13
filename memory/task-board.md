@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-03-04 15:30
+> 最後更新：2026-03-13 11:30
 
 ## 規則
 
@@ -42,29 +42,28 @@
 - **owner**: MacBook
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-03-03
+- **last_touched**: 2026-03-13
 - **描述**: 用 battleship 跑 chunk sensitivity，定位可能的 listen-layer 訊號
-- **progress**: smoke run（n=4,k=3,20 samples）完成；full run 進行中（21:46 時點：`n4_chunk3` 3562 行、`n5_chunk0` 1188 行）；已重提 n5 任務 `job 224422`（RUNNING）；夜間已把 merge-to-main 流程修穩，早上可無阻接續實驗收尾
-- **next_action**: 明早第一段先檢查 n4/n5 任務是否完成；完成則立即跑 evaluate 產生 `*_comprehensive_results.json`，並更新 `chunk_sensitivity_desta25.md` v2（Method/Results Δ 表）；未完成則 11:30 再次檢查
-- **blockers**: GPU 資源排隊/同機器並行導致完成時間波動
+- **progress**: smoke run 完成；full run 結果待確認（Leo 近期忙 NTUAIS + lab admin，研究暫停）
+- **next_action**: 等 Leo 回到研究模式後檢查 n4/n5 結果
 
 ### M-02 | 論文產出（Results v0）
 - **owner**: MacBook
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-03-03
+- **last_touched**: 2026-03-13
 - **描述**: AudioMatters 論文 Results section 初稿（承接已完成的 Method v1 + Setup v1）
-- **progress**: Leo 回報 Method 第一版與 Setup 第一版已完成；Results v0 寫作包已補上 40 分鐘 kickoff 清單（填表→主敘事→ablation）
-- **next_action**: 早上第一個寫作時段先完成 kickoff 清單前 2 項（Table X 數字 + hardest subset），中午前交付 Main Results 四句版本
+- **progress**: Method + Setup v1 已完成；Results v0 kickoff 清單待執行（Leo 近期忙雜務）
+- **next_action**: 等 Leo 有空時 kickoff Results 寫作（Table X 數字 + hardest subset）
 
 ### M-03 | 研究雙軌推進
 - **owner**: MacBook
 - **priority**: P1
 - **created**: 2026-02-27
-- **last_touched**: 2026-03-03
+- **last_touched**: 2026-03-13
 - **描述**: 不被單一討論卡住，維持主線 + 備線
-- **progress**: 已納入 Leo 新指示：autodidact 恢復 30 分鐘 cadence，新增 meta-awareness 自我改進模式（避免 execution-blocked 連續 skip）；已建立 `meta-awareness-board.md` 與 `experiment-queue.md`
-- **next_action**: 主線持續推進；備線改為 listen-layer 三步循環（Exp1 attention suppression → Exp2 activation patching → Exp3 layer-restricted LoRA）；blocked 時優先執行 meta-audit 第 1 項（novelty classifier 草案）
+- **progress**: autodidact 30min cadence 運行中；meta-awareness board 已建立
+- **next_action**: 等研究模式回歸後，推進 listen-layer 三步循環
 
 ### L-08 | 財務管理（主線）
 - **owner**: Lab
@@ -98,22 +97,7 @@
 
 ## WAITING
 
-### M-04 | 排程同步一致性
-- **owner**: MacBook
-- **priority**: P2
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: schedule → GCal → Todoist 同步
-- **waiting_for**: 規則確認（只改現在/未來；不得刪除過去事件）
-- **source**: `memory/scheduling-rules.md`
-
-### M-05 | Autodidact hourly cron 健康確認
-- **owner**: MacBook
-- **priority**: P2
-- **created**: 2026-02-27
-- **last_touched**: 2026-02-27
-- **描述**: 先前 timeout，已改每小時 + timeout 600s
-- **waiting_for**: 檢查下一輪 run 是否恢復 ok
+（無）
 
 
 ## BLOCKED
@@ -122,7 +106,15 @@
 
 ## PARKED
 
-（無）
+### M-04 | 排程同步一致性
+- **owner**: MacBook | **priority**: P2 | **created**: 2026-02-27
+- **描述**: schedule → GCal → Todoist 同步規則確認
+- **parked_reason**: 同步已在運行，低優先
+
+### M-05 | Autodidact hourly cron 健康確認
+- **owner**: MacBook | **priority**: P2 | **created**: 2026-02-27
+- **描述**: 先前 timeout，已改 30min cadence + timeout 600s
+- **parked_reason**: 目前穩定運行中，不需主動追蹤
 
 ## DONE
 
