@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260313-1545",
+    "id": "c-20260313-1645",
     "action": "skip",
-    "summary": "All budgets exhausted. 22 READY tasks queued for tomorrow."
+    "summary": "All budgets exhausted. Reflect not triggered (not end-of-day). 22 READY tasks queued for tomorrow."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
