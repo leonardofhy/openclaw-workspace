@@ -4,12 +4,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > ⚠️ Line budget: ≤30 行。Recent Context ≤10 條。>48h 的 archive 到 daily memory。
 
-**Last Updated:** 2026-03-13
+**Last Updated:** 2026-03-13T23:50
 
 ## Current Task
-下午任務推進
+日記潤飾 + 作息管理啟動
 
 ## Recent Context
+- 🆕 Leo 要求從 3/15（週六）起幫忙規律作息（催睡 + 叫起）
 - ✅ NTUAIS follow-up 文案已發布
 - ✅ 智凱哥論文數據驗證完成
 - 🔨 NTUAIS 3/16 slides 製作進度 70%
