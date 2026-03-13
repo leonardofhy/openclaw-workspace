@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 1,
+    "learn_remaining_today": 0,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 198,
     "total_skips": 40,
-    "papers_read_deep": 37,
+    "papers_read_deep": 38,
     "papers_scanned": 37,
     "research_gaps": 24,
     "paper_ideas": 151,
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260313-0631",
-    "action": "ideate",
-    "summary": "I-13: 20 cross-domain ideas (AF alignment theory × gc(k) × AND/OR × codec × adversarial). 4 ideas score 10/10: ENV-3 as MMDE, Schelling game theory foundation, Coherent Care × T5, Persona × Schelling × ENV-3. Queue full — top ideas in cycle file for Leo."
+    "id": "c-20260313-0815",
+    "action": "learn",
+    "summary": "Q099: RAVEL paper — high-Isolate features (disentangled/monosemantic) should be cross-seed Schelling-stable in MicroGPT. MDAS > SAE > probes. Next: build mock Cause/Isolate correlation script."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
