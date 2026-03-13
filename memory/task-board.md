@@ -2,7 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-> 最後更新：2026-03-04 15:30
+> 最後更新：2026-03-13 04:30
 
 ## 規則
 
@@ -70,30 +70,31 @@
 - **owner**: Lab
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-03-04
+- **last_touched**: 2026-03-13
 - **描述**: 管理 Leo 的財務：獎學金申請追蹤、收入增加策略、支出監控
 - **tracker**: memory/finance/FINANCE_TRACKER.md
-- **next_action**: 整理 3 月現金流與必要支出清單（含固定/可延後）
+- **progress**: Pathfinder 逾期 3 天需 follow up（原始 deadline 今天 3/13）；NTU 國際傑出研究生獎學金確認逾期 2 天（原始 3/15）；Leo 表示需要找收入來源（玉山費用討論中浮現）；留華轉賬逾期；僑委會信逾期
+- **next_action**: 1) Pathfinder budget 修改 + follow up email（今天！）2) 確認 NTU 國際傑出研究生獎學金時程 3) 需要 Leo 提供最新記帳匯出更新財務快照
 - **recurring**: 每週更新一次 FINANCE_TRACKER
 
 ### L-07 | SYNC_PROTOCOL 落地驗證
 - **owner**: Lab
 - **priority**: P2
 - **created**: 2026-02-27
-- **last_touched**: 2026-03-04
+- **last_touched**: 2026-03-13
 - **描述**: 驗證混合同步協議實際運作：每日 merge、[STATE] 通知、reconcile
-- **next_action**: 跑一輪端到端 SYNC 驗證（含失敗重試）並記錄結果
+- **progress**: SSH tunnels 維修中（iso_leo 預計 3/13 修好，battleship 已恢復），日常 merge cron 受影響
+- **next_action**: 等 iso_leo tunnel 恢復後跑一輪端到端 SYNC 驗證
 
 ### L-09 | HN 雙時段推薦（移交自 Mac）
 - **owner**: Lab
 - **priority**: P1
 - **created**: 2026-02-28
-- **last_touched**: 2026-03-04
+- **last_touched**: 2026-03-13
 - **描述**: 每天 2 次閱讀 Hacker News，分析後推送 Leo 感興趣文章
-- **schedule**: 13:30、20:30（Asia/Taipei）
-- **output_format**: 每次 3-5 篇；每篇含 why it matters + link + action（略讀/深讀）
-- **progress**: v2 完成 — 改為「每小時靜默蒐集 + 每天 20:30 推送 top 10」
-- **next_action**: 觀察首批 daily digest 效果，根據 Leo 反饋調整 profile 權重
+- **schedule**: 每小時靜默蒐集 + 每天 20:30 推送 top 10
+- **progress**: 系統穩定運行中，3/12 已推送 daily digest（10 篇，#7 TADA 語音生成與 Leo 研究相關）
+- **next_action**: 持續觀察 digest 品質；等 Leo 反饋調整 profile 權重
 - **cron_ids**: `df22eb11`（每小時蒐集, spark）, `76817b6d`（20:30 digest, g53s）
 
 ## WAITING
