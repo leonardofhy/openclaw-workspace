@@ -1,6 +1,8 @@
 # Paper A — Introduction Draft
 **Track:** T3 (Listen vs Guess)
-**Version:** v0.2 | **Date:** 2026-03-12 | **Updated:** Q077 — incorporated Billa (2026) CEH + Gap #32
+**Version:** v0.3 | **Date:** 2026-03-13 | **Updated:** Q097 — "Listening Geometry" 5D framework; §1 rewrite
+
+> **v0.3 change:** §1 now opens with 5-dimension Listening Geometry framework (gc peak k*, AND-gate fraction α_AND, Schelling stability σ, collapse onset t*, codec stratification CS). All T3 results positioned as characterizing one or more dimensions. See `cycles/c-20260313-0231.md` for full framework definitions and §3 scaffold.
 
 ---
 
@@ -9,9 +11,9 @@
 
 ---
 
-## Introduction (~450 words)
+## Introduction (~550 words) — v0.3 "Listening Geometry"
 
-Automatic speech recognition (ASR) has entered the era of audio language models (ALMs): systems such as Whisper, Qwen2-Audio, and SALMONN jointly encode acoustic input and generate text via a large language model decoder. These models achieve remarkable performance — yet they fail in systematic, predictable ways. A model that correctly transcribes "pack" in isolation may hallucinate "back" when a biasing context is present, not because its acoustic encoder is confused, but because its language prior overwrites the acoustic evidence before transcription.
+Automatic speech recognition (ASR) has entered the era of audio language models (ALMs): systems such as Whisper, Qwen2-Audio, and SALMONN jointly encode acoustic input and generate text via a large language model decoder. These models achieve remarkable performance — yet they fail in systematic, predictable ways. A model that correctly transcribes "pack" in isolation may hallucinate "back" when a biasing context is present, not because its acoustic encoder is confused, but because its language prior overwrites acoustic evidence before transcription is finalized.
 
 This failure mode is increasingly well characterized at the behavioral level. Li et al. (2025) show via the ALME benchmark that ALMs can be contextually biased toward incorrect transcriptions even when the acoustic signal is unambiguous. Billa (2026) formalizes this further via the **Cascade Equivalence Hypothesis (CEH)**: on text-sufficient tasks (where acoustic surplus ΔI_Y = I(A;Y) − I(T;Y) ≈ 0), speech LLMs behave statistically indistinguishably from matched-backbone ASR+LLM cascades, and under noise conditions (0 dB SNR), cascades can outperform integrated speech LLMs by up to 7.6%. The CEH implies that, for a non-trivial range of inputs, the speech LLM's audio encoder contributes near-zero causal surplus — it is "guessing" from text priors rather than "listening" to the audio.
 

@@ -68,6 +68,14 @@ def _req(method: str, path: str, token: str, payload: dict | None = None, params
 
 
 def _parse_latest_version_section(md_text: str) -> str:
+    # Try new format first: ## PLAN ... ### Current
+    plan_match = re.search(r'^## PLAN\b[^\n]*\n(.*?)(?=^## |\Z)', md_text, flags=re.M | re.S)
+    if plan_match:
+        section = plan_match.group(1)
+        # Extract ### Current subsection if present
+        cur = re.search(r'^### Current\b[^\n]*\n(.*?)(?=^### |\Z)', section, flags=re.M | re.S)
+        return cur.group(1) if cur else section
+    # Legacy format: ## vN
     matches = list(re.finditer(r'^## v\d+[^\n]*\n(.*?)(?=^## |\Z)', md_text, flags=re.M | re.S))
     if not matches:
         return ''
@@ -76,8 +84,12 @@ def _parse_latest_version_section(md_text: str) -> str:
 
 def _parse_blocks(section_text: str) -> list[Block]:
     blocks: list[Block] = []
-    pattern = re.compile(r'^\s*•\s*(\d{2}:\d{2})[–-](\d{2}:\d{2})\s+(\S+)\s+(.*)$', re.M)
-    for m in pattern.finditer(section_text):
+    # Legacy: • HH:MM–HH:MM 🔬 Title
+    pattern_legacy = re.compile(r'^\s*•\s*(\d{2}:\d{2})[–-](\d{2}:\d{2})\s+(\S+)\s+(.*)$', re.M)
+    # New: - [P] HH:MM-HH:MM Title {uid:...}
+    pattern_new = re.compile(r'^\s*-\s*\[[A-Z✓✗]\]\s*(\d{2}:\d{2})[–-](\d{2}:\d{2})\s+(.+?)(?:\s*\{uid:.*)?$', re.M)
+    
+    for m in pattern_legacy.finditer(section_text):
         start, end, emoji, title = m.groups()
         title = re.sub(r'\*\*(.*?)\*\*', r'\1', title).strip()
         lower_title = title.lower()
@@ -86,6 +98,26 @@ def _parse_blocks(section_text: str) -> list[Block]:
         if any(k in title for k in SKIP_KEYWORDS) or any(k in lower_title for k in SKIP_KEYWORDS):
             continue
         blocks.append(Block(start=start, end=end, emoji=emoji, title=title))
+    
+    if not blocks:
+        for m in pattern_new.finditer(section_text):
+            start, end, raw_title = m.groups()
+            raw_title = re.sub(r'\s*\{uid:.*$', '', raw_title).strip()
+            # Extract leading emoji if present
+            emoji_match = re.match(r'^(\S+)\s+', raw_title)
+            emoji = ''
+            title = raw_title
+            if emoji_match and not emoji_match.group(1)[0].isalnum():
+                emoji = emoji_match.group(1)
+                title = raw_title[emoji_match.end():].strip()
+            title = re.sub(r'\*\*(.*?)\*\*', r'\1', title).strip()
+            lower_title = title.lower()
+            if emoji in SKIP_EMOJIS:
+                continue
+            if any(k in title for k in SKIP_KEYWORDS) or any(k in lower_title for k in SKIP_KEYWORDS):
+                continue
+            blocks.append(Block(start=start, end=end, emoji=emoji, title=title))
+    
     return blocks
 
 
