@@ -2,7 +2,7 @@
 
 > ⚠️ Line budget: ≤80 行。超過時降級舊內容到 `memory/memory-full.md`。
 > 完整記憶見 `memory/memory-full.md`（按需載入）。
-> 最後更新：2026-03-09
+> 最後更新：2026-03-13
 
 ## About Leo
 
@@ -15,7 +15,7 @@
 
 ## Current Research
 
-- **AudioMatters** — Interspeech 2026 一作（已投稿）
+- **AudioMatters** — Interspeech 2026 一作（已投稿，智凱哥要確認數據放 arxiv）
 - **主方向**：Mechanistic Interpretability × Speech/Multimodal LM
 - **次方向**：AI Safety × Speech
 - **北極星**：成為 Google DeepMind / Anthropic 等級的 AI Researcher
@@ -51,3 +51,9 @@
 - **GPU**：2x RTX PRO 6000（實驗室）
 - **日記**：Google Form → Google Sheets，2025-04-21 起每日記錄未中斷
 - **Discord**：主要管道（user id: 756053339913060392）
+
+## Current Activities
+
+- **NTUAIS**：第三屆 AI Safety 讀書會 organizer，3/16 第一次活動
+- **實驗室網管**：戰艦(battleship)維護
+- **AI 帳號共享方案**：$200/人，3人一組申請，宏毅老師已認可
