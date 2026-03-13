@@ -57,12 +57,6 @@
 
 ## Current Activities
 
-<<<<<<< HEAD
-- **NTUAIS**：第三屆 AI Safety 讀書會 organizer，3/16 第一次活動
-- **實驗室網管**：戰艦(battleship)維護
-- **AI 帳號共享方案**：$200/人，3人一組申請，宏毅老師已認可
-=======
 - **NTUAIS**：第三屆 AI Safety 讀書會 organizer，3/16（一）第一次活動 19:00 德田 601
 - **實驗室網管**：戰艦(battleship)維護
 - **AI 帳號共享方案**：$200/人，3 人一組申請，宏毅老師已認可，下週發布
->>>>>>> origin/macbook-m3
