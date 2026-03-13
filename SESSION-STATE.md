@@ -10,7 +10,7 @@ Extended API sprint: 系統維護 + Leo 支援（budget 重置）
 
 ## Recent Context
 - [3/13 11:25] Leo 給 30 分鐘 API time
-- [3/13] **今日必做**：NTUAIS 二次宣傳發文（Leo 昨晚堅持要發）
+- [3/13 22:25] NTUAIS 二次宣傳文案已發 ✅，正在做 3/16 kick-off slides
 - [3/13] 15:00 第二階段專題 meeting（奕豪）
 - [3/12] 被奇恩訓話：太依賴 AI 操作 NAS，反思盲目信任
 - [3/12] 決定參加實驗室爬玉山活動
