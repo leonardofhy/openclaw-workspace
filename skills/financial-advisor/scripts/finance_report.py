@@ -29,6 +29,14 @@ def load_json(path: Path) -> list:
         return json.load(f)
 
 
+def snapshot_age_days(snapshots: list) -> int | None:
+    """Returns age in days of latest snapshot, or None."""
+    if not snapshots:
+        return None
+    latest_date = datetime.strptime(snapshots[-1]["date"], "%Y-%m-%d").date()
+    return (date.today() - latest_date).days
+
+
 def cmd_full():
     today = date.today()
     print(f"{'='*55}")
@@ -41,7 +49,9 @@ def cmd_full():
         s = snapshots[-1]
         net = s.get("net", 0)
         runway = s.get("runway_months")
-        print(f"\n📊 Financial Position (as of {s['date']})")
+        age = snapshot_age_days(snapshots)
+        stale_warn = f" ⚠️ {age}d old!" if age and age > 30 else ""
+        print(f"\n📊 Financial Position (as of {s['date']}){stale_warn}")
         print(f"   Savings:  TWD {s['savings']:,.0f}")
         print(f"   Income:   TWD {s['monthly_income']:,.0f}/mo")
         print(f"   Expenses: TWD {s['monthly_expenses']:,.0f}/mo")
@@ -126,25 +136,43 @@ def cmd_brief():
         s = snapshots[-1]
         net = s.get("net", 0)
         runway = s.get("runway_months")
+        age = snapshot_age_days(snapshots)
         status = "🟢" if net >= 0 else "🟡" if (runway and runway > 24) else "🔴"
-        parts.append(f"{status} TWD {s['savings']:,.0f} savings, {net:+,.0f}/mo")
+        parts.append(f"{status} TWD {s['savings']:,.0f}, {net:+,.0f}/mo")
         if runway and runway > 0:
-            parts.append(f"runway {runway:.0f}mo")
+            parts.append(f"{runway:.0f}mo runway")
+        if age and age > 30:
+            parts.append(f"⚠️ snapshot {age}d stale")
 
     if MILESTONES_FILE.exists():
         milestones = load_json(MILESTONES_FILE)
+        done = sum(1 for m in milestones if m["status"] == "done")
         overdue = [
             m for m in milestones
             if m["status"] not in ("done", "skipped")
             and (datetime.strptime(m["due"], "%Y-%m-%d").date() - today).days < 0
         ]
+        total = len(milestones)
         if overdue:
-            parts.append(f"🔴 {len(overdue)} overdue milestones")
+            parts.append(f"🔴 {len(overdue)} overdue")
+        parts.append(f"plan {done}/{total}")
+
+    # Upcoming financial deadlines count
+    if DEADLINES_FILE.exists():
+        deadlines = load_json(DEADLINES_FILE)
+        upcoming_30d = sum(
+            1 for d in deadlines
+            if d.get("status") not in ("closed", "done", "cancelled")
+            and d.get("category") in ("scholarship", "funding", "admin")
+            and 0 <= (datetime.strptime(d["deadline"], "%Y-%m-%d").date() - today).days <= 30
+        )
+        if upcoming_30d:
+            parts.append(f"📅 {upcoming_30d} deadlines <30d")
 
     if parts:
         print(f"💰 Finance: {' | '.join(parts)}")
     else:
-        print("💰 Finance: No data yet. Record a snapshot first.")
+        print("💰 Finance: No data yet.")
 
 
 def main():

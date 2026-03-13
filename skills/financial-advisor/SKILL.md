@@ -5,82 +5,112 @@ description: >
   income strategies, and 6-month survival plan milestones. Use when: (1) Leo asks about
   finances, money, budget, or scholarships, (2) heartbeat finance health check,
   (3) recording income or expense events, (4) monthly financial review, (5) checking
-  milestone progress on the 6-month plan. Trigger phrases: 理財、財務、獎學金、burn rate、
-  runway、收入、支出、financial、money、scholarship、grant. NOT for: investment advice,
-  crypto, stock trading — Leo's priority is cash flow management during grad school.
+  milestone progress on the 6-month plan, (6) grant/scholarship application drafting.
+  Trigger phrases: 理財、財務、獎學金、burn rate、runway、收入、支出、financial、money、
+  scholarship、grant、工作證、打工、freelance. NOT for: investment advice, crypto, stock
+  trading — Leo's priority is cash flow management during grad school.
 ---
 
 # Financial Advisor
 
 Leo's financial situation: not broke, but deteriorating. ~50 months runway at current burn rate.
-Goal: **minimum time investment (≤5 hr/week) to reach cash-flow neutral while keeping research #1.**
+Goal: **minimum time investment (≤5 hr/week) to reach cash-flow neutral, research stays #1.**
 
-## Core Principle
+## Core Principles
 
-Leo avoids financial tasks (鴕鳥傾向). Your job is to **reduce cognitive load to zero** —
-track everything, nudge at the right time, never make him think about money more than necessary.
+1. **Leo avoids financial tasks** (鴕鳥傾向). Reduce his cognitive load to zero.
+2. **Legal compliance first** — 僑生 20hr/week cap is non-negotiable. See `references/leo-situation.md` §Legal Guardrails.
+3. **Finance is private** — never post to #general or group channels. DM only.
+4. **Nudge, don't nag** — one reminder per milestone. If postponed, respect it.
 
-## Data Files
+## Data Architecture
 
-All data lives in `memory/finance/`:
+All data in `memory/finance/`. **Single source of truth per concern:**
 
-| File | Purpose |
-|------|---------|
-| `deadlines.json` | Scholarship/grant/admin deadlines (shared with `deadline_watch.py`) |
-| `milestones.json` | 6-month plan milestones with status |
-| `snapshots.jsonl` | Monthly financial position snapshots |
-| `income-log.jsonl` | Income events (tutoring, freelance, grants, scholarships) |
-| `FINANCE_TRACKER.md` | Human-readable summary (update monthly) |
-| `FUNDING_MASTER_PLAN.md` | All known funding sources |
+| File | Purpose | Authority |
+|------|---------|-----------|
+| `deadlines.json` | All deadline dates (shared with `deadline_watch.py`) | Dates |
+| `milestones.json` | 6-month plan milestones with status | Plan progress |
+| `snapshots.jsonl` | Monthly financial position snapshots | Financial position |
+| `income-log.jsonl` | Income events | Income tracking |
+| `expense-log.jsonl` | One-off expense events | Expense tracking |
+| `FINANCE_TRACKER.md` | Human-readable summary (update monthly) | Dashboard |
+| `FUNDING_MASTER_PLAN.md` | All known funding sources + MATS plan | Scholarship DB |
+
+Legacy files (`SCHOLARSHIP_ANALYSIS.md`, `INCOME_IDEAS.md`, `GPT52*.md`, `ARENA8*.md`) are
+archived reference — **do not update them**, use canonical files above instead.
 
 ## Scripts
 
 ```bash
-# Check current financial health (for heartbeat)
+# === Snapshots ===
 python3 skills/financial-advisor/scripts/finance_snapshot.py --latest
-
-# Record a new snapshot
+python3 skills/financial-advisor/scripts/finance_snapshot.py --check-stale [--max-age 45]
 python3 skills/financial-advisor/scripts/finance_snapshot.py --record \
   --savings 280000 --income 20000 --expenses 25600
+python3 skills/financial-advisor/scripts/finance_snapshot.py --trend --months 6
 
-# Check 6-month plan milestones
-python3 skills/financial-advisor/scripts/milestone_check.py
-
-# Mark a milestone done
-python3 skills/financial-advisor/scripts/milestone_check.py --complete M1-1
-
-# Log income event
+# === Income/Expense Logging ===
 python3 skills/financial-advisor/scripts/finance_snapshot.py --log-income \
-  --source tutoring --amount 4800 --note "2 sessions this week"
+  --source tutoring --amount 4800 [--note "2 sessions"] [--date 2026-03-10]
+python3 skills/financial-advisor/scripts/finance_snapshot.py --log-expense \
+  --source "Interspeech reg" --amount 8000
+python3 skills/financial-advisor/scripts/finance_snapshot.py --income-summary --months 3
 
-# Monthly report
-python3 skills/financial-advisor/scripts/finance_report.py
+# === Milestones ===
+python3 skills/financial-advisor/scripts/milestone_check.py              # Full view
+python3 skills/financial-advisor/scripts/milestone_check.py --brief      # Heartbeat one-liner
+python3 skills/financial-advisor/scripts/milestone_check.py --next       # Next 3 actionable
+python3 skills/financial-advisor/scripts/milestone_check.py --overdue
+python3 skills/financial-advisor/scripts/milestone_check.py --complete M1-1 [--note "done"]
+python3 skills/financial-advisor/scripts/milestone_check.py --skip M2-3 --note "not pursuing"
+python3 skills/financial-advisor/scripts/milestone_check.py --postpone M1-2 --to 2026-04-15
+
+# === Reports ===
+python3 skills/financial-advisor/scripts/finance_report.py               # Full monthly
+python3 skills/financial-advisor/scripts/finance_report.py --brief       # Heartbeat one-liner
 ```
 
 ## Heartbeat Integration
 
-During heartbeat, run `milestone_check.py` (fast, <1s). If any milestone is:
-- **Overdue** → nudge Leo via Discord DM (not #general)
-- **Due this week** → mention in heartbeat summary
-- **Blocked on Leo** → add to next direct conversation
+Run these two commands (fast, <1s each):
+```bash
+python3 skills/financial-advisor/scripts/finance_report.py --brief
+python3 skills/financial-advisor/scripts/finance_snapshot.py --check-stale
+```
 
-Do NOT spam #general with financial updates. Finance = private → DM only.
+Decision tree:
+- **Snapshot stale (>45d)** → DM Leo: "需要你最新的記帳匯出"
+- **Overdue milestones** → DM Leo with top 1-2 items (don't dump the whole list)
+- **Deadline <7d** → Mention in heartbeat summary (already handled by `deadline_watch.py`)
+- **All clear** → No finance message needed
 
 ## Monthly Review Protocol (1st of each month)
 
-1. Ask Leo for latest 記帳 export (if not auto-synced)
-2. Run `finance_snapshot.py --record` with new numbers
-3. Run `finance_report.py` for trend analysis
+1. `--check-stale` → if stale, ask Leo for 記帳 export
+2. `--record` with new numbers
+3. `finance_report.py` for trend analysis
 4. Update `FINANCE_TRACKER.md` with new snapshot
-5. Review upcoming deadlines (next 30 days)
-6. Check milestone progress and adjust plan if needed
+5. Review upcoming deadlines (next 30-60 days)
+6. Check milestone progress; postpone or adjust as needed
+7. Cross-reference `FUNDING_MASTER_PLAN.md` for upcoming application windows
+
+## Grant Application Support
+
+When a grant/scholarship deadline approaches:
+1. Read `FUNDING_MASTER_PLAN.md` for requirements
+2. Read `references/leo-situation.md` for positioning angles
+3. Draft application/email for Leo to review
+4. Key selling points: Interspeech 2026 first-author, NTUAIS organizer, bilingual,
+   Speech AI × AI Safety intersection, Taiwan = underserved region
 
 ## Key Context
 
-- **僑生 work rules**: 學期中 ≤20 hr/week, 需工作證 (NT$100, 7 days)
-- **RA stipend conflict**: Most gov scholarships conflict with 研究獎助生 status
-- **Safe bets**: 中技社 (private foundation), LTFF (international), 家教 (quick cash)
-- **Leo's moat**: Speech AI + AI Safety + bilingual + Interspeech pub = rare combination
+For detailed situation analysis, legal rules, income strategies, and funding sources:
+→ `references/leo-situation.md`
 
-For detailed situation analysis, see `references/leo-situation.md`.
-For full funding database, see `memory/finance/FUNDING_MASTER_PLAN.md`.
+For full funding database with timelines and MATS plan:
+→ `memory/finance/FUNDING_MASTER_PLAN.md`
+
+For AI Safety organization landscape (useful for grant positioning):
+→ `memory/research/ai-safety-org-survey.md`

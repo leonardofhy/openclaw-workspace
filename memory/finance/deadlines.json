@@ -173,5 +173,27 @@
     "owner": "leo",
     "warn_days": 14,
     "notify": "discord"
+  },
+  {
+    "id": "D-018",
+    "name": "Manifund/SFF Speculation Grants (rolling check)",
+    "deadline": "2026-04-15",
+    "category": "funding",
+    "action": "Check Manifund regranting opportunities + SFF Speculation Grants for AI Safety research. manifund.org / survivalandflourishing.fund",
+    "owner": "bot",
+    "warn_days": 7,
+    "notify": "discord",
+    "note": "Rolling — set next check date after reviewing"
+  },
+  {
+    "id": "D-019",
+    "name": "Jamie Lin SE Asia Scholarship (check eligibility)",
+    "deadline": "2026-04-30",
+    "category": "scholarship",
+    "action": "Check NTU OIA for Jamie Lin Southeast Asia Scholarship details and deadline",
+    "owner": "leo",
+    "warn_days": 14,
+    "notify": "discord",
+    "note": "NTU-specific, for SE Asian students. Deadline may be different — verify."
   }
 ]

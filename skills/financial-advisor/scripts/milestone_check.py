@@ -288,16 +288,80 @@ def cmd_skip(milestone_id: str, note: str = ""):
     sys.exit(1)
 
 
+def cmd_postpone(milestone_id: str, new_due: str, note: str = ""):
+    """Postpone a milestone to a new date."""
+    # Validate date format
+    try:
+        datetime.strptime(new_due, "%Y-%m-%d")
+    except ValueError:
+        print(f"❌ Invalid date format: {new_due}. Use YYYY-MM-DD.", file=sys.stderr)
+        sys.exit(1)
+
+    milestones = load_milestones()
+    for m in milestones:
+        if m["id"] == milestone_id:
+            old_due = m["due"]
+            m["due"] = new_due
+            m["status"] = "pending"  # Reset from overdue
+            postpone_note = f"Postponed {old_due} → {new_due}"
+            if note:
+                postpone_note += f". {note}"
+            m["note"] = postpone_note
+            save_milestones(milestones)
+            print(f"📅 {milestone_id} postponed: {old_due} → {new_due}")
+            print(f"   {m['task']}")
+            return
+    print(f"❌ Milestone {milestone_id} not found", file=sys.stderr)
+    sys.exit(1)
+
+
+def cmd_brief():
+    """One-line summary for heartbeat."""
+    milestones = load_milestones()
+    today = date.today()
+    done = sum(1 for m in milestones if m["status"] == "done")
+    skipped = sum(1 for m in milestones if m["status"] == "skipped")
+    overdue = sum(
+        1 for m in milestones
+        if m["status"] not in ("done", "skipped")
+        and (datetime.strptime(m["due"], "%Y-%m-%d").date() - today).days < 0
+    )
+    total = len(milestones)
+    active = total - done - skipped
+
+    parts = [f"{done}/{total} done"]
+    if overdue:
+        parts.append(f"🔴 {overdue} overdue")
+
+    # Find next pending
+    pending = [
+        m for m in milestones
+        if m["status"] not in ("done", "skipped")
+        and (datetime.strptime(m["due"], "%Y-%m-%d").date() - today).days >= 0
+    ]
+    if pending:
+        pending.sort(key=lambda m: m["due"])
+        nxt = pending[0]
+        days_left = (datetime.strptime(nxt["due"], "%Y-%m-%d").date() - today).days
+        parts.append(f"next: {nxt['id']} ({days_left}d)")
+
+    print(f"📋 Milestones: {' | '.join(parts)}")
+    sys.exit(1 if overdue else 0)
+
+
 def main():
     parser = argparse.ArgumentParser(description="6-month financial plan milestones")
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--init", action="store_true", help="Initialize milestones.json")
     group.add_argument("--complete", type=str, metavar="ID", help="Mark milestone as done")
     group.add_argument("--skip", type=str, metavar="ID", help="Skip a milestone")
+    group.add_argument("--postpone", type=str, metavar="ID", help="Postpone a milestone")
     group.add_argument("--overdue", action="store_true", help="Show only overdue")
     group.add_argument("--next", action="store_true", help="Show next actionable items")
+    group.add_argument("--brief", action="store_true", help="One-line summary for heartbeat")
 
-    parser.add_argument("--note", type=str, default="", help="Note for complete/skip")
+    parser.add_argument("--to", type=str, default="", help="New due date for --postpone (YYYY-MM-DD)")
+    parser.add_argument("--note", type=str, default="", help="Note for complete/skip/postpone")
     parser.add_argument("--count", type=int, default=3, help="Number of items for --next")
 
     args = parser.parse_args()
@@ -308,10 +372,16 @@ def main():
         cmd_complete(args.complete, args.note)
     elif args.skip:
         cmd_skip(args.skip, args.note)
+    elif args.postpone:
+        if not args.to:
+            parser.error("--postpone requires --to YYYY-MM-DD")
+        cmd_postpone(args.postpone, args.to, args.note)
     elif args.overdue:
         cmd_overdue()
     elif args.next:
         cmd_next(args.count)
+    elif args.brief:
+        cmd_brief()
     else:
         cmd_check()
 
