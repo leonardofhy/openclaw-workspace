@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 2,
@@ -36,7 +36,7 @@
     "total_cycles": 204,
     "total_skips": 43,
     "papers_read_deep": 40,
-    "papers_scanned": 38,
+    "papers_scanned": 39,
     "research_gaps": 25,
     "paper_ideas": 191,
     "paper_pitches": 2,
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260314-1115",
-    "action": "ideate",
-    "summary": "20 cross-domain ideas. Top: I08 Motive-Env x gc Lie Detector (N+F=10). Queue full (29/25); ideas logged in c-20260314-1115.md for future adds."
+    "id": "c-20260314-1145",
+    "action": "learn",
+    "summary": "Scanned arXiv:2509.09708: SAE-refusal-direction pipeline. Redundant safety features = AND-gate redundancy. New connection: gc(k) peak may be refusal focal layer."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
