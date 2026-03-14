@@ -29,7 +29,7 @@
     "learn_remaining_today": 5,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 3,
+    "ideate_remaining_today": 2,
     "budget_reset_date": "2026-03-14"
   },
   "stats": {
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260314-1045",
-    "action": "learn",
-    "summary": "Q92: AND-gate features = more Schelling-stable than OR-gate (constraint uniqueness + RAVEL Isolate connection). Prediction ready for Q80 build."
+    "id": "c-20260314-1115",
+    "action": "ideate",
+    "summary": "20 cross-domain ideas. Top: I08 Motive-Env x gc Lie Detector (N+F=10). Queue full (29/25); ideas logged in c-20260314-1115.md for future adds."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
