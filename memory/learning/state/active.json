@@ -30,24 +30,24 @@
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-13"
+    "budget_reset_date": "2026-03-14"
   },
   "stats": {
-    "total_cycles": 203,
+    "total_cycles": 207,
     "total_skips": 43,
-    "papers_read_deep": 38,
-    "papers_scanned": 38,
+    "papers_read_deep": 44,
+    "papers_scanned": 39,
     "research_gaps": 25,
-    "paper_ideas": 171,
+    "paper_ideas": 231,
     "paper_pitches": 2,
-    "code_artifacts": 58,
+    "code_artifacts": 60,
     "system_improvements": 7,
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260313-1915",
+    "id": "c-20260314-1545",
     "action": "skip",
-    "summary": "All budgets exhausted. 22 READY tasks queued for tomorrow."
+    "summary": "All budgets exhausted; reflect triggers not met. Top task Q079 ready for tomorrow."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
