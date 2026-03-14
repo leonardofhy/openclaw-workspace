@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 6,
+    "learn_remaining_today": 5,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 3,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 204,
     "total_skips": 43,
-    "papers_read_deep": 39,
+    "papers_read_deep": 40,
     "papers_scanned": 38,
     "research_gaps": 25,
     "paper_ideas": 191,
@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260314-1015",
+    "id": "c-20260314-1045",
     "action": "learn",
-    "summary": "RAVEL: Cause+Isolate disentanglement metrics; Schelling-stable = more isolated hypothesis; AND-gate = more isolated angle; CPU test plan sketched"
+    "summary": "Q92: AND-gate features = more Schelling-stable than OR-gate (constraint uniqueness + RAVEL Isolate connection). Prediction ready for Q80 build."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
