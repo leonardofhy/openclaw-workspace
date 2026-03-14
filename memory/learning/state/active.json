@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260314-2245",
+    "id": "c-20260314-2315",
     "action": "skip",
-    "summary": "All budgets exhausted. Daily reflect already done. Principled skip."
+    "summary": "All budgets exhausted. Daily digest already done. Principled skip."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
