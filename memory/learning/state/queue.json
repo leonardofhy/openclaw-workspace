@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "max_tasks": 25,
+  "max_tasks": 28,
   "tasks": [
     {
       "id": "Q001",
@@ -39,55 +39,16 @@
       "due": null
     },
     {
-      "id": "Q004",
-      "type": "experiment",
-      "track": "T3",
-      "title": "Real speech validation of whisper_hook_demo.py",
-      "status": "done",
-      "priority": 3,
-      "blocked_by": "Real speech .wav file",
-      "definition_of_done": "CKA cluster separation confirmed with real speech",
-      "created": "2026-02-28",
-      "due": null,
-      "completed": "2026-03-13"
-    },
-    {
       "id": "Q074",
       "type": "design",
       "track": "T3",
-      "title": "Modality Collapse = gc Suppression: design doc for Paper A §4 addition",
+      "title": "Modality Collapse = gc Suppression: design doc for Paper A \u00a74 addition",
       "status": "ready",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "Design doc: gc threshold test for modality collapse detection + Paper A §4 addition",
+      "definition_of_done": "Design doc: gc threshold test for modality collapse detection + Paper A \u00a74 addition",
       "created": "2026-03-12",
       "due": null
-    },
-    {
-      "id": "Q075",
-      "type": "experiment",
-      "track": "T3",
-      "title": "Phonological DAS x Instruction Tuning: IIA before/after simulated RLHF in MicroGPT",
-      "status": "done",
-      "priority": 3,
-      "blocked_by": null,
-      "definition_of_done": "IIA scores before/after simulated instruction tuning; circuit integrity vs accuracy table",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-13"
-    },
-    {
-      "id": "Q078",
-      "type": "build",
-      "track": "T5",
-      "title": "Incrimination-guided SAE patrol: localize audio features that voted for jailbreak",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Design doc + mock extending sae_adversarial_detector.py with per-feature incrimination log; which SAE features triggered the alert",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-14"
     },
     {
       "id": "Q079",
@@ -117,11 +78,11 @@
       "id": "Q081",
       "type": "experiment",
       "track": "T5",
-      "title": "M9 x M7 cross-correlation: causal abstraction consistency vs ΔGS at same layer",
+      "title": "M9 x M7 cross-correlation: causal abstraction consistency vs \u0394GS at same layer",
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
-      "definition_of_done": "Mock script: compute M9 + M7 per layer; scatter plot; Pearson r; prediction=layers with high M9 also have high ΔGS",
+      "definition_of_done": "Mock script: compute M9 + M7 per layer; scatter plot; Pearson r; prediction=layers with high M9 also have high \u0394GS",
       "created": "2026-03-12",
       "due": null
     },
@@ -163,7 +124,7 @@
     },
     {
       "id": "Q89",
-      "title": "Temporal gc(k) × AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
+      "title": "Temporal gc(k) \u00d7 AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -189,7 +150,7 @@
     },
     {
       "id": "Q91",
-      "title": "Persona × AND/OR Gate: extend persona_gc_benchmark.py to measure AND vs OR gate prevalence per persona condition",
+      "title": "Persona \u00d7 AND/OR Gate: extend persona_gc_benchmark.py to measure AND vs OR gate prevalence per persona condition",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -202,7 +163,7 @@
     },
     {
       "id": "Q92",
-      "title": "Schelling Features × AND/OR Gates: are cross-seed-stable SAE features more likely to be AND-gates?",
+      "title": "Schelling Features \u00d7 AND/OR Gates: are cross-seed-stable SAE features more likely to be AND-gates?",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -215,7 +176,7 @@
     },
     {
       "id": "Q93",
-      "title": "Collapse Onset × AND/OR Gate: does audio info collapse (Q085 onset step) coincide with AND-gate feature deactivation?",
+      "title": "Collapse Onset \u00d7 AND/OR Gate: does audio info collapse (Q085 onset step) coincide with AND-gate feature deactivation?",
       "type": "build",
       "track": "T3",
       "priority": 2,
@@ -242,7 +203,7 @@
       "id": "Q095",
       "type": "design",
       "track": "T5",
-      "title": "OBLITERATUS x T5: gc(k) safety signature audit — detect safety-bypassed audio-LLMs via M7+M9 profile divergence",
+      "title": "OBLITERATUS x T5: gc(k) safety signature audit \u2014 detect safety-bypassed audio-LLMs via M7+M9 profile divergence",
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
@@ -266,7 +227,7 @@
       "id": "Q097",
       "type": "design",
       "track": "T5",
-      "title": "OBLITERATUS x gc(k): safety training = AND-gate construction — design doc",
+      "title": "OBLITERATUS x gc(k): safety training = AND-gate construction \u2014 design doc",
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
@@ -285,58 +246,6 @@
       "definition_of_done": "Design doc: 3-4 controlled audio environments where gc(k) pattern distinguishes model-followed-audio vs defaulted-to-prior; connects to Q086 behavioral benchmark",
       "created": "2026-03-13",
       "due": null
-    },
-    {
-      "id": "Q099",
-      "type": "build",
-      "track": "T3",
-      "title": "RAVEL Cause/Isolate x Schelling stability: stable features = isolated features?",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Mock script: compute RAVEL-style Cause/Isolate metrics on MicroGPT features; correlate with cross-seed Schelling stability score; prediction: high-Isolate features are cross-seed stable",
-      "created": "2026-03-13",
-      "due": null,
-      "completed": "2026-03-14"
-    },
-    {
-      "id": "Q100",
-      "type": "design",
-      "track": "T3",
-      "title": "gc(k) Motive Detector: formalize gc(k) as behavioral motive signal with ENV taxonomy (Paper A S2)",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: gc(k) profile = motive detector; ENV-3 conflict as key diagnostic; connects Q086 benchmark; Paper A S2 motive-attribution framing",
-      "created": "2026-03-13",
-      "due": null,
-      "completed": "2026-03-13"
-    },
-    {
-      "id": "Q101",
-      "type": "build",
-      "track": "T3",
-      "title": "Incrimination x ENV-3: extend gc_incrimination_mock.py with phoneme-conflict motive diagnostic",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "gc_incrimination_mock.py ENV-3 branch: phoneme conflict scenario; output distinguishes audio-motive vs prior-motive errors via blame report",
-      "created": "2026-03-13",
-      "due": null,
-      "completed": "2026-03-14"
-    },
-    {
-      "id": "Q102",
-      "type": "design",
-      "track": "T3",
-      "title": "Schelling Coordination Game framing of ENV-3: gc(k) peak as Schelling focal point between audio and language prior",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Analysis doc: ENV-3 = Schelling game (audio vs language prior); gc(k) peak = coordination focal point; game-theoretic interpretation for Paper A S4",
-      "created": "2026-03-13",
-      "due": null,
-      "completed": "2026-03-13"
     },
     {
       "id": "Q103",
@@ -361,9 +270,69 @@
       "definition_of_done": "Design doc: t* taxonomy (>8 = genuine audio, <3 = text-wrapper); compute-light audit protocol; governance framing for Paper C appendix",
       "created": "2026-03-13",
       "due": null
+    },
+    {
+      "id": "Q105",
+      "type": "build",
+      "track": "T3",
+      "title": "RAVEL MDAS x AND/OR gate: MDAS error per feature predicts gate classification",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "mock_mdas_gate.py: MDAS-style error per MicroGPT feature; AND-gate features < MDAS error than OR-gate; result table",
+      "created": "2026-03-14",
+      "due": null
+    },
+    {
+      "id": "Q106",
+      "type": "build",
+      "track": "T5",
+      "title": "SAE incrimination x ENV taxonomy: label persistent offender features ENV-1/2/3",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Extend sae_incrimination_patrol.py: ENV-type label per persistent offender; intervention strategy output",
+      "created": "2026-03-14",
+      "due": null
+    },
+    {
+      "id": "Q107",
+      "type": "build",
+      "track": "T3",
+      "title": "RAVEL Isolate curve as gc(k) proxy: argmin(Isolate) approx gc peak layer",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "isolate_gc_proxy.py: Isolate(k) per layer on mock data; verify argmin approx argmax(gc); compute savings benchmark",
+      "created": "2026-03-14",
+      "due": null
+    },
+    {
+      "id": "Q108",
+      "type": "design",
+      "track": "T5",
+      "title": "Jailbreak = Isolate peak leftward shift: audio attacks force text-only before gc peak",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc: jailbreak shifts min-Isolate layer leftward; mock test protocol; T5 detection framing",
+      "created": "2026-03-14",
+      "due": null
+    },
+    {
+      "id": "Q109",
+      "type": "build",
+      "track": "T3",
+      "title": "Phoneme-MDAS: SAE feature disentanglement across phoneme categories via RAVEL-style bleed",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "phoneme_mdas.py: MDAS-style bleed error per SAE feature x phoneme class; novel disentanglement metric",
+      "created": "2026-03-14",
+      "due": null
     }
   ],
-  "archived_count": 58,
-  "last_archived": "2026-03-13T05:05:45.339162+08:00",
-  "last_updated": "2026-03-13T05:05:45.339162+08:00"
+  "archived_count": 65,
+  "last_archived": "2026-03-14T13:17:30.429930+08:00",
+  "last_updated": "2026-03-14T13:18:02.616240+08:00"
 }
