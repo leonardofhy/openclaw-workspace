@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260314-2145",
-    "action": "reflect",
-    "summary": "Daily digest: 27 cycles, 2 builds (env3+SAE patrol), 8 deep reads (RAVEL+ALMGuard), 16 new tasks. Tomorrow: Q079 build."
+    "id": "c-20260314-2245",
+    "action": "skip",
+    "summary": "All budgets exhausted. Daily reflect already done. Principled skip."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
