@@ -45,9 +45,9 @@
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260314-1445",
-    "action": "learn",
-    "summary": "Read RAVEL paper; derived argmin(Isolate_k) ≈ argmax(gc(k)) proxy hypothesis for Q107; wrote impl plan."
+    "id": "c-20260314-1545",
+    "action": "skip",
+    "summary": "All budgets exhausted; reflect triggers not met. Top task Q079 ready for tomorrow."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
