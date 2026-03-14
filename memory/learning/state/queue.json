@@ -81,12 +81,13 @@
       "type": "build",
       "track": "T5",
       "title": "Incrimination-guided SAE patrol: localize audio features that voted for jailbreak",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock extending sae_adversarial_detector.py with per-feature incrimination log; which SAE features triggered the alert",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-14"
     },
     {
       "id": "Q079",
