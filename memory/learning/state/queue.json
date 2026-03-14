@@ -315,12 +315,13 @@
       "type": "build",
       "track": "T3",
       "title": "Incrimination x ENV-3: extend gc_incrimination_mock.py with phoneme-conflict motive diagnostic",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "gc_incrimination_mock.py ENV-3 branch: phoneme conflict scenario; output distinguishes audio-motive vs prior-motive errors via blame report",
       "created": "2026-03-13",
-      "due": null
+      "due": null,
+      "completed": "2026-03-14"
     },
     {
       "id": "Q102",

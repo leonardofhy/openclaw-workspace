@@ -26,11 +26,11 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 0,
-    "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
-    "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-13"
+    "learn_remaining_today": 8,
+    "build_remaining_today": 1,
+    "reflect_remaining_today": 2,
+    "ideate_remaining_today": 4,
+    "budget_reset_date": "2026-03-14"
   },
   "stats": {
     "total_cycles": 203,
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 171,
     "paper_pitches": 2,
-    "code_artifacts": 58,
+    "code_artifacts": 59,
     "system_improvements": 7,
     "days_active": 9
   },
   "last_cycle": {
-    "id": "c-20260313-2145",
-    "action": "reflect",
-    "summary": "End-of-day digest: 4 tasks done today. gc(k) dual-function insight (motive + safety). Tomorrow: Q074, Q078, Q101."
+    "id": "c-20260314-0815",
+    "action": "build",
+    "summary": "Q101: gc_incrimination_env3.py \u2014 ENV-3 phoneme-conflict motive diagnostic"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
