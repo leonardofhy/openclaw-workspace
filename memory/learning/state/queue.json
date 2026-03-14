@@ -291,12 +291,13 @@
       "type": "build",
       "track": "T3",
       "title": "RAVEL Cause/Isolate x Schelling stability: stable features = isolated features?",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Mock script: compute RAVEL-style Cause/Isolate metrics on MicroGPT features; correlate with cross-seed Schelling stability score; prediction: high-Isolate features are cross-seed stable",
       "created": "2026-03-13",
-      "due": null
+      "due": null,
+      "completed": "2026-03-14"
     },
     {
       "id": "Q100",
