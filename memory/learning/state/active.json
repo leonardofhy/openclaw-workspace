@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 2,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
@@ -36,7 +36,7 @@
     "total_cycles": 212,
     "total_skips": 43,
     "papers_read_deep": 44,
-    "papers_scanned": 41,
+    "papers_scanned": 43,
     "research_gaps": 25,
     "paper_ideas": 271,
     "paper_pitches": 2,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260315-1245",
-    "action": "ideate",
-    "summary": "Generated 20 combo ideas; 17 passed N+F>=7 filter; added Q111 (t* backdoor) + Q112 (M9 drift alarm) to queue"
+    "id": "c-20260315-1315",
+    "action": "learn",
+    "summary": "Scanned Calm-Whisper (Interspeech 2025) + Listen Like a Teacher; identified Gap #26: head-level gc(k) decomposition (crazy-head=OR-gate hypothesis)"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
