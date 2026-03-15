@@ -69,12 +69,13 @@
       "type": "experiment",
       "track": "T3",
       "title": "AND-gate features as Schelling points: cross-seed stability of causal-AND SAE features",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Mock test: AND-gate layer features have higher Schelling stability score than OR/passthrough layers; result table",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-15"
     },
     {
       "id": "Q081",
