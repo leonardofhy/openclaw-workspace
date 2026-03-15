@@ -26,16 +26,16 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 2,
+    "learn_remaining_today": 1,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-15"
   },
   "stats": {
-    "total_cycles": 212,
+    "total_cycles": 213,
     "total_skips": 43,
-    "papers_read_deep": 44,
+    "papers_read_deep": 45,
     "papers_scanned": 43,
     "research_gaps": 25,
     "paper_ideas": 271,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260315-1345",
-    "action": "ideate",
-    "summary": "20 combinatorial ideas; top 3 (ALME×AND/OR N5F4, Calm-Whisper×AND/OR N5F4, SPIRIT×gc-hallucination N5F4); queue full — ideas in cycle file pending slots"
+    "id": "c-20260315-1445",
+    "action": "learn",
+    "summary": "Q095 design doc: 3-metric safety signature (gc+M9+M7) divergence score detects OBLITERATUS-bypassed audio-LLMs"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
