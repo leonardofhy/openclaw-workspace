@@ -28,26 +28,26 @@
   "budgets": {
     "learn_remaining_today": 0,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
+    "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-14"
+    "budget_reset_date": "2026-03-15"
   },
   "stats": {
-    "total_cycles": 207,
+    "total_cycles": 213,
     "total_skips": 43,
-    "papers_read_deep": 44,
-    "papers_scanned": 39,
+    "papers_read_deep": 45,
+    "papers_scanned": 44,
     "research_gaps": 25,
-    "paper_ideas": 231,
+    "paper_ideas": 271,
     "paper_pitches": 2,
-    "code_artifacts": 60,
+    "code_artifacts": 62,
     "system_improvements": 7,
-    "days_active": 9
+    "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260314-2315",
-    "action": "skip",
-    "summary": "All budgets exhausted. Daily digest already done. Principled skip."
+    "id": "c-20260315-1515",
+    "action": "learn",
+    "summary": "Q104 design doc: t* taxonomy + CPU audit protocol + governance framing for Paper C appendix; promoted to pitches/"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

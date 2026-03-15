@@ -39,43 +39,6 @@
       "due": null
     },
     {
-      "id": "Q074",
-      "type": "design",
-      "track": "T3",
-      "title": "Modality Collapse = gc Suppression: design doc for Paper A §4 addition",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: gc threshold test for modality collapse detection + Paper A §4 addition",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-14"
-    },
-    {
-      "id": "Q079",
-      "type": "build",
-      "track": "T3",
-      "title": "Online deltaGS streaming monitor: per-utterance SAE feature drift via audio_model_hook",
-      "status": "ready",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Script uses WhisperHookedEncoder to compute deltaGS on 10-utterance sliding window; anomaly flag when drift > threshold",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
-      "id": "Q080",
-      "type": "experiment",
-      "track": "T3",
-      "title": "AND-gate features as Schelling points: cross-seed stability of causal-AND SAE features",
-      "status": "ready",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Mock test: AND-gate layer features have higher Schelling stability score than OR/passthrough layers; result table",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
       "id": "Q081",
       "type": "experiment",
       "track": "T5",
@@ -225,18 +188,6 @@
       "due": null
     },
     {
-      "id": "Q097",
-      "type": "design",
-      "track": "T5",
-      "title": "OBLITERATUS x gc(k): safety training = AND-gate construction — design doc",
-      "status": "ready",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: how safety training modifies gc(k) peak position + AND/OR gate topology; mock test showing OBLITERATUS-style uncensoring maps to AND-gate destruction; T5 paper framing",
-      "created": "2026-03-13",
-      "due": null
-    },
-    {
       "id": "Q098",
       "type": "design",
       "track": "T3",
@@ -249,28 +200,17 @@
       "due": null
     },
     {
-      "id": "Q103",
-      "type": "design",
-      "track": "T5",
-      "title": "gc(k) Audio Lie Detector: knows-but-refuses vs genuinely-confused diagnostic for safety-trained audio-LLMs",
-      "status": "ready",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: high gc + refused = knows-but-refuses; low gc + refused = genuinely confused; mock test protocol for safety-trained audio-LLMs (T5 framing)",
-      "created": "2026-03-13",
-      "due": null
-    },
-    {
       "id": "Q104",
       "type": "design",
       "track": "T5",
       "title": "t* as Regulatory Capability Threshold: policy framing for collapse onset as audio-LLM capability standard",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: t* taxonomy (>8 = genuine audio, <3 = text-wrapper); compute-light audit protocol; governance framing for Paper C appendix",
       "created": "2026-03-13",
-      "due": null
+      "due": null,
+      "completed": "2026-03-15"
     },
     {
       "id": "Q105",
@@ -330,6 +270,42 @@
       "blocked_by": null,
       "definition_of_done": "phoneme_mdas.py: MDAS-style bleed error per SAE feature x phoneme class; novel disentanglement metric",
       "created": "2026-03-14",
+      "due": null
+    },
+    {
+      "id": "Q110",
+      "type": "build",
+      "track": "T3",
+      "title": "gc(k) predicts Whisper hallucination: low-gc frames = hallucination onset",
+      "status": "ready",
+      "priority": 5,
+      "blocked_by": null,
+      "definition_of_done": "Script: mock hallucination (repeated phrase / confabulation) vs correct examples; show gc(k) gap",
+      "created": "2026-03-15",
+      "due": null
+    },
+    {
+      "id": "Q111",
+      "type": "design",
+      "track": "T3",
+      "title": "t* backdoor detection: poisoned audio shows leftward t* collapse shift",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Design doc + mock: synthetic poisoned utterances have t* < 3 vs clean t* > 6; detection protocol using collapse_onset_step diagnostic",
+      "created": "2026-03-15",
+      "due": null
+    },
+    {
+      "id": "Q112",
+      "type": "build",
+      "track": "T5",
+      "title": "M9 online concept drift alarm: extend online_delta_gs_monitor with causal consistency score",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Extend online_delta_gs_monitor.py: add M9 consistency window; alarm fires when M9 drops AND delta_gs spikes; test on mock injected drift",
+      "created": "2026-03-15",
       "due": null
     }
   ],
