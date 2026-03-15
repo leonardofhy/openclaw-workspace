@@ -217,12 +217,13 @@
       "type": "design",
       "track": "T5",
       "title": "gc(k) Audio Lie Detector: knows-but-refuses vs genuinely-confused diagnostic for safety-trained audio-LLMs",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: high gc + refused = knows-but-refuses; low gc + refused = genuinely confused; mock test protocol for safety-trained audio-LLMs (T5 framing)",
       "created": "2026-03-13",
-      "due": null
+      "due": null,
+      "completed": "2026-03-15"
     },
     {
       "id": "Q104",

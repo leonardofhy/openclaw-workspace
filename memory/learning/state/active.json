@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 7,
+    "learn_remaining_today": 6,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 3,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260315-0945",
+    "id": "c-20260315-1015",
     "action": "learn",
-    "summary": "Design doc Q097: safety training = AND-gate construction; gc(k) separates knows-but-refuses vs confused-refusal; 2x2 safety audit matrix"
+    "summary": "Design doc Q103 complete: gc(k) Audio Lie Detector — knows-but-refuses (high gc+refused) vs confused-refusal (low gc+refused); 2x2 audit matrix; script spec gc_lie_detector.py"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
