@@ -204,12 +204,13 @@
       "type": "design",
       "track": "T5",
       "title": "t* as Regulatory Capability Threshold: policy framing for collapse onset as audio-LLM capability standard",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: t* taxonomy (>8 = genuine audio, <3 = text-wrapper); compute-light audit protocol; governance framing for Paper C appendix",
       "created": "2026-03-13",
-      "due": null
+      "due": null,
+      "completed": "2026-03-15"
     },
     {
       "id": "Q105",
