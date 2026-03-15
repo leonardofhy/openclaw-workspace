@@ -56,12 +56,13 @@
       "type": "build",
       "track": "T3",
       "title": "Online deltaGS streaming monitor: per-utterance SAE feature drift via audio_model_hook",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Script uses WhisperHookedEncoder to compute deltaGS on 10-utterance sliding window; anomaly flag when drift > threshold",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-15"
     },
     {
       "id": "Q080",
