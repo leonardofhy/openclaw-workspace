@@ -3,13 +3,13 @@
 > WAL target. Write here BEFORE responding when critical details appear.
 > This is your RAM — survives compaction, survives session restart.
 
-**Last Updated:** 2026-03-06 01:49
+**Last Updated:** 2026-03-15 15:44
 
 ## Current Task
-Execute [cron:b563a3ee-97ef-4920-9262-c15c7051962a] weekly-research-summary
+Help Leo plan afternoon/evening schedule for 3/15
 
 ## Recent Context
-- 2026-03-06 01:49: Leo instruction — explicitly requested using system-scanner skill for this request.
+- 2026-03-15 15:44: Leo update — TM meeting done; Pathfinder grant budget refined + follow-up mail ready (waiting teammate confirm); afternoon: generate ≥1 TM teaching video; 18:30 dinner + social → home ~22:00-23:00; need to prep NTUAIS kickoff slides for 3/16; minor: reply tzu kit chan & evan
 - 2026-03-05 23:41: Leo cron [weekly-research-summary b563a3ee-97ef-4920-9262-c15c7051962a] started.
 - 2026-03-05 23:36: Leo instruction — fix all issues reported by system-scanner (git dirty state, stuck delivery queue, openclaw doctor anomaly, cron error states) autonomously.
 - 2026-03-05 20:19: Leo standing authorization — proceed immediately without waiting for approval unless Leo’s direct personal intervention is strictly required.
