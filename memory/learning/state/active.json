@@ -29,7 +29,7 @@
     "learn_remaining_today": 2,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 1,
+    "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-15"
   },
   "stats": {
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260315-1315",
-    "action": "learn",
-    "summary": "Scanned Calm-Whisper (Interspeech 2025) + Listen Like a Teacher; identified Gap #26: head-level gc(k) decomposition (crazy-head=OR-gate hypothesis)"
+    "id": "c-20260315-1345",
+    "action": "ideate",
+    "summary": "20 combinatorial ideas; top 3 (ALME×AND/OR N5F4, Calm-Whisper×AND/OR N5F4, SPIRIT×gc-hallucination N5F4); queue full — ideas in cycle file pending slots"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
