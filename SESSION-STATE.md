@@ -9,7 +9,8 @@
 Help Leo plan afternoon/evening schedule for 3/15
 
 ## Recent Context
-- 2026-03-15 15:44: Leo update — TM meeting done; Pathfinder grant budget refined + follow-up mail ready (waiting teammate confirm); afternoon: generate ≥1 TM teaching video; 18:30 dinner + social → home ~22:00-23:00; need to prep NTUAIS kickoff slides for 3/16; minor: reply tzu kit chan & evan
+- 2026-03-15 17:41: Leo update — Pathfinder grant email SENT ✅; replied tzu kit chan + evan ✅; now heading to dinner (airport location?), deciding bike (27min) vs MRT (50min)
+- 2026-03-15 15:44: Leo update — TM meeting done; Pathfinder grant budget refined + follow-up mail ready; afternoon: generate ≥1 TM teaching video; 18:30 dinner + social → home ~22:00-23:00; need to prep NTUAIS kickoff slides for 3/16
 - 2026-03-05 23:41: Leo cron [weekly-research-summary b563a3ee-97ef-4920-9262-c15c7051962a] started.
 - 2026-03-05 23:36: Leo instruction — fix all issues reported by system-scanner (git dirty state, stuck delivery queue, openclaw doctor anomaly, cron error states) autonomously.
 - 2026-03-05 20:19: Leo standing authorization — proceed immediately without waiting for approval unless Leo’s direct personal intervention is strictly required.
