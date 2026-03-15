@@ -188,19 +188,6 @@
       "due": null
     },
     {
-      "id": "Q097",
-      "type": "design",
-      "track": "T5",
-      "title": "OBLITERATUS x gc(k): safety training = AND-gate construction — design doc",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: how safety training modifies gc(k) peak position + AND/OR gate topology; mock test showing OBLITERATUS-style uncensoring maps to AND-gate destruction; T5 paper framing",
-      "created": "2026-03-13",
-      "due": null,
-      "completed": "2026-03-15"
-    },
-    {
       "id": "Q098",
       "type": "design",
       "track": "T3",
@@ -211,19 +198,6 @@
       "definition_of_done": "Design doc: 3-4 controlled audio environments where gc(k) pattern distinguishes model-followed-audio vs defaulted-to-prior; connects to Q086 behavioral benchmark",
       "created": "2026-03-13",
       "due": null
-    },
-    {
-      "id": "Q103",
-      "type": "design",
-      "track": "T5",
-      "title": "gc(k) Audio Lie Detector: knows-but-refuses vs genuinely-confused diagnostic for safety-trained audio-LLMs",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: high gc + refused = knows-but-refuses; low gc + refused = genuinely confused; mock test protocol for safety-trained audio-LLMs (T5 framing)",
-      "created": "2026-03-13",
-      "due": null,
-      "completed": "2026-03-15"
     },
     {
       "id": "Q104",
@@ -306,6 +280,30 @@
       "priority": 5,
       "blocked_by": null,
       "definition_of_done": "Script: mock hallucination (repeated phrase / confabulation) vs correct examples; show gc(k) gap",
+      "created": "2026-03-15",
+      "due": null
+    },
+    {
+      "id": "Q111",
+      "type": "design",
+      "track": "T3",
+      "title": "t* backdoor detection: poisoned audio shows leftward t* collapse shift",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Design doc + mock: synthetic poisoned utterances have t* < 3 vs clean t* > 6; detection protocol using collapse_onset_step diagnostic",
+      "created": "2026-03-15",
+      "due": null
+    },
+    {
+      "id": "Q112",
+      "type": "build",
+      "track": "T5",
+      "title": "M9 online concept drift alarm: extend online_delta_gs_monitor with causal consistency score",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Extend online_delta_gs_monitor.py: add M9 consistency window; alarm fires when M9 drops AND delta_gs spikes; test on mock injected drift",
       "created": "2026-03-15",
       "due": null
     }

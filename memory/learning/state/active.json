@@ -29,7 +29,7 @@
     "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 2,
+    "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-15"
   },
   "stats": {
@@ -38,16 +38,16 @@
     "papers_read_deep": 44,
     "papers_scanned": 41,
     "research_gaps": 25,
-    "paper_ideas": 251,
+    "paper_ideas": 271,
     "paper_pitches": 2,
     "code_artifacts": 62,
     "system_improvements": 7,
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260315-1215",
-    "action": "learn",
-    "summary": "Q110: gc(k) predicts Whisper hallucination onset \u2014 synthesized literature, designed mock script"
+    "id": "c-20260315-1245",
+    "action": "ideate",
+    "summary": "Generated 20 combo ideas; 17 passed N+F>=7 filter; added Q111 (t* backdoor) + Q112 (M9 drift alarm) to queue"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
