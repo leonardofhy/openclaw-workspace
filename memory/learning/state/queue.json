@@ -192,12 +192,13 @@
       "type": "design",
       "track": "T5",
       "title": "OBLITERATUS x gc(k): safety training = AND-gate construction — design doc",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: how safety training modifies gc(k) peak position + AND/OR gate topology; mock test showing OBLITERATUS-style uncensoring maps to AND-gate destruction; T5 paper framing",
       "created": "2026-03-13",
-      "due": null
+      "due": null,
+      "completed": "2026-03-15"
     },
     {
       "id": "Q098",
