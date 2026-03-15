@@ -39,45 +39,6 @@
       "due": null
     },
     {
-      "id": "Q074",
-      "type": "design",
-      "track": "T3",
-      "title": "Modality Collapse = gc Suppression: design doc for Paper A §4 addition",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: gc threshold test for modality collapse detection + Paper A §4 addition",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-14"
-    },
-    {
-      "id": "Q079",
-      "type": "build",
-      "track": "T3",
-      "title": "Online deltaGS streaming monitor: per-utterance SAE feature drift via audio_model_hook",
-      "status": "done",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Script uses WhisperHookedEncoder to compute deltaGS on 10-utterance sliding window; anomaly flag when drift > threshold",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-15"
-    },
-    {
-      "id": "Q080",
-      "type": "experiment",
-      "track": "T3",
-      "title": "AND-gate features as Schelling points: cross-seed stability of causal-AND SAE features",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Mock test: AND-gate layer features have higher Schelling stability score than OR/passthrough layers; result table",
-      "created": "2026-03-12",
-      "due": null,
-      "completed": "2026-03-15"
-    },
-    {
       "id": "Q081",
       "type": "experiment",
       "track": "T5",
@@ -332,6 +293,18 @@
       "blocked_by": null,
       "definition_of_done": "phoneme_mdas.py: MDAS-style bleed error per SAE feature x phoneme class; novel disentanglement metric",
       "created": "2026-03-14",
+      "due": null
+    },
+    {
+      "id": "Q110",
+      "type": "build",
+      "track": "T3",
+      "title": "gc(k) predicts Whisper hallucination: low-gc frames = hallucination onset",
+      "status": "ready",
+      "priority": 5,
+      "blocked_by": null,
+      "definition_of_done": "Script: mock hallucination (repeated phrase / confabulation) vs correct examples; show gc(k) gap",
+      "created": "2026-03-15",
       "due": null
     }
   ],

@@ -29,11 +29,11 @@
     "learn_remaining_today": 8,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 4,
+    "ideate_remaining_today": 3,
     "budget_reset_date": "2026-03-15"
   },
   "stats": {
-    "total_cycles": 208,
+    "total_cycles": 209,
     "total_skips": 43,
     "papers_read_deep": 44,
     "papers_scanned": 39,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260315-0845",
-    "action": "build",
-    "summary": "Built and_gate_schelling_stability.py: AND-gate features confirmed as Schelling points (stability 0.42 vs OR 0.24 vs PT 0.20); 5-seed mock, prediction CONFIRMED"
+    "id": "c-20260315-0915",
+    "action": "ideate",
+    "summary": "Generated 20 ideas; top: gc(k) predicts Whisper hallucination (score=10); added Q110 to queue"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
