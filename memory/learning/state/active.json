@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 2,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260316-1345",
+    "id": "c-20260316-1415",
     "action": "learn",
-    "summary": "AudioSAE (2602.05027, EACL 2026): >50% cross-seed stability, 70% false-detection reduction via steering, EEG correlation. Validates Q115 unification + Q082 Schelling + T5 safety levers."
+    "summary": "Q082: Phoneme Schelling stability \u2014 cross-seed stable SAE features not necessarily IIA-optimal; AND-gate heuristic; stability as filter, IIA as ground truth verdict"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
