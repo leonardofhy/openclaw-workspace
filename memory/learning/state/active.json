@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 0,
-    "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
-    "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-15"
+    "learn_remaining_today": 8,
+    "build_remaining_today": 1,
+    "reflect_remaining_today": 2,
+    "ideate_remaining_today": 4,
+    "budget_reset_date": "2026-03-16"
   },
   "stats": {
-    "total_cycles": 213,
+    "total_cycles": 214,
     "total_skips": 43,
     "papers_read_deep": 45,
     "papers_scanned": 44,
     "research_gaps": 25,
     "paper_ideas": 271,
     "paper_pitches": 2,
-    "code_artifacts": 62,
+    "code_artifacts": 63,
     "system_improvements": 7,
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260315-2215",
-    "action": "reflect",
-    "summary": "Daily digest: t* taxonomy pitch promoted, OBLITERATUS tri-metric safety sig designed, Q111+Q112 added. Queue at 25/25."
+    "id": "c-20260316-0815",
+    "action": "build",
+    "summary": "Q081: m9_delta_gs_cross_correlation.py \u2014 Pearson r=0.81, H1 confirmed on mock (M7+M9 co-peak at gc layer 3)"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

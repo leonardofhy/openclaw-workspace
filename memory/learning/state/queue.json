@@ -43,12 +43,13 @@
       "type": "experiment",
       "track": "T5",
       "title": "M9 x M7 cross-correlation: causal abstraction consistency vs ΔGS at same layer",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Mock script: compute M9 + M7 per layer; scatter plot; Pearson r; prediction=layers with high M9 also have high ΔGS",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-16"
     },
     {
       "id": "Q082",
