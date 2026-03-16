@@ -33,7 +33,7 @@
     "budget_reset_date": "2026-03-16"
   },
   "stats": {
-    "total_cycles": 215,
+    "total_cycles": 216,
     "total_skips": 43,
     "papers_read_deep": 47,
     "papers_scanned": 45,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260316-1145",
-    "action": "ideate",
-    "summary": "20 cross-domain ideas generated (all N+F>=7); top: I18 triple-alarm, I04 ESN x AND/OR gates, I20 FAD bias x gc head decomp; queue full, pending adds"
+    "id": "c-20260316-1215",
+    "action": "plan",
+    "summary": "Track review: Q085+Q094+Q112 prioritized for tomorrow build reset; design doc cluster Q094-Q111 batch flagged"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
