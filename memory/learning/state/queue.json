@@ -289,12 +289,13 @@
       "type": "design",
       "track": "T3",
       "title": "AudioSAE layer 6-7 stability drop = t* collapse: two-instrument unification design doc",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: AudioSAE 50% stability drop at layer 6-7 and t* collapse are the same event; mock alignment; implication: AudioSAE independently validates t* localization in Paper A",
       "created": "2026-03-16",
-      "due": null
+      "due": null,
+      "completed": "2026-03-16"
     }
   ],
   "archived_count": 69,
