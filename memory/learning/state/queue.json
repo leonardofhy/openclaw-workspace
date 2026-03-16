@@ -278,12 +278,13 @@
       "type": "build",
       "track": "T3",
       "title": "gc(k) predicts Whisper hallucination: low-gc frames = hallucination onset",
-      "status": "ready",
+      "status": "done",
       "priority": 5,
       "blocked_by": null,
       "definition_of_done": "Script: mock hallucination (repeated phrase / confabulation) vs correct examples; show gc(k) gap",
       "created": "2026-03-15",
-      "due": null
+      "due": null,
+      "completed": "2026-03-16"
     },
     {
       "id": "Q111",
