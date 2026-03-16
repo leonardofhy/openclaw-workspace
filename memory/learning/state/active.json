@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260316-1245",
-    "action": "ideate",
-    "summary": "Generated 20 cross-source ideas; top 3 queued (Q113-Q115): cascade=AND-gate, GCBench spec, AudioSAE\u00d7t* unification; 4 done tasks archived"
+    "id": "c-20260316-1315",
+    "action": "learn",
+    "summary": "GCBench design doc: 8 metrics (SS, AGF, TS, ME, CPA, CAC, PC, ACS) for gc(k) quality; SAEBench analogy; Paper A §4 scaffold; Q114 done"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

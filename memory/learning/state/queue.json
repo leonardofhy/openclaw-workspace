@@ -276,12 +276,13 @@
       "type": "design",
       "track": "T3",
       "title": "GCBench: SAEBench-style 8-metric evaluation spec for gc(k) feature quality in audio-LLMs",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: 8 metrics (Schelling stability, AND-gate fraction, t* sharpness, MDAS error, collapse AUC, M9 CAC, phonological coverage, anti-cascade score); Paper A benchmark section scaffold",
       "created": "2026-03-16",
-      "due": null
+      "due": null,
+      "completed": "2026-03-16"
     },
     {
       "id": "Q115",
