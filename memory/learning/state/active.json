@@ -29,7 +29,7 @@
     "learn_remaining_today": 6,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 3,
+    "ideate_remaining_today": 2,
     "budget_reset_date": "2026-03-16"
   },
   "stats": {
@@ -38,16 +38,16 @@
     "papers_read_deep": 46,
     "papers_scanned": 45,
     "research_gaps": 25,
-    "paper_ideas": 291,
+    "paper_ideas": 311,
     "paper_pitches": 2,
     "code_artifacts": 64,
     "system_improvements": 7,
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260316-1015",
-    "action": "learn",
-    "summary": "Scanned AR&D (2026): first SAE MI framework for AudioLLMs; T5/T3 connections identified; 2 task candidates Q113-Q114"
+    "id": "c-20260316-1045",
+    "action": "ideate",
+    "summary": "Generated 20 combinatorial ideas; top 4 score N+F\u22659; queue full (25/25), no new tasks added"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
