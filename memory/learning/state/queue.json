@@ -193,12 +193,13 @@
       "type": "design",
       "track": "T3",
       "title": "Motive-attribution environments for audio: gc(k) as behavioral motive test",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: 3-4 controlled audio environments where gc(k) pattern distinguishes model-followed-audio vs defaulted-to-prior; connects to Q086 behavioral benchmark",
       "created": "2026-03-13",
-      "due": null
+      "due": null,
+      "completed": "2026-03-16"
     },
     {
       "id": "Q104",
