@@ -39,18 +39,6 @@
       "due": null
     },
     {
-      "id": "Q081",
-      "type": "experiment",
-      "track": "T5",
-      "title": "M9 x M7 cross-correlation: causal abstraction consistency vs ΔGS at same layer",
-      "status": "ready",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Mock script: compute M9 + M7 per layer; scatter plot; Pearson r; prediction=layers with high M9 also have high ΔGS",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
       "id": "Q082",
       "type": "build",
       "track": "T3",
@@ -188,31 +176,6 @@
       "due": null
     },
     {
-      "id": "Q098",
-      "type": "design",
-      "track": "T3",
-      "title": "Motive-attribution environments for audio: gc(k) as behavioral motive test",
-      "status": "ready",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: 3-4 controlled audio environments where gc(k) pattern distinguishes model-followed-audio vs defaulted-to-prior; connects to Q086 behavioral benchmark",
-      "created": "2026-03-13",
-      "due": null
-    },
-    {
-      "id": "Q104",
-      "type": "design",
-      "track": "T5",
-      "title": "t* as Regulatory Capability Threshold: policy framing for collapse onset as audio-LLM capability standard",
-      "status": "done",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: t* taxonomy (>8 = genuine audio, <3 = text-wrapper); compute-light audit protocol; governance framing for Paper C appendix",
-      "created": "2026-03-13",
-      "due": null,
-      "completed": "2026-03-15"
-    },
-    {
       "id": "Q105",
       "type": "build",
       "track": "T3",
@@ -273,18 +236,6 @@
       "due": null
     },
     {
-      "id": "Q110",
-      "type": "build",
-      "track": "T3",
-      "title": "gc(k) predicts Whisper hallucination: low-gc frames = hallucination onset",
-      "status": "ready",
-      "priority": 5,
-      "blocked_by": null,
-      "definition_of_done": "Script: mock hallucination (repeated phrase / confabulation) vs correct examples; show gc(k) gap",
-      "created": "2026-03-15",
-      "due": null
-    },
-    {
       "id": "Q111",
       "type": "design",
       "track": "T3",
@@ -307,9 +258,47 @@
       "definition_of_done": "Extend online_delta_gs_monitor.py: add M9 consistency window; alarm fires when M9 drops AND delta_gs spikes; test on mock injected drift",
       "created": "2026-03-15",
       "due": null
+    },
+    {
+      "id": "Q113",
+      "type": "design",
+      "track": "T3",
+      "title": "Cascade degree = 1 - AND_gate_fraction: mechanistic quantification of cascade equivalence at gc peak",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc + mock: cascade score vs AND-gate fraction at gc peak; Pearson r > 0.8 validates mechanistic link; connects Paper A Claim 2 to Cascade Equivalence Hypothesis",
+      "created": "2026-03-16",
+      "due": null
+    },
+    {
+      "id": "Q114",
+      "type": "design",
+      "track": "T3",
+      "title": "GCBench: SAEBench-style 8-metric evaluation spec for gc(k) feature quality in audio-LLMs",
+      "status": "done",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc: 8 metrics (Schelling stability, AND-gate fraction, t* sharpness, MDAS error, collapse AUC, M9 CAC, phonological coverage, anti-cascade score); Paper A benchmark section scaffold",
+      "created": "2026-03-16",
+      "due": null,
+      "completed": "2026-03-16"
+    },
+    {
+      "id": "Q115",
+      "type": "design",
+      "track": "T3",
+      "title": "AudioSAE layer 6-7 stability drop = t* collapse: two-instrument unification design doc",
+      "status": "done",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Design doc: AudioSAE 50% stability drop at layer 6-7 and t* collapse are the same event; mock alignment; implication: AudioSAE independently validates t* localization in Paper A",
+      "created": "2026-03-16",
+      "due": null,
+      "completed": "2026-03-16"
     }
   ],
-  "archived_count": 65,
+  "archived_count": 69,
   "last_archived": "2026-03-14T13:17:30.429930+08:00",
   "last_updated": "2026-03-14T13:18:02.616240+08:00"
 }
