@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 6,
+    "learn_remaining_today": 5,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 2,
@@ -36,7 +36,7 @@
     "total_cycles": 217,
     "total_skips": 43,
     "papers_read_deep": 50,
-    "papers_scanned": 48,
+    "papers_scanned": 49,
     "research_gaps": 25,
     "paper_ideas": 371,
     "paper_pitches": 2,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260317-1145",
+    "id": "c-20260317-1215",
     "action": "learn",
-    "summary": "Competitive scan: arXiv:2602.17598 (Cascade Equivalence Hypothesis, Interspeech 2026) = T3 behavioral analog. Differentiation = mechanistic gc(k) + causal patching vs behavioral."
+    "summary": "Scanned arXiv:2409.12553 (Whisper backdoor attacks via env triggers). Framed Q116: backdoor=cascade induction, t* leftward shift + AND-gate fraction < threshold = trigger-agnostic mechanistic detector. Unified with Cascade Equivalence Hypothesis."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
