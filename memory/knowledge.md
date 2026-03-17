@@ -41,4 +41,6 @@
 - `2026-03-01 01:20` `[GOTCHA]` `set -euo pipefail` in shell scripts: SIGPIPE (exit 141) when piping through grep/head that closes early. Use `set -uo pipefail` (without `-e`) or handle SIGPIPE explicitly.
 - `2026-03-01 01:20` `[GOTCHA]` Gateway restart from inside session kills own WebSocket connection. Use `nohup` with sleep delay, or ask Leo to restart manually.
 - `2026-03-13 11:47` [CRON] Disabled 4 duplicate cron jobs on Mac (Lab already runs them): ai-learning-30min-meta-awareness (*/30, 48/day), ai-safety-radar-30min (15,45 9-23, 30/day), ai-safety-digest-midday (13:40), ai-safety-digest-evening (21:40). IDs: 9d3b5e54, dce7c66e, 18639efe, fd502532. Re-enable with: openclaw cron enable <id>
+- `2026-03-14 04:18` `[SLEEP]` Leo 要求從 2026-03-14 起幫忙規律作息管理：催睡提醒 + 起床叫醒。背景：近期常熬夜下棋到凌晨 5 點，睡眠不足導致低效逃避模式。
+- `2026-03-14 04:18` `[SLEEP]` [修正] 規律作息從 3/15（週六）開始，不是 3/14。
 - `2026-03-14 16:50` `[RULE]` Leo 說「提醒我 X」時，同時建 Todoist 任務 + cron 提醒，不要只做一個。
