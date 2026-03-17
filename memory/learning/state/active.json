@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 2,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260317-1215",
+    "id": "c-20260317-1245",
     "action": "learn",
-    "summary": "Scanned arXiv:2409.12553 (Whisper backdoor attacks via env triggers). Framed Q116: backdoor=cascade induction, t* leftward shift + AND-gate fraction < threshold = trigger-agnostic mechanistic detector. Unified with Cascade Equivalence Hypothesis."
+    "summary": "Read Transcoders (Dunefsky NeurIPS 2024): input-dependent/input-invariant factorization maps onto gc(k) framework. T-SAE = high-input-dependence feature; deactivation precedes t* collapse. Q094 design now clear — build when budget resets."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
