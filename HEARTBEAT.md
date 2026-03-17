@@ -74,6 +74,13 @@ ELSE（什麼都沒發生，一切正常）
 - exit 2 (🔴 超過上限) → 立即處理，不等下次 heartbeat
 - SESSION-STATE.md: archive >48h 的 Recent Context 到 daily memory
 
+### 🧹 Todoist 衛生（每 3 天一次）
+- 跑 `python3 skills/shared/todoist_hygiene.py` — 自動清重複 + flag 過期
+- 會自動刪除精確重複的任務
+- 會 flag 相似度高的任務給 Leo 確認
+- 會 flag >3 天過期的任務
+- 結果寫入 `memory/heartbeat-state.json`
+
 ### 🔄 Learnings 清理（每週一次，或 pending > 5 時）
 - 跑 `learn.py review`
 - recurrence ≥ 3 → promote（加到對應 .md）

@@ -218,12 +218,13 @@
       "type": "design",
       "track": "T5",
       "title": "Jailbreak = Isolate peak leftward shift: audio attacks force text-only before gc peak",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: jailbreak shifts min-Isolate layer leftward; mock test protocol; T5 detection framing",
       "created": "2026-03-14",
-      "due": null
+      "due": null,
+      "completed": "2026-03-17"
     },
     {
       "id": "Q109",
