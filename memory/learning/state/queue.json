@@ -43,12 +43,13 @@
       "type": "build",
       "track": "T3",
       "title": "Phoneme Schelling stability across 5 MicroGPT seeds: IIA-optimal vs coincidental features",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Train or simulate 5 MicroGPT variants; measure Schelling stability of top-IIA phoneme features; stable=causal, unstable=noise",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-17"
     },
     {
       "id": "Q083",
