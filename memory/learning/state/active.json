@@ -28,7 +28,7 @@
   "budgets": {
     "learn_remaining_today": 1,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 2,
+    "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-17"
   },
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260317-2045",
-    "action": "learn",
-    "summary": "Q108: jailbreak=Isolate leftward shift; same forced-cascade signature as Q116, \u03b8=5.5 vs \u03b8=4; Q083 calibration next"
+    "id": "c-20260317-2245",
+    "action": "reflect",
+    "summary": "End-of-day digest: backdoor+jailbreak=unified t* detector; competitor arXiv:2602.17598 flagged; tomorrow Q113+Q112"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
