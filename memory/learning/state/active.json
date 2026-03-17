@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260317-1315",
-    "action": "ideate",
-    "summary": "Generated 20 combinatorial ideas, all N+F\u22657; 12 scored 9. Top: emotion-neurons\u00d7AND-OR, ALME\u00d7cascade, T-SAE\u00d7jailbreak, modality-collapse\u00d7AND-OR, AudioLens\u00d7t*-unification, non-pooled-SAE-learnable-t*, unified-forensic-pipeline. Queue full \u2014 ideas in cycle file."
+    "id": "c-20260317-1345",
+    "action": "learn",
+    "summary": "Q116 design doc: backdoor=cascade induction — poisoned audio forces t*≤3 vs clean t*≥6; trigger-agnostic detector via collapse_onset_step; unifies Q085+Q111+Q113+Q083; mock shows ~100% recall <5% FP."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
