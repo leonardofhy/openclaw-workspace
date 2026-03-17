@@ -94,12 +94,13 @@
       "type": "build",
       "track": "T5",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "dod": "incrimination_graph.py runs on mock data; outputs blame dict {layer: feature_ids} from SAE patrol + gc(k) step-drop detection",
       "ideation_id": "I07",
       "novelty": 5,
       "feasibility": 4,
-      "created": "2026-03-12T10:34:16.860603"
+      "created": "2026-03-12T10:34:16.860603",
+      "completed": "2026-03-17"
     },
     {
       "id": "Q91",
