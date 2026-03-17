@@ -29,7 +29,7 @@
     "learn_remaining_today": 8,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 3,
+    "ideate_remaining_today": 2,
     "budget_reset_date": "2026-03-17"
   },
   "stats": {
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260317-1015",
-    "action": "plan",
-    "summary": "Q113 design doc: cascade_degree = 1 - AND_gate_fraction; mock protocol + Paper A Section 3.2 hook drafted; r<-0.8 criterion set."
+    "id": "c-20260317-1045",
+    "action": "ideate",
+    "summary": "20 combinatorial ideas generated (Codec Probe, T-SAE, Emotion neurons, Modality Collapse, ALME conflict × T3/T5). Top 5 N+F=9 written to cycle file. Queue full—ideas staged for next open slot."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
