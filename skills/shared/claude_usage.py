@@ -130,20 +130,32 @@ def check_usage(timeout=25):
         if child.isalive():
             child.terminate(force=True)
 
-def format_bar(pct, width=20):
-    """Create a simple progress bar."""
+def format_bar(pct, width=8):
+    """Create a compact progress bar."""
     if pct is None:
-        return '? (could not read)'
+        return '❓ (could not read)'
     filled = int(width * pct / 100)
     bar = '█' * filled + '░' * (width - filled)
-    # Color hint
     if pct >= 80:
         emoji = '🔴'
     elif pct >= 50:
         emoji = '🟡'
     else:
         emoji = '🟢'
-    return f'{emoji} {bar} {pct}%'
+    return f'{emoji} {bar} {pct:>3d}%'
+
+def clean_reset_time(raw):
+    """Extract a human-readable reset time from raw parsed text."""
+    if not raw:
+        return None
+    import re as _re
+    # Try to find time patterns like "11pm", "11:00 PM", "Mar 20 12pm", etc.
+    clean = strip_ansi(raw)
+    # Remove "Reset" prefix variants (Resets, Rese, etc.)
+    clean = _re.sub(r'(?i)^rese?t?s?\s*:?\s*', '', clean).strip()
+    if not clean:
+        return None
+    return clean
 
 def main():
     parser = argparse.ArgumentParser(description='Check Claude Code plan usage')
@@ -176,17 +188,17 @@ def main():
         ws = usage.get('weekly_sonnet') or '?'
         print(f'Session: {s}% | Week(all): {w}% | Week(sonnet): {ws}%')
     else:
-        print('📊 Claude Code Usage')
-        print('=' * 40)
-        print(f'  Session:        {format_bar(usage["session"])}')
-        print(f'  Week (all):     {format_bar(usage["weekly_all"])}')
-        print(f'  Week (sonnet):  {format_bar(usage["weekly_sonnet"])}')
-        if usage.get('session_reset'):
-            print(f'  Session reset:  {usage["session_reset"]}')
-        if usage.get('weekly_reset'):
-            print(f'  Weekly reset:   {usage["weekly_reset"]}')
+        s_reset = clean_reset_time(usage.get('session_reset'))
+        w_reset = clean_reset_time(usage.get('weekly_reset'))
+        s_tag = f'  (reset {s_reset})' if s_reset else ''
+        w_tag = f'  (reset {w_reset})' if w_reset else ''
+        
+        print('📊 Claude Max 額度')
+        print(f'  Session  {format_bar(usage["session"])}{s_tag}')
+        print(f'  Weekly   {format_bar(usage["weekly_all"])}{w_tag}')
+        print(f'  Sonnet   {format_bar(usage["weekly_sonnet"])}{w_tag}')
         if usage.get('extra_usage'):
-            print(f'  Extra usage:    {usage["extra_usage"]}')
+            print(f'  Extra: {usage["extra_usage"]}')
 
 if __name__ == '__main__':
     main()
