@@ -43,12 +43,13 @@
       "type": "build",
       "track": "T3",
       "title": "Phoneme Schelling stability across 5 MicroGPT seeds: IIA-optimal vs coincidental features",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Train or simulate 5 MicroGPT variants; measure Schelling stability of top-IIA phoneme features; stable=causal, unstable=noise",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-17"
     },
     {
       "id": "Q083",
@@ -93,12 +94,13 @@
       "type": "build",
       "track": "T5",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "dod": "incrimination_graph.py runs on mock data; outputs blame dict {layer: feature_ids} from SAE patrol + gc(k) step-drop detection",
       "ideation_id": "I07",
       "novelty": 5,
       "feasibility": 4,
-      "created": "2026-03-12T10:34:16.860603"
+      "created": "2026-03-12T10:34:16.860603",
+      "completed": "2026-03-17"
     },
     {
       "id": "Q91",
@@ -296,6 +298,18 @@
       "created": "2026-03-16",
       "due": null,
       "completed": "2026-03-16"
+    },
+    {
+      "id": "Q116",
+      "type": "design",
+      "track": "T3",
+      "title": "Backdoor=cascade induction: t* leftward shift as unified backdoor detector (unifies Q111+Cascade Equivalence)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc + mock: poisoned audio t* < 3 vs clean t* > 6; certified detector protocol using collapse_onset_step diagnostic",
+      "created": "2026-03-17",
+      "due": null
     }
   ],
   "archived_count": 69,

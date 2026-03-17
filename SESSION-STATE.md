@@ -9,6 +9,9 @@
 Help Leo plan afternoon/evening schedule for 3/15
 
 ## Recent Context
+- [2026-03-17 18:43] 奇恩哥再次訓話：他只負責硬體，Leo 負責軟體。昨晚戰艦出問題時 Leo 在辦 NTUAIS 活動無法處理，其他網管代為處理
+- [2026-03-17 18:43] Leo 坦承：獎學金申請和研究都還完全沒開始做，特別是和智凱哥的合作需要盡快啟動
+- [2026-03-17 18:37] Leo 心情鬱悶，分析原因：睡眠不足+能量透支+任務堆積逃避循環+旅行後落差+研究主線停滯
 - 2026-03-15 23:55: Leo update — 需要練習 slides 呈現；明天 13:00 課、16:30 meeting (~1hr)、17:30 後處理晚餐+場地佈置、19:00 NTUAIS kickoff 活動
 - 2026-03-15 23:52: TM 第一支教學影片完成 ✅; 聚會到 23:30; 現在補 kickoff slides
 - 2026-03-15 17:41: Pathfinder grant email SENT ✅; replied tzu kit chan + evan ✅
