@@ -37,3 +37,9 @@
 **觸發場景**：想跑 `openclaw doctor` / `openclaw gateway restart`
 **正確做法**：doctor 只在 isolated cron session 跑；gateway restart 用 nohup 或請 Leo
 **來源**：LRN-008 / ERR-004
+
+## [2026-03-17] 有推土機用鏟子
+- **觸發**：中大型 coding 任務（新功能、refactor、跨多檔案）卻自己一行行 Edit
+- **正確做法**：派 Claude Code（`claude --print --permission-mode bypassPermissions`）
+- **判斷標準**：改 >3 檔案 or 需要理解 codebase → 派 Claude Code
+- **來源**：Leo 直接指出（2026-03-17）
