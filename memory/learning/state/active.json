@@ -29,7 +29,7 @@
     "learn_remaining_today": 8,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 4,
+    "ideate_remaining_today": 3,
     "budget_reset_date": "2026-03-17"
   },
   "stats": {
@@ -38,16 +38,16 @@
     "papers_read_deep": 50,
     "papers_scanned": 45,
     "research_gaps": 25,
-    "paper_ideas": 351,
+    "paper_ideas": 371,
     "paper_pitches": 2,
     "code_artifacts": 65,
     "system_improvements": 7,
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260317-0915",
-    "action": "build",
-    "summary": "Q90 done: audio_incrimination_graph.py \u2014 jailbreak SAE feature blame at gc(k) collapse t*=3; 4 incriminated / 4 exonerating / 16 neutral (BENIGN: all neutral). Clean."
+    "id": "c-20260317-0945",
+    "action": "ideate",
+    "summary": "20 combinatorial ideas generated (all N+F>=7, 12 at N+F>=9). Q116 added: Backdoor=cascade induction (N=5,F=5). Queue full—4 more ideas pending next open slot."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

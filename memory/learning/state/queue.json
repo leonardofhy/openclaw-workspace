@@ -298,6 +298,18 @@
       "created": "2026-03-16",
       "due": null,
       "completed": "2026-03-16"
+    },
+    {
+      "id": "Q116",
+      "type": "design",
+      "track": "T3",
+      "title": "Backdoor=cascade induction: t* leftward shift as unified backdoor detector (unifies Q111+Cascade Equivalence)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc + mock: poisoned audio t* < 3 vs clean t* > 6; certified detector protocol using collapse_onset_step diagnostic",
+      "created": "2026-03-17",
+      "due": null
     }
   ],
   "archived_count": 69,
