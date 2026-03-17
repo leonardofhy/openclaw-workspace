@@ -57,6 +57,13 @@
 - **狀態：** 有 client_secret，但**尚未生成 token.json**（需要 OAuth 授權流程）
 - **用途：** 備用，目前用 Service Account 即可
 
+### 📊 Claude Usage（額度查詢）
+- **腳本：** `skills/shared/claude_usage.py`
+- **觸發詞：** 「查額度」「claude usage」「用量多少」「還剩多少額度」
+- **用法：** `python3 skills/shared/claude_usage.py`（圖形）、`--json`（JSON）、`--oneline`（一行）
+- **輸出：** Session / Week (all) / Week (sonnet) 三個百分比 + reset 時間
+- **注意：** 需要 ~20 秒（要啟動 claude CLI 互動模式），內建 retry
+
 ### 🎤 Whisper (語音轉文字)
 - **macbook 工具：** `whisper-cli`（whisper-cpp via Homebrew）
 - **macbook 模型：** `~/.local/share/whisper-cpp/ggml-base.bin`（base, 147MB）
