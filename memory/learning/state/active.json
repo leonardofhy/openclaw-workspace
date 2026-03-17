@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 2,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -36,7 +36,7 @@
     "total_cycles": 218,
     "total_skips": 43,
     "papers_read_deep": 50,
-    "papers_scanned": 49,
+    "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 411,
     "paper_pitches": 2,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260317-1415",
-    "action": "ideate",
-    "summary": "Generated 20 ideas (SPIRIT\u00d7t*, emotion-neurons\u00d7AND-gate, Jacobian-SVD\u00d7collapse); 16/20 pass \u22657; queue full \u2014 top 5 staged in cycle file"
+    "id": "c-20260317-1445",
+    "action": "learn",
+    "summary": "GSAE (2512.06655) scan: graph-regularized SAE for safety steering; 82% refusal vs 42% baseline; connects to Q083 two-stage gating + Gap #33 Audio-GSAE"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
