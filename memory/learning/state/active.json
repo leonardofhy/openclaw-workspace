@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260317-1445",
-    "action": "learn",
-    "summary": "GSAE (2512.06655) scan: graph-regularized SAE for safety steering; 82% refusal vs 42% baseline; connects to Q083 two-stage gating + Gap #33 Audio-GSAE"
+    "id": "c-20260317-1515",
+    "action": "plan",
+    "summary": "Medium plan: top-2 builds for tomorrow reset = Q113 (cascade_degree_mock, Paper A Claim 2) + Q112 (M9 online alarm); design doc cluster mapped for plan-budget cycles"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
