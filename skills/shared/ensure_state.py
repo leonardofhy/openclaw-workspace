@@ -32,6 +32,12 @@ DEFAULTS = {
         }
     },
     "memory/growth-metrics.json": {},
+    "memory/cron-health.json": {
+        "last_check_ms": None,
+        "total_jobs": 0,
+        "alerts": 0,
+        "jobs": {}
+    },
 }
 
 def main():
