@@ -57,8 +57,7 @@ def _spawn_cc(task_id: str, task: dict, workdir: Path) -> subprocess.Popen:
 Working directory: {workdir}
 Output artifacts to this directory.
 IMPORTANT: When done, run `git add -A && git commit -m 'done: {task_id}'` to persist your work.
-Then create a file COMPLETED.txt with summary.
-On error, create FAILED.txt with error details.
+Do NOT create COMPLETED.txt or FAILED.txt — the orchestrator detects completion via exit code.
 """
 
     cmd = [

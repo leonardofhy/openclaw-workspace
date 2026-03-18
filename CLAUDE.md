@@ -30,6 +30,11 @@
 - One commit per logical change
 - Don't commit `__pycache__/`, `.pyc`, or temp files
 
+## Worktree / Orchestrator Rules
+- Do NOT create `COMPLETED.txt` — the orchestrator detects completion via process exit code
+- Always `git add -A && git commit -m 'done: <task-id>'` before exiting
+- Your working directory may be a git worktree (`.worktrees/`), not the main workspace
+
 ## Common Pitfalls
 - `openclaw.json`: NEVER edit directly, use `openclaw config set`
 - Discord targets: use channel IDs, not user IDs
