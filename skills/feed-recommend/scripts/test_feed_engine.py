@@ -213,8 +213,11 @@ class TestClassifyAction:
     def test_score_8_returns_deep_read(self):
         assert classify_action(8.0) == "深讀"
 
+    def test_score_above_12_returns_must_read(self):
+        assert classify_action(12.5) == "必讀"
+
     def test_score_above_8_returns_deep_read(self):
-        assert classify_action(12.5) == "深讀"
+        assert classify_action(10.0) == "深讀"
 
     def test_score_5_returns_skim(self):
         assert classify_action(5.0) == "略讀"
