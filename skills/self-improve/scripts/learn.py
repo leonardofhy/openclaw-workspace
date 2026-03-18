@@ -15,7 +15,7 @@ Usage:
 import argparse
 import json
 import sys
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from difflib import SequenceMatcher
 from pathlib import Path
 
@@ -33,8 +33,10 @@ VALID_STATUSES = ("pending", "resolved", "promoted", "wont_fix")
 PROMOTION_THRESHOLD = 3
 
 
+_TZ_TAIPEI = timezone(timedelta(hours=8))
+
 def today() -> str:
-    return datetime.now().strftime("%Y-%m-%d")
+    return datetime.now(_TZ_TAIPEI).strftime("%Y-%m-%d")
 
 
 def similarity(a: str, b: str) -> float:

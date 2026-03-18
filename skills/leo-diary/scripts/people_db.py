@@ -65,13 +65,17 @@ def _save_jsonl(path: Path, items: list[dict]):
     path.parent.mkdir(parents=True, exist_ok=True)
     content = "\n".join(json.dumps(i, ensure_ascii=False) for i in items) + "\n"
     fd, tmp = tempfile.mkstemp(dir=path.parent, suffix=".tmp")
+    closed = False
     try:
         os.write(fd, content.encode("utf-8"))
         os.close(fd)
+        closed = True
         os.replace(tmp, path)
-    except:
-        os.close(fd) if not os.get_inheritable(fd) else None
-        os.unlink(tmp)
+    except BaseException:
+        if not closed:
+            os.close(fd)
+        if os.path.exists(tmp):
+            os.unlink(tmp)
         raise
 
 
