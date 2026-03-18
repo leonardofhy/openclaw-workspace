@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Pre-push hook: runs changed tests before allowing push.
+# Bypass with: git push --no-verify
+
+set -euo pipefail
+
+echo "🔍 Pre-push: checking for changed tests..."
+
+if ! python3 scripts/run_tests.py --quick; then
+    echo ""
+    echo "❌ Tests failed — push blocked."
+    echo "   Fix the failures, or bypass with: git push --no-verify"
+    exit 1
+fi
+
+echo "✅ Pre-push checks passed."

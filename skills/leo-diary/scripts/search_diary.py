@@ -110,9 +110,9 @@ def extract_context(text: str, pattern: str, context_chars: int = 80, use_regex:
     return snippets
 
 
-def search(keywords: list[str], start_date=None, end_date=None,
-           use_or=False, use_regex=False, context_chars=80,
-           field="diary", max_results=50) -> list[dict]:
+def search(keywords: list[str], start_date: str | None = None, end_date: str | None = None,
+           use_or: bool = False, use_regex: bool = False, context_chars: int = 80,
+           field: str = "diary", max_results: int = 50) -> list[dict]:
     """
     搜尋日記。
     keywords: 搜尋詞列表
@@ -182,7 +182,7 @@ def search(keywords: list[str], start_date=None, end_date=None,
     return results
 
 
-def print_people():
+def print_people() -> None:
     """列印人物別名表"""
     print("📋 已知人物別名表：\n")
     for canonical, aliases in sorted(ALIASES.items()):
@@ -190,7 +190,7 @@ def print_people():
     print(f"\n共 {len(ALIASES)} 人。編輯 search_diary.py 的 ALIASES 可新增。")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="搜尋 Leo 日記")
     parser.add_argument("keywords", nargs="*", help="搜尋關鍵詞（多個=AND）")
     parser.add_argument("--or", dest="use_or", action="store_true", help="多關鍵詞用 OR（預設 AND）")

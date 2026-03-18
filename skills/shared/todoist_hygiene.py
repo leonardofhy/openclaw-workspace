@@ -10,7 +10,7 @@ from common import TZ, load_todoist_token, WORKSPACE
 
 API_BASE = 'https://api.todoist.com/api/v1'
 
-def get_tasks(token):
+def get_tasks(token: str) -> list[dict]:
     """Fetch all active tasks."""
     r = requests.get(f'{API_BASE}/tasks', 
                      headers={'Authorization': f'Bearer {token}'}, 
@@ -19,7 +19,7 @@ def get_tasks(token):
     data = r.json()
     return data.get('results', []) if isinstance(data, dict) else data
 
-def delete_task(task_id, token):
+def delete_task(task_id: str, token: str) -> bool:
     """Delete a task by ID."""
     r = requests.delete(f'{API_BASE}/tasks/{task_id}',
                        headers={'Authorization': f'Bearer {token}'},
@@ -27,11 +27,11 @@ def delete_task(task_id, token):
     r.raise_for_status()
     return True
 
-def similarity(a, b):
+def similarity(a: str, b: str) -> float:
     """String similarity ratio (0-1)."""
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
-def is_overdue(task):
+def is_overdue(task: dict) -> bool:
     """Check if task is overdue by >3 days."""
     due = task.get('due')
     if not due:
@@ -56,7 +56,7 @@ def is_overdue(task):
     except (TypeError, ValueError, AttributeError):
         return False
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description='Todoist hygiene cleanup')
     parser.add_argument('--dry-run', action='store_true', help='Report without deleting')
     parser.add_argument('--similarity-threshold', type=float, default=0.80, 

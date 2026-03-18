@@ -14,8 +14,9 @@ Usage:
 import json
 import sys
 import argparse
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
 from common import TZ, now as _now, WORKSPACE, SECRETS, SCRIPTS
@@ -25,7 +26,7 @@ sys.path.insert(0, str(SCRIPTS))
 NOW = _now()
 
 # --- Calendar ---
-def get_calendar_range(start_date, days):
+def get_calendar_range(start_date: date, days: int) -> dict[str, Any]:
     """Fetch calendar events for a date range, grouped by day."""
     try:
         from gcal_today import get_events
@@ -59,7 +60,7 @@ def get_calendar_range(start_date, days):
 
 
 # --- Todoist ---
-def get_todoist_range(start_date, days):
+def get_todoist_range(start_date: date, days: int) -> dict[str, Any]:
     """Fetch all open tasks, group by due date within range."""
     try:
         env_path = WORKSPACE / 'secrets' / 'todoist.env'
@@ -124,7 +125,7 @@ def get_todoist_range(start_date, days):
 
 
 # --- Existing schedules ---
-def get_existing_schedules(start_date, days):
+def get_existing_schedules(start_date: date, days: int) -> dict[str, dict[str, Any]]:
     """Check which days already have schedule files."""
     schedules_dir = WORKSPACE / 'memory' / 'schedules'
     existing = {}
@@ -142,7 +143,7 @@ def get_existing_schedules(start_date, days):
 
 
 # --- Day metadata ---
-def build_day_meta(start_date, days):
+def build_day_meta(start_date: date, days: int) -> dict[str, dict[str, Any]]:
     """Generate metadata for each day in range."""
     WEEKDAYS_ZH = ['一', '二', '三', '四', '五', '六', '日']
     result = {}
@@ -159,7 +160,7 @@ def build_day_meta(start_date, days):
     return result
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description='Fetch weekly scheduling data')
     parser.add_argument('--start', type=str, default=None,
                         help='Start date (YYYY-MM-DD), default=today')

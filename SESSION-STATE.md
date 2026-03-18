@@ -8,6 +8,8 @@
 claude_usage 格式改版完成（style A 卡片風）
 
 ## Recent Context
+- [2026-03-18 10:59] Feed recommend: Leo 要求每個 source 保底 2-3 篇（多樣性），不只看研究方向，也想看各平台優質內容
+- [2026-03-18 09:53] Google Sheet for feed recommendations: ID `1COz971ZsWjPURSJyNx9CnFTBTDxN6PQshyrAq8rXSuw`, shared with service account as Editor
 - [2026-03-17 21:19] claude_usage.py 改成 A 風格卡片輸出，已 commit (8a574dc)
 - [2026-03-17 18:43] 奇恩哥訓話：Leo 負責軟體，昨晚戰艦出問題時 Leo 在辦活動無法處理
 - [2026-03-17 18:43] Leo 坦承：獎學金和研究都還沒開始，需盡快啟動和智凱哥合作

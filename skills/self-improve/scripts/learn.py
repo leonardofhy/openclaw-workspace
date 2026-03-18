@@ -15,7 +15,7 @@ Usage:
 import argparse
 import json
 import sys
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from difflib import SequenceMatcher
 from pathlib import Path
 
@@ -33,8 +33,10 @@ VALID_STATUSES = ("pending", "resolved", "promoted", "wont_fix")
 PROMOTION_THRESHOLD = 3
 
 
+_TZ_TAIPEI = timezone(timedelta(hours=8))
+
 def today() -> str:
-    return datetime.now().strftime("%Y-%m-%d")
+    return datetime.now(_TZ_TAIPEI).strftime("%Y-%m-%d")
 
 
 def similarity(a: str, b: str) -> float:
@@ -66,7 +68,7 @@ def find_similar(store: JsonlStore, summary: str, pattern_key: str | None = None
 
 # ── Commands ──────────────────────────────────────────────
 
-def cmd_log(args):
+def cmd_log(args: argparse.Namespace) -> None:
     """Log a learning entry."""
     store = JsonlStore(LEARNINGS_PATH, prefix="LRN")
 
@@ -111,7 +113,7 @@ def cmd_log(args):
     print(f"✅ Logged {result['id']}: {args.summary}")
 
 
-def cmd_error(args):
+def cmd_error(args: argparse.Namespace) -> None:
     """Log an error entry."""
     store = JsonlStore(ERRORS_PATH, prefix="ERR")
 
@@ -128,6 +130,9 @@ def cmd_error(args):
             if args.fix:
                 updates["fix"] = args.fix
                 updates["status"] = "resolved"
+            else:
+                # Error recurred without a new fix — reopen it
+                updates["status"] = "pending"
             if args.prevention:
                 updates["prevention"] = args.prevention
             store.update(best["id"], updates)
@@ -152,7 +157,7 @@ def cmd_error(args):
     print(f"✅ Logged {result['id']} ({status}): {args.summary}")
 
 
-def cmd_resolve(args):
+def cmd_resolve(args: argparse.Namespace) -> None:
     """Mark an entry as resolved."""
     entry_id = args.entry_id.upper()
     # Determine which store
@@ -183,7 +188,7 @@ def cmd_resolve(args):
     print(f"✅ {entry_id} marked as resolved")
 
 
-def cmd_search(args):
+def cmd_search(args: argparse.Namespace) -> None:
     """Search learnings and errors for a keyword."""
     keyword = args.keyword.lower()
     lrn_store = JsonlStore(LEARNINGS_PATH, prefix="LRN")
@@ -217,7 +222,7 @@ def cmd_search(args):
         print(f"  [{_id}] {status:>8} {summary}{rec_str}")
 
 
-def cmd_review(args):
+def cmd_review(args: argparse.Namespace) -> None:
     """Review pending items. --promote-ready shows only items ready for promotion."""
     lrn_store = JsonlStore(LEARNINGS_PATH, prefix="LRN")
     err_store = JsonlStore(ERRORS_PATH, prefix="ERR")
@@ -277,7 +282,7 @@ def cmd_review(args):
             print(f"  [{item['id']}] {item['summary']}")
 
 
-def cmd_promote(args):
+def cmd_promote(args: argparse.Namespace) -> None:
     """Mark an entry as promoted and show what to add to target file."""
     entry_id = args.entry_id.upper()
 
@@ -329,7 +334,7 @@ def cmd_promote(args):
     print(f"\n(Manually add the above to {target}, then commit.)")
 
 
-def cmd_stats(args):
+def cmd_stats(args: argparse.Namespace) -> None:
     """Show stats overview."""
     lrn_store = JsonlStore(LEARNINGS_PATH, prefix="LRN")
     err_store = JsonlStore(ERRORS_PATH, prefix="ERR")
@@ -370,7 +375,7 @@ def cmd_stats(args):
         print(f"  ⚡ {promote_ready} learning(s) ready for promotion")
 
 
-def cmd_migrate(args):
+def cmd_migrate(args: argparse.Namespace) -> None:
     """Migrate existing known-issues.md entries to errors.jsonl."""
     store = JsonlStore(ERRORS_PATH, prefix="ERR")
     existing = store.load()
@@ -436,7 +441,7 @@ def cmd_migrate(args):
 
 # ── CLI ───────────────────────────────────────────────────
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Self-improvement CLI — log, search, review, promote learnings and errors.",
         formatter_class=argparse.RawDescriptionHelpFormatter,

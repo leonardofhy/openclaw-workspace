@@ -94,7 +94,7 @@ DEFAULT_PROFILE = {
 }
 
 
-def load_profile():
+def load_profile() -> dict:
     """Load interest profile, create default if missing."""
     os.makedirs(DATA_DIR, exist_ok=True)
     if os.path.exists(PROFILE_PATH):
@@ -108,7 +108,7 @@ def load_profile():
     return DEFAULT_PROFILE.copy()
 
 
-def save_profile(profile):
+def save_profile(profile: dict) -> None:
     os.makedirs(DATA_DIR, exist_ok=True)
     profile['updated'] = datetime.now(TZ).isoformat()
     tmp = PROFILE_PATH + '.tmp'
@@ -120,7 +120,7 @@ def save_profile(profile):
 
 # ── Seen History ──────────────────────────────────────────────────
 
-def load_seen(max_age_days=7):
+def load_seen(max_age_days: int = 7) -> set[str]:
     """Load seen article IDs (dedup window)."""
     seen = set()
     if not os.path.exists(SEEN_PATH):
@@ -148,7 +148,7 @@ def load_seen(max_age_days=7):
     return seen
 
 
-def mark_seen(ids):
+def mark_seen(ids: list) -> None:
     """Mark article IDs as seen."""
     os.makedirs(DATA_DIR, exist_ok=True)
     now = datetime.now(TZ).isoformat()
@@ -159,7 +159,7 @@ def mark_seen(ids):
 
 # ── Feedback ──────────────────────────────────────────────────────
 
-def record_feedback(article_id, positive, title=""):
+def record_feedback(article_id: str, positive: bool, title: str = "") -> None:
     """Record positive/negative feedback, update profile weights."""
     os.makedirs(DATA_DIR, exist_ok=True)
     entry = {
@@ -173,7 +173,7 @@ def record_feedback(article_id, positive, title=""):
     print(f"Feedback recorded: {'👍' if positive else '👎'} {article_id} {title}", file=sys.stderr)
 
 
-def get_feedback_stats():
+def get_feedback_stats() -> dict:
     """Summarize feedback history."""
     if not os.path.exists(FEEDBACK_PATH):
         return {"total": 0, "positive": 0, "negative": 0, "keywords": {}}
@@ -199,7 +199,7 @@ def get_feedback_stats():
 
 # ── Fetch ─────────────────────────────────────────────────────────
 
-def fetch_url(url, max_bytes=500_000):
+def fetch_url(url: str, max_bytes: int = 500_000) -> str | None:
     try:
         req = urllib.request.Request(url, headers={
             'User-Agent': 'Mozilla/5.0 (HN-Recommend/1.0)'
@@ -211,7 +211,7 @@ def fetch_url(url, max_bytes=500_000):
         return None
 
 
-def fetch_hn_top(limit=50):
+def fetch_hn_top(limit: int = 50) -> list[dict]:
     """Fetch top HN stories."""
     items = []
     raw = fetch_url('https://hacker-news.firebaseio.com/v0/topstories.json')
@@ -247,7 +247,7 @@ def fetch_hn_top(limit=50):
 
 # ── Scoring ───────────────────────────────────────────────────────
 
-def score_article(item, profile):
+def score_article(item: dict, profile: dict) -> float:
     """Score an article based on interest profile. Higher = more relevant."""
     title = item['title'].lower()
     url = item.get('url', '').lower()
@@ -295,7 +295,7 @@ def score_article(item, profile):
     return round(score, 1)
 
 
-def classify_action(score):
+def classify_action(score: float) -> str:
     """Suggest action level based on score."""
     if score >= 8:
         return "深讀"
@@ -307,7 +307,7 @@ def classify_action(score):
 
 # ── Main ──────────────────────────────────────────────────────────
 
-def cmd_fetch_and_score(args):
+def cmd_fetch_and_score(args: argparse.Namespace) -> None:
     """Main flow: fetch, dedup, score, output top candidates."""
     profile = load_profile()
     seen = load_seen()
@@ -354,7 +354,7 @@ def cmd_fetch_and_score(args):
     print(file=sys.stdout)  # trailing newline
 
 
-def cmd_collect(args):
+def cmd_collect(args: argparse.Namespace) -> None:
     """Collect: fetch, score, append new candidates to daily JSONL. Silent accumulation."""
     profile = load_profile()
     seen = load_seen()
@@ -403,7 +403,7 @@ def cmd_collect(args):
     print(f"Collected {len(new_items)} new candidates → {daily_path} (total today: {len(existing_ids) + len(new_items)})", file=sys.stderr)
 
 
-def cmd_digest(args):
+def cmd_digest(args: argparse.Namespace) -> None:
     """Digest: read today's collected candidates, rank, output top N as JSON for LLM."""
     today = args.date or datetime.now(TZ).strftime('%Y-%m-%d')
     candidates_dir = os.path.join(DATA_DIR, 'candidates')
@@ -444,7 +444,7 @@ def cmd_digest(args):
     print(f"Digest: {len(items)} candidates → top {len(top)}", file=sys.stderr)
 
 
-def cmd_mark_seen(args):
+def cmd_mark_seen(args: argparse.Namespace) -> None:
     """Mark IDs as seen from stdin JSON array."""
     try:
         ids = json.load(sys.stdin)
@@ -457,18 +457,18 @@ def cmd_mark_seen(args):
         sys.exit(1)
 
 
-def cmd_feedback(args):
+def cmd_feedback(args: argparse.Namespace) -> None:
     positive = args.sentiment == '+'
     record_feedback(args.article_id, positive, title=args.title or "")
 
 
-def cmd_profile(args):
+def cmd_profile(args: argparse.Namespace) -> None:
     profile = load_profile()
     json.dump(profile, sys.stdout, indent=2, ensure_ascii=False)
     print()
 
 
-def cmd_stats(args):
+def cmd_stats(args: argparse.Namespace) -> None:
     fb = get_feedback_stats()
     seen_count = len(load_seen())
     stats = {
@@ -480,7 +480,7 @@ def cmd_stats(args):
     print()
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description='HN Recommender for Leo')
     sub = parser.add_subparsers(dest='command')
 

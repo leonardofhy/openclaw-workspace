@@ -18,6 +18,7 @@ import sys
 import argparse
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
 from common import TZ, now as _now, today_str, WORKSPACE, MEMORY, SECRETS, SCRIPTS
@@ -27,7 +28,7 @@ NOW = _now()
 sys.path.insert(0, str(SCRIPTS))
 
 
-def get_calendar(days_range=1):
+def get_calendar(days_range: int = 1) -> list[dict[str, Any]]:
     try:
         from gcal_today import get_events
         events = get_events(days_ahead=0, days_range=days_range)
@@ -45,7 +46,7 @@ def get_calendar(days_range=1):
         return [{'error': str(ex)}]
 
 
-def get_todoist():
+def get_todoist() -> dict[str, Any]:
     try:
         env_path = WORKSPACE / 'secrets' / 'todoist.env'
         token = None
@@ -98,7 +99,7 @@ def get_todoist():
         return {'error': str(ex)}
 
 
-def get_memory_context():
+def get_memory_context() -> dict[str, Any]:
     """Read today's and yesterday's memory for health/mood context."""
     today     = NOW.strftime('%Y-%m-%d')
     yesterday = (NOW - timedelta(days=1)).strftime('%Y-%m-%d')
@@ -129,7 +130,7 @@ def get_memory_context():
     return context
 
 
-def get_time_info():
+def get_time_info() -> dict[str, Any]:
     now_str    = NOW.strftime('%H:%M')
     now_hour   = NOW.hour + NOW.minute / 60
     bedtime    = 23.0  # Leo's target bedtime
@@ -149,7 +150,7 @@ def get_time_info():
     }
 
 
-def get_medication_schedule():
+def get_medication_schedule() -> dict[str, Any] | None:
     """Return any active medication reminders (hardcoded for current prescription)."""
     # Check if there's an active prescription in memory
     today = NOW.strftime('%Y-%m-%d')
@@ -169,7 +170,7 @@ def get_medication_schedule():
     return {'upcoming_today': upcoming, 'prescription_end': prescription_end}
 
 
-def format_display(data):
+def format_display(data: dict[str, Any]) -> None:
     """Pretty-print schedule with current time marker."""
     time_info = data['time']
     now_str = time_info['now']
@@ -256,7 +257,7 @@ def format_display(data):
         print()
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--tomorrow', action='store_true', help='Include tomorrow calendar')
     parser.add_argument('--no-memory', action='store_true', help='Skip memory context')

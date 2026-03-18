@@ -27,9 +27,9 @@ MEMORY_DIR = str(_MEMORY)
 TAGS_DIR = str(_TAGS_DIR)
 
 # Diary metrics cache (loaded once from Google Sheets / CSV)
-_diary_metrics_cache = None
+_diary_metrics_cache: dict[str, dict[str, int]] | None = None
 
-def _load_diary_metrics():
+def _load_diary_metrics() -> dict[str, dict[str, int]]:
     """Load mood/energy from diary source (Sheets or CSV). Cached."""
     global _diary_metrics_cache
     if _diary_metrics_cache is not None:
@@ -152,7 +152,7 @@ def detect_late_sleep(text: str) -> bool:
     return False
 
 
-def extract_metrics_from_header(content: str) -> dict:
+def extract_metrics_from_header(content: str) -> dict[str, int]:
     """從 memory/*.md 的 YAML-like header 提取指標"""
     metrics = {}
     # 嘗試抓 mood/energy/sleep 等 (格式不固定，盡力而為)
@@ -165,7 +165,7 @@ def extract_metrics_from_header(content: str) -> dict:
     return metrics
 
 
-def generate_tag(date: str, content: str) -> dict:
+def generate_tag(date: str, content: str) -> dict[str, object]:
     """為一篇日記生成標籤"""
     tag = {
         "date": date,
@@ -188,7 +188,7 @@ def generate_tag(date: str, content: str) -> dict:
     return tag
 
 
-def process_diary_file(filepath: str) -> tuple[str, dict] | None:
+def process_diary_file(filepath: str) -> tuple[str, dict[str, object]] | None:
     """處理一個 memory/YYYY-MM-DD.md 檔案"""
     basename = os.path.basename(filepath)
     date_match = re.match(r"(\d{4}-\d{2}-\d{2})\.md$", basename)
@@ -205,7 +205,7 @@ def process_diary_file(filepath: str) -> tuple[str, dict] | None:
     return date, generate_tag(date, content)
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="日記標籤提取器")
     parser.add_argument("--date", help="指定日期 YYYY-MM-DD")
     parser.add_argument("--recent", type=int, help="最近 N 天")

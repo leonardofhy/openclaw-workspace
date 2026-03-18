@@ -98,7 +98,10 @@ class TimeBlock:
 
     @property
     def duration(self) -> int:
-        return self.end_minutes - self.start_minutes
+        d = self.end_minutes - self.start_minutes
+        if d < 0:
+            d += 24 * 60  # cross-midnight
+        return d
 
 
 @dataclass
@@ -106,10 +109,10 @@ class DaySchedule:
     date: str = ""
     weekday: str = ""
     version: int = 0
-    blocks: list = field(default_factory=list)
-    unscheduled: list = field(default_factory=list)
-    context_notes: list = field(default_factory=list)
-    actual_log: list = field(default_factory=list)
+    blocks: list[TimeBlock] = field(default_factory=list)
+    unscheduled: list[str] = field(default_factory=list)
+    context_notes: list[str] = field(default_factory=list)
+    actual_log: list[str] = field(default_factory=list)
     raw_text: str = ""
 
 
@@ -331,7 +334,7 @@ def render_review(schedule: DaySchedule) -> str:
 
 # ── CLI ──
 
-def cmd_view(args):
+def cmd_view(args: argparse.Namespace) -> None:
     date = args.date or _today_str()
     filepath = SCHEDULES_DIR / f'{date}.md'
     schedule = parse_schedule(filepath)
@@ -343,7 +346,7 @@ def cmd_view(args):
     print(render_display(schedule, now_str))
 
 
-def cmd_conflicts(args):
+def cmd_conflicts(args: argparse.Namespace) -> None:
     date = args.date or _today_str()
     filepath = SCHEDULES_DIR / f'{date}.md'
     schedule = parse_schedule(filepath)
@@ -361,7 +364,7 @@ def cmd_conflicts(args):
         print(f"✅ No conflicts in {date}")
 
 
-def cmd_spillover(args):
+def cmd_spillover(args: argparse.Namespace) -> None:
     date = args.date  # defaults to yesterday
     items = get_spillover(date)
     if items:
@@ -372,7 +375,7 @@ def cmd_spillover(args):
         print("✅ No spillover")
 
 
-def cmd_review(args):
+def cmd_review(args: argparse.Namespace) -> None:
     date = args.date or _today_str()
     filepath = SCHEDULES_DIR / f'{date}.md'
     schedule = parse_schedule(filepath)
@@ -382,7 +385,7 @@ def cmd_review(args):
     print(render_review(schedule))
 
 
-def cmd_dayend(args):
+def cmd_dayend(args: argparse.Namespace) -> None:
     """Run day-end review: append review to today, spillover to tomorrow."""
     today = args.date or _today_str()
     dry_run = args.dry_run
@@ -503,7 +506,7 @@ def cmd_dayend(args):
         print(f"✅ 已更新 {tomorrow_path.name}")
 
 
-def cmd_parse(args):
+def cmd_parse(args: argparse.Namespace) -> None:
     """Debug: dump parsed schedule as JSON."""
     date = args.date or _today_str()
     filepath = SCHEDULES_DIR / f'{date}.md'
@@ -524,7 +527,7 @@ def cmd_parse(args):
     print(json.dumps(output, ensure_ascii=False, indent=2))
 
 
-def cmd_update(args):
+def cmd_update(args: argparse.Namespace) -> None:
     """Generate a new schedule version based on current progress.
 
     Reads the schedule file, classifies blocks by time/completion status,
@@ -693,7 +696,7 @@ def cmd_update(args):
     print('\n'.join(lines))
 
 
-def cmd_stats(args):
+def cmd_stats(args: argparse.Namespace) -> None:
     """Show weekly completion statistics across multiple days."""
     days = args.days
     today = datetime.strptime(_today_str(), '%Y-%m-%d')
@@ -755,7 +758,7 @@ def cmd_stats(args):
         print("  No schedule data found")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description='Schedule engine CLI')
     sub = parser.add_subparsers(dest='command')
 
