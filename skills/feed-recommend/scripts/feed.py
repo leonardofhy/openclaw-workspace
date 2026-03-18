@@ -124,10 +124,13 @@ def cmd_recommend(args: argparse.Namespace) -> None:
 
     profile = engine.load_profile(cfg)
     threshold = cfg.get('dedup', {}).get('title_similarity_threshold', 0.85)
-    min_per_src = cfg.get('diversity', {}).get('min_per_source', 2)
+    diversity = cfg.get('diversity', {})
+    min_per_src = diversity.get('min_per_source', 2)
+    max_per_src = diversity.get('max_per_source', 0)
     scored = engine.recommend(articles, profile, limit=args.limit,
                               title_threshold=threshold,
-                              min_per_source=min_per_src)
+                              min_per_source=min_per_src,
+                              max_per_source=max_per_src)
 
     output = {
         'total_fetched': len(articles),

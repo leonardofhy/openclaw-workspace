@@ -28,5 +28,9 @@
   },
   "dedup": {
     "title_similarity_threshold": 0.85
+  },
+  "diversity": {
+    "min_per_source": 2,
+    "max_per_source": 7
   }
 }

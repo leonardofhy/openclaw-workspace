@@ -12,7 +12,8 @@
     "title_similarity_threshold": 0.85
   },
   "diversity": {
-    "min_per_source": 2
+    "min_per_source": 2,
+    "max_per_source": 7
   },
   "google_sheets": {
     "sheet_id": "1COz971ZsWjPURSJyNx9CnFTBTDxN6PQshyrAq8rXSuw"

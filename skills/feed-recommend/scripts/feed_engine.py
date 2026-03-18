@@ -79,7 +79,7 @@ def get_all_sources() -> dict[str, type[BaseSource]]:
 
 # ── Fetching ─────────────────────────────────────────────────────
 
-_FETCH_TIMEOUT = 15  # seconds per source
+_FETCH_TIMEOUT = 30  # seconds per source
 
 
 def _fetch_one(source: BaseSource, limit: int) -> list[Article]:
@@ -453,17 +453,19 @@ def dedup(articles: list[Article], seen_path: str | None = None,
 def recommend(articles: list[Article], profile: dict,
               limit: int = 10, seen_path: str | None = None,
               title_threshold: float = 0.85,
-              min_per_source: int = 2) -> list[ScoredArticle]:
+              min_per_source: int = 2,
+              max_per_source: int = 0) -> list[ScoredArticle]:
     """Full pipeline: dedup → score → rank → top-N with source diversity.
 
     Guarantees at least `min_per_source` articles from each source that
-    has enough candidates, then fills remaining slots by score.
+    has enough candidates, caps each source at `max_per_source` (0=no cap),
+    then fills remaining slots by score.
     """
     deduped = dedup(articles, seen_path=seen_path, title_threshold=title_threshold)
     scored = score_articles(deduped, profile)
     scored.sort(key=lambda x: x.interest_score, reverse=True)
 
-    if min_per_source <= 0:
+    if min_per_source <= 0 and max_per_source <= 0:
         return scored[:limit]
 
     # Group by source
@@ -473,6 +475,7 @@ def recommend(articles: list[Article], profile: dict,
 
     selected: list[ScoredArticle] = []
     selected_uids: set[str] = set()
+    source_counts: dict[str, int] = {}
 
     # Phase 1: guarantee min_per_source from each source (best of each)
     for source, items in by_source.items():
@@ -481,18 +484,24 @@ def recommend(articles: list[Article], profile: dict,
             if uid not in selected_uids:
                 selected.append(sa)
                 selected_uids.add(uid)
+                source_counts[source] = source_counts.get(source, 0) + 1
 
-    # Phase 2: fill remaining slots by global score
+    # Phase 2: fill remaining slots by global score, respecting max_per_source
     remaining = limit - len(selected)
     if remaining > 0:
         for sa in scored:
             uid = sa.article.uid()
-            if uid not in selected_uids:
-                selected.append(sa)
-                selected_uids.add(uid)
-                remaining -= 1
-                if remaining <= 0:
-                    break
+            if uid in selected_uids:
+                continue
+            src = sa.article.source
+            if max_per_source > 0 and source_counts.get(src, 0) >= max_per_source:
+                continue
+            selected.append(sa)
+            selected_uids.add(uid)
+            source_counts[src] = source_counts.get(src, 0) + 1
+            remaining -= 1
+            if remaining <= 0:
+                break
 
     # Sort final selection by score descending
     selected.sort(key=lambda x: x.interest_score, reverse=True)
