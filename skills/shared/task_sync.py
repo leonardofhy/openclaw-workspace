@@ -120,8 +120,10 @@ def create_task(content: str, label_name: str, label_id: Optional[str],
         print(f'  [dry-run] would create task: "{content}" label={label_name} pri={priority}',
               file=sys.stderr)
         return None
-    labels = [label_name] if label_id is None else [label_name]
+    labels = [label_name]
     payload: dict = {'content': content, 'priority': priority, 'labels': labels}
+    if label_id is not None:
+        payload['label_ids'] = [label_id]
     task = api_post('/tasks', token, payload)
     return task
 
@@ -329,6 +331,8 @@ def do_pull(tasks: list[dict], token: str, dry_run: bool) -> list[dict]:
     task_index = {t['id']: t for t in tasks}
     tb_label_re = re.compile(rf'^{re.escape(LABEL_PREFIX)}([A-Z]-\d+)$')
 
+    # Collect all items to update first
+    updates = []
     for item in completed:
         labels = item.get('labels', [])
         task_id = None
@@ -353,24 +357,26 @@ def do_pull(tasks: list[dict], token: str, dry_run: bool) -> list[dict]:
         note = f'Todoist: {content} (completed {date_str})'
 
         print(f'  pull {task_id}: "{content[:60]}" completed {date_str}', file=sys.stderr)
+        updates.append({'task_id': task_id, 'content': content, 'date': date_str, 'note': note})
 
-        # Re-read task section_start/section_end since file may have changed
-        updated_tasks, _ = parse_task_board(TASK_BOARD)
-        updated_index = {t['id']: t for t in updated_tasks}
-        current = updated_index.get(task_id)
+    # Apply updates, re-parsing only after each file mutation
+    for upd in updates:
+        current_tasks, _ = parse_task_board(TASK_BOARD)
+        current_index = {t['id']: t for t in current_tasks}
+        current = current_index.get(upd['task_id'])
         if current is None:
             continue
 
         update_task_board_field(TASK_BOARD, current, 'last_touched', today, dry_run)
-        # Re-read again for progress update (last_touched may have shifted lines)
-        updated_tasks2, _ = parse_task_board(TASK_BOARD)
-        updated_index2 = {t['id']: t for t in updated_tasks2}
-        current2 = updated_index2.get(task_id)
+        # Re-parse after last_touched may have shifted lines
+        current_tasks2, _ = parse_task_board(TASK_BOARD)
+        current_index2 = {t['id']: t for t in current_tasks2}
+        current2 = current_index2.get(upd['task_id'])
         if current2:
-            append_progress(TASK_BOARD, current2, note, dry_run)
+            append_progress(TASK_BOARD, current2, upd['note'], dry_run)
 
-        log.append({'task_id': task_id, 'action': 'pulled',
-                    'content': content, 'date': date_str})
+        log.append({'task_id': upd['task_id'], 'action': 'pulled',
+                    'content': upd['content'], 'date': upd['date']})
 
     return log
 

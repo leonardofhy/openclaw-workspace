@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """
-Batch tests for 15 experiment scripts (skills/autodidact/scripts/).
+Batch tests for experiment scripts (skills/autodidact/scripts/).
 
 Each test verifies:
   1. Script runs without error (exit code 0)
   2. Key output strings appear in stdout
   3. Execution completes in <10s
+
+Note: Orphaned experimental scripts were archived to archive/ on 2026-03-18.
+      See archive/README.md for the full list.
 
 Usage:
     python3 -m pytest test_batch_experiments.py -v
@@ -42,44 +45,8 @@ EXPERIMENT_SCRIPTS = [
     ("q001_voicing_geometry.py",
      ["Peak layer", "Results written"],
      []),
-    ("gc_hallucination_mock.py",
-     ["hallucination", "layer"],
-     []),
-    ("persona_gc_benchmark.py",
-     ["neutral", "asymmetry"],
-     []),
-    ("microgpt_ravel.py",
-     ["Cause", "Isolate"],
-     []),
-    ("sae_incrimination_patrol.py",
-     ["patrol", "feature"],
-     []),
-    ("and_or_gc_patching_mock.py",
-     ["AND", "OR", "gc peak"],
-     []),
-    ("fad_and_or_gate.py",
-     ["Pearson", "hypothesis"],
-     []),
-    ("ravel_mdas_and_or.py",
-     ["MDAS", "Cause"],
-     []),
-    ("ravel_isolate_gc_proxy.py",
-     ["Spearman", "agreement"],
-     []),
-    ("codec_probe_and_or.py",
-     ["RVQ", "Q124"],
-     []),
     ("unified_results_dashboard.py",
      ["Q001", "pass"],
-     []),
-    ("phoneme_mdas.py",
-     ["manner", "Q109"],
-     []),
-    ("persona_and_or_gate.py",
-     ["persona", "AND"],
-     []),
-    ("sae_adversarial_detector.py",
-     ["AUC", "threshold"],
      []),
 ]
 
@@ -129,32 +96,6 @@ class TestQ001VoicingGeometry(unittest.TestCase):
         self.assertIn("Peak layer", result.stdout)
 
 
-class TestGcHallucinationMock(unittest.TestCase):
-    """gc_hallucination_mock.py — hallucination detection mock."""
-
-    def test_hallucination_detected(self):
-        result = run_script("gc_hallucination_mock.py")
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("hallucination", result.stdout.lower())
-
-
-class TestMicrogptRavel(unittest.TestCase):
-    """microgpt_ravel.py — toy RAVEL circuit test."""
-
-    def test_success_flag(self):
-        result = run_script("microgpt_ravel.py")
-        self.assertEqual(result.returncode, 0, result.stderr)
-        # Should report Cause/Isolate scores
-        self.assertIn("Cause", result.stdout)
-
-
-class TestSaeAdversarialDetector(unittest.TestCase):
-    """sae_adversarial_detector.py — adversarial detection calibration."""
-
-    def test_auc_reported(self):
-        result = run_script("sae_adversarial_detector.py")
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("AUC", result.stdout)
 
 
 # ---------------------------------------------------------------------------

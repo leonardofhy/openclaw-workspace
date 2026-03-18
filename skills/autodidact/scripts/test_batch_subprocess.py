@@ -27,23 +27,8 @@ SCRIPTS = [
     "gc_experiment_runner.py",
     "q001_voicing_geometry.py",
     "q002_causal_contribution.py",
-    "persona_gc_benchmark.py",
-    "microgpt_ravel.py",
-    "sae_incrimination_patrol.py",
-    "and_or_gc_patching_mock.py",
-    "fad_and_or_gate.py",
     "unified_results_dashboard.py",
-    "ravel_mdas_and_or.py",
-    "ravel_isolate_gc_proxy.py",
-    "codec_probe_and_or.py",
-    "persona_and_or_gate.py",
-    "sae_adversarial_detector.py",
     "cascade_degree.py",
-    "backdoor_cascade.py",
-    "emotion_and_or_gate.py",
-    "phoneme_mdas.py",
-    "collapse_onset_and_or.py",
-    "gc_incrimination_mock.py",
 ]
 
 

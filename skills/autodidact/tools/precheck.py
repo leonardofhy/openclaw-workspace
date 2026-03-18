@@ -71,7 +71,7 @@ def main():
     blockers = load_json(os.path.join(state_dir, 'blockers.json'))
 
     if not active or not queue:
-        print("RUN state files missing or corrupt — run to self-heal")
+        print("SKIP missing state files")
         return
 
     now = datetime.now(TZ)
