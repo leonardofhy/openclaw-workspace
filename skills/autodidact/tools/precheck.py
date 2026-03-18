@@ -59,15 +59,20 @@ def main():
     if ready_tasks:
         # Even with READY tasks, check if any matching budget remains
         if same_day:
-            has_build = any(t.get('action_type') in ('build', None) for t in ready_tasks)
-            has_learn = any(t.get('action_type') in ('learn', 'read', None) for t in ready_tasks)
             can_build = budgets.get('build_remaining_today', 0) > 0
             can_learn = budgets.get('learn_remaining_today', 0) > 0
             can_reflect = budgets.get('reflect_remaining_today', 0) > 0
             can_ideate = budgets.get('ideate_remaining_today', 0) > 0
-            # If no budget for any possible action, skip
-            if not can_build and not can_learn and not can_reflect and not can_ideate:
-                print(f"SKIP {len(ready_tasks)} READY tasks but all budgets exhausted")
+            is_end_of_day = now.hour >= 22
+
+            # If no actionable budget, skip regardless of ready tasks
+            if not can_build and not can_learn and not can_ideate:
+                # reflect is only useful at end-of-day (≥22:00) or on task failure trigger
+                last_action = active.get('last_cycle', {}).get('action', '')
+                if can_reflect and is_end_of_day:
+                    print(f"RUN end-of-day reflect trigger (≥22:00) — {len(ready_tasks)} READY tasks but all primary budgets exhausted")
+                    return
+                print(f"SKIP {len(ready_tasks)} READY tasks but all primary budgets exhausted; reflect only runs end-of-day or on failure")
                 return
         print(f"RUN {len(ready_tasks)} READY tasks in queue (top: {ready_tasks[0]['id']} {ready_tasks[0]['title'][:50]})")
         return
