@@ -54,6 +54,11 @@ ELSE（什麼都沒發生，一切正常）
 - 跑 `python3 skills/deadline_watch.py --days 14`，有 urgent/overdue 就通知 Leo
 - 檢查 2 小時內行事曆事件，需要就設 cron 提醒
 
+### 🔄 Task Board ↔ Todoist 同步
+- `python3 skills/shared/task_sync.py --sync` — 雙向同步 task-board 和 Todoist
+- Push: ACTIVE 任務的 next_action → Todoist（label TB_<id>）
+- Pull: Todoist 完成的 TB_ 任務 → 更新 task-board last_touched + progress
+
 ### 🔀 Git 同步
 - `git status --short`，有未 commit 的就自動 commit + push
 

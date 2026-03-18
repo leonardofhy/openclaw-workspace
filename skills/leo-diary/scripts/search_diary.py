@@ -21,29 +21,7 @@ import argparse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from read_diary import load_diary
-
-# ─── 人物別名表 ───────────────────────────────────────────
-# key = 標準名, value = 所有可能出現的稱呼
-ALIASES = {
-    "智凱": ["智凱", "智凱哥", "凱哥", "zhikai"],
-    "晨安": ["晨安", "晨安哥", "chenan"],
-    "康哥": ["康哥", "康", "kang"],
-    "李宏毅": ["李宏毅", "宏毅", "宏毅老師", "老師", "李老師", "hungyi", "hung-yi"],
-    "明淵": ["明淵", "mingyuan"],
-    "朗軒": ["朗軒", "langxuan"],
-    "Rocky": ["Rocky", "rocky"],
-    "Wilson": ["Wilson", "wilson"],
-    "Howard": ["Howard", "howard"],
-    "David": ["David", "david"],
-    "Ziya": ["Ziya", "ziya"],
-    "Christine": ["Christine", "christine"],
-    "Teddy": ["Teddy", "teddy"],
-    "Zen": ["Zen", "zen"],
-    "陳縕儂": ["陳縕儂", "縕儂", "yunnnung", "vivian"],
-    "專題生": ["專題生"],
-    "媽": ["我媽", "媽媽", "老媽"],
-    "爸": ["我爸", "爸爸", "老爸"],
-}
+from diary_utils import PEOPLE_ALIASES as ALIASES
 
 # 搜尋欄位映射
 SEARCHABLE_FIELDS = {

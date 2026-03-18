@@ -7,15 +7,10 @@ import csv
 import json
 import sys
 from pathlib import Path
-from datetime import datetime
-
-_WS = Path(__file__).resolve().parent.parent.parent.parent
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
-from common import SHEET_ID
 
-# Google Sheets 設定
-CREDS_PATH = str(_WS / 'secrets' / 'google-service-account.json')
+from diary_utils import parse_date, get_diary_sheet
 
 # CSV 備援路徑
 CSV_PATH = str(Path.home() / "Downloads" / "Daily Meta-Awareness Log (Responses) - MetaLog.csv")
@@ -31,22 +26,9 @@ COLUMNS = {
     "completed": "今天完成了哪些？",
 }
 
-def parse_date(ts_str):
-    for fmt in ('%d/%m/%Y %H:%M:%S', '%m/%d/%Y %H:%M:%S'):
-        try:
-            return datetime.strptime(ts_str.strip(), fmt).strftime('%Y-%m-%d')
-        except (ValueError, TypeError):
-            continue
-    return None
-
 def load_from_sheets():
     try:
-        import gspread
-        from google.oauth2.service_account import Credentials
-        SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
-        creds = Credentials.from_service_account_file(CREDS_PATH, scopes=SCOPES)
-        gc = gspread.authorize(creds)
-        ws = gc.open_by_key(SHEET_ID).get_worksheet(0)
+        ws = get_diary_sheet()
         return ws.get_all_records(expected_headers=list(COLUMNS.values()))
     except Exception as e:
         print(f"[warn] Google Sheets 讀取失敗，改用 CSV：{e}", file=sys.stderr)

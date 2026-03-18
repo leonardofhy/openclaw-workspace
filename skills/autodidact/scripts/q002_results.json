@@ -1,0 +1,743 @@
+{
+  "experiment": "Q002_causal_contribution",
+  "model": "whisper-base",
+  "n_layers": 6,
+  "d_model": 512,
+  "ablation_types": [
+    "zero",
+    "noise",
+    "mean"
+  ],
+  "sentences": [
+    "The quick brown fox jumps over the lazy dog",
+    "She sells sea shells by the sea shore",
+    "How much wood would a woodchuck chuck",
+    "Peter Piper picked a peck of pickled peppers",
+    "The rain in Spain falls mainly on the plain"
+  ],
+  "n_sentences_used": 5,
+  "baseline_transcriptions": {
+    "0": "The quick brown fox jumps over the lazy dog.",
+    "1": "She sells seashells by the sea shore.",
+    "2": "How much would a woodchuck chuck?",
+    "3": "Peter Piper picked a pack of pickle peppers.",
+    "4": "The rain in Spain falls mainly on the plane."
+  },
+  "mean_wer_per_layer": {
+    "0": {
+      "zero": 1.0,
+      "noise": 1.0,
+      "mean": 1.0
+    },
+    "1": {
+      "zero": 1.0,
+      "noise": 1.0,
+      "mean": 1.0
+    },
+    "2": {
+      "zero": 1.0,
+      "noise": 1.0,
+      "mean": 1.0
+    },
+    "3": {
+      "zero": 1.0,
+      "noise": 1.0,
+      "mean": 1.0
+    },
+    "4": {
+      "zero": 1.0,
+      "noise": 1.0,
+      "mean": 1.0
+    },
+    "5": {
+      "zero": 1.0,
+      "noise": 1.0,
+      "mean": 1.0
+    }
+  },
+  "critical_layers": {
+    "zero": 0,
+    "noise": 0,
+    "mean": 0
+  },
+  "per_layer_details": {
+    "0": {
+      "zero": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "enable Is<|ur|><|ur|><|ur|><|ur|> www<|ur|><|ur|><|ur|><|ur|><|ur|> doctor<|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "? A.\u03b5\u03c2 as dem A Lords..owania And lord<|ur|>\u044c\u0435<|ur|> Nice<|ur|> from<|ur|> Nas<|ur|><|ur|><|ur|><|ur|><|gu|>\u4eca\u5929\u7684otted<|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|> PM<|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|> Q<|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|> Ora<|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "..\ufffd Moses Karma resistance secrets<|ur|> Her'm Pro\u6211\u7684 This ISIS<|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "Show<|ur|><|ur|><|ur|> S<|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|> her Her M<|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "Nurslands Aoss tripod. counter A<|gu|><|ur|><|ur|><|ur|> Welcome<|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|><|ur|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "noise": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "mean": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ]
+    },
+    "1": {
+      "zero": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "noise": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "mean": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "Reno<|ja|><|en|><|ja|><|ja|><|nn|><|ja|><|en|><|de|><|ja|><|ja|><|ja|><|ja|><|nn|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|nn|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|><|ja|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "<|vi|><|en|><|nn|><|vi|><|vi|><|vi|><|en|><|nn|><|vi|>urun<|vi|><|id|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ]
+    },
+    "2": {
+      "zero": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "WITH<|da|><|sv|> Aqui<|uk|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "<|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|> Thursday<|be|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "<|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|da|><|sv|><|sv|><|sv|><|sv|>onge<|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "lic<|sv|><|sv|> \u0437\u0434\u0435\u0441\u044c<|vi|> casts<|sv|><|sv|><|ar|><|sv|><|uk|><|vi|><|pt|> Separ<|uk|>\uc2a4\ub7fd<|sv|> \uc5ec\uae30\uc5d0 Math<|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|uk|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|> Workers<|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "meatballs municip<|sv|><|sv|> Isso<|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|> Zh<|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|><|sv|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "noise": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "eten \ub098\ub294<|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "\u0440\u043e\u0432\ufffd<|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "mean": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ]
+    },
+    "3": {
+      "zero": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "Whoa<|tr|><|en|><|vi|> leur<|ru|>ldxico grandma<|tr|> side aviation<|tr|><|tr|> bloody dread\u043b\u0430\u0442linesfeed<|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|> recibir<|tr|><|tr|><|tr|><|tr|><|tr|> splashing<|tr|><|zh|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|vi|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "<|tr|><|la|> Sham zdrow<|tr|><|tr|><|tr|><|tr|><|he|><|tr|><|tr|> \ud0dc<|tr|><|tr|> Je like<|cy|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|> Avoid<|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|> transitional<|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|> FIFA<|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|>ixes<|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|> concept<|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|><|tr|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "OLED scripts<|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "\uc788\ub294\ub370<|ko|> trumpet handout<|vi|><|vi|>bleep suck<|vi|> essayer weirdly<|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "thigh turkey Her troop<|vi|><|pt|>\ud14c instrumentmem Leban<|vi|><|he|><|he|><|en|> Firstly\u043e\u0433\u043e<|vi|>oteabelu\u011f<|vi|>\u0131r dobrze<|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "noise": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "mean": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ]
+    },
+    "4": {
+      "zero": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "\u00e1rios<|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "\uc2eb<|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|><|vi|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "<|tl|><|tl|>\u0430\u043b\u044c\u043d\u044b\u0435<|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|><|tl|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "noise": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "\ufffd<|hi|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|><|zh|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "mean": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ]
+    },
+    "5": {
+      "zero": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "t Mission",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "\u6709",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "exact c wait \uc6b0\ub9ac\uac00",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "members if",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "noise": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "H child",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "T A most Google",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "t theme COt Pre itt",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "Fan Cn",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "area\u043d\u044b B\u0430\u0431 F\u0430\u0442\u044b B M LE \u0410\u30b7 BAM Open Se C Tai Ka tu t S D F t C Hat L T H \uc560 U W S \ube68\ub9ac T Are pero U FOR Y C G T Ali B T",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ],
+      "mean": [
+        {
+          "sent_idx": 0,
+          "baseline": "The quick brown fox jumps over the lazy dog.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 1,
+          "baseline": "She sells seashells by the sea shore.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 2,
+          "baseline": "How much would a woodchuck chuck?",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 3,
+          "baseline": "Peter Piper picked a pack of pickle peppers.",
+          "ablated": "",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        },
+        {
+          "sent_idx": 4,
+          "baseline": "The rain in Spain falls mainly on the plane.",
+          "ablated": "tasks<|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|he|><|ar|><|de|><|el|><|el|><|vi|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|he|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|it|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|><|el|>",
+          "wer_vs_baseline": 1.0,
+          "wer_vs_reference": 1.0
+        }
+      ]
+    }
+  }
+}
