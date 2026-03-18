@@ -26,14 +26,14 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 0,
-    "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
-    "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-17"
+    "learn_remaining_today": 8,
+    "build_remaining_today": 1,
+    "reflect_remaining_today": 2,
+    "ideate_remaining_today": 4,
+    "budget_reset_date": "2026-03-18"
   },
   "stats": {
-    "total_cycles": 218,
+    "total_cycles": 219,
     "total_skips": 43,
     "papers_read_deep": 52,
     "papers_scanned": 50,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260317-2315",
-    "action": "learn",
-    "summary": "arXiv:2602.17598 deep read: cascade equiv paper (Interspeech 2026) validates gc(k) theory; cascade_degree = external validator for Q113; backdoor=cascade induction supported by their noise experiments"
+    "id": "c-20260318-0817",
+    "action": "build",
+    "summary": "Q083: M9-gated dual-factor detector; FPR 26%→2% at 90% recall; H1 supported on mock; script: m9_gated_dual_detector.py"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
