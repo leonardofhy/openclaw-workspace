@@ -41,7 +41,7 @@ SCOPES = [
 
 HEADERS = [
     "Date", "Source", "Title", "Author", "Score", "URL",
-    "Summary", "Tags", "Relevance Score", "Reasoning",
+    "Tags", "Relevance Score", "Reasoning", "Summary",
 ]
 
 TZ = timezone(timedelta(hours=8))
@@ -194,10 +194,10 @@ def item_to_row(item: dict) -> list[str]:
         item.get("author", ""),
         str(item.get("score", 0)),
         item.get("url", ""),
-        item.get("snippet", ""),
         tags,
         str(item.get("interest_score", "")),
         item.get("suggested_action", ""),
+        item.get("snippet", ""),
     ]
 
 

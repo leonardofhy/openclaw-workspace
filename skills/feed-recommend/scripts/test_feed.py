@@ -660,10 +660,10 @@ class TestSheetsSync(unittest.TestCase):
         self.assertEqual(row[3], "alice")        # Author
         self.assertEqual(row[4], "100")          # Score
         self.assertEqual(row[5], "https://example.com")  # URL
-        self.assertEqual(row[6], "A test snippet")       # Summary
-        self.assertEqual(row[7], "ml, ai")       # Tags joined
-        self.assertEqual(row[8], "7.5")          # Relevance Score
-        self.assertEqual(row[9], "略讀")          # Reasoning
+        self.assertEqual(row[6], "ml, ai")              # Tags joined
+        self.assertEqual(row[7], "7.5")                 # Relevance Score
+        self.assertEqual(row[8], "略讀")                 # Reasoning
+        self.assertEqual(row[9], "A test snippet")      # Summary (last)
 
     def test_item_to_row_iso_date(self):
         item = {"posted": "2026-03-18T10:30:00+08:00", "url": "https://x.com"}
