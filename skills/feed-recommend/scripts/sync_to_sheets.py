@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Sync feed recommendations to Google Sheets.
 
+Summaries are translated to Chinese (繁體中文) by default via claude CLI.
+
 Usage:
-    python3 sync_to_sheets.py --json-file digest.json   # from file
+    python3 sync_to_sheets.py --json-file digest.json   # from file (Chinese summaries)
+    python3 sync_to_sheets.py --json-file digest.json --no-translate  # keep English
     cat digest.json | python3 sync_to_sheets.py --stdin  # from pipe
     python3 sync_to_sheets.py --backfill                 # import past digests
     python3 sync_to_sheets.py --test                     # push 3 sample rows
@@ -11,6 +14,7 @@ Usage:
 import argparse
 import json
 import os
+import subprocess
 import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -95,6 +99,67 @@ def _format_sheet(ws: "gspread.Worksheet") -> None:
         })
     except Exception as e:
         print(f"Warning: formatting failed ({e}), continuing", file=sys.stderr)
+
+
+# ── Translation ──────────────────────────────────────────────────
+
+def translate_summaries(items: list[dict]) -> list[dict]:
+    """Translate snippet fields to concise Chinese (繁體中文) via claude CLI.
+
+    Batches all summaries in one call. Falls back to English on failure.
+    """
+    summaries = [item.get("snippet", "") for item in items]
+    if not any(summaries):
+        return items
+
+    prompt = (
+        "Translate these article summaries to concise Chinese (繁體中文). "
+        "Each summary should be 1-2 sentences capturing the key point. "
+        "Return ONLY a JSON array of translated summary strings in the same order.\n\n"
+        + json.dumps(summaries, ensure_ascii=False)
+    )
+
+    try:
+        result = subprocess.run(
+            ["claude", "--print", "--model", "sonnet", prompt],
+            capture_output=True, text=True, timeout=120,
+        )
+        if result.returncode != 0:
+            print(f"Warning: claude translation failed (exit {result.returncode}), using English", file=sys.stderr)
+            return items
+
+        # Extract JSON array from response (may have markdown fences)
+        output = result.stdout.strip()
+        if "```" in output:
+            # Strip markdown code fences
+            lines = output.split("\n")
+            json_lines = []
+            inside = False
+            for line in lines:
+                if line.strip().startswith("```"):
+                    inside = not inside
+                    continue
+                if inside:
+                    json_lines.append(line)
+            output = "\n".join(json_lines)
+
+        translated = json.loads(output)
+        if not isinstance(translated, list) or len(translated) != len(items):
+            print(f"Warning: translation count mismatch ({len(translated)} vs {len(items)}), using English", file=sys.stderr)
+            return items
+
+        for item, zh_summary in zip(items, translated):
+            item["snippet"] = zh_summary
+
+        print(f"Translated {len(translated)} summaries to Chinese", file=sys.stderr)
+        return items
+
+    except subprocess.TimeoutExpired:
+        print("Warning: claude translation timed out, using English", file=sys.stderr)
+        return items
+    except (json.JSONDecodeError, Exception) as e:
+        print(f"Warning: translation parse error ({e}), using English", file=sys.stderr)
+        return items
 
 
 # ── Row conversion ───────────────────────────────────────────────
@@ -286,6 +351,7 @@ def main() -> None:
     group.add_argument("--test", action="store_true", help="Push 3 sample rows to verify connection")
     parser.add_argument("--sheet-id", default=None, help="Override sheet ID from config")
     parser.add_argument("--dry-run", action="store_true", help="Show rows without pushing")
+    parser.add_argument("--no-translate", action="store_true", help="Skip Chinese translation (use English snippets)")
 
     args = parser.parse_args()
 
@@ -304,6 +370,10 @@ def main() -> None:
         return
 
     print(f"Collected {len(items)} items", file=sys.stderr)
+
+    # Translate summaries to Chinese (default behavior)
+    if not args.no_translate:
+        items = translate_summaries(items)
 
     if args.dry_run:
         for item in items:
