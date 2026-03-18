@@ -1,0 +1,48 @@
+# Results Prose Improvement - COMPLETED
+
+## Task Summary
+Successfully improved §4 Results section of the mechanistic interpretability paper on audio-language models.
+
+## Key Improvements Made
+
+### 1. Real Experiment Narrative Enhancement
+- **Q001 (Voicing Geometry)**: Added proper interpretation of layer 5 peak (+0.25 stop-stop cos_sim) linking to Choi et al.'s phonological crystallization findings at intermediate depths (~83% encoder depth)
+- **Q002 (Causal Contribution)**: Added framework prediction that layers 4-6 should show highest WER degradation, consistent with phonological processing expectations
+
+### 2. Mock/Real Distinction Clarity
+- Made mock vs. real experiment status prominent throughout
+- Added explicit "Limitation" subsections to all mock experiments stating "This is a framework validation experiment; the result holds for numpy circuits, not real models"
+- Honest framing about evidence quality (median |r| = 0.877 across 27 mock experiments)
+
+### 3. Structured Mock Experiment Format
+- Implemented consistent structure: Setup → Result → Interpretation → Limitation
+- Clear 1-2 sentence descriptions for each component
+- Preserved all existing tables while improving narrative flow
+
+### 4. New §4.6 Summary Section
+- Evidence quality table mapping completed (real) vs validated (mock) vs pre-registered experiments
+- Clear summary: 2 real, 25 mock passed, 2 mock blocked, 4 pre-registered predictions
+- Framework status assessment with critical gap identification
+
+### 5. Tone and Precision Improvements
+- Real data claims properly qualified ("preliminary evidence suggests...")
+- Mock data claims explicitly labeled ("In our numpy mock circuit...")
+- Clear about what IS vs IS NOT established
+- Critical gap clearly stated: mock validation confirms logical coherence but cannot establish empirical magnitude for real neural networks
+
+## Deliverables
+- ✅ Updated `docs/paper-a-results.md` (248 lines, target ≤250)
+- ✅ Preserved all existing tables
+- ✅ Added proper narrative for real experiment sections
+- ✅ Clear pre-registered predictions for scale-up
+- ✅ Committed to git with conventional commit message
+- ✅ Created completion summary (this file)
+
+## Technical Changes
+- File length: 248 lines (within target of ≤250)
+- All tables preserved intact
+- Added §4.6.1-§4.6.3 subsections for comprehensive summary
+- Maintained academic tone with precise qualifiers
+- Framework coherence confirmed (93.1% pass rate, 25/27 mock experiments)
+
+The improved results section now provides a clear roadmap for distinguishing validated framework logic from pending empirical validation on real models.
