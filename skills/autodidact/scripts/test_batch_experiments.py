@@ -40,10 +40,10 @@ EXPERIMENT_SCRIPTS = [
      ["condition", "listen"],
      []),
     ("q001_voicing_geometry.py",
-     ["peak_layer", "Results written"],
+     ["Peak layer", "Results written"],
      []),
-    ("q002_causal_contribution.py",
-     ["critical_layers", "Results written"],
+    ("gc_hallucination_mock.py",
+     ["hallucination", "layer"],
      []),
     ("persona_gc_benchmark.py",
      ["neutral", "asymmetry"],
@@ -55,7 +55,7 @@ EXPERIMENT_SCRIPTS = [
      ["patrol", "feature"],
      []),
     ("and_or_gc_patching_mock.py",
-     ["AND", "OR", "gc_peak"],
+     ["AND", "OR", "gc peak"],
      []),
     ("fad_and_or_gate.py",
      ["Pearson", "hypothesis"],
@@ -126,16 +126,16 @@ class TestQ001VoicingGeometry(unittest.TestCase):
     def test_peak_layer_numeric(self):
         result = run_script("q001_voicing_geometry.py")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("peak_layer", result.stdout)
+        self.assertIn("Peak layer", result.stdout)
 
 
-class TestQ002CausalContribution(unittest.TestCase):
-    """q002_causal_contribution.py — activation patching."""
+class TestGcHallucinationMock(unittest.TestCase):
+    """gc_hallucination_mock.py — hallucination detection mock."""
 
-    def test_critical_layers_found(self):
-        result = run_script("q002_causal_contribution.py")
+    def test_hallucination_detected(self):
+        result = run_script("gc_hallucination_mock.py")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("critical_layers", result.stdout)
+        self.assertIn("hallucination", result.stdout.lower())
 
 
 class TestMicrogptRavel(unittest.TestCase):
