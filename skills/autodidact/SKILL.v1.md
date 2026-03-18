@@ -49,6 +49,7 @@ Priority rules:
 - Default: **learn** (knowledge compounds)
 - 夜間（23:00–08:00）**不是**自動 skip 理由；只要有高價值 survey/整合任務就照常執行
 - ⚠️ **build / skill-up 需要 Leo 明確批准**。當前階段重心 = 讀論文 + 挖掘新想法，不要自己跑去寫 code
+- 🔒 **IDEATION FREEZE（2026-03-18 起）**：READY 隊列已 22 個，暫停新增任務。Cycle 中如果發現新 idea，記在 `memory/learning/idea-backlog.md` 但**不加入 queue.json**。解除條件：READY < 10 或 Leo 手動解除。
 
 Hygiene rhythm (non-negotiable):
 - **Every 5 cycles** → micro-reflect (merge + prune)
