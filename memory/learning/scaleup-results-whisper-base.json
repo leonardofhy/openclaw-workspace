@@ -1,0 +1,53 @@
+{
+  "model": "whisper-base",
+  "n_layers": 6,
+  "d_model": 512,
+  "dry_run": true,
+  "q001": {
+    "peak_layer": 3,
+    "peak_mean_cos_sim": 0.15,
+    "stop_stop_sim": 0.2,
+    "stop_fricative_sim": 0.02,
+    "mean_cos_per_layer": [
+      0.0825,
+      0.1107,
+      0.1382,
+      0.15,
+      0.1382,
+      0.1107
+    ]
+  },
+  "q002": {
+    "mean_wer_zero_per_layer": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "mean_wer_zero": 1.0,
+    "critical_layer_zero": 0,
+    "all_layers_critical": true
+  },
+  "timing": {
+    "q001_seconds": 0.0,
+    "q002_seconds": 0.0,
+    "total_seconds": 0.0
+  },
+  "baseline": {
+    "model": "whisper-base",
+    "n_layers": 6,
+    "q001": {
+      "peak_layer": 5,
+      "peak_mean_cos_sim": 0.155,
+      "stop_stop_sim": 0.25,
+      "stop_fricative_sim": 0.0
+    },
+    "q002": {
+      "mean_wer_zero": 1.0,
+      "critical_layer_zero": 0,
+      "all_layers_critical": true
+    }
+  }
+}

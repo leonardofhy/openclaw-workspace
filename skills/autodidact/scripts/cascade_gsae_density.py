@@ -87,12 +87,19 @@ def generate_data(rng, n_features, n_stimuli):
     Generate mock activations where:
     - Low cascade / high AND fraction → sparse neighborhood in GSAE
     - High cascade / low AND fraction → dense neighborhood in GSAE
+
+    Theoretical basis: AND-gate features require BOTH modalities, making
+    them fragile (low cascade) but independent (sparse co-activation).
+    High-cascade features activate broadly and co-activate in clusters,
+    yielding dense local subgraphs in the GSAE co-activation graph.
     """
     # Latent "cascade strength" per feature
     cascade_strength = rng.uniform(0.0, 1.0, size=n_features)
 
-    # Features cluster into low/high cascade groups
-    # High-cascade features co-activate more → denser GSAE subgraph
+    # Sort features by cascade_strength so grouping captures real structure
+    sort_idx = np.argsort(cascade_strength)
+    cascade_strength = cascade_strength[sort_idx]
+
     clean   = np.zeros((n_features, n_stimuli))
     noisy   = np.zeros((n_features, n_stimuli))
     patched = np.zeros((n_features, n_stimuli))
@@ -104,17 +111,24 @@ def generate_data(rng, n_features, n_stimuli):
         noisy[f]   = base * (cs * 0.8 + 0.1) + rng.standard_normal(n_stimuli) * 0.05
         patched[f] = base * rng.uniform(0.85, 1.0, size=n_stimuli)
 
-    # Add co-activation structure: group high-cascade features
-    groups = 5
+    # Add co-activation structure: group features by cascade_strength.
+    # High-cascade groups get a strong shared signal → dense co-activation.
+    # Low-cascade groups get weak/no shared signal → sparse co-activation.
+    # The shared signal is added to BOTH clean and noisy (scaled by cs)
+    # so that cascade_degree = noisy/clean still reflects cascade_strength.
+    groups = 8
     group_size = n_features // groups
     for g in range(groups):
         start = g * group_size
         end   = start + group_size
-        # Shared stimulus pattern
-        shared = rng.standard_normal(n_stimuli) * 0.3
         mean_cs = np.mean(cascade_strength[start:end])
+        shared = rng.standard_normal(n_stimuli)
+        signal_strength = mean_cs ** 2 * 0.6
         for f in range(start, end):
-            clean[f] += shared * mean_cs
+            cs = cascade_strength[f]
+            clean[f]   += shared * signal_strength
+            noisy[f]   += shared * signal_strength * (cs * 0.8 + 0.1)
+            patched[f] += shared * signal_strength * 0.9
 
     return clean, noisy, patched, cascade_strength
 

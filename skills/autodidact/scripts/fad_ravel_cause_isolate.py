@@ -43,63 +43,54 @@ def generate_fad_scores(rng, n_phonemes):
 def generate_feature_activations(rng, n_phonemes, n_features, fad_scores):
     """
     Feature activations shaped (n_features, n_phonemes).
-    Text-predictable (high FAD) phonemes have MORE shared feature activation
-    → lower Isolate (their cause is shared/contextual, not unique).
+
+    Theoretical structure:
+    - High FAD (text-predictable): strong shared text-context signal, weak unique acoustic signal
+      → high Cause (many features active), low Isolate (causes are shared/redundant)
+    - Low FAD (acoustically unique): weak shared signal, strong unique acoustic signal
+      → moderate Cause, high Isolate (causes are unique to this phoneme)
     """
     activations = rng.standard_normal((n_features, n_phonemes)) * 0.3
 
-    # Shared text-context signal
+    # Shared text-context signal (same across all phonemes, scaled by FAD)
     text_signal = rng.standard_normal(n_features)
 
     for p in range(n_phonemes):
-        # High FAD → activations driven by shared text signal
         alpha = fad_scores[p]
-        activations[:, p] += alpha * text_signal * rng.uniform(0.5, 1.5)
-        # Low FAD → unique acoustic pattern
-        if alpha < 0.4:
-            unique = rng.standard_normal(n_features)
-            activations[:, p] += (1 - alpha) * unique
+        # Shared signal INCREASES with FAD (text context provides strong causal influence)
+        activations[:, p] += 1.5 * alpha * text_signal * rng.uniform(0.8, 1.2)
+        # Unique acoustic signal DECREASES with FAD (audio pathway becomes redundant)
+        unique = rng.standard_normal(n_features)
+        activations[:, p] += (0.6 - 0.5 * alpha) * unique
 
     return activations
 
 
 def compute_ravel_cause_isolate(activations, n_permutations, rng):
     """
-    RAVEL Cause: correlation between feature activation and phoneme index.
-    RAVEL Isolate: partial cause — unique contribution after removing shared variance.
+    RAVEL-style Cause/Isolate decomposition via SVD.
 
-    Approximation:
-    - Cause(p) = mean |corr(feature_f, indicator_p)| across features
-    - Isolate(p) = Cause(p) - mean shared_cause
+    - Cause(p) = mean |activation| across features (total causal influence)
+    - Isolate(p) = mean |residual| after removing shared variance components
+      (unique causal contribution — what remains after shared structure is factored out)
+
+    High-FAD phonemes: high Cause (strong shared signal), low Isolate (little unique signal)
+    Low-FAD phonemes: moderate Cause, high Isolate (strong unique signal dominates)
     """
     n_features, n_phonemes = activations.shape
-    cause_scores   = np.zeros(n_phonemes)
-    isolate_scores = np.zeros(n_phonemes)
 
-    for p in range(n_phonemes):
-        indicator = np.zeros(n_phonemes)
-        indicator[p] = 1.0
+    # Cause: total causal influence = mean absolute activation per phoneme
+    cause_scores = np.mean(np.abs(activations), axis=0)
 
-        # Cause: how much do features predict this phoneme indicator?
-        corrs = []
-        for f in range(n_features):
-            c = np.corrcoef(activations[f], indicator)[0, 1]
-            if not np.isnan(c):
-                corrs.append(abs(c))
-        cause_scores[p] = np.mean(corrs) if corrs else 0.0
+    # Extract shared variance via SVD to separate shared from unique
+    centered = activations - activations.mean(axis=1, keepdims=True)
+    U, S, Vt = np.linalg.svd(centered, full_matrices=False)
+    k = min(2, n_phonemes)
+    shared = U[:, :k] @ np.diag(S[:k]) @ Vt[:k, :]
+    residual = activations - shared
 
-        # Isolate: permutation-based unique contribution
-        perm_causes = []
-        for _ in range(n_permutations // 5):
-            perm_indicator = rng.permutation(indicator)
-            perm_corrs = []
-            for f in range(n_features):
-                c = np.corrcoef(activations[f], perm_indicator)[0, 1]
-                if not np.isnan(c):
-                    perm_corrs.append(abs(c))
-            perm_causes.append(np.mean(perm_corrs) if perm_corrs else 0.0)
-
-        isolate_scores[p] = max(0.0, cause_scores[p] - np.mean(perm_causes) * 1.5)
+    # Isolate: unique causal influence from residual after removing shared components
+    isolate_scores = np.mean(np.abs(residual), axis=0)
 
     return cause_scores, isolate_scores
 
