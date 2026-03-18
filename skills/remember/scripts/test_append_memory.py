@@ -16,16 +16,27 @@ import pytest
 
 # ---------------------------------------------------------------------------
 # Bootstrap: make append_memory importable
+# (Force-load from real paths to avoid stale sys.modules stubs.)
 # ---------------------------------------------------------------------------
-_SCRIPTS = "/Users/leonardo/.openclaw/workspace/skills/remember/scripts"
-_LIB     = "/Users/leonardo/.openclaw/workspace/skills/lib"
+import importlib.util  # noqa: E402
 
-if _SCRIPTS not in sys.path:
-    sys.path.insert(0, _SCRIPTS)
-if _LIB not in sys.path:
-    sys.path.insert(0, _LIB)
+_SCRIPTS = Path(__file__).resolve().parent
+_LIB     = _SCRIPTS.parent.parent / "lib"
 
-import append_memory
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+if str(_LIB) not in sys.path:
+    sys.path.insert(0, str(_LIB))
+
+_spec = importlib.util.spec_from_file_location("common", _LIB / "common.py")
+_common = importlib.util.module_from_spec(_spec)
+sys.modules["common"] = _common
+_spec.loader.exec_module(_common)
+
+_spec = importlib.util.spec_from_file_location("append_memory", _SCRIPTS / "append_memory.py")
+append_memory = importlib.util.module_from_spec(_spec)
+sys.modules["append_memory"] = append_memory
+_spec.loader.exec_module(append_memory)
 
 
 # ---------------------------------------------------------------------------

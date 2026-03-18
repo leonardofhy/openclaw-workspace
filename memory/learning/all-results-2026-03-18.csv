@@ -1,0 +1,30 @@
+id,name,script,mode,status,metric,correlation
+Q001,Voicing Geometry,q001_voicing_geometry.py,real,pass,peak cos_sim=0.155 (L5),
+Q002,Causal Contribution,q002_causal_contribution.py,real,pass,WER ablation peak identifies causal layer,
+Q091,AND/OR gc Patching,and_or_gc_patching_mock.py,mock,pass,AND%×gc(k) r=0.984; peak L3 confirmed,0.9836
+Q092,Persona gc Benchmark,persona_gc_benchmark.py,mock,pass,"anti_ground shift=2 layers; H2,H3 ✓",
+Q093,gc Incrimination,gc_incrimination_mock.py,mock,pass,collapse rate 0-55%; t* detection OK,
+Q094,SAE Incrimination Patrol,sae_incrimination_patrol.py,mock,pass,"suppress=96%, override=77%, FPR=3.3%",
+Q095,MicroGPT RAVEL,microgpt_ravel.py,mock,pass,acc=1.00; RAVEL 5/6 pass (83%),
+Q096,FAD Bias × AND/OR Gate,fad_and_or_gate.py,mock,pass,"r(text_pred, AND%)=-0.960",-0.96
+Q105,RAVEL MDAS × AND/OR Gate,ravel_mdas_and_or.py,mock,pass,"r(MDAS,AND)=0.877; cls acc=74%",0.877
+Q106,SAE Incrimination ENV Taxonomy,sae_incrimination_env_taxonomy.py,mock,pass,ENV-1 hub offender=100%; ENV-3=0%,
+Q107,RAVEL Isolate gc Proxy,ravel_isolate_gc_proxy.py,mock,pass,Pearson r=0.904; compute save=67%,0.904
+Q091b,Persona × AND/OR Gate,persona_and_or_gate.py,mock,pass,asst AND%=20 vs neutral=45.3 (H1 ✓),
+Q092b,Schelling × AND/OR Gate,schelling_and_or_gate.py,mock,pass,stable AND%=71 vs unstable=39; r=0.330,0.33
+Q093b,Collapse Onset × AND/OR,collapse_onset_and_or.py,mock,pass,AND t*=5.0; OR t*=4.35,
+Q094b,T-SAE gc Incrimination,tsae_gc_incrimination.py,mock,pass,10 features; top max_score=0.099,
+Q109,Phoneme MDAS,phoneme_mdas.py,mock,pass,phoneme disentangle gap=0.135,
+Q113,Cascade Degree,cascade_degree.py,mock,pass,cascade_degree=1-AND%; mean=0.901,
+Q116,Backdoor Cascade Induction,backdoor_cascade.py,mock,pass,t* shift=-3 (leftward); detector OK,
+Q117,GSAE Graph Density,cascade_gsae_density.py,mock,blocked,r=-0.043 (weak); needs refinement,-0.0427
+Q118,Emotion × AND/OR Gates,emotion_and_or_gate.py,mock,pass,emotion AND%=0 vs non-emo=44,
+Q120,ENV × GSAE Topology,env_gsae_topology.py,mock,pass,ENV-3 sparsity=1.5× baseline,
+Q121,Persona × Emotion × AND/OR,persona_emotion_and_or.py,mock,pass,3 personas × emotion dual-signal ✓,
+Q122,Incrimination Jacobian SVD,incrimination_jacobian.py,mock,pass,top SVD → 10 features ≥2 blames,
+Q123,FAD-RAVEL Cause/Isolate,fad_ravel_cause_isolate.py,mock,blocked,r=-0.70 (direction wrong),-0.7
+Q124,Codec Probe RVQ × AND/OR,codec_probe_and_or.py,mock,pass,RVQ-1 semantic OR-gate r=-0.90,-0.9
+Q125,Schelling × T-SAE Stability,schelling_tsae.py,mock,pass,mean Spearman=0.639; IIA stable,0.639
+Q126,ENV × Codec RVQ,env_codec_rvq.py,mock,pass,ENV-1 hub RVQ-1=60%; isolated=0%,
+Q127,Power Steering × AND/OR,power_steering_and_or.py,mock,pass,Jacobian SVD × AND r=0.627,0.627
+Q128,Jailbreak Isolate × ENV-3,jailbreak_isolate_env.py,mock,pass,ENV-3 pruning r=0.888; t* restored,0.888

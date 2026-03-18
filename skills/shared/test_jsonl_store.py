@@ -27,11 +27,16 @@ from unittest.mock import MagicMock, patch
 
 # ---------------------------------------------------------------------------
 # Make the module importable regardless of cwd
+# (Force-load from this directory to avoid stale sys.modules stubs.)
 # ---------------------------------------------------------------------------
 SHARED_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SHARED_DIR))
 
-import jsonl_store  # noqa: E402
+import importlib.util  # noqa: E402
+_spec = importlib.util.spec_from_file_location("jsonl_store", SHARED_DIR / "jsonl_store.py")
+jsonl_store = importlib.util.module_from_spec(_spec)
+sys.modules["jsonl_store"] = jsonl_store
+_spec.loader.exec_module(jsonl_store)
 from jsonl_store import JsonlStore, find_workspace  # noqa: E402
 
 

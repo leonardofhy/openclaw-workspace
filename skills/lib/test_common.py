@@ -27,11 +27,16 @@ from unittest.mock import patch, MagicMock
 
 # ---------------------------------------------------------------------------
 # Make common importable regardless of cwd
+# (Force-load from this directory to avoid stale sys.modules stubs.)
 # ---------------------------------------------------------------------------
 LIB_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(LIB_DIR))
 
-import common  # noqa: E402
+import importlib.util  # noqa: E402
+_spec = importlib.util.spec_from_file_location("common", LIB_DIR / "common.py")
+common = importlib.util.module_from_spec(_spec)
+sys.modules["common"] = common
+_spec.loader.exec_module(common)
 from common import (  # noqa: E402
     TZ, now, today_str, yesterday_str,
     remaining_hours, is_quiet_hours,

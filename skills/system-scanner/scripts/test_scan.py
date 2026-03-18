@@ -13,6 +13,9 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 # ── import the module under test ──────────────────────────────────────────────
+# Force-load common and scan from their real paths to avoid stale sys.modules stubs.
+
+import importlib.util  # noqa: E402
 
 SCRIPTS_DIR = Path(__file__).resolve().parent
 LIB_DIR = SCRIPTS_DIR.parent.parent / "lib"
@@ -22,7 +25,15 @@ if str(LIB_DIR) not in sys.path:
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import scan  # noqa: E402
+_spec = importlib.util.spec_from_file_location("common", LIB_DIR / "common.py")
+_common = importlib.util.module_from_spec(_spec)
+sys.modules["common"] = _common
+_spec.loader.exec_module(_common)
+
+_spec = importlib.util.spec_from_file_location("scan", SCRIPTS_DIR / "scan.py")
+scan = importlib.util.module_from_spec(_spec)
+sys.modules["scan"] = scan
+_spec.loader.exec_module(scan)
 
 
 # ── ScanContext / check() ─────────────────────────────────────────────────────
