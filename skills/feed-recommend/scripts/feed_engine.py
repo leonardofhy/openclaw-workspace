@@ -22,10 +22,15 @@ from jsonl_store import find_workspace
 from sources import discover_sources, Article, ScoredArticle
 from sources.base import BaseSource
 
+from feedback_learner import apply_feedback_score, load_adjustments
+
 TZ = timezone(timedelta(hours=8))
 WS = find_workspace()
 FEEDS_DIR = os.path.join(WS, 'memory', 'feeds')
 DEFAULT_CONFIG_PATH = os.path.join(os.path.dirname(__file__), 'config.json')
+
+# Cache feedback adjustments (loaded once per run)
+_FEEDBACK_ADJ: dict | None = None
 
 
 # ── Config ───────────────────────────────────────────────────────
@@ -412,6 +417,12 @@ def score_article(article: Article, profile: dict) -> float:
         'lw': 0.5,
     }
     score += source_reputation.get(article.source, 0)
+
+    # --- Feedback learning adjustment ---
+    global _FEEDBACK_ADJ
+    if _FEEDBACK_ADJ is None:
+        _FEEDBACK_ADJ = load_adjustments()
+    score += apply_feedback_score(article.title, article.source, _FEEDBACK_ADJ)
 
     return round(score, 1)
 

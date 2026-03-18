@@ -14,6 +14,9 @@ PER_SOURCE_TIMEOUT=30  # seconds per source fetch
 
 cd "$SCRIPT_DIR"
 
+# Re-learn from feedback before scoring
+python3 feed.py learn 2>/dev/null || true
+
 # Fetch + score + rank articles with timeout
 echo "Fetching & scoring articles (top $LIMIT, ${PER_SOURCE_TIMEOUT}s timeout)..." >&2
 if command -v timeout >/dev/null 2>&1; then
