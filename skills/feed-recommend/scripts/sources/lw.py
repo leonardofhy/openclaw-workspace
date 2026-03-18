@@ -6,7 +6,7 @@ import urllib.error
 
 from .base import BaseSource, Article
 
-LW_FEED_URL = 'https://www.lesswrong.com/feed.xml?view=community&karmaThreshold=25'
+LW_FEED_URL = 'https://www.lesswrong.com/feed.xml'
 
 # Reuse the same regex RSS parsing approach as AF
 _ITEM_RE = re.compile(r'<item>(.*?)</item>', re.DOTALL)
