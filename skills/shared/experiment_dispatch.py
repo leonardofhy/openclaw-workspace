@@ -1,315 +1,371 @@
 #!/usr/bin/env python3
-"""Cross-machine experiment orchestrator.
+"""Experiment dispatcher for battleship GPU via SSH.
 
-Dispatches experiments from MacBook (control plane) to Battleship cluster
-(compute plane) via SSH/SCP, tracks status, and collects results.
+Dispatches ML experiments to the lab's GPU machine (battleship) via SSH,
+tracks job queue in JSONL, and fetches results.
 
 Usage:
-    python3 experiment_dispatch.py dispatch --script <path> --model <model> --name <name> [--dry-run]
-    python3 experiment_dispatch.py status --job-id <id> | --all
-    python3 experiment_dispatch.py collect --job-id <id>
+    python3 experiment_dispatch.py run --exp Q001 --model whisper-small
+    python3 experiment_dispatch.py run --exp Q001 --model whisper-medium
+    python3 experiment_dispatch.py status
+    python3 experiment_dispatch.py queue --list
+    python3 experiment_dispatch.py queue --add Q002 --model whisper-small --priority high
+    python3 experiment_dispatch.py results --exp Q001 --model whisper-small
 """
+
+from __future__ import annotations
 
 import argparse
 import json
-import os
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-REMOTE_HOST = "battleship"
-REMOTE_EXPERIMENT_DIR = "~/experiments"
-REMOTE_OUTPUT_DIR = "~/experiments/results"
-REMOTE_LOG_DIR = "~/experiments/logs"
-
+# ── Paths ──
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-TEMPLATE_PATH = REPO_ROOT / "skills" / "shared" / "templates" / "slurm_template.sh"
-DISPATCHES_LOG = REPO_ROOT / "memory" / "learning" / "dispatches.jsonl"
-EXPERIMENTS_LOG = REPO_ROOT / "memory" / "learning" / "experiments" / "experiments.jsonl"
-RESULTS_DIR = REPO_ROOT / "memory" / "learning" / "results"
+QUEUE_PATH = REPO_ROOT / "memory" / "experiments" / "queue.jsonl"
+RESULTS_DIR = REPO_ROOT / "memory" / "experiments" / "results"
 
-VALID_MODELS = ("whisper-base", "whisper-small", "whisper-medium")
+# ── SSH config ──
+SSH_CMD_BASE = ["ssh", "-J", "iso_leo", "-p", "2222", "leonardo@localhost"]
+SSH_TIMEOUT = 30
 
-SLURM_DEFAULTS = {
-    "partition": "gpu",
-    "gpu_count": 1,
-    "cpus": 4,
-    "memory": "32G",
-    "walltime": "04:00:00",
-    "conda_env": "whisper",
-}
+# ── Remote paths ──
+REMOTE_PYTHON = "~/miniconda3/bin/python3"
+REMOTE_WORKSPACE = "~/.openclaw/workspace"
+REMOTE_SCRIPTS = f"{REMOTE_WORKSPACE}/skills/autodidact/scripts"
 
-
-def run_cmd(cmd: list[str], *, dry_run: bool = False, capture: bool = True) -> str:
-    """Run a shell command, or print it in dry-run mode."""
-    cmd_str = " ".join(cmd)
-    if dry_run:
-        print(f"[DRY RUN] {cmd_str}")
-        return ""
-    result = subprocess.run(cmd, capture_output=capture, text=True, check=True)
-    return result.stdout.strip() if capture else ""
+# ── Timezone (Asia/Taipei) ──
+TZ = timezone(timedelta(hours=8))
 
 
-def ssh_cmd(remote_cmd: str, *, dry_run: bool = False) -> str:
-    """Run a command on the remote host via SSH."""
-    return run_cmd(["ssh", REMOTE_HOST, remote_cmd], dry_run=dry_run)
+def _now_iso() -> str:
+    """Return current time in ISO format with timezone."""
+    return datetime.now(TZ).isoformat(timespec="seconds")
 
 
-def scp_to(local_path: str, remote_path: str, *, dry_run: bool = False) -> str:
-    """SCP a file to the remote host."""
-    return run_cmd(["scp", local_path, f"{REMOTE_HOST}:{remote_path}"], dry_run=dry_run)
+def _make_job_id(exp_id: str, model: str) -> str:
+    """Generate a job ID like Q001-whisper-small-20260319-0330."""
+    ts = datetime.now(TZ).strftime("%Y%m%d-%H%M")
+    return f"{exp_id}-{model}-{ts}"
 
 
-def scp_from(remote_path: str, local_path: str, *, dry_run: bool = False) -> str:
-    """SCP a file from the remote host."""
-    return run_cmd(["scp", f"{REMOTE_HOST}:{remote_path}", local_path], dry_run=dry_run)
+# ── Queue I/O ──
 
-
-def append_jsonl(path: Path, record: dict) -> None:
-    """Append a JSON record to a JSONL file."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "a") as f:
-        f.write(json.dumps(record) + "\n")
-
-
-def generate_slurm_script(
-    job_name: str,
-    model: str,
-    script_basename: str,
-    **overrides: str,
-) -> str:
-    """Generate a Slurm job script from the template."""
-    template = TEMPLATE_PATH.read_text()
-    params = {**SLURM_DEFAULTS, **overrides}
-    return template.format(
-        job_name=job_name,
-        model=model,
-        script_basename=script_basename,
-        log_dir=REMOTE_LOG_DIR,
-        remote_output_dir=REMOTE_OUTPUT_DIR,
-        extra_args="",
-        **params,
-    )
-
-
-# ---------------------------------------------------------------------------
-# dispatch
-# ---------------------------------------------------------------------------
-
-def cmd_dispatch(args: argparse.Namespace) -> None:
-    script_path = Path(args.script).resolve()
-    if not script_path.exists():
-        sys.exit(f"Error: script not found: {script_path}")
-    if args.model not in VALID_MODELS:
-        sys.exit(f"Error: model must be one of {VALID_MODELS}")
-
-    job_name = args.name
-    script_basename = script_path.name
-    dry = args.dry_run
-
-    print(f"=== Dispatching experiment: {job_name} ===")
-    print(f"  Script: {script_path}")
-    print(f"  Model:  {args.model}")
-    print(f"  Remote: {REMOTE_HOST}:{REMOTE_EXPERIMENT_DIR}")
-    print()
-
-    # 1. Ensure remote directories exist
-    ssh_cmd(f"mkdir -p {REMOTE_EXPERIMENT_DIR} {REMOTE_OUTPUT_DIR} {REMOTE_LOG_DIR}", dry_run=dry)
-
-    # 2. SCP the experiment script
-    scp_to(str(script_path), f"{REMOTE_EXPERIMENT_DIR}/{script_basename}", dry_run=dry)
-
-    # 3. Generate and upload slurm job script
-    slurm_content = generate_slurm_script(
-        job_name=job_name,
-        model=args.model,
-        script_basename=script_basename,
-        gpu_count=str(args.gpus),
-        walltime=args.walltime,
-        memory=args.mem,
-    )
-    slurm_filename = f"slurm_{job_name}.sh"
-    local_tmp = Path(f"/tmp/{slurm_filename}")
-
-    if dry:
-        print(f"[DRY RUN] Would write slurm script to {local_tmp}:")
-        print("--- slurm script ---")
-        print(slurm_content)
-        print("--- end ---")
-    else:
-        local_tmp.write_text(slurm_content)
-
-    scp_to(str(local_tmp), f"{REMOTE_EXPERIMENT_DIR}/{slurm_filename}", dry_run=dry)
-
-    # 4. Submit via sbatch
-    job_id = ""
-    if dry:
-        print(f"[DRY RUN] ssh {REMOTE_HOST} 'sbatch {REMOTE_EXPERIMENT_DIR}/{slurm_filename}'")
-        job_id = "DRY-RUN-12345"
-    else:
-        output = ssh_cmd(f"sbatch {REMOTE_EXPERIMENT_DIR}/{slurm_filename}")
-        # sbatch output: "Submitted batch job 12345"
-        job_id = output.strip().split()[-1]
-
-    print(f"\nJob submitted: {job_id}")
-
-    # 5. Log dispatch
-    record = {
-        "job_id": job_id,
-        "job_name": job_name,
-        "model": args.model,
-        "script": str(script_path),
-        "remote_host": REMOTE_HOST,
-        "gpus": args.gpus,
-        "walltime": args.walltime,
-        "dispatched_at": datetime.now(timezone.utc).isoformat(),
-        "dry_run": dry,
-    }
-    if not dry:
-        append_jsonl(DISPATCHES_LOG, record)
-    else:
-        print(f"\n[DRY RUN] Would log to {DISPATCHES_LOG}:")
-        print(f"  {json.dumps(record, indent=2)}")
-
-    print(f"\nDone. Track with: python3 {__file__} status --job-id {job_id}")
-
-
-# ---------------------------------------------------------------------------
-# status
-# ---------------------------------------------------------------------------
-
-def cmd_status(args: argparse.Namespace) -> None:
-    if args.all:
-        output = ssh_cmd("squeue --me --format='%.10i %.30j %.8T %.10M %.4C %.6b %R'")
-        if output:
-            print(output)
-        else:
-            print("No active jobs.")
-        return
-
-    if not args.job_id:
-        sys.exit("Error: provide --job-id or --all")
-
-    output = ssh_cmd(f"squeue -j {args.job_id} --format='%.10i %.30j %.8T %.10M %.4C %.6b %R' 2>&1 || true")
-    if "Invalid job id" in output or not output.strip():
-        print(f"Job {args.job_id} not in queue (likely completed or failed).")
-        # Check sacct for final status
-        acct = ssh_cmd(
-            f"sacct -j {args.job_id} --format=JobID,JobName,State,ExitCode,Elapsed,MaxRSS --noheader 2>&1 || true"
-        )
-        if acct.strip():
-            print(f"Accounting info:\n{acct}")
-
-        # Check for completion signal
-        done_files = ssh_cmd(f"ls {REMOTE_OUTPUT_DIR}/*.done 2>/dev/null || true")
-        if done_files:
-            print(f"\nCompletion signals found:\n{done_files}")
-            print(f"\nCollect results with: python3 {__file__} collect --job-id {args.job_id}")
-    else:
-        print(output)
-
-
-# ---------------------------------------------------------------------------
-# collect
-# ---------------------------------------------------------------------------
-
-def cmd_collect(args: argparse.Namespace) -> None:
-    if not args.job_id:
-        sys.exit("Error: provide --job-id")
-
-    job_id = args.job_id
-    dry = args.dry_run
-    local_results = RESULTS_DIR / job_id
-    local_results.mkdir(parents=True, exist_ok=True)
-
-    print(f"=== Collecting results for job {job_id} ===")
-
-    # 1. Collect stdout/stderr logs
-    for ext in ("out", "err"):
-        remote_log = f"{REMOTE_LOG_DIR}/*-{job_id}.{ext}"
-        try:
-            scp_from(remote_log, str(local_results) + "/", dry_run=dry)
-            print(f"  Collected .{ext} log")
-        except subprocess.CalledProcessError:
-            print(f"  No .{ext} log found for job {job_id}")
-
-    # 2. Collect output files (.json, .csv)
-    for pattern in ("*.json", "*.csv"):
-        try:
-            scp_from(f"{REMOTE_OUTPUT_DIR}/{pattern}", str(local_results) + "/", dry_run=dry)
-            print(f"  Collected {pattern} files")
-        except subprocess.CalledProcessError:
-            print(f"  No {pattern} files found")
-
-    # 3. Collect completion signals
-    try:
-        scp_from(f"{REMOTE_OUTPUT_DIR}/*.done", str(local_results) + "/", dry_run=dry)
-        print("  Collected .done signals")
-    except subprocess.CalledProcessError:
-        pass
-
-    # 4. Parse results into experiments.jsonl
-    if not dry:
-        collected_files = list(local_results.glob("*.json"))
-        for f in collected_files:
-            if f.suffix == ".json" and f.stem.endswith(".done"):
-                continue
+def _read_queue() -> list[dict]:
+    """Read all jobs from queue.jsonl."""
+    if not QUEUE_PATH.exists():
+        return []
+    jobs = []
+    for line in QUEUE_PATH.read_text().splitlines():
+        line = line.strip()
+        if line:
             try:
-                data = json.loads(f.read_text())
-            except (json.JSONDecodeError, OSError):
+                jobs.append(json.loads(line))
+            except json.JSONDecodeError:
                 continue
-            record = {
-                "job_id": job_id,
-                "source_file": f.name,
-                "collected_at": datetime.now(timezone.utc).isoformat(),
-                "data": data,
-            }
-            append_jsonl(EXPERIMENTS_LOG, record)
-            print(f"  Parsed {f.name} -> experiments.jsonl")
-
-    print(f"\nResults saved to: {local_results}")
+    return jobs
 
 
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
+def _write_queue(jobs: list[dict]) -> None:
+    """Overwrite queue.jsonl with the given jobs."""
+    QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(QUEUE_PATH, "w") as f:
+        for job in jobs:
+            f.write(json.dumps(job, ensure_ascii=False) + "\n")
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Cross-machine experiment orchestrator (MacBook -> Battleship)"
+
+def _append_job(job: dict) -> None:
+    """Append a single job to queue.jsonl."""
+    QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(QUEUE_PATH, "a") as f:
+        f.write(json.dumps(job, ensure_ascii=False) + "\n")
+
+
+# ── SSH helpers ──
+
+def _run_ssh(remote_cmd: str, *, dry_run: bool = False, timeout: int = SSH_TIMEOUT) -> str:
+    """Run a command on battleship via SSH. Returns stdout on success."""
+    full_cmd = SSH_CMD_BASE + [remote_cmd]
+    if dry_run:
+        print(f"[DRY RUN] {' '.join(full_cmd)}")
+        return ""
+    try:
+        result = subprocess.run(
+            full_cmd, capture_output=True, text=True, timeout=timeout,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(f"SSH command failed (rc={result.returncode}): {result.stderr.strip()}")
+        return result.stdout.strip()
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(f"SSH command timed out after {timeout}s")
+
+
+def _build_run_command(exp_id: str, model: str) -> str:
+    """Build the remote nohup command to run an experiment."""
+    script_map = {
+        "Q001": "q001_voicing_geometry.py",
+        "Q002": "q002_causal_contribution.py",
+    }
+    script = script_map.get(exp_id, f"{exp_id.lower()}_experiment.py")
+    log_file = f"/tmp/{exp_id}_{model}.log"
+    result_file = f"/tmp/{exp_id}_{model}_results.json"
+    return (
+        f"nohup {REMOTE_PYTHON} {REMOTE_SCRIPTS}/{script} "
+        f"--model {model} --output {result_file} "
+        f"> {log_file} 2>&1 & echo $!"
     )
-    sub = parser.add_subparsers(dest="command", required=True)
 
-    # dispatch
-    p_dispatch = sub.add_parser("dispatch", help="Dispatch an experiment to Battleship")
-    p_dispatch.add_argument("--script", required=True, help="Path to experiment script")
-    p_dispatch.add_argument("--model", required=True, choices=VALID_MODELS, help="Whisper model size")
-    p_dispatch.add_argument("--name", required=True, help="Experiment name (used as job name)")
-    p_dispatch.add_argument("--gpus", type=int, default=1, help="Number of GPUs (default: 1)")
-    p_dispatch.add_argument("--walltime", default="04:00:00", help="Walltime (default: 04:00:00)")
-    p_dispatch.add_argument("--mem", default="32G", help="Memory (default: 32G)")
-    p_dispatch.add_argument("--dry-run", action="store_true", help="Print commands without executing")
+
+# ── Core functions ──
+
+def dispatch(exp_id: str, model: str, priority: str = "normal", dry_run: bool = False) -> str:
+    """Dispatch an experiment to battleship GPU.
+
+    Returns the job_id string.
+    """
+    job_id = _make_job_id(exp_id, model)
+    remote_cmd = _build_run_command(exp_id, model)
+
+    job = {
+        "job_id": job_id,
+        "exp_id": exp_id,
+        "model": model,
+        "priority": priority,
+        "status": "queued",
+        "submitted_at": _now_iso(),
+        "started_at": None,
+        "completed_at": None,
+        "result_path": None,
+        "error": None,
+    }
+
+    try:
+        output = _run_ssh(remote_cmd, dry_run=dry_run)
+        if not dry_run and output:
+            job["status"] = "running"
+            job["started_at"] = _now_iso()
+            job["pid"] = output.strip()
+        elif dry_run:
+            job["status"] = "dry_run"
+    except RuntimeError as e:
+        job["status"] = "failed"
+        job["error"] = str(e)
+
+    _append_job(job)
+    return job_id
+
+
+def check_status(job_id: str | None = None, dry_run: bool = False) -> list[dict]:
+    """Check status of jobs on battleship.
+
+    If job_id is given, check only that job. Otherwise check all non-terminal jobs.
+    Returns list of job status dicts.
+    """
+    jobs = _read_queue()
+    if not jobs:
+        return []
+
+    targets = jobs if job_id is None else [j for j in jobs if j["job_id"] == job_id]
+    updated = False
+
+    for job in targets:
+        if job["status"] not in ("running", "queued"):
+            continue
+
+        pid = job.get("pid")
+        if not pid:
+            continue
+
+        try:
+            output = _run_ssh(f"kill -0 {pid} 2>/dev/null && echo ALIVE || echo DEAD", dry_run=dry_run)
+            if dry_run:
+                continue
+            if "DEAD" in output:
+                # Check if results exist
+                result_file = f"/tmp/{job['exp_id']}_{job['model']}_results.json"
+                try:
+                    _run_ssh(f"test -f {result_file} && echo EXISTS", dry_run=dry_run)
+                    job["status"] = "done"
+                    job["completed_at"] = _now_iso()
+                    job["result_path"] = result_file
+                except RuntimeError:
+                    job["status"] = "failed"
+                    job["error"] = "Process ended without producing results"
+                    job["completed_at"] = _now_iso()
+                updated = True
+        except RuntimeError as e:
+            job["status"] = "failed"
+            job["error"] = str(e)
+            job["completed_at"] = _now_iso()
+            updated = True
+
+    if updated:
+        _write_queue(jobs)
+
+    return targets
+
+
+def fetch_results(exp_id: str, model: str, dry_run: bool = False) -> dict | None:
+    """Fetch results from battleship for a given experiment.
+
+    Caches to memory/experiments/results/<exp_id>_<model>.json.
+    """
+    cache_path = RESULTS_DIR / f"{exp_id}_{model}.json"
+
+    # Return cached if available
+    if cache_path.exists():
+        return json.loads(cache_path.read_text())
+
+    remote_file = f"/tmp/{exp_id}_{model}_results.json"
+    try:
+        output = _run_ssh(f"cat {remote_file}", dry_run=dry_run)
+        if dry_run:
+            return None
+        if not output:
+            return None
+        data = json.loads(output)
+        # Cache locally
+        RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+        return data
+    except (RuntimeError, json.JSONDecodeError) as e:
+        print(f"Failed to fetch results: {e}", file=sys.stderr)
+        return None
+
+
+# ── CLI commands ──
+
+def cmd_run(args: argparse.Namespace) -> int:
+    """Handle 'run' subcommand."""
+    print(f"Dispatching {args.exp} with model {args.model} (priority={args.priority})")
+    job_id = dispatch(args.exp, args.model, priority=args.priority, dry_run=args.dry_run)
+    print(f"Job ID: {job_id}")
+    return 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    """Handle 'status' subcommand."""
+    job_id = getattr(args, "job_id", None)
+    jobs = check_status(job_id=job_id, dry_run=args.dry_run)
+    if not jobs:
+        print("No jobs found.")
+        return 0
+
+    if args.json:
+        print(json.dumps(jobs, indent=2, ensure_ascii=False))
+    else:
+        for j in jobs:
+            icon = {"queued": "⏳", "running": "🔄", "done": "✅", "failed": "❌", "dry_run": "🔍"}.get(j["status"], "❓")
+            print(f"  {icon} {j['job_id']}  status={j['status']}  priority={j['priority']}")
+            if j.get("error"):
+                print(f"       error: {j['error']}")
+    return 0
+
+
+def cmd_queue(args: argparse.Namespace) -> int:
+    """Handle 'queue' subcommand."""
+    if args.add:
+        job_id = _make_job_id(args.add, args.model)
+        job = {
+            "job_id": job_id,
+            "exp_id": args.add,
+            "model": args.model,
+            "priority": args.priority,
+            "status": "queued",
+            "submitted_at": _now_iso(),
+            "started_at": None,
+            "completed_at": None,
+            "result_path": None,
+            "error": None,
+        }
+        _append_job(job)
+        print(f"Queued: {job_id}")
+        return 0
+
+    # --list (default)
+    jobs = _read_queue()
+    if not jobs:
+        print("Queue is empty.")
+        return 0
+
+    # Sort: high priority first, then by submitted_at
+    priority_order = {"high": 0, "normal": 1, "low": 2}
+    jobs.sort(key=lambda j: (priority_order.get(j.get("priority", "normal"), 1), j.get("submitted_at", "")))
+
+    if args.json:
+        print(json.dumps(jobs, indent=2, ensure_ascii=False))
+    else:
+        print(f"Experiment Queue ({len(jobs)} jobs)")
+        print("-" * 60)
+        for j in jobs:
+            icon = {"queued": "⏳", "running": "🔄", "done": "✅", "failed": "❌", "dry_run": "🔍"}.get(j["status"], "❓")
+            print(f"  {icon} {j['job_id']}  [{j['priority']}]  status={j['status']}")
+    return 0
+
+
+def cmd_results(args: argparse.Namespace) -> int:
+    """Handle 'results' subcommand."""
+    data = fetch_results(args.exp, args.model, dry_run=args.dry_run)
+    if data is None:
+        print(f"No results found for {args.exp}/{args.model}")
+        return 1
+    print(json.dumps(data, indent=2, ensure_ascii=False))
+    return 0
+
+
+# ── CLI parser ──
+
+def build_parser() -> argparse.ArgumentParser:
+    """Build the argument parser."""
+    p = argparse.ArgumentParser(
+        description="Experiment dispatcher for battleship GPU"
+    )
+    sub = p.add_subparsers(dest="command", required=True)
+
+    # run
+    r = sub.add_parser("run", help="Dispatch an experiment to battleship")
+    r.add_argument("--exp", required=True, help="Experiment ID (e.g. Q001)")
+    r.add_argument("--model", required=True, help="Model name (e.g. whisper-small)")
+    r.add_argument("--priority", default="normal", choices=["high", "normal", "low"])
+    r.add_argument("--dry-run", action="store_true", help="Print SSH command without executing")
 
     # status
-    p_status = sub.add_parser("status", help="Check job status on Battleship")
-    p_status.add_argument("--job-id", help="Slurm job ID")
-    p_status.add_argument("--all", action="store_true", help="Show all active jobs")
+    s = sub.add_parser("status", help="Check job status on battleship")
+    s.add_argument("--job-id", help="Specific job ID to check")
+    s.add_argument("--json", action="store_true", help="Output JSON")
+    s.add_argument("--dry-run", action="store_true")
 
-    # collect
-    p_collect = sub.add_parser("collect", help="Collect results from Battleship")
-    p_collect.add_argument("--job-id", required=True, help="Slurm job ID")
-    p_collect.add_argument("--dry-run", action="store_true", help="Print commands without executing")
+    # queue
+    q = sub.add_parser("queue", help="Manage the job queue")
+    q.add_argument("--list", action="store_true", default=True, help="List queued jobs")
+    q.add_argument("--add", help="Add experiment to queue (exp_id)")
+    q.add_argument("--model", help="Model for --add")
+    q.add_argument("--priority", default="normal", choices=["high", "normal", "low"])
+    q.add_argument("--json", action="store_true", help="Output JSON")
 
+    # results
+    res = sub.add_parser("results", help="Fetch experiment results")
+    res.add_argument("--exp", required=True, help="Experiment ID")
+    res.add_argument("--model", required=True, help="Model name")
+    res.add_argument("--dry-run", action="store_true")
+
+    return p
+
+
+def main() -> int:
+    """CLI entry point."""
+    parser = build_parser()
     args = parser.parse_args()
-
-    if args.command == "dispatch":
-        cmd_dispatch(args)
-    elif args.command == "status":
-        cmd_status(args)
-    elif args.command == "collect":
-        cmd_collect(args)
+    handlers = {
+        "run": cmd_run,
+        "status": cmd_status,
+        "queue": cmd_queue,
+        "results": cmd_results,
+    }
+    return handlers[args.command](args)
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

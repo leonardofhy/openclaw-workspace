@@ -1,0 +1,31 @@
+experiment-dispatcher: COMPLETED
+==================================
+
+## What was built
+
+### skills/shared/experiment_dispatch.py
+- Full rewrite: SSH via `ssh -J iso_leo -p 2222 leonardo@localhost` (not Slurm)
+- CLI subcommands: run, status, queue, results
+- Core functions: dispatch(), check_status(), fetch_results()
+- Job tracking via memory/experiments/queue.jsonl
+- nohup-based job submission (no Slurm dependency)
+- Dry-run mode (--dry-run) prints SSH commands without executing
+- Graceful SSH failure handling (marks job failed, doesn't crash)
+- 30-second SSH timeout
+- Results caching to memory/experiments/results/
+
+### skills/shared/test_experiment_dispatch.py
+- 20 tests, all passing
+- Covers: dispatch dry-run, queue write, status update, results caching,
+  priority ordering, SSH config, graceful failure, command building
+
+### memory/experiments/
+- queue.jsonl — pre-queued with 4 critical jobs
+- results/ — empty, ready for cached results
+- README.md — documentation
+
+### Pre-queued experiments (status: queued)
+1. Q001 whisper-small (high priority)
+2. Q002 whisper-small (high priority)
+3. Q001 whisper-medium (normal priority)
+4. Q002 whisper-medium (normal priority)

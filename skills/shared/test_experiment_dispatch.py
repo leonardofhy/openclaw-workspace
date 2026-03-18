@@ -2,233 +2,358 @@
 """Tests for skills/shared/experiment_dispatch.py
 
 Covers:
-- dry-run dispatch (no SSH/SCP needed)
-- slurm template generation
-- result parsing / JSONL append
-- run_cmd / ssh_cmd with mocked subprocess
+- dispatch dry-run: verify correct SSH command constructed
+- queue write: dispatch adds entry to queue.jsonl
+- status update: check_status updates queue correctly
+- results caching: fetch_results caches to correct path
+- priority ordering: high priority jobs sorted first in queue list
 
 Usage:
     python3 -m pytest skills/shared/test_experiment_dispatch.py -v
 """
 
-import argparse
 import json
 import os
-import subprocess
 import sys
 import tempfile
-import unittest
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, os.path.dirname(__file__))
 import experiment_dispatch as ed
 
 
-class TestRunCmd(unittest.TestCase):
-    """run_cmd() — dry-run vs real execution."""
+# ── Helpers ──
 
-    def test_dry_run_returns_empty_string(self):
-        result = ed.run_cmd(["echo", "hello"], dry_run=True)
-        self.assertEqual(result, "")
-
-    def test_dry_run_prints_command(self, ):
-        import io
-        with patch("sys.stdout", new_callable=io.StringIO) as mock_out:
-            ed.run_cmd(["ssh", "host", "ls"], dry_run=True)
-            self.assertIn("[DRY RUN]", mock_out.getvalue())
-            self.assertIn("ssh host ls", mock_out.getvalue())
-
-    @patch("experiment_dispatch.subprocess.run")
-    def test_real_run_calls_subprocess(self, mock_run):
-        mock_run.return_value = MagicMock(stdout="output\n", returncode=0)
-        result = ed.run_cmd(["echo", "hi"])
-        mock_run.assert_called_once()
-        self.assertEqual(result, "output")
-
-    @patch("experiment_dispatch.subprocess.run")
-    def test_real_run_raises_on_failure(self, mock_run):
-        mock_run.side_effect = subprocess.CalledProcessError(1, "cmd")
-        with self.assertRaises(subprocess.CalledProcessError):
-            ed.run_cmd(["false"])
+def _patch_paths(tmp_dir: Path):
+    """Return a dict of patches redirecting queue/results to tmp_dir."""
+    return {
+        "QUEUE_PATH": tmp_dir / "queue.jsonl",
+        "RESULTS_DIR": tmp_dir / "results",
+    }
 
 
-class TestSshCmd(unittest.TestCase):
-    """ssh_cmd() delegates to run_cmd."""
+# ── test_dispatch_dry_run ──
 
-    def test_dry_run(self):
-        result = ed.ssh_cmd("ls -la", dry_run=True)
-        self.assertEqual(result, "")
+class TestDispatchDryRun:
+    """dispatch() with dry_run=True prints SSH command, doesn't execute."""
 
-    @patch("experiment_dispatch.subprocess.run")
-    def test_real_ssh(self, mock_run):
-        mock_run.return_value = MagicMock(stdout="files\n", returncode=0)
-        result = ed.ssh_cmd("ls -la")
-        cmd = mock_run.call_args[0][0]
-        self.assertEqual(cmd, ["ssh", "battleship", "ls -la"])
-
-
-class TestScpTo(unittest.TestCase):
-
-    def test_dry_run(self):
-        result = ed.scp_to("/tmp/x.py", "~/experiments/x.py", dry_run=True)
-        self.assertEqual(result, "")
-
-    @patch("experiment_dispatch.subprocess.run")
-    def test_real_scp(self, mock_run):
-        mock_run.return_value = MagicMock(stdout="", returncode=0)
-        ed.scp_to("/tmp/x.py", "~/experiments/x.py")
-        cmd = mock_run.call_args[0][0]
-        self.assertEqual(cmd[0], "scp")
-        self.assertIn("battleship:~/experiments/x.py", cmd)
-
-
-class TestAppendJsonl(unittest.TestCase):
-
-    def test_creates_file_and_appends(self):
+    def test_dry_run_prints_ssh_command(self, capsys):
         with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "sub" / "log.jsonl"
-            record = {"job_id": "123", "status": "ok"}
-            ed.append_jsonl(path, record)
-            self.assertTrue(path.exists())
-            lines = path.read_text().strip().splitlines()
-            self.assertEqual(len(lines), 1)
-            self.assertEqual(json.loads(lines[0]), record)
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                job_id = ed.dispatch("Q001", "whisper-small", dry_run=True)
+                captured = capsys.readouterr()
+                assert "[DRY RUN]" in captured.out
+                assert "ssh" in captured.out
+                assert "iso_leo" in captured.out
+                assert "nohup" in captured.out
+                assert job_id.startswith("Q001-whisper-small-")
 
-    def test_appends_multiple_records(self):
+    def test_dry_run_creates_queue_entry(self):
         with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "log.jsonl"
-            ed.append_jsonl(path, {"a": 1})
-            ed.append_jsonl(path, {"b": 2})
-            lines = path.read_text().strip().splitlines()
-            self.assertEqual(len(lines), 2)
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                ed.dispatch("Q001", "whisper-small", dry_run=True)
+                jobs = ed._read_queue()
+                assert len(jobs) == 1
+                assert jobs[0]["status"] == "dry_run"
+                assert jobs[0]["exp_id"] == "Q001"
+
+    def test_dry_run_correct_ssh_target(self, capsys):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                ed.dispatch("Q001", "whisper-small", dry_run=True)
+                captured = capsys.readouterr()
+                assert "-J iso_leo" in captured.out
+                assert "-p 2222" in captured.out
+                assert "leonardo@localhost" in captured.out
 
 
-MOCK_TEMPLATE = """\
-#!/bin/bash
-#SBATCH --job-name={job_name}
-#SBATCH --partition={partition}
-#SBATCH --gres=gpu:{gpu_count}
-#SBATCH --cpus-per-task={cpus}
-#SBATCH --mem={memory}
-#SBATCH --time={walltime}
-conda activate {conda_env}
-python {script_basename} --model {model} --output-dir {remote_output_dir} {extra_args}
-LOG_DIR={log_dir}
-"""
+# ── test_queue_write ──
+
+class TestQueueWrite:
+    """dispatch() adds correct entry to queue.jsonl."""
+
+    def test_dispatch_adds_entry(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                ed.dispatch("Q001", "whisper-small", priority="high", dry_run=True)
+                jobs = ed._read_queue()
+                assert len(jobs) == 1
+                job = jobs[0]
+                assert job["exp_id"] == "Q001"
+                assert job["model"] == "whisper-small"
+                assert job["priority"] == "high"
+                assert job["submitted_at"] is not None
+
+    def test_multiple_dispatches_append(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                ed.dispatch("Q001", "whisper-small", dry_run=True)
+                ed.dispatch("Q002", "whisper-medium", dry_run=True)
+                jobs = ed._read_queue()
+                assert len(jobs) == 2
+                assert jobs[0]["exp_id"] == "Q001"
+                assert jobs[1]["exp_id"] == "Q002"
+
+    def test_job_schema_fields(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                ed.dispatch("Q001", "whisper-small", dry_run=True)
+                job = ed._read_queue()[0]
+                required_keys = {
+                    "job_id", "exp_id", "model", "priority",
+                    "status", "submitted_at", "started_at",
+                    "completed_at", "result_path", "error",
+                }
+                assert required_keys.issubset(set(job.keys()))
 
 
-class TestGenerateSlurmScript(unittest.TestCase):
-    """generate_slurm_script() produces valid sbatch content."""
+# ── test_status_update ──
 
-    def _gen(self, **kwargs):
-        defaults = dict(job_name="test_exp", model="whisper-base", script_basename="run.py")
-        defaults.update(kwargs)
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".sh", delete=False) as f:
-            f.write(MOCK_TEMPLATE)
-            tmp_path = Path(f.name)
-        try:
-            with patch.object(ed, "TEMPLATE_PATH", tmp_path):
-                return ed.generate_slurm_script(**defaults)
-        finally:
-            tmp_path.unlink(missing_ok=True)
+class TestStatusUpdate:
+    """check_status() updates queue with current process status."""
 
-    def test_contains_job_name(self):
-        self.assertIn("#SBATCH --job-name=test_exp", self._gen())
+    def test_status_marks_dead_process_as_done(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                # Seed a running job with a PID
+                job = {
+                    "job_id": "Q001-whisper-small-20260319-0330",
+                    "exp_id": "Q001",
+                    "model": "whisper-small",
+                    "priority": "high",
+                    "status": "running",
+                    "submitted_at": "2026-03-19T03:30:00+0800",
+                    "started_at": "2026-03-19T03:30:01+0800",
+                    "completed_at": None,
+                    "result_path": None,
+                    "error": None,
+                    "pid": "12345",
+                }
+                ed._append_job(job)
 
-    def test_contains_model(self):
-        self.assertIn("whisper-small", self._gen(model="whisper-small"))
+                # Mock SSH: process is dead, results exist
+                def mock_ssh(cmd, *, dry_run=False, timeout=30):
+                    if "kill -0" in cmd:
+                        return "DEAD"
+                    if "test -f" in cmd:
+                        return "EXISTS"
+                    return ""
 
-    def test_contains_script_basename(self):
-        self.assertIn("train_model.py", self._gen(script_basename="train_model.py"))
+                with patch.object(ed, "_run_ssh", side_effect=mock_ssh):
+                    results = ed.check_status(job_id="Q001-whisper-small-20260319-0330")
 
-    def test_overrides_gpu_count(self):
-        self.assertIn("gpu:2", self._gen(gpu_count="2"))
+                assert len(results) == 1
+                assert results[0]["status"] == "done"
+                assert results[0]["completed_at"] is not None
 
-    def test_overrides_walltime(self):
-        self.assertIn("08:00:00", self._gen(walltime="08:00:00"))
+    def test_status_marks_dead_without_results_as_failed(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                job = {
+                    "job_id": "Q001-whisper-small-20260319-0400",
+                    "exp_id": "Q001",
+                    "model": "whisper-small",
+                    "priority": "high",
+                    "status": "running",
+                    "submitted_at": "2026-03-19T04:00:00+0800",
+                    "started_at": "2026-03-19T04:00:01+0800",
+                    "completed_at": None,
+                    "result_path": None,
+                    "error": None,
+                    "pid": "99999",
+                }
+                ed._append_job(job)
 
-    def test_default_partition(self):
-        self.assertIn("--partition=gpu", self._gen())
+                def mock_ssh(cmd, *, dry_run=False, timeout=30):
+                    if "kill -0" in cmd:
+                        return "DEAD"
+                    if "test -f" in cmd:
+                        raise RuntimeError("no results")
+                    return ""
 
+                with patch.object(ed, "_run_ssh", side_effect=mock_ssh):
+                    results = ed.check_status()
 
-class TestCmdDispatchDryRun(unittest.TestCase):
-    """cmd_dispatch() with --dry-run should not execute SSH/SCP."""
+                assert results[0]["status"] == "failed"
+                assert "without producing results" in results[0]["error"]
 
-    def test_dry_run_does_not_ssh(self):
-        with tempfile.NamedTemporaryFile(suffix=".py", delete=False) as f:
-            f.write(b"# test script\n")
-            script_path = f.name
+    def test_status_ssh_failure_marks_failed(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                job = {
+                    "job_id": "Q001-whisper-small-20260319-0500",
+                    "exp_id": "Q001",
+                    "model": "whisper-small",
+                    "priority": "high",
+                    "status": "running",
+                    "submitted_at": "2026-03-19T05:00:00+0800",
+                    "started_at": "2026-03-19T05:00:01+0800",
+                    "completed_at": None,
+                    "result_path": None,
+                    "error": None,
+                    "pid": "11111",
+                }
+                ed._append_job(job)
 
-        try:
-            args = argparse.Namespace(
-                script=script_path,
-                model="whisper-base",
-                name="test_job",
-                gpus=1,
-                walltime="04:00:00",
-                mem="32G",
-                dry_run=True,
-            )
-            with tempfile.NamedTemporaryFile(mode="w", suffix=".sh", delete=False) as tf:
-                tf.write(MOCK_TEMPLATE)
-                tmp_tmpl = Path(tf.name)
-            try:
-                with patch.object(ed, "TEMPLATE_PATH", tmp_tmpl):
-                    ed.cmd_dispatch(args)
-            finally:
-                tmp_tmpl.unlink(missing_ok=True)
-        finally:
-            os.unlink(script_path)
+                with patch.object(ed, "_run_ssh", side_effect=RuntimeError("SSH connection refused")):
+                    results = ed.check_status()
 
-    def test_dry_run_invalid_model_exits(self):
-        with tempfile.NamedTemporaryFile(suffix=".py", delete=False) as f:
-            f.write(b"# test\n")
-            script_path = f.name
-        try:
-            args = argparse.Namespace(
-                script=script_path,
-                model="whisper-xxl",
-                name="bad",
-                gpus=1,
-                walltime="04:00:00",
-                mem="32G",
-                dry_run=True,
-            )
-            with self.assertRaises(SystemExit):
-                ed.cmd_dispatch(args)
-        finally:
-            os.unlink(script_path)
-
-    def test_dry_run_missing_script_exits(self):
-        args = argparse.Namespace(
-            script="/nonexistent/path.py",
-            model="whisper-base",
-            name="bad",
-            gpus=1,
-            walltime="04:00:00",
-            mem="32G",
-            dry_run=True,
-        )
-        with self.assertRaises(SystemExit):
-            ed.cmd_dispatch(args)
-
-
-class TestValidModels(unittest.TestCase):
-
-    def test_valid_models_tuple(self):
-        self.assertIn("whisper-base", ed.VALID_MODELS)
-        self.assertIn("whisper-small", ed.VALID_MODELS)
-        self.assertIn("whisper-medium", ed.VALID_MODELS)
-        self.assertNotIn("whisper-large", ed.VALID_MODELS)
+                assert results[0]["status"] == "failed"
+                assert "SSH connection refused" in results[0]["error"]
 
 
-class TestSlurmDefaults(unittest.TestCase):
+# ── test_results_caching ──
 
-    def test_defaults_contain_required_keys(self):
-        for key in ("partition", "gpu_count", "cpus", "memory", "walltime", "conda_env"):
-            self.assertIn(key, ed.SLURM_DEFAULTS)
+class TestResultsCaching:
+    """fetch_results() caches to correct path."""
+
+    def test_caches_to_results_dir(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                mock_data = {"accuracy": 0.95, "wer": 0.05}
+
+                with patch.object(ed, "_run_ssh", return_value=json.dumps(mock_data)):
+                    result = ed.fetch_results("Q001", "whisper-small")
+
+                assert result == mock_data
+                cache = patches["RESULTS_DIR"] / "Q001_whisper-small.json"
+                assert cache.exists()
+                assert json.loads(cache.read_text()) == mock_data
+
+    def test_returns_cached_on_second_call(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                # Pre-populate cache
+                cache = patches["RESULTS_DIR"] / "Q001_whisper-small.json"
+                cache.parent.mkdir(parents=True, exist_ok=True)
+                cached_data = {"accuracy": 0.99}
+                cache.write_text(json.dumps(cached_data))
+
+                # Should return cache without SSH
+                with patch.object(ed, "_run_ssh") as mock_ssh:
+                    result = ed.fetch_results("Q001", "whisper-small")
+                    mock_ssh.assert_not_called()
+
+                assert result == cached_data
+
+    def test_returns_none_on_ssh_failure(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                with patch.object(ed, "_run_ssh", side_effect=RuntimeError("timeout")):
+                    result = ed.fetch_results("Q001", "whisper-small")
+                assert result is None
+
+    def test_dry_run_returns_none(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                result = ed.fetch_results("Q001", "whisper-small", dry_run=True)
+                assert result is None
+
+
+# ── test_priority_ordering ──
+
+class TestPriorityOrdering:
+    """High priority jobs sorted first in queue list."""
+
+    def test_high_priority_first(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                ed._append_job({"job_id": "j1", "priority": "normal", "status": "queued", "submitted_at": "2026-03-19T01:00:00+0800", "exp_id": "Q001", "model": "whisper-medium"})
+                ed._append_job({"job_id": "j2", "priority": "high", "status": "queued", "submitted_at": "2026-03-19T02:00:00+0800", "exp_id": "Q002", "model": "whisper-small"})
+                ed._append_job({"job_id": "j3", "priority": "low", "status": "queued", "submitted_at": "2026-03-19T00:30:00+0800", "exp_id": "Q001", "model": "whisper-small"})
+
+                jobs = ed._read_queue()
+                priority_order = {"high": 0, "normal": 1, "low": 2}
+                jobs.sort(key=lambda j: (priority_order.get(j.get("priority", "normal"), 1), j.get("submitted_at", "")))
+
+                assert jobs[0]["job_id"] == "j2"  # high
+                assert jobs[1]["job_id"] == "j1"  # normal
+                assert jobs[2]["job_id"] == "j3"  # low
+
+
+# ── test_build_run_command ──
+
+class TestBuildRunCommand:
+    """_build_run_command() generates correct nohup commands."""
+
+    def test_q001_command(self):
+        cmd = ed._build_run_command("Q001", "whisper-small")
+        assert "q001_voicing_geometry.py" in cmd
+        assert "--model whisper-small" in cmd
+        assert "nohup" in cmd
+        assert "miniconda3" in cmd
+
+    def test_q002_command(self):
+        cmd = ed._build_run_command("Q002", "whisper-medium")
+        assert "q002_causal_contribution.py" in cmd
+        assert "--model whisper-medium" in cmd
+
+    def test_unknown_exp_fallback(self):
+        cmd = ed._build_run_command("Q999", "whisper-base")
+        assert "q999_experiment.py" in cmd
+
+
+# ── test_ssh_config ──
+
+class TestSshConfig:
+    """SSH command uses correct jump host and port."""
+
+    def test_ssh_cmd_base(self):
+        assert ed.SSH_CMD_BASE == ["ssh", "-J", "iso_leo", "-p", "2222", "leonardo@localhost"]
+
+    def test_ssh_timeout(self):
+        assert ed.SSH_TIMEOUT == 30
+
+
+# ── test_graceful_ssh_failure ──
+
+class TestGracefulSshFailure:
+    """SSH failures mark job as failed, don't crash."""
+
+    def test_dispatch_ssh_failure_marks_failed(self):
+        with tempfile.TemporaryDirectory() as td:
+            patches = _patch_paths(Path(td))
+            with patch.object(ed, "QUEUE_PATH", patches["QUEUE_PATH"]), \
+                 patch.object(ed, "RESULTS_DIR", patches["RESULTS_DIR"]):
+                with patch.object(ed, "_run_ssh", side_effect=RuntimeError("Connection refused")):
+                    job_id = ed.dispatch("Q001", "whisper-small")
+
+                jobs = ed._read_queue()
+                assert len(jobs) == 1
+                assert jobs[0]["status"] == "failed"
+                assert "Connection refused" in jobs[0]["error"]
+                assert job_id == jobs[0]["job_id"]
 
 
 if __name__ == "__main__":
-    unittest.main()
+    import pytest
+    raise SystemExit(pytest.main([__file__, "-v"]))
