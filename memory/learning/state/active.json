@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260318-1245",
-    "action": "ideate",
-    "summary": "Generated 20 cross-domain ideas; top 5 (Q124-Q128) added to queue \u2014 RVQ\u00d7gate, Schelling\u00d7T-SAE, ENV\u00d7Codec, Jacobian\u00d7gate, Jailbreak\u00d7ENV-3 pruning"
+    "id": "c-20260318-1315",
+    "action": "learn",
+    "summary": "Deep read RAVEL (ACL 2024): argmin(Isolate_audio(t)) \u2248 t* hypothesis; MDAS Isolate/Cause per SAE feature predicts AND/OR gate (links Q107+Q105); next: build ravel_isolate_proxy.py mock tomorrow"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
