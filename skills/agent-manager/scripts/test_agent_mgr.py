@@ -28,7 +28,7 @@ def tmp_registry(tmp_path, monkeypatch):
 
 def _make_entry(name="Test Agent", status="running", pid=99999,
                 spawned_minutes_ago=10, completed=False, completed_minutes_ago=None,
-                model="claude-sonnet-4-20250514",
+                model="claude-sonnet-4-6",
                 exit_code=None, error=None):
     """Helper to create a registry entry."""
     now = datetime.now(timezone.utc)
@@ -95,9 +95,9 @@ def test_spawn_resolves_model_alias():
     with patch("subprocess.Popen", return_value=mock_proc) as mock_popen:
         entry = agent_mgr.spawn(name="Alias Test", task="test", model="opus")
 
-    assert entry["model"] == "claude-opus-4-20250514"
+    assert entry["model"] == "claude-opus-4-6"
     call_args = mock_popen.call_args
-    assert "claude-opus-4-20250514" in call_args[0][0]
+    assert "claude-opus-4-6" in call_args[0][0]
 
 
 # ── Status Tests ────────────────────────────────────────
@@ -271,6 +271,39 @@ def test_concurrent_appends(tmp_registry):
 
     entries = agent_mgr._read_entries()
     assert len(entries) == 10
+
+
+def test_generate_id_uniqueness():
+    """IDs generated for the same name are unique (random suffix)."""
+    ids = {agent_mgr.generate_id("Same Name") for _ in range(20)}
+    assert len(ids) == 20
+
+
+def test_kill_already_dead_updates_registry():
+    """Kill updates registry even when process is already dead."""
+    entry = _make_entry("Dead Agent", status="running", pid=99999)
+
+    with patch.object(agent_mgr, "_is_pid_alive", return_value=True):
+        with patch("os.kill", side_effect=ProcessLookupError):
+            killed = agent_mgr.kill_agents(agent_id=entry["id"])
+
+    assert len(killed) == 1
+    entries = agent_mgr._read_entries()
+    assert entries[0]["status"] == "completed"
+    assert entries[0]["completed_at"] is not None
+
+
+def test_spawn_with_timeout():
+    """Spawn with timeout wraps command with timeout prefix."""
+    mock_proc = MagicMock()
+    mock_proc.pid = 12345
+
+    with patch("subprocess.Popen", return_value=mock_proc) as mock_popen:
+        agent_mgr.spawn(name="Timeout Test", task="test", timeout=300)
+
+    cmd = mock_popen.call_args[0][0]
+    assert cmd[0] == "timeout"
+    assert cmd[1] == "300"
 
 
 if __name__ == "__main__":

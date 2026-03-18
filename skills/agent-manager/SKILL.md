@@ -54,8 +54,8 @@ Append-only JSONL at `memory/agents/registry.jsonl`. Each entry:
 
 ## Model Aliases
 
-- `sonnet` → `claude-sonnet-4-20250514`
-- `opus` → `claude-opus-4-20250514`
+- `sonnet` → `claude-sonnet-4-6`
+- `opus` → `claude-opus-4-6`
 - `haiku` → `claude-haiku-4-5-20251001`
 
 ## Integration
@@ -63,7 +63,8 @@ Append-only JSONL at `memory/agents/registry.jsonl`. Each entry:
 Import as module from orchestrator or other skills:
 
 ```python
-from skills.agent_manager.scripts.agent_mgr import spawn, update_status, get_dashboard
+sys.path.insert(0, "skills/agent-manager/scripts")
+from agent_mgr import spawn, update_status, get_dashboard
 ```
 
 File locking via `fcntl.flock` ensures safe concurrent access to the registry.

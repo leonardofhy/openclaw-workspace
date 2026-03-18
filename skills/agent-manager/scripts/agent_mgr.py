@@ -14,10 +14,13 @@ import fcntl
 import fnmatch
 import json
 import os
+import random
 import re
 import signal
+import string
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -26,8 +29,8 @@ REGISTRY_DIR = REPO_ROOT / "memory" / "agents"
 REGISTRY_FILE = REGISTRY_DIR / "registry.jsonl"
 
 MODEL_ALIASES = {
-    "sonnet": "claude-sonnet-4-20250514",
-    "opus": "claude-opus-4-20250514",
+    "sonnet": "claude-sonnet-4-6",
+    "opus": "claude-opus-4-6",
     "haiku": "claude-haiku-4-5-20251001",
 }
 
@@ -69,15 +72,17 @@ def _read_entries() -> list[dict]:
 
 
 def _rewrite_entries(entries: list[dict]) -> None:
-    """Rewrite the entire registry (for status updates)."""
+    """Atomically rewrite the registry via temp file + rename."""
     _ensure_registry()
-    with open(REGISTRY_FILE, "w") as f:
-        fcntl.flock(f, fcntl.LOCK_EX)
-        try:
+    fd, tmp_path = tempfile.mkstemp(dir=REGISTRY_DIR, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w") as f:
             for entry in entries:
                 f.write(json.dumps(entry, default=str) + "\n")
-        finally:
-            fcntl.flock(f, fcntl.LOCK_UN)
+        os.replace(tmp_path, REGISTRY_FILE)
+    except BaseException:
+        os.unlink(tmp_path)
+        raise
 
 
 # ── ID Generation ───────────────────────────────────────
@@ -91,11 +96,12 @@ def _slugify(name: str) -> str:
 
 
 def generate_id(name: str) -> str:
-    """Generate meaningful ID: spawn-YYYYMMDD-HHMM-slug."""
+    """Generate unique ID: spawn-YYYYMMDD-HHMMSS-slug-rand4."""
     now = datetime.now()
-    ts = now.strftime("%Y%m%d-%H%M")
+    ts = now.strftime("%Y%m%d-%H%M%S")
     slug = _slugify(name)
-    return f"spawn-{ts}-{slug}"
+    rand = "".join(random.choices(string.ascii_lowercase + string.digits, k=4))
+    return f"spawn-{ts}-{slug}-{rand}"
 
 
 # ── Process Checking ────────────────────────────────────
@@ -125,6 +131,10 @@ def spawn(name: str, task: str, model: str = "sonnet",
         "--print",
         task,
     ]
+
+    if timeout:
+        # Wrap with system timeout to enforce time limit
+        cmd = ["timeout", str(timeout)] + cmd
 
     proc = subprocess.Popen(
         cmd,
@@ -173,18 +183,23 @@ def update_status() -> list[dict]:
                 _, status = os.waitpid(pid, os.WNOHANG)
                 exit_code = os.WEXITSTATUS(status) if os.WIFEXITED(status) else -1
             except ChildProcessError:
-                exit_code = 0  # Already reaped
+                # Not our child (spawned by prior invocation) — unknown exit code
+                exit_code = None
 
             now = datetime.now(timezone.utc).isoformat()
             spawned = datetime.fromisoformat(entry["spawned_at"])
             duration = (datetime.now(timezone.utc) - spawned).total_seconds()
 
-            entry["status"] = "completed" if exit_code == 0 else "failed"
+            if exit_code is None:
+                entry["status"] = "completed"
+            elif exit_code == 0:
+                entry["status"] = "completed"
+            else:
+                entry["status"] = "failed"
+                entry["error"] = f"Process exited with code {exit_code}"
             entry["completed_at"] = now
             entry["duration_s"] = round(duration, 1)
             entry["exit_code"] = exit_code
-            if exit_code != 0:
-                entry["error"] = f"Process exited with code {exit_code}"
             changed = True
 
     if changed:
@@ -302,6 +317,7 @@ def kill_agents(name_pattern: str | None = None,
     """Kill agents by name pattern or ID. Returns list of killed IDs."""
     entries = update_status()
     killed = []
+    changed = False
 
     for entry in entries:
         if entry["status"] != "running":
@@ -314,20 +330,21 @@ def kill_agents(name_pattern: str | None = None,
             match = True
 
         if match and entry.get("pid"):
+            now = datetime.now(timezone.utc).isoformat()
             try:
                 os.kill(entry["pid"], signal.SIGTERM)
                 entry["status"] = "killed"
-                entry["completed_at"] = datetime.now(timezone.utc).isoformat()
-                if entry.get("spawned_at"):
-                    spawned = datetime.fromisoformat(entry["spawned_at"])
-                    entry["duration_s"] = round(
-                        (datetime.now(timezone.utc) - spawned).total_seconds(), 1)
-                killed.append(entry["id"])
             except ProcessLookupError:
                 entry["status"] = "completed"
-                entry["completed_at"] = datetime.now(timezone.utc).isoformat()
+            entry["completed_at"] = now
+            if entry.get("spawned_at"):
+                spawned = datetime.fromisoformat(entry["spawned_at"])
+                entry["duration_s"] = round(
+                    (datetime.now(timezone.utc) - spawned).total_seconds(), 1)
+            killed.append(entry["id"])
+            changed = True
 
-    if killed:
+    if changed:
         _rewrite_entries(entries)
 
     return killed
@@ -347,7 +364,7 @@ def _parse_duration(s: str) -> int:
     return int(s)
 
 
-def cmd_spawn(args: argparse.Namespace) -> None:
+def cmd_spawn(args: argparse.Namespace) -> dict:
     entry = spawn(
         name=args.name,
         task=args.task,
@@ -355,18 +372,30 @@ def cmd_spawn(args: argparse.Namespace) -> None:
         timeout=args.timeout,
         workdir=args.workdir,
     )
-    print(f"Spawned: {entry['id']}")
-    print(f"  Name:  {entry['name']}")
-    print(f"  Model: {entry['model']}")
-    print(f"  PID:   {entry['pid']}")
+    if args.json:
+        print(json.dumps(entry, default=str))
+    else:
+        print(f"Spawned: {entry['id']}")
+        print(f"  Name:  {entry['name']}")
+        print(f"  Model: {entry['model']}")
+        print(f"  PID:   {entry['pid']}")
+    return entry
 
 
 def cmd_status(args: argparse.Namespace) -> None:
-    dashboard = get_dashboard(
-        filter_name=args.name,
-        include_completed=args.all,
-    )
-    print(dashboard)
+    if args.json:
+        entries = update_status()
+        if args.name:
+            entries = [e for e in entries if fnmatch.fnmatch(e["name"], args.name)]
+        if not args.all:
+            entries = [e for e in entries if e["status"] == "running"]
+        print(json.dumps(entries, default=str))
+    else:
+        dashboard = get_dashboard(
+            filter_name=args.name,
+            include_completed=args.all,
+        )
+        print(dashboard)
 
 
 def cmd_history(args: argparse.Namespace) -> None:
@@ -375,6 +404,10 @@ def cmd_history(args: argparse.Namespace) -> None:
         today_only=args.today,
         limit=args.limit,
     )
+    if args.json:
+        print(json.dumps(entries, default=str))
+        return
+
     if not entries:
         print("No history found.")
         return
@@ -395,7 +428,10 @@ def cmd_cleanup(args: argparse.Namespace) -> None:
         minutes = 60
 
     removed = cleanup(older_than_minutes=minutes, cleanup_all=args.all)
-    print(f"Cleaned up {removed} agent(s).")
+    if args.json:
+        print(json.dumps({"removed": removed}))
+    else:
+        print(f"Cleaned up {removed} agent(s).")
 
 
 def cmd_kill(args: argparse.Namespace) -> None:
@@ -404,7 +440,9 @@ def cmd_kill(args: argparse.Namespace) -> None:
         sys.exit(1)
 
     killed = kill_agents(name_pattern=args.name, agent_id=args.id)
-    if killed:
+    if args.json:
+        print(json.dumps({"killed": killed}))
+    elif killed:
         print(f"Killed {len(killed)} agent(s):")
         for k in killed:
             print(f"  - {k}")
