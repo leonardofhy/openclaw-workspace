@@ -1,0 +1,14 @@
+{
+  "sources": {
+    "hn": {"enabled": true, "limit": 50},
+    "af": {"enabled": true, "limit": 20},
+    "lw": {"enabled": true, "limit": 20},
+    "arxiv": {"enabled": true, "categories": ["cs.CL", "cs.SD", "cs.AI", "cs.LG"], "limit": 30}
+  },
+  "scoring": {
+    "profile_path": "memory/hn/preferences.json"
+  },
+  "dedup": {
+    "title_similarity_threshold": 0.85
+  }
+}
