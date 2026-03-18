@@ -56,12 +56,13 @@
       "type": "build",
       "track": "T5",
       "title": "M9-gated adversarial detector: dual-factor (SAE anomaly AND causal inconsistency)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Mock: two-factor alert fires only when both M7 threshold exceeded AND M9 consistency low; compare FP rate vs single-factor",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-18"
     },
     {
       "id": "Q085",
@@ -255,12 +256,13 @@
       "type": "build",
       "track": "T5",
       "title": "M9 online concept drift alarm: extend online_delta_gs_monitor with causal consistency score",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Extend online_delta_gs_monitor.py: add M9 consistency window; alarm fires when M9 drops AND delta_gs spikes; test on mock injected drift",
       "created": "2026-03-15",
-      "due": null
+      "due": null,
+      "completed": "2026-03-18"
     },
     {
       "id": "Q113",
