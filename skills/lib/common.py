@@ -12,6 +12,19 @@ import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+
+def _load_env_file(path: Path) -> None:
+    """Load KEY=VALUE lines from a .env file into os.environ (no overwrite)."""
+    if not path.exists():
+        return
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        if '=' in line:
+            k, v = line.split('=', 1)
+            os.environ.setdefault(k.strip(), v.strip())
+
 # ── Timezone ──
 TZ = timezone(timedelta(hours=8), name='Asia/Taipei')
 
@@ -23,14 +36,16 @@ SECRETS   = WORKSPACE / 'secrets'
 SCRIPTS   = WORKSPACE / 'skills' / 'leo-diary' / 'scripts'
 
 
-# --- External Service Config (centralized, not hardcoded in scripts) ---
-CAL_ID = os.environ.get('OPENCLAW_CAL_ID', 'leonardofoohy@gmail.com')
-SHEET_ID = os.environ.get('OPENCLAW_SHEET_ID', '1CRY53JyLUXdRNDtHRCJwbPMZBo7Azhpowl15-3UigWg')
+# --- External Service Config (loaded from secrets/services.env, no hardcoded IDs) ---
+_load_env_file(SECRETS / 'services.env')
+
+CAL_ID = os.environ.get('OPENCLAW_CAL_ID', '')
+SHEET_ID = os.environ.get('OPENCLAW_SHEET_ID', '')
 DISCORD_BOT_IDS = {
-    "lab": os.environ.get('OPENCLAW_DISCORD_BOT_LAB', '1476497627490025644'),
-    "mac": os.environ.get('OPENCLAW_DISCORD_BOT_MAC', '1473210706567495730'),
+    "lab": os.environ.get('OPENCLAW_DISCORD_BOT_LAB', ''),
+    "mac": os.environ.get('OPENCLAW_DISCORD_BOT_MAC', ''),
 }
-DISCORD_BOT_SYNC_CHANNEL = os.environ.get('OPENCLAW_DISCORD_CHANNEL', '1476624495702966506')
+DISCORD_BOT_SYNC_CHANNEL = os.environ.get('OPENCLAW_DISCORD_CHANNEL', '')
 
 
 # ── Time helpers ──
