@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "created": "2026-03-18T17:24:26.230417+00:00",
+  "pipeline_name": "feed-pipeline-upgrade",
+  "tasks": {
+    "collect-sources": {
+      "status": "completed",
+      "model": "claude-sonnet-4-20250514",
+      "timeout": 300,
+      "retries": 3,
+      "retry_count": 0,
+      "artifacts": [
+        "SESSION-STATE.md",
+        "conftest.py",
+        "manifest.lock",
+        "IDENTITY.md",
+        "pyproject.toml",
+        "HEARTBEAT.md",
+        "MEMORY.md",
+        ".gitignore",
+        "SYNC_PROTOCOL.md",
+        "BOT_RULES.md",
+        "USER.md",
+        "GROWTH.md",
+        "SOUL.md",
+        "COMPLETED.txt",
+        "AGENTS.md",
+        "PROACTIVE.md",
+        "CLAUDE.md",
+        "TOOLS.md"
+      ],
+      "workdir": "/Users/leonardo/.openclaw/workspace/.worktrees/collect-sources",
+      "started_at": "2026-03-18T17:25:23.037955+00:00",
+      "completed_at": "2026-03-18T17:30:27.108649+00:00",
+      "error": null,
+      "session_id": "91945",
+      "prompt": "# Upgrade Feed Collection \u2014 Add Alignment Forum + arXiv + LessWrong\n\nRead existing feed system:\n- skills/feed-recommend/scripts/feed.py\n- skills/feed-recommend/scripts/feed_engine.py\n- skills/feed-recommend/SKILL.md (if exists)\n- memory/feeds/config.json\n- memory/hn/candidates/ (example format)\n\nCreate skills/feed-recommend/scripts/source_alignment_forum.py:\n- Fetch recent posts from Alignment Forum (https://www.alignmentforum.org)\n- Use their GraphQL API or RSS feed (https://www.alignmentforum.org/feed.xml)\n- Extract: title, author, url, date, score/karma, summary (first 200 chars)\n- Output JSONL to stdout (same schema as HN candidates)\n- Support --since YYYY-MM-DD flag\n- Support --limit N flag (default 20)\n\nCreate skills/feed-recommend/scripts/source_lesswrong.py:\n- Same as above but for LessWrong (https://www.lesswrong.com/feed.xml)\n- Filter for AI-related posts (tag-based if available)\n\nCreate skills/feed-recommend/scripts/source_arxiv.py:\n- Search arXiv for recent papers in: cs.AI, cs.CL, cs.LG, cs.SD\n- Use arXiv API (http://export.arxiv.org/api/query)\n- Keywords: 'interpretability', 'mechanistic', 'safety', 'alignment', 'speech', 'audio', 'SAE', 'sparse autoencoder'\n- Output same JSONL schema\n- Support --days N (default 3), --max-results N (default 30)\n\nCreate tests for all three: skills/feed-recommend/scripts/test_sources.py\n- Mock HTTP responses, test parsing, test JSONL output format\n- At least 3 tests per source\n\nRun tests to verify.",
+      "depends_on": []
+    },
+    "smart-scorer": {
+      "status": "completed",
+      "model": "claude-sonnet-4-20250514",
+      "timeout": 300,
+      "retries": 3,
+      "retry_count": 0,
+      "artifacts": [
+        "SESSION-STATE.md",
+        "conftest.py",
+        "manifest.lock",
+        "IDENTITY.md",
+        "pyproject.toml",
+        "HEARTBEAT.md",
+        "MEMORY.md",
+        ".gitignore",
+        "SYNC_PROTOCOL.md",
+        "BOT_RULES.md",
+        "USER.md",
+        "GROWTH.md",
+        "SOUL.md",
+        "COMPLETED.txt",
+        "AGENTS.md",
+        "PROACTIVE.md",
+        "CLAUDE.md",
+        "TOOLS.md"
+      ],
+      "workdir": "/Users/leonardo/.openclaw/workspace/.worktrees/smart-scorer",
+      "started_at": "2026-03-18T17:25:23.185699+00:00",
+      "completed_at": "2026-03-18T17:29:41.568257+00:00",
+      "error": null,
+      "session_id": "91949",
+      "prompt": "# Build Smart Relevance Scorer\n\nRead existing scoring:\n- skills/feed-recommend/scripts/feed_engine.py (current scoring logic)\n- skills/feed-recommend/scripts/quality_scorer.py\n- memory/feeds/preferences.json (Leo's interest profile)\n\nCreate skills/feed-recommend/scripts/smart_scorer.py:\n- Takes JSONL candidates from stdin or --input file\n- Scores each item 1-10 on relevance to Leo's research interests:\n  * Primary (weight 3x): mechanistic interpretability, SAE, speech/audio ML, AI safety, alignment\n  * Secondary (weight 2x): LLM internals, transformer architecture, probing, evaluation methods\n  * Tertiary (weight 1x): Python tooling, research methodology, open source AI, ML engineering\n- Scoring method: keyword matching + title/summary analysis (no LLM API call \u2014 fast & free)\n- Deduplicates against memory/feeds/seen.jsonl (by URL)\n- Outputs scored + sorted JSONL to stdout\n- Support --top N (default 10) to output only top N\n- Support --min-score N (default 3) to filter low-relevance\n\nCreate skills/feed-recommend/scripts/test_smart_scorer.py (5+ tests)\nRun tests.",
+      "depends_on": []
+    },
+    "digest-formatter": {
+      "status": "failed",
+      "model": "claude-sonnet-4-20250514",
+      "timeout": 300,
+      "retries": 3,
+      "retry_count": 0,
+      "artifacts": [],
+      "workdir": "/Users/leonardo/.openclaw/workspace/.worktrees/digest-formatter",
+      "started_at": "2026-03-18T17:30:27.566040+00:00",
+      "completed_at": "2026-03-18T17:35:32.006410+00:00",
+      "error": "Timeout after 300s",
+      "session_id": "92623",
+      "prompt": "# Build Digest Formatter + Delivery\n\nRead existing:\n- skills/feed-recommend/scripts/feed.py (current digest format)\n- memory/hn/candidates/2026-03-18.jsonl (example data)\n\nCreate skills/feed-recommend/scripts/digest_formatter.py:\n- Takes scored JSONL from stdin or --input file\n- Groups items by category:\n  * \ud83d\udd2c AI Safety & Alignment\n  * \ud83e\udde0 Interpretability & Mechanistic\n  * \ud83d\udd0a Speech & Audio ML\n  * \ud83d\udee0\ufe0f Engineering & Tools\n  * \ud83c\udf36\ufe0f General Interest\n- Formats as Discord-friendly markdown (no tables, use bullets)\n- Each item: title (linked), score badge, 1-line summary, source tag [HN|AF|LW|arXiv]\n- Header: date + total candidates scanned + top N selected\n- Support --format discord (default) | --format email | --format json\n\nCreate skills/feed-recommend/scripts/daily_feed_pipeline.sh:\n- End-to-end pipeline script that:\n  1. Collects from all sources (HN candidates + AF + LW + arXiv) in parallel\n  2. Merges all JSONL into one stream\n  3. Pipes through smart_scorer.py --top 10\n  4. Pipes through digest_formatter.py --format discord\n  5. Saves digest to memory/feeds/digests/YYYY-MM-DD.json\n  6. Marks seen URLs in memory/feeds/seen.jsonl\n  7. Outputs formatted digest to stdout\n- Make it executable (chmod +x)\n- Support --dry-run (collect + score but don't mark seen)\n- Support --send-discord (sends to Leo DM via openclaw system event)\n\nCreate tests: skills/feed-recommend/scripts/test_digest_formatter.py (5+ tests)\nRun tests.",
+      "depends_on": [
+        "smart-scorer"
+      ]
+    },
+    "update-cron": {
+      "status": "completed",
+      "model": "claude-sonnet-4-20250514",
+      "timeout": 300,
+      "retries": 3,
+      "retry_count": 0,
+      "artifacts": [
+        "SESSION-STATE.md",
+        "conftest.py",
+        "manifest.lock",
+        "IDENTITY.md",
+        "pyproject.toml",
+        "HEARTBEAT.md",
+        "MEMORY.md",
+        ".gitignore",
+        "SYNC_PROTOCOL.md",
+        "BOT_RULES.md",
+        "USER.md",
+        "GROWTH.md",
+        "SOUL.md",
+        "COMPLETED.txt",
+        "AGENTS.md",
+        "PROACTIVE.md",
+        "CLAUDE.md",
+        "TOOLS.md"
+      ],
+      "workdir": "/Users/leonardo/.openclaw/workspace/.worktrees/update-cron",
+      "started_at": "2026-03-18T17:35:32.261754+00:00",
+      "completed_at": "2026-03-18T17:38:06.106480+00:00",
+      "error": null,
+      "session_id": "93002",
+      "prompt": "# Update Cron for New Feed Pipeline\n\nRead:\n- skills/feed-recommend/scripts/daily_feed_pipeline.sh (just created by previous CC)\n- Current cron setup: check 'openclaw cron list' output\n\nUpdate the existing HN daily digest cron job to use the new pipeline:\n1. Run: openclaw cron list \u2014 find the HN digest job\n2. If it exists on this machine (Mac), update it to run daily_feed_pipeline.sh\n3. If it only exists on Lab, create a note in memory/2026-03-19.md about updating Lab cron\n\nAlso update skills/feed-recommend/SKILL.md:\n- Document the new multi-source pipeline\n- List all scripts and their roles\n- Add quick-start: how to run manually\n- Add cron setup instructions\n\nDo NOT actually send any Discord messages or run the pipeline \u2014 just set up the cron and docs.",
+      "depends_on": [
+        "digest-formatter"
+      ]
+    }
+  },
+  "waves": [
+    [
+      "collect-sources",
+      "smart-scorer"
+    ],
+    [
+      "digest-formatter"
+    ],
+    [
+      "update-cron"
+    ]
+  ]
+}
