@@ -119,12 +119,15 @@ def cmd_recommend(args: argparse.Namespace) -> None:
         json.dump(result, sys.stdout)
         return
 
+    # Enrich snippets BEFORE scoring so keyword matching benefits
+    engine.enrich_articles(articles)
+
     profile = engine.load_profile(cfg)
     threshold = cfg.get('dedup', {}).get('title_similarity_threshold', 0.85)
+    min_per_src = cfg.get('diversity', {}).get('min_per_source', 2)
     scored = engine.recommend(articles, profile, limit=args.limit,
-                              title_threshold=threshold)
-
-    engine.enrich_snippets(scored)
+                              title_threshold=threshold,
+                              min_per_source=min_per_src)
 
     output = {
         'total_fetched': len(articles),

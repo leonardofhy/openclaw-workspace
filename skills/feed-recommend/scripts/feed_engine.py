@@ -179,17 +179,43 @@ def _fetch_snippet(url: str, timeout: int = 10) -> str:
 
 def enrich_snippets(articles: list['ScoredArticle'], max_workers: int = 5,
                     timeout: int = 10) -> None:
-    """Fetch snippets for articles with empty snippet fields (in-place)."""
-    to_enrich = [(i, sa) for i, sa in enumerate(articles) if not sa.article.snippet]
+    """Fetch snippets for ScoredArticles with empty snippet fields (in-place)."""
+    _enrich_snippet_list(
+        items=articles,
+        get_article=lambda sa: sa.article,
+        max_workers=max_workers,
+        timeout=timeout,
+    )
+
+
+def enrich_articles(articles: list[Article], max_workers: int = 5,
+                    timeout: int = 10) -> None:
+    """Fetch snippets for raw Articles with empty snippet fields (in-place).
+
+    Call this BEFORE scoring so that keyword matching benefits from snippets.
+    """
+    _enrich_snippet_list(
+        items=articles,
+        get_article=lambda a: a,
+        max_workers=max_workers,
+        timeout=timeout,
+    )
+
+
+def _enrich_snippet_list(items, get_article, max_workers: int = 5,
+                         timeout: int = 10) -> None:
+    """Generic snippet enrichment for any list of items containing Articles."""
+    to_enrich = [(i, item) for i, item in enumerate(items)
+                 if not get_article(item).snippet]
     if not to_enrich:
         return
 
     print(f"Enriching {len(to_enrich)} snippets...", file=sys.stderr)
 
-    def _do_fetch(item):
-        idx, sa = item
+    def _do_fetch(entry):
+        idx, item = entry
         try:
-            snippet = _fetch_snippet(sa.article.url, timeout=timeout)
+            snippet = _fetch_snippet(get_article(item).url, timeout=timeout)
             return idx, snippet
         except Exception:
             return idx, ""
@@ -197,7 +223,7 @@ def enrich_snippets(articles: list['ScoredArticle'], max_workers: int = 5,
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         for idx, snippet in executor.map(_do_fetch, to_enrich):
             if snippet:
-                articles[idx].article.snippet = snippet
+                get_article(items[idx]).snippet = snippet
 
 
 # ── Scoring ──────────────────────────────────────────────────────
@@ -426,12 +452,51 @@ def dedup(articles: list[Article], seen_path: str | None = None,
 
 def recommend(articles: list[Article], profile: dict,
               limit: int = 10, seen_path: str | None = None,
-              title_threshold: float = 0.85) -> list[ScoredArticle]:
-    """Full pipeline: dedup → score → rank → top-N."""
+              title_threshold: float = 0.85,
+              min_per_source: int = 2) -> list[ScoredArticle]:
+    """Full pipeline: dedup → score → rank → top-N with source diversity.
+
+    Guarantees at least `min_per_source` articles from each source that
+    has enough candidates, then fills remaining slots by score.
+    """
     deduped = dedup(articles, seen_path=seen_path, title_threshold=title_threshold)
     scored = score_articles(deduped, profile)
     scored.sort(key=lambda x: x.interest_score, reverse=True)
-    return scored[:limit]
+
+    if min_per_source <= 0:
+        return scored[:limit]
+
+    # Group by source
+    by_source: dict[str, list[ScoredArticle]] = {}
+    for sa in scored:
+        by_source.setdefault(sa.article.source, []).append(sa)
+
+    selected: list[ScoredArticle] = []
+    selected_uids: set[str] = set()
+
+    # Phase 1: guarantee min_per_source from each source (best of each)
+    for source, items in by_source.items():
+        for sa in items[:min_per_source]:
+            uid = sa.article.uid()
+            if uid not in selected_uids:
+                selected.append(sa)
+                selected_uids.add(uid)
+
+    # Phase 2: fill remaining slots by global score
+    remaining = limit - len(selected)
+    if remaining > 0:
+        for sa in scored:
+            uid = sa.article.uid()
+            if uid not in selected_uids:
+                selected.append(sa)
+                selected_uids.add(uid)
+                remaining -= 1
+                if remaining <= 0:
+                    break
+
+    # Sort final selection by score descending
+    selected.sort(key=lambda x: x.interest_score, reverse=True)
+    return selected
 
 
 # ── Seen / Feedback ──────────────────────────────────────────────
