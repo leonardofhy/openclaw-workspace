@@ -55,10 +55,32 @@ def cleanup_worktree(task_id: str) -> None:
         pass  # Branch already gone
 
 
+def commit_worktree(task_id: str) -> bool:
+    """Stage and commit all changes in a worktree. Returns True if there were changes."""
+    wt_path = WORKTREES_DIR / task_id
+    if not wt_path.exists():
+        return False
+
+    # Check if there are any changes to commit
+    status = _git("status", "--porcelain", cwd=wt_path)
+    if not status.strip():
+        return False
+
+    _git("add", "-A", cwd=wt_path)
+    _git("commit", "-m", f"orchestrator: {task_id} artifacts", cwd=wt_path)
+    return True
+
+
 def merge_worktree(task_id: str) -> str:
-    """Merge a task's branch into the current branch. Returns merge output."""
+    """Commit worktree changes, then merge into current branch. Returns merge output."""
     branch = f"orchestrator/{task_id}"
-    return _git("merge", branch, "--no-edit", f"-m", f"merge: orchestrator/{task_id}")
+
+    # Critical: commit any uncommitted work in the worktree first
+    had_changes = commit_worktree(task_id)
+    if not had_changes:
+        return f"No changes to merge for {task_id}"
+
+    return _git("merge", branch, "--no-edit", "-m", f"merge: orchestrator/{task_id}")
 
 
 def cleanup_all() -> None:

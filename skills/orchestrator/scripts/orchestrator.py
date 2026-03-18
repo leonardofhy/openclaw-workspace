@@ -56,7 +56,8 @@ def _spawn_cc(task_id: str, task: dict, workdir: Path) -> subprocess.Popen:
 
 Working directory: {workdir}
 Output artifacts to this directory.
-When done, create a file COMPLETED.txt with summary.
+IMPORTANT: When done, run `git add -A && git commit -m 'done: {task_id}'` to persist your work.
+Then create a file COMPLETED.txt with summary.
 On error, create FAILED.txt with error details.
 """
 
@@ -219,11 +220,11 @@ def cmd_run(args: argparse.Namespace) -> None:
                 completion = _check_completion(wt_path)
 
                 if completion == "completed" or (retcode is not None and retcode == 0):
-                    # Collect artifacts
+                    # Collect artifacts (recursive, skip .git)
                     artifacts = [
                         str(f.relative_to(wt_path))
-                        for f in wt_path.iterdir()
-                        if f.is_file() and f.name not in (".git",)
+                        for f in wt_path.rglob("*")
+                        if f.is_file() and ".git" not in f.parts
                     ]
                     mf.update_status(m, tid, "completed", artifacts=artifacts)
                     mf.save(path, m)
