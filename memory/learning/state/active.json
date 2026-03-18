@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 221,
     "total_skips": 43,
-    "papers_read_deep": 55,
+    "papers_read_deep": 56,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 471,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260318-1145",
+    "id": "c-20260318-1215",
     "action": "learn",
-    "summary": "Deep read Zhao et al. 2601.03115: causal emotion-sensitive neurons (ESNs) in LALMs; contrast selector = AND-gate proxy; gc peak ≈ ESN cluster layer hypothesis; extend Q118 mock with contrast selector comparison"
+    "summary": "Design doc: gc(k) safety signature audit \u2014 safety-bypassed model detection via AND-gate fraction + M9 profile divergence on safety-critical audio prompts (Q095 done)"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

@@ -119,12 +119,13 @@
       "type": "design",
       "track": "T5",
       "title": "OBLITERATUS x T5: gc(k) safety signature audit — detect safety-bypassed audio-LLMs via M7+M9 profile divergence",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: safety-bypassed model shows different gc(k) + M9 profile on safety-critical audio prompts vs normal model",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-18"
     },
     {
       "id": "Q096",
