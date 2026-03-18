@@ -2,11 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-<<<<<<< HEAD
-> 最後更新：2026-03-13 04:30
-=======
 > 最後更新：2026-03-13 11:30
->>>>>>> origin/macbook-m3
 
 ## 規則
 
