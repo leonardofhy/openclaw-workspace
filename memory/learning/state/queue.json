@@ -293,6 +293,18 @@
       "definition_of_done": "jacobian_incrimination_mock.py: mock Jacobian SVD per layer; cosine-sim between top-incriminated features and top singular vector",
       "created": "2026-03-18",
       "due": null
+    },
+    {
+      "id": "Q123",
+      "type": "design",
+      "track": "T3",
+      "title": "FAD bias x RAVEL Cause/Isolate: text-predictable phonemes = high Cause/low Isolate (feature entanglement test)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc + mock showing FAD-biased phonemes have high Cause but low Isolate score",
+      "created": "2026-03-18",
+      "due": null
     }
   ],
   "archived_count": 76,
