@@ -124,6 +124,8 @@ def cmd_recommend(args: argparse.Namespace) -> None:
     scored = engine.recommend(articles, profile, limit=args.limit,
                               title_threshold=threshold)
 
+    engine.enrich_snippets(scored)
+
     output = {
         'total_fetched': len(articles),
         'recommended': len(scored),

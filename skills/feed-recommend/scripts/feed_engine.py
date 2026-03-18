@@ -6,11 +6,15 @@ Zero external dependencies — stdlib only.
 
 import json
 import os
+import re
 import sys
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 from datetime import datetime, timezone, timedelta
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.request import urlopen, Request
+from urllib.error import URLError
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'shared'))
 from jsonl_store import find_workspace
@@ -117,6 +121,83 @@ def fetch_all(sources: list[BaseSource], limit_per_source: int = 20,
                 print(f"  {source.name}: ERROR {msg}", file=sys.stderr)
 
     return articles, errors
+
+
+# ── Snippet Enrichment ───────────────────────────────────────────
+
+class _MetaDescriptionParser(HTMLParser):
+    """Extract meta description or first <p> content from HTML."""
+
+    def __init__(self):
+        super().__init__()
+        self.description = ""
+        self._in_p = False
+        self._first_p = ""
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'meta':
+            attrs_dict = dict(attrs)
+            name = attrs_dict.get('name', '').lower()
+            prop = attrs_dict.get('property', '').lower()
+            if name in ('description', 'og:description') or prop == 'og:description':
+                content = attrs_dict.get('content', '').strip()
+                if content and not self.description:
+                    self.description = content
+        if tag == 'p' and not self._first_p:
+            self._in_p = True
+
+    def handle_endtag(self, tag):
+        if tag == 'p' and self._in_p:
+            self._in_p = False
+
+    def handle_data(self, data):
+        if self._in_p and not self._first_p:
+            text = data.strip()
+            if len(text) > 30:
+                self._first_p = text
+
+
+def _fetch_snippet(url: str, timeout: int = 10) -> str:
+    """Fetch a URL and extract a text snippet (~200 chars)."""
+    req = Request(url, headers={'User-Agent': 'Mozilla/5.0 (compatible; FeedBot/1.0)'})
+    with urlopen(req, timeout=timeout) as resp:
+        # Read limited amount to avoid huge pages
+        html = resp.read(64 * 1024).decode('utf-8', errors='replace')
+
+    parser = _MetaDescriptionParser()
+    parser.feed(html)
+
+    text = parser.description or parser._first_p
+    if not text:
+        return ""
+    # Clean up whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+    if len(text) > 200:
+        text = text[:197] + "..."
+    return text
+
+
+def enrich_snippets(articles: list['ScoredArticle'], max_workers: int = 5,
+                    timeout: int = 10) -> None:
+    """Fetch snippets for articles with empty snippet fields (in-place)."""
+    to_enrich = [(i, sa) for i, sa in enumerate(articles) if not sa.article.snippet]
+    if not to_enrich:
+        return
+
+    print(f"Enriching {len(to_enrich)} snippets...", file=sys.stderr)
+
+    def _do_fetch(item):
+        idx, sa = item
+        try:
+            snippet = _fetch_snippet(sa.article.url, timeout=timeout)
+            return idx, snippet
+        except Exception:
+            return idx, ""
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        for idx, snippet in executor.map(_do_fetch, to_enrich):
+            if snippet:
+                articles[idx].article.snippet = snippet
 
 
 # ── Scoring ──────────────────────────────────────────────────────
