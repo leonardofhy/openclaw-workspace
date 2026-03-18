@@ -21,6 +21,10 @@ _DESC_RE = re.compile(
     r'<description><!\[CDATA\[(.*?)\]\]></description>|<description>(.*?)</description>',
     re.DOTALL,
 )
+_CATEGORY_RE = re.compile(
+    r'<category><!\[CDATA\[(.*?)\]\]></category>|<category>(.*?)</category>',
+    re.DOTALL,
+)
 
 
 def _fetch_url(url: str, max_bytes: int = 500_000) -> str | None:
@@ -58,6 +62,13 @@ def _parse_rss(raw: str, limit: int, source_name: str) -> list[Article]:
             # Strip HTML tags for snippet
             snippet = re.sub(r'<[^>]+>', '', raw_desc)[:200]
 
+        # Extract tags from <category> elements
+        tags = ["alignment"]  # AF posts are always alignment-related
+        for cat_match in _CATEGORY_RE.finditer(block):
+            cat = (cat_match.group(1) or cat_match.group(2) or '').strip()
+            if cat and cat.lower() not in [t.lower() for t in tags]:
+                tags.append(cat)
+
         if title and link:
             articles.append(Article(
                 source=source_name,
@@ -67,6 +78,7 @@ def _parse_rss(raw: str, limit: int, source_name: str) -> list[Article]:
                 posted=pub_date,
                 snippet=snippet,
                 source_id=link,  # use URL as ID for RSS sources
+                tags=tags,
             ))
     return articles
 

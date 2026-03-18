@@ -47,19 +47,19 @@ SAMPLE_PROFILE = {
     "min_hn_score": 20,
 }
 
-SAMPLE_HN_TOPSTORIES = json.dumps([1, 2, 3, 4, 5])
-SAMPLE_HN_ITEM = json.dumps({
-    "id": 1, "type": "story", "title": "LLM Interpretability Breakthrough",
-    "url": "https://arxiv.org/abs/2026.12345", "score": 250,
-    "descendants": 120, "by": "researcher", "time": 1710700000,
-})
-SAMPLE_HN_ITEM_2 = json.dumps({
-    "id": 2, "type": "story", "title": "Crypto Exchange Launches",
-    "url": "https://crypto.example.com", "score": 500,
-    "descendants": 300, "by": "trader", "time": 1710700000,
-})
-SAMPLE_HN_ITEM_COMMENT = json.dumps({
-    "id": 3, "type": "comment", "text": "Great post!",
+SAMPLE_HN_ALGOLIA = json.dumps({
+    "hits": [
+        {
+            "objectID": "1", "title": "LLM Interpretability Breakthrough",
+            "url": "https://arxiv.org/abs/2026.12345", "points": 250,
+            "num_comments": 120, "author": "researcher", "created_at_i": 1710700000,
+        },
+        {
+            "objectID": "2", "title": "Crypto Exchange Launches",
+            "url": "https://crypto.example.com", "points": 500,
+            "num_comments": 300, "author": "trader", "created_at_i": 1710700000,
+        },
+    ],
 })
 
 SAMPLE_AF_RSS = """<?xml version="1.0" encoding="UTF-8"?>
@@ -170,21 +170,18 @@ class TestHNSource(unittest.TestCase):
 
     @patch('sources.hn._fetch_url')
     def test_fetch_parses_stories(self, mock_fetch):
-        mock_fetch.side_effect = [
-            SAMPLE_HN_TOPSTORIES,
-            SAMPLE_HN_ITEM,
-            SAMPLE_HN_ITEM_2,
-            SAMPLE_HN_ITEM_COMMENT,  # should be skipped
-            None,  # fetch failure
-            None,
-        ]
+        mock_fetch.return_value = SAMPLE_HN_ALGOLIA
         from sources.hn import HackerNewsSource
         src = HackerNewsSource()
-        articles = src.fetch(limit=5)
+        articles = src.fetch(limit=50)
         self.assertEqual(len(articles), 2)
         self.assertEqual(articles[0].source, "hn")
         self.assertEqual(articles[0].title, "LLM Interpretability Breakthrough")
         self.assertEqual(articles[0].score, 250)
+        self.assertEqual(articles[0].author, "researcher")
+        self.assertEqual(articles[0].comments, 120)
+        # Tags should include domain-based tag
+        self.assertTrue(len(articles[0].tags) > 0)
 
     @patch('sources.hn._fetch_url')
     def test_fetch_handles_empty(self, mock_fetch):

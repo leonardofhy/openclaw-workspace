@@ -85,12 +85,14 @@ def cmd_fetch(args: argparse.Namespace) -> None:
             sys.exit(1)
 
     print(f"Fetching from {len(sources)} source(s)...", file=sys.stderr)
-    articles = engine.fetch_all(sources, limit_per_source=args.limit, config=cfg)
+    articles, errors = engine.fetch_all(sources, limit_per_source=args.limit, config=cfg)
 
     output = {
         'total': len(articles),
         'articles': [a.to_dict() for a in articles],
     }
+    if errors:
+        output['errors'] = errors
     json.dump(output, sys.stdout, ensure_ascii=False, indent=2)
     print()
 
@@ -107,11 +109,14 @@ def cmd_recommend(args: argparse.Namespace) -> None:
             sys.exit(1)
 
     print(f"Fetching from {len(sources)} source(s)...", file=sys.stderr)
-    articles = engine.fetch_all(sources, config=cfg)
+    articles, fetch_errors = engine.fetch_all(sources, config=cfg)
 
     if not articles:
         print("No articles fetched", file=sys.stderr)
-        json.dump({"items": [], "error": "no_articles"}, sys.stdout)
+        result = {"items": [], "error": "no_articles"}
+        if fetch_errors:
+            result['errors'] = fetch_errors
+        json.dump(result, sys.stdout)
         return
 
     profile = engine.load_profile(cfg)
@@ -124,6 +129,8 @@ def cmd_recommend(args: argparse.Namespace) -> None:
         'recommended': len(scored),
         'items': [s.to_dict() for s in scored],
     }
+    if fetch_errors:
+        output['errors'] = fetch_errors
     json.dump(output, sys.stdout, ensure_ascii=False, indent=2)
     print()
     print(f"Recommended: {len(scored)} articles from {len(articles)} fetched", file=sys.stderr)

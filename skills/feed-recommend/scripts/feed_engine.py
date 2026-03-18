@@ -8,6 +8,7 @@ import json
 import os
 import sys
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -74,22 +75,48 @@ def get_all_sources() -> dict[str, type[BaseSource]]:
 
 # ── Fetching ─────────────────────────────────────────────────────
 
+_FETCH_TIMEOUT = 15  # seconds per source
+
+
+def _fetch_one(source: BaseSource, limit: int) -> list[Article]:
+    """Fetch from a single source (called in a thread)."""
+    return source.fetch(limit=limit)
+
+
 def fetch_all(sources: list[BaseSource], limit_per_source: int = 20,
-              config: dict | None = None) -> list[Article]:
-    """Fetch articles from all sources. Per-source limit from config if available."""
+              config: dict | None = None) -> tuple[list[Article], list[dict]]:
+    """Fetch articles from all sources concurrently with per-source timeout.
+
+    Returns (articles, errors) where errors is a list of
+    {"source": name, "error": message} dicts.
+    """
     articles = []
+    errors = []
     src_cfg = (config or {}).get('sources', {})
 
-    for source in sources:
-        limit = src_cfg.get(source.name, {}).get('limit', limit_per_source)
-        try:
-            fetched = source.fetch(limit=limit)
-            articles.extend(fetched)
-            print(f"  {source.name}: {len(fetched)} articles", file=sys.stderr)
-        except Exception as e:
-            print(f"  {source.name}: ERROR {e}", file=sys.stderr)
+    with ThreadPoolExecutor(max_workers=len(sources) or 1) as executor:
+        futures = {}
+        for source in sources:
+            limit = src_cfg.get(source.name, {}).get('limit', limit_per_source)
+            future = executor.submit(_fetch_one, source, limit)
+            futures[future] = source
 
-    return articles
+        for future in futures:
+            source = futures[future]
+            try:
+                fetched = future.result(timeout=_FETCH_TIMEOUT)
+                articles.extend(fetched)
+                print(f"  {source.name}: {len(fetched)} articles", file=sys.stderr)
+            except FuturesTimeoutError:
+                msg = f"Timeout after {_FETCH_TIMEOUT}s"
+                errors.append({"source": source.name, "error": msg})
+                print(f"  {source.name}: ERROR {msg}", file=sys.stderr)
+            except Exception as e:
+                msg = f"{type(e).__name__}: {e}"
+                errors.append({"source": source.name, "error": msg})
+                print(f"  {source.name}: ERROR {msg}", file=sys.stderr)
+
+    return articles, errors
 
 
 # ── Scoring ──────────────────────────────────────────────────────
@@ -117,6 +144,36 @@ def load_profile(config: dict | None = None) -> dict:
     return {}
 
 
+def _parse_posted_age_hours(posted: str) -> float | None:
+    """Try to parse article posted time and return age in hours. None if unparseable."""
+    if not posted:
+        return None
+    now = datetime.now(timezone.utc)
+    # Try unix timestamp (HN style)
+    try:
+        ts = int(posted)
+        dt = datetime.fromtimestamp(ts, tz=timezone.utc)
+        return (now - dt).total_seconds() / 3600
+    except (ValueError, OSError):
+        pass
+    # Try ISO format
+    try:
+        dt = datetime.fromisoformat(posted)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return (now - dt).total_seconds() / 3600
+    except ValueError:
+        pass
+    # Try RFC 2822 (RSS style)
+    try:
+        from email.utils import parsedate_to_datetime
+        dt = parsedate_to_datetime(posted)
+        return (now - dt).total_seconds() / 3600
+    except (ValueError, TypeError):
+        pass
+    return None
+
+
 def score_article(article: Article, profile: dict) -> float:
     """Score an article based on interest profile. Higher = more relevant."""
     text = f"{article.title} {article.url} {article.snippet}".lower()
@@ -130,6 +187,19 @@ def score_article(article: Article, profile: dict) -> float:
     for kw, weight in profile.get('penalty_keywords', {}).items():
         if kw.lower() in text:
             score += weight  # already negative
+
+    # Tag-based scoring: match article tags against profile boost_keywords
+    boost_kw = profile.get('boost_keywords', {})
+    if boost_kw and article.tags:
+        boost_kw_lower = {k.lower() for k in boost_kw}
+        matched = sum(1 for tag in article.tags if tag.lower() in boost_kw_lower)
+        score += matched  # +1 per matching tag
+
+    # Tag-based scoring: match article tags against profile interest_topics
+    interest_topics = {t.lower() for t in profile.get('interest_topics', [])}
+    if interest_topics and article.tags:
+        matched = sum(1 for tag in article.tags if tag.lower() in interest_topics)
+        score += matched * 2
 
     # Score-based bonus (HN points, etc.)
     pts = article.score
@@ -159,6 +229,22 @@ def score_article(article: Article, profile: dict) -> float:
         if domain in url_lower:
             score += boost
             break
+
+    # Recency bonus
+    age_hours = _parse_posted_age_hours(article.posted)
+    if age_hours is not None:
+        if age_hours <= 24:
+            score += 2
+        elif age_hours <= 48:
+            score += 1
+
+    # Source reputation bonus
+    source_reputation = {
+        'arxiv': 1,
+        'af': 1.5,
+        'lw': 0.5,
+    }
+    score += source_reputation.get(article.source, 0)
 
     return round(score, 1)
 

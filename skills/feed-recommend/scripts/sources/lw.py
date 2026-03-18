@@ -21,6 +21,10 @@ _DESC_RE = re.compile(
     r'<description><!\[CDATA\[(.*?)\]\]></description>|<description>(.*?)</description>',
     re.DOTALL,
 )
+_CATEGORY_RE = re.compile(
+    r'<category><!\[CDATA\[(.*?)\]\]></category>|<category>(.*?)</category>',
+    re.DOTALL,
+)
 
 
 def _fetch_url(url: str, max_bytes: int = 500_000) -> str | None:
@@ -65,6 +69,13 @@ class LessWrongSource(BaseSource):
                 raw_desc = (desc.group(1) or desc.group(2) or '').strip()
                 snippet = re.sub(r'<[^>]+>', '', raw_desc)[:200]
 
+            # Extract tags from <category> elements
+            tags = ["rationality"]  # LW posts are rationality-adjacent
+            for cat_match in _CATEGORY_RE.finditer(block):
+                cat = (cat_match.group(1) or cat_match.group(2) or '').strip()
+                if cat and cat.lower() not in [t.lower() for t in tags]:
+                    tags.append(cat)
+
             if title and link:
                 articles.append(Article(
                     source="lw",
@@ -74,5 +85,6 @@ class LessWrongSource(BaseSource):
                     posted=pub_date,
                     snippet=snippet,
                     source_id=link,
+                    tags=tags,
                 ))
         return articles
