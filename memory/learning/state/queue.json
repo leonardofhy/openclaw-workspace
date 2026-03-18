@@ -43,18 +43,6 @@
       "due": null
     },
     {
-      "id": "Q085",
-      "type": "build",
-      "track": "T3",
-      "title": "Collapse onset step: measure Isolate_in(t) to find decoder step where audio info stops",
-      "status": "ready",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Extend Q069 temporal script: find t* where Isolate_in drops below 0.1; plot; define collapse_onset_step diagnostic",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
       "id": "Q89",
       "title": "Temporal gc(k) × AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
       "type": "build",
@@ -179,18 +167,6 @@
       "due": null
     },
     {
-      "id": "Q111",
-      "type": "design",
-      "track": "T3",
-      "title": "t* backdoor detection: poisoned audio shows leftward t* collapse shift",
-      "status": "ready",
-      "priority": 2,
-      "blocked_by": null,
-      "definition_of_done": "Design doc + mock: synthetic poisoned utterances have t* < 3 vs clean t* > 6; detection protocol using collapse_onset_step diagnostic",
-      "created": "2026-03-15",
-      "due": null
-    },
-    {
       "id": "Q113",
       "type": "design",
       "track": "T3",
@@ -218,7 +194,7 @@
       "id": "Q117",
       "type": "design",
       "track": "T3",
-      "title": "Cascade degree = GSAE graph density: three-metric unification + GCBench metric #9",
+      "title": "Cascade degree = GSAE graph density: three-metric unification + GCBench metric #9 (merged Q119: edge density)",
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
@@ -243,12 +219,14 @@
       "type": "build",
       "track": "T3",
       "title": "GSAE edge density per layer → t* = argmin(density): graph sparsification = collapse",
-      "status": "ready",
+      "status": "archived",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "gsae_density_collapse.py: mock GSAE edge density per layer; verify argmin matches Isolate t*; plot",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "archived_reason": "Merged into Q117 (same GSAE graph density topic)",
+      "archived_date": "2026-03-18"
     },
     {
       "id": "Q120",

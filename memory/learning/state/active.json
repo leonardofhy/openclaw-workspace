@@ -7,7 +7,8 @@
       "eval_harness_exists_T3",
       "experiment_spec_ready_T3",
       "leo_approved_gpu_or_cpu_experiment"
-    ]
+    ],
+    "leo_approved_gpu_or_cpu_experiment": true
   },
   "active_tracks": [
     {
@@ -47,8 +48,9 @@
   "last_cycle": {
     "id": "c-20260318-1315",
     "action": "learn",
-    "summary": "Deep read RAVEL (ACL 2024): argmin(Isolate_audio(t)) \u2248 t* hypothesis; MDAS Isolate/Cause per SAE feature predicts AND/OR gate (links Q107+Q105); next: build ravel_isolate_proxy.py mock tomorrow"
+    "summary": "Deep read RAVEL (ACL 2024): argmin(Isolate_audio(t)) ≈ t* hypothesis; MDAS Isolate/Cause per SAE feature predicts AND/OR gate (links Q107+Q105); next: build ravel_isolate_proxy.py mock tomorrow"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
-  "self_improve_tickets": []
+  "self_improve_tickets": [],
+  "phase_exit_note": "Q001+Q002 completed on MacBook M3 CPU (2026-03-18). Whisper-base voicing geometry + causal ablation."
 }
