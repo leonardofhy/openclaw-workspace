@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 2,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 221,
     "total_skips": 43,
-    "papers_read_deep": 56,
+    "papers_read_deep": 57,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 491,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260318-1315",
+    "id": "c-20260318-1345",
     "action": "learn",
-    "summary": "Deep read RAVEL (ACL 2024): argmin(Isolate_audio(t)) \u2248 t* hypothesis; MDAS Isolate/Cause per SAE feature predicts AND/OR gate (links Q107+Q105); next: build ravel_isolate_proxy.py mock tomorrow"
+    "summary": "Deep read Zhao et al. ESN paper: AND-gate hypothesis for emotion neurons (non-additive amplification = AND-gate signature); ENV-type predicts gate-type (ENV-1=AND, ENV-3=OR); build mock script tomorrow"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
