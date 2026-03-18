@@ -8,6 +8,9 @@
 Autodidact SKILL refactor (Opus CC) — Leo approved plan A+B+C+E
 
 ## Recent Context
+- [01:14] CC#40 Opus (ember-slug) building DAG Orchestrator — skills/orchestrator/ — still running
+- [00:30] All wave 7 CCs done, tests 1441 pass, pushed b7f3391
+- [01:04] Architecture planning: DAG waves + CLAUDE.md + MCP Todoist + git worktree
 - [2026-03-18 21:54] Leo approved autodidact refactor: state cleanup + SKILL merge + phase auto + kg migration
 - [2026-03-18 21:13] D-001 Pathfinder: Leo 已處理。D-002/D-013 尚未處理
 - [2026-03-18 21:13] 智凱哥合作：Leo 已處理，不再提醒
