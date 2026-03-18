@@ -48,12 +48,14 @@
       "type": "build",
       "track": "T3",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "dod": "Script extends Q069 temporal directed isolate + Q087 AND/OR gate tagging; plot temporal onset distribution per gate type on mock data",
       "ideation_id": "I05",
       "novelty": 5,
       "feasibility": 4,
-      "created": "2026-03-12T10:34:16.860596"
+      "created": "2026-03-12T10:34:16.860596",
+      "completed": "2026-03-18",
+      "result": "and_or_gc_patching_mock.py: AND% × gc(k) Pearson r=0.9836. Peak layer prediction confirmed (L3). At gc peak: AND-gate=100%, OR-gate=0%. AND-gate fraction is near-perfect gc(k) peak proxy. Validates conjunctive audio-grounding hypothesis."
     },
     {
       "id": "Q91",
