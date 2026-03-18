@@ -636,5 +636,163 @@ class TestMigration(unittest.TestCase):
             self.assertEqual(count2, 0)  # no new entries on second run
 
 
+# ── Google Sheets Sync Tests ────────────────────────────────────
+
+class TestSheetsSync(unittest.TestCase):
+
+    def setUp(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import sync_to_sheets as sheets
+        self.sheets = sheets
+
+    def test_item_to_row_basic(self):
+        item = {
+            "source": "hn", "title": "Test Article", "url": "https://example.com",
+            "author": "alice", "score": 100, "posted": "2026-03-18",
+            "snippet": "A test snippet", "tags": ["ml", "ai"],
+            "interest_score": 7.5, "suggested_action": "略讀",
+        }
+        row = self.sheets.item_to_row(item)
+        self.assertEqual(len(row), 10)
+        self.assertEqual(row[0], "2026-03-18")  # Date
+        self.assertEqual(row[1], "hn")           # Source
+        self.assertEqual(row[2], "Test Article") # Title
+        self.assertEqual(row[3], "alice")        # Author
+        self.assertEqual(row[4], "100")          # Score
+        self.assertEqual(row[5], "https://example.com")  # URL
+        self.assertEqual(row[6], "A test snippet")       # Summary
+        self.assertEqual(row[7], "ml, ai")       # Tags joined
+        self.assertEqual(row[8], "7.5")          # Relevance Score
+        self.assertEqual(row[9], "略讀")          # Reasoning
+
+    def test_item_to_row_iso_date(self):
+        item = {"posted": "2026-03-18T10:30:00+08:00", "url": "https://x.com"}
+        row = self.sheets.item_to_row(item)
+        self.assertEqual(row[0], "2026-03-18")
+
+    def test_item_to_row_rfc2822_date(self):
+        item = {"posted": "Mon, 18 Mar 2026 10:00:00 GMT", "url": "https://x.com"}
+        row = self.sheets.item_to_row(item)
+        self.assertEqual(row[0], "2026-03-18")
+
+    def test_item_to_row_empty_tags(self):
+        item = {"tags": [], "url": "https://x.com"}
+        row = self.sheets.item_to_row(item)
+        self.assertEqual(row[7], "")
+
+    def test_load_digest_json_recommend_format(self):
+        data = {"total_fetched": 50, "recommended": 3, "items": [
+            {"title": "A", "url": "https://a.com"},
+            {"title": "B", "url": "https://b.com"},
+        ]}
+        items = self.sheets.load_digest_json(data)
+        self.assertEqual(len(items), 2)
+
+    def test_load_digest_json_fetch_format(self):
+        data = {"total": 10, "articles": [{"title": "C", "url": "https://c.com"}]}
+        items = self.sheets.load_digest_json(data)
+        self.assertEqual(len(items), 1)
+
+    def test_load_digest_json_raw_list(self):
+        data = [{"title": "D", "url": "https://d.com"}]
+        items = self.sheets.load_digest_json(data)
+        self.assertEqual(len(items), 1)
+
+    def test_cmd_test_returns_3_items(self):
+        items = self.sheets.cmd_test()
+        self.assertEqual(len(items), 3)
+        for item in items:
+            self.assertIn("[TEST]", item["title"])
+            self.assertIn("url", item)
+            self.assertIn("source", item)
+
+    @patch("sync_to_sheets.gspread")
+    def test_sync_items_dedup(self, mock_gspread):
+        """Test that sync_items skips URLs already in the sheet."""
+        mock_ws = MagicMock()
+        mock_ws.row_values.return_value = self.sheets.HEADERS
+        mock_ws.col_values.return_value = ["URL", "https://existing.com"]
+
+        items = [
+            {"title": "Old", "url": "https://existing.com", "source": "hn"},
+            {"title": "New", "url": "https://new.com", "source": "af"},
+        ]
+        added = self.sheets.sync_items(mock_ws, items, verbose=False)
+        self.assertEqual(added, 1)
+        mock_ws.insert_rows.assert_called_once()
+        # Verify only the new URL was added
+        rows_arg = mock_ws.insert_rows.call_args[0][0]
+        self.assertEqual(len(rows_arg), 1)
+        self.assertIn("https://new.com", rows_arg[0])
+
+    @patch("sync_to_sheets.gspread")
+    def test_sync_items_all_duplicates(self, mock_gspread):
+        """Test that sync_items returns 0 when all are duplicates."""
+        mock_ws = MagicMock()
+        mock_ws.row_values.return_value = self.sheets.HEADERS
+        mock_ws.col_values.return_value = ["URL", "https://a.com"]
+
+        items = [{"title": "A", "url": "https://a.com", "source": "hn"}]
+        added = self.sheets.sync_items(mock_ws, items, verbose=False)
+        self.assertEqual(added, 0)
+        mock_ws.insert_rows.assert_not_called()
+
+    @patch("sync_to_sheets.gspread")
+    def test_ensure_headers_sets_up_empty_sheet(self, mock_gspread):
+        """Test that headers are written on an empty sheet."""
+        mock_ws = MagicMock()
+        mock_ws.row_values.return_value = []
+        self.sheets.ensure_headers(mock_ws)
+        mock_ws.update.assert_called_once_with([self.sheets.HEADERS], range_name="A1")
+        mock_ws.freeze.assert_called_once_with(rows=1)
+
+    @patch("sync_to_sheets.gspread")
+    def test_ensure_headers_skips_existing(self, mock_gspread):
+        """Test that headers are not overwritten if already correct."""
+        mock_ws = MagicMock()
+        mock_ws.row_values.return_value = self.sheets.HEADERS
+        self.sheets.ensure_headers(mock_ws)
+        mock_ws.update.assert_not_called()
+
+    def test_get_sheet_id_from_config(self):
+        """Test that sheet ID is read from config."""
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            json.dump({"google_sheets": {"sheet_id": "test_id_123"}}, f)
+            f.flush()
+            try:
+                orig = self.sheets.CONFIG_PATH
+                self.sheets.CONFIG_PATH = Path(f.name)
+                sid = self.sheets.get_sheet_id()
+                self.assertEqual(sid, "test_id_123")
+            finally:
+                self.sheets.CONFIG_PATH = orig
+                os.unlink(f.name)
+
+    def test_backfill_with_json_files(self):
+        """Test backfill scans candidate JSON files."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            candidates = Path(tmpdir) / "candidates"
+            candidates.mkdir()
+            digest = {
+                "items": [
+                    {"title": "A", "url": "https://a.com", "source": "hn"},
+                    {"title": "B", "url": "https://b.com", "source": "af"},
+                ]
+            }
+            with open(candidates / "2026-03-18.json", "w") as f:
+                json.dump(digest, f)
+
+            orig_candidates = self.sheets.CANDIDATES_DIR
+            orig_feeds = self.sheets.FEEDS_DIR
+            self.sheets.CANDIDATES_DIR = candidates
+            self.sheets.FEEDS_DIR = Path(tmpdir)
+            try:
+                items = self.sheets.cmd_backfill()
+                self.assertEqual(len(items), 2)
+            finally:
+                self.sheets.CANDIDATES_DIR = orig_candidates
+                self.sheets.FEEDS_DIR = orig_feeds
+
+
 if __name__ == '__main__':
     unittest.main()

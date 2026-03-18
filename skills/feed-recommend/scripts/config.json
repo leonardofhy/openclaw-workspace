@@ -10,5 +10,8 @@
   },
   "dedup": {
     "title_similarity_threshold": 0.85
+  },
+  "google_sheets": {
+    "sheet_id": "1COz971ZsWjPURSJyNx9CnFTBTDxN6PQshyrAq8rXSuw"
   }
 }
