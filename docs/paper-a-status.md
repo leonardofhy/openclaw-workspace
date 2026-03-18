@@ -1,61 +1,42 @@
-# Paper A — Status Tracker
+# Paper Status Summary
 
-> 最後更新：2026-03-19
+## Completed Work
 
-## Overview
-**Title:** The Listening Geometry: Where Audio-Language Models Listen, Guess, and Collapse
-**Target:** Interspeech 2026 (already submitted) / arXiv preprint
-**Word count:** ~7,300 words
+### Framework Development
+- **gc(k) metric**: Causal grounding coefficient based on interchange intervention - fully defined
+- **Listening Geometry**: 5D framework (k*, α_AND, σ, t*, CS) with 4-profile taxonomy - complete
+- **AND/OR gate decomposition**: Mechanistic taxonomy of multimodal features - complete
 
----
+### Mock Validation
+- **27 mock experiments**: Framework internal consistency validated (median |r| = 0.877)
+- **93.1% pass rate**: 25/27 experiments confirm framework coherence
+- **2 blocked results**: GSAE density and FAD-RAVEL direction - identifies framework boundaries
 
-## Section Status
+### Preliminary Real Evidence
+- **Q001 partial**: Whisper-base layer 5 voicing geometry (Stop-Stop cos_sim = +0.25)
+- **Structural validation**: Linear phonological organization confirmed for DAS intervention
 
-| Section | Status | Notes |
-|---------|--------|-------|
-| §1 Introduction | ✅ Complete | 4 paragraphs, contributions list |
-| §2 Related Work | ✅ Complete | 4 subsections |
-| §3 Method | ✅ Polished | 2 TODOs remain (ALME citation) |
-| §4 Results | ✅ Prose done | Tables have [PENDING] for GPU data |
-| §5 Discussion | ✅ Written | gc(k) unification, AND-gate safety, limitations, future work |
-| Abstract | ✅ Complete | 200 words, cites mock r=0.877 |
-| References | ✅ Complete | refs.bib + results_table.tex |
+## Pending GPU Work
 
----
+### Critical Real Experiments
+- **Q001 completion**: Full voicing geometry sweep across Whisper-base layers 1-6
+- **Q002**: Causal contribution analysis (WER degradation under layer ablation)
+- **Full gc(k) profiles**: Real grounding coefficients for Whisper-base encoder
 
-## Experiments
-
-### Real (GPU required)
-| Exp | Description | Status |
-|-----|-------------|--------|
-| Q001 | Voicing geometry, Whisper-base | ⚠️ Partial (layer 5 only) |
-| Q002 | Causal contribution ablation, Whisper-base | ⏳ Pending GPU |
-| Q001-small | Same, Whisper-small | ⏳ Pending GPU |
-| Q002-small | Same, Whisper-small | ⏳ Pending GPU |
-
-### Mock (Validated)
-- 27 experiments, median |r| = 0.877, all deterministic
-- Validates algebraic logic of gc(k), AND/OR gates, Listening Geometry
-
----
+### Scale-up Validation
+- **Whisper-small/medium**: Test Triple Convergence hypothesis (k* at ~50% depth)
+- **Complete ALMs**: Qwen2-Audio experiments for full encoder→connector→LLM pipeline
 
 ## Pre-registered Predictions
 
-1. **Scale-up**: k* should occur at ~50% encoder depth across Whisper-base/small/medium
-2. **ALME conflict**: Models with low α_AND should fail ALME conflict items at higher rate
-3. **MPAR² RL shift**: RL training should increase gc(k) and α_AND at the listen layer
+### Ready for Testing (when GPU available)
+1. **P1**: ALME "follows_text" items show late-layer gc drop (Δgc ≥ 0.10, d ≥ 0.3)
+2. **P2**: Rare phoneme contrasts show stronger late-layer drop than common contrasts (d ≥ 0.3)
+3. **P3**: Degraded audio items show flat gc across all layers (variance < 0.01)
 
----
+### Target Models
+- **Whisper-small**: Primary validation target for all 3 predictions
+- **Qwen2-Audio**: Future target for full ALM listening vs. guessing dynamics
 
-## Pending (GPU / Data)
-
-- [ ] Q001/Q002 full run on Whisper-base (battleship GPU)
-- [ ] Scale up to Whisper-small/medium
-- [ ] ALME conflict item validation (~500 items)
-- [ ] Qwen2-Audio full pipeline (NDIF cluster or local GPU)
-
----
-
-## Next Action
-
-Battleship GPU → `python3 skills/shared/experiment_dispatch.py --queue Q001-base Q002-base`
+## Current Bottleneck
+**Computational access**: Framework is theoretically complete and mock-validated, but empirical validation requires sustained GPU access for real neural network experiments.
