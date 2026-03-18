@@ -22,6 +22,7 @@ from pathlib import Path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
 from common import now as _now, MEMORY as _MEMORY, TAGS_DIR as _TAGS_DIR
+from diary_utils import PEOPLE_ALIASES
 
 MEMORY_DIR = str(_MEMORY)
 TAGS_DIR = str(_TAGS_DIR)
@@ -61,27 +62,7 @@ def _load_diary_metrics() -> dict[str, dict[str, int]]:
         _diary_metrics_cache = {}
     return _diary_metrics_cache
 
-# ─── 人物別名表（與 search_diary.py 同步）─────────────────
-PEOPLE_ALIASES = {
-    "智凱": ["智凱", "智凱哥", "凱哥", "zhikai"],
-    "晨安": ["晨安", "晨安哥", "chenan"],
-    "康哥": ["康哥", "kang"],
-    "李宏毅": ["李宏毅", "宏毅", "宏毅老師", "李老師", "hungyi", "hung-yi"],
-    "明淵": ["明淵", "mingyuan"],
-    "朗軒": ["朗軒", "langxuan"],
-    "Rocky": ["Rocky", "rocky"],
-    "Wilson": ["Wilson", "wilson"],
-    "Howard": ["Howard", "howard"],
-    "David": ["David", "david"],
-    "Ziya": ["Ziya", "ziya"],
-    "Christine": ["Christine", "christine"],
-    "Teddy": ["Teddy", "teddy"],
-    "Zen": ["Zen", "zen"],
-    "陳縕儂": ["陳縕儂", "縕儂", "yunnnung", "vivian"],
-    "專題生": ["專題生"],
-    "媽": ["我媽", "媽媽", "老媽"],
-    "爸": ["我爸", "爸爸", "老爸"],
-}
+# PEOPLE_ALIASES imported from diary_utils — single source of truth.
 
 # ─── 主題關鍵詞 ──────────────────────────────────────────
 TOPIC_KEYWORDS = {
