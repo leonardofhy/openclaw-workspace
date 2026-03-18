@@ -17,10 +17,11 @@ def pytest_collect_file(parent, file_path):
     d = str(file_path.parent)
     if d not in sys.path:
         sys.path.insert(0, d)
-    # Also ensure skills/lib is always available (common utilities)
-    lib_dir = str(WORKSPACE / "skills" / "lib")
-    if lib_dir not in sys.path:
-        sys.path.insert(0, lib_dir)
+    # Also ensure skills/lib and skills/shared are always available
+    for sub in ("lib", "shared"):
+        sub_dir = str(WORKSPACE / "skills" / sub)
+        if sub_dir not in sys.path:
+            sys.path.insert(0, sub_dir)
     # Return None – we don't want to override collection, just inject paths.
     return None
 
