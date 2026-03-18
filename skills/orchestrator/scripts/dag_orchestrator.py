@@ -284,11 +284,18 @@ def cmd_run(args: argparse.Namespace) -> None:
             task = m["tasks"][tid]
             if task["status"] == "completed":
                 try:
-                    wm.merge_worktree(tid)
-                    print(f"  Merged {tid}")
+                    result = wm.merge_worktree(tid)
+                    print(f"  Merged {tid}: {result[:80]}")
+                    # Only cleanup on successful merge
+                    wm.cleanup_worktree(tid)
                 except RuntimeError as e:
-                    print(f"  Merge failed for {tid}: {e}")
-            wm.cleanup_worktree(tid)
+                    print(f"  ⚠️  Merge failed for {tid}: {e}")
+                    print(f"      Branch orchestrator/{tid} preserved for manual recovery.")
+                    # Do NOT cleanup — preserve branch so work isn't lost
+                    mf.update_status(m, tid, "merge-failed", error=str(e))
+                    mf.save(path, m)
+            else:
+                wm.cleanup_worktree(tid)
 
     # Final stats
     m = mf.load(path)
