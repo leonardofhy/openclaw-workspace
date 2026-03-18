@@ -8,6 +8,7 @@
 claude_usage 格式改版完成（style A 卡片風）
 
 ## Recent Context
+- [2026-03-18 15:37] Leo 要開發 Todoist ↔ task-board.md 雙向同步
 - [2026-03-18 10:59] Feed recommend: Leo 要求每個 source 保底 2-3 篇（多樣性），不只看研究方向，也想看各平台優質內容
 - [2026-03-18 09:53] Google Sheet for feed recommendations: ID `1COz971ZsWjPURSJyNx9CnFTBTDxN6PQshyrAq8rXSuw`, shared with service account as Editor
 - [2026-03-17 21:19] claude_usage.py 改成 A 風格卡片輸出，已 commit (8a574dc)
