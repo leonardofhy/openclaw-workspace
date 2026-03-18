@@ -52,7 +52,7 @@
     },
     {
       "id": "Q89",
-      "title": "Temporal gc(k) \u00d7 AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
+      "title": "Temporal gc(k) × AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -65,7 +65,7 @@
     },
     {
       "id": "Q91",
-      "title": "Persona \u00d7 AND/OR Gate: extend persona_gc_benchmark.py to measure AND vs OR gate prevalence per persona condition",
+      "title": "Persona × AND/OR Gate: extend persona_gc_benchmark.py to measure AND vs OR gate prevalence per persona condition",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -78,7 +78,7 @@
     },
     {
       "id": "Q92",
-      "title": "Schelling Features \u00d7 AND/OR Gates: are cross-seed-stable SAE features more likely to be AND-gates?",
+      "title": "Schelling Features × AND/OR Gates: are cross-seed-stable SAE features more likely to be AND-gates?",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -91,7 +91,7 @@
     },
     {
       "id": "Q93",
-      "title": "Collapse Onset \u00d7 AND/OR Gate: does audio info collapse (Q085 onset step) coincide with AND-gate feature deactivation?",
+      "title": "Collapse Onset × AND/OR Gate: does audio info collapse (Q085 onset step) coincide with AND-gate feature deactivation?",
       "type": "build",
       "track": "T3",
       "priority": 2,
@@ -143,12 +143,13 @@
       "type": "build",
       "track": "T5",
       "title": "SAE incrimination x ENV taxonomy: label persistent offender features ENV-1/2/3",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Extend sae_incrimination_patrol.py: ENV-type label per persistent offender; intervention strategy output",
       "created": "2026-03-14",
-      "due": null
+      "due": null,
+      "completed": "2026-03-18"
     },
     {
       "id": "Q107",
@@ -218,7 +219,7 @@
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
-      "definition_of_done": "mock_cascade_gsae_unify.py: cascade_degree \u2248 1-AND_fraction \u2248 1-norm_GSAE_density on mock; add graph_density as GCBench #9",
+      "definition_of_done": "mock_cascade_gsae_unify.py: cascade_degree ≈ 1-AND_fraction ≈ 1-norm_GSAE_density on mock; add graph_density as GCBench #9",
       "created": "2026-03-18",
       "due": null
     },
@@ -238,7 +239,7 @@
       "id": "Q119",
       "type": "build",
       "track": "T3",
-      "title": "GSAE edge density per layer \u2192 t* = argmin(density): graph sparsification = collapse",
+      "title": "GSAE edge density per layer → t* = argmin(density): graph sparsification = collapse",
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
@@ -266,7 +267,7 @@
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
-      "definition_of_done": "Design doc: persona injection \u2192 AND\u2192OR ratio drop AND emotion neuron causal weight drop \u2192 dual-factor",
+      "definition_of_done": "Design doc: persona injection → AND→OR ratio drop AND emotion neuron causal weight drop → dual-factor",
       "created": "2026-03-18",
       "due": null
     },
