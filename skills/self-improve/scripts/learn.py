@@ -130,6 +130,9 @@ def cmd_error(args):
             if args.fix:
                 updates["fix"] = args.fix
                 updates["status"] = "resolved"
+            else:
+                # Error recurred without a new fix — reopen it
+                updates["status"] = "pending"
             if args.prevention:
                 updates["prevention"] = args.prevention
             store.update(best["id"], updates)

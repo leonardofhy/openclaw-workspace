@@ -98,7 +98,10 @@ class TimeBlock:
 
     @property
     def duration(self) -> int:
-        return self.end_minutes - self.start_minutes
+        d = self.end_minutes - self.start_minutes
+        if d < 0:
+            d += 24 * 60  # cross-midnight
+        return d
 
 
 @dataclass
