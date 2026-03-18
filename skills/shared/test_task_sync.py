@@ -198,7 +198,7 @@ class TestDoPull:
         # Verify board was updated
         updated_tasks, _ = task_sync.parse_task_board(board_file)
         m02 = next(t for t in updated_tasks if t['id'] == 'M-02')
-        assert '2026-03-18' in m02.get('last_touched', '')
+        assert m02.get('last_touched', '') >= '2026-03-18'
         assert 'Wire up eval harness' in m02.get('progress', '')
 
     @patch.object(task_sync, 'get_completed_tasks', return_value=[])
