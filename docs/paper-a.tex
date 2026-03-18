@@ -39,11 +39,11 @@ We address this gap with the \textbf{grounding coefficient} gc(k), a causal metr
 Our contributions are as follows:
 
 \begin{enumerate}
-\item **gc(k) metric.** The first causal, layer-wise grounding coefficient for audio-language models, defined via DAS-IIA and grounded in IIT causal abstraction theory. Unlike observational probes (AudioLens) or necessity-only tests (AR\&D, Zhao et al.), gc(k) provides both sufficiency and necessity evidence for audio grounding at each layer.
-\item **Listening Geometry.** A five-dimensional framework (k*, α\_AND, σ, t*, CS) that taxonomizes ALM listening strategies into four profiles, enabling systematic comparison across models, tasks, and deployment conditions.
-\item **AND/OR gate framework.** A mechanistic decomposition of multimodal feature dependence that distinguishes genuine audio-text integration (AND-gates) from modality-redundant processing (OR-gates). We show that AND-gate fraction correlates near-perfectly with gc peak location (r = 0.98 in mock validation) and inversely predicts text-override vulnerability.
-\item **Empirical validation.** 2 real experiments (voicing geometry in Whisper, causal contribution analysis) and 20 mock-framework experiments across 5 analysis axes, including persona-conditioned grounding shifts, collapse onset detection, and RAVEL disentanglement validation.
-\item **Pre-registered predictions.** Testable predictions for Modality Collapse (ALME conflict items should show late-layer gc drop) and MPAR² (RL training should shift gc peak or raise late-layer gc), bridging mechanistic and behavioral accounts.
+\item \textbf{gc(k) metric.} The first causal, layer-wise grounding coefficient for audio-language models, defined via DAS-IIA and grounded in IIT causal abstraction theory. Unlike observational probes (AudioLens) or necessity-only tests (AR\&D, Zhao et al.), gc(k) provides both sufficiency and necessity evidence for audio grounding at each layer.
+\item \textbf{Listening Geometry.} A five-dimensional framework (k*, α\_AND, σ, t*, CS) that taxonomizes ALM listening strategies into four profiles, enabling systematic comparison across models, tasks, and deployment conditions.
+\item \textbf{AND/OR gate framework.} A mechanistic decomposition of multimodal feature dependence that distinguishes genuine audio-text integration (AND-gates) from modality-redundant processing (OR-gates). We show that AND-gate fraction correlates near-perfectly with gc peak location (r = 0.98 in mock validation) and inversely predicts text-override vulnerability.
+\item \textbf{Empirical validation.} 2 real experiments (voicing geometry in Whisper, causal contribution analysis) and 20 mock-framework experiments across 5 analysis axes, including persona-conditioned grounding shifts, collapse onset detection, and RAVEL disentanglement validation.
+\item \textbf{Pre-registered predictions.} Testable predictions for Modality Collapse (ALME conflict items should show late-layer gc drop) and MPAR² (RL training should shift gc peak or raise late-layer gc), bridging mechanistic and behavioral accounts.
 \end{enumerate}
 
 The remainder of this paper is organized as follows. §2 surveys related work in mechanistic interpretability of speech models, audio-language model analysis, causal intervention methods, and sparse autoencoders for audio. §3 defines gc(k), the AND/OR gate framework, and the five-dimensional Listening Geometry. §4 presents experimental results spanning encoder analysis, gc peak localization, AND/OR gate validation, persona-conditioned grounding, collapse onset, and RAVEL disentanglement. §5 discusses implications for safety, cross-paper predictions, and limitations. §6 concludes.
@@ -59,7 +59,7 @@ In parallel, Choi et al. \cite{arxiv_2602.18899} demonstrated that phonological 
 
 On the neuron-analysis front, Kawamura et al. \cite{arxiv_2602.15307} introduced AAPE (Audio Activation Probability Entropy), adapting LAPE from NLP to identify class-specific neurons in the M2D audio SSL model. They found that SSL develops twice as many class-specific neurons as supervised models and that deactivating these neurons causally degrades classification. However, their analysis is limited to encoder-only SSL models and tests only necessity (ablation), not sufficiency. Ma et al. \cite{ma2026} examined LoRA adaptation of Whisper for speech emotion recognition, finding delayed specialization in which LoRA flat/high KL divergence in early layers gives way to sharp late-stage commitment — but again without causal patching.
 
-**Gap:** All prior speech MI work is either (a) restricted to encoder-only models, (b) uses suboptimal corruption methods, or (c) tests only necessity. None provides a causal grounding metric for full audio-language models.
+\textbf{Gap:} All prior speech MI work is either (a) restricted to encoder-only models, (b) uses suboptimal corruption methods, or (c) tests only necessity. None provides a causal grounding metric for full audio-language models.
 
 \subsection{Audio-Language Model Interpretability}
 
@@ -71,7 +71,7 @@ Zhao et al. \cite{arxiv_2601.03115} discover emotion-sensitive neurons (ESNs) in
 
 In the vision-language domain, two closely related works exist. FCCT \cite{li2025} performs faithful cross-modal causal tracing in vision-LLMs, finding that MHSAs at middle layers serve as cross-modal aggregation points — the closest methodological analog to our work, but restricted to vision. EmbedLens \cite{fan2026} discovers that visual tokens partition into sink, dead, and alive categories, with alive tokens naturally aligning at intermediate LLM layers — observational evidence consistent with our Listen Layer hypothesis, but without causal intervention. Liu et al. \cite{ref2025} study visual representations inside the language model using KV-token flow analysis, again without causal patching.
 
-**Gap:** No prior work on audio-language models combines causal intervention (Level 3, IIT counterfactual) with a grounding metric that attributes model behavior to audio versus text sources. Our gc(k) fills this gap, providing the first DAS-grounded causal localization of audio reliance in speech LLMs.
+\textbf{Gap:} No prior work on audio-language models combines causal intervention (Level 3, IIT counterfactual) with a grounding metric that attributes model behavior to audio versus text sources. Our gc(k) fills this gap, providing the first DAS-grounded causal localization of audio reliance in speech LLMs.
 
 \subsection{Causal Intervention Methods}
 
@@ -85,7 +85,7 @@ Activation patching methodology has been systematized by Heimersheim and Nanda \
 
 In audio-adjacent domains, Maghsoudi and Mishra \cite{arxiv_2602.01247} apply cross-mode activation patching and causal scrubbing to brain-to-speech models, discovering that speech modes form a continuous causal manifold with compact layer-specific subspaces mediating cross-mode transfer. This predicts that gc(k) curves in speech LLMs should be smooth rather than step-function-like. AG-REPA \cite{arxiv_2603.01006} introduces Forward-only Gate Ablation (FoG-A) for quantifying causal contribution in audio \textit{generation} models, finding that early layers are causal drivers while deep layers are semantic reservoirs — the same Store-Contribute Dissociation principle we expect to hold in speech \textit{understanding}, with the causal depth shifted to intermediate layers (~50\% depth) consistent with the Triple Convergence hypothesis \textcolor{red}{[TODO: cite whisper_hook_demo results]}.
 
-**Gap:** Causal abstraction methods (DAS, IIT, RAVEL) have been extensively developed for text. Applications to audio remain limited to brain-to-speech models and audio generation. Our work is the first to apply DAS-IIT causal localization to speech LLMs, and the first to define a grounding coefficient that quantifies audio reliance at the layer level.
+\textbf{Gap:} Causal abstraction methods (DAS, IIT, RAVEL) have been extensively developed for text. Applications to audio remain limited to brain-to-speech models and audio generation. Our work is the first to apply DAS-IIT causal localization to speech LLMs, and the first to define a grounding coefficient that quantifies audio reliance at the layer level.
 
 \subsection{Sparse Autoencoders for Audio}
 
@@ -97,7 +97,7 @@ T-SAE \cite{bhalla2025} addresses the temporal limitation by partitioning SAE fe
 
 The SAEBench framework \cite{karvonen2025} provides an 8-metric evaluation protocol for text SAEs, revealing that proxy metrics (sparsity, fidelity) do not reliably predict practical quality. No equivalent benchmark exists for audio SAEs — a gap our companion work (AudioSAEBench) addresses with a novel Grounding Sensitivity metric that applies gc(k) at the feature level.
 
-**Gap:** Audio SAE work has produced interpretable features in encoder-only models, but no study has tested whether these features activate because of audio input or text context. Our AND/OR gate framework provides the first mechanistic test of multimodal feature dependence, and our gc(k) metric bridges the layer-level analysis (this paper) with feature-level grounding sensitivity (AudioSAEBench).
+\textbf{Gap:} Audio SAE work has produced interpretable features in encoder-only models, but no study has tested whether these features activate because of audio input or text context. Our AND/OR gate framework provides the first mechanistic test of multimodal feature dependence, and our gc(k) metric bridges the layer-level analysis (this paper) with feature-level grounding sensitivity (AudioSAEBench).
 
 
 \section{Method}
@@ -171,19 +171,19 @@ For each causal feature $f$ at layer $k$, we compute three IIA scores using inte
 
 We classify each feature into one of three types:
 
-**AND-gate.** Feature $f$ is an AND-gate if:
+\textbf{AND-gate.} Feature $f$ is an AND-gate if:
 
 \[\text{IIA}(f; A{+}T) \gg \max\left(\text{IIA}(f; A),\; \text{IIA}(f; T)\right)\]
 
 Operationally, we require $\text{IIA}(f; A{+}T) - \max(\text{IIA}(f; A), \text{IIA}(f; T)) > \delta$, with $\delta = $ \textcolor{red}{[TODO: threshold, calibrated via bootstrap]}. AND-gate features represent \textbf{genuine multimodal integration}: neither audio nor text alone suffices to reconstruct the feature, and both modalities must be jointly present. These features implement a logical AND over modality inputs.
 
-**OR-gate.** Feature $f$ is an OR-gate if:
+\textbf{OR-gate.} Feature $f$ is an OR-gate if:
 
 \[\text{IIA}(f; A{+}T) \approx \max\left(\text{IIA}(f; A),\; \text{IIA}(f; T)\right)\]
 
 Operationally, $|\text{IIA}(f; A{+}T) - \max(\text{IIA}(f; A), \text{IIA}(f; T))| \leq \delta$. OR-gate features can be recovered from either modality alone, implementing a logical OR. These features are candidates for \textbf{text-prior override}: if the text context provides a strong prediction, the model need not consult audio.
 
-**Passthrough.** Feature $f$ is a passthrough if $\text{IIA}(f; A{+}T) < \epsilon$ — the feature is not causally relevant to the target behavior under any intervention condition. \textcolor{red}{[TODO: $\epsilon$ threshold]}
+\textbf{Passthrough.} Feature $f$ is a passthrough if $\text{IIA}(f; A{+}T) < \epsilon$ — the feature is not causally relevant to the target behavior under any intervention condition. \textcolor{red}{[TODO: $\epsilon$ threshold]}
 
 \subsection{AND-Gate Fraction and Cascade Degree}
 
@@ -208,11 +208,11 @@ Preliminary mock experiments (Q089) show that AND-gate fraction and $gc(k)$ are 
 
 We employ three categories of stimuli, each targeting a different aspect of audio-text interaction:
 
-**Category 1: Phonological minimal pairs.** Following the construction in §3.1.4, we use consonant minimal pairs spanning three phonological dimensions (voicing, place, manner). Stimuli are recorded in controlled conditions or sourced from existing corpora \textcolor{red}{[TODO: specify corpus — LibriSpeech forced-aligned segments or custom recordings]}. Each pair consists of two utterances differing in exactly one phonological feature at a target position, embedded in an identical carrier phrase (e.g., "Say the word \_\_\_ again"). This yields \textcolor{red}{[TODO: N]} unique pairs across \textcolor{red}{[TODO: M]} contrasts.
+\textbf{Category 1: Phonological minimal pairs.} Following the construction in §3.1.4, we use consonant minimal pairs spanning three phonological dimensions (voicing, place, manner). Stimuli are recorded in controlled conditions or sourced from existing corpora \textcolor{red}{[TODO: specify corpus — LibriSpeech forced-aligned segments or custom recordings]}. Each pair consists of two utterances differing in exactly one phonological feature at a target position, embedded in an identical carrier phrase (e.g., "Say the word \_\_\_ again"). This yields \textcolor{red}{[TODO: N]} unique pairs across \textcolor{red}{[TODO: M]} contrasts.
 
-**Category 2: ALME conflict items.** Drawing from the Audio-Language Model Evaluation benchmark (ALME; \textcolor{red}{[TODO: cite 2602.11488]}), we select items where the text context predicts one answer and the audio signal supports another. These items operationalize the "listen vs. guess" distinction at the behavioral level: a model that follows text context on conflict items is guessing; one that follows audio is listening. We use \textcolor{red}{[TODO: N ≈ 500]} conflict items spanning \textcolor{red}{[TODO: task categories]}.
+\textbf{Category 2: ALME conflict items.} Drawing from the Audio-Language Model Evaluation benchmark (ALME; \textcolor{red}{[TODO: cite 2602.11488]}), we select items where the text context predicts one answer and the audio signal supports another. These items operationalize the "listen vs. guess" distinction at the behavioral level: a model that follows text context on conflict items is guessing; one that follows audio is listening. We use \textcolor{red}{[TODO: N ≈ 500]} conflict items spanning \textcolor{red}{[TODO: task categories]}.
 
-**Category 3: Codec-degraded variants.** To assess robustness, we re-encode Category 1 stimuli through four audio codecs at varying quality levels:
+\textbf{Category 3: Codec-degraded variants.} To assess robustness, we re-encode Category 1 stimuli through four audio codecs at varying quality levels:
 
 \begin{table}[htbp]
 \centering
@@ -235,36 +235,36 @@ Additionally, we employ \textbf{SpeechTokenizer RVQ layer-selective corruption} 
 For each stimulus pair and target layer $k$, we execute the following procedure:
 
 \begin{enumerate}
-\item **Forward pass (base).** Run the model on input $(a_{\text{base}}, t_{\text{base}})$; cache activations $h_k^{\text{base}}$ at every layer $k \in \{1, \ldots, L\}$.
+\item \textbf{Forward pass (base).} Run the model on input $(a_{\text{base}}, t_{\text{base}})$; cache activations $h_k^{\text{base}}$ at every layer $k \in \{1, \ldots, L\}$.
 \end{enumerate}
 
 \begin{enumerate}
-\item **Forward pass (source).** Run the model on input $(a_{\text{source}}, t_{\text{source}})$; cache activations $h_k^{\text{source}}$.
+\item \textbf{Forward pass (source).} Run the model on input $(a_{\text{source}}, t_{\text{source}})$; cache activations $h_k^{\text{source}}$.
 \end{enumerate}
 
 \begin{enumerate}
-\item **DAS subspace identification.** Using a held-out training split, learn a rotation matrix $R_k$ at each layer via distributed alignment search (Geiger et al., 2023) that aligns the intervention subspace with the target causal variable (phoneme identity for Category 1; answer source for Category 2).
+\item \textbf{DAS subspace identification.} Using a held-out training split, learn a rotation matrix $R_k$ at each layer via distributed alignment search (Geiger et al., 2023) that aligns the intervention subspace with the target causal variable (phoneme identity for Category 1; answer source for Category 2).
 \end{enumerate}
 
 \begin{enumerate}
-\item **Interchange intervention.** For the test split, patch $h_k^{\text{base}}$ with the source-projected representation (§3.1.1) and continue the forward pass from layer $k$ to the output.
+\item \textbf{Interchange intervention.} For the test split, patch $h_k^{\text{base}}$ with the source-projected representation (§3.1.1) and continue the forward pass from layer $k$ to the output.
 \end{enumerate}
 
 \begin{enumerate}
-\item **Evaluate IIA.** Record whether the model's output matches the counterfactual prediction. Repeat for audio-only and text-only interventions to compute $\text{IIA}_{\text{audio}}(k)$ and $\text{IIA}_{\text{text}}(k)$.
+\item \textbf{Evaluate IIA.} Record whether the model's output matches the counterfactual prediction. Repeat for audio-only and text-only interventions to compute $\text{IIA}_{\text{audio}}(k)$ and $\text{IIA}_{\text{text}}(k)$.
 \end{enumerate}
 
 \begin{enumerate}
-\item **Sweep.** Repeat steps 3–5 for all layers $k \in \{1, \ldots, L\}$ to obtain the full $gc(k)$ curve.
+\item \textbf{Sweep.} Repeat steps 3–5 for all layers $k \in \{1, \ldots, L\}$ to obtain the full $gc(k)$ curve.
 \end{enumerate}
 
 For the AND/OR gate analysis (§3.2), we additionally decompose each layer's activations into sparse features using a trained sparse autoencoder (SAE) and perform per-feature interventions to classify gate types.
 
-**Tooling.** We use \textbf{NNsight} (Fiotto-Kaufman et al.) for hook injection and activation caching, and \textbf{pyvene} (Wu et al., 2024) for implementing interchange interventions. Both tools support the computational graph surgery required for DAS without modifying model weights.
+\textbf{Tooling.} We use \textbf{NNsight} (Fiotto-Kaufman et al.) for hook injection and activation caching, and \textbf{pyvene} (Wu et al., 2024) for implementing interchange interventions. Both tools support the computational graph surgery required for DAS without modifying model weights.
 
 \subsection{Evaluation Metrics}
 
-**Primary metrics:**
+\textbf{Primary metrics:}
 
 \begin{itemize}
 \item \textbf{gc(k)} (§3.1.2): the grounding coefficient at each layer. Reported as a curve over $k$ with 95\% bootstrap confidence intervals.
@@ -282,7 +282,7 @@ For the AND/OR gate analysis (§3.2), we additionally decompose each layer's act
 \item \textbf{$\kappa(k)$} (§3.2.2): cascade degree (= $1 - \alpha_{\text{AND}}(k)$).
 \end{itemize}
 
-**RAVEL-style disentanglement metrics.** Following Huang et al. (2024), we evaluate feature-level interventions with:
+\textbf{RAVEL-style disentanglement metrics.} Following Huang et al. (2024), we evaluate feature-level interventions with:
 
 \begin{itemize}
 \item \textbf{Cause score}: After intervening on feature $f$ to set attribute $A$ to value $v$, how often does the model's output reflect $v$? Formally, $\text{Cause}(f, A) = \mathbb{E}[\mathbf{1}(\hat{y} = v) \mid \text{do}(f \leftarrow f_{A=v})]$.
@@ -294,7 +294,7 @@ For the AND/OR gate analysis (§3.2), we additionally decompose each layer's act
 
 High Cause + high Isolate indicates a feature that cleanly and specifically represents a single audio attribute — the hallmark of an AND-gate feature in our framework.
 
-**Statistical criteria.** All reported effects are required to meet: (i) 95\% bootstrap confidence intervals that exclude the null, and (ii) Cohen's $d \geq 0.3$ (medium effect size). We report exact bootstrap CIs rather than parametric $p$-values, following recent recommendations for interpretability research \textcolor{red}{[TODO: cite]}. Sample sizes are determined by power analysis targeting $d = 0.3$ with $1 - \beta = 0.80$.
+\textbf{Statistical criteria.} All reported effects are required to meet: (i) 95\% bootstrap confidence intervals that exclude the null, and (ii) Cohen's $d \geq 0.3$ (medium effect size). We report exact bootstrap CIs rather than parametric $p$-values, following recent recommendations for interpretability research \textcolor{red}{[TODO: cite]}. Sample sizes are determined by power analysis targeting $d = 0.3$ with $1 - \beta = 0.80$.
 
 
 \section{Models and Data}
@@ -322,11 +322,11 @@ For the full audio-language model setting, we target \textbf{Qwen2-Audio} (Chu e
 
 \subsection{Data}
 
-**Training data for DAS rotation.** We use \textcolor{red}{[TODO: N ≈ 2000]} minimal pair stimuli from LibriSpeech (Panayotov et al., 2015) test-clean, extracted via forced alignment at the phoneme level. Pairs are matched for speaker, recording condition, and surrounding phonetic context. An 80/20 train/test split is used for learning DAS rotations (train) and computing IIA (test).
+\textbf{Training data for DAS rotation.} We use \textcolor{red}{[TODO: N ≈ 2000]} minimal pair stimuli from LibriSpeech (Panayotov et al., 2015) test-clean, extracted via forced alignment at the phoneme level. Pairs are matched for speaker, recording condition, and surrounding phonetic context. An 80/20 train/test split is used for learning DAS rotations (train) and computing IIA (test).
 
-**Evaluation data.** For Category 2 (conflict items), we draw from the ALME benchmark \textcolor{red}{[TODO: cite 2602.11488]}, selecting items with verified audio-text conflict. For Category 3 (codec variants), we re-encode the Category 1 stimuli using FFmpeg with controlled codec parameters.
+\textbf{Evaluation data.} For Category 2 (conflict items), we draw from the ALME benchmark \textcolor{red}{[TODO: cite 2602.11488]}, selecting items with verified audio-text conflict. For Category 3 (codec variants), we re-encode the Category 1 stimuli using FFmpeg with controlled codec parameters.
 
-**SAE training data.** For the AND/OR gate analysis, we train sparse autoencoders on Whisper-small activations following the AudioSAE protocol (Aparin et al., 2026): TopK activation with 8× expansion ratio ($768 \rightarrow 6{,}144$ features), trained on \textcolor{red}{[TODO: N hours]} of LibriSpeech. We train per-layer SAEs for all 12 encoder layers to enable layer-wise AND/OR gate profiling.
+\textbf{SAE training data.} For the AND/OR gate analysis, we train sparse autoencoders on Whisper-small activations following the AudioSAE protocol (Aparin et al., 2026): TopK activation with 8× expansion ratio ($768 \rightarrow 6{,}144$ features), trained on \textcolor{red}{[TODO: N hours]} of LibriSpeech. We train per-layer SAEs for all 12 encoder layers to enable layer-wise AND/OR gate profiling.
 
 \subsection{Computational Requirements}
 
@@ -342,7 +342,7 @@ Each $gc(k)$ sweep over $L$ layers requires $2L$ forward passes per stimulus pai
 
 We first validate that Whisper's encoder contains linearly structured phonological representations — a prerequisite for meaningful gc(k) analysis.
 
-**Experiment Q001 (Real).** We extract voicing vectors from consonant minimal pairs (/t/–/d/, /p/–/b/, /k/–/g/, /s/–/z/) across all encoder layers of Whisper-base using DAS-identified subspaces. Table 1 reports cosine similarity between voicing directions across contrast pairs.
+\textbf{Experiment Q001 (Real).} We extract voicing vectors from consonant minimal pairs (/t/–/d/, /p/–/b/, /k/–/g/, /s/–/z/) across all encoder layers of Whisper-base using DAS-identified subspaces. Table 1 reports cosine similarity between voicing directions across contrast pairs.
 
 \begin{table}[htbp]
 \centering
@@ -360,16 +360,16 @@ Layer & Stop–Stop cos_sim & Stop–Fricative cos_sim & Mean cos_sim \\
 \end{tabular}
 \end{table}
 
-**Key finding:** Voicing vectors show weak but positive alignment within manner class (stop–stop: +0.25) and orthogonality across manner classes (stop–fricative: ~0.0). The peak at layer 5 is consistent with Choi et al.'s (2026) finding that phonological features crystallize at intermediate encoder depths.
+\textbf{Key finding:} Voicing vectors show weak but positive alignment within manner class (stop–stop: +0.25) and orthogonality across manner classes (stop–fricative: ~0.0). The peak at layer 5 is consistent with Choi et al.'s (2026) finding that phonological features crystallize at intermediate encoder depths.
 
 \textcolor{red}{[TODO: Replicate on Whisper-small/medium to test whether cos_sim improves with model scale]}
 
-**Claim 1:** Whisper's encoder contains linearly structured phonological representations that can serve as intervention targets for gc(k) analysis.
+\textbf{Claim 1:} Whisper's encoder contains linearly structured phonological representations that can serve as intervention targets for gc(k) analysis.
 
 
 \section{Causal Contribution Analysis}
 
-**Experiment Q002 (Real).** We perform zero-ablation, noise-ablation, and mean-ablation of each individual encoder layer in Whisper-base, measuring WER degradation on LibriSpeech test-clean.
+\textbf{Experiment Q002 (Real).} We perform zero-ablation, noise-ablation, and mean-ablation of each individual encoder layer in Whisper-base, measuring WER degradation on LibriSpeech test-clean.
 
 \begin{table}[htbp]
 \centering
@@ -388,17 +388,17 @@ All layers & 1.0 & 1.0 & 1.0 \\
 \end{tabular}
 \end{table}
 
-**Key finding:** Every single-layer ablation degrades WER to ~1.0 (complete failure), regardless of ablation method. This contrasts fundamentally with text LLMs, where middle layers can often be ablated with minimal performance loss.
+\textbf{Key finding:} Every single-layer ablation degrades WER to ~1.0 (complete failure), regardless of ablation method. This contrasts fundamentally with text LLMs, where middle layers can often be ablated with minimal performance loss.
 
 \textcolor{red}{[TODO: Confirm WER=1.0 is exact or approximate — report precise values]}
 \textcolor{red}{[TODO: Test partial ablation (50\\% noise) to find graded contribution curve]}
 
-**Claim 2:** Whisper distributes acoustic information across all encoder layers with no redundancy. This implies that gc(k) curve \textit{shape} — not any single layer's value — characterizes the model's listening strategy.
+\textbf{Claim 2:} Whisper distributes acoustic information across all encoder layers with no redundancy. This implies that gc(k) curve \textit{shape} — not any single layer's value — characterizes the model's listening strategy.
 
 
 \section{gc(k) Peak Localization}
 
-**Experiment Q089 (Mock).** Using the mock framework with synthetic gc(k) curves, we validate that the gc peak can be reliably localized and that it correlates with AND-gate fraction.
+\textbf{Experiment Q089 (Mock).} Using the mock framework with synthetic gc(k) curves, we validate that the gc peak can be reliably localized and that it correlates with AND-gate fraction.
 
 \begin{table}[htbp]
 \centering
@@ -421,14 +421,14 @@ Pearson correlation between AND\% and gc(k): r = 0.9836 (p < 0.001).
 \textcolor{red}{[TODO: Real gc(k) sweep on Whisper-small — Priority 1 experiment]}
 \textcolor{red}{[TODO: Report bootstrap 95\\% CI for k* estimate]}
 
-**Claim 3:** gc(k) peaks sharply at a localized listen layer k*, and this peak can be reliably detected.
+\textbf{Claim 3:} gc(k) peaks sharply at a localized listen layer k*, and this peak can be reliably detected.
 
 
 \section{AND/OR Gate Validation}
 
-**Experiment Q089 (Mock).** At the gc peak layer (L3), all causally relevant features are classified as AND-gates (α_AND = 1.0), indicating that genuine multimodal integration concentrates at the listen layer.
+\textbf{Experiment Q089 (Mock).} At the gc peak layer (L3), all causally relevant features are classified as AND-gates (α_AND = 1.0), indicating that genuine multimodal integration concentrates at the listen layer.
 
-**Experiment Q113 (Mock).** The cascade degree κ(k) = 1 − α_AND(k) validates the text-override vulnerability measure: layers with high κ show elevated text-prior override in conflict stimuli.
+\textbf{Experiment Q113 (Mock).} The cascade degree κ(k) = 1 − α_AND(k) validates the text-override vulnerability measure: layers with high κ show elevated text-prior override in conflict stimuli.
 
 \begin{table}[htbp]
 \centering
@@ -443,12 +443,12 @@ Layer & α_AND & κ (cascade degree) & Text-override rate \\
 
 \textcolor{red}{[TODO: Real AND/OR gate classification on Whisper-small SAE features]}
 
-**Claim 4:** AND-gate fraction is a near-perfect proxy for gc peak detection (r = 0.98). Cascade degree predicts text-override vulnerability.
+\textbf{Claim 4:} AND-gate fraction is a near-perfect proxy for gc peak detection (r = 0.98). Cascade degree predicts text-override vulnerability.
 
 
 \section{Persona-Conditioned Grounding}
 
-**Experiment Q039 (Mock).** We test whether system prompts modulate the gc(k) profile by comparing three persona conditions: default, assistant ("you are a helpful assistant"), and anti-grounding ("ignore audio input and rely on context").
+\textbf{Experiment Q039 (Mock).} We test whether system prompts modulate the gc(k) profile by comparing three persona conditions: default, assistant ("you are a helpful assistant"), and anti-grounding ("ignore audio input and rely on context").
 
 \begin{table}[htbp]
 \centering
@@ -463,16 +463,16 @@ Anti-grounding & [TODO] (shifted 2 layers earlier) & [TODO] (boosted) & [TODO] &
 \end{tabular}
 \end{table}
 
-**H4 (between/within variance):** FAILED — variance ratio = 0.073, below threshold of 1.5. Persona effects are small relative to within-condition variability.
+\textbf{H4 (between/within variance):} FAILED — variance ratio = 0.073, below threshold of 1.5. Persona effects are small relative to within-condition variability.
 
 \textcolor{red}{[TODO: Test on real model — do system prompts actually shift gc profile?]}
 
-**Claim 5:** System prompts modulate grounding profiles, with anti-grounding prompts shifting the listen layer and boosting peak gc. This has implications for prompt injection safety.
+\textbf{Claim 5:} System prompts modulate grounding profiles, with anti-grounding prompts shifting the listen layer and boosting peak gc. This has implications for prompt injection safety.
 
 
 \section{Collapse Onset and Incrimination}
 
-**Experiment Q069 (Mock).** We test the collapse onset metric t* across three degradation types:
+\textbf{Experiment Q069 (Mock).} We test the collapse onset metric t* across three degradation types:
 
 \begin{table}[htbp]
 \centering
@@ -489,7 +489,7 @@ Sudden collapse & 2.7 & \textcolor{red}{[TODO: top features]} \\
 
 \textcolor{red}{[TODO: Verify t* detection is robust to threshold τ choice — sensitivity analysis]}
 
-**Experiment Q078 (Mock).** SAE patrol monitoring for feature suppression and override events:
+\textbf{Experiment Q078 (Mock).} SAE patrol monitoring for feature suppression and override events:
 
 \begin{table}[htbp]
 \centering
@@ -508,12 +508,12 @@ Persistent offenders & f3, f12, f20, f23 \\
 \textcolor{red}{[TODO: Interpret persistent offender features — what do f3, f12, f20, f23 encode?]}
 \textcolor{red}{[TODO: Real SAE patrol on Whisper-small — do the same features appear?]}
 
-**Claim 6:** t* (collapse onset) combined with SAE incrimination provides a two-level attribution system for grounding failure: t* identifies \textit{when} collapse occurs, and feature blame identifies \textit{which features} are responsible.
+\textbf{Claim 6:} t* (collapse onset) combined with SAE incrimination provides a two-level attribution system for grounding failure: t* identifies \textit{when} collapse occurs, and feature blame identifies \textit{which features} are responsible.
 
 
 \section{RAVEL Disentanglement}
 
-**Experiment Q053 (Mock).** We validate audio attribute disentanglement using the RAVEL protocol on MicroGPT:
+\textbf{Experiment Q053 (Mock).} We validate audio attribute disentanglement using the RAVEL protocol on MicroGPT:
 
 \begin{table}[htbp]
 \centering
@@ -532,11 +532,11 @@ duration & [TODO] & [TODO] & [TODO] \\
 \end{tabular}
 \end{table}
 
-**Result:** 5/6 components pass (83.3\%). Speaker gender is fully disentangled across all layers. Audio class shows early-layer bleed (L0 Isolate = 0.16) that resolves by intermediate layers.
+\textbf{Result:} 5/6 components pass (83.3\%). Speaker gender is fully disentangled across all layers. Audio class shows early-layer bleed (L0 Isolate = 0.16) that resolves by intermediate layers.
 
 \textcolor{red}{[TODO: RAVEL on Whisper-small SAE features — does disentanglement improve with SAE decomposition?]}
 
-**Claim 7:** Audio attributes are disentangleable at intermediate-and-later layers, confirming that gc(k) operates on clean, attribute-specific features rather than entangled representations.
+\textbf{Claim 7:} Audio attributes are disentangleable at intermediate-and-later layers, confirming that gc(k) operates on clean, attribute-specific features rather than entangled representations.
 
 
 \section{Pre-Registered Predictions}
@@ -565,17 +565,17 @@ P4: Listen layer k* shifts earlier for conflict items & Δk* ≥ 1 layer, bootst
 
 Two experiments produced results inconsistent with framework predictions:
 
-**Q117 (GSAE density).** Graph-regularized SAE co-activation density was insufficient to support the gc framework. Expected dense co-activation clusters at gc peak layers; observed sparse, diffuse patterns.
+\textbf{Q117 (GSAE density).} Graph-regularized SAE co-activation density was insufficient to support the gc framework. Expected dense co-activation clusters at gc peak layers; observed sparse, diffuse patterns.
 
 \textcolor{red}{[TODO: Diagnose root cause — is the graph regularization too weak, or is the gc-density link not real?]}
 \textcolor{red}{[TODO: Test alternative graph construction (k-NN vs. threshold) before discarding]}
 
-**Q123 (FAD-RAVEL direction).** FAD bias correlation sign reversed from prediction. Expected positive correlation between FAD bias and gc; observed negative.
+\textbf{Q123 (FAD-RAVEL direction).} FAD bias correlation sign reversed from prediction. Expected positive correlation between FAD bias and gc; observed negative.
 
 \textcolor{red}{[TODO: Diagnose sign reversal — could FAD measure a complementary quantity to gc?]}
 \textcolor{red}{[TODO: Check if FAD-RAVEL direction depends on codec condition]}
 
-**Claim 8:** Not all framework predictions hold. Q117 and Q123 represent genuine negative results that constrain the scope of the Listening Geometry framework.
+\textbf{Claim 8:} Not all framework predictions hold. Q117 and Q123 represent genuine negative results that constrain the scope of the Listening Geometry framework.
 
 
 \section{Discussion}
@@ -625,22 +625,22 @@ Key implications:
 The Listening Geometry framework has direct implications for ALM safety:
 
 \begin{itemize}
-\item **Jailbreak attacks as gc suppression.** SPIRIT (Djanibekov et al., 2025) defends against adversarial audio jailbreaks by substituting clean activations at noise-sensitive MLP neurons. Our framework explains \textit{why} those specific neurons matter: they likely correspond to AND-gate features at or near k* whose suppression forces the model from "strong listener" to "sophisticated guesser" — shifting the gc profile rather than injecting new information.
+\item \textbf{Jailbreak attacks as gc suppression.} SPIRIT (Djanibekov et al., 2025) defends against adversarial audio jailbreaks by substituting clean activations at noise-sensitive MLP neurons. Our framework explains \textit{why} those specific neurons matter: they likely correspond to AND-gate features at or near k* whose suppression forces the model from "strong listener" to "sophisticated guesser" — shifting the gc profile rather than injecting new information.
 \end{itemize}
 
 \begin{itemize}
-\item **Persona-conditioned grounding shifts.** Our mock experiments (Q039) show that anti-grounding system prompts shift k* earlier and boost peak gc. In a real model, this would mean that prompt injection could deliberately degrade audio grounding — a novel attack vector where the adversary manipulates \textit{how} the model processes audio, not \textit{what} audio it receives.
+\item \textbf{Persona-conditioned grounding shifts.} Our mock experiments (Q039) show that anti-grounding system prompts shift k* earlier and boost peak gc. In a real model, this would mean that prompt injection could deliberately degrade audio grounding — a novel attack vector where the adversary manipulates \textit{how} the model processes audio, not \textit{what} audio it receives.
 \item \textcolor{red}{[TODO: Test this on real models — is gc shift via persona prompt practically achievable?]}
 \item \textcolor{red}{[TODO: Can gc monitoring serve as a runtime detection mechanism for prompt injection?]}
 \end{itemize}
 
 \begin{itemize}
-\item **Backdoor detection via gc.** Mock experiment Q116 shows that backdoor triggers shift t* (collapse onset) leftward, causing earlier audio abandonment. This suggests gc/t* monitoring as a backdoor detection signal.
+\item \textbf{Backdoor detection via gc.} Mock experiment Q116 shows that backdoor triggers shift t* (collapse onset) leftward, causing earlier audio abandonment. This suggests gc/t* monitoring as a backdoor detection signal.
 \item \textcolor{red}{[TODO: Connect to Gap \#24 (SAE-guided safety patching) — can we patch AND-gate features to neutralize backdoors?]}
 \end{itemize}
 
 \begin{itemize}
-\item **Deployment screening.** The 4-profile taxonomy (strong/shallow/fragile listener, sophisticated guesser) could serve as a deployment readiness criterion: models classified as "sophisticated guessers" or "fragile listeners" should receive additional scrutiny before deployment in audio-critical applications.
+\item \textbf{Deployment screening.} The 4-profile taxonomy (strong/shallow/fragile listener, sophisticated guesser) could serve as a deployment readiness criterion: models classified as "sophisticated guessers" or "fragile listeners" should receive additional scrutiny before deployment in audio-critical applications.
 \end{itemize}
 
 
@@ -669,27 +669,27 @@ The gc(k) framework generates testable predictions that bridge our work with con
 We acknowledge several limitations of the current work:
 
 \begin{itemize}
-\item **Mock validation only.** 20 of our 22 experiments use the mock framework, which validates internal consistency of the gc formalism but does not test whether real neural networks exhibit the predicted patterns. The two real experiments (Q001, Q002) on Whisper-base provide preliminary evidence but use the smallest model scale.
+\item \textbf{Mock validation only.} 20 of our 22 experiments use the mock framework, which validates internal consistency of the gc formalism but does not test whether real neural networks exhibit the predicted patterns. The two real experiments (Q001, Q002) on Whisper-base provide preliminary evidence but use the smallest model scale.
 \item \textcolor{red}{[TODO: Priority 1 — real gc(k) sweep on Whisper-small to validate core claims]}
 \end{itemize}
 
 \begin{itemize}
-\item **Model scope.** Our real experiments are limited to Whisper-base (74M parameters, encoder-only). The full Listening Geometry framework requires testing on speech LLMs (Qwen2-Audio) where both encoder and decoder layers are present, and where text priors from the LLM backbone create the listen-vs-guess tension.
+\item \textbf{Model scope.} Our real experiments are limited to Whisper-base (74M parameters, encoder-only). The full Listening Geometry framework requires testing on speech LLMs (Qwen2-Audio) where both encoder and decoder layers are present, and where text priors from the LLM backbone create the listen-vs-guess tension.
 \item \textcolor{red}{[TODO: GPU access blocker — Qwen2-Audio experiments deferred pending NDIF cluster allocation]}
 \end{itemize}
 
 \begin{itemize}
-\item **Deferred dimensions.** Two of the five Listening Geometry dimensions — codec stratification (CS) and collapse onset (t*) — are deferred to Paper B scope. This means the current paper validates only a 3-dimensional subspace (k*, α_AND, σ) of the full framework.
+\item \textbf{Deferred dimensions.} Two of the five Listening Geometry dimensions — codec stratification (CS) and collapse onset (t*) — are deferred to Paper B scope. This means the current paper validates only a 3-dimensional subspace (k*, α_AND, σ) of the full framework.
 \item \textcolor{red}{[TODO: Confirm Paper A vs B scope boundary is clean — no circular dependencies]}
 \end{itemize}
 
 \begin{itemize}
-\item **AND/OR threshold sensitivity.** The AND/OR gate classification depends on the threshold δ, which we calibrate via bootstrap but have not tested for robustness across different δ values in real models.
+\item \textbf{AND/OR threshold sensitivity.} The AND/OR gate classification depends on the threshold δ, which we calibrate via bootstrap but have not tested for robustness across different δ values in real models.
 \item \textcolor{red}{[TODO: Sensitivity analysis of δ on real SAE features]}
 \end{itemize}
 
 \begin{itemize}
-\item **Blocked experiments.** Q117 (GSAE density) and Q123 (FAD-RAVEL direction) represent genuine framework failures that may indicate deeper limitations of the gc approach for graph-structured or frequency-domain features.
+\item \textbf{Blocked experiments.} Q117 (GSAE density) and Q123 (FAD-RAVEL direction) represent genuine framework failures that may indicate deeper limitations of the gc approach for graph-structured or frequency-domain features.
 \end{itemize}
 
 
@@ -698,23 +698,23 @@ We acknowledge several limitations of the current work:
 Several directions extend the Listening Geometry framework:
 
 \begin{itemize}
-\item **Paper B (AudioSAEBench).** Dimensions D4 (collapse onset) and D5 (codec stratification) will be fully validated on Whisper and Qwen2-Audio, with feature-level gc providing the bridge between layer-level and feature-level analysis.
+\item \textbf{Paper B (AudioSAEBench).} Dimensions D4 (collapse onset) and D5 (codec stratification) will be fully validated on Whisper and Qwen2-Audio, with feature-level gc providing the bridge between layer-level and feature-level analysis.
 \end{itemize}
 
 \begin{itemize}
-\item **Audio T-SAE.** Adapting temporal SAEs (Bhalla et al., 2025) from text to audio would enable temporal coherence as a gc proxy: features coherent at phoneme timescale (~5–10 frames) indicate listening; features coherent at text-token timescale indicate guessing.
+\item \textbf{Audio T-SAE.} Adapting temporal SAEs (Bhalla et al., 2025) from text to audio would enable temporal coherence as a gc proxy: features coherent at phoneme timescale (~5–10 frames) indicate listening; features coherent at text-token timescale indicate guessing.
 \end{itemize}
 
 \begin{itemize}
-\item **Cross-lingual gc.** Do phonological vectors survive the connector across languages? Testing gc(k) on multilingual speech (building on Choi et al.'s 96-language results) would reveal whether the listen layer is language-universal or language-specific.
+\item \textbf{Cross-lingual gc.} Do phonological vectors survive the connector across languages? Testing gc(k) on multilingual speech (building on Choi et al.'s 96-language results) would reveal whether the listen layer is language-universal or language-specific.
 \end{itemize}
 
 \begin{itemize}
-\item **gc as a training objective.** If α_AND can be differentiated, penalizing OR-gates during fine-tuning could produce models that genuinely integrate audio rather than defaulting to text priors.
+\item \textbf{gc as a training objective.} If α_AND can be differentiated, penalizing OR-gates during fine-tuning could produce models that genuinely integrate audio rather than defaulting to text priors.
 \end{itemize}
 
 \begin{itemize}
-\item **Real-time gc monitoring.** Deploying gc(k) as a runtime monitoring signal could detect when a model shifts from listening to guessing during inference — enabling dynamic safety interventions.
+\item \textbf{Real-time gc monitoring.} Deploying gc(k) as a runtime monitoring signal could detect when a model shifts from listening to guessing during inference — enabling dynamic safety interventions.
 \end{itemize}
 
 

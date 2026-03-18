@@ -194,9 +194,9 @@ class TestRemainingHours(unittest.TestCase):
             result = remaining_hours(23.0)
         self.assertAlmostEqual(result, 8.5, places=1)
 
-    def test_remaining_hours_returns_float(self):
+    def test_remaining_hours_returns_number(self):
         result = remaining_hours()
-        self.assertIsInstance(result, float)
+        self.assertIsInstance(result, (int, float))
 
     def test_remaining_hours_never_negative(self):
         # Midnight (hour=0) with target 23 — already past

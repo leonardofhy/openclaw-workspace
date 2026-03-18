@@ -186,20 +186,32 @@ def _protect_lone_stars(text: str) -> str:
     if not runs:
         return text
 
-    _OPENER_BEFORE = set(" \t\n,.:;([{\"'")  # chars that can precede an opener
-    _CLOSER_AFTER = set(" \t\n,.:;)]}\"'!?")  # chars that can follow a closer
+    _WHITESPACE = set(" \t\n")
+    _OPEN_PUNCT = set("([{\"'")   # punctuation that lets a * open after it
 
     def can_open(pos: int, length: int) -> bool:
-        """Return True if this run can serve as an italic/bold opener."""
+        """Return True if this run can serve as an italic/bold opener.
+
+        An opener must be preceded by whitespace, string-start, or open-punctuation,
+        and must be followed by a non-whitespace character (the content).
+        """
         before = text[pos - 1] if pos > 0 else " "
         after = text[pos + length] if pos + length < len(text) else " "
-        return (before in _OPENER_BEFORE or not before.isalpha()) and after not in _CLOSER_AFTER
+        preceded_ok = before in _WHITESPACE or before in _OPEN_PUNCT
+        followed_ok = after not in _WHITESPACE and after != ""
+        return preceded_ok and followed_ok
 
     def can_close(pos: int, length: int) -> bool:
-        """Return True if this run can serve as an italic/bold closer."""
+        """Return True if this run can serve as an italic/bold closer.
+
+        A closer must be preceded by a non-whitespace character (the content)
+        and followed by whitespace, string-end, or punctuation.
+        """
         before = text[pos - 1] if pos > 0 else " "
         after = text[pos + length] if pos + length < len(text) else " "
-        return before not in _OPENER_BEFORE and (after in _CLOSER_AFTER or not after.isalpha())
+        preceded_ok = before not in _WHITESPACE
+        followed_ok = after in _WHITESPACE or after in set(".,;:!?)]}\"'") or after == ""
+        return preceded_ok and followed_ok
 
     # Greedily pair openers with closers of matching length.
     paired: set[int] = set()
