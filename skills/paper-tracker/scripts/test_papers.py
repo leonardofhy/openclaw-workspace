@@ -13,7 +13,22 @@ from unittest.mock import patch, MagicMock
 
 # Ensure the scripts directory is importable
 sys.path.insert(0, str(Path(__file__).parent))
-import papers
+
+# Save and temporarily block shared module so papers.py uses inline JsonlStore
+_saved_shared = {k: sys.modules.pop(k) for k in list(sys.modules) if k.startswith("shared")}
+_sentinel = type(sys)("shared")  # empty module that fails attribute access
+sys.modules["shared"] = _sentinel
+sys.modules["shared.jsonl_store"] = _sentinel
+
+import papers  # noqa: E402
+import importlib
+importlib.reload(papers)
+
+# Restore shared modules for other test files in the same pytest session
+sys.modules.update(_saved_shared)
+if not _saved_shared:
+    sys.modules.pop("shared", None)
+    sys.modules.pop("shared.jsonl_store", None)
 
 
 # ---------------------------------------------------------------------------
