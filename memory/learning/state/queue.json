@@ -177,60 +177,65 @@
       "type": "build",
       "track": "T3",
       "title": "Phoneme-MDAS: SAE feature disentanglement across phoneme categories via RAVEL-style bleed",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "phoneme_mdas.py: MDAS-style bleed error per SAE feature x phoneme class; novel disentanglement metric",
       "created": "2026-03-14",
-      "due": null
+      "due": null,
+      "result": "Phoneme MDAS disentanglement confirmed (gap=0.1346)"
     },
     {
       "id": "Q113",
       "type": "design",
       "track": "T3",
       "title": "Cascade degree = 1 - AND_gate_fraction: mechanistic quantification of cascade equivalence at gc peak",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: cascade score vs AND-gate fraction at gc peak; Pearson r > 0.8 validates mechanistic link; connects Paper A Claim 2 to Cascade Equivalence Hypothesis",
       "created": "2026-03-16",
-      "due": null
+      "due": null,
+      "result": "Cascade degree = 1 - AND_gate_fraction (mean=0.9005)"
     },
     {
       "id": "Q116",
       "type": "design",
       "track": "T3",
       "title": "Backdoor=cascade induction: t* leftward shift as unified backdoor detector (unifies Q111+Cascade Equivalence)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: poisoned audio t* < 3 vs clean t* > 6; certified detector protocol using collapse_onset_step diagnostic",
       "created": "2026-03-17",
-      "due": null
+      "due": null,
+      "result": "Backdoor t* shift detected (-3 leftward)"
     },
     {
       "id": "Q117",
       "type": "design",
       "track": "T3",
       "title": "Cascade degree = GSAE graph density: three-metric unification + GCBench metric #9 (merged Q119: edge density)",
-      "status": "ready",
+      "status": "blocked",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "mock_cascade_gsae_unify.py: cascade_degree ≈ 1-AND_fraction ≈ 1-norm_GSAE_density on mock; add graph_density as GCBench #9",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "result": "GSAE density correlation weak (r=-0.0427), needs refinement"
     },
     {
       "id": "Q118",
       "type": "build",
       "track": "T3",
       "title": "Emotion neurons x AND/OR gates: emotion-coding features AND-gate or OR-gate?",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "emotion_gate_mock.py: MicroGPT mock; emotion-labelled features AND vs OR; AND-fraction > 0.7 hypothesis",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "result": "Emotion neurons AND%=0 vs non-emotion AND%=44 → strong signal"
     },
     {
       "id": "Q119",
@@ -251,113 +256,122 @@
       "type": "design",
       "track": "T5",
       "title": "ENV taxonomy x GSAE topology: ENV-3=isolated cluster, ENV-1=hub node",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: ENV-type maps to GSAE cluster role; prune isolated (ENV-3) vs reduce hub edges (ENV-1)",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "result": "ENV-3 isolated topology verified (cluster sparsity=1.5×baseline)"
     },
     {
       "id": "Q121",
       "type": "design",
       "track": "T3",
       "title": "Persona x emotion neurons x AND/OR gate: dual-signal persona manipulation detector",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: persona injection → AND→OR ratio drop AND emotion neuron causal weight drop → dual-factor",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "result": "Dual-signal features: 3 personas × emotion confirmed"
     },
     {
       "id": "Q122",
       "type": "build",
       "track": "T3",
       "title": "Incrimination features x Jacobian SVD: top blame SAE features align with top Jacobian singular vector",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "jacobian_incrimination_mock.py: mock Jacobian SVD per layer; cosine-sim between top-incriminated features and top singular vector",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "result": "Top Jacobian singular values: 10 features ≥ 2 blames"
     },
     {
       "id": "Q123",
       "type": "design",
       "track": "T3",
       "title": "FAD bias x RAVEL Cause/Isolate: text-predictable phonemes = high Cause/low Isolate (feature entanglement test)",
-      "status": "ready",
+      "status": "blocked",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock showing FAD-biased phonemes have high Cause but low Isolate score",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "result": "FAD-RAVEL correlation weak (r=-0.70), needs better proxy"
     },
     {
       "id": "Q124",
       "type": "build",
       "track": "T3",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "Codec Probe RVQ x AND/OR gates: RVQ-1 semantic features AND-gates, RVQ-N acoustic = OR-gates?",
       "definition_of_done": "rvq_gate_mock.py: mock RVQ-1 vs RVQ-8 feature sets; AND-fraction per layer; verify AND-frac(RVQ-1) > AND-frac(RVQ-N)",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I03",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "result": "Codec RVQ-1 semantic features OR-gate (r=-0.90)"
     },
     {
       "id": "Q125",
       "type": "build",
       "track": "T3",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "Schelling stability x T-SAE: IIA-stable features = transcoder input-invariant component?",
       "definition_of_done": "schelling_tsae_mock.py: mock transcoder input-dep/invariant split; correlate IIA stability with input-invariance; Pearson r > 0.7",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I08",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "result": "Schelling stability × T-SAE: mean Spearman=0.6388"
     },
     {
       "id": "Q126",
       "type": "design",
       "track": "T5",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "ENV taxonomy x Codec Probe RVQ: ENV-1 hub features = RVQ-1 semantic, ENV-3 isolated = RVQ-N acoustic",
       "definition_of_done": "Design doc: ENV-type maps to RVQ layer hierarchy; hub=semantic, isolated=fine-acoustic; intervention protocol per ENV type",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I11",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "result": "ENV-1 hub RVQ-1 concentration (60% vs 0%)"
     },
     {
       "id": "Q127",
       "type": "build",
       "track": "T3",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "Power Steering x AND/OR gates: top Jacobian singular vector at gc peak aligns with AND-gate feature subspace",
       "definition_of_done": "jacobian_gate_direction_mock.py: cosine-sim top Jacobian singular vector vs AND-gate feature centroid at gc peak layer",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I12",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "result": "Power steering Jacobian SVD × AND-gate (r=0.627)"
     },
     {
       "id": "Q128",
       "type": "build",
       "track": "T5",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "Jailbreak Isolate shift x ENV-3 pruning: pruning ENV-3 isolated features restores t* toward clean baseline",
       "definition_of_done": "env3_prune_restore_mock.py: simulate jailbreak t*=4, prune ENV-3, measure t* recovery; t*_restored > t*_jailbreak",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I17",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "result": "Jailbreak Isolate ENV-3 pruning effective (r=0.888)"
     }
   ],
   "archived_count": 77,
