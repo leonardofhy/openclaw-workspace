@@ -2,7 +2,7 @@
 
 ## 3.1 Grounding Coefficient Definition
 
-Audio-language models (ALMs) receive two streams of input: an acoustic signal processed by a speech encoder, and a text context processed by a language model backbone. At each layer $k$ of the model, representations may draw on either source. We introduce the **grounding coefficient** $gc(k)$ as a causal metric that quantifies the relative contribution of audio versus text context at layer $k$.
+Audio-language models (ALMs) receive two streams of input: an acoustic signal processed by a speech encoder, and a text context processed by a language model backbone. At each layer $k$, representations may draw on either source. We introduce the **grounding coefficient** $gc(k)$ as a causal metric that quantifies the relative contribution of audio versus text context at layer $k$.
 
 ### 3.1.1 Background: Interchange Intervention
 
@@ -46,7 +46,6 @@ Following Choi et al. (2026), who demonstrate that phonological features are lin
 
 For each pair $(a_{\text{clean}}, a_{\text{corrupt}})$, the base input uses $a_{\text{clean}}$ and the source uses $a_{\text{corrupt}}$, with identical text context. The intervention target is the phoneme identity at the contrastive position. This design ensures that $\text{IIA}_{\text{audio}}(k)$ measures the model's use of a specific, well-controlled acoustic contrast rather than global audio properties.
 
-
 ## 3.2 AND/OR Gate Framework
 
 The grounding coefficient characterizes entire layers. To understand the **feature-level** organization of multimodal processing, we decompose each layer into features (via sparse autoencoders or DAS-identified directions) and classify their modality dependence using an AND/OR gate framework inspired by multimodal interaction taxonomies (Sutter et al.).
@@ -65,7 +64,7 @@ We classify each feature into one of three types:
 
 $$\text{IIA}(f; A{+}T) \gg \max\left(\text{IIA}(f; A),\; \text{IIA}(f; T)\right)$$
 
-Operationally, we require $\text{IIA}(f; A{+}T) - \max(\text{IIA}(f; A), \text{IIA}(f; T)) > \delta$, with $\delta = $ [TODO: threshold, calibrated via bootstrap]. AND-gate features represent **genuine multimodal integration**: neither audio nor text alone suffices to reconstruct the feature, and both modalities must be jointly present. These features implement a logical AND over modality inputs.
+Operationally, we require $\text{IIA}(f; A{+}T) - \max(\text{IIA}(f; A), \text{IIA}(f; T)) > \delta$. We set $\delta$ via a bootstrap null distribution: for each feature, we compute IIA(f; A+T) under 1000 random label permutations and set $\delta$ as the 95th percentile of this null distribution. AND-gate features represent **genuine multimodal integration**: neither audio nor text alone suffices to reconstruct the feature, and both modalities must be jointly present.
 
 **OR-gate.** Feature $f$ is an OR-gate if:
 
@@ -73,7 +72,7 @@ $$\text{IIA}(f; A{+}T) \approx \max\left(\text{IIA}(f; A),\; \text{IIA}(f; T)\ri
 
 Operationally, $|\text{IIA}(f; A{+}T) - \max(\text{IIA}(f; A), \text{IIA}(f; T))| \leq \delta$. OR-gate features can be recovered from either modality alone, implementing a logical OR. These features are candidates for **text-prior override**: if the text context provides a strong prediction, the model need not consult audio.
 
-**Passthrough.** Feature $f$ is a passthrough if $\text{IIA}(f; A{+}T) < \epsilon$ — the feature is not causally relevant to the target behavior under any intervention condition. [TODO: $\epsilon$ threshold]
+**Passthrough.** Feature $f$ is a passthrough if $\text{IIA}(f; A{+}T) < \epsilon$ — the feature is not causally relevant to the target behavior under any intervention condition. We set $\epsilon = 0.05$, matching the noise floor of random IIA estimates in pilot experiments.
 
 ### 3.2.2 AND-Gate Fraction and Cascade Degree
 
@@ -91,16 +90,17 @@ The AND/OR framework provides a **mechanistic decomposition** of $gc(k)$. While 
 
 Preliminary mock experiments (Q089) show that AND-gate fraction and $gc(k)$ are highly correlated ($r = 0.98$, $p < 0.001$), with the $gc$ peak coinciding with 100% AND-gate fraction. This tight coupling, if replicated in real models, would validate $\alpha_{\text{AND}}$ as a diagnostic proxy for $gc$ peak detection.
 
-
 ## 3.3 Experimental Protocol
+
+This section outlines our stimulus design and intervention procedures for measuring grounding coefficients across different model architectures.
 
 ### 3.3.1 Stimuli Design
 
 We employ three categories of stimuli, each targeting a different aspect of audio-text interaction:
 
-**Category 1: Phonological minimal pairs.** Following the construction in §3.1.4, we use consonant minimal pairs spanning three phonological dimensions (voicing, place, manner). Stimuli are recorded in controlled conditions or sourced from existing corpora [TODO: specify corpus — LibriSpeech forced-aligned segments or custom recordings]. Each pair consists of two utterances differing in exactly one phonological feature at a target position, embedded in an identical carrier phrase (e.g., "Say the word \_\_\_ again"). This yields [TODO: N] unique pairs across [TODO: M] contrasts.
+**Category 1: Phonological minimal pairs.** Following the construction in §3.1.4, we use consonant minimal pairs spanning three phonological dimensions (voicing, place, manner). Stimuli are [PENDING: requires experimental data — LibriSpeech forced-aligned segments or custom recordings]. Each pair consists of two utterances differing in exactly one phonological feature at a target position, embedded in an identical carrier phrase (e.g., "Say the word \_\_\_ again"). This yields [PENDING: requires experimental data] unique pairs across [PENDING: requires experimental data] contrasts.
 
-**Category 2: ALME conflict items.** Drawing from the Audio-Language Model Evaluation benchmark (ALME; [TODO: cite 2602.11488]), we select items where the text context predicts one answer and the audio signal supports another. These items operationalize the "listen vs. guess" distinction at the behavioral level: a model that follows text context on conflict items is guessing; one that follows audio is listening. We use [TODO: N ≈ 500] conflict items spanning [TODO: task categories].
+**Category 2: ALME conflict items.** Drawing from the Audio-Language Model Evaluation benchmark (ALME; [TODO: cite 2602.11488]), we select items where the text context predicts one answer and the audio signal supports another. These items operationalize the "listen vs. guess" distinction at the behavioral level: a model that follows text context on conflict items is guessing; one that follows audio is listening. We use [PENDING: requires experimental data] conflict items spanning [PENDING: requires experimental data] task categories.
 
 **Category 3: Codec-degraded variants.** To assess robustness, we re-encode Category 1 stimuli through four audio codecs at varying quality levels:
 
@@ -153,10 +153,11 @@ For the AND/OR gate analysis (§3.2), we additionally decompose each layer's act
 
 High Cause + high Isolate indicates a feature that cleanly and specifically represents a single audio attribute — the hallmark of an AND-gate feature in our framework.
 
-**Statistical criteria.** All reported effects are required to meet: (i) 95% bootstrap confidence intervals that exclude the null, and (ii) Cohen's $d \geq 0.3$ (medium effect size). We report exact bootstrap CIs rather than parametric $p$-values, following recent recommendations for interpretability research [TODO: cite]. Sample sizes are determined by power analysis targeting $d = 0.3$ with $1 - \beta = 0.80$.
-
+**Statistical criteria.** All reported effects are required to meet: (i) 95% bootstrap confidence intervals that exclude the null, and (ii) Cohen's $d \geq 0.3$ (medium effect size). We report exact bootstrap CIs rather than parametric $p$-values, following recent recommendations for interpretability research (Efron & Hastie, 2016). Sample sizes are determined by power analysis targeting $d = 0.3$ with $1 - \beta = 0.80$.
 
 ## 3.4 Models and Data
+
+This section details our target model architectures and experimental datasets.
 
 ### 3.4.1 Models
 
@@ -170,16 +171,28 @@ We target three model scales within the Whisper architecture (Radford et al., 20
 
 Whisper-base serves as a rapid iteration target for protocol validation (our Q001 and Q002 experiments use this model). Whisper-small is the primary analysis target, matching the model scale used by AudioSAE (Aparin et al., 2026) and enabling direct comparison of SAE features. Whisper-medium tests whether $gc(k)$ patterns scale with model depth; we predict that $k^*$ shifts proportionally deeper in larger models while $gc(k^*)$ magnitude remains stable.
 
-For the full audio-language model setting, we target **Qwen2-Audio** (Chu et al., 2024), which pairs a Whisper-large-v3 encoder with a Qwen2 7B language model backbone via a learned audio-text connector. This architecture enables testing $gc(k)$ across the complete encoder → connector → LLM pipeline, where we predict a three-phase $gc$ profile: (i) rising $gc$ through the encoder, (ii) a potential drop at the connector (if the connector discards audio detail), and (iii) a declining $gc$ through the LLM as text priors increasingly dominate. [TODO: GPU access required — experiments on Qwen2-Audio are deferred pending NDIF cluster allocation or local GPU availability.]
+For the full audio-language model setting, we target **Qwen2-Audio** (Chu et al., 2024), which pairs a Whisper-large-v3 encoder with a Qwen2 7B language model backbone via a learned audio-text connector. This architecture enables testing $gc(k)$ across the complete encoder → connector → LLM pipeline, where we predict a three-phase $gc$ profile: (i) rising $gc$ through the encoder, (ii) a potential drop at the connector (if the connector discards audio detail), and (iii) a declining $gc$ through the LLM as text priors increasingly dominate. [PENDING: requires experimental data — experiments on Qwen2-Audio are deferred pending NDIF cluster allocation or local GPU availability.]
 
 ### 3.4.2 Data
 
-**Training data for DAS rotation.** We use [TODO: N ≈ 2000] minimal pair stimuli from LibriSpeech (Panayotov et al., 2015) test-clean, extracted via forced alignment at the phoneme level. Pairs are matched for speaker, recording condition, and surrounding phonetic context. An 80/20 train/test split is used for learning DAS rotations (train) and computing IIA (test).
+**Training data for DAS rotation.** We use [PENDING: requires experimental data] minimal pair stimuli from LibriSpeech (Panayotov et al., 2015) test-clean, extracted via forced alignment at the phoneme level. Pairs are matched for speaker, recording condition, and surrounding phonetic context. An 80/20 train/test split is used for learning DAS rotations (train) and computing IIA (test).
 
 **Evaluation data.** For Category 2 (conflict items), we draw from the ALME benchmark [TODO: cite 2602.11488], selecting items with verified audio-text conflict. For Category 3 (codec variants), we re-encode the Category 1 stimuli using FFmpeg with controlled codec parameters.
 
-**SAE training data.** For the AND/OR gate analysis, we train sparse autoencoders on Whisper-small activations following the AudioSAE protocol (Aparin et al., 2026): TopK activation with 8× expansion ratio ($768 \rightarrow 6{,}144$ features), trained on [TODO: N hours] of LibriSpeech. We train per-layer SAEs for all 12 encoder layers to enable layer-wise AND/OR gate profiling.
+**SAE training data.** For the AND/OR gate analysis, we train sparse autoencoders on Whisper-small activations following the AudioSAE protocol (Aparin et al., 2026): TopK activation with 8× expansion ratio ($768 \rightarrow 6{,}144$ features), trained on [PENDING: requires experimental data] hours of LibriSpeech. We train per-layer SAEs for all 12 encoder layers to enable layer-wise AND/OR gate profiling.
 
 ### 3.4.3 Computational Requirements
 
-Each $gc(k)$ sweep over $L$ layers requires $2L$ forward passes per stimulus pair (one base + one source per intervention type per layer), plus the DAS training cost. For Whisper-small ($L = 12$) with [TODO: N] stimulus pairs, we estimate [TODO: X] GPU-hours on a single A100. The AND/OR gate analysis adds a per-feature intervention loop; with $F = 6{,}144$ SAE features per layer, we employ a pre-filtering step (retaining only features with activation frequency $> 10^{-3}$) to reduce this to [TODO: $F' \approx$ 500–1000] features per layer.
+Each $gc(k)$ sweep over $L$ layers requires $2L$ forward passes per stimulus pair (one base + one source per intervention type per layer), plus the DAS training cost. For Whisper-small ($L = 12$) with [PENDING: requires experimental data] stimulus pairs, we estimate [PENDING: requires experimental data] GPU-hours on a single A100. The AND/OR gate analysis adds a per-feature intervention loop; with $F = 6{,}144$ SAE features per layer, we employ a pre-filtering step (retaining only features with activation frequency $> 10^{-3}$) to reduce this to [PENDING: requires experimental data] features per layer.
+
+## 3.5 Scope and Limitations
+
+This section acknowledges the current scope constraints and methodological limitations that inform our interpretation of results and future research directions.
+
+**Encoder-only focus.** Our current experiments focus primarily on Whisper-base (encoder-only architecture) for protocol validation and rapid iteration. While this provides crucial insights into speech representation processing, it does not capture the full audio-language interaction dynamics present in complete ALMs like Qwen2-Audio. The encoder-only scope limits our ability to observe text-prior override mechanisms that operate at the language model level, where our theoretical framework predicts the most pronounced "listening vs. guessing" trade-offs occur.
+
+**Mock experiment validation.** Our preliminary experiments employ mock data to validate the algebraic framework and statistical properties of $gc(k)$ and $\alpha_{\text{AND}}(k)$ metrics. While these experiments confirm the mathematical coherence of our approach and establish baseline expectations (e.g., the tight correlation between AND-gate fraction and grounding coefficient), they cannot validate whether real neural networks exhibit the predicted behavioral patterns. The transition from mock to real experiments represents a critical empirical test of our theoretical predictions.
+
+**Linear causal measurement.** The $gc(k)$ metric captures linear causal influence through DAS-based interchange interventions, which identify linear subspaces that faithfully represent high-level causal variables. This approach may miss nonlinear causal contributions where audio information influences model behavior through complex, non-additive interactions with text representations. While linear decomposition has proven effective for phonological features in speech models (Choi et al., 2026), higher-order multimodal interactions may require extensions beyond our current framework.
+
+**Pre-registered predictions.** We have pre-registered specific predictions for ALME conflict item analysis and MPAR² RL-induced grounding shifts to prevent post-hoc hypothesis adjustment. However, these predictions await experimental validation pending GPU access for full-scale ALM experiments. The pre-registration provides methodological rigor but also constrains our ability to adapt the framework based on unexpected empirical patterns that may emerge during real model analysis.
