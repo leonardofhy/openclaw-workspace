@@ -83,7 +83,7 @@ def format_alerts(results: dict) -> list[str]:
     return alerts
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Deadline watchdog")
     parser.add_argument("--days", type=int, default=7,
                         help="Warn for deadlines within N days (default: 7)")

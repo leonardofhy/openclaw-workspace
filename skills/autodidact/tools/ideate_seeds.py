@@ -122,30 +122,66 @@ def load_news_digests(days=7):
     return seeds
 
 def load_paper_readings():
-    """Load completed paper readings from paper-reading-list.md."""
-    path = LEARNING / "paper-reading-list.md"
-    if not path.exists():
-        return []
-    content = path.read_text()
-    seeds = []
-    # Extract papers from C/C2 sections (completed reads)
-    in_completed = False
-    for line in content.split("\n"):
-        if "Completed" in line or "## C" in line:
-            in_completed = True
-            continue
-        if line.startswith("## ") and in_completed:
-            # new section
-            if "Completed" not in line and "## C" not in line:
-                in_completed = False
+    """Load completed paper readings from paper-reading-list.md AND papers.jsonl.
+
+    Deduplicates by arxiv ID — JSONL entries take priority (richer metadata).
+    """
+    seen_arxiv: set[str] = set()
+    seeds: list[dict] = []
+
+    # --- Source 1: papers.jsonl (richer metadata) ---
+    jsonl_path = WS / "memory" / "papers" / "papers.jsonl"
+    if jsonl_path.exists():
+        for line in jsonl_path.read_text().strip().splitlines():
+            if not line.strip():
                 continue
-        if in_completed and line.strip().startswith(("- ", "| ")):
-            clean = re.sub(r'[*|]', '', line).strip("- ").strip()
-            if len(clean) > 15 and not clean.startswith("Paper") and not clean.startswith("---"):
-                seeds.append({
-                    "source": "paper",
-                    "element": clean[:200],
-                })
+            try:
+                p = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            arxiv_id = p.get("arxiv_id", "")
+            if arxiv_id:
+                seen_arxiv.add(arxiv_id)
+            tags_str = f" [{', '.join(p.get('tags', []))}]" if p.get("tags") else ""
+            notes_str = ""
+            if p.get("notes"):
+                notes_str = " | " + p["notes"][0].get("text", "")[:100]
+            element = f"{p.get('title', '?')}{tags_str}{notes_str}"
+            seeds.append({
+                "source": "paper",
+                "element": element[:200],
+                "arxiv_id": arxiv_id,
+                "status": p.get("status", "queued"),
+            })
+
+    # --- Source 2: paper-reading-list.md (backward compat, skip dupes) ---
+    path = LEARNING / "paper-reading-list.md"
+    if path.exists():
+        content = path.read_text()
+        in_completed = False
+        arxiv_re = re.compile(r'(\d{4}\.\d{4,5})')
+        for line in content.split("\n"):
+            if "Completed" in line or "## C" in line:
+                in_completed = True
+                continue
+            if line.startswith("## ") and in_completed:
+                if "Completed" not in line and "## C" not in line:
+                    in_completed = False
+                    continue
+            if in_completed and line.strip().startswith(("- ", "| ")):
+                clean = re.sub(r'[*|]', '', line).strip("- ").strip()
+                if len(clean) > 15 and not clean.startswith("Paper") and not clean.startswith("---"):
+                    # Deduplicate by arxiv ID
+                    m = arxiv_re.search(clean)
+                    if m and m.group(1) in seen_arxiv:
+                        continue
+                    if m:
+                        seen_arxiv.add(m.group(1))
+                    seeds.append({
+                        "source": "paper",
+                        "element": clean[:200],
+                    })
+
     return seeds
 
 def load_kg_entries():

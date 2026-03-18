@@ -207,7 +207,7 @@ def check_smtp(ctx: ScanContext):
 
 def check_git(ctx: ScanContext):
     def _fix():
-        for cmd in [['git', 'add', '-A'], ['git', 'commit', '-m', 'chore: scanner auto-fix'],
+        for cmd in [['git', 'add', '-u'], ['git', 'commit', '-m', 'chore: scanner auto-fix'],
                     ['git', 'push']]:
             rc, out, err = sh(cmd, cwd=str(WORKSPACE))
             if rc != 0 and 'nothing to commit' not in out + err:

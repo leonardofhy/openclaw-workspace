@@ -14,7 +14,7 @@ import platform
 import re
 import socket
 import sys
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "shared"))
@@ -111,7 +111,7 @@ def parse_tasks(text: str) -> list[dict]:
     return tasks
 
 
-def check(tasks: list[dict], today=None, owner_scope: str = "all") -> list[str]:
+def check(tasks: list[dict], today: date | None = None, owner_scope: str = "all") -> list[str]:
     """Return list of alert strings (scoped by owner)."""
     today = today or datetime.now().date()
     alerts = []
@@ -150,7 +150,7 @@ def check(tasks: list[dict], today=None, owner_scope: str = "all") -> list[str]:
     return alerts
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Task board checker")
     parser.add_argument("--json", action="store_true", help="Output JSON")
     parser.add_argument("--owner", default="auto", choices=["auto", "mac", "lab", "all"],

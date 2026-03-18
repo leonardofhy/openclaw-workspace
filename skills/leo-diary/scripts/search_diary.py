@@ -21,29 +21,7 @@ import argparse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from read_diary import load_diary
-
-# ─── 人物別名表 ───────────────────────────────────────────
-# key = 標準名, value = 所有可能出現的稱呼
-ALIASES = {
-    "智凱": ["智凱", "智凱哥", "凱哥", "zhikai"],
-    "晨安": ["晨安", "晨安哥", "chenan"],
-    "康哥": ["康哥", "康", "kang"],
-    "李宏毅": ["李宏毅", "宏毅", "宏毅老師", "老師", "李老師", "hungyi", "hung-yi"],
-    "明淵": ["明淵", "mingyuan"],
-    "朗軒": ["朗軒", "langxuan"],
-    "Rocky": ["Rocky", "rocky"],
-    "Wilson": ["Wilson", "wilson"],
-    "Howard": ["Howard", "howard"],
-    "David": ["David", "david"],
-    "Ziya": ["Ziya", "ziya"],
-    "Christine": ["Christine", "christine"],
-    "Teddy": ["Teddy", "teddy"],
-    "Zen": ["Zen", "zen"],
-    "陳縕儂": ["陳縕儂", "縕儂", "yunnnung", "vivian"],
-    "專題生": ["專題生"],
-    "媽": ["我媽", "媽媽", "老媽"],
-    "爸": ["我爸", "爸爸", "老爸"],
-}
+from diary_utils import PEOPLE_ALIASES as ALIASES
 
 # 搜尋欄位映射
 SEARCHABLE_FIELDS = {
@@ -110,9 +88,9 @@ def extract_context(text: str, pattern: str, context_chars: int = 80, use_regex:
     return snippets
 
 
-def search(keywords: list[str], start_date=None, end_date=None,
-           use_or=False, use_regex=False, context_chars=80,
-           field="diary", max_results=50) -> list[dict]:
+def search(keywords: list[str], start_date: str | None = None, end_date: str | None = None,
+           use_or: bool = False, use_regex: bool = False, context_chars: int = 80,
+           field: str = "diary", max_results: int = 50) -> list[dict]:
     """
     搜尋日記。
     keywords: 搜尋詞列表
@@ -182,7 +160,7 @@ def search(keywords: list[str], start_date=None, end_date=None,
     return results
 
 
-def print_people():
+def print_people() -> None:
     """列印人物別名表"""
     print("📋 已知人物別名表：\n")
     for canonical, aliases in sorted(ALIASES.items()):
@@ -190,7 +168,7 @@ def print_people():
     print(f"\n共 {len(ALIASES)} 人。編輯 search_diary.py 的 ALIASES 可新增。")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="搜尋 Leo 日記")
     parser.add_argument("keywords", nargs="*", help="搜尋關鍵詞（多個=AND）")
     parser.add_argument("--or", dest="use_or", action="store_true", help="多關鍵詞用 OR（預設 AND）")

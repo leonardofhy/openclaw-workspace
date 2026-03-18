@@ -72,6 +72,20 @@
 - **lab-desktop 用法：** `ffmpeg -y -i input.ogg -ar 16000 -ac 1 /tmp/voice.wav && ~/miniconda3/bin/python3 -c "import whisper; m=whisper.load_model('base'); print(m.transcribe('/tmp/voice.wav', language='zh')['text'])"`
 - **注意：** 只接受 WAV 格式，需先用 ffmpeg 轉檔。支援中文
 
+### 📊 Google Sheets (Feed Recommendations)
+- **Sheet Name：** "AI Research Feed"
+- **Sheet ID：** `1COz971ZsWjPURSJyNx9CnFTBTDxN6PQshyrAq8rXSuw`
+- **Service Account：** `little-leo-reader@little-leo-487708.iam.gserviceaccount.com`（Editor）
+- **腳本：** `skills/feed-recommend/scripts/sync_to_sheets.py`
+- **Wrapper：** `skills/feed-recommend/scripts/sync_digest_to_sheets.sh`
+- **用法：**
+  - `./sync_digest_to_sheets.sh` — fetch latest articles + sync
+  - `python3 sync_to_sheets.py --json-file path/to/digest.json` — sync from file
+  - `python3 sync_to_sheets.py --test` — push 3 sample rows
+  - `python3 sync_to_sheets.py --backfill` — import historical digests from memory/feeds/
+- **欄位：** Date | Source | Title | Author | Score | URL | Summary | Tags | Relevance Score | Reasoning
+- **功能：** Auto-dedup by URL, date-descending sort, header frozen, filters enabled
+
 ### 🛰️ Lab WSL2 SSH Tunnel（MacBook ↔ Lab）
 - **Lab Host:** `DESKTOP-Q1L6LLN`（WSL2 Ubuntu）
 - **User:** `leonardo`
@@ -83,6 +97,19 @@
 - **注意（Lab PATH）:** WSL2 的 OpenClaw 在 nvm 路徑，非互動 shell 需先加 PATH：
   - `export PATH=$HOME/.nvm/versions/node/v22.22.0/bin:$PATH`
   - 然後再跑 `openclaw gateway restart` / `openclaw gateway status`
+
+### 📊 Google Sheets (Feed Recommendations)
+- **Service Account：** 同 Google Calendar
+- **權限：** Editor
+- **Sheet ID：** `1COz971ZsWjPURSJyNx9CnFTBTDxN6PQshyrAq8rXSuw`
+- **腳本：** `skills/feed-recommend/scripts/sync_to_sheets.py`
+- **用法：**
+  - `python3 sync_to_sheets.py --json-file digest.json` — 從 JSON 檔匯入
+  - `python3 feed.py recommend | python3 sync_to_sheets.py --stdin` — 管道輸入
+  - `python3 sync_to_sheets.py --backfill` — 掃描 memory/feeds/ 匯入歷史
+  - `python3 sync_to_sheets.py --test` — 推送 3 筆測試資料驗證連線
+- **欄位：** Date | Source | Title | Author | Score | URL | Summary | Tags | Relevance Score | Reasoning
+- **特性：** URL 去重、凍結表頭、自動篩選、日期降序排列
 
 ## 未啟用 / 待設定
 
@@ -111,6 +138,7 @@
 | `weather_scout.py` | leo-diary/scripts/ | 天氣檢查+通知 |
 | `fetch_latest_diary.py` | leo-diary/scripts/ | 拉取最新日記（供記憶反芻）|
 | `append_memory.py` | remember/scripts/ | 寫入長期記憶 |
+| `sync_to_sheets.py` | feed-recommend/scripts/ | Feed 推薦同步到 Google Sheets |
 | `sync_diary_to_memory.py` | ~/Workspace/little-leo-tools/scripts/ | 日記同步到 memory/*.md |
 
 ## Secrets 清單

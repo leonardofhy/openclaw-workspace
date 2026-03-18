@@ -22,14 +22,15 @@ from pathlib import Path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'lib'))
 from common import now as _now, MEMORY as _MEMORY, TAGS_DIR as _TAGS_DIR
+from diary_utils import PEOPLE_ALIASES
 
 MEMORY_DIR = str(_MEMORY)
 TAGS_DIR = str(_TAGS_DIR)
 
 # Diary metrics cache (loaded once from Google Sheets / CSV)
-_diary_metrics_cache = None
+_diary_metrics_cache: dict[str, dict[str, int]] | None = None
 
-def _load_diary_metrics():
+def _load_diary_metrics() -> dict[str, dict[str, int]]:
     """Load mood/energy from diary source (Sheets or CSV). Cached."""
     global _diary_metrics_cache
     if _diary_metrics_cache is not None:
@@ -61,27 +62,7 @@ def _load_diary_metrics():
         _diary_metrics_cache = {}
     return _diary_metrics_cache
 
-# ─── 人物別名表（與 search_diary.py 同步）─────────────────
-PEOPLE_ALIASES = {
-    "智凱": ["智凱", "智凱哥", "凱哥", "zhikai"],
-    "晨安": ["晨安", "晨安哥", "chenan"],
-    "康哥": ["康哥", "kang"],
-    "李宏毅": ["李宏毅", "宏毅", "宏毅老師", "李老師", "hungyi", "hung-yi"],
-    "明淵": ["明淵", "mingyuan"],
-    "朗軒": ["朗軒", "langxuan"],
-    "Rocky": ["Rocky", "rocky"],
-    "Wilson": ["Wilson", "wilson"],
-    "Howard": ["Howard", "howard"],
-    "David": ["David", "david"],
-    "Ziya": ["Ziya", "ziya"],
-    "Christine": ["Christine", "christine"],
-    "Teddy": ["Teddy", "teddy"],
-    "Zen": ["Zen", "zen"],
-    "陳縕儂": ["陳縕儂", "縕儂", "yunnnung", "vivian"],
-    "專題生": ["專題生"],
-    "媽": ["我媽", "媽媽", "老媽"],
-    "爸": ["我爸", "爸爸", "老爸"],
-}
+# PEOPLE_ALIASES imported from diary_utils — single source of truth.
 
 # ─── 主題關鍵詞 ──────────────────────────────────────────
 TOPIC_KEYWORDS = {
@@ -152,7 +133,7 @@ def detect_late_sleep(text: str) -> bool:
     return False
 
 
-def extract_metrics_from_header(content: str) -> dict:
+def extract_metrics_from_header(content: str) -> dict[str, int]:
     """從 memory/*.md 的 YAML-like header 提取指標"""
     metrics = {}
     # 嘗試抓 mood/energy/sleep 等 (格式不固定，盡力而為)
@@ -165,7 +146,7 @@ def extract_metrics_from_header(content: str) -> dict:
     return metrics
 
 
-def generate_tag(date: str, content: str) -> dict:
+def generate_tag(date: str, content: str) -> dict[str, object]:
     """為一篇日記生成標籤"""
     tag = {
         "date": date,
@@ -188,7 +169,7 @@ def generate_tag(date: str, content: str) -> dict:
     return tag
 
 
-def process_diary_file(filepath: str) -> tuple[str, dict] | None:
+def process_diary_file(filepath: str) -> tuple[str, dict[str, object]] | None:
     """處理一個 memory/YYYY-MM-DD.md 檔案"""
     basename = os.path.basename(filepath)
     date_match = re.match(r"(\d{4}-\d{2}-\d{2})\.md$", basename)
@@ -205,7 +186,7 @@ def process_diary_file(filepath: str) -> tuple[str, dict] | None:
     return date, generate_tag(date, content)
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="日記標籤提取器")
     parser.add_argument("--date", help="指定日期 YYYY-MM-DD")
     parser.add_argument("--recent", type=int, help="最近 N 天")

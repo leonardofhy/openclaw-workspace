@@ -7,24 +7,28 @@
       "type": "experiment",
       "track": "T3",
       "title": "Gap #18: Phonological geometry through connector",
-      "status": "blocked",
+      "status": "done",
       "priority": 0,
-      "blocked_by": "Leo approval (real speech .wav + venv setup)",
+      "blocked_by": null,
       "definition_of_done": "Cosine similarity of voicing vector before/after connector measured",
       "created": "2026-02-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-18",
+      "result": "Voicing vectors peak at layer 5 (cos_sim=0.155). Stop-stop weak alignment (+0.25), stop-fricative orthogonal. Partial support for linear phonological structure in Whisper-base."
     },
     {
       "id": "Q002",
       "type": "experiment",
       "track": "T3",
       "title": "IIT experiment: Triple Convergence Causal Test",
-      "status": "blocked",
+      "status": "done",
       "priority": 1,
-      "blocked_by": "Leo approval + real speech .wav + venv",
+      "blocked_by": null,
       "definition_of_done": "Layer-wise causal contribution plot produced",
       "created": "2026-02-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-18",
+      "result": "Layer-wise causal ablation: all layers critical (WER=1.0 on any ablation). No redundant layers. Early layers (0-3) as important as late layers (4-5). Confirms distributed encoding in Whisper-base."
     },
     {
       "id": "Q003",

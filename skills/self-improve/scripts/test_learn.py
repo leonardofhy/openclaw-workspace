@@ -432,7 +432,7 @@ class TestCmdError:
         assert updates["fix"] == "apply the patch"
 
     @patch("learn.JsonlStore")
-    def test_dedup_without_fix_does_not_include_status_in_updates(
+    def test_dedup_without_fix_reopens_as_pending(
         self, MockStore, capsys
     ):
         existing = _err(id="ERR-001", summary="crash on startup", recurrence=1)
@@ -442,7 +442,7 @@ class TestCmdError:
         learn.cmd_error(self._args(summary="crash on startup", fix=""))
 
         updates = store.update.call_args[0][1]
-        assert "status" not in updates
+        assert updates["status"] == "pending"
 
     @patch("learn.JsonlStore")
     def test_force_always_appends(self, MockStore, capsys):

@@ -24,6 +24,7 @@ import subprocess
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
+
 TZ = timezone(timedelta(hours=8))
 WORKSPACE = Path(__file__).resolve().parent.parent.parent.parent
 PEOPLE_DIR = WORKSPACE / "memory" / "people"
@@ -59,23 +60,27 @@ def _load_jsonl(path: Path) -> list[dict]:
     return items
 
 
-def _save_jsonl(path: Path, items: list[dict]):
+def _save_jsonl(path: Path, items: list[dict]) -> None:
     """Atomic rewrite via tempfile (matches shared/jsonl_store.py pattern)."""
     import tempfile, os
     path.parent.mkdir(parents=True, exist_ok=True)
     content = "\n".join(json.dumps(i, ensure_ascii=False) for i in items) + "\n"
     fd, tmp = tempfile.mkstemp(dir=path.parent, suffix=".tmp")
+    closed = False
     try:
         os.write(fd, content.encode("utf-8"))
         os.close(fd)
+        closed = True
         os.replace(tmp, path)
-    except:
-        os.close(fd) if not os.get_inheritable(fd) else None
-        os.unlink(tmp)
+    except BaseException:
+        if not closed:
+            os.close(fd)
+        if os.path.exists(tmp):
+            os.unlink(tmp)
         raise
 
 
-def _append_jsonl(path: Path, item: dict):
+def _append_jsonl(path: Path, item: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "a") as f:
         f.write(json.dumps(item, ensure_ascii=False) + "\n")
@@ -117,7 +122,7 @@ def _validate_range(value: int | None, name: str, lo: int, hi: int) -> int | Non
     return value
 
 
-def cmd_add(args):
+def cmd_add(args: argparse.Namespace) -> None:
     if not args.name or not args.name.strip():
         print("❌ 名字不能為空", file=sys.stderr)
         sys.exit(1)
@@ -154,7 +159,7 @@ def cmd_add(args):
     print(f"✅ Added {person['id']}: {person['name']}")
 
 
-def cmd_update(args):
+def cmd_update(args: argparse.Namespace) -> None:
     _validate_range(args.trust, "trust", *TRUST_RANGE)
     _validate_range(args.closeness, "closeness", *CLOSENESS_RANGE)
 
@@ -186,7 +191,7 @@ def cmd_update(args):
     print(f"✅ Updated {p['id']}: {p['name']}")
 
 
-def cmd_log(args):
+def cmd_log(args: argparse.Namespace) -> None:
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
     if not p:
@@ -211,7 +216,7 @@ def cmd_log(args):
     print(f"✅ Logged {event['id']}: {p['name']} / {event['date']} / {event['type']}")
 
 
-def cmd_show(args):
+def cmd_show(args: argparse.Namespace) -> None:
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
     if not p:
@@ -263,7 +268,7 @@ def cmd_show(args):
     print(f"{'='*50}")
 
 
-def cmd_list(args):
+def cmd_list(args: argparse.Namespace) -> None:
     people = _load_jsonl(PEOPLE_FILE)
     events = _load_jsonl(EVENTS_FILE)
 
@@ -278,7 +283,7 @@ def cmd_list(args):
         event_count[pid] = event_count.get(pid, 0) + 1
 
     # Sort by last interaction (recent first), then by name
-    def sort_key(p):
+    def sort_key(p: dict) -> tuple[str, int]:
         return (last_date.get(p["id"], "0000"), p.get("closeness", 0))
 
     people_sorted = sorted(people, key=sort_key, reverse=True)
@@ -296,7 +301,7 @@ def cmd_list(args):
               f"{count:2d} events | last: {last} | {tags}")
 
 
-def cmd_scan(args):
+def cmd_scan(args: argparse.Namespace) -> None:
     """Scan diary for mentions of a person, output structured results."""
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
@@ -366,7 +371,7 @@ def cmd_scan(args):
     print(f"   用 LLM 分析後可用 import-scan 匯入事件")
 
 
-def cmd_import_scan(args):
+def cmd_import_scan(args: argparse.Namespace) -> None:
     """Import events from a scan result file (after LLM review/annotation)."""
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
@@ -434,7 +439,7 @@ def cmd_import_scan(args):
     print(f"✅ 匯入 {imported} 筆事件，跳過 {skipped} 筆（已存在或無摘要）")
 
 
-def cmd_timeline(args):
+def cmd_timeline(args: argparse.Namespace) -> None:
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
     if not p:
@@ -468,7 +473,7 @@ def cmd_timeline(args):
         print(f"  {e['date']} {icon} {e.get('summary','')[:60]} {sent}")
 
 
-def cmd_delete(args):
+def cmd_delete(args: argparse.Namespace) -> None:
     """Delete a person (and their events) or a single event by ID."""
     target = args.target.strip()
 
@@ -505,7 +510,7 @@ def cmd_delete(args):
         print(f"🗑️ 刪除 {p['name']} ({p['id']}) + {event_count} 筆事件")
 
 
-def cmd_profile(args):
+def cmd_profile(args: argparse.Namespace) -> None:
     """Generate a human-readable profile markdown for a person."""
     people = _load_jsonl(PEOPLE_FILE)
     p = find_person(people, args.name)
@@ -620,7 +625,7 @@ def cmd_profile(args):
     print(content)
 
 
-def cmd_stats(args):
+def cmd_stats(args: argparse.Namespace) -> None:
     people = _load_jsonl(PEOPLE_FILE)
     events = _load_jsonl(EVENTS_FILE)
 
@@ -659,7 +664,7 @@ def cmd_stats(args):
 
 # --- CLI ---
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Personal Relationship Database")
     sub = parser.add_subparsers(dest="command")
 

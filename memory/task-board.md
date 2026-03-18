@@ -2,11 +2,7 @@
 
 > 單一任務看板，Lab + MacBook 共用。每次 session 開始、每次 heartbeat 都掃一眼。
 > ID 規則：`L-xx`（Lab bot）、`M-xx`（MacBook bot）
-<<<<<<< HEAD
-> 最後更新：2026-03-13 04:30
-=======
 > 最後更新：2026-03-13 11:30
->>>>>>> origin/macbook-m3
 
 ## 規則
 
@@ -89,14 +85,14 @@
 - **progress**: SSH tunnels 維修中（iso_leo 預計 3/13 修好，battleship 已恢復），日常 merge cron 受影響
 - **next_action**: 等 iso_leo tunnel 恢復後跑一輪端到端 SYNC 驗證
 
-### L-09 | HN 雙時段推薦（移交自 Mac）
+### L-09 | 多源 Feed 推薦（HN + AF + LW + arXiv）
 - **owner**: Lab
 - **priority**: P1
 - **created**: 2026-02-28
-- **last_touched**: 2026-03-13
-- **描述**: 每天 2 次閱讀 Hacker News，分析後推送 Leo 感興趣文章
+- **last_touched**: 2026-03-18
+- **描述**: 每天多次從 HN、AlignmentForum、LessWrong、arXiv 蒐集並推送 Leo 感興趣文章，使用 skills/feed-recommend（已取代舊 skills/hn-recommend）
 - **schedule**: 每小時靜默蒐集 + 每天 20:30 推送 top 10
-- **progress**: 系統穩定運行中，3/12 已推送 daily digest（10 篇，#7 TADA 語音生成與 Leo 研究相關）
+- **progress**: feed-recommend 已完全覆蓋舊 hn-recommend 功能（HN 抓取、評分、dedup、digest）；profile 仍讀取 memory/hn/preferences.json
 - **next_action**: 持續觀察 digest 品質；等 Leo 反饋調整 profile 權重
 - **cron_ids**: `df22eb11`（每小時蒐集, spark）, `76817b6d`（20:30 digest, g53s）
 
