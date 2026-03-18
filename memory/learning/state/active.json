@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 7,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 2,
+    "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-18"
   },
   "stats": {
     "total_cycles": 221,
     "total_skips": 43,
-    "papers_read_deep": 53,
+    "papers_read_deep": 56,
     "papers_scanned": 50,
     "research_gaps": 25,
-    "paper_ideas": 451,
+    "paper_ideas": 491,
     "paper_pitches": 2,
     "code_artifacts": 66,
     "system_improvements": 7,
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260318-1015",
-    "action": "ideate",
-    "summary": "Generated 20 cross-domain ideas (Jacobian\u00d7gc(k)\u00d7GSAE\u00d7emotion-neurons); added Q117-Q122; archived 7 done queue tasks"
+    "id": "c-20260318-1315",
+    "action": "learn",
+    "summary": "Deep read RAVEL (ACL 2024): argmin(Isolate_audio(t)) \u2248 t* hypothesis; MDAS Isolate/Cause per SAE feature predicts AND/OR gate (links Q107+Q105); next: build ravel_isolate_proxy.py mock tomorrow"
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

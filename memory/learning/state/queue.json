@@ -52,7 +52,7 @@
     },
     {
       "id": "Q89",
-      "title": "Temporal gc(k) × AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
+      "title": "Temporal gc(k) \u00d7 AND/OR Gate: do AND-gate features appear earlier in decoding than OR-gate features?",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -65,7 +65,7 @@
     },
     {
       "id": "Q91",
-      "title": "Persona × AND/OR Gate: extend persona_gc_benchmark.py to measure AND vs OR gate prevalence per persona condition",
+      "title": "Persona \u00d7 AND/OR Gate: extend persona_gc_benchmark.py to measure AND vs OR gate prevalence per persona condition",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -78,7 +78,7 @@
     },
     {
       "id": "Q92",
-      "title": "Schelling Features × AND/OR Gates: are cross-seed-stable SAE features more likely to be AND-gates?",
+      "title": "Schelling Features \u00d7 AND/OR Gates: are cross-seed-stable SAE features more likely to be AND-gates?",
       "type": "build",
       "track": "T3",
       "priority": 1,
@@ -91,7 +91,7 @@
     },
     {
       "id": "Q93",
-      "title": "Collapse Onset × AND/OR Gate: does audio info collapse (Q085 onset step) coincide with AND-gate feature deactivation?",
+      "title": "Collapse Onset \u00d7 AND/OR Gate: does audio info collapse (Q085 onset step) coincide with AND-gate feature deactivation?",
       "type": "build",
       "track": "T3",
       "priority": 2,
@@ -111,18 +111,6 @@
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "tsae_gc_correlation_mock.py: T-SAE-style temporal features deactivation precedes t* collapse onset; correlation table",
-      "created": "2026-03-12",
-      "due": null
-    },
-    {
-      "id": "Q095",
-      "type": "design",
-      "track": "T5",
-      "title": "OBLITERATUS x T5: gc(k) safety signature audit — detect safety-bypassed audio-LLMs via M7+M9 profile divergence",
-      "status": "ready",
-      "priority": 1,
-      "blocked_by": null,
-      "definition_of_done": "Design doc: safety-bypassed model shows different gc(k) + M9 profile on safety-critical audio prompts vs normal model",
       "created": "2026-03-12",
       "due": null
     },
@@ -230,7 +218,7 @@
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
-      "definition_of_done": "mock_cascade_gsae_unify.py: cascade_degree ≈ 1-AND_fraction ≈ 1-norm_GSAE_density on mock; add graph_density as GCBench #9",
+      "definition_of_done": "mock_cascade_gsae_unify.py: cascade_degree \u2248 1-AND_fraction \u2248 1-norm_GSAE_density on mock; add graph_density as GCBench #9",
       "created": "2026-03-18",
       "due": null
     },
@@ -250,7 +238,7 @@
       "id": "Q119",
       "type": "build",
       "track": "T3",
-      "title": "GSAE edge density per layer → t* = argmin(density): graph sparsification = collapse",
+      "title": "GSAE edge density per layer \u2192 t* = argmin(density): graph sparsification = collapse",
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
@@ -278,7 +266,7 @@
       "status": "ready",
       "priority": 1,
       "blocked_by": null,
-      "definition_of_done": "Design doc: persona injection → AND→OR ratio drop AND emotion neuron causal weight drop → dual-factor",
+      "definition_of_done": "Design doc: persona injection \u2192 AND\u2192OR ratio drop AND emotion neuron causal weight drop \u2192 dual-factor",
       "created": "2026-03-18",
       "due": null
     },
@@ -293,9 +281,86 @@
       "definition_of_done": "jacobian_incrimination_mock.py: mock Jacobian SVD per layer; cosine-sim between top-incriminated features and top singular vector",
       "created": "2026-03-18",
       "due": null
+    },
+    {
+      "id": "Q123",
+      "type": "design",
+      "track": "T3",
+      "title": "FAD bias x RAVEL Cause/Isolate: text-predictable phonemes = high Cause/low Isolate (feature entanglement test)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Design doc + mock showing FAD-biased phonemes have high Cause but low Isolate score",
+      "created": "2026-03-18",
+      "due": null
+    },
+    {
+      "id": "Q124",
+      "type": "build",
+      "track": "T3",
+      "priority": 1,
+      "status": "ready",
+      "title": "Codec Probe RVQ x AND/OR gates: RVQ-1 semantic features AND-gates, RVQ-N acoustic = OR-gates?",
+      "definition_of_done": "rvq_gate_mock.py: mock RVQ-1 vs RVQ-8 feature sets; AND-fraction per layer; verify AND-frac(RVQ-1) > AND-frac(RVQ-N)",
+      "created": "2026-03-18T12:48:26.072530",
+      "ideation_id": "I03",
+      "novelty": 5,
+      "feasibility": 4
+    },
+    {
+      "id": "Q125",
+      "type": "build",
+      "track": "T3",
+      "priority": 1,
+      "status": "ready",
+      "title": "Schelling stability x T-SAE: IIA-stable features = transcoder input-invariant component?",
+      "definition_of_done": "schelling_tsae_mock.py: mock transcoder input-dep/invariant split; correlate IIA stability with input-invariance; Pearson r > 0.7",
+      "created": "2026-03-18T12:48:26.072530",
+      "ideation_id": "I08",
+      "novelty": 5,
+      "feasibility": 4
+    },
+    {
+      "id": "Q126",
+      "type": "design",
+      "track": "T5",
+      "priority": 1,
+      "status": "ready",
+      "title": "ENV taxonomy x Codec Probe RVQ: ENV-1 hub features = RVQ-1 semantic, ENV-3 isolated = RVQ-N acoustic",
+      "definition_of_done": "Design doc: ENV-type maps to RVQ layer hierarchy; hub=semantic, isolated=fine-acoustic; intervention protocol per ENV type",
+      "created": "2026-03-18T12:48:26.072530",
+      "ideation_id": "I11",
+      "novelty": 5,
+      "feasibility": 4
+    },
+    {
+      "id": "Q127",
+      "type": "build",
+      "track": "T3",
+      "priority": 1,
+      "status": "ready",
+      "title": "Power Steering x AND/OR gates: top Jacobian singular vector at gc peak aligns with AND-gate feature subspace",
+      "definition_of_done": "jacobian_gate_direction_mock.py: cosine-sim top Jacobian singular vector vs AND-gate feature centroid at gc peak layer",
+      "created": "2026-03-18T12:48:26.072530",
+      "ideation_id": "I12",
+      "novelty": 5,
+      "feasibility": 4
+    },
+    {
+      "id": "Q128",
+      "type": "build",
+      "track": "T5",
+      "priority": 1,
+      "status": "ready",
+      "title": "Jailbreak Isolate shift x ENV-3 pruning: pruning ENV-3 isolated features restores t* toward clean baseline",
+      "definition_of_done": "env3_prune_restore_mock.py: simulate jailbreak t*=4, prune ENV-3, measure t* recovery; t*_restored > t*_jailbreak",
+      "created": "2026-03-18T12:48:26.072530",
+      "ideation_id": "I17",
+      "novelty": 5,
+      "feasibility": 4
     }
   ],
-  "archived_count": 76,
+  "archived_count": 77,
   "last_archived": "2026-03-14T13:17:30.429930+08:00",
-  "last_updated": "2026-03-14T13:18:02.616240+08:00"
+  "last_updated": "2026-03-18T12:48:26.072530"
 }
