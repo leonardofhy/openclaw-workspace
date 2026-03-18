@@ -27,6 +27,19 @@ python3 skills/coordinator/scripts/one_liner_handoff.py "移交給lab：HN雙時
 # 先預覽不寫檔
 python3 skills/coordinator/scripts/one_liner_handoff.py --dry-run "handoff to mac: merge lab-desktop and publish sync report"
 
+# === Cross-Machine Orchestration ===
+# 調度實驗到 Battleship (經由 Lab 協調)
+python3 skills/coordinator/scripts/orchestrator.py dispatch --name "sae_analysis_v2" --script ./experiments/sae.py --model whisper-base --dry-run
+
+# 同步 Lab 自學習狀態
+python3 skills/coordinator/scripts/orchestrator.py sync-state --json
+
+# 查看 GPU 隊列狀態
+python3 skills/coordinator/scripts/orchestrator.py gpu-queue --status queued --json
+
+# 打包任務移交
+python3 skills/coordinator/scripts/orchestrator.py handoff --to lab --title "SAE 實驗結果分析" --files results.json config.yaml --context "第二階段分析" --dry-run
+
 # Mailbox 保底（guaranteed delivery）
 python3 skills/coordinator/scripts/mailbox.py send --from lab --to mac --title "L-09" --body "接手 HN digest" --task-id L-09 --urgent
 python3 skills/coordinator/scripts/mailbox.py list --to mac --status open
@@ -89,6 +102,50 @@ context：[對方需要知道的背景]
 ## 週報（Weekly Sync）
 
 每週日自動生成，發到 #bot-sync，內容見 `scripts/sync_report.py`。
+
+## Cross-Machine Orchestrator
+
+新的 `orchestrator.py` 提供統一的跨機器操作介面：
+
+### dispatch — 實驗調度
+```bash
+python3 orchestrator.py dispatch --name "experiment_name" --script path/to/script.py --model whisper-base [--dry-run]
+```
+- 透過 `experiment_dispatch.py` 發送到 Battleship
+- 自動發送 mailbox 通知給 Lab
+- 支援 GPU 數量、walltime 等參數
+
+### sync-state — 狀態同步
+```bash
+python3 orchestrator.py sync-state [--json] [--dry-run]
+```
+- 從 Lab 拉取 autodidact 狀態
+- 比較本地與遠端任務差異
+- 顯示 status 不同步的任務
+- 拉取遠端 dispatches.jsonl
+
+### gpu-queue — GPU 隊列
+```bash
+python3 orchestrator.py gpu-queue [--status queued|running|blocked] [--json]
+```
+- 顯示 queue.json 中的實驗任務
+- 按狀態過濾
+- JSON 輸出方便腳本處理
+
+### handoff — 任務移交
+```bash
+python3 orchestrator.py handoff --to lab|mac --title "Title" --files f1.py f2.json [--context "..."] [--dry-run]
+```
+- 打包檔案清單和 metadata
+- 透過 mailbox 發送通知
+- 自動建立檔案 manifest
+- 提醒對方 git pull
+
+### 安全設計
+- 所有命令預設 `--dry-run` 防止意外操作
+- SSH timeout 防止卡死
+- 錯誤處理和 rollback
+- 自動 git sync
 
 ## 升級路徑
 

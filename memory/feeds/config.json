@@ -1,7 +1,7 @@
 {
   "sources": {
     "hn": {
-      "enabled": true,
+      "enabled": false,
       "limit": 50
     },
     "af": {
