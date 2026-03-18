@@ -2,12 +2,13 @@
 
 > WAL target. Write here BEFORE responding when critical details appear.
 
-**Last Updated:** 2026-03-18 21:30
+**Last Updated:** 2026-03-18 21:54
 
 ## Current Task
-Git pushed ✅. Spawning CC for Q117/Q123 diagnostics.
+Autodidact SKILL refactor (Opus CC) — Leo approved plan A+B+C+E
 
 ## Recent Context
+- [2026-03-18 21:54] Leo approved autodidact refactor: state cleanup + SKILL merge + phase auto + kg migration
 - [2026-03-18 21:13] D-001 Pathfinder: Leo 已處理。D-002/D-013 尚未處理
 - [2026-03-18 21:13] 智凱哥合作：Leo 已處理，不再提醒
 - [2026-03-18 21:09] CC#1-3 全部完成（Paper A outline, eval dashboard, test fix）
