@@ -118,8 +118,7 @@ class TestDailyCoachV3(unittest.TestCase):
         """daily_coach_v3 does network I/O on run — just verify it's importable."""
         r = subprocess.run(
             [sys.executable, "-c",
-             f"import sys; sys.path.insert(0, '{SCRIPTS_DIR}'); "
-             "import importlib, types; "
+             "import importlib.util; "
              "spec = importlib.util.spec_from_file_location('daily_coach_v3', "
              f"'{SCRIPTS_DIR / 'daily_coach_v3.py'}'); "
              "assert spec is not None"],

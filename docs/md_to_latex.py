@@ -157,6 +157,89 @@ def _restore_math(text: str, placeholders: list[str]) -> str:
     return text
 
 
+def _protect_lone_stars(text: str) -> str:
+    """Replace unpaired asterisks (e.g. k*, t*) with LONESTAR placeholders.
+
+    Valid italic spans (*word*) and bold spans (**word**) have their asterisks
+    consumed by the subsequent regex pass.  Asterisks that are NOT part of any
+    valid pairing — typically mathematical superscript-stars like k* or t* —
+    are replaced with ``\\x00LONESTAR\\x00`` so they pass through as literal ``*``.
+
+    An asterisk run is a valid OPENER only when preceded by whitespace, start,
+    or punctuation (not a word character).  It is a valid CLOSER only when
+    followed by whitespace, end, or punctuation (not a word character or another *).
+    Any run that does not qualify as opener or closer is treated as lone stars.
+    """
+    # Find positions and lengths of all *-runs (sequences of one or more *).
+    runs: list[tuple[int, int]] = []  # (start, length)
+    i = 0
+    while i < len(text):
+        if text[i] == "*":
+            j = i
+            while j < len(text) and text[j] == "*":
+                j += 1
+            runs.append((i, j - i))
+            i = j
+        else:
+            i += 1
+
+    if not runs:
+        return text
+
+    _OPENER_BEFORE = set(" \t\n,.:;([{\"'")  # chars that can precede an opener
+    _CLOSER_AFTER = set(" \t\n,.:;)]}\"'!?")  # chars that can follow a closer
+
+    def can_open(pos: int, length: int) -> bool:
+        """Return True if this run can serve as an italic/bold opener."""
+        before = text[pos - 1] if pos > 0 else " "
+        after = text[pos + length] if pos + length < len(text) else " "
+        return (before in _OPENER_BEFORE or not before.isalpha()) and after not in _CLOSER_AFTER
+
+    def can_close(pos: int, length: int) -> bool:
+        """Return True if this run can serve as an italic/bold closer."""
+        before = text[pos - 1] if pos > 0 else " "
+        after = text[pos + length] if pos + length < len(text) else " "
+        return before not in _OPENER_BEFORE and (after in _CLOSER_AFTER or not after.isalpha())
+
+    # Greedily pair openers with closers of matching length.
+    paired: set[int] = set()
+    open_stack: list[tuple[int, int]] = []  # (run_index, length)
+
+    for idx, (pos, length) in enumerate(runs):
+        is_opener = can_open(pos, length)
+        is_closer = can_close(pos, length)
+
+        if is_closer:
+            # Try to close a matching opener on the stack.
+            for stack_idx in range(len(open_stack) - 1, -1, -1):
+                o_idx, o_len = open_stack[stack_idx]
+                if o_len == length:
+                    paired.add(o_idx)
+                    paired.add(idx)
+                    open_stack.pop(stack_idx)
+                    break
+            # Whether or not we found a match, don't push as opener
+            # unless it also qualifies as one.
+        elif is_opener:
+            open_stack.append((idx, length))
+        # If neither opener nor closer: lone star — leave unpaired.
+
+    # Build output: for each unpaired run immediately after a word char,
+    # replace with LONESTAR placeholders.
+    result_parts: list[str] = []
+    prev_end = 0
+    for idx, (pos, length) in enumerate(runs):
+        result_parts.append(text[prev_end:pos])
+        if idx not in paired:
+            # Lone star: emit as LONESTAR so it passes through as literal *
+            result_parts.append("\x00LONESTAR\x00" * length)
+        else:
+            result_parts.append(text[pos : pos + length])
+        prev_end = pos + length
+    result_parts.append(text[prev_end:])
+    return "".join(result_parts)
+
+
 def convert_inline(text: str) -> str:
     """Apply inline Markdown→LaTeX conversions to a single line or span.
 
@@ -169,10 +252,17 @@ def convert_inline(text: str) -> str:
     # 1b. Handle backslash-escaped Markdown characters (\* \_ \[ etc.)
     #     Replace them with NUL-guarded placeholders so the regex patterns
     #     below don't treat them as Markdown syntax.
-    text = text.replace(r"\*", "\x00STAR\x00")
-    text = text.replace(r"\_", "\x00USCORE\x00")
-    text = text.replace(r"\[", "\x00LBRACK\x00")
-    text = text.replace(r"\]", "\x00RBRACK\x00")
+    text = text.replace(r"\*", "\x00ESTAR\x00")
+    text = text.replace(r"\_", "\x00EUSCORE\x00")
+    text = text.replace(r"\[", "\x00ELBRACK\x00")
+    text = text.replace(r"\]", "\x00ERBRACK\x00")
+
+    # 1c. Protect lone asterisks (mathematical superscript-star, e.g. k*, t*)
+    #     that would otherwise be mistaken for italic delimiters.
+    #     We use a paired-scan approach: first find all valid *italic* and
+    #     **bold** spans, mark their asterisks as consumed, then any remaining
+    #     word* pattern is a lone star.
+    text = _protect_lone_stars(text)
 
     # 2. Bold **text** — handle before italic to avoid mis-parsing ***
     text = re.sub(r"\*\*\*(.+?)\*\*\*", lambda m: r"\textbf{\textit{" + m.group(1) + r"}}", text)
@@ -183,10 +273,11 @@ def convert_inline(text: str) -> str:
     text = re.sub(r"(?<!\w)_(.+?)_(?!\w)", lambda m: r"\textit{" + m.group(1) + r"}", text)
 
     # 3b. Restore escaped characters as their literal LaTeX equivalents.
-    text = text.replace("\x00STAR\x00", "*")
-    text = text.replace("\x00USCORE\x00", r"\_")
-    text = text.replace("\x00LBRACK\x00", "[")
-    text = text.replace("\x00RBRACK\x00", "]")
+    text = text.replace("\x00ESTAR\x00", "*")
+    text = text.replace("\x00EUSCORE\x00", r"\_")
+    text = text.replace("\x00ELBRACK\x00", "[")
+    text = text.replace("\x00ERBRACK\x00", "]")
+    text = text.replace("\x00LONESTAR\x00", "*")
 
     # 4. Inline code `code` → \texttt{code}
     text = re.sub(r"`([^`]+)`", lambda m: r"\texttt{" + m.group(1) + r"}", text)
@@ -251,6 +342,7 @@ class State:
         self.seen_titles: set[str] = set()
         self.in_toc: bool = False
         self.results_table_inserted: bool = False
+        self.abstract_emitted: bool = False
 
     def close_list(self, out: list[str]) -> None:
         if self.in_itemize:
@@ -492,8 +584,26 @@ def convert(md_text: str, has_bib: bool) -> str:
             level = len(heading_match.group(1))
             heading_text = heading_match.group(2).strip()
 
-            # Special: "Abstract (sketch)" → abstract environment
-            if level == 2 and re.match(r"abstract", heading_text, re.IGNORECASE):
+            # Special: "Abstract (sketch)" or "# Abstract" → abstract environment.
+            # Emit only once; the first occurrence is the sketch (suppress it)
+            # and the second is the full abstract (emit it).  We detect the
+            # "sketch" variant by "(sketch)" in the heading text.
+            if level in (1, 2) and re.match(r"abstract", heading_text, re.IGNORECASE):
+                is_sketch = re.search(r"sketch", heading_text, re.IGNORECASE) is not None
+                if is_sketch:
+                    # Skip the sketch abstract entirely — advance past its body.
+                    i += 1
+                    while i < len(lines):
+                        l = lines[i].strip()
+                        if re.match(r"^#{1,4}\s+", l) or (l == "" and i + 1 < len(lines) and re.match(r"^#{1,4}\s+", lines[i + 1].strip())):
+                            break
+                        i += 1
+                    continue
+                if state.abstract_emitted:
+                    # Suppress duplicate abstract heading
+                    i += 1
+                    continue
+                state.abstract_emitted = True
                 out.append(r"\begin{abstract}")
                 # Collect subsequent non-heading lines; skip leading blank lines
                 # but stop at the first heading after text has been found.
@@ -525,7 +635,7 @@ def convert(md_text: str, has_bib: bool) -> str:
 
                 # After the Results section heading, insert results table
                 results_section = re.search(r"Results", heading_text, re.IGNORECASE)
-                if results_section and not state.results_table_inserted and level == 2:
+                if results_section and not state.results_table_inserted and level in (1, 2):
                     out.append("")
                     out.append(r"\input{results_table}")
                     out.append("")
