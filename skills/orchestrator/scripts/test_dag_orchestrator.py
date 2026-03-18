@@ -229,7 +229,7 @@ def test_worktree_create_cleanup(tmp_path, monkeypatch):
 def test_cli_init_add_plan(tmp_path):
     """CLI subcommands: init, add, plan."""
     manifest_path = tmp_path / "manifest.json"
-    orch = str(SCRIPT_DIR / "orchestrator.py")
+    orch = str(SCRIPT_DIR / "dag_orchestrator.py")
 
     # init
     result = subprocess.run(
@@ -278,7 +278,7 @@ def test_status_display(tmp_path):
     mf.add_task(m, "waiting", prompt="pending")
     mf.save(manifest_path, m)
 
-    orch = str(SCRIPT_DIR / "orchestrator.py")
+    orch = str(SCRIPT_DIR / "dag_orchestrator.py")
     result = subprocess.run(
         [sys.executable, orch, "--manifest", str(manifest_path), "status"],
         capture_output=True, text=True, timeout=10,

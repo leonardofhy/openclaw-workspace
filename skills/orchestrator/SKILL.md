@@ -14,23 +14,23 @@ Multi-step task orchestration with dependency resolution, wave-based execution, 
 cd /path/to/workspace
 
 # 1. Create pipeline
-python3 skills/orchestrator/scripts/orchestrator.py init --name paper-v2
+python3 skills/orchestrator/scripts/dag_orchestrator.py init --name paper-v2
 
 # 2. Add tasks
-python3 skills/orchestrator/scripts/orchestrator.py add \
+python3 skills/orchestrator/scripts/dag_orchestrator.py add \
   --id CC-data --prompt 'Clean and prepare dataset'
 
-python3 skills/orchestrator/scripts/orchestrator.py add \
+python3 skills/orchestrator/scripts/dag_orchestrator.py add \
   --id CC-viz --prompt 'Create visualizations' --depends-on CC-data
 
-python3 skills/orchestrator/scripts/orchestrator.py add \
+python3 skills/orchestrator/scripts/dag_orchestrator.py add \
   --id CC-results --prompt 'Write results section' --depends-on CC-viz
 
 # 3. Review plan
-python3 skills/orchestrator/scripts/orchestrator.py plan
+python3 skills/orchestrator/scripts/dag_orchestrator.py plan
 
 # 4. Execute
-python3 skills/orchestrator/scripts/orchestrator.py run
+python3 skills/orchestrator/scripts/dag_orchestrator.py run
 ```
 
 ## CLI Reference
