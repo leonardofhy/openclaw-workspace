@@ -51,7 +51,7 @@ def get_expense_log() -> JsonlStore:
     return JsonlStore(EXPENSE_LOG_PATH, prefix="EXP")
 
 
-def cmd_latest():
+def cmd_latest() -> None:
     """Show latest financial snapshot."""
     store = get_snapshots()
     items = store.load()
@@ -83,7 +83,7 @@ def cmd_latest():
         print(f"\n   vs {prev.get('date', 'prev')}: {'📈' if delta > 0 else '📉'} TWD {delta:+,.0f}")
 
 
-def cmd_record(savings: float, income: float, expenses: float, note: str = ""):
+def cmd_record(savings: float, income: float, expenses: float, note: str = "") -> None:
     """Record a new monthly snapshot."""
     store = get_snapshots()
     today = date.today().isoformat()
@@ -108,7 +108,7 @@ def cmd_record(savings: float, income: float, expenses: float, note: str = ""):
         print(f"   Runway: {runway:.0f} months")
 
 
-def cmd_check_stale(max_age: int = 45):
+def cmd_check_stale(max_age: int = 45) -> None:
     """Check if latest snapshot is too old."""
     store = get_snapshots()
     items = store.load()
@@ -131,7 +131,7 @@ def cmd_check_stale(max_age: int = 45):
         sys.exit(0)
 
 
-def cmd_log_income(source: str, amount: float, note: str = "", log_date: str = ""):
+def cmd_log_income(source: str, amount: float, note: str = "", log_date: str = "") -> None:
     """Log an income event."""
     store = get_income_log()
     entry_date = log_date or date.today().isoformat()
@@ -148,7 +148,7 @@ def cmd_log_income(source: str, amount: float, note: str = "", log_date: str = "
     print(f"✅ Income logged: {item['id']} | {source} | TWD {amount:,.0f} | {entry_date}")
 
 
-def cmd_log_expense(source: str, amount: float, note: str = "", log_date: str = ""):
+def cmd_log_expense(source: str, amount: float, note: str = "", log_date: str = "") -> None:
     """Log a one-off expense event."""
     store = get_expense_log()
     entry_date = log_date or date.today().isoformat()
@@ -165,7 +165,7 @@ def cmd_log_expense(source: str, amount: float, note: str = "", log_date: str = 
     print(f"✅ Expense logged: {item['id']} | {source} | TWD {amount:,.0f} | {entry_date}")
 
 
-def cmd_income_summary(months: int = 1):
+def cmd_income_summary(months: int = 1) -> None:
     """Show income summary for recent months."""
     store = get_income_log()
     items = store.load()
@@ -205,7 +205,7 @@ def cmd_income_summary(months: int = 1):
     print(f"   Total: TWD {total:,.0f}")
 
 
-def cmd_trend(months: int = 6):
+def cmd_trend(months: int = 6) -> None:
     """Show trend over recent snapshots."""
     store = get_snapshots()
     items = store.load()
@@ -230,7 +230,7 @@ def cmd_trend(months: int = 6):
     print(f"\n   Overall: {direction} (TWD {delta:+,.0f})")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Financial snapshot manager")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--latest", action="store_true", help="View latest snapshot")

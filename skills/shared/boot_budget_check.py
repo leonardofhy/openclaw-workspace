@@ -95,7 +95,7 @@ def print_human(report: dict) -> None:
             print(f"  - {f['file']}: {excess} lines over budget. Evict old content.")
 
 
-def main():
+def main() -> None:
     report = check()
 
     if "--json" in sys.argv:

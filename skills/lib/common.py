@@ -77,7 +77,7 @@ def is_quiet_hours() -> bool:
     return h >= 23 or h < 8
 
 
-def load_todoist_token():
+def load_todoist_token() -> str:
     token = os.environ.get('TODOIST_API_TOKEN')
     if token:
         return token
