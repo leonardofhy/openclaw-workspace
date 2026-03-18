@@ -1,13 +1,15 @@
 {
   "version": 1,
-  "phase": "explore-fallback",
-  "phase_since": "2026-03-09",
+  "phase": "converge",
+  "phase_since": "2026-03-18",
   "phase_exit_criteria": {
     "converge_to_execute": [
       "eval_harness_exists_T3",
       "experiment_spec_ready_T3",
       "leo_approved_gpu_or_cpu_experiment"
     ],
+    "eval_harness_exists_T3": true,
+    "experiment_spec_ready_T3": true,
     "leo_approved_gpu_or_cpu_experiment": true
   },
   "active_tracks": [
@@ -27,10 +29,10 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
-    "build_remaining_today": 0,
+    "learn_remaining_today": 5,
+    "build_remaining_today": 10,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 0,
+    "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-18"
   },
   "stats": {
@@ -43,7 +45,9 @@
     "paper_pitches": 2,
     "code_artifacts": 66,
     "system_improvements": 7,
-    "days_active": 10
+    "days_active": 10,
+    "experiments_done": 22,
+    "real_experiments_completed": 2
   },
   "last_cycle": {
     "id": "c-20260318-1315",
@@ -52,5 +56,5 @@
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": [],
-  "phase_exit_note": "Q001+Q002 completed on MacBook M3 CPU (2026-03-18). Whisper-base voicing geometry + causal ablation."
+  "phase_exit_note": "Q001+Q002 completed on MacBook M3 CPU (2026-03-18). Whisper-base voicing geometry + causal ablation. Phase transition: explore-fallback → converge (2026-03-18)."
 }

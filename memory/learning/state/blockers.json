@@ -3,18 +3,21 @@
   "blocked": false,
   "track_blockers": {
     "T3": {
-      "blocked": true,
-      "reason": "GPU experiments (Q001-Q004) require Leo: real speech .wav + venv setup + experiment approval",
+      "blocked": false,
+      "reason": "Unblocked 2026-03-18: Q001+Q002 real experiments completed on Whisper-base. Eval harness validated. CPU mock experiments (20) all pass. GPU needed only for scale-up (Whisper-small/medium).",
       "blocked_since": "2026-02-27T10:00:00+08:00",
-      "unblock_check_at": "2026-03-21T10:00:00+08:00",
-      "reassessed_at": "2026-03-14T10:15:00+08:00",
-      "reassess_note": "Still blocked: GPU + real .wav + Leo approval still needed. Next check: 2026-03-21."
+      "unblocked_at": "2026-03-18T15:00:00+08:00",
+      "unblock_check_at": "2026-03-25T10:00:00+08:00",
+      "reassessed_at": "2026-03-18T15:00:00+08:00",
+      "reassess_note": "Unblocked: eval harness works, Q001+Q002 done on CPU. GPU needed only for Whisper-small/medium scale-up."
     },
     "T5": {
       "blocked": false,
       "reason": "Reassessed 2026-03-12: many T5 CPU/Tier-0 tasks (Q071, Q076, Q078-Q082, Q085-Q088) are READY and independent of T3 infrastructure. Track unblocked for CPU tasks. GPU-dependent tasks still need Leo.",
       "blocked_since": "2026-02-27T10:00:00+08:00",
-      "unblock_check_at": "2026-03-19T10:00:00+08:00"
+      "unblock_check_at": "2026-03-25T10:00:00+08:00",
+      "reassessed_at": "2026-03-18T15:00:00+08:00",
+      "reassess_note": "Still unblocked. CPU tasks proceeding. Next reassess 2026-03-25."
     }
   },
   "fallback_tasks": [],
@@ -22,8 +25,8 @@
   "fallback_exhausted_note": "Q033-Q037 all completed (2026-03-05). No more CPU fallback tasks.",
   "explore_fallback": {
     "active": false,
-    "deactivated": "2026-03-12T10:15:00+08:00",
-    "deactivation_reason": "T5 reassessed as unblocked (19 READY CPU tasks available). Build budget exhausted today but will reset tomorrow.",
+    "deactivated": "2026-03-18T15:00:00+08:00",
+    "deactivation_reason": "Phase transition to converge. T3 unblocked (Q001+Q002 done). Explore-fallback no longer needed.",
     "activated_since": "2026-03-09T00:00:00+08:00",
     "reason": "All converge tracks blocked + fallback exhausted. Phase regression to explore mode per Leo directive.",
     "scope": "Adjacent research areas, new trends, low-hanging fruit. Not limited to MI x Speech/Audio."
