@@ -1,0 +1,355 @@
+% ============================================================================
+% Paper A — The Listening Geometry
+% BibTeX References
+% Generated from [CITE: ...] markers across paper-a-*.md files
+% ============================================================================
+
+% ---------------------------------------------------------------------------
+% Causal Abstraction & Intervention Methods
+% ---------------------------------------------------------------------------
+
+@article{geiger2021causal,
+  title={Causal Abstraction for Faithful Model Interpretation},
+  author={Geiger, Atticus and Lu, Hanson and Icard, Thomas and Potts, Christopher},
+  journal={arXiv preprint arXiv:2301.04709},
+  year={2023},
+  url={https://arxiv.org/abs/2301.04709},
+  note={IIT causal abstraction framework unifying 11 MI methods}
+}
+
+@article{geiger2023das,
+  title={Finding Alignments Between Interpretable Causal Variables and Distributed Neural Representations},
+  author={Geiger, Atticus and Wu, Zhengxuan and Potts, Christopher and Icard, Thomas and Goodman, Noah D.},
+  journal={arXiv preprint arXiv:2303.02536},
+  year={2023},
+  url={https://arxiv.org/abs/2303.02536},
+  note={Distributed Alignment Search (DAS)}
+}
+
+@article{wu2024pyvene,
+  title={pyvene: A Library for Understanding and Improving {PyTorch} Models via Interventions},
+  author={Wu, Zhengxuan and Geiger, Atticus and Arora, Aryaman and Huang, Jing and Wang, Zheng and Goodman, Noah D. and Manning, Christopher D. and Potts, Christopher},
+  journal={arXiv preprint},
+  year={2024},
+  note={Practical implementation of DAS and interchange interventions}
+}
+
+@article{heimersheim2024patching,
+  title={How to Use and Interpret Activation Patching},
+  author={Heimersheim, Stefan and Nanda, Neel},
+  journal={arXiv preprint},
+  year={2024},
+  note={Denoising vs noising patching; Hydra effect; logit difference metric}
+}
+
+@article{huang2024ravel,
+  title={{RAVEL}: Evaluating Interpretability Methods on Disentangling Language Model Representations},
+  author={Huang, Jing and Wu, Zhengxuan and Potts, Christopher and Geva, Mor and Geiger, Atticus},
+  journal={arXiv preprint},
+  year={2024},
+  note={Cause/Isolate disentanglement metrics; MDAS ceiling baseline}
+}
+
+% ---------------------------------------------------------------------------
+% Audio-Language Model Behavioral Studies
+% ---------------------------------------------------------------------------
+
+@article{zhao2026modalitycollapse,
+  title={Modality Collapse in Audio-Language Models},
+  author={Zhao, others},
+  journal={arXiv preprint arXiv:2602.23136},
+  year={2026},
+  url={https://arxiv.org/abs/2602.23136},
+  note={ALMs default to text priors when audio and text conflict}
+}
+
+@article{chen2026mpar2,
+  title={{MPAR\textsuperscript{2}}: Audio Perception Decay and {RL} Training for Audio-Language Models},
+  author={Chen, others},
+  journal={arXiv preprint arXiv:2603.02266},
+  year={2026},
+  url={https://arxiv.org/abs/2603.02266},
+  note={Audio perception accuracy degrades 63\% to 31\% with longer CoT}
+}
+
+@article{mistere2026,
+  title={{MiSTER-E}: Mixture-of-Experts Gating for Speech-Text Dominance},
+  author={{IISc and Microsoft}},
+  journal={arXiv preprint arXiv:2602.23300},
+  year={2026},
+  url={https://arxiv.org/abs/2602.23300},
+  note={MoE gating to quantify speech-vs-text dominance behaviorally}
+}
+
+@article{cascade2026,
+  title={Cascade Equivalence in Speech {LLMs}},
+  author={[TODO: authors]},
+  journal={arXiv preprint arXiv:2602.17598},
+  year={2026},
+  url={https://arxiv.org/abs/2602.17598},
+  note={LEACE erasure confirms most speech LLMs function as implicit ASR cascades}
+}
+
+% ---------------------------------------------------------------------------
+% Audio-Language Model Interpretability
+% ---------------------------------------------------------------------------
+
+@article{ho2025audiolens,
+  title={{AudioLens}: Logit Lens for Large Audio-Language Models},
+  author={Ho, others},
+  journal={arXiv preprint},
+  year={2025},
+  note={[TODO: add arXiv ID] Logit lens on DeSTA2, Qwen-Audio, Qwen2-Audio; critical layers; observational only}
+}
+
+@article{glazer2025beyondtranscription,
+  title={Beyond Transcription: Encoder Lens and Saturation Layer in {Whisper}},
+  author={Glazer, others},
+  journal={arXiv preprint},
+  year={2025},
+  note={[TODO: add arXiv ID] Encoder lens, saturation layer concept; speaker gender probing peaks at layer 25}
+}
+
+@article{zhao2026esn,
+  title={Emotion-Sensitive Neurons in Large Audio-Language Models},
+  author={Zhao, others},
+  journal={arXiv preprint arXiv:2601.03115},
+  year={2026},
+  url={https://arxiv.org/abs/2601.03115},
+  note={ESNs in Qwen2.5-Omni, Kimi-Audio, Audio Flamingo; causal ablation but decoder-only}
+}
+
+@article{chowdhury2026ard,
+  title={{AR\&D}: SAE-Based Interpretability for {AudioLLMs}},
+  author={Chowdhury, others},
+  journal={arXiv preprint},
+  year={2026},
+  note={[TODO: add arXiv ID] Retrieve-describe pipeline for SALMONN and Qwen-Audio; no audio-vs-text test}
+}
+
+@article{djanibekov2025spirit,
+  title={{SPIRIT}: Activation Patching Defense for Audio Jailbreaks in {Qwen2-Audio}},
+  author={Djanibekov, others},
+  journal={arXiv preprint},
+  year={2025},
+  note={[TODO: add arXiv ID] 99\% robustness via clean-activation substitution at noise-sensitive MLP neurons}
+}
+
+@article{sgpa2026,
+  title={{SGPA}: Shapley-Value Attribution with Phonetic Alignment for Audio {LLMs}},
+  author={[TODO: authors]},
+  journal={arXiv preprint arXiv:2603.02250},
+  year={2026},
+  url={https://arxiv.org/abs/2603.02250},
+  note={Efficient phoneme-level attribution; observational (Pearl Level 1)}
+}
+
+% ---------------------------------------------------------------------------
+% Speech Model Interpretability
+% ---------------------------------------------------------------------------
+
+@article{reid2023whisper,
+  title={Interpreting {Whisper}: Phoneme-Like Features and Localized Attention},
+  author={Reid, others},
+  journal={arXiv preprint},
+  year={2023},
+  note={[TODO: add arXiv ID] Initial evidence for phoneme-like features in Whisper encoder}
+}
+
+@article{choi2026phonological,
+  title={Phonological Features Are Linear and Compositional in Self-Supervised Speech Models},
+  author={Choi, others},
+  journal={arXiv preprint arXiv:2602.18899},
+  year={2026},
+  url={https://arxiv.org/abs/2602.18899},
+  note={96 languages; voicing vectors obey arithmetic; scale-continuous}
+}
+
+@article{vanrensburg2026speaker,
+  title={{PCA}-Based Speaker Geometry in {WavLM}},
+  author={Van Rensburg, others},
+  journal={arXiv preprint arXiv:2603.03096},
+  year={2026},
+  url={https://arxiv.org/abs/2603.03096},
+  note={Individual PCA dimensions encode pitch, intensity, spectral characteristics}
+}
+
+@article{kawamura2026aape,
+  title={{AAPE}: Audio Activation Probability Entropy for Class-Specific Neurons},
+  author={Kawamura, others},
+  journal={arXiv preprint arXiv:2602.15307},
+  year={2026},
+  url={https://arxiv.org/abs/2602.15307},
+  note={SSL develops 2x class-specific neurons vs supervised; M2D model}
+}
+
+@article{ma2026lora,
+  title={Behind the Scenes: {LoRA} Adaptation of {Whisper} for Speech Emotion Recognition},
+  author={Ma, others},
+  journal={arXiv preprint},
+  year={2026},
+  note={[TODO: add arXiv ID] Delayed specialization; flat early KL divergence, sharp late commitment}
+}
+
+% ---------------------------------------------------------------------------
+% Vision-Language Interpretability (Cross-Modal Analogs)
+% ---------------------------------------------------------------------------
+
+@article{li2025fcct,
+  title={{FCCT}: Faithful Cross-Modal Causal Tracing in Vision-{LLMs}},
+  author={Li, others},
+  journal={arXiv preprint},
+  year={2025},
+  note={[TODO: add arXiv ID] MHSAs at middle layers serve as cross-modal aggregation points}
+}
+
+@article{fan2026embedlens,
+  title={{EmbedLens}: Visual Token Partitioning in Vision-Language Models},
+  author={Fan, others},
+  journal={arXiv preprint},
+  year={2026},
+  note={[TODO: add arXiv ID] Sink, dead, alive visual tokens; alive tokens align at intermediate LLM layers}
+}
+
+@article{liu2025visualrep,
+  title={Visual Representations Inside the Language Model via {KV}-Token Flow},
+  author={Liu, others},
+  journal={arXiv preprint},
+  year={2025},
+  note={[TODO: add arXiv ID] KV-token flow analysis without causal patching}
+}
+
+% ---------------------------------------------------------------------------
+% Sparse Autoencoders for Audio
+% ---------------------------------------------------------------------------
+
+@article{aparin2026audiosae,
+  title={{AudioSAE}: Sparse Autoencoders for {Whisper} and {HuBERT}},
+  author={Aparin, others},
+  journal={arXiv preprint},
+  year={2026},
+  note={[TODO: add arXiv ID] TopK/BatchTopK SAEs, 8x expansion, 0.92 phoneme accuracy, 70\% hallucination reduction}
+}
+
+@article{mariotte2025audiosae,
+  title={Sparse Autoencoders for Audio {SSL} Models: {AST}, {HuBERT}, {WavLM}, {MERT}},
+  author={Mariotte, others},
+  journal={arXiv preprint},
+  year={2025},
+  note={[TODO: add arXiv ID] 75--85\% sparsity retention; improved completeness; mean-pooling limitation}
+}
+
+@article{bhalla2025tsae,
+  title={{T-SAE}: Temporal Sparse Autoencoders},
+  author={Bhalla, others},
+  journal={arXiv preprint},
+  year={2025},
+  note={[TODO: add arXiv ID] ICLR 2026 Oral; partitions features into high-level and low-level temporal components}
+}
+
+@article{karvonen2025saebench,
+  title={{SAEBench}: An 8-Metric Evaluation Protocol for Text Sparse Autoencoders},
+  author={Karvonen, others},
+  journal={arXiv preprint},
+  year={2025},
+  note={[TODO: add arXiv ID] Proxy metrics do not reliably predict practical SAE quality}
+}
+
+% ---------------------------------------------------------------------------
+% Causal Methods in Audio-Adjacent Domains
+% ---------------------------------------------------------------------------
+
+@article{maghsoudi2026braintospeech,
+  title={Cross-Mode Activation Patching in Brain-to-Speech Models},
+  author={Maghsoudi, others and Mishra, others},
+  journal={arXiv preprint arXiv:2602.01247},
+  year={2026},
+  url={https://arxiv.org/abs/2602.01247},
+  note={Speech modes form continuous causal manifold; compact layer-specific subspaces}
+}
+
+@article{agrepa2026,
+  title={{AG-REPA}: Forward-Only Gate Ablation for Audio Generation},
+  author={[TODO: authors]},
+  journal={arXiv preprint arXiv:2603.01006},
+  year={2026},
+  url={https://arxiv.org/abs/2603.01006},
+  note={FoG-A; early layers are causal drivers, deep layers are semantic reservoirs}
+}
+
+@article{braun2025scd,
+  title={Store-Contribute Dissociation in Neural Networks},
+  author={Braun, others},
+  journal={arXiv preprint},
+  year={2025},
+  note={[TODO: add arXiv ID] Representationally rich layers may be causally passive}
+}
+
+% ---------------------------------------------------------------------------
+% Multimodal Theory
+% ---------------------------------------------------------------------------
+
+@article{sutter2024modality,
+  title={Modality Interaction Taxonomy},
+  author={Sutter, others},
+  journal={[TODO: venue]},
+  year={[TODO: year]},
+  note={[TODO: add full reference] AND/OR gate semantics for multimodal interaction}
+}
+
+@article{asiaee2026sparse,
+  title={Sparse Feature Decomposition for Multimodal Models},
+  author={Asiaee, others},
+  journal={arXiv preprint arXiv:2602.24266},
+  year={2026},
+  url={https://arxiv.org/abs/2602.24266},
+  note={Feature-level grounding analysis}
+}
+
+% ---------------------------------------------------------------------------
+% Models and Datasets
+% ---------------------------------------------------------------------------
+
+@article{radford2023whisper,
+  title={Robust Speech Recognition via Large-Scale Weak Supervision},
+  author={Radford, Alec and Kim, Jong Wook and Xu, Tao and Brockman, Greg and McLeavey, Christine and Sutskever, Ilya},
+  journal={Proceedings of ICML},
+  year={2023},
+  note={Whisper architecture}
+}
+
+@article{chu2024qwen2audio,
+  title={{Qwen2-Audio}: Technical Report},
+  author={Chu, others},
+  journal={arXiv preprint},
+  year={2024},
+  note={[TODO: add arXiv ID] Whisper-large-v3 encoder + Qwen2 7B backbone}
+}
+
+@inproceedings{panayotov2015librispeech,
+  title={{LibriSpeech}: An {ASR} Corpus Based on Public Domain Audio Books},
+  author={Panayotov, Vassil and Chen, Guoguo and Povey, Daniel and Khudanpur, Sanjeev},
+  booktitle={Proceedings of ICASSP},
+  year={2015}
+}
+
+@article{fiottokaufman2024nnsight,
+  title={{NNsight}: A Framework for Neural Network Interpretation via Hooks},
+  author={Fiotto-Kaufman, others},
+  journal={arXiv preprint},
+  year={2024},
+  note={[TODO: add arXiv ID] Hook injection and activation caching}
+}
+
+% ---------------------------------------------------------------------------
+% ALME Benchmark (referenced via TODO in method section)
+% ---------------------------------------------------------------------------
+
+@article{alme2026,
+  title={{ALME}: Audio-Language Model Evaluation Benchmark},
+  author={[TODO: authors]},
+  journal={arXiv preprint arXiv:2602.11488},
+  year={2026},
+  url={https://arxiv.org/abs/2602.11488},
+  note={Audio-text conflict items for behavioral evaluation}
+}

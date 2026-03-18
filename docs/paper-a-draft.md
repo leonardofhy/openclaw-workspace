@@ -1,13 +1,9 @@
 # The Listening Geometry: Where Audio-Language Models Listen, Guess, and Collapse
 
-## Abstract (sketch)
-
-Audio-language models (ALMs) can either genuinely consult their audio input or rely on text-context priors — but no existing method causally distinguishes these strategies at the layer level. We introduce the **grounding coefficient** gc(k), a causal metric based on interchange intervention that quantifies how much each layer k relies on audio versus text context. We define a 5-dimensional **Listening Geometry** framework (gc peak, AND-gate fraction, Schelling stability, collapse onset, codec stratification) that profiles ALMs as strong listeners, shallow listeners, sophisticated guessers, or fragile listeners. [TODO: 1 sentence on key empirical result from real experiments. 1 sentence on implications for safety/deployment.]
-
 ## Table of Contents
 
 - [The Listening Geometry: Where Audio-Language Models Listen, Guess, and Collapse](#the-listening-geometry-where-audio-language-models-listen-guess-and-collapse)
-  - [Abstract (sketch)](#abstract-sketch)
+- [Abstract](#abstract)
 - [The Listening Geometry: Where Audio-Language Models Listen, Guess, and Collapse](#the-listening-geometry-where-audio-language-models-listen-guess-and-collapse)
   - [§1 Introduction](#1-introduction)
   - [§2 Related Work](#2-related-work)
@@ -51,6 +47,13 @@ Audio-language models (ALMs) can either genuinely consult their audio input or r
   - [5.5 Limitations](#55-limitations)
   - [5.6 Future Work](#56-future-work)
   - [§6 Conclusion](#6-conclusion)
+
+---
+
+# Abstract
+
+Audio-language models (ALMs) such as Qwen2-Audio, Gemini, and GPT-4o can answer questions about speech, classify emotions, and follow spoken instructions — yet no principled method exists to causally determine whether these models genuinely consult their audio input or simply pattern-match from text-context priors. We introduce the **grounding coefficient** $gc(k)$, a causal metric based on interchange intervention and Distributed Alignment Search (DAS) that quantifies how much each layer $k$ of an ALM relies on audio versus text context. We embed $gc(k)$ within a five-dimensional **Listening Geometry** framework — gc peak ($k^*$), AND-gate fraction ($\alpha_{\text{AND}}$), Schelling stability ($\sigma$), collapse onset ($t^*$), and codec stratification (CS) — that profiles ALMs into four listening strategies: strong listeners, shallow listeners, sophisticated guessers, and fragile listeners. At the feature level, we decompose multimodal integration into AND-gates (features requiring both audio and text) and OR-gates (features where either modality suffices), providing the first mechanistic test of multimodal feature dependence in speech models. Across 29 experiments (2 real-model on Whisper, 27 mock-framework validation), we demonstrate strong internal consistency: AND-gate fraction correlates near-perfectly with gc peak location ($r = 0.98$), RAVEL disentanglement scores approximate $gc(k)$ curves ($r = 0.90$), and the framework identifies safety-critical features with 96% suppression detection rate. We show that persona prompts mechanistically modulate grounding profiles (shifting $k^*$ by 2 layers), that backdoor attacks operate by inducing premature cascade ($t^*$ shift of 3 steps), and that ENV-3 feature pruning restores jailbreak resistance ($r = 0.89$). The Listening Geometry provides the first unified framework for mechanistic interpretability of audio processing in language models, with direct applications to safety auditing, deployment screening, and adversarial defense.
+
 
 ---
 

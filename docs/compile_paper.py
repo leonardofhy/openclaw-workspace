@@ -10,6 +10,7 @@ OUTPUT_FILE = DOCS_DIR / "paper-a-draft.md"
 
 # Section files in paper order
 SECTION_FILES = [
+    ("Abstract", "paper-a-abstract.md"),
     ("Introduction + Related Work", "paper-a-intro-rw.md"),
     ("Method", "paper-a-method.md"),
     ("Results", "paper-a-results-stub.md"),
@@ -18,6 +19,7 @@ SECTION_FILES = [
 
 # Word count targets per section
 WORD_TARGETS = {
+    "Abstract": 250,
     "Introduction": 800,
     "Related Work": 1000,
     "Method": 1500,
@@ -106,20 +108,8 @@ def generate_toc(merged_text: str) -> str:
 
 def build_merged_draft() -> str:
     """Read all section files and merge into a single document."""
-    outline_path = DOCS_DIR / "paper-a-outline.md"
-    outline_text = outline_path.read_text() if outline_path.exists() else ""
-
-    # Extract abstract from outline
-    abstract = ""
-    if "## Abstract" in outline_text:
-        start = outline_text.index("## Abstract")
-        end = outline_text.index("\n---", start)
-        abstract = outline_text[start:end].strip()
-
     parts = []
     parts.append("# The Listening Geometry: Where Audio-Language Models Listen, Guess, and Collapse\n")
-    if abstract:
-        parts.append(abstract + "\n")
     parts.append("---\n")
 
     for label, filename in SECTION_FILES:
@@ -153,6 +143,7 @@ def completeness_report(all_markers: list[dict], section_words: dict[str, int]) 
     ]
 
     expected_sections = {
+        "Abstract": "paper-a-abstract.md",
         "Introduction": "paper-a-intro-rw.md",
         "Related Work": "paper-a-intro-rw.md",
         "Method": "paper-a-method.md",
@@ -207,6 +198,20 @@ def completeness_report(all_markers: list[dict], section_words: dict[str, int]) 
             lines.append(f"  {m['file']}:{m['line']}  [{m['text']}]")
         lines.append("")
 
+    # Citation stats
+    bib_path = DOCS_DIR / "references.bib"
+    if bib_path.exists():
+        bib_text = bib_path.read_text()
+        bib_entries = re.findall(r"@\w+\{(\w+),", bib_text)
+        todo_entries = len(re.findall(r"\[TODO:", bib_text))
+        lines.append("── Citation Stats ──────────────────────────────────────────────────")
+        lines.append(f"  BibTeX entries in references.bib: {len(bib_entries)}")
+        lines.append(f"  Entries with [TODO] fields:       {todo_entries}")
+        lines.append(f"  Unresolved [CITE:] in source:     {len(cites)}")
+        if bib_entries:
+            lines.append(f"  Coverage: {len(bib_entries) - todo_entries}/{len(bib_entries)} entries fully resolved")
+        lines.append("")
+
     lines.append("=" * 70)
     return "\n".join(lines)
 
@@ -237,7 +242,7 @@ def main():
     all_markers = []
     section_words = {}
 
-    source_files = [f for _, f in SECTION_FILES] + ["paper-a-outline.md"]
+    source_files = list(dict.fromkeys([f for _, f in SECTION_FILES] + ["paper-a-outline.md"]))
     for filename in source_files:
         path = DOCS_DIR / filename
         if path.exists():
@@ -246,6 +251,7 @@ def main():
 
     # Word counts per logical section (approximate by file mapping)
     file_section_map = {
+        "paper-a-abstract.md": {"Abstract": None},  # whole file
         "paper-a-intro-rw.md": {
             "Introduction": r"(?:^|\n)#+ .*Introduction.*?\n(.*?)(?=\n#+ .*Related Work|\Z)",
             "Related Work": r"(?:^|\n)#+ .*Related Work.*?\n(.*?)(?=\n# |\Z)",
