@@ -44,3 +44,33 @@
 - `2026-03-14 04:18` `[SLEEP]` Leo 要求從 2026-03-14 起幫忙規律作息管理：催睡提醒 + 起床叫醒。背景：近期常熬夜下棋到凌晨 5 點，睡眠不足導致低效逃避模式。
 - `2026-03-14 04:18` `[SLEEP]` [修正] 規律作息從 3/15（週六）開始，不是 3/14。
 - `2026-03-14 16:50` `[RULE]` Leo 說「提醒我 X」時，同時建 Todoist 任務 + cron 提醒，不要只做一個。
+
+## [2026-03-17] Claude Code 任務調度規則（Leo 決策）
+
+**核心原則：遇到 coding 任務先問「該不該派 Claude Code？」**
+
+### 判斷標準
+- **直接 Edit**：改 ≤3 個檔案、改動明確、不需要理解 codebase context
+- **派 Claude Code**：新功能、refactor、需要探索 codebase、改動跨多檔案、需要跑測試驗證
+- **多個 Claude Code 並行**：多個獨立 issue/feature 同時進行
+
+### 執行方式
+```bash
+# 標準派遣（非互動，完整 tool access）
+cd /path/to/project && claude --permission-mode bypassPermissions --print 'task description'
+
+# 背景派遣（長任務）
+exec background:true command:"cd /path && claude --permission-mode bypassPermissions --print 'task'"
+# 用 process action:log sessionId:xxx 監控
+```
+
+### Orchestrator 模式
+1. 我負責：拆任務、寫清楚 prompt、選對 workdir、驗收結果
+2. Claude Code 負責：探索 codebase、寫 code、跑測試
+3. 驗收：看 git diff、跑測試、確認符合需求
+
+### 常見錯誤
+- ❌ 大型 coding 任務自己一行行 Edit（有推土機用鏟子）
+- ❌ 不給 workdir 就派（agent 會亂跑）
+- ❌ prompt 太模糊（要給具體目標 + 限制條件）
+- ✅ 小改動直接 Edit 更快更精準
