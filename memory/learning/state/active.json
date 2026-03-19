@@ -26,14 +26,14 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 2,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-19"
   },
   "stats": {
-    "total_cycles": 231,
+    "total_cycles": 232,
     "total_skips": 44,
     "papers_read_deep": 58,
     "papers_scanned": 50,
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260319-1445",
-    "action": "plan",
-    "summary": "Q116: Wrote unified backdoor detection design doc. t* leftward shift = cascade induction = certified backdoor detector. Three-metric unification (Isolate/AND-gate/GSAE density) all predict t*. Detection threshold: t*<3=backdoor, t*>6=clean. Q116 completed."
+    "id": "c-20260319-1515",
+    "action": "learn",
+    "summary": "Q109: Phoneme-MDAS design. RAVEL Cause/Isolate for SAE phoneme disentanglement in Whisper. Bleed features = high Cause + low Isolate. t* collapse correlates with Isolate drop. Next: phoneme_mdas.py (CPU)."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
