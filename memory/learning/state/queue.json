@@ -231,12 +231,13 @@
       "type": "design",
       "track": "T3",
       "title": "Cascade degree = GSAE graph density: three-metric unification + GCBench metric #9",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "mock_cascade_gsae_unify.py: cascade_degree ≈ 1-AND_fraction ≈ 1-norm_GSAE_density on mock; add graph_density as GCBench #9",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "completed": "2026-03-19"
     },
     {
       "id": "Q118",
