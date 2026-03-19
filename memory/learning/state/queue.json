@@ -103,12 +103,13 @@
       "type": "build",
       "track": "T3",
       "priority": 2,
-      "status": "ready",
+      "status": "done",
       "dod": "collapse_gate_analysis.py: detect Q085 collapse step on mock data, check if AND-gate features deactivate at same step vs OR-gates; plot deactivation profile",
       "ideation_id": "I17",
       "novelty": 4,
       "feasibility": 5,
-      "created": "2026-03-12T10:34:16.860609"
+      "created": "2026-03-12T10:34:16.860609",
+      "completed": "2026-03-19"
     },
     {
       "id": "Q094",
