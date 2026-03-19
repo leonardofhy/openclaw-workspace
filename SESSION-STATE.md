@@ -2,25 +2,22 @@
 
 > WAL target. Write here BEFORE responding when critical details appear.
 
-**Last Updated:** 2026-03-18 21:54
+**Last Updated:** 2026-03-19 09:12
 
 ## Current Task
-Autodidact SKILL refactor (Opus CC) — Leo approved plan A+B+C+E
+Security hardening done. Agent-manager built. Waiting for Leo to review.
 
 ## Recent Context
-- [01:14] CC#40 Opus (ember-slug) building DAG Orchestrator — skills/orchestrator/ — still running
-- [00:30] All wave 7 CCs done, tests 1441 pass, pushed b7f3391
-- [01:04] Architecture planning: DAG waves + CLAUDE.md + MCP Todoist + git worktree
-- [2026-03-18 21:54] Leo approved autodidact refactor: state cleanup + SKILL merge + phase auto + kg migration
-- [2026-03-18 21:13] D-001 Pathfinder: Leo 已處理。D-002/D-013 尚未處理
-- [2026-03-18 21:13] 智凱哥合作：Leo 已處理，不再提醒
-- [2026-03-18 21:09] CC#1-3 全部完成（Paper A outline, eval dashboard, test fix）
-- [2026-03-18 21:00] READY queue 全清（22 tasks, 90.9% pass）
-- [2026-03-18 17:09] Q001+Q002 real experiments 完成
+- [03/19 04:35] Agent-manager skill built (Opus CC), 18 tests pass, pushed
+- [03/19 04:10] Security audit complete: 0 critical, firewall ON, workspaceOnly ON
+- [03/19 03:30] System-upgrade pipeline: CLAUDE.md + experiment_dispatch + BM25 search
+- [03/19 02:25] Feed system fully upgraded (4 sources, Discord digest, scoring v2, feedback learning)
+- [03/19 01:45] Orchestrator worktree merge bug fixed + Paper A §3-§5 polished
+- [03/19 04:35] 2 GitHub issues opened: #50011 (denyCommands), #50012 (config paths)
 
 ## Pending Decisions
 - D-002 NTU 獎學金 + D-013 工作證：Leo 尚未處理
-- 僑生獎助學金衝突：待寫信僑委會確認
+- Agent-manager PR to openclaw/openclaw #49895：等 Leo review
 
 ## Session Notes
-- Stale tasks: M-02/03/06（待更新）
+- Boot budget: SESSION-STATE 87% → cleaned to ~50%

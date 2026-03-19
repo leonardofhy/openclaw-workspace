@@ -49,7 +49,7 @@ def _make_entry(name="Test Agent", status="running", pid=99999,
         "duration_s": (spawned_minutes_ago * 60 if completed else None),
         "exit_code": exit_code,
         "pid": pid,
-        "workdir": "/tmp/test",
+        "workdir": str(agent_mgr.REGISTRY_FILE.parent),
         "artifacts": [],
         "error": error,
     }
