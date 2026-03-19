@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 3,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-19"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 491,
     "paper_pitches": 2,
-    "code_artifacts": 73,
+    "code_artifacts": 74,
     "system_improvements": 7,
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260319-1115",
+    "id": "c-20260319-1145",
     "action": "build",
-    "summary": "Q118 done: emotion_gate_mock.py. Emotion AND-frac=77.5% (H1,H2,H3 all PASS). Emotion = AND-gate; control = OR-gate."
+    "summary": "Q096 done: fad_bias_gate_mock.py. ALL PASS: r=-0.989 (text_pred vs AND_frac), 100% gate accuracy, delta=0.848. Confirms FAD bias \u2192 OR-gate, audio-dependent \u2192 AND-gate."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

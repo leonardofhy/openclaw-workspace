@@ -129,12 +129,13 @@
       "type": "design",
       "track": "T3",
       "title": "FAD bias x AND/OR gate: text-predictable phonemes = OR-gate, audio-dependent phonemes = AND-gate at gc peak",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: AND-gate fraction inversely correlates with text-predictability; mechanistic test of FAD encoder bias",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-19"
     },
     {
       "id": "Q105",
