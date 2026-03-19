@@ -142,12 +142,13 @@
       "type": "build",
       "track": "T3",
       "title": "RAVEL MDAS x AND/OR gate: MDAS error per feature predicts gate classification",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "mock_mdas_gate.py: MDAS-style error per MicroGPT feature; AND-gate features < MDAS error than OR-gate; result table",
       "created": "2026-03-14",
-      "due": null
+      "due": null,
+      "completed": "2026-03-19"
     },
     {
       "id": "Q106",

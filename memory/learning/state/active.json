@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 2,
+    "build_remaining_today": 1,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-19"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 491,
     "paper_pitches": 2,
-    "code_artifacts": 74,
+    "code_artifacts": 75,
     "system_improvements": 7,
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260319-1145",
+    "id": "c-20260319-1215",
     "action": "build",
-    "summary": "Q096 done: fad_bias_gate_mock.py. ALL PASS: r=-0.989 (text_pred vs AND_frac), 100% gate accuracy, delta=0.848. Confirms FAD bias \u2192 OR-gate, audio-dependent \u2192 AND-gate."
+    "summary": "Q105 done: mock_mdas_gate.py. AND MDAS=0.111 vs OR MDAS=0.147 (1.31x, p<0.0001). 91.7% gate classification accuracy. Confirms AND-gate features more disentangled (lower MDAS bleed) than OR-gate features."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
