@@ -188,86 +188,40 @@ def test_retry_logic():
     assert task["retry_count"] == 1
 
 
-# ── test_sandbox_create_cleanup ───────────────────────────
+# ── test_worktree_create_cleanup ──────────────────────────
 
-def test_sandbox_create_cleanup(tmp_path, monkeypatch):
-    """Sandbox create/merge/cleanup lifecycle."""
+def test_worktree_create_cleanup(tmp_path, monkeypatch):
+    """Worktree create/cleanup via mocked git commands."""
     import worktree_manager as wm
 
-    # Mock REPO_ROOT and SANDBOX_DIR to use temp dirs
-    fake_repo = tmp_path / "repo"
-    fake_repo.mkdir()
-    (fake_repo / "existing.txt").write_text("hello")
+    calls = []
 
-    monkeypatch.setattr(wm, "REPO_ROOT", fake_repo)
-    monkeypatch.setattr(wm, "SANDBOX_DIR", tmp_path / ".sandboxes")
-
-    # Mock _run (rsync) to just copy
-    import shutil
-    def mock_run(*args, cwd=None):
-        if args[0] == "rsync":
-            src = args[-2].rstrip("/")
-            dst = args[-1].rstrip("/")
-            if os.path.exists(dst):
-                shutil.rmtree(dst)
-            shutil.copytree(src, dst)
+    def mock_git(*args, cwd=None):
+        calls.append(args)
+        if args[0] == "worktree" and args[1] == "add":
+            # Create the directory to simulate git worktree add
+            Path(args[2]).mkdir(parents=True, exist_ok=True)
+            return ""
+        if args[0] == "worktree" and args[1] == "remove":
+            p = Path(args[2])
+            if p.exists():
+                import shutil
+                shutil.rmtree(p)
+            return ""
+        if args[0] == "branch" and args[1] == "-D":
             return ""
         return ""
 
-    monkeypatch.setattr(wm, "_run", mock_run)
-    monkeypatch.setattr(wm, "_git", lambda *a, **kw: "")
+    monkeypatch.setattr(wm, "_git", mock_git)
+    monkeypatch.setattr(wm, "WORKTREES_DIR", tmp_path / ".worktrees")
 
-    # Create sandbox
-    sandbox = wm.create_sandbox("test-task")
-    assert sandbox.exists()
-    assert (sandbox / "existing.txt").read_text() == "hello"
-
-    # Simulate CC writing a new file in sandbox
-    (sandbox / "new_file.py").write_text("print('hello')")
-
-    # Collect artifacts
-    artifacts = wm.collect_artifacts("test-task")
-    assert "new_file.py" in artifacts
-
-    # Merge back
-    result = wm.merge_sandbox("test-task")
-    assert "1 files" in result
-    assert (fake_repo / "new_file.py").read_text() == "print('hello')"
+    # Create
+    wt = wm.create_worktree("test-task")
+    assert wt.exists()
 
     # Cleanup
-    wm.cleanup_sandbox("test-task")
-    assert not sandbox.exists()
-
-
-def test_sandbox_no_changes(tmp_path, monkeypatch):
-    """Sandbox with no modifications returns empty artifacts."""
-    import worktree_manager as wm
-
-    fake_repo = tmp_path / "repo"
-    fake_repo.mkdir()
-    (fake_repo / "file.txt").write_text("same")
-
-    monkeypatch.setattr(wm, "REPO_ROOT", fake_repo)
-    monkeypatch.setattr(wm, "SANDBOX_DIR", tmp_path / ".sandboxes")
-
-    import shutil
-    def mock_run(*args, cwd=None):
-        if args[0] == "rsync":
-            src = args[-2].rstrip("/")
-            dst = args[-1].rstrip("/")
-            if os.path.exists(dst):
-                shutil.rmtree(dst)
-            shutil.copytree(src, dst)
-            return ""
-        return ""
-
-    monkeypatch.setattr(wm, "_run", mock_run)
-    monkeypatch.setattr(wm, "_git", lambda *a, **kw: "")
-
-    sandbox = wm.create_sandbox("empty-task")
-    # Don't modify anything
-    artifacts = wm.collect_artifacts("empty-task")
-    assert artifacts == []
+    wm.cleanup_worktree("test-task")
+    assert not wt.exists()
 
 
 # ── test_cli_init_add_plan ────────────────────────────────
