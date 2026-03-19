@@ -116,12 +116,13 @@
       "type": "design",
       "track": "T3",
       "title": "T-SAE x gc-incrimination: contrastive feature deactivation as early warning for gc(k) collapse",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "tsae_gc_correlation_mock.py: T-SAE-style temporal features deactivation precedes t* collapse onset; correlation table",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-19"
     },
     {
       "id": "Q096",
