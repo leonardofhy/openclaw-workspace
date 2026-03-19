@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "created": "2026-03-19T16:39:27.015678+00:00",
+  "pipeline_name": "test-sequential",
+  "tasks": {
+    "paper-compile": {
+      "status": "failed",
+      "model": "claude-sonnet-4-20250514",
+      "timeout": 300,
+      "retries": 3,
+      "retry_count": 0,
+      "artifacts": [],
+      "workdir": "/Users/leonardo/.openclaw/workspace",
+      "started_at": "2026-03-19T16:39:35.094382+00:00",
+      "completed_at": "2026-03-19T16:44:35.147071+00:00",
+      "error": "Timeout after 300s",
+      "session_id": "38752",
+      "prompt": "Read all Paper A files: docs/paper-a-abstract.md, docs/paper-a-intro-rw.md, docs/paper-a-method.md, docs/paper-a-results.md, docs/paper-a-discussion.md, docs/paper-a-outline.md, docs/paper-a-draft.md.\n\nCompile into a single file: docs/paper-a-full.md\n\nStructure: Title + Abstract + \u00a71-5 + References summary.\nCount words, list all [TODO]/[PENDING] at the end.\nDo NOT invent data. Do NOT create COMPLETED.txt.\ngit add -A && git commit -m 'docs: compile full Paper A draft'",
+      "depends_on": []
+    },
+    "weekly-report": {
+      "status": "completed",
+      "model": "claude-sonnet-4-20250514",
+      "timeout": 180,
+      "retries": 3,
+      "retry_count": 0,
+      "artifacts": [],
+      "workdir": "/Users/leonardo/.openclaw/workspace",
+      "started_at": "2026-03-19T16:44:35.149537+00:00",
+      "completed_at": "2026-03-19T16:45:48.988794+00:00",
+      "error": null,
+      "session_id": "39670",
+      "prompt": "Generate weekly report for 2026-03-13 to 2026-03-19.\n\nRead: git log --oneline --since=2026-03-13, memory/2026-03-18.md, memory/2026-03-19.md, memory/task-board.md, docs/paper-a-status.md.\n\nWrite: memory/weekly-report-2026-03-19.md (<100 lines).\nSections: \u672c\u9031\u6210\u679c, \u7cfb\u7d71\u5347\u7d1a, \u7814\u7a76\u9032\u5c55, \u4e0b\u9031\u8a08\u5283, Blockers.\n\nDo NOT create COMPLETED.txt.\ngit add -A && git commit -m 'docs: weekly report 2026-03-19'",
+      "depends_on": [
+        "paper-compile"
+      ]
+    }
+  },
+  "waves": [
+    [
+      "paper-compile"
+    ],
+    [
+      "weekly-report"
+    ]
+  ]
+}
