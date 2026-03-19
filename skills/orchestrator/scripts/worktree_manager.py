@@ -75,9 +75,18 @@ def merge_worktree(task_id: str) -> str:
     """Commit worktree changes, then merge into current branch. Returns merge output."""
     branch = f"orchestrator/{task_id}"
 
-    # Critical: commit any uncommitted work in the worktree first
-    had_changes = commit_worktree(task_id)
-    if not had_changes:
+    # Commit any uncommitted dirty state in the worktree first (may be a no-op if
+    # the CC agent already committed its own work — that's fine).
+    commit_worktree(task_id)
+
+    # Check if the branch has any commits ahead of the current HEAD.
+    # This handles the case where commit_worktree returned False but the CC agent
+    # already committed on its own branch.
+    try:
+        ahead = _git("rev-list", "--count", f"HEAD..{branch}")
+        if int(ahead) == 0:
+            return f"No changes to merge for {task_id}"
+    except RuntimeError:
         return f"No changes to merge for {task_id}"
 
     return _git("merge", branch, "--no-edit", "-m", f"merge: orchestrator/{task_id}")

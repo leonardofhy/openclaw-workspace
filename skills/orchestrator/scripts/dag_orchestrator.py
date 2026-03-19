@@ -168,12 +168,15 @@ def _run_task_sequential(tid: str, task: dict, m: dict, path: Path) -> None:
     task["workdir"] = str(workdir)
     mf.save(path, m)
 
-    # Wait for completion (blocking)
+    # Wait for completion (blocking).
+    # Use communicate() instead of wait() + stderr.read() to avoid deadlock
+    # when the stderr pipe buffer fills up.
     timeout = task.get("timeout", 300)
     try:
-        proc.wait(timeout=timeout)
+        _stdout, _stderr = proc.communicate(timeout=timeout)
     except subprocess.TimeoutExpired:
         proc.kill()
+        proc.communicate()  # drain pipes so the child process can exit
         mf.update_status(m, tid, "failed", error=f"Timeout after {timeout}s")
         mf.save(path, m)
         print(f"  [{tid}] TIMEOUT ({timeout}s)")
@@ -200,9 +203,9 @@ def _run_task_sequential(tid: str, task: dict, m: dict, path: Path) -> None:
         print(f"  [{tid}] COMPLETED ✓")
     else:
         error_msg = ""
-        if proc.stderr:
+        if _stderr:
             try:
-                error_msg = proc.stderr.read().decode()[:500]
+                error_msg = (_stderr.decode() if isinstance(_stderr, bytes) else _stderr)[:500]
             except Exception:
                 pass
         mf.update_status(m, tid, "failed", error=error_msg)
@@ -277,7 +280,7 @@ def _run_wave_parallel(ready: list[str], m: dict, path: Path) -> None:
                 wm.cleanup_worktree(tid)
             except RuntimeError as e:
                 print(f"  ⚠️  Merge failed for {tid}: {e}")
-                mf.update_status(m, tid, "merge-failed", error=str(e))
+                mf.update_status(m, tid, "failed", error=f"merge-failed: {e}")
                 mf.save(path, m)
         else:
             wm.cleanup_worktree(tid)
