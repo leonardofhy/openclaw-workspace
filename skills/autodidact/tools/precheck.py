@@ -27,6 +27,41 @@ def load_json(path):
         print(f"WARN: {path}: {e}", file=sys.stderr)
         return None
 
+PHASE_ORDER = ['explore', 'explore-fallback', 'converge', 'execute']
+
+def check_phase_transition(active):
+    """Check if phase exit criteria are met for the next phase.
+
+    Returns a recommendation string if all criteria are met, else None.
+    Does NOT auto-transition — Leo must confirm.
+    """
+    phase = active.get('phase', '')
+    criteria_map = active.get('phase_exit_criteria', {})
+
+    # Determine the transition being checked
+    if phase in ('explore', 'explore-fallback', 'converge'):
+        transition_key = 'converge_to_execute'
+        next_phase = 'execute'
+    else:
+        return None  # already in execute or unknown phase
+
+    criteria_list = criteria_map.get(transition_key, [])
+    if not criteria_list:
+        return None
+
+    results = {}
+    for criterion in criteria_list:
+        results[criterion] = bool(criteria_map.get(criterion, False))
+
+    all_met = all(results.values())
+    status_parts = [f"{k} {'✓' if v else '✗'}" for k, v in results.items()]
+    status_str = ', '.join(status_parts)
+
+    if all_met:
+        return f"PHASE_READY: {phase}→{next_phase} (criteria: {status_str})"
+    return None
+
+
 def main():
     ws = find_workspace()
     state_dir = os.path.join(ws, 'memory', 'learning', 'state')
@@ -36,7 +71,7 @@ def main():
     blockers = load_json(os.path.join(state_dir, 'blockers.json'))
 
     if not active or not queue:
-        print("RUN state files missing or corrupt — run to self-heal")
+        print("SKIP missing state files")
         return
 
     now = datetime.now(TZ)
@@ -168,6 +203,11 @@ def main():
                     return
         except (ValueError, IndexError):
             pass
+
+    # --- Phase transition recommendation ---
+    phase_rec = check_phase_transition(active)
+    if phase_rec:
+        print(phase_rec)
 
     # --- All checks passed: SKIP ---
     print("SKIP no READY tasks, blockers active with cooldown, GC current")

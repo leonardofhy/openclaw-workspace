@@ -138,7 +138,7 @@ Memory (disk)       = 無限成長，查詢時才讀
 **Auto-trigger when:** session starts with `<summary>` tag, or you detect missing context.
 
 Follow the boot flow above (steps 1-3 handle buffer + SESSION-STATE + daily notes). If still missing context after boot flow, escalate:
-4. `memory_search` for relevant terms
+4. `memory_search` for relevant terms (if `memory_search` tool returns `disabled=true`, fall back to: `python3 skills/shared/memory_search_local.py '<query>' --top 5`)
 5. Check `memory/knowledge.md` for technical notes
 6. Present: "Recovered from [source]. Last task was X. Continuing."
 

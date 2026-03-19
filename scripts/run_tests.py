@@ -25,6 +25,9 @@ SKILLS_DIR = ROOT / "skills"
 ISOLATED_FILES = {
     "skills/lib/test_common.py",
     "skills/shared/test_jsonl_store.py",
+    "skills/system-scanner/scripts/test_scan.py",
+    "skills/remember/scripts/test_append_memory.py",
+    "skills/coordinator/scripts/test_orchestrator.py",
 }
 
 EXCLUDE_DIRS = {"venv", ".venv", ".git", "__pycache__", "node_modules"}

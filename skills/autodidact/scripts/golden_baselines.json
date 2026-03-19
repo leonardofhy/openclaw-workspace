@@ -1,0 +1,209 @@
+{
+  "cascade_degree.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "r": 0.9994,
+      "passes": 2,
+      "fails": 0,
+      "pearson_and_vs_cascade": -0.9993800211120526,
+      "pearson_derived_vs_cascade": 0.9993800211120526,
+      "pearson_truth_vs_cascade": 0.8691286706456767,
+      "mean_and_frac": 0.5103125,
+      "mean_cascade_deg": 0.5002583026215155
+    },
+    "captured_at": "2026-03-18"
+  },
+  "cascade_gsae_density.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "r": -0.7301,
+      "passes": 3,
+      "fails": 0,
+      "global_density": 0.07195979899497487,
+      "r_cascade_vs_and": -0.5119612817734671,
+      "r_cascade_vs_gsae_density": 0.5808177260822752,
+      "r_and_vs_gsae_density": -0.7301100247362046,
+      "h1": true,
+      "h2": true,
+      "h3": true
+    },
+    "captured_at": "2026-03-18"
+  },
+  "fad_ravel_cause_isolate.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "passes": 2,
+      "fails": 0,
+      "r_fad_cause": 0.8716573332812272,
+      "r_fad_isolate": -0.7453703076155926,
+      "r_fad_gap": 0.8966930348899086,
+      "h1_pass": true,
+      "h2_pass": true
+    },
+    "captured_at": "2026-03-18"
+  },
+  "gc_eval.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "n_encoder_layers": 6,
+      "n_decoder_layers": 6
+    },
+    "captured_at": "2026-03-18"
+  },
+  "gc_experiment_runner.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "n_seeds": 3
+    },
+    "captured_at": "2026-03-18"
+  },
+  "gc_jailbreak_classifier.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "passes": 6,
+      "fails": 0
+    },
+    "captured_at": "2026-03-18"
+  },
+  "gc_regression_test.py": {
+    "exit_code": 0,
+    "key_metrics": {},
+    "captured_at": "2026-03-18"
+  },
+  "listen_layer_audit.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "n_layers": 6,
+      "listen_layer_candidate": 3,
+      "alert": true,
+      "safety_threshold": 0.65
+    },
+    "captured_at": "2026-03-18"
+  },
+  "microgpt_gc_eval.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "passes": 1,
+      "fails": 0
+    },
+    "captured_at": "2026-03-18"
+  },
+  "plot_all_results.py": {
+    "exit_code": 0,
+    "key_metrics": {},
+    "captured_at": "2026-03-18"
+  },
+  "plot_q001_q002.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "passes": 2,
+      "fails": 0
+    },
+    "captured_at": "2026-03-18"
+  },
+  "q001_q002_scaleup.py": {
+    "exit_code": 2,
+    "key_metrics": {},
+    "captured_at": "2026-03-18",
+    "skip_reason": "requires_model_arg"
+  },
+  "q001_voicing_geometry.py": {
+    "exit_code": 0,
+    "key_metrics": {},
+    "captured_at": "2026-03-18",
+    "skip_reason": "requires_whisper_model"
+  },
+  "q002_causal_contribution.py": {
+    "exit_code": -1,
+    "key_metrics": {},
+    "captured_at": "2026-03-18",
+    "skip_reason": "requires_whisper_model"
+  },
+  "sae_listen_layer.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "passes": 1,
+      "fails": 0
+    },
+    "captured_at": "2026-03-18"
+  },
+  "safe_patch.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "importable": true
+    },
+    "captured_at": "2026-03-18",
+    "skip_reason": "utility_script"
+  },
+  "synthetic_stimuli.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "n_encoder_layers": 6,
+      "n_decoder_layers": 6,
+      "meta.n_encoder_layers": 6,
+      "meta.n_decoder_layers": 6,
+      "meta.hidden_dim": 64,
+      "meta.seq_len": 8,
+      "meta.seed": 42,
+      "meta.snr_db_clean": 10.0,
+      "meta.snr_db_noisy": -5.0
+    },
+    "captured_at": "2026-03-18"
+  },
+  "t3_readiness_check.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "passes": 14,
+      "fails": 0
+    },
+    "captured_at": "2026-03-18"
+  },
+  "t5_safety_probe_v1.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "passes": 2,
+      "fails": 0,
+      "confidence": 0.744,
+      "gc_curve.n_encoder_layers": 6,
+      "features.encoder_mean": 0.3603,
+      "features.decoder_mean": 0.1025,
+      "features.encoder_max": 0.493,
+      "features.decoder_min": 0.0,
+      "features.overall_mean": 0.2314,
+      "features.collapse_ratio": 0.7154,
+      "features.dec_slope": -0.0734,
+      "features.peak_to_final": 0.493,
+      "features.area_ratio": 0.2347,
+      "features.n_encoder_layers": 6,
+      "features.n_decoder_layers": 6
+    },
+    "captured_at": "2026-03-18"
+  },
+  "unified_eval.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "n_layers": 12,
+      "gc_curve.mean_encoder_gc": 0.5097,
+      "gc_curve.mean_decoder_gc": 0.781,
+      "gc_curve.peak_layer": 6,
+      "safety_audit.listen_layer_candidate": 6,
+      "safety_audit.alert": true,
+      "safety_audit.safety_threshold": 0.65,
+      "unified_verdict.listen_layer": 6,
+      "unified_verdict.gc_at_listen_layer": 0.8577,
+      "unified_verdict.safety_at_listen_layer": 0.089,
+      "unified_verdict.audio_dominant": true,
+      "unified_verdict.jailbreak_risk": true
+    },
+    "captured_at": "2026-03-18"
+  },
+  "unified_results_dashboard.py": {
+    "exit_code": 0,
+    "key_metrics": {
+      "r": -0.043,
+      "passes": 30,
+      "fails": 0
+    },
+    "captured_at": "2026-03-18"
+  }
+}

@@ -2,7 +2,7 @@
 
 > ⚠️ Line budget: ≤80 行。超過時降級舊內容到 `memory/memory-full.md`。
 > 完整記憶見 `memory/memory-full.md`（按需載入）。
-> 最後更新：2026-03-13
+> 最後更新：2026-03-18
 
 ## About Leo
 
@@ -47,6 +47,8 @@
 - **Cron**：每 30 分鐘一個 cycle（ORIENT → DECIDE → ACT → RECORD → REFLECT）
 - **狀態**：`memory/learning/goals.md`, `progress.md`, `knowledge-graph.md`
 - **核心價值**：簡單、可維護、透明、可逆、成本意識、漸進式、收斂 > 發散
+- **Phase**：Ideation frozen (3/18)，READY queue cleared，22 experiments done (2 real + 20 mock)
+- **Paper A**：outline drafted，eval dashboard built，next = GPU scale-up (Q001/Q002)
 
 ## Setup
 
@@ -55,8 +57,13 @@
 - **日記**：Google Form → Google Sheets，2025-04-21 起每日記錄未中斷
 - **Discord**：主要管道（user id: 756053339913060392）
 
+## Workflow
+
+- **CC 並行模式**：Leo approved spawning multiple CC agents for independent tasks (3/18)
+- **Feed Recommend**：daily cron (20:35) → Google Sheet sync，source diversity min=2/max=7
+
 ## Current Activities
 
-- **NTUAIS**：第三屆 AI Safety 讀書會 organizer，3/16（一）第一次活動 19:00 德田 601
+- **NTUAIS**：第三屆 AI Safety 讀書會 organizer，第一次社課已完成 (3/16)
 - **實驗室網管**：戰艦(battleship)維護
-- **AI 帳號共享方案**：$200/人，3 人一組申請，宏毅老師已認可，下週發布
+- **AI 帳號共享方案**：$200/人，3 人一組申請，宏毅老師已認可

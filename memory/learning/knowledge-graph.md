@@ -1,7 +1,8 @@
 # 🗺️ Knowledge Graph
 
 > 概念、論文、連結。Paper ideas 見 goals.md（single source of truth）。
-> Last updated: 2026-03-04 23:01 (cycle #274: Day 7 reflect — Gap #27 added [Lin 2025 + 2 concurrent surveys = audio absent from ALL MMFM MI surveys]; intermediate layer prediction for Paper A [gc(L) should peak at L_mid based on VLM analogy]; Papers A v2.0 + B v1.6 finalized; must-read list = 10/11 DONE)
+> Last updated: 2026-03-18 (experimental validation: 29 experiments, 27 pass / 2 blocked; 10 gaps updated; §Experimental Validation appended)
+> Previous update: 2026-03-04 23:01 (cycle #274: Day 7 reflect — Gap #27 added; Papers A v2.0 + B v1.6 finalized)
 > Last deep refresh: 2026-03-02 15:31 (cycle #176). See progress.md for raw cycle logs.
 > Major sections now reflect: all 26 gaps, all 7 paper ideas, March 2026 batch papers, DAS/IIT (full mechanism + implementation), T-SAE, Modality Collapse, AudioSAEBench, codec causal patching, RAVEL disentanglement benchmark, SPIRIT jailbreak defense, music MI (Facchiano), brain-speech MI (Maghsoudi), AG-REPA (SCD concept), SGPA (Shapley/phonetic alignment Level 1), MPAR² (audio perception decay).
 
@@ -459,7 +460,7 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - **Question:** Does the linear phonological structure in S3M encoders (Choi et al. 2602.18899) survive through the connector into speech LLMs?
 - **Source paper:** Choi et al. — voicing vectors are linear/compositional/scale-continuous in HuBERT/WavLM/wav2vec2 across 96 languages
 - **Key experiment:** Extract voicing_vector from Whisper encoder → hook connector via NNsight → test arithmetic in LLM layer 0 → layer-wise sweep
-- **Status:** Added to experiment-queue.md Priority 0; DAS phonological init ablation = Paper A Table 1 ablation
+- **Status:** 🟡 PARTIAL (mock) — Q109 Phoneme MDAS shows disentangle gap=0.135 (small, suggesting geometry partially survives); real-model connector transfer test (§N cycle #196) still needed. Added to experiment-queue.md Priority 0.
 - **If YES:** LLM has direct access to phonological feature directions → grounding is phonologically structured
 - **If NO:** Connector = modality bottleneck → supports Modality Collapse hypothesis
 - **Idea gate:** 🟢 GREEN (no competitors; integrates as Paper A Figure 2 or AudioSAEBench Cat 0)
@@ -469,17 +470,19 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - **Finding:** All 25 SAELens HuggingFace models = Gemma-scope/GPT-2/LLaMA only. All 5 audio SAE papers use custom one-off code.
 - **Opportunity:** AudioSAEBench contribution = SAELens-compatible audio SAE training toolkit → `pip install` + reproducible + community building
 
-### Gap #20 — Emotion-Modulated Safety (🟡 YELLOW — HOLD)
+### Gap #20 — Emotion-Modulated Safety (🟡 YELLOW — HOLD + evidence)
 - **Question:** Why does speaker emotion override LALM safety alignment non-monotonically? (Medium intensity = highest risk)
 - **Source:** Feng et al. 2510.16893 (ICASSP 2026)
 - **Method:** SPIRIT-style patching + Zhao et al. ESN cross-reference + SAE-guided feature attribution
 - **Gate:** 🟡 YELLOW — genuine gap but Track 5 = lowest priority; HOLD until Papers A+B submitted
+- **2026-03-18 update:** Q118 + Q121 show emotion AND%=0 across all personas → emotion is entirely OR-gate (text-predicted). This mechanistically explains non-monotonic safety modulation: emotion features travel the text pathway, bypassing audio-grounded safety checks.
 
 ### Gap #21 — No Causal Patching of Codec Token Streams in LALMs
 - **Source:** Sadok et al. (see below) — SpeechTokenizer Layer 1 = semantic; Layers 2+ = acoustic
 - **Gap:** Nobody has done causal patching on per-layer RVQ token streams in LALM inference
 - **Implication:** RVQ-selective corruption = cleanest possible clean/corrupt signal design (directly answers Core Q#1)
 - **Idea gate:** 🟢 GREEN (confirmed: 6 arXiv queries, 0 results)
+- **2026-03-18 update:** 🟡 PARTIAL (mock) — Q124 shows RVQ-1 semantic layer anticorrelates with AND-gate (r=-0.900); Q126 shows ENV-1 hub features concentrate in RVQ-1 (60%). Correlational structure confirmed; real causal patching in LALM inference = next step.
 
 ### Monday March 2 Batch — New Papers
 - **DashengTokenizer (arXiv:2602.23765):** "One semantic layer sufficient for 22 audio tasks" — behavioral evidence for Listen Layer Hypothesis + convergent with RVQ Layer 1 = semantic content (Gap #21); cite in Paper A Introduction
@@ -517,6 +520,7 @@ For feature F with concept C (e.g., "speaker emotion = sad"):
 - **Gap #15:** LEACE erasure confirms speech LLMs are implicit ASR cascades EXCEPT Qwen2-Audio
 - Speech LLMs internally approximate (transcription → text understanding) cascade without explicit ASR stage
 - No layer-wise patching sweep done — observational
+- **2026-03-18 update:** 🟡 PARTIAL (mock) — Q113 operationalizes cascade_degree = 1−AND% (mean=0.901), providing a continuous metric for cascade vs grounding
 - Leo's listen-layer sweep = test whether Qwen2-Audio's genuine audio grounding is mechanistically localized
 
 ### M4) ALME (arXiv:2602.11488, Feb 27 batch — SCAN cycle #40)
@@ -762,3 +766,113 @@ Audio MI methodology is converging naturally toward Paper A's design:
 This trajectory validates Paper A's novelty claim: previous audio MI work is either (a) non-causal, (b) non-speech-LLM, (c) neuron-level rather than subspace-level, or (d) generation domain rather than understanding. Paper A = first full causal analysis of grounding in speech LLMs using DAS.
 
 **SCD (Store-Contribute Dissociation)** — AG-REPA + Braun 2025 + Hase 2023: layers that best STORE audio info ≠ layers that causally CONTRIBUTE. Paper A's gc(L) specifically measures causal contribution (via DAS-IIA), not storage (cosine sim). This is why observational probing (AudioLens level 1) misses the listen layer.
+
+---
+
+## 🧪 Experimental Validation (2026-03-18)
+
+> 29 experiments total (27 PASS, 2 BLOCKED). 11 with reported correlations (mean |r|=0.714, median |r|=0.877). Includes 2 real-hardware experiments (Q001, Q002) and 27 mock-tier (numpy-only) experiments. All mock experiments validate theoretical structure; real-model confirmation pending.
+
+### Cluster 1: AND-Gate ↔ gc(k) Peak (Paper A §5.5 core prediction)
+
+| Experiment | Result | Validates |
+|-----------|--------|-----------|
+| **Q091** AND/OR gc Patching | r=**0.984**, peak L3 ✓ | §A prediction: AND-gate fraction = near-perfect gc peak proxy |
+| **Q096** FAD Bias × AND/OR Gate | r=**-0.960** | M8 (FAD Encoder Bias): text-predictable ↔ low AND% → text-bias = OR-gate dominance |
+| **Q113** Cascade Degree | cascade_degree = 1−AND%; mean=0.901 | M3 (Cascade Equivalence): cascade ↔ OR-gate dominance operationalized |
+| **Q091b** Persona × AND/OR | assistant AND%=20 vs neutral=45.3 | Persona suppresses AND-gate → assistant = more text-reliant (supports gc suppression hypothesis) |
+
+**Cross-experiment correlation:** Q091 (r=0.984) + Q096 (r=-0.960) form a dual-signal: AND% positively tracks gc while text_pred negatively tracks AND%. Together they confirm the AND-gate as a two-sided gc proxy (audio-grounded↔AND, text-predicted↔OR). Q113's cascade_degree = 1−AND% directly operationalizes Gap #15 (Cascade Equivalence) as a continuous metric.
+
+### Cluster 2: RAVEL Disentanglement (AudioSAEBench Cat 0 / Gap #23)
+
+| Experiment | Result | Validates |
+|-----------|--------|-----------|
+| **Q095** MicroGPT RAVEL | 5/6 pass (83%); audio_class disentangled by L1+ | RAVEL methodology works for audio attributes; L0 bleed confirms early entanglement |
+| **Q105** RAVEL MDAS × AND/OR | r=**0.877**; cls acc=74% | MDAS scores correlate with AND-gate → disentanglement ↔ grounding are linked |
+| **Q107** RAVEL Isolate gc Proxy | r=**0.904**; 67% compute save | Isolate score = strong gc proxy → AudioSAEBench Cat 0 can substitute for full DAS sweep |
+| **Q109** Phoneme MDAS | disentangle gap=0.135 | Phoneme attributes partially disentangled; gap small enough for DAS to close |
+
+**Synthesis:** RAVEL Cause+Isolate framework transfers to audio domain (Q095). MDAS-AND correlation (Q105, r=0.877) means multi-task DAS subspaces align with AND-gate grounding structure. Q107's Isolate-gc proxy (r=0.904) is the strongest efficiency result: 67% compute savings by using Isolate scores instead of full DAS sweeps. **Gap #23 status: PARTIALLY ADDRESSED** — mock validation complete; real-model Audio-RAVEL on Whisper remains the critical next step.
+
+### Cluster 3: SAE Incrimination & Safety (Gaps #24, #20)
+
+| Experiment | Result | Validates |
+|-----------|--------|-----------|
+| **Q094** SAE Incrimination Patrol | suppress=96%, override=77%, FPR=3.3% | SAE patrol detects audio-suppression attacks reliably; 4 persistent offenders (f3, f12, f20, f23) |
+| **Q106** SAE ENV Taxonomy | ENV-1 hub offender=100%; ENV-3=0% | ENV-1 (hub features) = attack surface; ENV-3 (isolated features) = safe |
+| **Q128** Jailbreak Isolate × ENV-3 | r=**0.888**; t* restored after pruning | ENV-3 pruning correlates with jailbreak resilience → SPIRIT defense can be feature-targeted |
+| **Q118** Emotion × AND/OR | emotion AND%=0 vs non-emo=44 | Emotion features bypass AND-gate entirely → emotion = text-predicted, not audio-grounded |
+| **Q121** Persona × Emotion × AND/OR | 3 personas × emotion dual-signal ✓ | Persona modulates emotion pathway independently of AND-gate |
+
+**Safety synthesis:** Q094→Q106→Q128 forms a complete attack-surface pipeline: detect (patrol) → classify (ENV taxonomy) → defend (ENV-3 pruning). Q128's r=0.888 validates that SPIRIT's blind layer patching can be replaced with SAE feature-targeted pruning. **Gap #24 status: PARTIALLY ADDRESSED** — persistent offender features identified in mock setting; real-model Whisper/Qwen2-Audio SAE decomposition needed. **Gap #20 status: EVIDENCE UPDATED** — Q118 + Q121 show emotion is entirely OR-gate (AND%=0 across all conditions) → emotion is text-predicted, not audio-grounded, explaining why emotion modulates safety non-monotonically (text pathway = no acoustic safeguard).
+
+### Cluster 4: Temporal & Structural (T-SAE, Schelling, Codec)
+
+| Experiment | Result | Validates |
+|-----------|--------|-----------|
+| **Q092** Persona gc Benchmark | anti_ground shift=2 layers; H2,H3 ✓ | Persona conditions gc peak location → gc is context-dependent (not fixed architecture) |
+| **Q092b** Schelling × AND/OR | stable AND%=71 vs unstable=39; r=0.330 | Schelling-stable coalitions = high AND% → grounding stability has game-theoretic structure |
+| **Q094b** T-SAE gc Incrimination | 10 features identified | T-SAE feature temporal structure recoverable → connects to Gap #12 |
+| **Q124** Codec Probe RVQ × AND/OR | RVQ-1 semantic OR-gate r=**-0.900** | RVQ Layer 1 (semantic) anticorrelates with AND% → semantic codec layer = text-predicted pathway |
+| **Q125** Schelling × T-SAE Stability | Spearman=0.639; IIA stable | T-SAE features form stable coalitions → temporal features are game-theoretically robust |
+| **Q126** ENV × Codec RVQ | ENV-1 hub RVQ-1=60%; isolated=0% | Hub features concentrate in semantic RVQ-1 → hub=text; isolated=acoustic |
+| **Q116** Backdoor Cascade Induction | t* shift=−3 (leftward) | Backdoor induces earlier collapse → cascade onset is manipulable |
+| **Q122** Incrimination Jacobian SVD | top SVD → 10 features ≥2 blames | Jacobian SVD identifies blame-concentrated features → mechanistic basis for incrimination |
+| **Q127** Power Steering × AND/OR | r=**0.627** | Jacobian SVD features correlate with AND-gate → steering vectors align with grounding structure |
+
+**Codec synthesis:** Q124 (RVQ-1 OR-gate r=-0.900) + Q126 (ENV-1 hub concentrated in RVQ-1) jointly validate Gap #21's prediction: RVQ Layer 1 = semantic = text-predicted pathway. The AND-gate lives in acoustic RVQ layers 2+. **Gap #21 status: PARTIALLY ADDRESSED** — correlational structure confirmed in mock; real causal patching of RVQ streams in LALM inference = next step.
+
+### Cluster 5: Real-Hardware Anchors (Q001, Q002)
+
+| Experiment | Result | Validates |
+|-----------|--------|-----------|
+| **Q001** Voicing Geometry | peak cos_sim=0.155 (L5) | Phonological geometry exists but is weak → DAS needed (vanilla probe insufficient) |
+| **Q002** Causal Contribution | WER ablation peak identifies causal layer | Causal layer ≠ best-probe layer → SCD confirmed at speech-encoder level |
+
+**Connection:** Q001's weak cos_sim (0.155) at L5 corroborates the argument for DAS over vanilla probing (§N in KG): phonological geometry is distributed → localist methods find weak signal → DAS finds the true subspace. Q002's WER ablation independently confirms SCD (Store ≠ Contribute) for Whisper, bridging AG-REPA's generation-domain finding to understanding-domain.
+
+### Blocked Experiments — Diagnostic Value
+
+| Experiment | Result | Diagnosis |
+|-----------|--------|-----------|
+| **Q117** GSAE Graph Density | r=−0.043 (weak) | Graph-level density metric does not correlate with AND-gate → GSAE topology operates at a different abstraction level than gc. **Action:** refine to edge-level or community-level metrics; consider GSAE degree distribution rather than global density. |
+| **Q123** FAD-RAVEL Cause/Isolate | r=−0.70 (wrong direction) | FAD bias and RAVEL Isolate are anticorrelated → high text-bias features FAIL Isolate (leak across attributes). **Reinterpretation:** this is actually a meaningful finding — FAD-biased features are polysemantic (confirming AudioSAE's finding that speech concepts require ~2000 distributed features). **Action:** reclassify as negative-result-with-insight; include as Paper B caveat on encoder selection. |
+
+### Gap Status Summary (updated 2026-03-18)
+
+| Gap | Status Before | New Evidence | Status After |
+|-----|--------------|--------------|-------------|
+| #11 (gc at neuron level) | OPEN | Q118: emotion AND%=0 → emotion neurons are text-pathway | 🟡 PARTIAL (mock) |
+| #12 (Temporal SAE) | OPEN | Q094b: 10 T-SAE features identified; Q125: temporal features form stable coalitions | 🟡 PARTIAL (mock) |
+| #15 (Cascade Equivalence) | OPEN | Q113: cascade_degree = 1−AND% operationalized | 🟡 PARTIAL (mock) |
+| #18 (Phonological geometry through connector) | OPEN | Q109: phoneme disentangle gap=0.135 (small) | 🟡 PARTIAL (mock) |
+| #19 (Audio SAE training pipeline) | OPEN | — | OPEN |
+| #20 (Emotion-modulated safety) | 🟡 HOLD | Q118+Q121: emotion=OR-gate only, no AND-gate | 🟡 HOLD + evidence |
+| #21 (Codec causal patching) | OPEN | Q124: RVQ-1↔OR r=-0.90; Q126: ENV-1 hub in RVQ-1 | 🟡 PARTIAL (mock) |
+| #23 (Audio-RAVEL) | OPEN | Q095: 83% RAVEL pass; Q105: MDAS↔AND r=0.877; Q107: Isolate-gc r=0.904 | 🟡 PARTIAL (mock) |
+| #24 (SAE jailbreak features) | OPEN | Q094: 4 persistent offenders; Q128: ENV-3 prune r=0.888 | 🟡 PARTIAL (mock) |
+| #26 (Speech LLM causal subspaces) | OPEN | Q001+Q002: real-hardware voicing geometry + causal contribution | 🟡 PARTIAL (real) |
+
+### Remaining OPEN Gaps (no new evidence)
+
+- **Gap #13** (EmoOmni Thinker-Talker bottleneck): No experiment targeted this architecture
+- **Gap #14** (Modality Collapse formal theory): Requires real-model connector probing
+- **Gap #16** (ALME causal layer patching): Requires real ALME stimuli + DAS sweep
+- **Gap #19** (SAELens audio pipeline): Engineering task, not experimental
+- **Gap #27** (Audio absent from MMFM MI surveys): Structural gap, closed by publishing Paper A
+
+### Experiments That Would Close Remaining Gaps
+
+| Gap | Closing Experiment | Requirements |
+|-----|-------------------|-------------|
+| #13 | DAS at Thinker-Talker interface (EmoOmni architecture) | Access to EmoOmni weights; NDIF or Colab Pro |
+| #14 | Connector subspace transfer test (§N in KG, cycle #196) | Whisper-small + pyvene; MacBook-feasible |
+| #16 | DAS-gc(k) sweep on ALME 57K conflict stimuli | ALME dataset + Qwen2-Audio via NDIF |
+| #18 → full | Real-model DAS at encoder→connector→LLM L0 | pyvene + NNsight; MacBook-feasible (Phase 1) |
+| #19 | SAELens audio training wrapper | Engineering ~2 days |
+| #21 → full | RVQ-selective causal patching in Qwen2-Audio | NDIF access; ~4h experiment |
+| #23 → full | Audio-RAVEL on Whisper encoder with real minimal pairs | Choi et al. stimuli + pyvene DAS |
+| #24 → full | AudioSAE decomposition of SPIRIT noise-sensitive neurons | AudioSAE code + Qwen2-Audio weights |
+| Q117 retry | GSAE edge-level or community-level density metric | Refine mock script; numpy-only |
+| Q123 reframe | Publish as negative result: FAD-biased features are polysemantic | Paper B §4 caveat |

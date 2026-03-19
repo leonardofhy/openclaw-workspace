@@ -1,0 +1,55 @@
+[tool.pytest.ini_options]
+testpaths = [
+    "skills/ask-me-anything/scripts",
+    "skills/autodidact/scripts",
+    "skills/autodidact/tools",
+    "skills/coordinator/scripts",
+    "skills/daily-scheduler/scripts",
+    "skills/feed-recommend/scripts",
+    "skills/financial-advisor/scripts",
+    "skills/leo-diary/scripts",
+    "skills/lib",
+    "skills/paper-tracker/scripts",
+    "skills/remember/scripts",
+    "skills/self-improve/scripts",
+    "skills/shared",
+    "skills/system-scanner/scripts",
+    "skills/tavily-search/scripts",
+]
+
+pythonpath = [
+    "skills/ask-me-anything/scripts",
+    "skills/autodidact/scripts",
+    "skills/autodidact/tools",
+    "skills/coordinator/scripts",
+    "skills/daily-scheduler/scripts",
+    "skills/experiment-manager/scripts",
+    "skills/feed-recommend/scripts",
+    "skills/financial-advisor/scripts",
+    "skills/leo-diary/scripts",
+    "skills/lib",
+    "skills/memory/scripts",
+    "skills/paper-tracker/scripts",
+    "skills/paper-writing/scripts",
+    "skills/remember/scripts",
+    "skills/self-improve/scripts",
+    "skills/shared",
+    "skills/system-scanner/scripts",
+    "skills/tavily-search/scripts",
+]
+
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests requiring external services",
+    "subprocess: marks tests that spawn subprocesses",
+]
+
+addopts = "-x --tb=short"
+
+norecursedirs = [
+    "__pycache__",
+    "archive",
+    ".git",
+    "venv",
+    "node_modules",
+]

@@ -45,15 +45,9 @@ from typing import Optional
 import numpy as np
 
 # Re-use core machinery from gc_incrimination_mock.py
-import importlib.util, os
-_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-_mock_spec = importlib.util.spec_from_file_location(
-    "gc_incrimination_mock",
-    os.path.join(_SCRIPT_DIR, "gc_incrimination_mock.py"),
-)
-_mock = importlib.util.module_from_spec(_mock_spec)  # type: ignore
-sys.modules["gc_incrimination_mock"] = _mock
-_mock_spec.loader.exec_module(_mock)  # type: ignore
+import os as _os
+sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import gc_incrimination_mock as _mock
 
 # Pull constants and functions from the mock module
 N_STIMULI = _mock.N_STIMULI

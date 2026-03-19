@@ -179,6 +179,25 @@ def cmd_config(args: argparse.Namespace) -> None:
     print()
 
 
+def cmd_learn(args: argparse.Namespace) -> None:
+    """Re-analyze feedback and update scoring adjustments."""
+    from feedback_learner import load_feedback, analyze_feedback, save_adjustments
+    entries = load_feedback()
+    if not entries:
+        print("No feedback data yet.", file=sys.stderr)
+        return
+    adjustments = analyze_feedback(entries)
+    save_adjustments(adjustments)
+    kw = adjustments['keyword_scores']
+    src = adjustments['source_bias']
+    print(f"Learned from {len(entries)} feedback entries "
+          f"(+{adjustments['total_positive']}, -{adjustments['total_negative']})", file=sys.stderr)
+    if kw:
+        print(f"  Keyword adjustments: {len(kw)}", file=sys.stderr)
+    if src:
+        print(f"  Source bias: {len(src)}", file=sys.stderr)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description='Feed Recommender — multi-source')
     sub = parser.add_subparsers(dest='command')
@@ -210,6 +229,7 @@ def main() -> None:
     sub.add_parser('profile', help='Show interest profile')
     sub.add_parser('stats', help='Show stats')
     sub.add_parser('config', help='Show config')
+    sub.add_parser('learn', help='Re-analyze feedback and update adjustments')
 
     args = parser.parse_args()
 
@@ -228,6 +248,7 @@ def main() -> None:
         'profile': cmd_profile,
         'stats': cmd_stats,
         'config': cmd_config,
+        'learn': cmd_learn,
     }
     commands[args.command](args)
 

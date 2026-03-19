@@ -6,7 +6,9 @@ Mocking strategy
 The `common` module is stubbed into sys.modules *before* schedule_engine is
 imported so that the module-level bindings (TZ, _now, _today_str, WORKSPACE,
 MEMORY, SCHEDULES_DIR) all resolve to our controlled values.  Per-test
-patching is done via @patch("schedule_engine.<name>") where needed.
+patching targets the submodule where the name is actually looked up:
+  - schedule_generator.*  for get_spillover, write_with_archive_atomic internals
+  - schedule_formatter.*  for render_display, render_review internals
 """
 
 import types
@@ -390,7 +392,7 @@ class TestGetSpillover:
     def test_no_schedule_returns_empty(self, tmp_path):
         """When parse_schedule returns None, get_spillover returns []."""
         nonexistent = "2020-01-01"
-        with patch("schedule_engine.parse_schedule", return_value=None):
+        with patch("schedule_generator.parse_schedule", return_value=None):
             result = get_spillover(nonexistent)
         assert result == []
 
@@ -405,7 +407,7 @@ class TestGetSpillover:
                 actual_log=[],
                 unscheduled=[],
             )
-            with patch("schedule_engine.parse_schedule", return_value=sched):
+            with patch("schedule_generator.parse_schedule", return_value=sched):
                 result = get_spillover("2026-03-14")
             assert result == [], f"Expected {emoji} block to be skipped"
 
@@ -420,7 +422,7 @@ class TestGetSpillover:
                 actual_log=[],
                 unscheduled=[],
             )
-            with patch("schedule_engine.parse_schedule", return_value=sched):
+            with patch("schedule_generator.parse_schedule", return_value=sched):
                 result = get_spillover("2026-03-14")
             assert result == [], f"Expected '{kw}' block to be skipped"
 
@@ -433,7 +435,7 @@ class TestGetSpillover:
             actual_log=["✅ 09:30–10:00 完全不相關的事情"],
             unscheduled=[],
         )
-        with patch("schedule_engine.parse_schedule", return_value=sched):
+        with patch("schedule_generator.parse_schedule", return_value=sched):
             result = get_spillover("2026-03-14")
         assert len(result) == 1
         assert result[0]["title"] == "AudioMatters 深度工作"
@@ -449,7 +451,7 @@ class TestGetSpillover:
             actual_log=["✅ 09:00–10:00 AudioMatters 完成"],
             unscheduled=[],
         )
-        with patch("schedule_engine.parse_schedule", return_value=sched):
+        with patch("schedule_generator.parse_schedule", return_value=sched):
             result = get_spillover("2026-03-14")
         assert all(r["title"] != "AudioMatters" for r in result)
 
@@ -461,7 +463,7 @@ class TestGetSpillover:
             actual_log=[],
             unscheduled=["待辦A", "待辦B"],
         )
-        with patch("schedule_engine.parse_schedule", return_value=sched):
+        with patch("schedule_generator.parse_schedule", return_value=sched):
             result = get_spillover("2026-03-14")
         sources = [r["source"] for r in result]
         titles = [r["title"] for r in result]
@@ -478,15 +480,15 @@ class TestGetSpillover:
             actual_log=[],
             unscheduled=[],
         )
-        with patch("schedule_engine.parse_schedule", return_value=sched):
+        with patch("schedule_generator.parse_schedule", return_value=sched):
             result = get_spillover("2026-03-14")
         for item in result:
             assert item["original_date"] == "2026-03-14"
 
     def test_uses_yesterday_when_date_not_given(self):
         """When date_str=None, get_spillover targets yesterday's file."""
-        with patch("schedule_engine._today_str", return_value="2026-03-15"):
-            with patch("schedule_engine.parse_schedule", return_value=None) as mock_parse:
+        with patch("schedule_generator._today_str", return_value="2026-03-15"):
+            with patch("schedule_generator.parse_schedule", return_value=None) as mock_parse:
                 get_spillover(None)
         called_path = mock_parse.call_args[0][0]
         assert "2026-03-14" in str(called_path)
@@ -583,7 +585,7 @@ class TestRenderDisplay:
     def test_uses_now_from_module_when_not_provided(self):
         """When now_str is not passed, _now() from the module is called."""
         sched = _make_schedule()
-        with patch("schedule_engine._now",
+        with patch("schedule_formatter._now",
                    return_value=datetime(2026, 3, 15, 9, 0, tzinfo=_TZ)) as mock_now:
             output = render_display(sched)
         mock_now.assert_called_once()
@@ -609,7 +611,7 @@ class TestRenderReview:
             actual_log=["✅ A完成", "✅ B完成", "其他備注"],
         )
         # Mock get_spillover to avoid file I/O
-        with patch("schedule_engine.get_spillover", return_value=[]):
+        with patch("schedule_formatter.get_spillover", return_value=[]):
             output = render_review(sched)
         assert "2/3" in output
         assert "66%" in output
@@ -622,15 +624,15 @@ class TestRenderReview:
             blocks=[],
             actual_log=["✅ 某件事"],
         )
-        with patch("schedule_engine.get_spillover", return_value=[]):
+        with patch("schedule_formatter.get_spillover", return_value=[]):
             output = render_review(sched)
         assert "0%" in output
 
     def test_output_contains_review_header(self):
         """Output starts with the 日終回顧 header."""
         sched = DaySchedule(date="2026-03-15", weekday="日", blocks=[], actual_log=[])
-        with patch("schedule_engine.get_spillover", return_value=[]):
-            with patch("schedule_engine._now",
+        with patch("schedule_formatter.get_spillover", return_value=[]):
+            with patch("schedule_formatter._now",
                        return_value=datetime(2026, 3, 15, 22, 0, tzinfo=_TZ)):
                 output = render_review(sched)
         assert "日終回顧" in output
@@ -645,7 +647,7 @@ class TestRenderReview:
         )
         spillover = [{"title": "未完成任務", "emoji": "🔬",
                       "source": "spillover", "original_date": "2026-03-15"}]
-        with patch("schedule_engine.get_spillover", return_value=spillover):
+        with patch("schedule_formatter.get_spillover", return_value=spillover):
             output = render_review(sched)
         assert "未完成任務" in output
         assert "明日" in output
@@ -658,7 +660,7 @@ class TestRenderReview:
             blocks=[TimeBlock("09:00", "10:00", "任務", emoji="🔬")],
             actual_log=["✅ 任務"],
         )
-        with patch("schedule_engine.get_spillover", return_value=[]):
+        with patch("schedule_formatter.get_spillover", return_value=[]):
             output = render_review(sched)
         assert "明日" not in output
 
@@ -671,7 +673,7 @@ class TestRenderReview:
             blocks=blocks,
             actual_log=["✅ A完成"],
         )
-        with patch("schedule_engine.get_spillover", return_value=[]):
+        with patch("schedule_formatter.get_spillover", return_value=[]):
             output = render_review(sched)
         assert "100%" in output
 
@@ -684,7 +686,7 @@ class TestWriteWithArchiveAtomic:
     def test_creates_file_when_not_exists(self, tmp_path):
         """Writing to a new path creates the file with the given content."""
         target = tmp_path / "2026-03-15.md"
-        with patch("schedule_engine.SCHEDULES_DIR", tmp_path / "schedules"):
+        with patch("schedule_generator.SCHEDULES_DIR", tmp_path / "schedules"):
             write_with_archive_atomic(target, "hello world")
         assert target.exists()
         assert target.read_text() == "hello world"
@@ -692,7 +694,7 @@ class TestWriteWithArchiveAtomic:
     def test_returns_none_when_no_prior_file(self, tmp_path):
         """No existing file → no archive created → returns None."""
         target = tmp_path / "2026-03-15.md"
-        with patch("schedule_engine.SCHEDULES_DIR", tmp_path / "schedules"):
+        with patch("schedule_generator.SCHEDULES_DIR", tmp_path / "schedules"):
             result = write_with_archive_atomic(target, "content")
         assert result is None
 
@@ -701,8 +703,8 @@ class TestWriteWithArchiveAtomic:
         target = tmp_path / "2026-03-15.md"
         target.write_text("original content")
         schedules_dir = tmp_path / "schedules"
-        with patch("schedule_engine.SCHEDULES_DIR", schedules_dir):
-            with patch("schedule_engine._now",
+        with patch("schedule_generator.SCHEDULES_DIR", schedules_dir):
+            with patch("schedule_generator._now",
                        return_value=datetime(2026, 3, 15, 14, 30, tzinfo=_TZ)):
                 archive_path = write_with_archive_atomic(target, "new content")
         assert archive_path is not None
@@ -714,8 +716,8 @@ class TestWriteWithArchiveAtomic:
         target = tmp_path / "2026-03-15.md"
         target.write_text("old content")
         schedules_dir = tmp_path / "schedules"
-        with patch("schedule_engine.SCHEDULES_DIR", schedules_dir):
-            with patch("schedule_engine._now",
+        with patch("schedule_generator.SCHEDULES_DIR", schedules_dir):
+            with patch("schedule_generator._now",
                        return_value=datetime(2026, 3, 15, 14, 30, tzinfo=_TZ)):
                 write_with_archive_atomic(target, "brand new content")
         assert target.read_text() == "brand new content"
@@ -723,7 +725,7 @@ class TestWriteWithArchiveAtomic:
     def test_no_temp_file_left_behind(self, tmp_path):
         """The .tmp intermediate file is cleaned up after atomic replace."""
         target = tmp_path / "2026-03-15.md"
-        with patch("schedule_engine.SCHEDULES_DIR", tmp_path / "schedules"):
+        with patch("schedule_generator.SCHEDULES_DIR", tmp_path / "schedules"):
             write_with_archive_atomic(target, "data")
         tmp_file = target.with_suffix(".md.tmp")
         assert not tmp_file.exists()
@@ -734,8 +736,8 @@ class TestWriteWithArchiveAtomic:
         target.write_text("v1 content")
         schedules_dir = tmp_path / "schedules"
         fixed_now = datetime(2026, 3, 15, 14, 30, 45, tzinfo=_TZ)
-        with patch("schedule_engine.SCHEDULES_DIR", schedules_dir):
-            with patch("schedule_engine._now", return_value=fixed_now):
+        with patch("schedule_generator.SCHEDULES_DIR", schedules_dir):
+            with patch("schedule_generator._now", return_value=fixed_now):
                 archive_path = write_with_archive_atomic(target, "v2 content")
         assert archive_path is not None
         assert archive_path.name == "20260315T143045.md"
