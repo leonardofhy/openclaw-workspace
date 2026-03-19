@@ -28,7 +28,7 @@
   "budgets": {
     "learn_remaining_today": 0,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
+    "reflect_remaining_today": 0,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-19"
   },
@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260319-2215",
-    "action": "reflect",
-    "summary": "End-of-day reflect: 13 tasks completed today. Three-metric unification crystallizing: cascade_degree \u2248 1-AND_fraction \u2248 1-GSAE_density. t* backdoor protocol ready. 12 READY tasks tomorrow."
+    "id": "c-20260319-2245",
+    "action": "skip",
+    "summary": "Principled skip: end-of-day reflect already completed at 22:15 (c-20260319-2215). Reflect budget corrected to 0. All budgets exhausted."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
