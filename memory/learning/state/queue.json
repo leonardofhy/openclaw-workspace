@@ -47,12 +47,13 @@
       "type": "build",
       "track": "T3",
       "title": "Collapse onset step: measure Isolate_in(t) to find decoder step where audio info stops",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Extend Q069 temporal script: find t* where Isolate_in drops below 0.1; plot; define collapse_onset_step diagnostic",
       "created": "2026-03-12",
-      "due": null
+      "due": null,
+      "completed": "2026-03-19"
     },
     {
       "id": "Q89",
