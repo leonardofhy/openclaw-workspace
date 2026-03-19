@@ -61,12 +61,13 @@
       "type": "build",
       "track": "T3",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "dod": "Script extends Q069 temporal directed isolate + Q087 AND/OR gate tagging; plot temporal onset distribution per gate type on mock data",
       "ideation_id": "I05",
       "novelty": 5,
       "feasibility": 4,
-      "created": "2026-03-12T10:34:16.860596"
+      "created": "2026-03-12T10:34:16.860596",
+      "completed": "2026-03-19"
     },
     {
       "id": "Q91",
