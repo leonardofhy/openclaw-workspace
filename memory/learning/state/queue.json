@@ -205,12 +205,13 @@
       "type": "design",
       "track": "T3",
       "title": "Cascade degree = 1 - AND_gate_fraction: mechanistic quantification of cascade equivalence at gc peak",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: cascade score vs AND-gate fraction at gc peak; Pearson r > 0.8 validates mechanistic link; connects Paper A Claim 2 to Cascade Equivalence Hypothesis",
       "created": "2026-03-16",
-      "due": null
+      "due": null,
+      "completed": "2026-03-19"
     },
     {
       "id": "Q116",

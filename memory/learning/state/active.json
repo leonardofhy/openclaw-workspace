@@ -45,9 +45,9 @@
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260319-1245",
-    "action": "build",
-    "summary": "Q107 done: isolate_gc_proxy.py. argmin(Isolate) \u2248 argmax(gc) with hit@\u00b11=65-79%, MAE<1.2 layers at low noise. ~84% patching savings if used as pre-screen. Moderate proxy strength."
+    "id": "c-20260319-1315",
+    "action": "plan",
+    "summary": "Q113 done: cascade_degree = 1 - AND_gate_fraction design doc. Operationalizes Billa (2026) cascade equivalence at layer level. Paper A \u00a75.5 draft para. r=0.98 with gc(k) pre-confirmed."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
