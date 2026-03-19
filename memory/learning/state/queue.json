@@ -75,12 +75,13 @@
       "type": "build",
       "track": "T3",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "dod": "persona_gate_analysis.py extends existing script; measures AND/OR ratio per persona; mock mode passes",
       "ideation_id": "I09",
       "novelty": 4,
       "feasibility": 5,
-      "created": "2026-03-12T10:34:16.860606"
+      "created": "2026-03-12T10:34:16.860606",
+      "completed": "2026-03-19"
     },
     {
       "id": "Q92",
