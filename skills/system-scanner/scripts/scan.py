@@ -207,12 +207,11 @@ def check_smtp(ctx: ScanContext):
 
 def check_git(ctx: ScanContext):
     def _fix():
-        for cmd in [['git', 'add', '-u'], ['git', 'commit', '-m', 'chore: scanner auto-fix'],
-                    ['git', 'push']]:
+        for cmd in [['git', 'add', '-u'], ['git', 'commit', '-m', 'chore: scanner auto-fix']]:
             rc, out, err = sh(cmd, cwd=str(WORKSPACE))
             if rc != 0 and 'nothing to commit' not in out + err:
                 raise RuntimeError(err)
-        return 'committed and pushed'
+        return 'committed (use git push to publish)'
 
     rc, out, _ = sh(['git', 'status', '--short'], cwd=str(WORKSPACE))
     if rc != 0:
@@ -220,7 +219,7 @@ def check_git(ctx: ScanContext):
         return
     if out:
         check(ctx, 'Git uncommitted', 'warn', f'{len(out.splitlines())} changed file(s)',
-              'git add -A && git commit && git push', fix_fn=_fix)
+              'git add -u && git commit', fix_fn=_fix)
     else:
         check(ctx, 'Git status', 'ok', 'Clean')
         # Compare against current branch's upstream, not hardcoded main
@@ -228,9 +227,8 @@ def check_git(ctx: ScanContext):
         upstream = f'origin/{branch}' if branch else 'origin/main'
         rc2, out2, _ = sh(['git', 'log', f'{upstream}..HEAD', '--oneline'], cwd=str(WORKSPACE))
         if rc2 == 0 and out2:
-            check(ctx, 'Git unpushed', 'warn', f'{len(out2.splitlines())} commit(s) ahead of {upstream}',
-                  'git push',
-                  fix_fn=lambda: sh(['git', 'push'], cwd=str(WORKSPACE))[1])
+            check(ctx, 'Git unpushed', 'info', f'{len(out2.splitlines())} commit(s) ahead of {upstream}',
+                  'git push')
         elif rc2 == 0:
             check(ctx, 'Git remote sync', 'ok', 'Up to date')
 
@@ -784,6 +782,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='OpenClaw system scanner')
     parser.add_argument('--quiet',    '-q', action='store_true', help='Show problems only')
     parser.add_argument('--fix',      '-f', action='store_true', help='Auto-fix safe issues')
+    parser.add_argument('--dry-run',  '-n', action='store_true', help='Show what --fix would do without applying')
     parser.add_argument('--json',     '-j', action='store_true', help='JSON output')
     parser.add_argument('--category', '-c', nargs='+', choices=list(ALL_CHECKS), metavar='CAT')
     parser.add_argument('--history',        nargs='?', const=5, type=int, metavar='N')
@@ -798,7 +797,12 @@ if __name__ == '__main__':
     run_checks(ctx, args.category)
 
     fix_results = None
-    if args.fix:
+    if args.dry_run:
+        if ctx.fix_queue:
+            print(f'\n[dry-run] Would run {len(ctx.fix_queue)} auto-fix(es):')
+            for item in ctx.fix_queue:
+                print(f'  - {item["label"]}')
+    elif args.fix:
         fix_results = run_fixes(ctx)
         if fix_results:                   # re-scan to show post-fix state
             ctx = ScanContext()

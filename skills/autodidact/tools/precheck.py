@@ -27,6 +27,41 @@ def load_json(path):
         print(f"WARN: {path}: {e}", file=sys.stderr)
         return None
 
+PHASE_ORDER = ['explore', 'explore-fallback', 'converge', 'execute']
+
+def check_phase_transition(active):
+    """Check if phase exit criteria are met for the next phase.
+
+    Returns a recommendation string if all criteria are met, else None.
+    Does NOT auto-transition — Leo must confirm.
+    """
+    phase = active.get('phase', '')
+    criteria_map = active.get('phase_exit_criteria', {})
+
+    # Determine the transition being checked
+    if phase in ('explore', 'explore-fallback', 'converge'):
+        transition_key = 'converge_to_execute'
+        next_phase = 'execute'
+    else:
+        return None  # already in execute or unknown phase
+
+    criteria_list = criteria_map.get(transition_key, [])
+    if not criteria_list:
+        return None
+
+    results = {}
+    for criterion in criteria_list:
+        results[criterion] = bool(criteria_map.get(criterion, False))
+
+    all_met = all(results.values())
+    status_parts = [f"{k} {'✓' if v else '✗'}" for k, v in results.items()]
+    status_str = ', '.join(status_parts)
+
+    if all_met:
+        return f"PHASE_READY: {phase}→{next_phase} (criteria: {status_str})"
+    return None
+
+
 def main():
     ws = find_workspace()
     state_dir = os.path.join(ws, 'memory', 'learning', 'state')
@@ -36,7 +71,7 @@ def main():
     blockers = load_json(os.path.join(state_dir, 'blockers.json'))
 
     if not active or not queue:
-        print("RUN state files missing or corrupt — run to self-heal")
+        print("SKIP missing state files")
         return
 
     now = datetime.now(TZ)
@@ -59,15 +94,20 @@ def main():
     if ready_tasks:
         # Even with READY tasks, check if any matching budget remains
         if same_day:
-            has_build = any(t.get('action_type') in ('build', None) for t in ready_tasks)
-            has_learn = any(t.get('action_type') in ('learn', 'read', None) for t in ready_tasks)
             can_build = budgets.get('build_remaining_today', 0) > 0
             can_learn = budgets.get('learn_remaining_today', 0) > 0
             can_reflect = budgets.get('reflect_remaining_today', 0) > 0
             can_ideate = budgets.get('ideate_remaining_today', 0) > 0
-            # If no budget for any possible action, skip
-            if not can_build and not can_learn and not can_reflect and not can_ideate:
-                print(f"SKIP {len(ready_tasks)} READY tasks but all budgets exhausted")
+            is_end_of_day = now.hour >= 22
+
+            # If no actionable budget, skip regardless of ready tasks
+            if not can_build and not can_learn and not can_ideate:
+                # reflect is only useful at end-of-day (≥22:00) or on task failure trigger
+                last_action = active.get('last_cycle', {}).get('action', '')
+                if can_reflect and is_end_of_day:
+                    print(f"RUN end-of-day reflect trigger (≥22:00) — {len(ready_tasks)} READY tasks but all primary budgets exhausted")
+                    return
+                print(f"SKIP {len(ready_tasks)} READY tasks but all primary budgets exhausted; reflect only runs end-of-day or on failure")
                 return
         print(f"RUN {len(ready_tasks)} READY tasks in queue (top: {ready_tasks[0]['id']} {ready_tasks[0]['title'][:50]})")
         return
@@ -163,6 +203,11 @@ def main():
                     return
         except (ValueError, IndexError):
             pass
+
+    # --- Phase transition recommendation ---
+    phase_rec = check_phase_transition(active)
+    if phase_rec:
+        print(phase_rec)
 
     # --- All checks passed: SKIP ---
     print("SKIP no READY tasks, blockers active with cooldown, GC current")

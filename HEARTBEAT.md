@@ -62,6 +62,11 @@ ELSE（什麼都沒發生，一切正常）
 ### 🔀 Git 同步
 - `git status --short`，有未 commit 的就自動 commit + push
 
+### ⏱️ Cron 健康檢查（每次 heartbeat）
+- `python3 skills/shared/cron_monitor.py --alert`
+- 有 alert（MISSED/FAILING/STALE/SLOW）→ 視嚴重度通知 #general 或記錄 #bot-logs
+- 狀態寫入 `memory/cron-health.json`
+
 ### 🔧 系統健康（每週一次）
 - 跑 `python3 skills/system-scanner/scripts/scan.py`
 - 🔴 立刻通知 Leo（#general），⚠️ 記錄到 memory

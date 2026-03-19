@@ -14,6 +14,9 @@ PER_SOURCE_TIMEOUT=30  # seconds per source fetch
 
 cd "$SCRIPT_DIR"
 
+# Re-learn from feedback before scoring
+python3 feed.py learn 2>/dev/null || true
+
 # Fetch + score + rank articles with timeout
 echo "Fetching & scoring articles (top $LIMIT, ${PER_SOURCE_TIMEOUT}s timeout)..." >&2
 if command -v timeout >/dev/null 2>&1; then
@@ -63,5 +66,18 @@ fi
 
 # Sync to Google Sheets
 python3 sync_to_sheets.py --json-file /tmp/feed_articles.json
+
+# Generate Discord digest message
+python3 discord_digest.py --json-file /tmp/feed_articles.json > /tmp/feed_discord_digest.txt 2>/dev/null || {
+    echo "WARNING: Discord digest formatting failed, skipping Discord push" >&2
+}
+
+# Output the digest path for the cron agent to pick up and send
+if [ -s /tmp/feed_discord_digest.txt ]; then
+    echo "DISCORD_DIGEST=/tmp/feed_discord_digest.txt" >&2
+    echo "---DISCORD_DIGEST_START---"
+    cat /tmp/feed_discord_digest.txt
+    echo "---DISCORD_DIGEST_END---"
+fi
 
 echo "Done ✓" >&2

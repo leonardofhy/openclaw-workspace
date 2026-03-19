@@ -71,13 +71,14 @@ from gc_jailbreak_classifier import classify_gc_curve  # type: ignore
 # Safety Probe
 # ---------------------------------------------------------------------------
 
-def make_mock_gc_curve(scenario: str) -> dict:
+def make_mock_gc_curve(scenario: str, seed: int = 42) -> dict:
     """Generate a mock gc(k) curve for the given scenario."""
     if scenario == "jailbreak":
         # Jailbreak: enc looks normal, dec collapses
+        rng = np.random.RandomState(seed)
         layers = list(range(12))
-        enc_vals = [0.2 + 0.06 * i + np.random.normal(0, 0.03) for i in range(6)]
-        dec_vals = [0.4 * (0.3 ** i) + np.random.normal(0, 0.02) for i in range(6)]
+        enc_vals = [0.2 + 0.06 * i + rng.normal(0, 0.03) for i in range(6)]
+        dec_vals = [0.4 * (0.3 ** i) + rng.normal(0, 0.02) for i in range(6)]
         gc_values = enc_vals + dec_vals
         gc_values = [max(0.0, min(1.0, v)) for v in gc_values]
     elif scenario == "benign":

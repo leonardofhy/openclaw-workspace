@@ -22,10 +22,15 @@ from jsonl_store import find_workspace
 from sources import discover_sources, Article, ScoredArticle
 from sources.base import BaseSource
 
+from feedback_learner import apply_feedback_score, load_adjustments
+
 TZ = timezone(timedelta(hours=8))
 WS = find_workspace()
 FEEDS_DIR = os.path.join(WS, 'memory', 'feeds')
 DEFAULT_CONFIG_PATH = os.path.join(os.path.dirname(__file__), 'config.json')
+
+# Cache feedback adjustments (loaded once per run)
+_FEEDBACK_ADJ: dict | None = None
 
 
 # ── Config ───────────────────────────────────────────────────────
@@ -281,34 +286,94 @@ def _parse_posted_age_hours(posted: str) -> float | None:
     return None
 
 
-def score_article(article: Article, profile: dict) -> float:
-    """Score an article based on interest profile. Higher = more relevant."""
-    text = f"{article.title} {article.url} {article.snippet}".lower()
+def _keyword_score(text: str, profile: dict) -> float:
+    """Score text against profile keywords with phrase-aware matching.
+
+    Improvements over v1:
+    - Multi-word phrases scored as whole (no double-counting components)
+    - Title matches weighted 2x vs snippet
+    - Diminishing returns: after 5 keyword hits, each additional counts 50%
+    """
     score = 0.0
+    hits = 0
 
-    # Keyword boost/penalty
-    for kw, weight in profile.get('boost_keywords', {}).items():
-        if kw.lower() in text:
-            score += weight
+    # Sort keywords longest-first so phrases match before individual words
+    boost_kw = sorted(profile.get('boost_keywords', {}).items(), key=lambda x: -len(x[0]))
+    penalty_kw = sorted(profile.get('penalty_keywords', {}).items(), key=lambda x: -len(x[0]))
 
-    for kw, weight in profile.get('penalty_keywords', {}).items():
+    matched_spans: set[str] = set()  # track matched phrases to avoid double-counting
+
+    for kw, weight in boost_kw:
+        kw_lower = kw.lower()
+        # Skip if a longer phrase already matched that contains this keyword
+        if any(kw_lower in span and kw_lower != span for span in matched_spans):
+            continue
+        if kw_lower in text:
+            multiplier = 1.0 if hits < 5 else 0.5  # diminishing returns
+            score += weight * multiplier
+            matched_spans.add(kw_lower)
+            hits += 1
+
+    for kw, weight in penalty_kw:
         if kw.lower() in text:
             score += weight  # already negative
 
-    # Tag-based scoring: match article tags against profile boost_keywords
+    return score
+
+
+# Known authors in Leo's research areas — auto-boost
+KNOWN_AUTHORS: dict[str, float] = {
+    'neel nanda': 5, 'chris olah': 4, 'anthropic': 2,
+    'sam bowman': 3, 'jacob steinhardt': 3, 'dan hendrycks': 3,
+    'paul christiano': 3, 'jan leike': 3, 'buck shlegeris': 2,
+    'collin burns': 3, 'arthur conmy': 4, 'tom lieberum': 3,
+    'lawrence chan': 3, 'noa nabeshima': 3, 'lee sharkey': 3,
+    'senthooran rajamanoharan': 3, 'adam scherlis': 2,
+    'trenton bricken': 3, 'joshua batson': 3,
+    # Speech/audio researchers
+    'hung-yi lee': 5, 'abdelrahman mohamed': 3, 'alexei baevski': 3,
+    'wei-ning hsu': 3, 'yossi adi': 3,
+}
+
+
+def score_article(article: Article, profile: dict) -> float:
+    """Score an article based on interest profile. Higher = more relevant.
+
+    v2: phrase-aware keywords, title boost, author tracking, diminishing returns.
+    """
+    title_lower = article.title.lower()
+    snippet_lower = (article.snippet or '').lower()
+    url_lower = article.url.lower()
+
+    # Title gets 2x weight vs snippet
+    title_text = f"{title_lower} {title_lower}"  # counted twice
+    full_text = f"{title_text} {url_lower} {snippet_lower}"
+
+    score = 0.0
+
+    # --- Keyword scoring (phrase-aware, diminishing returns) ---
+    score += _keyword_score(full_text, profile)
+
+    # --- Tag-based scoring ---
     boost_kw = profile.get('boost_keywords', {})
     if boost_kw and article.tags:
         boost_kw_lower = {k.lower() for k in boost_kw}
         matched = sum(1 for tag in article.tags if tag.lower() in boost_kw_lower)
         score += matched  # +1 per matching tag
 
-    # Tag-based scoring: match article tags against profile interest_topics
     interest_topics = {t.lower() for t in profile.get('interest_topics', [])}
     if interest_topics and article.tags:
         matched = sum(1 for tag in article.tags if tag.lower() in interest_topics)
         score += matched * 2
 
-    # Score-based bonus (HN points, etc.)
+    # --- Author boost ---
+    author_lower = (article.author or '').lower()
+    for name, boost in KNOWN_AUTHORS.items():
+        if name in author_lower:
+            score += boost
+            break
+
+    # --- Engagement signals (HN points, comments) ---
     pts = article.score
     if pts >= 500:
         score += 3
@@ -317,13 +382,12 @@ def score_article(article: Article, profile: dict) -> float:
     elif pts >= 100:
         score += 1
 
-    # Comment engagement bonus
     if article.comments >= 200:
         score += 1.5
     elif article.comments >= 100:
         score += 1
 
-    # Domain hints
+    # --- Domain hints ---
     domain_boosts = {
         'arxiv.org': 2, 'openreview.net': 2,
         'anthropic.com': 2, 'deepmind.com': 2,
@@ -331,21 +395,22 @@ def score_article(article: Article, profile: dict) -> float:
         'transformer-circuits.pub': 3,
         'github.com': 0.5,
     }
-    url_lower = article.url.lower()
     for domain, boost in domain_boosts.items():
         if domain in url_lower:
             score += boost
             break
 
-    # Recency bonus
+    # --- Recency bonus ---
     age_hours = _parse_posted_age_hours(article.posted)
     if age_hours is not None:
-        if age_hours <= 24:
+        if age_hours <= 12:
+            score += 3
+        elif age_hours <= 24:
             score += 2
         elif age_hours <= 48:
             score += 1
 
-    # Source reputation bonus
+    # --- Source reputation ---
     source_reputation = {
         'arxiv': 1,
         'af': 1.5,
@@ -353,11 +418,19 @@ def score_article(article: Article, profile: dict) -> float:
     }
     score += source_reputation.get(article.source, 0)
 
+    # --- Feedback learning adjustment ---
+    global _FEEDBACK_ADJ
+    if _FEEDBACK_ADJ is None:
+        _FEEDBACK_ADJ = load_adjustments()
+    score += apply_feedback_score(article.title, article.source, _FEEDBACK_ADJ)
+
     return round(score, 1)
 
 
 def classify_action(score: float) -> str:
-    if score >= 8:
+    if score >= 12:
+        return "必讀"
+    elif score >= 8:
         return "深讀"
     elif score >= 5:
         return "略讀"

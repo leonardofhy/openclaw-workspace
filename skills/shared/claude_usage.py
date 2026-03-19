@@ -130,19 +130,13 @@ def check_usage(timeout=25):
         if child.isalive():
             child.terminate(force=True)
 
-def format_bar(pct, width=8):
-    """Create a compact progress bar."""
+def format_bar(pct, width=20):
+    """Create a Discord-friendly progress bar."""
     if pct is None:
         return '❓ (could not read)'
     filled = int(width * pct / 100)
     bar = '█' * filled + '░' * (width - filled)
-    if pct >= 80:
-        emoji = '🔴'
-    elif pct >= 50:
-        emoji = '🟡'
-    else:
-        emoji = '🟢'
-    return f'{emoji} {bar} {pct:>3d}%'
+    return f'{pct}% {bar}'
 
 def clean_reset_time(raw):
     """Extract a human-readable reset time from raw parsed text."""
@@ -193,12 +187,16 @@ def main():
         s_tag = f'  (reset {s_reset})' if s_reset else ''
         w_tag = f'  (reset {w_reset})' if w_reset else ''
         
-        print('📊 Claude Max 額度')
-        print(f'  Session  {format_bar(usage["session"])}{s_tag}')
-        print(f'  Weekly   {format_bar(usage["weekly_all"])}{w_tag}')
-        print(f'  Sonnet   {format_bar(usage["weekly_sonnet"])}{w_tag}')
+        print('📊 Claude 額度狀態\n')
+        print(f'Session:       {format_bar(usage["session"])}')
+        if s_reset:
+            print(f'               Reset: {s_reset}')
+        print(f'Week (all):    {format_bar(usage["weekly_all"])}')
+        print(f'Week (sonnet): {format_bar(usage["weekly_sonnet"])}')
+        if w_reset:
+            print(f'               Reset: {w_reset}')
         if usage.get('extra_usage'):
-            print(f'  Extra: {usage["extra_usage"]}')
+            print(f'Extra usage:   {usage["extra_usage"]}')
 
 if __name__ == '__main__':
     main()

@@ -42,28 +42,28 @@
 - **owner**: MacBook
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-03-13
+- **last_touched**: 2026-03-18
 - **描述**: 用 battleship 跑 chunk sensitivity，定位可能的 listen-layer 訊號
-- **progress**: smoke run 完成；full run 結果待確認（Leo 近期忙 NTUAIS + lab admin，研究暫停）
-- **next_action**: 等 Leo 回到研究模式後檢查 n4/n5 結果
+- **progress**: smoke run 完成；Q001/Q002 real experiments on Whisper-base done (voicing geometry + causal ablation); 20 mock experiments validate gc framework; Paper A outline drafted
+- **next_action**: Scale up Q001/Q002 to Whisper-small/medium on battleship GPU
 
 ### M-02 | 論文產出（Results v0）
 - **owner**: MacBook
 - **priority**: P0
 - **created**: 2026-02-27
-- **last_touched**: 2026-03-13
+- **last_touched**: 2026-03-18
 - **描述**: AudioMatters 論文 Results section 初稿（承接已完成的 Method v1 + Setup v1）
-- **progress**: Method + Setup v1 已完成；Results v0 kickoff 清單待執行（Leo 近期忙雜務）
-- **next_action**: 等 Leo 有空時 kickoff Results 寫作（Table X 數字 + hardest subset）
+- **progress**: Method + Setup v1 已完成；Paper A outline skeleton drafted (docs/paper-a-outline.md); 22 experiment results catalogued (unified dashboard); AudioMatters 已投稿 Interspeech 2026
+- **next_action**: Paper A prose drafting — fill in §3 Method + §4 Results with real data
 
 ### M-03 | 研究雙軌推進
 - **owner**: MacBook
 - **priority**: P1
 - **created**: 2026-02-27
-- **last_touched**: 2026-03-13
+- **last_touched**: 2026-03-18
 - **描述**: 不被單一討論卡住，維持主線 + 備線
-- **progress**: autodidact 30min cadence 運行中；meta-awareness board 已建立
-- **next_action**: 等研究模式回歸後，推進 listen-layer 三步循環
+- **progress**: autodidact 已完成 22 experiments（READY queue 全清）; ideation freeze 啟動（READY < 10 才解凍）; Q117/Q123 診斷中
+- **next_action**: Q117/Q123 修復 → 進入 real experiment batch（需 GPU）
 
 ### L-08 | 財務管理（主線）
 - **owner**: Lab

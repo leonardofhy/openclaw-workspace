@@ -1,7 +1,7 @@
 # MEMORY-FULL.md — 完整長期記憶（按需載入）
 
 > 從 MEMORY.md 拆分而來。Boot 時不載入，需要深入了解 Leo 背景時才讀。
-> 最後更新：2026-02-21（基於 292 天日記分析，2025-01-31 至 2026-02-20）
+> 最後更新：2026-03-18（基於 292 天日記分析 + 3月 session logs）
 
 ---
 
@@ -153,4 +153,43 @@
 ## Meta
 
 這份記憶是基於 292 天的日記語料（2025-01-31 至 2026-02-20）提煉而成。
-**下次更新建議時機**：AudioMatters 投稿後、畢業後、重大人生轉折點。
+**下次更新建議時機**：Paper A 完稿後、GPU 實驗完成後、畢業後、重大人生轉折點。
+
+---
+
+## 2026-03 Research Sprint
+
+### 3/16 — NTUAIS 第一次社課
+- 德田 601，約 19:00–21:00，活動順利
+- Leo 隨性增加討論環節，覺得團隊雖稚嫩但盡力
+- 同日是 Leo 媽媽生日，23:30 打電話祝賀
+- Dickson（學弟，大四已婚）喜餅事件
+
+### 3/17 — CC Parallel Agents
+- 跑了 code-reviewer、security-auditor、refactoring-specialist、test-automator 4 agent 並行
+- test-automator 產出 test_learn.py（1033 lines）
+
+### 3/18 — 史詩級工作日
+**Feed Recommend Pipeline（完成）**
+- HN snippet enrichment + source diversity（min=2, max=7）+ Google Sheet sync
+- Cron `e16f9784`：每天 20:35 自動 sync
+
+**Codebase 大掃除**
+- -1226 行（hn-recommend 退役）、3 殭屍 skills 清除
+- leo-diary 提取 diary_utils.py + 18 tests
+- schedule_engine.py 拆分 3 模組 + 63 tests
+- 總計 ~201 new tests（668→869+）
+
+**Autodidact 研究實驗（22 experiments）**
+- Q001 Whisper voicing geometry — Layer 5 peak, cos_sim=0.155
+- Q002 Layer-wise causal ablation — 所有層 WER=1.0（全 critical）
+- E1-E5 mock batch + Q091-Q128 batch clear
+- 強結果：Q096 FAD phonemes (r=-0.96), Q105 RAVEL MDAS (r=0.877), Q107 RAVEL isolate (r=0.873)
+- READY queue: 26→0（fully cleared）
+- Ideation freeze 啟動（READY < 10 才解除）
+
+**關鍵決策**
+- Leo approved CC parallel spawning for independent tasks
+- 智凱哥 collaboration already handled — 不需再提醒
+- Paper A outline + eval dashboard + test fix 三路並行啟動
+- Battleship: `ssh battleship` 直連，Slurm cluster，GPU 用 srun

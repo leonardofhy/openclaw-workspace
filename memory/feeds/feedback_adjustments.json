@@ -1,0 +1,14 @@
+{
+  "keyword_scores": {
+    "gpt": 1.0,
+    "instant": 1.0,
+    "gpt instant": 1.5
+  },
+  "source_bias": {
+    "hn": 1.2
+  },
+  "total_positive": 4,
+  "total_negative": 0,
+  "feedback_count": 4,
+  "last_analyzed": "2026-03-19T02:47:17.336429+08:00"
+}

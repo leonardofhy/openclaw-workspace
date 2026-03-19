@@ -2,26 +2,25 @@
 
 > WAL target. Write here BEFORE responding when critical details appear.
 
-**Last Updated:** 2026-03-17 21:19
+**Last Updated:** 2026-03-18 21:54
 
 ## Current Task
-claude_usage 格式改版完成（style A 卡片風）
+Autodidact SKILL refactor (Opus CC) — Leo approved plan A+B+C+E
 
 ## Recent Context
-- [2026-03-18 15:37] Leo 要開發 Todoist ↔ task-board.md 雙向同步
-- [2026-03-18 10:59] Feed recommend: Leo 要求每個 source 保底 2-3 篇（多樣性），不只看研究方向，也想看各平台優質內容
-- [2026-03-18 09:53] Google Sheet for feed recommendations: ID `1COz971ZsWjPURSJyNx9CnFTBTDxN6PQshyrAq8rXSuw`, shared with service account as Editor
-- [2026-03-17 21:19] claude_usage.py 改成 A 風格卡片輸出，已 commit (8a574dc)
-- [2026-03-17 18:43] 奇恩哥訓話：Leo 負責軟體，昨晚戰艦出問題時 Leo 在辦活動無法處理
-- [2026-03-17 18:43] Leo 坦承：獎學金和研究都還沒開始，需盡快啟動和智凱哥合作
-- [2026-03-17 18:37] Leo 心情鬱悶：睡眠不足+能量透支+任務堆積+旅行後落差+研究停滯
-- [2026-03-16] NTUAIS 第一次活動完成，Leo 能量耗盡，心情 5/精力 4
-- [2026-03-15] TM 教學影片完成；Pathfinder grant email sent
+- [01:14] CC#40 Opus (ember-slug) building DAG Orchestrator — skills/orchestrator/ — still running
+- [00:30] All wave 7 CCs done, tests 1441 pass, pushed b7f3391
+- [01:04] Architecture planning: DAG waves + CLAUDE.md + MCP Todoist + git worktree
+- [2026-03-18 21:54] Leo approved autodidact refactor: state cleanup + SKILL merge + phase auto + kg migration
+- [2026-03-18 21:13] D-001 Pathfinder: Leo 已處理。D-002/D-013 尚未處理
+- [2026-03-18 21:13] 智凱哥合作：Leo 已處理，不再提醒
+- [2026-03-18 21:09] CC#1-3 全部完成（Paper A outline, eval dashboard, test fix）
+- [2026-03-18 21:00] READY queue 全清（22 tasks, 90.9% pass）
+- [2026-03-18 17:09] Q001+Q002 real experiments 完成
 
 ## Pending Decisions
-- 僑生獎助學金衝突：待寫信僑委會確認「獎學金性質」
-- Weekly OpenClaw auto-update cron: 交由 Lab Leo 執行
+- D-002 NTU 獎學金 + D-013 工作證：Leo 尚未處理
+- 僑生獎助學金衝突：待寫信僑委會確認
 
 ## Session Notes
-- Stale tasks: M-06, M-02, M-03（4 天未更新，Leo 已知）
-- Overdue deadlines: D-001 Pathfinder(7d), D-002 NTU scholarship(6d)（已通知）
+- Stale tasks: M-02/03/06（待更新）
