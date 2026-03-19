@@ -1,16 +1,13 @@
 {
   "version": 1,
   "phase": "converge",
-  "phase_since": "2026-03-18",
+  "phase_since": "2026-03-09",
   "phase_exit_criteria": {
     "converge_to_execute": [
       "eval_harness_exists_T3",
       "experiment_spec_ready_T3",
       "leo_approved_gpu_or_cpu_experiment"
-    ],
-    "eval_harness_exists_T3": true,
-    "experiment_spec_ready_T3": true,
-    "leo_approved_gpu_or_cpu_experiment": true
+    ]
   },
   "active_tracks": [
     {
@@ -29,32 +26,29 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
-    "build_remaining_today": 10,
-    "reflect_remaining_today": 2,
-    "ideate_remaining_today": 1,
-    "budget_reset_date": "2026-03-18"
+    "learn_remaining_today": 0,
+    "build_remaining_today": 0,
+    "reflect_remaining_today": 0,
+    "ideate_remaining_today": 0,
+    "budget_reset_date": "2026-03-19"
   },
   "stats": {
-    "total_cycles": 221,
-    "total_skips": 43,
-    "papers_read_deep": 56,
+    "total_cycles": 234,
+    "total_skips": 44,
+    "papers_read_deep": 59,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 491,
     "paper_pitches": 2,
-    "code_artifacts": 66,
+    "code_artifacts": 76,
     "system_improvements": 7,
-    "days_active": 10,
-    "experiments_done": 22,
-    "real_experiments_completed": 2
+    "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260318-1315",
-    "action": "learn",
-    "summary": "Deep read RAVEL (ACL 2024): argmin(Isolate_audio(t)) ≈ t* hypothesis; MDAS Isolate/Cause per SAE feature predicts AND/OR gate (links Q107+Q105); next: build ravel_isolate_proxy.py mock tomorrow"
+    "id": "c-20260319-2245",
+    "action": "skip",
+    "summary": "Principled skip: end-of-day reflect already completed at 22:15 (c-20260319-2215). Reflect budget corrected to 0. All budgets exhausted."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
-  "self_improve_tickets": [],
-  "phase_exit_note": "Q001+Q002 completed on MacBook M3 CPU (2026-03-18). Whisper-base voicing geometry + causal ablation. Phase transition: explore-fallback → converge (2026-03-18)."
+  "self_improve_tickets": []
 }
