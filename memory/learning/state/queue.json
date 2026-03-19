@@ -168,12 +168,13 @@
       "type": "build",
       "track": "T3",
       "title": "RAVEL Isolate curve as gc(k) proxy: argmin(Isolate) approx gc peak layer",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "isolate_gc_proxy.py: Isolate(k) per layer on mock data; verify argmin approx argmax(gc); compute savings benchmark",
       "created": "2026-03-14",
-      "due": null
+      "due": null,
+      "completed": "2026-03-19"
     },
     {
       "id": "Q109",

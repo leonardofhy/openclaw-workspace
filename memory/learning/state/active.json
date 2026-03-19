@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 1,
+    "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-19"
   },
   "stats": {
-    "total_cycles": 229,
+    "total_cycles": 230,
     "total_skips": 44,
     "papers_read_deep": 58,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 491,
     "paper_pitches": 2,
-    "code_artifacts": 75,
+    "code_artifacts": 76,
     "system_improvements": 7,
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260319-1215",
+    "id": "c-20260319-1245",
     "action": "build",
-    "summary": "Q105 done: mock_mdas_gate.py. AND MDAS=0.111 vs OR MDAS=0.147 (1.31x, p<0.0001). 91.7% gate classification accuracy. Confirms AND-gate features more disentangled (lower MDAS bleed) than OR-gate features."
+    "summary": "Q107 done: isolate_gc_proxy.py. argmin(Isolate) \u2248 argmax(gc) with hit@\u00b11=65-79%, MAE<1.2 layers at low noise. ~84% patching savings if used as pre-screen. Moderate proxy strength."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
