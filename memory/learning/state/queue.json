@@ -238,12 +238,13 @@
       "type": "build",
       "track": "T3",
       "title": "Emotion neurons x AND/OR gates: emotion-coding features AND-gate or OR-gate?",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "emotion_gate_mock.py: MicroGPT mock; emotion-labelled features AND vs OR; AND-fraction > 0.7 hypothesis",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "completed": "2026-03-19"
     },
     {
       "id": "Q119",
