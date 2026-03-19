@@ -136,12 +136,17 @@ def spawn(name: str, task: str, model: str = "sonnet",
         # Wrap with system timeout to enforce time limit
         cmd = ["timeout", str(timeout)] + cmd
 
-    proc = subprocess.Popen(
-        cmd,
-        cwd=work_path,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
+    log_dir = REGISTRY_DIR / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = log_dir / f"{spawn_id}.log"
+
+    with open(log_path, "w") as log_file:
+        proc = subprocess.Popen(
+            cmd,
+            cwd=work_path,
+            stdout=log_file,
+            stderr=log_file,
+        )
 
     now = datetime.now(timezone.utc).isoformat()
     entry = {
@@ -156,6 +161,7 @@ def spawn(name: str, task: str, model: str = "sonnet",
         "exit_code": None,
         "pid": proc.pid,
         "workdir": work_path,
+        "log": str(log_path),
         "artifacts": [],
         "error": None,
     }
