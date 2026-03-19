@@ -89,12 +89,13 @@
       "type": "build",
       "track": "T3",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "dod": "Script combines Q080 AND-gate Schelling + Q082 phoneme Schelling outputs; computes AND vs OR fraction among top-k stable features",
       "ideation_id": "I13",
       "novelty": 4,
       "feasibility": 5,
-      "created": "2026-03-12T10:34:16.860607"
+      "created": "2026-03-12T10:34:16.860607",
+      "completed": "2026-03-19"
     },
     {
       "id": "Q93",

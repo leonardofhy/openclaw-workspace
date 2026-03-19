@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 7,
+    "build_remaining_today": 6,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-19"
   },
   "stats": {
-    "total_cycles": 225,
+    "total_cycles": 226,
     "total_skips": 44,
     "papers_read_deep": 58,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 491,
     "paper_pitches": 2,
-    "code_artifacts": 69,
+    "code_artifacts": 70,
     "system_improvements": 7,
     "days_active": 10
   },
   "last_cycle": {
-    "id": "c-20260319-0915",
+    "id": "c-20260319-0945",
     "action": "build",
-    "summary": "Q91 done: persona_gate_analysis.py. H1 CONFIRMED: assistant AND%=20.0% vs neutral 46.7%. H4: assistant OR%=25% vs 0%. Mock mode passes."
+    "summary": "Q92 done: schelling_and_or_gate_unified.py. CONFIRMED: top-25% stable features 2.0x AND-enriched; joint(AND\u2229IIA) lift=2.7x. r=0.46."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
