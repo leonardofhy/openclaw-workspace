@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1545",
+    "id": "c-20260320-1615",
     "action": "skip",
-    "summary": "Principled skip: build_budget=0, ideate=0. 22 READY tasks are build/design. Q147+Q148 blocked (AF 429). Next: Q123 design when budgets reset."
+    "summary": "Principled skip: build_budget=0, ideate=0. 22 READY build/design tasks await budget reset. Learn tasks Q147+Q148 blocked (AF 429)."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
