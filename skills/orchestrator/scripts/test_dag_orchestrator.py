@@ -317,3 +317,140 @@ def test_get_stats(sample_manifest):
     assert stats["failed"] == 1
     assert stats["pending"] == 2
     assert stats["total"] == 4
+
+
+# ── Bug-fix regression tests ──────────────────────────────
+
+def test_merge_worktree_merges_when_agent_already_committed(tmp_path, monkeypatch):
+    """Bug 1: merge_worktree must merge even when commit_worktree returns False
+    (i.e. the CC agent already committed its own work on the branch)."""
+    import worktree_manager as wm
+
+    wt_path = tmp_path / ".worktrees" / "task-x"
+    wt_path.mkdir(parents=True)
+
+    monkeypatch.setattr(wm, "WORKTREES_DIR", tmp_path / ".worktrees")
+
+    git_calls = []
+
+    def mock_git(*args, cwd=None):
+        git_calls.append(args)
+        if args[0] == "status" and "--porcelain" in args:
+            return ""  # no dirty files — agent already committed
+        if args[0] == "rev-list" and "--count" in args:
+            return "2"  # 2 commits ahead — agent's own commits
+        if args[0] == "merge":
+            return "Merge made by 'recursive'."
+        return ""
+
+    monkeypatch.setattr(wm, "_git", mock_git)
+
+    result = wm.merge_worktree("task-x")
+    assert "Merge made" in result
+    # merge must have been called
+    assert any(c[0] == "merge" for c in git_calls)
+
+
+def test_merge_worktree_skips_when_no_commits_ahead(tmp_path, monkeypatch):
+    """Bug 1: merge_worktree skips merge when branch has no new commits."""
+    import worktree_manager as wm
+
+    wt_path = tmp_path / ".worktrees" / "task-y"
+    wt_path.mkdir(parents=True)
+
+    monkeypatch.setattr(wm, "WORKTREES_DIR", tmp_path / ".worktrees")
+
+    def mock_git(*args, cwd=None):
+        if args[0] == "status" and "--porcelain" in args:
+            return ""
+        if args[0] == "rev-list" and "--count" in args:
+            return "0"  # nothing ahead
+        return ""
+
+    monkeypatch.setattr(wm, "_git", mock_git)
+
+    result = wm.merge_worktree("task-y")
+    assert "No changes" in result
+
+
+def test_update_status_rejects_merge_failed():
+    """Bug 2: 'merge-failed' is not a valid status and must raise ValueError."""
+    m = mf.new_manifest("bug2")
+    mf.add_task(m, "t1", prompt="hello")
+    with pytest.raises(ValueError, match="Invalid status"):
+        mf.update_status(m, "t1", "merge-failed")
+
+
+def test_merge_failure_stored_as_failed_status(tmp_path, monkeypatch):
+    """Bug 2: when merge fails, status must be 'failed' (not 'merge-failed')
+    with the error message prefixed with 'merge-failed:'."""
+    import dag_orchestrator as orch
+    import worktree_manager as wm
+
+    # Patch merge_worktree to raise
+    monkeypatch.setattr(wm, "merge_worktree", lambda tid: (_ for _ in ()).throw(
+        RuntimeError("cannot merge: conflict")
+    ))
+
+    m = mf.new_manifest("bug2-orch")
+    mf.add_task(m, "task-a", prompt="do something")
+    mf.update_status(m, "task-a", "completed")
+
+    manifest_path = tmp_path / "manifest.json"
+    mf.save(manifest_path, m)
+
+    # Reload and simulate the merge block in _run_wave_parallel
+    m2 = mf.load(manifest_path)
+    tid = "task-a"
+    try:
+        wm.merge_worktree(tid)
+    except RuntimeError as e:
+        mf.update_status(m2, tid, "failed", error=f"merge-failed: {e}")
+        mf.save(manifest_path, m2)
+
+    final = mf.load(manifest_path)
+    assert final["tasks"]["task-a"]["status"] == "failed"
+    assert "merge-failed" in final["tasks"]["task-a"]["error"]
+
+
+def test_sequential_task_uses_communicate(monkeypatch):
+    """Bug 3: _run_task_sequential must use communicate() not wait()+stderr.read()
+    to avoid deadlock when stderr pipe fills up."""
+    import dag_orchestrator as orch
+
+    communicate_called = []
+
+    class FakeProc:
+        pid = 12345
+        returncode = 0
+
+        def communicate(self, timeout=None):
+            communicate_called.append(timeout)
+            return (b"", b"")
+
+        def poll(self):
+            return 0
+
+    monkeypatch.setattr(orch, "_spawn_cc", lambda tid, task, workdir: FakeProc())
+    # Skip git status/commit in the success branch
+    monkeypatch.setattr(
+        orch.subprocess, "run",
+        lambda *a, **kw: type("R", (), {"stdout": "", "returncode": 0})()
+    )
+
+    m = mf.new_manifest("bug3")
+    mf.add_task(m, "t1", prompt="hello", timeout=120)
+
+    manifest_path = orch.REPO_ROOT / "manifest_bug3_test.json"
+    try:
+        mf.save(manifest_path, m)
+        orch._run_task_sequential("t1", m["tasks"]["t1"], m, manifest_path)
+    finally:
+        if manifest_path.exists():
+            manifest_path.unlink()
+        lp = manifest_path.with_suffix(".lock")
+        if lp.exists():
+            lp.unlink()
+
+    assert communicate_called, "communicate() was never called — deadlock risk!"
+    assert communicate_called[0] == 120  # correct timeout forwarded
