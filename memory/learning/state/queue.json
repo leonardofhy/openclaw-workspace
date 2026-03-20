@@ -284,9 +284,9 @@
       "type": "read",
       "track": "T3",
       "title": "News: Power Steering: Behavior Steering via Layer-to-Layer Jacobia",
-      "status": "ready",
+      "status": "blocked",
       "priority": 3,
-      "blocked_by": null,
+      "blocked_by": "AlignmentForum blocked Vercel 429",
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/power-steering-jacobian-singular-vectors",
       "created": "2026-03-20",
       "due": null
@@ -296,9 +296,9 @@
       "type": "read",
       "track": "T3",
       "title": "News: New RFP on Interpretability from Schmidt Sciences",
-      "status": "ready",
+      "status": "blocked",
       "priority": 3,
-      "blocked_by": null,
+      "blocked_by": "AlignmentForum blocked Vercel 429",
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/new-rfp-interpretability-schmidt-sciences",
       "created": "2026-03-20",
       "due": null

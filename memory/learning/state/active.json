@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1415",
-    "action": "learn",
-    "summary": "T3 theory synthesis: AND/OR gate unified theory \u2014 PPL\u00d7AND-frac diagnostic matrix, t* temporal curve types (4), RAVEL/ENV/RVQ integrations, safety extension. AlignmentForum blocked, deferred Q147/Q148. Tomorrow: Q128\u2192Q140\u2192Q141\u2192Q132."
+    "id": "c-20260320-1445",
+    "action": "skip",
+    "summary": "Principled skip: build_budget=0, ideate=0, learn tasks (Q147+Q148) blocked by AlignmentForum Vercel 429. Both marked blocked in queue. Next: Q123 design doc when build budget resets."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
