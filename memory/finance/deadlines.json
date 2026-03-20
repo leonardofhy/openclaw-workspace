@@ -4,79 +4,79 @@
     "name": "Pathfinder follow-up",
     "deadline": "2026-03-10",
     "category": "funding",
-    "action": "追蹤 Pathfinder grant 結果（內部鎖定 3/10，原始 deadline 3/13）",
+    "action": "\u8ffd\u8e64 Pathfinder grant \u7d50\u679c\uff08\u5167\u90e8\u9396\u5b9a 3/10\uff0c\u539f\u59cb deadline 3/13\uff09",
     "owner": "bot",
     "warn_days": 3,
     "notify": "discord",
     "internal_deadline": "2026-03-12",
-    "note": "Leo: 明天處理 (2026-03-11)"
+    "note": "Leo: \u660e\u5929\u8655\u7406 (2026-03-11)"
   },
   {
     "id": "D-002",
-    "name": "NTU 國際傑出研究生獎學金確認",
+    "name": "NTU \u570b\u969b\u5091\u51fa\u7814\u7a76\u751f\u734e\u5b78\u91d1\u78ba\u8a8d",
     "deadline": "2026-03-11",
     "category": "scholarship",
-    "action": "確認申請時程和資格（研究獎助生是否衝突）（內部鎖定 3/11，原始 3/15）",
+    "action": "\u78ba\u8a8d\u7533\u8acb\u6642\u7a0b\u548c\u8cc7\u683c\uff08\u7814\u7a76\u734e\u52a9\u751f\u662f\u5426\u885d\u7a81\uff09\uff08\u5167\u90e8\u9396\u5b9a 3/11\uff0c\u539f\u59cb 3/15\uff09",
     "owner": "leo",
     "warn_days": 5,
     "notify": "discord"
   },
   {
     "id": "D-003",
-    "name": "MATS General Application 開放",
+    "name": "MATS General Application \u958b\u653e",
     "deadline": "2026-04-25",
     "category": "funding",
-    "action": "填 MATS General Application 線上表單（~2h）",
+    "action": "\u586b MATS General Application \u7dda\u4e0a\u8868\u55ae\uff08~2h\uff09",
     "owner": "leo",
     "warn_days": 7,
     "notify": "discord"
   },
   {
     "id": "D-004",
-    "name": "陳鴻珠教育基金 deadline",
+    "name": "\u9673\u9d3b\u73e0\u6559\u80b2\u57fa\u91d1 deadline",
     "deadline": "2026-05-31",
     "category": "scholarship",
-    "action": "確認研究生是否適用，如適用則申請",
+    "action": "\u78ba\u8a8d\u7814\u7a76\u751f\u662f\u5426\u9069\u7528\uff0c\u5982\u9069\u7528\u5247\u7533\u8acb",
     "owner": "leo",
     "warn_days": 14,
     "notify": "discord"
   },
   {
     "id": "D-005",
-    "name": "中技社準備開始",
+    "name": "\u4e2d\u6280\u793e\u6e96\u5099\u958b\u59cb",
     "deadline": "2026-06-01",
     "category": "scholarship",
-    "action": "確認電信所內部截止日，開始寫研究計畫書",
+    "action": "\u78ba\u8a8d\u96fb\u4fe1\u6240\u5167\u90e8\u622a\u6b62\u65e5\uff0c\u958b\u59cb\u5beb\u7814\u7a76\u8a08\u756b\u66f8",
     "owner": "leo",
     "warn_days": 14,
     "notify": "discord"
   },
   {
     "id": "D-006",
-    "name": "中技社線上報名 OPEN",
+    "name": "\u4e2d\u6280\u793e\u7dda\u4e0a\u5831\u540d OPEN",
     "deadline": "2026-07-01",
     "category": "scholarship",
-    "action": "立刻提交研究獎學金 + 生活助學金",
+    "action": "\u7acb\u523b\u63d0\u4ea4\u7814\u7a76\u734e\u5b78\u91d1 + \u751f\u6d3b\u52a9\u5b78\u91d1",
     "owner": "leo",
     "warn_days": 3,
     "notify": "discord"
   },
   {
     "id": "D-007",
-    "name": "MATS Research Task 準備衝刺",
+    "name": "MATS Research Task \u6e96\u5099\u885d\u523a",
     "deadline": "2026-08-15",
     "category": "funding",
-    "action": "開始 Research Task 環境搭建 + 選題確認",
+    "action": "\u958b\u59cb Research Task \u74b0\u5883\u642d\u5efa + \u9078\u984c\u78ba\u8a8d",
     "owner": "leo",
     "warn_days": 7,
     "notify": "discord"
   },
   {
     "id": "D-008",
-    "name": "9 月獎學金批次準備",
+    "name": "9 \u6708\u734e\u5b78\u91d1\u6279\u6b21\u6e96\u5099",
     "deadline": "2026-08-25",
     "category": "scholarship",
-    "action": "準備潘文淵 + 上海商銀 + 續讀獎勵金申請材料",
+    "action": "\u6e96\u5099\u6f58\u6587\u6df5 + \u4e0a\u6d77\u5546\u9280 + \u7e8c\u8b80\u734e\u52f5\u91d1\u7533\u8acb\u6750\u6599",
     "owner": "leo",
     "warn_days": 7,
     "notify": "discord"
@@ -86,27 +86,27 @@
     "name": "MATS Neel Nanda Research Task DEADLINE",
     "deadline": "2026-08-29",
     "category": "funding",
-    "action": "提交 12-20h MI 研究報告 + Executive Summary",
+    "action": "\u63d0\u4ea4 12-20h MI \u7814\u7a76\u5831\u544a + Executive Summary",
     "owner": "leo",
     "warn_days": 14,
     "notify": "discord"
   },
   {
     "id": "D-010",
-    "name": "中技社書面截止",
+    "name": "\u4e2d\u6280\u793e\u66f8\u9762\u622a\u6b62",
     "deadline": "2026-09-10",
     "category": "scholarship",
-    "action": "確認書面材料已寄出",
+    "action": "\u78ba\u8a8d\u66f8\u9762\u6750\u6599\u5df2\u5bc4\u51fa",
     "owner": "leo",
     "warn_days": 5,
     "notify": "discord"
   },
   {
     "id": "D-011",
-    "name": "僑委會捐贈獎助學金",
+    "name": "\u50d1\u59d4\u6703\u6350\u8d08\u734e\u52a9\u5b78\u91d1",
     "deadline": "2027-01-15",
     "category": "scholarship",
-    "action": "需 i 僑卡，申請僑委會獎助學金",
+    "action": "\u9700 i \u50d1\u5361\uff0c\u7533\u8acb\u50d1\u59d4\u6703\u734e\u52a9\u5b78\u91d1",
     "owner": "leo",
     "warn_days": 14,
     "notify": "discord"
@@ -116,7 +116,7 @@
     "name": "ARENA 8.0 application deadline",
     "deadline": "2026-03-09",
     "category": "funding",
-    "action": "提交 ARENA 8.0 申請表（官方截止 3/8 23:59 AoE，台北時間約 3/9 19:59）",
+    "action": "\u63d0\u4ea4 ARENA 8.0 \u7533\u8acb\u8868\uff08\u5b98\u65b9\u622a\u6b62 3/8 23:59 AoE\uff0c\u53f0\u5317\u6642\u9593\u7d04 3/9 19:59\uff09",
     "owner": "leo",
     "warn_days": 2,
     "notify": "discord",
@@ -125,10 +125,10 @@
   },
   {
     "id": "D-013",
-    "name": "申請工作證",
+    "name": "\u7533\u8acb\u5de5\u4f5c\u8b49",
     "deadline": "2026-03-31",
     "category": "admin",
-    "action": "到 ezwp.wda.gov.tw 申請，經 NTU 僑生輔導組，NT$100，7天處理",
+    "action": "\u5230 ezwp.wda.gov.tw \u7533\u8acb\uff0c\u7d93 NTU \u50d1\u751f\u8f14\u5c0e\u7d44\uff0cNT$100\uff0c7\u5929\u8655\u7406",
     "owner": "leo",
     "warn_days": 7,
     "notify": "discord"
@@ -162,7 +162,7 @@
     "owner": "leo",
     "warn_days": 14,
     "notify": "discord",
-    "note": "Exact deadline TBD — depends on Interspeech notification date"
+    "note": "Exact deadline TBD \u2014 depends on Interspeech notification date"
   },
   {
     "id": "D-017",
@@ -183,7 +183,7 @@
     "owner": "bot",
     "warn_days": 7,
     "notify": "discord",
-    "note": "Rolling — set next check date after reviewing"
+    "note": "Rolling \u2014 set next check date after reviewing"
   },
   {
     "id": "D-019",
@@ -194,6 +194,21 @@
     "owner": "leo",
     "warn_days": 14,
     "notify": "discord",
-    "note": "NTU-specific, for SE Asian students. Deadline may be different — verify."
+    "note": "NTU-specific, for SE Asian students. Deadline may be different \u2014 verify."
+  },
+  {
+    "id": "D-020",
+    "name": "Schmidt Sciences Trustworthy AI RFP (Tier 1/2 - up to $5M+)",
+    "deadline": "2026-05-17",
+    "alert_days_before": [
+      60,
+      30,
+      14,
+      7,
+      2
+    ],
+    "notes": "Application due May 17 2026 AoE. Aim 2 = fit for T5/T3 (mechanistic audio interpretability + safety). Tier 1 up to $1M solo feasible. April 15 webinar. trustworthyai@schmidtsciences.org. FAQ: https://docs.google.com/document/d/1nuqku7P9yQaxLPkeIhs10-21SEX77LwxexRwVmqSxkI/edit",
+    "url": "https://schmidtsciences.smapply.io/prog/science_of_trustworthy_ai_rfp_2026/",
+    "status": "active"
   }
 ]
