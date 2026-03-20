@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1715",
+    "id": "c-20260320-1815",
     "action": "skip",
-    "summary": "Principled skip: build_budget=0, ideate=0, no learn tasks in queue (22 READY build/design tasks await budget reset at midnight)."
+    "summary": "Principled skip: build_budget=0, ideate=0; Q147/Q148 read tasks still blocked (AlignmentForum 429 persists). Budget resets midnight."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
