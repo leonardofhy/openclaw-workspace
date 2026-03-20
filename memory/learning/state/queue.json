@@ -272,12 +272,13 @@
       "type": "design",
       "track": "T5",
       "title": "ENV taxonomy x GSAE topology: ENV-3=isolated cluster, ENV-1=hub node",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: ENV-type maps to GSAE cluster role; prune isolated (ENV-3) vs reduce hub edges (ENV-1)",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "completed": "2026-03-20"
     },
     {
       "id": "Q121",
