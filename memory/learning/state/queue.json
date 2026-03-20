@@ -257,12 +257,13 @@
       "type": "build",
       "track": "T3",
       "title": "GSAE edge density per layer → t* = argmin(density): graph sparsification = collapse",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "gsae_density_collapse.py: mock GSAE edge density per layer; verify argmin matches Isolate t*; plot",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "completed": "2026-03-20"
     },
     {
       "id": "Q120",
