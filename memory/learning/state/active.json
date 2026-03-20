@@ -26,29 +26,29 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 0,
+    "learn_remaining_today": 2,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 0,
+    "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-19"
+    "budget_reset_date": "2026-03-20"
   },
   "stats": {
-    "total_cycles": 234,
-    "total_skips": 44,
+    "total_cycles": 242,
+    "total_skips": 46,
     "papers_read_deep": 59,
     "papers_scanned": 50,
     "research_gaps": 25,
-    "paper_ideas": 491,
+    "paper_ideas": 511,
     "paper_pitches": 2,
-    "code_artifacts": 76,
+    "code_artifacts": 85,
     "system_improvements": 7,
-    "days_active": 10
+    "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260319-2245",
-    "action": "skip",
-    "summary": "Principled skip: end-of-day reflect already completed at 22:15 (c-20260319-2215). Reflect budget corrected to 0. All budgets exhausted."
+    "id": "c-20260320-1945",
+    "action": "learn",
+    "summary": "Q127 design spec: stressed phonemes \u2192 AND-gate (high AND-frac), unstressed \u2192 OR-gate. CMU ARPABET method + mock protocol ready."
   },
-  "last_gc": "2026-03-12T10:33:45.709404+08:00",
+  "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
 }
