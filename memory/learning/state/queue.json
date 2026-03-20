@@ -278,6 +278,30 @@
       "definition_of_done": "isolate_curve_shape.py: classify Isolate(k) curve per utterance; shape correlates with gc peak height; 3-class mock (decay/U/plateau)",
       "created": "2026-03-20",
       "due": null
+    },
+    {
+      "id": "Q147",
+      "type": "read",
+      "track": "T3",
+      "title": "News: Power Steering: Behavior Steering via Layer-to-Layer Jacobia",
+      "status": "ready",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/power-steering-jacobian-singular-vectors",
+      "created": "2026-03-20",
+      "due": null
+    },
+    {
+      "id": "Q148",
+      "type": "read",
+      "track": "T3",
+      "title": "News: New RFP on Interpretability from Schmidt Sciences",
+      "status": "ready",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/new-rfp-interpretability-schmidt-sciences",
+      "created": "2026-03-20",
+      "due": null
     }
   ],
   "archived_count": 77,

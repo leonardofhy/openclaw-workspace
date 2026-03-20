@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1345",
-    "action": "ideate",
-    "summary": "20 new ideas generated (Q127-Q146): AND/OR gate \u00d7 prosody, phoneme confusion, speaker identity, hallucination, RVQ-temporal, jailbreak dual-signal, WER predictor, curve shape. Queue refilled (2\u219222 READY). GC trimmed 26 done tasks; flagged 11 days missing digests."
+    "id": "c-20260320-1415",
+    "action": "learn",
+    "summary": "T3 theory synthesis: AND/OR gate unified theory \u2014 PPL\u00d7AND-frac diagnostic matrix, t* temporal curve types (4), RAVEL/ENV/RVQ integrations, safety extension. AlignmentForum blocked, deferred Q147/Q148. Tomorrow: Q128\u2192Q140\u2192Q141\u2192Q132."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
