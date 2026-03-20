@@ -28,7 +28,7 @@
   "budgets": {
     "learn_remaining_today": 0,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 2,
+    "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-20"
   },
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-2045",
-    "action": "learn",
-    "summary": "Q132 predictive coding frame: H_LM(y_t|context) \u221d gc_peak. High-PPL tokens force AND-gate. Mock protocol ready for perplexity_gc_mock.py build."
+    "id": "c-20260320-2215",
+    "action": "reflect",
+    "summary": "End-of-day digest written. 5 builds, 4 learns, 20 ideas. Key: triple equivalence + predictive coding frame. Schmidt Sciences RFP flagged."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
