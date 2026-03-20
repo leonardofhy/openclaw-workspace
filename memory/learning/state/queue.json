@@ -296,12 +296,13 @@
       "type": "read",
       "track": "T3",
       "title": "News: New RFP on Interpretability from Schmidt Sciences",
-      "status": "blocked",
+      "status": "done",
       "priority": 3,
       "blocked_by": "AlignmentForum blocked Vercel 429",
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/new-rfp-interpretability-schmidt-sciences",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-20"
     }
   ],
   "archived_count": 77,

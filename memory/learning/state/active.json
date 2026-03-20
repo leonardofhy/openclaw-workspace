@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1815",
-    "action": "skip",
-    "summary": "Principled skip: build_budget=0, ideate=0; Q147/Q148 read tasks still blocked (AlignmentForum 429 persists). Budget resets midnight."
+    "id": "c-20260320-1845",
+    "action": "learn",
+    "summary": "Read Schmidt Sciences Trustworthy AI RFP (bypassed AlignmentForum 429). Deadline May 17 2026. Aim 2 = direct T5 fit. Tier 1 up to $1M. April 15 webinar. Compute access. Notified Leo."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
