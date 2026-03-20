@@ -334,13 +334,14 @@
       "type": "build",
       "track": "T3",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "Schelling stability x T-SAE: IIA-stable features = transcoder input-invariant component?",
       "definition_of_done": "schelling_tsae_mock.py: mock transcoder input-dep/invariant split; correlate IIA stability with input-invariance; Pearson r > 0.7",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I08",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "completed": "2026-03-20"
     },
     {
       "id": "Q126",
