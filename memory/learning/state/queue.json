@@ -181,12 +181,13 @@
       "type": "build",
       "track": "T3",
       "title": "Phoneme-MDAS: SAE feature disentanglement across phoneme categories via RAVEL-style bleed",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "phoneme_mdas.py: MDAS-style bleed error per SAE feature x phoneme class; novel disentanglement metric",
       "created": "2026-03-14",
-      "due": null
+      "due": null,
+      "completed": "2026-03-20"
     },
     {
       "id": "Q111",
