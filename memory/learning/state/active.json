@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 1,
+    "learn_remaining_today": 0,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-2015",
+    "id": "c-20260320-2045",
     "action": "learn",
-    "summary": "Q123 design synthesis: FAD bias x RAVEL Cause/Isolate. High-FAD phonemes = high Cause + low Isolate (feature entanglement). 2x2 quadrant theory + mock protocol. Connections to Q127/Q128/Q134/Q139."
+    "summary": "Q132 predictive coding frame: H_LM(y_t|context) \u221d gc_peak. High-PPL tokens force AND-gate. Mock protocol ready for perplexity_gc_mock.py build."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
