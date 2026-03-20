@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 4,
+    "build_remaining_today": 3,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-20"
   },
   "stats": {
-    "total_cycles": 236,
+    "total_cycles": 237,
     "total_skips": 44,
     "papers_read_deep": 59,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 491,
     "paper_pitches": 2,
-    "code_artifacts": 82,
+    "code_artifacts": 83,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1115",
+    "id": "c-20260320-1145",
     "action": "build",
-    "summary": "Q125 PASS: schelling_tsae_mock.py \u2014 r(IIA_stability, input_invariance)=0.861. Schelling\u2248AND-gate\u2248T-SAE input-invariant (bias-driven). Unified view confirmed."
+    "summary": "Q128 PASS: env3_prune_restore_mock.py \u2014 85% recovery, 100% full restore. ENV-3 pruning restores t* after jailbreak."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

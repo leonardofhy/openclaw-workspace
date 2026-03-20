@@ -374,13 +374,14 @@
       "type": "build",
       "track": "T5",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "Jailbreak Isolate shift x ENV-3 pruning: pruning ENV-3 isolated features restores t* toward clean baseline",
       "definition_of_done": "env3_prune_restore_mock.py: simulate jailbreak t*=4, prune ENV-3, measure t* recovery; t*_restored > t*_jailbreak",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I17",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "completed": "2026-03-20"
     }
   ],
   "archived_count": 77,
