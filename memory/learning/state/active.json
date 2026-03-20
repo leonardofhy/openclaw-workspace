@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 8,
+    "build_remaining_today": 7,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-20"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 491,
     "paper_pitches": 2,
-    "code_artifacts": 78,
+    "code_artifacts": 79,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-0915",
+    "id": "c-20260320-0945",
     "action": "build",
-    "summary": "Q122 complete: jacobian_incrimination_mock.py passes \u2014 ratio_at=4.00x, contrast=1.55x over off-collapse. GCBench-10 \u2705."
+    "summary": "Q127 complete: jacobian_gate_direction_mock.py PASS \u2014 cosine_at_collapse=0.9926, contrast=3.57x. Power Steering IS AND-gate steering at t*."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
