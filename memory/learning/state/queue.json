@@ -294,12 +294,13 @@
       "type": "build",
       "track": "T3",
       "title": "Incrimination features x Jacobian SVD: top blame SAE features align with top Jacobian singular vector",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "jacobian_incrimination_mock.py: mock Jacobian SVD per layer; cosine-sim between top-incriminated features and top singular vector",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "completed": "2026-03-20"
     },
     {
       "id": "Q123",
