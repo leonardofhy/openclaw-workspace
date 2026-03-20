@@ -33,8 +33,8 @@
     "budget_reset_date": "2026-03-20"
   },
   "stats": {
-    "total_cycles": 241,
-    "total_skips": 45,
+    "total_cycles": 242,
+    "total_skips": 46,
     "papers_read_deep": 59,
     "papers_scanned": 50,
     "research_gaps": 25,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1615",
+    "id": "c-20260320-1645",
     "action": "skip",
-    "summary": "Principled skip: build_budget=0, ideate=0. 22 READY build/design tasks await budget reset. Learn tasks Q147+Q148 blocked (AF 429)."
+    "summary": "Principled skip: build_budget=0, ideate=0. 22 READY build/design tasks await budget reset. Learn budget=4 stranded (Q147+Q148 blocked, AF 429)."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
