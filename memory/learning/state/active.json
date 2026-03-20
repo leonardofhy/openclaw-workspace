@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 2,
+    "build_remaining_today": 1,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-20"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1215",
+    "id": "c-20260320-1245",
     "action": "build",
-    "summary": "Q109 PASS: phoneme_mdas.py \u2014 PMDS metric defined (1-bleed/on-target). AND disent=0.810, OR=0.768, overall=0.789. H4 confirmed: middle layers (3-5) more disentangled than early. Mock validates protocol."
+    "summary": "Q111 PASS: t_star_backdoor_detect_mock.py \u2014 two-stage backdoor detector. Clean t*=8.70, Poisoned t*=3.23. AUROC=1.0, separation=5.47 steps. GCBench metric #10 proposed (t*_norm). Non-overlapping clean/poisoned distributions \u2014 paper-ready."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []

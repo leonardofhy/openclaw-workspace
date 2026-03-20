@@ -194,12 +194,13 @@
       "type": "design",
       "track": "T3",
       "title": "t* backdoor detection: poisoned audio shows leftward t* collapse shift",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: synthetic poisoned utterances have t* < 3 vs clean t* > 6; detection protocol using collapse_onset_step diagnostic",
       "created": "2026-03-15",
-      "due": null
+      "due": null,
+      "completed": "2026-03-20"
     },
     {
       "id": "Q113",
