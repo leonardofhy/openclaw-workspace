@@ -320,13 +320,14 @@
       "type": "build",
       "track": "T3",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "Codec Probe RVQ x AND/OR gates: RVQ-1 semantic features AND-gates, RVQ-N acoustic = OR-gates?",
       "definition_of_done": "rvq_gate_mock.py: mock RVQ-1 vs RVQ-8 feature sets; AND-fraction per layer; verify AND-frac(RVQ-1) > AND-frac(RVQ-N)",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I03",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "completed": "2026-03-20"
     },
     {
       "id": "Q125",

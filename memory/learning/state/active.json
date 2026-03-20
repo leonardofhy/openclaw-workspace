@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 6,
+    "build_remaining_today": 5,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-20"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 491,
     "paper_pitches": 2,
-    "code_artifacts": 80,
+    "code_artifacts": 81,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1015",
+    "id": "c-20260320-1045",
     "action": "build",
-    "summary": "Q121 PASS: persona_emotion_gate_mock.py \u2014 emotion AND-gate fraction 75.8%\u219224.0% under persona; AUROC=1.00. Dual-signal persona detector confirmed."
+    "summary": "Q124 PASS: rvq_gate_mock.py \u2014 AND-frac(RVQ-1)=0.730 vs AND-frac(RVQ-8)=0.040, \u0394=0.690, r=-0.980 (p<0.001). Codec hierarchy maps to AND/OR gate classification."
   },
   "last_gc": "2026-03-12T10:33:45.709404+08:00",
   "self_improve_tickets": []
