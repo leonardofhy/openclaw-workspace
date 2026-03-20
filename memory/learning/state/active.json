@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1445",
+    "id": "c-20260320-1515",
     "action": "skip",
-    "summary": "Principled skip: build_budget=0, ideate=0, learn tasks (Q147+Q148) blocked by AlignmentForum Vercel 429. Both marked blocked in queue. Next: Q123 design doc when build budget resets."
+    "summary": "Principled skip: build_budget=0, ideate=0. All 22 READY tasks are design/build. Read tasks Q147+Q148 still blocked (AF 429). Next: Q123 design when budgets reset."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
