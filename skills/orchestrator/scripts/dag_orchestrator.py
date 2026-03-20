@@ -155,6 +155,137 @@ def cmd_plan(args: argparse.Namespace) -> None:
     print("Run with: python3 orchestrator.py run")
 
 
+def _run_task_sequential(tid: str, task: dict, m: dict, path: Path) -> None:
+    """Run a single task in the main workspace. Simple and reliable."""
+    workdir = REPO_ROOT
+
+    mf.update_status(m, tid, "running")
+    mf.save(path, m)
+
+    print(f"  [{tid}] Running in {workdir}...")
+    proc = _spawn_cc(tid, task, workdir)
+    task["session_id"] = str(proc.pid)
+    task["workdir"] = str(workdir)
+    mf.save(path, m)
+
+    # Wait for completion (blocking).
+    # Use communicate() instead of wait() + stderr.read() to avoid deadlock
+    # when the stderr pipe buffer fills up.
+    timeout = task.get("timeout", 300)
+    try:
+        _stdout, _stderr = proc.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        proc.communicate()  # drain pipes so the child process can exit
+        mf.update_status(m, tid, "failed", error=f"Timeout after {timeout}s")
+        mf.save(path, m)
+        print(f"  [{tid}] TIMEOUT ({timeout}s)")
+        return
+
+    if proc.returncode == 0:
+        # Auto-commit any changes this CC made
+        try:
+            status = subprocess.run(
+                ["git", "status", "--porcelain"],
+                cwd=REPO_ROOT, capture_output=True, text=True
+            ).stdout.strip()
+            if status:
+                subprocess.run(["git", "add", "-A"], cwd=REPO_ROOT)
+                subprocess.run(
+                    ["git", "commit", "-m", f"orchestrator: {tid}"],
+                    cwd=REPO_ROOT, capture_output=True
+                )
+        except Exception:
+            pass  # Non-fatal: CC may have already committed
+
+        mf.update_status(m, tid, "completed")
+        mf.save(path, m)
+        print(f"  [{tid}] COMPLETED ✓")
+    else:
+        error_msg = ""
+        if _stderr:
+            try:
+                error_msg = (_stderr.decode() if isinstance(_stderr, bytes) else _stderr)[:500]
+            except Exception:
+                pass
+        mf.update_status(m, tid, "failed", error=error_msg)
+        mf.save(path, m)
+        print(f"  [{tid}] FAILED (exit {proc.returncode})")
+
+
+def _run_wave_parallel(ready: list[str], m: dict, path: Path) -> None:
+    """Run a wave's tasks in parallel using sandbox isolation. Opt-in only."""
+    procs: dict[str, tuple[subprocess.Popen, Path]] = {}
+
+    for tid in ready:
+        task = m["tasks"][tid]
+        try:
+            wt_path = wm.create_worktree(tid)
+        except FileExistsError:
+            wm.cleanup_worktree(tid)
+            wt_path = wm.create_worktree(tid)
+
+        task["workdir"] = str(wt_path)
+        mf.update_status(m, tid, "running")
+        mf.save(path, m)
+
+        print(f"  Spawning {tid} in {wt_path}...")
+        proc = _spawn_cc(tid, task, wt_path)
+        task["session_id"] = str(proc.pid)
+        mf.save(path, m)
+        procs[tid] = (proc, wt_path)
+
+    # Poll for completion
+    print(f"\n  Waiting for {len(procs)} tasks...")
+    remaining = dict(procs)
+    while remaining:
+        for tid, (proc, wt_path) in list(remaining.items()):
+            task = m["tasks"][tid]
+            timeout = task.get("timeout", 300)
+            retcode = proc.poll()
+
+            if retcode is not None and retcode == 0:
+                mf.update_status(m, tid, "completed")
+                mf.save(path, m)
+                print(f"  [{tid}] COMPLETED")
+                del remaining[tid]
+            elif retcode is not None and retcode != 0:
+                mf.update_status(m, tid, "failed", error=f"exit {retcode}")
+                mf.save(path, m)
+                print(f"  [{tid}] FAILED (exit {retcode})")
+                del remaining[tid]
+            elif retcode is None:
+                started = task.get("started_at")
+                if started:
+                    from datetime import datetime, timezone
+                    elapsed = (datetime.now(timezone.utc) - datetime.fromisoformat(started)).total_seconds()
+                    if elapsed > timeout:
+                        proc.kill()
+                        mf.update_status(m, tid, "failed", error=f"Timeout after {timeout}s")
+                        mf.save(path, m)
+                        print(f"  [{tid}] TIMEOUT")
+                        del remaining[tid]
+
+        if remaining:
+            time.sleep(POLL_INTERVAL)
+
+    # Merge results
+    print(f"\n  Merging parallel results...")
+    for tid in ready:
+        task = m["tasks"][tid]
+        if task["status"] == "completed":
+            try:
+                result = wm.merge_worktree(tid)
+                print(f"  Merged {tid}: {result[:80]}")
+                wm.cleanup_worktree(tid)
+            except RuntimeError as e:
+                print(f"  ⚠️  Merge failed for {tid}: {e}")
+                mf.update_status(m, tid, "failed", error=f"merge-failed: {e}")
+                mf.save(path, m)
+        else:
+            wm.cleanup_worktree(tid)
+
+
 def cmd_run(args: argparse.Namespace) -> None:
     path = Path(args.manifest)
     m = mf.load(path)
@@ -170,7 +301,11 @@ def cmd_run(args: argparse.Namespace) -> None:
     m["waves"] = waves
     mf.save(path, m)
 
-    target_wave = args.wave  # 1-indexed, or None for all
+    parallel = getattr(args, "parallel", False)
+    target_wave = args.wave
+
+    mode = "PARALLEL (sandbox)" if parallel else "SEQUENTIAL (default)"
+    print(f"\nMode: {mode}")
 
     for wave_idx, wave in enumerate(waves, 1):
         if target_wave and wave_idx != target_wave:
@@ -180,121 +315,18 @@ def cmd_run(args: argparse.Namespace) -> None:
         print(f"Wave {wave_idx}/{len(waves)}: {wave}")
         print(f"{'='*60}")
 
-        # Filter to ready tasks only
         ready = [tid for tid in wave if m["tasks"][tid]["status"] == "pending"]
         if not ready:
-            print("  All tasks in this wave already processed. Skipping.")
+            print("  All tasks already processed. Skipping.")
             continue
 
-        # Create worktrees + spawn CCs
-        procs: dict[str, tuple[subprocess.Popen, Path]] = {}
-        for tid in ready:
-            task = m["tasks"][tid]
-            try:
-                wt_path = wm.create_worktree(tid)
-            except FileExistsError:
-                wm.cleanup_worktree(tid)
-                wt_path = wm.create_worktree(tid)
-
-            task["workdir"] = str(wt_path)
-            mf.update_status(m, tid, "running")
-            mf.save(path, m)
-
-            print(f"  Spawning {tid} in {wt_path}...")
-            proc = _spawn_cc(tid, task, wt_path)
-            task["session_id"] = str(proc.pid)
-            mf.save(path, m)
-            procs[tid] = (proc, wt_path)
-
-        # Poll for completion
-        print(f"\n  Waiting for {len(procs)} tasks...")
-        remaining = dict(procs)
-        while remaining:
-            for tid, (proc, wt_path) in list(remaining.items()):
+        if parallel and len(ready) > 1:
+            _run_wave_parallel(ready, m, path)
+        else:
+            # Sequential: run each task one at a time, in main workspace
+            for tid in ready:
                 task = m["tasks"][tid]
-                timeout = task.get("timeout", 300)
-
-                # Check process exit
-                retcode = proc.poll()
-                completion = _check_completion(wt_path)
-
-                if completion == "completed" or (retcode is not None and retcode == 0):
-                    # Collect artifacts (recursive, skip .git)
-                    artifacts = [
-                        str(f.relative_to(wt_path))
-                        for f in wt_path.rglob("*")
-                        if f.is_file() and ".git" not in f.parts
-                    ]
-                    mf.update_status(m, tid, "completed", artifacts=artifacts)
-                    mf.save(path, m)
-                    print(f"  [{tid}] COMPLETED")
-                    del remaining[tid]
-
-                elif completion == "failed" or (retcode is not None and retcode != 0):
-                    error_msg = ""
-                    if (wt_path / "FAILED.txt").exists():
-                        error_msg = (wt_path / "FAILED.txt").read_text()[:500]
-                    elif proc.stderr:
-                        error_msg = proc.stderr.read().decode()[:500] if proc.stderr.readable() else ""
-
-                    retry_count = task.get("retry_count", 0)
-                    max_retries = task.get("retries", 3)
-
-                    if retry_count < max_retries:
-                        task["retry_count"] = retry_count + 1
-                        mf.update_status(m, tid, "pending", error=error_msg)
-                        mf.save(path, m)
-                        print(f"  [{tid}] FAILED (retry {retry_count + 1}/{max_retries})")
-
-                        # Cleanup and re-spawn
-                        wm.cleanup_worktree(tid)
-                        wt_path = wm.create_worktree(tid)
-                        task["workdir"] = str(wt_path)
-                        mf.update_status(m, tid, "running")
-                        mf.save(path, m)
-
-                        new_proc = _spawn_cc(tid, task, wt_path)
-                        remaining[tid] = (new_proc, wt_path)
-                    else:
-                        mf.update_status(m, tid, "failed", error=error_msg)
-                        mf.save(path, m)
-                        print(f"  [{tid}] FAILED (no retries left)")
-                        del remaining[tid]
-
-                elif retcode is None:
-                    # Check timeout
-                    started = task.get("started_at")
-                    if started:
-                        from datetime import datetime, timezone
-                        elapsed = (datetime.now(timezone.utc) - datetime.fromisoformat(started)).total_seconds()
-                        if elapsed > timeout:
-                            proc.kill()
-                            mf.update_status(m, tid, "failed", error=f"Timeout after {timeout}s")
-                            mf.save(path, m)
-                            print(f"  [{tid}] TIMEOUT ({timeout}s)")
-                            del remaining[tid]
-
-            if remaining:
-                time.sleep(POLL_INTERVAL)
-
-        # Merge completed worktrees sequentially
-        print(f"\n  Merging wave {wave_idx} results...")
-        for tid in ready:
-            task = m["tasks"][tid]
-            if task["status"] == "completed":
-                try:
-                    result = wm.merge_worktree(tid)
-                    print(f"  Merged {tid}: {result[:80]}")
-                    # Only cleanup on successful merge
-                    wm.cleanup_worktree(tid)
-                except RuntimeError as e:
-                    print(f"  ⚠️  Merge failed for {tid}: {e}")
-                    print(f"      Branch orchestrator/{tid} preserved for manual recovery.")
-                    # Do NOT cleanup — preserve branch so work isn't lost
-                    mf.update_status(m, tid, "merge-failed", error=str(e))
-                    mf.save(path, m)
-            else:
-                wm.cleanup_worktree(tid)
+                _run_task_sequential(tid, task, m, path)
 
     # Final stats
     m = mf.load(path)
@@ -392,6 +424,7 @@ def main() -> None:
     # run
     p = sub.add_parser("run", help="Execute pipeline")
     p.add_argument("--wave", type=int, default=None, help="Run only this wave (1-indexed)")
+    p.add_argument("--parallel", action="store_true", help="Run wave tasks in parallel (sandbox isolation). Default: sequential (safer).")
 
     # status
     sub.add_parser("status", help="Show task status")
