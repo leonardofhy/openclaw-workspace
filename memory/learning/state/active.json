@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260320-1645",
+    "id": "c-20260320-1715",
     "action": "skip",
-    "summary": "Principled skip: build_budget=0, ideate=0. 22 READY build/design tasks await budget reset. Learn budget=4 stranded (Q147+Q148 blocked, AF 429)."
+    "summary": "Principled skip: build_budget=0, ideate=0, no learn tasks in queue (22 READY build/design tasks await budget reset at midnight)."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
