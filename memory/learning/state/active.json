@@ -29,25 +29,25 @@
     "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 1,
+    "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-21"
   },
   "stats": {
-    "total_cycles": 244,
+    "total_cycles": 245,
     "total_skips": 46,
     "papers_read_deep": 59,
     "papers_scanned": 50,
     "research_gaps": 25,
-    "paper_ideas": 511,
+    "paper_ideas": 531,
     "paper_pitches": 2,
     "code_artifacts": 91,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-1345",
-    "action": "learn",
-    "summary": "Q123 learn: synthesized AND/OR gate \u2194 RAVEL Cause/Isolate \u2194 FAD bias unified framework. KG entry written. AND-gate=monosemantic=high Isolate; OR-gate=polysemantic=low Isolate. r=\u22120.70 reframed as polysemanticity finding."
+    "id": "c-20260321-1415",
+    "action": "ideate",
+    "summary": "20 cross-pollinated ideas (seeds: AND/OR gate, ENV/GSAE, FAD-bias, t*, RVQ, Schmidt RFP). Top 10 scored ≥8. All held in idea-backlog.md (FREEZE active, 12 READY). Next: lift freeze when READY<10."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
