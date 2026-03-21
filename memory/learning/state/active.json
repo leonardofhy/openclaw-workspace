@@ -33,7 +33,7 @@
     "budget_reset_date": "2026-03-21"
   },
   "stats": {
-    "total_cycles": 246,
+    "total_cycles": 247,
     "total_skips": 46,
     "papers_read_deep": 59,
     "papers_scanned": 50,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-1615",
-    "action": "learn",
-    "summary": "Q130: confused phoneme pairs both OR-gate (high Cause, low Isolate) \u2014 LM overrides acoustics. Confusion rate \u221d (1-Isolate)\u00d7Cause. CPU mock spec ready; build when budget resets."
+    "id": "c-20260321-1715",
+    "action": "plan",
+    "summary": "Q123: FAD-biased phonemes = high Cause + low Isolate = feature entanglement. Entanglement metric = Cause\u00d7(1-Isolate). Mock confirms r(FAD,Isolate)=-0.92, r(FAD,Entanglement)=+0.83. Unifies OR-gate/FAD-bias framing for Paper A."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []

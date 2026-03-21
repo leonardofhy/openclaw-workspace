@@ -19,12 +19,13 @@
       "type": "design",
       "track": "T3",
       "title": "FAD bias x RAVEL Cause/Isolate: text-predictable phonemes = high Cause/low Isolate (feature entanglement test)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock showing FAD-biased phonemes have high Cause but low Isolate score",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q126",
