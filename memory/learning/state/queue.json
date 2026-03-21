@@ -32,13 +32,14 @@
       "type": "design",
       "track": "T5",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "ENV taxonomy x Codec Probe RVQ: ENV-1 hub features = RVQ-1 semantic, ENV-3 isolated = RVQ-N acoustic",
       "definition_of_done": "Design doc: ENV-type maps to RVQ layer hierarchy; hub=semantic, isolated=fine-acoustic; intervention protocol per ENV type",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I11",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q127",
