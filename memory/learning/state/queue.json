@@ -179,12 +179,13 @@
       "type": "build",
       "track": "T5",
       "title": "Emotion AND-gate suppression as jailbreak success metric: jailbreak shifts emotion features OR-gate",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "emotion_jailbreak_mock.py: jailbreak condition → emotion AND-frac < 0.4 (vs clean > 0.7); combines Q118 + Q128 ENV-3 prune",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q139",
