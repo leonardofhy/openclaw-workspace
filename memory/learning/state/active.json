@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 2,
+    "build_remaining_today": 1,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-21"
   },
   "stats": {
-    "total_cycles": 243,
+    "total_cycles": 244,
     "total_skips": 46,
     "papers_read_deep": 59,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 511,
     "paper_pitches": 2,
-    "code_artifacts": 90,
+    "code_artifacts": 91,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-1215",
+    "id": "c-20260321-1245",
     "action": "build",
-    "summary": "Q144 DONE: tsae_schelling_gate_mock.py \u2014 triple alignment: r(T-SAE\u00d7Schelling)=0.815, r(T-SAE\u00d7AND)=0.848, r(Schelling\u00d7AND)=0.829. All > 0.8. Next: Q135."
+    "summary": "Q135 DONE: gate_lifetime_mock.py \u2014 AND-gate lifetime=5.80 steps, OR=2.71 steps, ratio=2.14x. Supports audio-commitment duration hypothesis."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []

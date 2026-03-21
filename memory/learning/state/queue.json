@@ -142,12 +142,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-gate feature lifetime: AND-gate features persist longer across decoder steps than OR-gate features",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "gate_lifetime_mock.py: track feature activation duration across decoder steps; mean lifetime AND > OR",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q136",
