@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 5,
+    "build_remaining_today": 4,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-21"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-1015",
+    "id": "c-20260321-1115",
     "action": "build",
-    "summary": "Q138 DONE: emotion_jailbreak_mock.py \u2014 audio JB drops emotion AND-frac 74%\u219219%, ENV-3 cluster 12\u21920. Text JB partial (45%). AUROC=1.00. Dual-signal (AND-frac+ENV-3 size) distinguishes attack type. Next: Q141."
+    "summary": "Q141 DONE: persona_dual_signal_mock.py — dual+acoustic detector 89-93% detection on persona_strong, <3% FP on audio_jailbreak. Acoustic AND-frac asymmetry confirmed (persona=0.70, audio_jb=0.14). Next: Q142 or Q144."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []

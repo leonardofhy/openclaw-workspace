@@ -217,12 +217,13 @@
       "type": "build",
       "track": "T5",
       "title": "Persona jailbreak dual-signal detector: combine AND-ratio drop + emotion AND-frac → detection classifier",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "persona_dual_signal_mock.py: persona injection → AND-ratio < 0.25 AND emotion_AND_frac < 0.4 → jailbreak flag; extends Q121 design",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q142",
