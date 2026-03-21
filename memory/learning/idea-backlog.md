@@ -131,3 +131,73 @@
 
 ---
 *Cycle: c-20260319-1645 | Phase: converge | FREEZE: all 20 → backlog only*
+
+## 2026-03-21 Ideation Cycle c-20260321-1415 (FREEZE — 20 ideas)
+
+**Seeds used**: T3/T5 tracks, AND/OR gate (PPL×AND-frac, temporal t*, gate lifetime), FAD bias × RAVEL Cause/Isolate, ENV taxonomy × GSAE, RVQ codec hierarchy, stress × AND-gate, hallucination signature (Q134), jailbreak dual-signal (Q141), Schmidt Sciences RFP, t* backdoor detection, predictive coding frame
+
+---
+
+**I01** [T3] **RVQ-layer x AND-gate polarity: semantic RVQ-1 tokens → AND-gate, acoustic RVQ-N → OR-gate**
+Novelty 5, Feasibility 4. Extend Q142 (RVQ×t*) to gate polarity. Hypothesis: RVQ-1 features that encode semantic content are AND-gated (audio+LM both required), while RVQ-N fine-grained acoustic features are OR-gated (audio alone sufficient). Testable with codec-feature mock + AND-frac by RVQ-layer stratification.
+
+**I02** [T3] **Prosodic stress × t*: stressed syllables show later collapse onset (higher t*)**
+Novelty 4, Feasibility 5. Q127 tests AND-frac for stress; this extends to temporal dimension. Stressed phonemes need more deliberate acoustic integration → longer t*. CMU ARPABET stress labels × t* across decoder steps. Pure CPU mock, minimal data.
+
+**I03** [T3] **Early-warning hallucination: PPL spike → AND→OR transition prediction 2-3 steps ahead**
+Novelty 5, Feasibility 4. Combine Q134 (hallucination=AND-dropout) + Q132 (PPL×gc). High PPL at t predicts AND→OR transition at t+2 or t+3. Proactive hallucination suppression: detect risk early, inject acoustic re-grounding. Design doc + mock.
+
+**I04** [T5] **Cross-lingual hub transfer: ENV-1 hub features from English Whisper activate for Mandarin/Arabic phonemes**
+Novelty 5, Feasibility 4. Extends Q145. Multilingual universal phoneme features are AND-gated (audio-dependent) because they must generalize beyond any one language's LM statistics. Test via synthetic multilingual audio pairs. Connects to cross-lingual transfer in interpretability.
+
+**I05** [T3] **Isolate(k) as training regularizer: low-Isolate features as noise targets for fine-tuning**
+Novelty 5, Feasibility 3. Novel application: use Isolate(k) computed on a pretrained Whisper to identify entangled features → add regularization loss to disentangle them during fine-tuning. Expected: lower WER on accent-heavy speech. Design doc only (CPU), no fine-tuning needed to specify.
+
+**I06** [T3] **Dialect robustness x AND-gate compression: non-standard accent speakers → lower AND-frac**
+Novelty 4, Feasibility 5. Speakers with accents deviating from training distribution produce lower AND-frac (model falls back to LM prior). Mechanistic account of accent bias. Mock: simulate accent shift by altering phoneme conditional entropy; measure AND-frac drop. Builds on FAD-bias × AND-OR quadrant.
+
+**I07** [T5] **Real-time jailbreak monitor: streaming AND→OR ratio velocity (dAND-frac/dt) as safety signal**
+Novelty 5, Feasibility 4. Extends Q141 (dual-signal detector) to streaming inference. Monitor the rate of change of AND-frac per decoder step; a sudden drop (high negative velocity) triggers early intervention before jailbreak completes. CPU-only, integrates with persona probe.
+
+**I08** [T3] **gc(k) as gradient flow proxy: high gc features have largest gradient magnitude**
+Novelty 5, Feasibility 3. Mechanistic hypothesis: features at gc peak = maximum information bottleneck = highest gradient. Test via hook-based gradient extraction at encoder layers × gc(k) values. If confirmed, gc(k) becomes a zero-cost gradient signal for saliency/attribution.
+
+**I09** [T3] **AND-gate fatigue: sustained speech → AND-frac decay over utterance duration**
+Novelty 4, Feasibility 5. Longer utterances → model increasingly relies on LM prior → AND→OR drift over time. Practical: call center ASR degrades for long calls. Mock: synthetic variable-length audio × AND-frac at end vs start of utterance. Slice into 30s windows.
+
+**I10** [T3] **Phoneme co-articulation x GSAE edge weight: co-articulated phoneme pairs share GSAE graph neighbors**
+Novelty 5, Feasibility 4. Phonological co-articulation (e.g., /p/ before /b/ nasalizes) should manifest as shared GSAE neighbors. Predict edge weight from phonological distance matrix. CPU-testable with existing GSAE mock infrastructure.
+
+**I11** [T3] **t* as onset detection algorithm: compare to mel-filterbank onset detector**
+Novelty 4, Feasibility 5. Use t* cliff (GSAE boundary mock, Q137) as an unsupervised acoustic onset detector. Benchmark against librosa onset_detect. No audio needed — mock via synthetic activations. Could be a paper contribution on Whisper's implicit onset tracking.
+
+**I12** [T5] **Multimodal jailbreak hardness: vision+audio simultaneous AND-gate suppression harder to execute**
+Novelty 5, Feasibility 3. Hypothesis: a successful multimodal jailbreak must suppress AND-gate features in BOTH vision and audio streams simultaneously. This structural constraint makes multimodal jailbreaks harder. Design doc argument + theoretical framing for MATS proposal.
+
+**I13** [T3] **CTC spike × AND-frac alignment: CTC probability peak aligns with AND-gate activation at t***
+Novelty 5, Feasibility 4. Mechanistic link: Whisper's CTC alignment head spikes at phoneme boundaries → these are also t* points. If AND-frac is high at CTC peaks, it confirms t* = acoustic integration completeness point. CPU: extract CTC probs via forward pass on mock data.
+
+**I14** [T5] **ENV-1 hub attention flow: hub features receive disproportionate cross-layer attention**
+Novelty 4, Feasibility 4. Use Whisper's attention maps to trace which features get the most cross-layer attention weight. Hypothesis: ENV-1 hub features (high out-degree in GSAE) also have highest incoming attention → dual centrality (graph + attention). Testable via attention pattern mock.
+
+**I15** [T3] **MFCC baseline x AND-OR gate: traditional acoustic features are OR-gated (audio-sufficient)**
+Novelty 4, Feasibility 5. Traditional MFCC features don't use LM context → they're pure acoustic → OR-gate. Use this as a ground-truth baseline for the AND/OR framework: verify that a linear probe trained on MFCCs gives 0% AND-gate features. Validates the framework's discriminative power.
+
+**I16** [T5] **Schmidt RFP alignment doc: T5 = Aim 2 prototype (mechanisms of failure in AI)**
+Novelty 3, Feasibility 5. Write an explicit alignment document: how Q129/Q141/Q134 + ENV taxonomy form a "mechanistic AI safety" prototype matching Schmidt Sciences RFP Aim 2. Key argument: T5 doesn't just detect jailbreaks, it localizes the failure mechanism. Deadline May 17 — timely.
+
+**I17** [T3] **Jacobian sparsity × AND-gate: AND-gate features have sparse layer-to-layer Jacobian**
+Novelty 5, Feasibility 3. Connection to Power Steering paper (Q147): stable, audio-grounded AND-gate features should have sparse Jacobian (low sensitivity to perturbation) → good steering targets. OR-gate features = dense Jacobian = unstable steering. Design doc; computation needs real model.
+
+**I18** [T3] **AND-frac temporal slope as accent severity proxy: steepness of decay encodes speaker OOD-ness**
+Novelty 5, Feasibility 5. The rate of AND→OR drift over an utterance encodes how much the model relies on LM (because acoustic features were insufficient). Steep negative slope = heavy accent deviation from training. Zero-cost OOD/accent detector. Mock: vary synthetic entropy per phoneme; measure slope.
+
+**I19** [T3] **FAD-bias correction loop: AND-frac feedback signal to boost audio attention for high-entropy phonemes**
+Novelty 5, Feasibility 4. Extends Q139 (AND-gate steering for FAD correction). Full feedback loop: monitor AND-frac in real-time → when it drops below threshold for high-PPL token → inject cross-attention boost toward audio encoder. Design spec for CPU-only intervention.
+
+**I20** [T5] **Jailbreak trajectory analysis: temporal path of AND→OR transition across 10 decoder steps**
+Novelty 4, Feasibility 5. Characterize not just the endpoint (AND-frac at final step) but the full trajectory. Clean audio: monotone AND-gate. Jailbreak: rapid drop at step 3-5. Adversarial: gradual erosion. Three trajectory signatures → classification via DTW. CPU mock, extends Q141.
+
+---
+**Top picks (novelty+feasibility ≥ 8):** I01, I03, I04, I07, I08, I10, I11, I13, I18, I19
+**Note:** IDEATION FREEZE active (12 READY). All ideas held in backlog. Lift when READY < 10 or Leo approves.

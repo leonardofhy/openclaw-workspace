@@ -19,37 +19,40 @@
       "type": "design",
       "track": "T3",
       "title": "FAD bias x RAVEL Cause/Isolate: text-predictable phonemes = high Cause/low Isolate (feature entanglement test)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock showing FAD-biased phonemes have high Cause but low Isolate score",
       "created": "2026-03-18",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q126",
       "type": "design",
       "track": "T5",
       "priority": 1,
-      "status": "ready",
+      "status": "done",
       "title": "ENV taxonomy x Codec Probe RVQ: ENV-1 hub features = RVQ-1 semantic, ENV-3 isolated = RVQ-N acoustic",
       "definition_of_done": "Design doc: ENV-type maps to RVQ layer hierarchy; hub=semantic, isolated=fine-acoustic; intervention protocol per ENV type",
       "created": "2026-03-18T12:48:26.072530",
       "ideation_id": "I11",
       "novelty": 5,
-      "feasibility": 4
+      "feasibility": 4,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q127",
       "type": "design",
       "track": "T3",
       "title": "Stressed syllable x AND/OR gate: prosodic emphasis = AND-gate, unstressed = OR-gate?",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: stress-labeled phonemes (CMU ARPABET) → AND-frac higher for stressed; extends FAD-bias framing to prosody",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q128",
