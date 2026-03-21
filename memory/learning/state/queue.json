@@ -255,12 +255,13 @@
       "type": "build",
       "track": "T3",
       "title": "T-SAE input-invariant component x Schelling stability x AND-gate: triple alignment hypothesis",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "tsae_schelling_gate_mock.py: 3-way correlation: T-SAE-invariant, Schelling-stable, AND-gate; expect all three to co-occur; Pearson r > 0.8",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q145",

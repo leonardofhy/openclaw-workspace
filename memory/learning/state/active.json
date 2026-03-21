@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 3,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-21"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 511,
     "paper_pitches": 2,
-    "code_artifacts": 89,
+    "code_artifacts": 90,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-1145",
+    "id": "c-20260321-1215",
     "action": "build",
-    "summary": "Q142 DONE: rvq_temporal_mock.py \u2014 t*(RVQ-1)=12.75 >> t*(RVQ-8)=3.98 (delta=8.77). Pearson r=-0.931. Semantic RVQ codes require deeper decoder processing; acoustic residuals collapse early. Next: Q144."
+    "summary": "Q144 DONE: tsae_schelling_gate_mock.py \u2014 triple alignment: r(T-SAE\u00d7Schelling)=0.815, r(T-SAE\u00d7AND)=0.848, r(Schelling\u00d7AND)=0.829. All > 0.8. Next: Q135."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
