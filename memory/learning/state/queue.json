@@ -56,12 +56,13 @@
       "type": "build",
       "track": "T3",
       "title": "Temporal AND-gate density as CER confidence proxy: AND-frac(t=1) predicts WER without ground truth",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "and_confidence_mock.py: AND-frac at early decoder steps correlates with WER; Pearson r > 0.7 on mock data",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q129",
@@ -200,12 +201,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-gate cascade density as utterance-level WER predictor: cascade_degree × gc_peak = error risk score",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "wer_predictor_mock.py: cascade_degree (Q113) × gc_peak_AND_frac → Pearson r > 0.75 with WER on mock; zero-cost confidence",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q141",
