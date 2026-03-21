@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-1315",
-    "action": "build",
-    "summary": "Q127 DONE: prosodic_gate_mock.py \u2014 AND-frac stressed=0.838 vs unstressed=0.600, \u0394=+0.237 (1.40\u00d7). Prosodic stress = AND-gate dominant hypothesis supported."
+    "id": "c-20260321-1345",
+    "action": "learn",
+    "summary": "Q123 learn: synthesized AND/OR gate \u2194 RAVEL Cause/Isolate \u2194 FAD bias unified framework. KG entry written. AND-gate=monosemantic=high Isolate; OR-gate=polysemantic=low Isolate. r=\u22120.70 reframed as polysemanticity finding."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
