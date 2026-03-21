@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 6,
+    "build_remaining_today": 5,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-21"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 511,
     "paper_pitches": 2,
-    "code_artifacts": 87,
+    "code_artifacts": 88,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-0945",
+    "id": "c-20260321-1015",
     "action": "build",
-    "summary": "Q137 DONE: gsae_boundary_mock.py \u2014 GSAE density local minima detect all phoneme boundaries F1=1.0, r=-0.739. t* generalises to multi-event acoustic detector. GCBench-14 registered. Next: Q138."
+    "summary": "Q138 DONE: emotion_jailbreak_mock.py \u2014 audio JB drops emotion AND-frac 74%\u219219%, ENV-3 cluster 12\u21920. Text JB partial (45%). AUROC=1.00. Dual-signal (AND-frac+ENV-3 size) distinguishes attack type. Next: Q141."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
