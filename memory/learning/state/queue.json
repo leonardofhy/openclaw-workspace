@@ -166,12 +166,13 @@
       "type": "build",
       "track": "T3",
       "title": "GSAE edge density cliff x phoneme boundary: density drop aligns with acoustic segment boundaries",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "gsae_boundary_mock.py: GSAE density per decoder step → local minima = phoneme boundaries; t* as general acoustic event detector",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q138",

@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 7,
+    "build_remaining_today": 6,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-21"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-0915",
+    "id": "c-20260321-0945",
     "action": "build",
-    "summary": "Q132 DONE: perplexity_gc_mock.py \u2014 r(log PPL, gc_peak)=0.932. Validates predictive coding: high-PPL phonemes rely more on audio. Next: Q123 or Q137."
+    "summary": "Q137 DONE: gsae_boundary_mock.py \u2014 GSAE density local minima detect all phoneme boundaries F1=1.0, r=-0.739. t* generalises to multi-event acoustic detector. GCBench-14 registered. Next: Q138."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
