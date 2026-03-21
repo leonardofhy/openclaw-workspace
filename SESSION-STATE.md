@@ -2,7 +2,7 @@
 
 > WAL target. Write here BEFORE responding when critical details appear.
 
-**Last Updated:** 2026-03-20 06:40
+**Last Updated:** 2026-03-21 21:53
 
 ## Current Task
 Idle. Leo reviewed funding-hunter, registered as skill. claude-usage also registered.
@@ -17,7 +17,8 @@ Idle. Leo reviewed funding-hunter, registered as skill. claude-usage also regist
 - [2026-03-20 16:31] 週六下午：有活動（佔滿）
 - [2026-03-20 16:31] Tzu 提議申請經費，需 10 天內安排 meeting 討論，Leo 想自己處理但不確定有空
 - [2026-03-21 03:55] AudioMatters arXiv 撤銷上傳（智凱哥發現 code 問題影響實驗結果，需重新處理）
-- [2026-03-21 03:55] NTUAIS 會議移到週五晚，討論了 technical track 頻率（維持每週）、成員分組、grant 申請
+- [2026-03-21 03:55] NTUAIS 會議移到週五晚（本週已開完），討論了 technical track 頻率（維持每週）、成員分組、grant 申請
+- [2026-03-21 21:53] 本週六晚沒有 AIS meeting（已提前到週五開完）
 - [2026-03-21 03:55] 戰艦 login node 資安問題（不用 VPN 可訪問）已回報並解決
 - [2026-03-21 03:55] 新人物：筠曼姐（教學怪物助教相關）、品頤（人類連連看主辦）
 - [03/20 04:40] Registered `skills/funding-hunter/` — Leo's scholarship CLI tool
