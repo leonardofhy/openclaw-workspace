@@ -230,12 +230,13 @@
       "type": "build",
       "track": "T3",
       "title": "Codec RVQ-1 features x temporal t*: semantic RVQ tokens have larger t* (collapse later) than acoustic RVQ-N",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "rvq_temporal_mock.py: mock RVQ-1 vs RVQ-N feature sets × t* collapse; mean t*(RVQ-1) > mean t*(RVQ-N)",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q143",
