@@ -26,14 +26,14 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 2,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-21"
   },
   "stats": {
-    "total_cycles": 245,
+    "total_cycles": 246,
     "total_skips": 46,
     "papers_read_deep": 59,
     "papers_scanned": 50,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-1415",
-    "action": "ideate",
-    "summary": "20 cross-pollinated ideas (seeds: AND/OR gate, ENV/GSAE, FAD-bias, t*, RVQ, Schmidt RFP). Top 10 scored ≥8. All held in idea-backlog.md (FREEZE active, 12 READY). Next: lift freeze when READY<10."
+    "id": "c-20260321-1545",
+    "action": "learn",
+    "summary": "Q123: FAD bias x RAVEL \u2014 high Cause + low Isolate = LM-pathway entanglement; OR-gate signature; AND-frac \u00d7 Isolate disentanglement map proposed."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
