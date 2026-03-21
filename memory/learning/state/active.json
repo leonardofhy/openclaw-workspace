@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 2,
+    "learn_remaining_today": 1,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-1545",
+    "id": "c-20260321-1615",
     "action": "learn",
-    "summary": "Q123: FAD bias x RAVEL \u2014 high Cause + low Isolate = LM-pathway entanglement; OR-gate signature; AND-frac \u00d7 Isolate disentanglement map proposed."
+    "summary": "Q130: confused phoneme pairs both OR-gate (high Cause, low Isolate) \u2014 LM overrides acoustics. Confusion rate \u221d (1-Isolate)\u00d7Cause. CPU mock spec ready; build when budget resets."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
