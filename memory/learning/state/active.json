@@ -28,7 +28,7 @@
   "budgets": {
     "learn_remaining_today": 0,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
+    "reflect_remaining_today": 0,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-21"
   },
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-2215",
+    "id": "c-20260321-2245",
     "action": "reflect",
-    "summary": "EOD reflect: 19 cycles today (10 build, 5 learn, 1 ideate, 2 skip). Triple alignment hypothesis validated. Safety probe 89-93%. Queue empty → ideate tomorrow."
+    "summary": "EOD correction: READY=10 (not 0 as stated in c-20260321-2215). Tomorrow: build Q130 first. AND/OR gate polarity = central organizing principle for T3+T5."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
