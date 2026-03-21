@@ -26,16 +26,16 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 1,
+    "learn_remaining_today": 0,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-21"
   },
   "stats": {
-    "total_cycles": 246,
+    "total_cycles": 248,
     "total_skips": 46,
-    "papers_read_deep": 59,
+    "papers_read_deep": 60,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 531,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260321-1615",
+    "id": "c-20260321-1745",
     "action": "learn",
-    "summary": "Q130: confused phoneme pairs both OR-gate (high Cause, low Isolate) \u2014 LM overrides acoustics. Confusion rate \u221d (1-Isolate)\u00d7Cause. CPU mock spec ready; build when budget resets."
+    "summary": "Q126: ENV topology (hub/isolated) maps to RVQ residual level (coarse/fine); ENV-1/OR-gate/RVQ-1=semantic, ENV-3/AND-gate/RVQ-N=fine-acoustic. Triple alignment hypothesis: topology \u00d7 gate \u00d7 codec hierarchy. Intervention protocol: ENV-3 surgical (RVQ-N swap), ENV-1 global (RVQ-1 swap). Safety implication: adversarial attacks target ENV-3/RVQ-N features. KG entry written."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
