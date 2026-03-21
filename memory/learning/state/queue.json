@@ -142,12 +142,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-gate feature lifetime: AND-gate features persist longer across decoder steps than OR-gate features",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "gate_lifetime_mock.py: track feature activation duration across decoder steps; mean lifetime AND > OR",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q136",
@@ -217,24 +218,26 @@
       "type": "build",
       "track": "T5",
       "title": "Persona jailbreak dual-signal detector: combine AND-ratio drop + emotion AND-frac → detection classifier",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "persona_dual_signal_mock.py: persona injection → AND-ratio < 0.25 AND emotion_AND_frac < 0.4 → jailbreak flag; extends Q121 design",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q142",
       "type": "build",
       "track": "T3",
       "title": "Codec RVQ-1 features x temporal t*: semantic RVQ tokens have larger t* (collapse later) than acoustic RVQ-N",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "rvq_temporal_mock.py: mock RVQ-1 vs RVQ-N feature sets × t* collapse; mean t*(RVQ-1) > mean t*(RVQ-N)",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q143",
@@ -253,12 +256,13 @@
       "type": "build",
       "track": "T3",
       "title": "T-SAE input-invariant component x Schelling stability x AND-gate: triple alignment hypothesis",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "tsae_schelling_gate_mock.py: 3-way correlation: T-SAE-invariant, Schelling-stable, AND-gate; expect all three to co-occur; Pearson r > 0.8",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q145",

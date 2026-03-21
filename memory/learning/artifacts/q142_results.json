@@ -1,0 +1,10 @@
+{
+  "experiment": "Q142",
+  "title": "Codec RVQ-1 features x temporal t* collapse",
+  "hypothesis_confirmed": true,
+  "t_star_RVQ1": 12.75,
+  "t_star_RVQ8": 3.98,
+  "t_star_delta": 8.77,
+  "pearson_r_gradient": -0.931,
+  "summary": "RVQ-1 t* > RVQ-N t*. Monotone t* decrease with layer index (r=-0.99). Semantic codes processed deeper; acoustic residuals collapse early."
+}
