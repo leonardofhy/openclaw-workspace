@@ -44,12 +44,13 @@
       "type": "design",
       "track": "T3",
       "title": "Stressed syllable x AND/OR gate: prosodic emphasis = AND-gate, unstressed = OR-gate?",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: stress-labeled phonemes (CMU ARPABET) → AND-frac higher for stressed; extends FAD-bias framing to prosody",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q128",
