@@ -56,12 +56,13 @@
       "type": "build",
       "track": "T3",
       "title": "Temporal AND-gate density as CER confidence proxy: AND-frac(t=1) predicts WER without ground truth",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "and_confidence_mock.py: AND-frac at early decoder steps correlates with WER; Pearson r > 0.7 on mock data",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q129",
@@ -104,12 +105,13 @@
       "type": "build",
       "track": "T3",
       "title": "LM perplexity x gc(k): low-predictability utterances have higher gc peak (more audio reliance)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "perplexity_gc_mock.py: mock LM PPL per phoneme → Pearson r(PPL, gc_peak) > 0.6; mechanistic basis for predictive coding",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q133",
@@ -140,12 +142,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-gate feature lifetime: AND-gate features persist longer across decoder steps than OR-gate features",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "gate_lifetime_mock.py: track feature activation duration across decoder steps; mean lifetime AND > OR",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q136",
@@ -164,24 +167,26 @@
       "type": "build",
       "track": "T3",
       "title": "GSAE edge density cliff x phoneme boundary: density drop aligns with acoustic segment boundaries",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "gsae_boundary_mock.py: GSAE density per decoder step → local minima = phoneme boundaries; t* as general acoustic event detector",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q138",
       "type": "build",
       "track": "T5",
       "title": "Emotion AND-gate suppression as jailbreak success metric: jailbreak shifts emotion features OR-gate",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "emotion_jailbreak_mock.py: jailbreak condition → emotion AND-frac < 0.4 (vs clean > 0.7); combines Q118 + Q128 ENV-3 prune",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q139",
@@ -200,36 +205,39 @@
       "type": "build",
       "track": "T3",
       "title": "AND-gate cascade density as utterance-level WER predictor: cascade_degree × gc_peak = error risk score",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "wer_predictor_mock.py: cascade_degree (Q113) × gc_peak_AND_frac → Pearson r > 0.75 with WER on mock; zero-cost confidence",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q141",
       "type": "build",
       "track": "T5",
       "title": "Persona jailbreak dual-signal detector: combine AND-ratio drop + emotion AND-frac → detection classifier",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "persona_dual_signal_mock.py: persona injection → AND-ratio < 0.25 AND emotion_AND_frac < 0.4 → jailbreak flag; extends Q121 design",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q142",
       "type": "build",
       "track": "T3",
       "title": "Codec RVQ-1 features x temporal t*: semantic RVQ tokens have larger t* (collapse later) than acoustic RVQ-N",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "rvq_temporal_mock.py: mock RVQ-1 vs RVQ-N feature sets × t* collapse; mean t*(RVQ-1) > mean t*(RVQ-N)",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q143",
@@ -248,12 +256,13 @@
       "type": "build",
       "track": "T3",
       "title": "T-SAE input-invariant component x Schelling stability x AND-gate: triple alignment hypothesis",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "tsae_schelling_gate_mock.py: 3-way correlation: T-SAE-invariant, Schelling-stable, AND-gate; expect all three to co-occur; Pearson r > 0.8",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-21"
     },
     {
       "id": "Q145",
