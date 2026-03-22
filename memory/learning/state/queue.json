@@ -98,12 +98,13 @@
       "type": "design",
       "track": "T3",
       "title": "Speaker identity x AND-gate enrichment: speaker-specific features AND-gate, speaker-agnostic OR-gate?",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: speaker-ID probing features → AND-gate hypothesis; mechanistic link to audio-dependence requirement",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q132",
