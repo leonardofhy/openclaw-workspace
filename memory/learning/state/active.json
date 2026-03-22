@@ -28,12 +28,12 @@
   "budgets": {
     "learn_remaining_today": 2,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 2,
+    "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-22"
   },
   "stats": {
-    "total_cycles": 258,
+    "total_cycles": 259,
     "total_skips": 46,
     "papers_read_deep": 60,
     "papers_scanned": 50,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260322-1515",
-    "action": "learn",
-    "summary": "Q152 VLM AND/OR gate analogy: design doc synthesized. Image patches as audio analog; AND-frac_V protocol; novelty case for hallucination detection. Build budget resets tomorrow \u2192 Q148 GCBench-14 real Whisper run is top priority."
+    "id": "c-20260322-1545",
+    "action": "reflect",
+    "summary": "Micro-reflect: 15 cycles today, build budget exhausted. Schmidt Sciences RFP May 26 flagged. Tomorrow: Q148 real Whisper run top priority (build budget resets)."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
