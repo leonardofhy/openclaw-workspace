@@ -163,12 +163,13 @@
       "type": "design",
       "track": "T5",
       "title": "Multi-speaker audio x ENV-3 clusters: speaker boundaries create isolated ENV-3 clusters per speaker",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: overlapping/diarized audio → ENV-3 clusters align with speaker turns; safety implication for speaker manipulation",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q137",

@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 3,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-22"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 531,
     "paper_pitches": 2,
-    "code_artifacts": 99,
+    "code_artifacts": 100,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260322-1115",
+    "id": "c-20260322-1145",
     "action": "build",
-    "summary": "Q131 Speaker-ID x AND-gate: speaker-specific features are AND-gate (\u0394 AND-frac=0.317). CPU mock + probe protocol for Whisper-base."
+    "summary": "Q136 Multi-speaker ENV-3 clusters: speaker boundaries create isolated ENV-3 clusters. Safety: voice manipulation detection via ENV-3 outlier (6.87x separation)."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []
