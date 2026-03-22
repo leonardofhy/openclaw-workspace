@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 1,
+    "learn_remaining_today": 0,
     "build_remaining_today": 0,
     "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260322-1645",
-    "action": "plan",
-    "summary": "Q152: VLM AND/OR gate design doc \u2014 vc(k) generalizes gc(k) to vision. Image patches = audio frames. AND-frac via patching. VCBench proposal + MATS cross-modal grounding pitch."
+    "id": "c-20260322-1715",
+    "action": "learn",
+    "summary": "Q161: RAVEL patching directly applicable to VLM image tokens. AND-frac = causal sufficiency. 3 adaptations: counterfactual images, SAM patch positions, CHAIR metric. Patch after ViT projection."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []

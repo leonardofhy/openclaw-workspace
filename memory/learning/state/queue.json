@@ -189,12 +189,13 @@
       "type": "read",
       "track": "T5",
       "title": "Literature: RAVEL causal scrubbing for vision patch tokens — does AND-frac proxy work for VLMs?",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Check if RAVEL patching directly applies to VLM image tokens; note any adaptation needed for vcbench",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     }
   ],
   "archived_count": 100,
