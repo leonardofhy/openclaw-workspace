@@ -26,14 +26,14 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-22"
   },
   "stats": {
-    "total_cycles": 256,
+    "total_cycles": 257,
     "total_skips": 46,
     "papers_read_deep": 60,
     "papers_scanned": 50,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260322-1415",
+    "id": "c-20260322-1445",
     "action": "learn",
-    "summary": "Read Schmidt Sciences 2026 Interpretability RFP. $300k-$1M, deadline May 26. CRITICAL ALIGNMENT: T5 audio jailbreak + AND-gate steering = exact fit for their detect+steer deception directions."
+    "summary": "Attempted Q159 Meta Omnilingual MT paper; ai.meta.com inaccessible (auth wall). Q159 blocked. Build budget=0. Top priority tomorrow: Q148 GCBench-14 real Whisper run."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
