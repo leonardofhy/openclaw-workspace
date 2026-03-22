@@ -84,12 +84,13 @@
       "type": "design",
       "track": "T3",
       "title": "Phoneme confusion x OR-gate: commonly confused phoneme pairs are both OR-gate (text-predictable)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "confusion_gate_mock.py: phoneme confusion matrix (Whisper errors) → confused pairs have AND-frac < 0.3; links FAD bias to ASR errors",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q131",
