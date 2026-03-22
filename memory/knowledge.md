@@ -74,3 +74,29 @@ exec background:true command:"cd /path && claude --permission-mode bypassPermiss
 - ❌ 不給 workdir 就派（agent 會亂跑）
 - ❌ prompt 太模糊（要給具體目標 + 限制條件）
 - ✅ 小改動直接 Edit 更快更精準
+- `2026-03-23 03:38` `[RESEARCH]` ## Agent Infra Projects to Study (2026-03-23)
+
+### 1. Superpowers (obra/superpowers) — 2萬+ ⭐
+- Agentic skills framework + 完整軟體開發方法論
+- 核心流程：brainstorm → spec → planning → TDD → code review → subagent-driven-development
+- Skills 自動觸發（不需手動），mandatory workflows
+- 關鍵 skills：brainstorming, writing-plans, subagent-driven-development, test-driven-development, systematic-debugging, git-worktrees
+- 跟我們的 coding-agent skill 最相關：他們的 subagent orchestration + plan execution 值得借鏡
+- 可借鏡：plan 拆成 2-5 min tasks、每個 task 有 exact file paths + verification steps、two-stage review (spec compliance → code quality)
+
+### 2. Everything Claude Code (affaan-m/everything-claude-code) — 1.7萬+ ⭐
+- Agent harness 性能優化系統（不只是 config）
+- 包含：skills, instincts, memory optimization, continuous learning, security scanning
+- 支援 Claude Code, Codex, Cursor, OpenCode
+- 關鍵功能：token optimization, memory persistence (hooks save/load across sessions), continuous learning (auto-extract patterns → reusable skills), verification loops, parallelization (git worktrees), subagent orchestration
+- Selective install architecture（manifest-driven）
+- 跟我們的差異：他們更偏向 coding agent 性能優化；我們是全功能 personal assistant + research agent
+- 可借鏡：instinct-based learning with confidence scoring, hook reliability (script-based > inline one-liners), session management
+
+### 3. Lightpanda Browser — 持續高增
+- 全新無頭瀏覽器，Zig 寫的（不是 Chromium fork）
+- 11x faster, 9x less memory than Chrome
+- 支援 Playwright/Puppeteer/chromedp via CDP
+- 目前 Beta，coverage 持續增加
+- 跟我們的關係：如果需要大量 web scraping/automation，可以替代 headless Chrome 節省資源
+- 暫時不急用，bookmark 即可
