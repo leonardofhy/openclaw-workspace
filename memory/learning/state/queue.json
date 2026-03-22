@@ -164,9 +164,9 @@
       "type": "read",
       "track": "T3",
       "title": "News: Meta's Omnilingual MT for 1,600 Languages",
-      "status": "ready",
+      "status": "blocked",
       "priority": 3,
-      "blocked_by": null,
+      "blocked_by": "ai.meta.com auth wall — cannot access paper without Meta login",
       "definition_of_done": "Read and note key insights. Source: https://ai.meta.com/research/publications/omnilingual-mt-machine-translation-for",
       "created": "2026-03-22",
       "due": null
