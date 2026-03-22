@@ -254,12 +254,13 @@
       "type": "design",
       "track": "T5",
       "title": "Instruction-tuning footprint x AND-gate: do instruction-tuned models shift AND→OR for instruction-following features?",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: compare base vs instruct model feature populations; instruction-following → OR-gate (text-driven); safety implication",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q144",
