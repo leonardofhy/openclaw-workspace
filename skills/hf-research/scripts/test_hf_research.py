@@ -76,6 +76,11 @@ _fake_shared.jsonl_store = _fake_shared_jsonl
 sys.modules.setdefault("shared", _fake_shared)
 sys.modules.setdefault("shared.jsonl_store", _fake_shared_jsonl)
 
+# hf_research.py imports "from jsonl_store import JsonlStore" (bare module name)
+_fake_jsonl = type(sys)("jsonl_store")
+_fake_jsonl.JsonlStore = _FakeJsonlStore
+sys.modules.setdefault("jsonl_store", _fake_jsonl)
+
 import importlib
 import hf_research
 importlib.reload(hf_research)
