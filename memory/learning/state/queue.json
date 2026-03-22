@@ -280,12 +280,13 @@
       "type": "design",
       "track": "T5",
       "title": "ENV-1 hub features as cross-language universal phoneme units: hub features activate for same phoneme across languages",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: multilingual Whisper hub features (ENV-1) → phoneme universals hypothesis; testable with multilingual audio pairs",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q146",
