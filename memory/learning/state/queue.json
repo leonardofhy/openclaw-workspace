@@ -145,6 +145,31 @@
       "definition_of_done": "steer_and_gate_mock.py: add direction vector to SAE feature; AND-frac increases ≥0.15; WER improves on mock",
       "created": "2026-03-22",
       "due": null
+    },
+    {
+      "id": "Q158",
+      "type": "read",
+      "track": "T3",
+      "title": "News: New RFP on Interpretability from Schmidt Sciences",
+      "status": "done",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/Pc789vx2oHgEXYZZH/new-rfp-on-interpretabili",
+      "created": "2026-03-22",
+      "due": null,
+      "completed": "2026-03-22"
+    },
+    {
+      "id": "Q159",
+      "type": "read",
+      "track": "T3",
+      "title": "News: Meta's Omnilingual MT for 1,600 Languages",
+      "status": "ready",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Read and note key insights. Source: https://ai.meta.com/research/publications/omnilingual-mt-machine-translation-for",
+      "created": "2026-03-22",
+      "due": null
     }
   ],
   "archived_count": 100,
