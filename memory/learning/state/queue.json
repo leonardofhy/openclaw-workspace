@@ -79,12 +79,13 @@
       "type": "design",
       "track": "T5",
       "title": "VLM AND/OR gate analogy: image-grounded (AND) vs text-predictable (OR) features in Vision-Language Models",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: VLM RAVEL extension — image patches as audio analog; AND-frac proxy via patching causation; novelty case",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q153",
@@ -168,6 +169,30 @@
       "priority": 3,
       "blocked_by": "ai.meta.com auth wall — cannot access paper without Meta login",
       "definition_of_done": "Read and note key insights. Source: https://ai.meta.com/research/publications/omnilingual-mt-machine-translation-for",
+      "created": "2026-03-22",
+      "due": null
+    },
+    {
+      "id": "Q160",
+      "type": "build",
+      "track": "T3",
+      "title": "vcbench_mock.py: VLM AND/OR gate pipeline scaffold (mock activations)",
+      "status": "ready",
+      "priority": 2,
+      "blocked_by": null,
+      "definition_of_done": "Pipeline runs: mock image-patch activations → vc(k) curve → AND-frac at vc_peak → Pearson r with mock CHAIR labels",
+      "created": "2026-03-22",
+      "due": null
+    },
+    {
+      "id": "Q161",
+      "type": "read",
+      "track": "T5",
+      "title": "Literature: RAVEL causal scrubbing for vision patch tokens — does AND-frac proxy work for VLMs?",
+      "status": "ready",
+      "priority": 3,
+      "blocked_by": null,
+      "definition_of_done": "Check if RAVEL patching directly applies to VLM image tokens; note any adaptation needed for vcbench",
       "created": "2026-03-22",
       "due": null
     }
