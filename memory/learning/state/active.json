@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 9,
+    "build_remaining_today": 8,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-22"
   },
   "stats": {
-    "total_cycles": 249,
+    "total_cycles": 250,
     "total_skips": 46,
     "papers_read_deep": 60,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 531,
     "paper_pitches": 2,
-    "code_artifacts": 92,
+    "code_artifacts": 93,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260322-0815",
+    "id": "c-20260322-0845",
     "action": "build",
-    "summary": "Q130 confusion_gate_mock.py: 9/10 confused phoneme pairs both OR-gate (AND-frac<0.3), Pearson r=-0.559. DOD met. Links FAD bias → ASR confusion via OR-gate shared text-predictability."
+    "summary": "Q146 isolate_curve_shape.py: 87.3% accuracy, gc ranking DECAY>U>PLATEAU confirmed (0.78/0.56/0.30). DOD met."
   },
   "last_gc": "2026-03-20T13:47:37.188996+08:00",
   "self_improve_tickets": []

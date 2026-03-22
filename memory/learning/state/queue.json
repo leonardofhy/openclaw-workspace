@@ -285,12 +285,13 @@
       "type": "build",
       "track": "T3",
       "title": "Isolate(k) curve shape classification: monotone decay vs U-shape vs plateau → encodes audio usage strategy",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "isolate_curve_shape.py: classify Isolate(k) curve per utterance; shape correlates with gc peak height; 3-class mock (decay/U/plateau)",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q147",
