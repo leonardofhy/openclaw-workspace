@@ -136,12 +136,13 @@
       "type": "design",
       "track": "T3",
       "title": "Hallucination signature x AND→OR transition: silence/noise tokens cause AND-gate dropout = hallucination onset",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: silence-region audio → AND-frac drops at hallucination decoder steps; unifies Q096 + Q093",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q135",
