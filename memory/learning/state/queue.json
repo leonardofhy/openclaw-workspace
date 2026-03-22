@@ -123,12 +123,13 @@
       "type": "design",
       "track": "T3",
       "title": "RAVEL Isolate(k) as beam rescoring signal: Isolate at gc-peak layer predicts beam candidate quality",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: Isolate(k, gc_peak) per token → correlate with beam score / CTC prob; CPU mock",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q134",
