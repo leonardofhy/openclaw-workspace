@@ -200,12 +200,13 @@
       "type": "design",
       "track": "T3",
       "title": "FAD bias correction via AND-gate steering: increase AND-frac for text-predictable phonemes → reduced bias",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc: intervention = boost AND-gate features at gc peak for high-PPL phonemes; expected WER reduction; CPU-only spec",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q140",
