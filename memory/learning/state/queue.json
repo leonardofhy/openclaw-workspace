@@ -72,12 +72,13 @@
       "type": "design",
       "track": "T5",
       "title": "Adversarial audio x t* detector: imperceptible adversarial noise causes t* leftward shift",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: adversarial examples (FGSM-style) produce t* < 4 vs clean t* > 6; detection protocol",
       "created": "2026-03-20",
-      "due": null
+      "due": null,
+      "completed": "2026-03-22"
     },
     {
       "id": "Q130",
