@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260323-1615",
+    "id": "c-20260323-1715",
     "action": "skip",
-    "summary": "Build budget exhausted. All 9 READY tasks are build-type (Q162-Q170). Principled skip; reset tomorrow."
+    "summary": "Build budget exhausted (0). All 9 READY tasks are build-type (Q162-Q170). No READY read tasks. Principled skip; reset tomorrow."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
