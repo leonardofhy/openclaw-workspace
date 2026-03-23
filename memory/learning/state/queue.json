@@ -31,48 +31,52 @@
       "type": "build",
       "track": "T3",
       "title": "GCBench-14 real Whisper run: port gsae_boundary_mock.py to actual Whisper-base hidden states (3s LibriSpeech CPU)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Run GSAE boundary detection on real Whisper-base activations for 3s clip; F1 > 0.7 on ≥3 phoneme boundaries",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q149",
       "type": "build",
       "track": "T3",
       "title": "Silence x t* quantitative threshold: sweep silence_fraction → t* curve; inflection = hallucination risk threshold",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "silence_tstar_threshold.py: sweep silence 0-100%; find inflection point where t* < 4 consistently; quantitative threshold",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q150",
       "type": "build",
       "track": "T3",
       "title": "Attention entropy x AND-gate: identify commitment heads (low entropy + AND-gate dominant correlation)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "attn_entropy_gate_mock.py: mock per-head entropy × AND-frac; top-3 commitment heads identified; r < -0.6",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q151",
       "type": "build",
       "track": "T3",
       "title": "Isolate(k) x beam diversity: higher Isolate at gc_peak → more diverse beam hypotheses",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "isolate_beam_diversity_mock.py: Pearson r(Isolate_gc_peak, beam_entropy) > 0.6; audio-grounded = richer hypothesis space",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q152",
@@ -92,60 +96,65 @@
       "type": "build",
       "track": "T3",
       "title": "gc(k) x SNR robustness: AND-gate features degrade faster under noise than OR-gate features",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "snr_gate_mock.py: noise at SNR 0-30dB; AND-frac slope > 2x OR-frac slope; links to hearing degradation model",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q154",
       "type": "design",
       "track": "T5",
       "title": "GCBench-14 generalization: t* boundary detector for speaker turns and musical onsets beyond phonemes",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: extend GCBench-14 to speaker diarization boundaries + musical note onsets; expected F1 transfer > 0.6",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q155",
       "type": "design",
       "track": "T3",
       "title": "AND-frac scaling with Whisper model size: larger models → higher AND-frac at gc_peak?",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: Whisper base→small→medium→large AND-frac at gc_peak trend; scaling law for audio commitment",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q156",
       "type": "design",
       "track": "T3",
       "title": "FAD bias x accented speech: accented phonemes show lower AND-frac (treated as text-predictable by model)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: accented vs native phoneme pairs → AND-frac hypothesis; AccentDB/L2-ARCTIC source; bias discrimination link",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q157",
       "type": "build",
       "track": "T3",
       "title": "AND-gate steerability mock: activation patch to boost AND-frac for high-PPL phonemes → bias correction PoC",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "steer_and_gate_mock.py: add direction vector to SAE feature; AND-frac increases ≥0.15; WER improves on mock",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q158",
@@ -177,12 +186,13 @@
       "type": "build",
       "track": "T3",
       "title": "vcbench_mock.py: VLM AND/OR gate pipeline scaffold (mock activations)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Pipeline runs: mock image-patch activations → vc(k) curve → AND-frac at vc_peak → Pearson r with mock CHAIR labels",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q161",
@@ -196,6 +206,114 @@
       "created": "2026-03-22",
       "due": null,
       "completed": "2026-03-22"
+    },
+    {
+      "id": "Q162",
+      "type": "build",
+      "track": "T3",
+      "title": "accent_and_frac_mock.py: mock L2-ARCTIC phoneme pairs → AND-frac per category → validate delta hypothesis",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "mock script runs; AND-frac(native) > AND-frac(accented) delta >= 0.08; per-L1 breakdown table; Pearson r(AND-frac, mock WER) < -0.5",
+      "created": "2026-03-23",
+      "due": null
+    },
+    {
+      "id": "Q163",
+      "type": "build",
+      "track": "T3",
+      "title": "phoneme_confusion_l2_mock.py: extend Q130 confusion×gate analysis to L2-ARCTIC accent groups",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "L2 phoneme pairs show higher confusion AND lower AND-frac vs native pairs; r(confusion_rate, AND-frac) < -0.55 for accent groups",
+      "created": "2026-03-23",
+      "due": null
+    },
+    {
+      "id": "Q164",
+      "type": "build",
+      "track": "T3",
+      "title": "tstar_accent_mock.py: accented speech induces earlier t* (hallucination risk); accent-fraction → t* shift curve",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "mock shows accent_fraction correlates with t* < 4; slope > 0.8; links FAD bias to hallucination pathway",
+      "created": "2026-03-23",
+      "due": null
+    },
+    {
+      "id": "Q165",
+      "type": "build",
+      "track": "T3",
+      "title": "beam_diversity_accent_mock.py: Isolate(k) at gc_peak lower for accented phonemes → narrower beam hypotheses",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "Pearson r(Isolate_gc_peak, beam_entropy) native > accented delta >= 0.15; accented = collapsed hypothesis space",
+      "created": "2026-03-23",
+      "due": null
+    },
+    {
+      "id": "Q166",
+      "type": "build",
+      "track": "T3",
+      "title": "attn_entropy_accent_mock.py: commitment heads show higher entropy for accented phonemes (less committed)",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "per-head entropy(accented) > per-head entropy(native) for top-3 commitment heads; delta >= 0.2 nats",
+      "created": "2026-03-23",
+      "due": null
+    },
+    {
+      "id": "Q167",
+      "type": "build",
+      "track": "T3",
+      "title": "and_gate_fairness_metric.py: define AND-frac Fairness Gap (AFG) = AND-frac(native) - AND-frac(accented); compute on L2-ARCTIC mock",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "AFG computed per L1 group; Pearson r(AFG, mock_WER_gap) < -0.6; AFG >= 0.08 on >= 4 L1 groups",
+      "created": "2026-03-23",
+      "due": null
+    },
+    {
+      "id": "Q168",
+      "type": "build",
+      "track": "T3",
+      "title": "snr_accent_interaction_mock.py: compound degradation — accented phonemes lose AND-frac 2x faster under noise than native",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "SNR 0-30dB sweep; accented AND-frac slope >= 2x native slope; links noise robustness to accent fairness",
+      "created": "2026-03-23",
+      "due": null
+    },
+    {
+      "id": "Q169",
+      "type": "build",
+      "track": "T3",
+      "title": "hallucination_accent_mock.py: accented phonemes behave like silence — AND-frac drop → hallucination steps increase",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "mock: accent_level correlates with hallucination_steps; r < -0.6; AND-frac mediates the effect (mediation analysis mock)",
+      "created": "2026-03-23",
+      "due": null
+    },
+    {
+      "id": "Q170",
+      "type": "build",
+      "track": "T3",
+      "title": "accent_beam_rescoring_mock.py: AND-frac as beam rescoring signal for accented speech; fairness-aware rescoring",
+      "status": "ready",
+      "priority": 1,
+      "blocked_by": null,
+      "definition_of_done": "rescoring improves mock WER gap between native/accented by >= 30%; AFG reduces after rescoring",
+      "created": "2026-03-23",
+      "due": null
     }
   ],
   "archived_count": 100,
