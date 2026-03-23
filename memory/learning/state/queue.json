@@ -31,12 +31,13 @@
       "type": "build",
       "track": "T3",
       "title": "GCBench-14 real Whisper run: port gsae_boundary_mock.py to actual Whisper-base hidden states (3s LibriSpeech CPU)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Run GSAE boundary detection on real Whisper-base activations for 3s clip; F1 > 0.7 on ≥3 phoneme boundaries",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q149",
