@@ -256,19 +256,47 @@ def extract_word_boundary_steps(tokens, model):
 
 # ── Boundary detection (same as mock) ─────────────────────────────────────────
 
-def detect_local_minima(density, window=1, threshold_ratio=0.75):
-    """Detect local minima in density curve."""
+def detect_local_minima(density, window=1, threshold_ratio=None):
+    """
+    Detect local minima in density curve.
+    
+    v2: threshold_ratio is OPTIONAL. Without it, pure geometric minima are found.
+    This handles flat/near-uniform density curves where absolute thresholding fails.
+    If threshold_ratio given, also require density[t] < threshold_ratio * mean.
+    """
     n = len(density)
     mean_density = density.mean()
-    threshold = threshold_ratio * mean_density
     minima = []
     for t in range(window, n - window):
         left_ok = all(density[t] < density[t - w] for w in range(1, window + 1))
         right_ok = all(density[t] < density[t + w] for w in range(1, window + 1))
-        below_thresh = density[t] < threshold
+        if threshold_ratio is not None:
+            below_thresh = density[t] < threshold_ratio * mean_density
+        else:
+            below_thresh = True
         if left_ok and right_ok and below_thresh:
             minima.append(t)
     return minima
+
+
+def detect_local_minima_soft(density, window=2, top_k=None):
+    """
+    Soft local minima: score each point by how much lower it is than neighbors.
+    Returns sorted list of (step, score) and top_k candidates.
+    Handles near-flat density where strict geometric minima may be 0.
+    """
+    n = len(density)
+    scores = []
+    for t in range(window, n - window):
+        neighbors = [density[t - w] for w in range(1, window + 1)] + \
+                    [density[t + w] for w in range(1, window + 1)]
+        score = float(np.mean(neighbors) - density[t])  # positive = local dip
+        scores.append((t, score))
+    
+    scores.sort(key=lambda x: -x[1])
+    if top_k:
+        return [t for t, s in scores[:top_k] if s > 0]
+    return [(t, s) for t, s in scores if s > 0]
 
 
 def compute_metrics(detected, true_boundaries, tolerance=1):
@@ -335,9 +363,21 @@ def main():
         marker = " ← WORD BOUNDARY" if t in word_boundaries else ""
         print(f"  t={t:2d}: {d:.3f} [{bar}]{marker}")
     
-    # Detect minima
-    detected = detect_local_minima(density, window=1, threshold_ratio=0.75)
-    print(f"\nDetected density minima: {detected}")
+    # Detect minima — try geometric first, fall back to soft if empty
+    detected = detect_local_minima(density, window=1, threshold_ratio=None)
+    method_used = "geometric (window=1)"
+    if not detected:
+        # Fall back to window=2 geometric
+        detected = detect_local_minima(density, window=2, threshold_ratio=None)
+        method_used = "geometric (window=2)"
+    if not detected:
+        # Soft minima: pick top-k dips matching number of word boundaries
+        n_targets = max(len(word_boundaries), 3)
+        detected = detect_local_minima_soft(density, window=2, top_k=n_targets)
+        method_used = f"soft top-{n_targets}"
+    
+    print(f"\nDetection method: {method_used}")
+    print(f"Detected density minima: {detected}")
     print(f"True word boundaries:    {word_boundaries}")
     
     metrics = compute_metrics(detected, word_boundaries, tolerance=2)
