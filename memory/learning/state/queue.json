@@ -57,12 +57,13 @@
       "type": "build",
       "track": "T3",
       "title": "Attention entropy x AND-gate: identify commitment heads (low entropy + AND-gate dominant correlation)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "attn_entropy_gate_mock.py: mock per-head entropy × AND-frac; top-3 commitment heads identified; r < -0.6",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q151",
