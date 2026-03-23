@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 2,
+    "build_remaining_today": 1,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-23"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 551,
     "paper_pitches": 2,
-    "code_artifacts": 110,
+    "code_artifacts": 111,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260323-1215",
+    "id": "c-20260323-1245",
     "action": "build",
-    "summary": "Q154 done: GCBench-14 generalization test. Result: DOES_NOT_GENERALIZE. Cross-attention density proxy is phoneme-specific (F1<0.4 for speaker turns + musical onsets)."
+    "summary": "Q155 done: AND-frac scaling mock. Log-linear law confirmed (mock): +0.062 AND-frac per decade of params. Larger Whisper models listen harder. AND-frac range [0.305\u21920.386] base\u2192large."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []

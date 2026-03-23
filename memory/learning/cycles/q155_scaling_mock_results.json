@@ -1,0 +1,85 @@
+{
+  "task": "Q155",
+  "mock": true,
+  "models": {
+    "base": {
+      "params_M": 74,
+      "and_frac": {
+        "mean": 0.30454080784304094,
+        "std": 0.03042222612816022,
+        "ci_95": [
+          0.2511649449544242,
+          0.34895189875670346
+        ],
+        "predicted_mean": 0.30089236662332053,
+        "n_clips": 50
+      },
+      "gc_peak": {
+        "k_star_normalized": 0.55,
+        "gc_peak_abs_layer": 3,
+        "total_encoder_layers": 6
+      }
+    },
+    "small": {
+      "params_M": 244,
+      "and_frac": {
+        "mean": 0.3366666104527216,
+        "std": 0.03042222612816022,
+        "ci_95": [
+          0.2832907475641049,
+          0.38107770136638414
+        ],
+        "predicted_mean": 0.3330181692330012,
+        "n_clips": 50
+      },
+      "gc_peak": {
+        "k_star_normalized": 0.568,
+        "gc_peak_abs_layer": 7,
+        "total_encoder_layers": 12
+      }
+    },
+    "medium": {
+      "params_M": 769,
+      "and_frac": {
+        "mean": 0.3675758742874092,
+        "std": 0.03042222612816022,
+        "ci_95": [
+          0.3142000113987924,
+          0.41198696520107164
+        ],
+        "predicted_mean": 0.3639274330676887,
+        "n_clips": 50
+      },
+      "gc_peak": {
+        "k_star_normalized": 0.586,
+        "gc_peak_abs_layer": 14,
+        "total_encoder_layers": 24
+      }
+    },
+    "large-v3": {
+      "params_M": 1550,
+      "and_frac": {
+        "mean": 0.38644900650627845,
+        "std": 0.03042222612816022,
+        "ci_95": [
+          0.3330731436176617,
+          0.43086009741994097
+        ],
+        "predicted_mean": 0.38280056528655804,
+        "n_clips": 50
+      },
+      "gc_peak": {
+        "k_star_normalized": 0.596,
+        "gc_peak_abs_layer": 19,
+        "total_encoder_layers": 32
+      }
+    }
+  },
+  "scaling_law": {
+    "slope_A": 0.062,
+    "intercept_B": 0.1886,
+    "r_squared": 1.0,
+    "interpretation": "AND-frac increases by 0.062 per 10x increase in params"
+  },
+  "hypothesis_confirmed": true
+}

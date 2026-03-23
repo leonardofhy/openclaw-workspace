@@ -122,12 +122,13 @@
       "type": "design",
       "track": "T3",
       "title": "AND-frac scaling with Whisper model size: larger models → higher AND-frac at gc_peak?",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc + mock: Whisper base→small→medium→large AND-frac at gc_peak trend; scaling law for audio commitment",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q156",
