@@ -1,0 +1,22 @@
+{
+  "metric_id": "GCBench-14",
+  "name": "GSAE Boundary Cliff Detector (REAL)",
+  "audio_source": "3s synthetic multi-segment speech @ 16kHz",
+  "model": "whisper-base",
+  "proxy": "cross-attention weight density > threshold (averaged over layers + heads)",
+  "n_decoder_steps": 14,
+  "n_word_boundaries": 4,
+  "word_boundary_steps": [
+    2,
+    5,
+    8,
+    11
+  ],
+  "detected_minima": [],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "pearson_r": 0.2731,
+  "dod_met": false,
+  "transcription": "Buh-buh-buh-buh"
+}
