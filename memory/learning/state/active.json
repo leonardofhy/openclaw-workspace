@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260323-1415",
-    "action": "learn",
-    "summary": "L2-ARCTIC grounding: 24 speakers, 6 L1 groups, per-L1 phoneme substitution patterns noted. Mock AND-frac priors validated (native≈0.65, accented≈0.52-0.57). WER priors for 6 L1 groups established. Q162-Q170 mock design validated."
+    "id": "c-20260323-1615",
+    "action": "skip",
+    "summary": "Build budget exhausted. All 9 READY tasks are build-type (Q162-Q170). Principled skip; reset tomorrow."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
