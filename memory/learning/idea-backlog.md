@@ -201,3 +201,20 @@ Novelty 4, Feasibility 5. Characterize not just the endpoint (AND-frac at final 
 ---
 **Top picks (novelty+feasibility ≥ 8):** I01, I03, I04, I07, I08, I10, I11, I13, I18, I19
 **Note:** IDEATION FREEZE active (12 READY). All ideas held in backlog. Lift when READY < 10 or Leo approves.
+
+## c-20260323-1345 Ideation Cycle (accent bias × AND-gate follow-ups)
+
+Ideas that didn't make queue cut (queue full or N+F < 8):
+
+10. **and_gate_intervention_eval_mock.py** (N=3, F=5, total=8): full eval pipeline connecting Q157+Q162+Q167 — steer AND-frac, measure WER+fairness delta per L1 group
+11. **accent_isolation_mock.py** (N=4, F=5, total=9): Isolate curve shape classification for accented phonemes; expect more plateau-shaped = less audio-grounded
+12. **l2arctic_full_pipeline_mock.py** (N=3, F=4, total=7): end-to-end: L2-ARCTIC utterance → gc(k) → AND-frac per phoneme → FAD score → WER prediction
+13. **gc_whisper_size_accent.py** (N=3, F=4, total=7): does larger Whisper reduce accent AND-frac gap? fairness-via-scale hypothesis
+14. **gsae_accent_boundary_mock.py** (N=3, F=4, total=7): GSAE boundary detector F1 drop for accented phoneme transitions
+15. **temporal_and_gate_drift.py** (N=4, F=4, total=8): AND-frac drift across utterance for accented vs native; does commitment decay faster for accented speakers?
+16. **multi_accent_cluster_mock.py** (N=4, F=4, total=8): ENV-3 style clustering for accented speech; L1 groups cluster by accent strength via AND-frac signature
+17. **vcbench_accent_extension.py** (N=4, F=3, total=7): VLM fairness extension — do visual AND-gate features drop for minority-group images? (cross-modal FAD)
+18. **t5_jailbreak_accent_mock.py** (N=4, F=3, total=7): accent as covert jailbreak vector — accented audio reduces AND-frac → safety probe misfires?
+19. **speaker_aware_gc_mock.py** (N=3, F=3, total=6): gc(k) conditioned on speaker embedding; speaker-ID AND-gate shifts gc_peak
+20. **accent_wer_cascade_mock.py** (N=3, F=5, total=8): cascade mock: AND-frac(accented) → phoneme confusion → WER; quantify each stage's contribution to FAD bias gap
+
