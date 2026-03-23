@@ -145,12 +145,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-gate steerability mock: activation patch to boost AND-frac for high-PPL phonemes → bias correction PoC",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "steer_and_gate_mock.py: add direction vector to SAE feature; AND-frac increases ≥0.15; WER improves on mock",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q158",
