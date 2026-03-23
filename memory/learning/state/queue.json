@@ -109,12 +109,13 @@
       "type": "design",
       "track": "T5",
       "title": "GCBench-14 generalization: t* boundary detector for speaker turns and musical onsets beyond phonemes",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Design doc: extend GCBench-14 to speaker diarization boundaries + musical note onsets; expected F1 transfer > 0.6",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q155",
