@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 4,
+    "build_remaining_today": 3,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-23"
   },
   "stats": {
-    "total_cycles": 266,
+    "total_cycles": 267,
     "total_skips": 46,
     "papers_read_deep": 61,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 551,
     "paper_pitches": 2,
-    "code_artifacts": 109,
+    "code_artifacts": 110,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260323-1115",
+    "id": "c-20260323-1145",
     "action": "build",
-    "summary": "Q157 done: steer_and_gate_mock.py \u2014 PPL-targeted AND-gate direction vector boosts AND-frac +0.252 on high-PPL phonemes, WER proxy -95.7pp; targeted (low-PPL unaffected). PoC validates causal patching approach."
+    "summary": "Q160 done: vcbench_mock.py \u2014 VLM AND/OR gate pipeline. v*=layer10 exact, r(AND-frac,-CHAIR)=0.892. All checks passed."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []

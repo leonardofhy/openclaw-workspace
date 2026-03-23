@@ -183,12 +183,13 @@
       "type": "build",
       "track": "T3",
       "title": "vcbench_mock.py: VLM AND/OR gate pipeline scaffold (mock activations)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Pipeline runs: mock image-patch activations → vc(k) curve → AND-frac at vc_peak → Pearson r with mock CHAIR labels",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q161",

@@ -53,44 +53,68 @@ rng = np.random.default_rng(RNG_SEED)
 print("=== vcbench_mock.py: VLM AND/OR Gate Pipeline ===\n")
 print(f"Config: {N_IMAGES} images, {N_PATCHES} patches, {N_LAYERS} layers, {N_FEATURES} features")
 
-activations = rng.standard_normal((N_IMAGES, N_LAYERS, N_PATCHES, N_FEATURES)).astype(np.float32)
-
-# Inject visual-grounding signal into early-mid layers (layers 4-14 ~ "visual commitment zone")
-# AND-gate features are high-variance patch-specific; OR-gate features are image-mean + noise
 v_star_true = 10  # true visual commitment layer
 
+# Base activations: small noise floor (so signals dominate)
+activations = (rng.standard_normal((N_IMAGES, N_LAYERS, N_PATCHES, N_FEATURES)) * 0.1).astype(np.float32)
+
+# Feature layout:
+#   features 0-63:  AND-gate (image-conditional, high cross-patch variance when grounded)
+#   features 64-127: OR-gate (language prior, low cross-patch variance = image-mean pattern)
+
+# Per-feature amplitude multipliers (uniform [0.3, 1.7]) → smooth threshold crossing curve
+and_amplitudes = rng.uniform(0.3, 1.7, N_FEATURES // 2)  # (64,) per-feature gain
+or_amplitudes = rng.uniform(0.3, 1.7, N_FEATURES // 2)
+
 for img_idx in range(N_IMAGES):
-    # ground truth: images 0-19 are "visually grounded" (high AND-gate), 20-39 are "hallucination-prone"
+    # Grounded images: high AND-gate signal at commitment layers
+    # Hallucination-prone: only OR-gate signal (language priors, no patch specificity)
     is_grounded = img_idx < N_IMAGES // 2
-    signal_strength = 2.0 if is_grounded else 0.5
 
-    for layer in range(max(0, v_star_true - 2), min(N_LAYERS, v_star_true + 3)):
-        # AND-gate features (0-63): patch-specific, high variance across patches
-        patch_specific = rng.standard_normal((N_PATCHES, N_FEATURES // 2)) * signal_strength
-        activations[img_idx, layer, :, :N_FEATURES // 2] += patch_specific
+    for layer in range(N_LAYERS):
+        # Strength envelope: Gaussian peak at v_star_true, width=2 layers
+        layer_strength = np.exp(-0.5 * ((layer - v_star_true) / 2.0) ** 2)
 
-        # OR-gate features (64-127): image-mean (language prior), low patch variance
-        image_mean_signal = rng.standard_normal(N_FEATURES // 2) * (1.0 - signal_strength * 0.3)
-        activations[img_idx, layer, :, N_FEATURES // 2:] += image_mean_signal[None, :]
+        if is_grounded:
+            # AND-gate features: each patch gets a DIFFERENT activation (high cross-patch variance)
+            # Scale = per-feature amplitude * global strength * layer envelope
+            for fi in range(N_FEATURES // 2):
+                patch_vals = rng.standard_normal(N_PATCHES) * 3.0 * layer_strength * and_amplitudes[fi]
+                activations[img_idx, layer, :, fi] += patch_vals.astype(np.float32)
+            # OR-gate features: same activation across all patches (image-mean, low patch variance)
+            or_signal = rng.standard_normal(N_FEATURES // 2) * 0.4
+            activations[img_idx, layer, :, N_FEATURES // 2:] += or_signal[None, :].astype(np.float32)
+        else:
+            # AND-gate features: near-zero patch-specific variance (not using image input)
+            for fi in range(N_FEATURES // 2):
+                same_val = rng.standard_normal() * 0.15
+                activations[img_idx, layer, :, fi] += float(same_val)
+            # OR-gate features: strong image-mean signal (language prior dominant)
+            or_signal = rng.standard_normal(N_FEATURES // 2) * 2.5 * layer_strength * or_amplitudes
+            activations[img_idx, layer, :, N_FEATURES // 2:] += or_signal[None, :].astype(np.float32)
 
 # ──────────────────────────────────────────────
 # 2. AND/OR gate classification per feature per layer
 #    AND-gate: feature variance across patches > threshold (image-conditional)
 #    OR-gate: feature variance across patches ≤ threshold (language-prior)
 # ──────────────────────────────────────────────
-AND_VARIANCE_THRESHOLD = 0.9  # features with cross-patch std > threshold = AND-gate
-
 def compute_and_frac_per_layer(acts_img):
     """
     acts_img: (N_LAYERS, N_PATCHES, N_FEATURES)
-    Returns: (N_LAYERS,) array of AND-frac values
+    Returns: (N_LAYERS,) array of AND-frac (continuous).
+
+    AND-frac = mean cross-patch std of AND-gate features (0-63)
+               / (mean cross-patch std of ALL features + eps)
+    High AND-frac → model relies more on patch-specific (image-conditional) features.
+    Low AND-frac → model relies more on image-mean (language-prior) features.
     """
+    eps = 1e-6
     and_frac = np.zeros(N_LAYERS)
     for layer in range(N_LAYERS):
-        # Variance across patches for each feature
-        patch_variance = acts_img[layer].std(axis=0)  # (N_FEATURES,)
-        and_mask = patch_variance > AND_VARIANCE_THRESHOLD
-        and_frac[layer] = and_mask.mean()
+        patch_std = acts_img[layer].std(axis=0)  # (N_FEATURES,) cross-patch std per feature
+        mean_and = patch_std[:N_FEATURES // 2].mean()   # AND-gate features (image-conditional)
+        mean_all = patch_std.mean()
+        and_frac[layer] = mean_and / (mean_all + eps)
     return and_frac
 
 # ──────────────────────────────────────────────
@@ -172,7 +196,7 @@ for layer in range(0, N_LAYERS, 4):
 print(f"\n[Validation]")
 checks = {
     "v* detected correctly (within ±3 layers)": abs(v_star_detected - v_star_true) <= 3,
-    "Peak AND-frac > 0.4": mean_curve[v_star_detected] > 0.4,
+    "Grounded AND-frac at v* > 0.6": grounded_and_frac.mean() > 0.6,
     "Pearson r(AND-frac, -CHAIR) > 0.6": r_and_chair > 0.6,
     "Delta AND-frac (grounded - halluc) > 0.1": (grounded_and_frac.mean() - halluc_and_frac.mean()) > 0.1,
     "p-value < 0.05": p_val < 0.05,
