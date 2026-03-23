@@ -45,7 +45,7 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260323-1945",
+    "id": "c-20260323-2015",
     "action": "skip",
     "summary": "Build budget 0, all 9 READY tasks build-type, learn budget 4 but no READY learn tasks, ideate 0. Principled skip."
   },
