@@ -96,12 +96,13 @@
       "type": "build",
       "track": "T3",
       "title": "gc(k) x SNR robustness: AND-gate features degrade faster under noise than OR-gate features",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "snr_gate_mock.py: noise at SNR 0-30dB; AND-frac slope > 2x OR-frac slope; links to hearing degradation model",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q154",
