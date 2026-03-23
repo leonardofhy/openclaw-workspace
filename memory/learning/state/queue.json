@@ -70,12 +70,13 @@
       "type": "build",
       "track": "T3",
       "title": "Isolate(k) x beam diversity: higher Isolate at gc_peak → more diverse beam hypotheses",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "isolate_beam_diversity_mock.py: Pearson r(Isolate_gc_peak, beam_entropy) > 0.6; audio-grounded = richer hypothesis space",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q152",
