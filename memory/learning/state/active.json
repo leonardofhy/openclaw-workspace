@@ -33,8 +33,8 @@
     "budget_reset_date": "2026-03-23"
   },
   "stats": {
-    "total_cycles": 269,
-    "total_skips": 46,
+    "total_cycles": 270,
+    "total_skips": 47,
     "papers_read_deep": 61,
     "papers_scanned": 50,
     "research_gaps": 25,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260323-1715",
+    "id": "c-20260323-1915",
     "action": "skip",
-    "summary": "Build budget exhausted (0). All 9 READY tasks are build-type (Q162-Q170). No READY read tasks. Principled skip; reset tomorrow."
+    "summary": "Build budget exhausted (0). All 9 READY tasks build-type. No READY learn/ideate. Principled skip."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
