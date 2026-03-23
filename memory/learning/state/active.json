@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260323-2045",
-    "action": "skip",
-    "summary": "Build budget 0, all 9 READY tasks (Q162-Q170) build-type, learn budget 4 but no READY learn tasks, ideate 0. Principled skip (2nd consecutive)."
+    "id": "c-20260323-2115",
+    "action": "learn",
+    "summary": "KG synthesis: accent\u00d7AND-frac fairness theory. Q162-Q170 cluster now theoretically grounded. Accent = functional silence for undertrained phonemes \u2192 OR-gate fallback \u2192 same hallucination pathway as silence."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
