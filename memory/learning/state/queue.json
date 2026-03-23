@@ -44,12 +44,13 @@
       "type": "build",
       "track": "T3",
       "title": "Silence x t* quantitative threshold: sweep silence_fraction → t* curve; inflection = hallucination risk threshold",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "silence_tstar_threshold.py: sweep silence 0-100%; find inflection point where t* < 4 consistently; quantitative threshold",
       "created": "2026-03-22",
-      "due": null
+      "due": null,
+      "completed": "2026-03-23"
     },
     {
       "id": "Q150",
