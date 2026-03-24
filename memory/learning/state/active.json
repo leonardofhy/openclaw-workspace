@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-1745",
+    "id": "c-20260324-1815",
     "action": "skip",
-    "summary": "Build + ideate budgets exhausted. All 7 READY tasks are build-type. Resuming tomorrow."
+    "summary": "Build budget exhausted (0 remaining). All 7 READY tasks are build/write type. No learn tasks READY. Resuming tomorrow."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
