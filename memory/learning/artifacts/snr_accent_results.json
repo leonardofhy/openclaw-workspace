@@ -1,0 +1,56 @@
+{
+  "task": "Q168",
+  "slope_native": 0.010022,
+  "slope_accented": 0.018778,
+  "slope_ratio_empirical": 1.874,
+  "slope_ratio_parametric": 2.4,
+  "r_native": 0.9997,
+  "r_accented": 0.9771,
+  "accented_collapse_low_snr": 0.0679,
+  "native_low_snr": 0.4688,
+  "dod_pass": true,
+  "snr_curve": [
+    {
+      "snr_db": 0,
+      "native_and_frac": 0.4145,
+      "accented_and_frac": 0.0497,
+      "gap": 0.3649
+    },
+    {
+      "snr_db": 5,
+      "native_and_frac": 0.4703,
+      "accented_and_frac": 0.0492,
+      "gap": 0.4211
+    },
+    {
+      "snr_db": 10,
+      "native_and_frac": 0.5217,
+      "accented_and_frac": 0.1047,
+      "gap": 0.4169
+    },
+    {
+      "snr_db": 15,
+      "native_and_frac": 0.5673,
+      "accented_and_frac": 0.2255,
+      "gap": 0.3418
+    },
+    {
+      "snr_db": 20,
+      "native_and_frac": 0.618,
+      "accented_and_frac": 0.3453,
+      "gap": 0.2727
+    },
+    {
+      "snr_db": 25,
+      "native_and_frac": 0.6713,
+      "accented_and_frac": 0.458,
+      "gap": 0.2133
+    },
+    {
+      "snr_db": 30,
+      "native_and_frac": 0.7161,
+      "accented_and_frac": 0.5732,
+      "gap": 0.1428
+    }
+  ]
+}

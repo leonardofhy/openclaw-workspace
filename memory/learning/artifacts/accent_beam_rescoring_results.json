@@ -1,0 +1,84 @@
+{
+  "task": "Q170",
+  "baseline": {
+    "wer_native": 0.025000000000000022,
+    "wer_accented": 0.575,
+    "wer_gap": 0.5499999999999999,
+    "afg": 0.3854209798497526
+  },
+  "best_lambda": 5.0,
+  "rescored": {
+    "wer_native": 0.0,
+    "wer_accented": 0.0,
+    "wer_gap": 0.0,
+    "gap_reduction_pct": 100.0,
+    "afg": 0.2987757219903081
+  },
+  "r_delta_and_frac_vs_correct": 0.9486951655596254,
+  "lambda_sweep": [
+    {
+      "lambda": 0.0,
+      "wer_native": 0.025000000000000022,
+      "wer_accented": 0.575,
+      "wer_gap": 0.5499999999999999,
+      "gap_reduction_pct": 0.0
+    },
+    {
+      "lambda": 0.2,
+      "wer_native": 0.01666666666666672,
+      "wer_accented": 0.525,
+      "wer_gap": 0.5083333333333333,
+      "gap_reduction_pct": 7.575757575757571
+    },
+    {
+      "lambda": 0.5,
+      "wer_native": 0.01666666666666672,
+      "wer_accented": 0.44999999999999996,
+      "wer_gap": 0.43333333333333324,
+      "gap_reduction_pct": 21.21212121212122
+    },
+    {
+      "lambda": 1.0,
+      "wer_native": 0.01666666666666672,
+      "wer_accented": 0.33333333333333337,
+      "wer_gap": 0.31666666666666665,
+      "gap_reduction_pct": 42.42424242424242
+    },
+    {
+      "lambda": 1.5,
+      "wer_native": 0.008333333333333304,
+      "wer_accented": 0.2583333333333333,
+      "wer_gap": 0.25,
+      "gap_reduction_pct": 54.54545454545454
+    },
+    {
+      "lambda": 2.0,
+      "wer_native": 0.008333333333333304,
+      "wer_accented": 0.19166666666666665,
+      "wer_gap": 0.18333333333333335,
+      "gap_reduction_pct": 66.66666666666666
+    },
+    {
+      "lambda": 3.0,
+      "wer_native": 0.0,
+      "wer_accented": 0.033333333333333326,
+      "wer_gap": 0.033333333333333326,
+      "gap_reduction_pct": 93.93939393939394
+    },
+    {
+      "lambda": 4.0,
+      "wer_native": 0.0,
+      "wer_accented": 0.01666666666666672,
+      "wer_gap": 0.01666666666666672,
+      "gap_reduction_pct": 96.96969696969695
+    },
+    {
+      "lambda": 5.0,
+      "wer_native": 0.0,
+      "wer_accented": 0.0,
+      "wer_gap": 0.0,
+      "gap_reduction_pct": 100.0
+    }
+  ],
+  "dod_pass": true
+}

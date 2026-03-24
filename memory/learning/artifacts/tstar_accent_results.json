@@ -1,0 +1,86 @@
+{
+  "script": "tstar_accent_mock.py",
+  "task": "Q164",
+  "results": [
+    {
+      "group": "native",
+      "accent_score": 0.0,
+      "mean_tstar": 7.91,
+      "std_tstar": 1.3754635582231902,
+      "p_hallucination": 0.0,
+      "p95_tstar": 10.0
+    },
+    {
+      "group": "native",
+      "accent_score": 0.3,
+      "mean_tstar": 6.095,
+      "std_tstar": 1.6112029667301386,
+      "p_hallucination": 0.045,
+      "p95_tstar": 9.0
+    },
+    {
+      "group": "native",
+      "accent_score": 0.6,
+      "mean_tstar": 3.84,
+      "std_tstar": 1.9860513588525348,
+      "p_hallucination": 0.46,
+      "p95_tstar": 7.0
+    },
+    {
+      "group": "native",
+      "accent_score": 1.0,
+      "mean_tstar": 1.665,
+      "std_tstar": 1.88222607568804,
+      "p_hallucination": 0.82,
+      "p95_tstar": 5.0
+    },
+    {
+      "group": "ARA",
+      "accent_score": 0.75,
+      "mean_tstar": 2.53,
+      "std_tstar": 1.8705881428042892,
+      "p_hallucination": 0.72,
+      "p95_tstar": 6.0
+    },
+    {
+      "group": "HIN",
+      "accent_score": 0.6,
+      "mean_tstar": 4.085,
+      "std_tstar": 2.0044388242099083,
+      "p_hallucination": 0.395,
+      "p95_tstar": 8.0
+    },
+    {
+      "group": "KOR",
+      "accent_score": 0.7,
+      "mean_tstar": 2.925,
+      "std_tstar": 1.8679868843222642,
+      "p_hallucination": 0.625,
+      "p95_tstar": 6.0
+    },
+    {
+      "group": "MAN",
+      "accent_score": 0.65,
+      "mean_tstar": 3.505,
+      "std_tstar": 1.9209307639787543,
+      "p_hallucination": 0.525,
+      "p95_tstar": 7.0
+    },
+    {
+      "group": "SPA",
+      "accent_score": 0.6,
+      "mean_tstar": 3.81,
+      "std_tstar": 1.8449661243502549,
+      "p_hallucination": 0.44,
+      "p95_tstar": 7.0
+    },
+    {
+      "group": "VIE",
+      "accent_score": 0.8,
+      "mean_tstar": 2.345,
+      "std_tstar": 1.7905236664171742,
+      "p_hallucination": 0.755,
+      "p95_tstar": 6.0
+    }
+  ]
+}
