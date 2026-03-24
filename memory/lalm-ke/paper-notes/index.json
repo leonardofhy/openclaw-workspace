@@ -1,0 +1,49 @@
+{
+  "papers": {
+    "2202.05262": {
+      "arxiv_id": "2202.05262",
+      "title": "Locating and Editing Factual Associations in GPT",
+      "authors": "Kevin Meng, David Bau, Alex Andonian, Yonatan Belinkov",
+      "date": "2022-02-10",
+      "read_date": "2026-03-24",
+      "scout_score": 0.0,
+      "relevance": 2,
+      "note_path": "/Users/leonardo/.openclaw/workspace/memory/lalm-ke/paper-notes/2202.05262.md",
+      "source": "huggingface_html"
+    },
+    "2603.20795": {
+      "arxiv_id": "2603.20795",
+      "title": "The Anatomy of an Edit: Mechanism-Guided Activation Steering for Knowledge Editing",
+      "authors": "Yuan Cao, Mingyang Wang, Hinrich Schütze",
+      "date": "2026-03-21",
+      "read_date": "2026-03-24",
+      "scout_score": 36.0,
+      "relevance": 2,
+      "note_path": "/Users/leonardo/.openclaw/workspace/memory/lalm-ke/paper-notes/2603.20795.md",
+      "source": "arxiv_abstract_only"
+    },
+    "2603.21013": {
+      "arxiv_id": "2603.21013",
+      "title": "A Framework for Low-Latency, LLM-driven Multimodal Interaction on the Pepper Robot",
+      "authors": "Erich Studerus, Vivienne Jia Zhong, Stephan Vonschallen",
+      "date": "2026-01-09",
+      "read_date": "2026-03-24",
+      "scout_score": 28.0,
+      "relevance": 0,
+      "note_path": "/Users/leonardo/.openclaw/workspace/memory/lalm-ke/paper-notes/2603.21013.md",
+      "source": "arxiv_abstract_only"
+    },
+    "2601.12494": {
+      "arxiv_id": "2601.12494",
+      "title": "Multi-Task Instruction Tuning via Data Scheduling for Low-Resource Arabic AudioLLMs",
+      "authors": "Hunzalah Hassan Bhatti, Firoj Alam, Shammur Absar Chowdhury",
+      "date": "2026-01-18",
+      "read_date": "2026-03-24",
+      "scout_score": 26.0,
+      "relevance": 2,
+      "note_path": "/Users/leonardo/.openclaw/workspace/memory/lalm-ke/paper-notes/2601.12494.md",
+      "source": "huggingface_html"
+    }
+  },
+  "last_updated": "2026-03-24T15:21:44.531238+08:00"
+}

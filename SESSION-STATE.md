@@ -8,6 +8,8 @@
 主力轉向 LALM Knowledge Editing 研究。Leo 指示：每天找相關論文、讀、報告。需要設計完整的研究追蹤流程。
 
 ## Recent Context
+- [2026-03-24 15:11] CC 已裝 Superpowers v5.0.5 — 完整軟體開發 workflow（brainstorming → writing-plans → subagent-driven-development → TDD → code review → finish branch）
+- [2026-03-24 14:59] 主力轉向 LALM Knowledge Editing 研究，框架已建立（memory/lalm-ke/）
 - [2026-03-20 14:35] 週五 15:00「第二階段專題（奕豪）」永久取消
 - [2026-03-20 14:36] 週五 15:00「教學怪物小組討論」本週有，但是暫時性的（非固定）
 - [2026-03-20 16:29] AudioMatters 暫時取消上傳 arXiv，需額外一週做驗證工作（智凱哥 code review 後決定）
