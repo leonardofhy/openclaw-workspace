@@ -238,12 +238,13 @@
       "type": "build",
       "track": "T3",
       "title": "tstar_accent_mock.py: accented speech induces earlier t* (hallucination risk); accent-fraction → t* shift curve",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "mock shows accent_fraction correlates with t* < 4; slope > 0.8; links FAD bias to hallucination pathway",
       "created": "2026-03-23",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q165",

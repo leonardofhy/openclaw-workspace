@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 8,
+    "build_remaining_today": 7,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-24"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-0845",
+    "id": "c-20260324-0915",
     "action": "build",
-    "summary": "phoneme_confusion_l2_mock.py: L2 confusion\u00d7AND-frac r=-0.96 (6/6 L1 groups r<-0.83); L2 AND-frac 0.15 vs native 0.30 (delta 0.14). Q130 native\u2192L2 accent bias chain confirmed."
+    "summary": "tstar_accent_mock.py: accented speech \u2192 t* leftward shift; VIE \u0394t*=-5.57 layers; r(accent,t*)=-0.998; r(confusion,\u0394t*)=-0.90; 4/4 DOD pass."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
