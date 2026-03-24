@@ -212,24 +212,26 @@
       "type": "build",
       "track": "T3",
       "title": "accent_and_frac_mock.py: mock L2-ARCTIC phoneme pairs → AND-frac per category → validate delta hypothesis",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "mock script runs; AND-frac(native) > AND-frac(accented) delta >= 0.08; per-L1 breakdown table; Pearson r(AND-frac, mock WER) < -0.5",
       "created": "2026-03-23",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q163",
       "type": "build",
       "track": "T3",
       "title": "phoneme_confusion_l2_mock.py: extend Q130 confusion×gate analysis to L2-ARCTIC accent groups",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "L2 phoneme pairs show higher confusion AND lower AND-frac vs native pairs; r(confusion_rate, AND-frac) < -0.55 for accent groups",
       "created": "2026-03-23",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q164",

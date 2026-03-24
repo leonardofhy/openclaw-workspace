@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
-    "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
-    "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-23"
+    "learn_remaining_today": 5,
+    "build_remaining_today": 8,
+    "reflect_remaining_today": 2,
+    "ideate_remaining_today": 1,
+    "budget_reset_date": "2026-03-24"
   },
   "stats": {
-    "total_cycles": 271,
+    "total_cycles": 273,
     "total_skips": 48,
     "papers_read_deep": 61,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 571,
     "paper_pitches": 2,
-    "code_artifacts": 112,
+    "code_artifacts": 114,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260323-2215",
-    "action": "reflect",
-    "summary": "End-of-day digest: 11 tasks completed, accent\u00d7AND-frac pathway theorized. Q162-Q170 queued for tomorrow."
+    "id": "c-20260324-0845",
+    "action": "build",
+    "summary": "phoneme_confusion_l2_mock.py: L2 confusion\u00d7AND-frac r=-0.96 (6/6 L1 groups r<-0.83); L2 AND-frac 0.15 vs native 0.30 (delta 0.14). Q130 native\u2192L2 accent bias chain confirmed."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
