@@ -316,12 +316,13 @@
       "type": "build",
       "track": "T3",
       "title": "accent_beam_rescoring_mock.py: AND-frac as beam rescoring signal for accented speech; fairness-aware rescoring",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "rescoring improves mock WER gap between native/accented by >= 30%; AFG reduces after rescoring",
       "created": "2026-03-23",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     }
   ],
   "archived_count": 100,
