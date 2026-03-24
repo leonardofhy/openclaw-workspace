@@ -73,13 +73,14 @@ _fake_shared = type(sys)("shared")
 _fake_shared_jsonl = type(sys)("shared.jsonl_store")
 _fake_shared_jsonl.JsonlStore = _FakeJsonlStore
 _fake_shared.jsonl_store = _fake_shared_jsonl
-sys.modules.setdefault("shared", _fake_shared)
-sys.modules.setdefault("shared.jsonl_store", _fake_shared_jsonl)
+sys.modules["shared"] = _fake_shared
+sys.modules["shared.jsonl_store"] = _fake_shared_jsonl
 
 # hf_research.py imports "from jsonl_store import JsonlStore" (bare module name)
+# Force-set (not setdefault) to override any prior import by other test modules.
 _fake_jsonl = type(sys)("jsonl_store")
 _fake_jsonl.JsonlStore = _FakeJsonlStore
-sys.modules.setdefault("jsonl_store", _fake_jsonl)
+sys.modules["jsonl_store"] = _fake_jsonl
 
 import importlib
 import hf_research
