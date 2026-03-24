@@ -2,10 +2,10 @@
 
 > WAL target. Write here BEFORE responding when critical details appear.
 
-**Last Updated:** 2026-03-21 21:53
+**Last Updated:** 2026-03-24 14:59
 
 ## Current Task
-Idle. Leo reviewed funding-hunter, registered as skill. claude-usage also registered.
+主力轉向 LALM Knowledge Editing 研究。Leo 指示：每天找相關論文、讀、報告。需要設計完整的研究追蹤流程。
 
 ## Recent Context
 - [2026-03-20 14:35] 週五 15:00「第二階段專題（奕豪）」永久取消
