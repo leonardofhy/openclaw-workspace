@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 5,
+    "build_remaining_today": 4,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-24"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 571,
     "paper_pitches": 2,
-    "code_artifacts": 115,
+    "code_artifacts": 116,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-1015",
+    "id": "c-20260324-1045",
     "action": "build",
-    "summary": "attn_entropy_accent_mock.py: commitment heads H00/H07/H01 \u0394entropy +0.49/+0.54/+0.49 nats (accented > native); specificity 8.4\u00d7 vs prior heads. 2/2 DoD PASS."
+    "summary": "and_gate_fairness_metric.py: AFG per 6 L1 groups (KOR 0.126, ARA 0.124, VIE 0.102); r(AFG, WER_gap)=-0.80; 6/6 L1 groups AFG>=0.08. 2/2 DoD PASS."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
