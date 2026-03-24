@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 6,
+    "build_remaining_today": 5,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-24"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-0945",
+    "id": "c-20260324-1015",
     "action": "build",
-    "summary": "beam_diversity_accent_mock.py: r(native)=0.852 vs r(accented)=0.184; delta_r=0.668; accented beam entropy decouples from Isolate(k) \u2192 collapsed hypothesis space (text prior dominates). 2/2 DOD pass."
+    "summary": "attn_entropy_accent_mock.py: commitment heads H00/H07/H01 \u0394entropy +0.49/+0.54/+0.49 nats (accented > native); specificity 8.4\u00d7 vs prior heads. 2/2 DoD PASS."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
