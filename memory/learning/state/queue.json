@@ -56,12 +56,13 @@
       "type": "write",
       "track": "T5",
       "title": "MATS Research Task Proposal v1: audio jailbreak detection via AND-frac",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Proposal saved to memory/learning/pitches/mats-proposal-v1.md; 400+ words; covers motivation/method/results/timeline",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q162",
