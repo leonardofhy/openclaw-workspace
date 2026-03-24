@@ -290,12 +290,13 @@
       "type": "build",
       "track": "T3",
       "title": "snr_accent_interaction_mock.py: compound degradation — accented phonemes lose AND-frac 2x faster under noise than native",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "SNR 0-30dB sweep; accented AND-frac slope >= 2x native slope; links noise robustness to accent fairness",
       "created": "2026-03-23",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q169",
