@@ -158,6 +158,30 @@
       "definition_of_done": "mats-cover-letter.md in pitches/; 300+ words; connects to broader mech interp safety",
       "created": "2026-03-24",
       "due": null
+    },
+    {
+      "id": "Q170",
+      "type": "read",
+      "track": "T3",
+      "title": "News: New RFP on Interpretability from Schmidt Sciences",
+      "status": "blocked",
+      "priority": 3,
+      "blocked_by": "AlignmentForum Vercel 429 — consistently blocked",
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/Pc789vx2oHgEXYZZH/new-rfp-on-interpretabili",
+      "created": "2026-03-24",
+      "due": null
+    },
+    {
+      "id": "Q171",
+      "type": "read",
+      "track": "T3",
+      "title": "News: Censored LLMs as a Natural Testbed for Secret Knowledge Elic",
+      "status": "blocked",
+      "priority": 3,
+      "blocked_by": "AlignmentForum Vercel 429 — consistently blocked",
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natura",
+      "created": "2026-03-24",
+      "due": null
     }
   ],
   "archived_count": 100,
