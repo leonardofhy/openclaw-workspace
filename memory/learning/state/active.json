@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 3,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-24"
   },
   "stats": {
-    "total_cycles": 275,
+    "total_cycles": 276,
     "total_skips": 48,
     "papers_read_deep": 61,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 571,
     "paper_pitches": 2,
-    "code_artifacts": 117,
+    "code_artifacts": 118,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-1115",
+    "id": "c-20260324-1145",
     "action": "build",
-    "summary": "snr_accent_interaction_mock.py: parametric slope ratio 2.40x (accented degrades faster under noise); at SNR≤10dB accented AND-frac collapses to 0.07 vs 0.47 native; WER gap widens 5x at low SNR. 2/2 DoD PASS."
+    "summary": "hallucination_accent_mock.py: r(accent,hall)=+0.93; AND-frac mediates 96% of the accent\u2192hallucination link; accent_level=0\u21920.8 escalates hall_steps from 0\u219215.04. 3/3 DoD PASS."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []

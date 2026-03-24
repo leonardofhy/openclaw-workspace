@@ -1,0 +1,91 @@
+{
+  "script": "hallucination_accent_mock.py",
+  "task": "Q169",
+  "sweep_summary": [
+    {
+      "accent_level": 0.0,
+      "mean_hallucination_steps": 0.0,
+      "mean_and_frac_mediator": 0.7735923036328651
+    },
+    {
+      "accent_level": 0.2,
+      "mean_hallucination_steps": 0.0,
+      "mean_and_frac_mediator": 0.6360595933830017
+    },
+    {
+      "accent_level": 0.4,
+      "mean_hallucination_steps": 0.585,
+      "mean_and_frac_mediator": 0.5182823073479308
+    },
+    {
+      "accent_level": 0.6,
+      "mean_hallucination_steps": 6.8,
+      "mean_and_frac_mediator": 0.4005726708225675
+    },
+    {
+      "accent_level": 0.8,
+      "mean_hallucination_steps": 15.01,
+      "mean_and_frac_mediator": 0.2986024782244245
+    },
+    {
+      "accent_level": 1.0,
+      "mean_hallucination_steps": 18.775,
+      "mean_and_frac_mediator": 0.19986143598658543
+    }
+  ],
+  "l1_summary": [
+    {
+      "group": "native",
+      "accent_level": 0.0,
+      "mean_hallucination_steps": 0.0,
+      "mean_and_frac_mediator": 0.7714988211360216
+    },
+    {
+      "group": "HIN",
+      "accent_level": 0.6,
+      "mean_hallucination_steps": 6.81,
+      "mean_and_frac_mediator": 0.4025957609804449
+    },
+    {
+      "group": "SPA",
+      "accent_level": 0.6,
+      "mean_hallucination_steps": 6.725,
+      "mean_and_frac_mediator": 0.3990417998871118
+    },
+    {
+      "group": "MAN",
+      "accent_level": 0.65,
+      "mean_hallucination_steps": 9.205,
+      "mean_and_frac_mediator": 0.3739696748182641
+    },
+    {
+      "group": "KOR",
+      "accent_level": 0.7,
+      "mean_hallucination_steps": 11.3,
+      "mean_and_frac_mediator": 0.35079488800521164
+    },
+    {
+      "group": "ARA",
+      "accent_level": 0.75,
+      "mean_hallucination_steps": 13.56,
+      "mean_and_frac_mediator": 0.3144008751093628
+    },
+    {
+      "group": "VIE",
+      "accent_level": 0.8,
+      "mean_hallucination_steps": 15.035,
+      "mean_and_frac_mediator": 0.2953860775828605
+    }
+  ],
+  "mediation": {
+    "r_XY (accent\u2192hall)": 0.9259015139380046,
+    "r_XM (accent\u2192andfrac)": -0.9854078256233377,
+    "r_MY (andfrac\u2192hall)": -0.9021814710464883,
+    "path_a (X\u2192M slope)": -0.5712479012179136,
+    "path_b (M\u2192Y slope)": -34.845742645298635,
+    "path_c (total X\u2192Y)": 20.73142851073316,
+    "path_c_prime (direct)": 28.506408727127173,
+    "indirect (a*b)": 19.905557352506392,
+    "mediation_pct": 96.01633259975617
+  }
+}

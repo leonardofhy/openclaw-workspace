@@ -303,12 +303,13 @@
       "type": "build",
       "track": "T3",
       "title": "hallucination_accent_mock.py: accented phonemes behave like silence — AND-frac drop → hallucination steps increase",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "mock: accent_level correlates with hallucination_steps; r < -0.6; AND-frac mediates the effect (mediation analysis mock)",
       "created": "2026-03-23",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q170",
