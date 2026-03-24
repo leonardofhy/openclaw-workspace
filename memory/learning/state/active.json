@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 7,
+    "build_remaining_today": 6,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-24"
   },
   "stats": {
-    "total_cycles": 273,
+    "total_cycles": 274,
     "total_skips": 48,
     "papers_read_deep": 61,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 571,
     "paper_pitches": 2,
-    "code_artifacts": 114,
+    "code_artifacts": 115,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-0915",
+    "id": "c-20260324-0945",
     "action": "build",
-    "summary": "tstar_accent_mock.py: accented speech \u2192 t* leftward shift; VIE \u0394t*=-5.57 layers; r(accent,t*)=-0.998; r(confusion,\u0394t*)=-0.90; 4/4 DOD pass."
+    "summary": "beam_diversity_accent_mock.py: r(native)=0.852 vs r(accented)=0.184; delta_r=0.668; accented beam entropy decouples from Isolate(k) \u2192 collapsed hypothesis space (text prior dominates). 2/2 DOD pass."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []

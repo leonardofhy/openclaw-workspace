@@ -251,12 +251,13 @@
       "type": "build",
       "track": "T3",
       "title": "beam_diversity_accent_mock.py: Isolate(k) at gc_peak lower for accented phonemes → narrower beam hypotheses",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Pearson r(Isolate_gc_peak, beam_entropy) native > accented delta >= 0.15; accented = collapsed hypothesis space",
       "created": "2026-03-23",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q166",
