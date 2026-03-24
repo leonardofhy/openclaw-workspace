@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-2215",
-    "action": "reflect",
-    "summary": "Daily reflect: 4 artifacts shipped (accent_beam_mock, Paper A intro, exp-spec-v2, mats-proposal). Build budget exhausted mid-afternoon \u2192 10 skips. Propose separate Tier-0 writing budget to Leo."
+    "id": "c-20260324-2245",
+    "action": "skip",
+    "summary": "Principled skip: build budget 0, all READY tasks build/write type, no READY learn tasks, ideate 0, reflect done."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
