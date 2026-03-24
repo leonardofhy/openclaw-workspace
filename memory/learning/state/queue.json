@@ -43,12 +43,13 @@
       "type": "write",
       "track": "T3",
       "title": "Paper A Intro Draft: 1000-word introduction for Listen vs Guess",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "800+ word draft saved to memory/learning/pitches/paper-a-intro.md; covers motivation, method, key results, contributions",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q161",
