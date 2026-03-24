@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-2045",
+    "id": "c-20260324-2115",
     "action": "skip",
-    "summary": "Build budget=0, no READY learn/ideate tasks, reflect not triggered. 7 READY build tasks await tomorrow."
+    "summary": "Build budget=0, no READY learn tasks, ideate=0, reflect not triggered. 7 READY build tasks await tomorrow."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
