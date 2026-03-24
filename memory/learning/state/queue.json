@@ -56,12 +56,13 @@
       "type": "write",
       "track": "T5",
       "title": "MATS Research Task Proposal v1: audio jailbreak detection via AND-frac",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Proposal saved to memory/learning/pitches/mats-proposal-v1.md; 400+ words; covers motivation/method/results/timeline",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q162",
@@ -128,12 +129,13 @@
       "type": "design",
       "track": "T3",
       "title": "T3 Experiment Spec v2: update with accent fairness + beam rescoring + CPU/GPU split",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "experiment-spec-v2.md in pitches/; covers CPU (doable now) vs GPU scale-up; ready for Leo review",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q168",
@@ -156,6 +158,30 @@
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "mats-cover-letter.md in pitches/; 300+ words; connects to broader mech interp safety",
+      "created": "2026-03-24",
+      "due": null
+    },
+    {
+      "id": "Q170",
+      "type": "read",
+      "track": "T3",
+      "title": "News: New RFP on Interpretability from Schmidt Sciences",
+      "status": "blocked",
+      "priority": 3,
+      "blocked_by": "AlignmentForum Vercel 429 — consistently blocked",
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/Pc789vx2oHgEXYZZH/new-rfp-on-interpretabili",
+      "created": "2026-03-24",
+      "due": null
+    },
+    {
+      "id": "Q171",
+      "type": "read",
+      "track": "T3",
+      "title": "News: Censored LLMs as a Natural Testbed for Secret Knowledge Elic",
+      "status": "blocked",
+      "priority": 3,
+      "blocked_by": "AlignmentForum Vercel 429 — consistently blocked",
+      "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natura",
       "created": "2026-03-24",
       "due": null
     }
