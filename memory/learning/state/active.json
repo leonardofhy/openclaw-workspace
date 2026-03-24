@@ -28,7 +28,7 @@
   "budgets": {
     "learn_remaining_today": 5,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
+    "reflect_remaining_today": 0,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-24"
   },
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-2245",
-    "action": "skip",
-    "summary": "Principled skip: build budget 0, all READY tasks build/write type, no READY learn tasks, ideate 0, reflect done."
+    "id": "c-20260324-2315",
+    "action": "reflect",
+    "summary": "End-of-day digest. Build budget 0. 7 READY tasks for tomorrow. Experiment spec ready \u2014 need Leo approval for execute phase."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
