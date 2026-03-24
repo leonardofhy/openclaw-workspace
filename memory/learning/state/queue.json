@@ -128,12 +128,13 @@
       "type": "design",
       "track": "T3",
       "title": "T3 Experiment Spec v2: update with accent fairness + beam rescoring + CPU/GPU split",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "experiment-spec-v2.md in pitches/; covers CPU (doable now) vs GPU scale-up; ready for Leo review",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-24"
     },
     {
       "id": "Q168",

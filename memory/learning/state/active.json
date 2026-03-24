@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260324-1415",
-    "action": "skip",
-    "summary": "Build budget=0. READY read tasks (Q170, Q171) blocked by AlignmentForum Vercel 429. Marked both as blocked. No actionable tasks remain until build budget resets tomorrow."
+    "id": "c-20260324-1445",
+    "action": "plan",
+    "summary": "Wrote experiment-spec-v2.md: T3 spec updated with accent fairness, beam rescoring, CPU/GPU split. Fulfills experiment_spec_ready_T3 exit criterion. Awaiting Leo GPU approval."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
