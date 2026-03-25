@@ -69,12 +69,13 @@
       "type": "build",
       "track": "T5",
       "title": "Audio Jailbreak AND-frac Mock: jailbreak audio shows OR-gate collapse",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "audio_jailbreak_andfrac_mock.py passes: AND-frac < 0.4 jailbreak vs > 0.6 benign; r(jailbreak, AND-frac) < -0.5",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-25"
     },
     {
       "id": "Q163",
