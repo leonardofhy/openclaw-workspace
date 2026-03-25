@@ -94,12 +94,13 @@
       "type": "write",
       "track": "T3",
       "title": "Paper A Results Table: synthesize Q148-Q170 into LaTeX table",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "LaTeX table saved in pitches/paper-a-results-table.tex; all mock experiments represented",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-25"
     },
     {
       "id": "Q165",
