@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -35,7 +35,7 @@
   "stats": {
     "total_cycles": 285,
     "total_skips": 50,
-    "papers_read_deep": 61,
+    "papers_read_deep": 62,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 591,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260325-2015",
+    "id": "c-20260325-2045",
     "action": "learn",
-    "summary": "Q174 prep: synthesized layer-wise probing methodology. Probe acc peaks at L* (AND-frac transition). KG note + cycle file written. Q174 build ready."
+    "summary": "Q175 prep: AND-frac as conformal nonconformity score. step-wise AND-frac \u2192 word-level uncertainty. CP calibration build plan ready."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
