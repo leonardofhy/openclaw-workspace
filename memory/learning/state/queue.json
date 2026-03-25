@@ -33,7 +33,7 @@
       "title": "News: Meta's Omnilingual MT for 1,600 Languages",
       "status": "blocked",
       "priority": 3,
-      "blocked_by": "ai.meta.com auth wall — cannot access paper without Meta login",
+      "blocked_by": "ai.meta.com auth wall \u2014 cannot access paper without Meta login",
       "definition_of_done": "Read and note key insights. Source: https://ai.meta.com/research/publications/omnilingual-mt-machine-translation-for",
       "created": "2026-03-22",
       "due": null
@@ -85,7 +85,7 @@
       "status": "done",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "commitment_head_ablation_mock.py: hallucination rate increases ≥20% when commitment heads ablated; 2/2 DoD pass",
+      "definition_of_done": "commitment_head_ablation_mock.py: hallucination rate increases \u226520% when commitment heads ablated; 2/2 DoD pass",
       "created": "2026-03-24",
       "due": null,
       "completed": "2026-03-25"
@@ -111,7 +111,7 @@
       "status": "done",
       "priority": 1,
       "blocked_by": null,
-      "definition_of_done": "Abstract saved in pitches/paper-a-abstract.md; covers AND-gate discovery + fairness + intervention; 150±20 words",
+      "definition_of_done": "Abstract saved in pitches/paper-a-abstract.md; covers AND-gate discovery + fairness + intervention; 150\u00b120 words",
       "created": "2026-03-24",
       "due": null,
       "completed": "2026-03-25"
@@ -124,7 +124,7 @@
       "status": "done",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "real_steerability.py runs on CPU on 5 real samples; AND-frac increases ≥0.05 after patch; 3/5 pass",
+      "definition_of_done": "real_steerability.py runs on CPU on 5 real samples; AND-frac increases \u22650.05 after patch; 3/5 pass",
       "created": "2026-03-24",
       "due": null,
       "completed": "2026-03-25"
@@ -175,7 +175,7 @@
       "title": "News: New RFP on Interpretability from Schmidt Sciences",
       "status": "blocked",
       "priority": 3,
-      "blocked_by": "AlignmentForum Vercel 429 — consistently blocked",
+      "blocked_by": "AlignmentForum Vercel 429 \u2014 consistently blocked",
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/Pc789vx2oHgEXYZZH/new-rfp-on-interpretabili",
       "created": "2026-03-24",
       "due": null
@@ -187,7 +187,7 @@
       "title": "News: Censored LLMs as a Natural Testbed for Secret Knowledge Elic",
       "status": "blocked",
       "priority": 3,
-      "blocked_by": "AlignmentForum Vercel 429 — consistently blocked",
+      "blocked_by": "AlignmentForum Vercel 429 \u2014 consistently blocked",
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natura",
       "created": "2026-03-24",
       "due": null
@@ -197,12 +197,14 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac Beam Rescoring on Real L2-ARCTIC",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
-      "definition_of_done": "Port accent_beam_rescoring_mock.py to real L2-ARCTIC. Fairness-aware beam (λ=1.0) vs standard. Paper A table.",
+      "definition_of_done": "Port accent_beam_rescoring_mock.py to real L2-ARCTIC. Fairness-aware beam (\u03bb=1.0) vs standard. Paper A table.",
       "created": "2026-03-25",
-      "due": null
+      "due": null,
+      "completed": "2026-03-25",
+      "notes": "Superseded by Q181 (multi-step rollout). AND-frac saturates in single-step SOT proxy with synthetic audio."
     },
     {
       "id": "Q173",
@@ -212,7 +214,7 @@
       "status": "done",
       "priority": 3,
       "blocked_by": null,
-      "definition_of_done": "Logistic probe on commitment-head entropy → hallucination prediction. Compare vs perplexity/decode-confidence baselines.",
+      "definition_of_done": "Logistic probe on commitment-head entropy \u2192 hallucination prediction. Compare vs perplexity/decode-confidence baselines.",
       "created": "2026-03-25",
       "due": null,
       "completed": "2026-03-25"
@@ -225,7 +227,7 @@
       "status": "ready",
       "priority": 3,
       "blocked_by": null,
-      "definition_of_done": "Linear probes at each layer 0→L* for Whisper. Profile matches AND-frac transition. CPU, L2-ARCTIC.",
+      "definition_of_done": "Linear probes at each layer 0\u2192L* for Whisper. Profile matches AND-frac transition. CPU, L2-ARCTIC.",
       "created": "2026-03-25",
       "due": null
     },
@@ -261,7 +263,7 @@
       "status": "ready",
       "priority": 3,
       "blocked_by": null,
-      "definition_of_done": "5 attack categories × 10 prompts × 3 models benchmark + eval harness for audio jailbreak research.",
+      "definition_of_done": "5 attack categories \u00d7 10 prompts \u00d7 3 models benchmark + eval harness for audio jailbreak research.",
       "created": "2026-03-25",
       "due": null
     },
