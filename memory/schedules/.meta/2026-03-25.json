@@ -1,0 +1,57 @@
+{
+  "schema": "daily-scheduler/meta-v2",
+  "date": "2026-03-25",
+  "gcal": {
+    "events": {
+      "P-2503-01": {
+        "gcal_event_id": "9a40kva0dfne6jq2spn7hcg194",
+        "last_synced_hash": "ac750fd0b29a77c8604cd4a51c25da5cd10d71d0",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-2503-02": {
+        "gcal_event_id": "86mm0higr74rggkv2drmqkv1b8",
+        "last_synced_hash": "fc9b6ea937f3552d42165bc103067effcf21faa3",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-2503-05": {
+        "gcal_event_id": "979f4aqlgam1cpvdsaq8m69aoo",
+        "last_synced_hash": "950a6baaa051aacf05585eea7fac891500b3757a",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-2503-06": {
+        "gcal_event_id": "9odq8e1jpmksa4raugsbqgnees",
+        "last_synced_hash": "5ccd8943cd3f42da3d8fe78cb6399707e88fe912",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-2503-08": {
+        "gcal_event_id": "g9nj0pfg8bncb0vam2ktb2s3og",
+        "last_synced_hash": "11d4824a3940f97b978ccd467b95aee0a22a28ef",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-2503-09": {
+        "gcal_event_id": "pf6r0mllu2h2tf3htgdfarb8ps",
+        "last_synced_hash": "c4fdfed5c1b00a5479ceae3fa9ef36a90e9a7298",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-2503-10": {
+        "gcal_event_id": "o9cbjgrd6doife3qese3tct48k",
+        "last_synced_hash": "db0f6b46a35e3e7001348d2a07c70ec6d550ba24",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      }
+    }
+  }
+}
