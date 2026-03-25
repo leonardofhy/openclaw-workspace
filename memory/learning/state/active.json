@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260325-1959",
-    "action": "build",
-    "summary": "Q172 PARTIAL: AND-frac saturates at ~1.0 in single-step SOT proxy for synthetic audio. H3 gap ❌, WER reduction ❌, AFG ✅. Superseded by Q181 (done). Build budget exhausted."
+    "id": "c-20260325-2015",
+    "action": "learn",
+    "summary": "Q174 prep: synthesized layer-wise probing methodology. Probe acc peaks at L* (AND-frac transition). KG note + cycle file written. Q174 build ready."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
