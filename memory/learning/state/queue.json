@@ -106,12 +106,13 @@
       "type": "write",
       "track": "T3",
       "title": "Paper A Abstract Draft: 150-word abstract for Listen vs Guess",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Abstract saved in pitches/paper-a-abstract.md; covers AND-gate discovery + fairness + intervention; 150±20 words",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-25"
     },
     {
       "id": "Q166",
