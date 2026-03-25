@@ -121,12 +121,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-gate Steerability Real Audio: port Q157 mock to real Whisper-base on L2-ARCTIC",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "real_steerability.py runs on CPU on 5 real samples; AND-frac increases ≥0.05 after patch; 3/5 pass",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-25"
     },
     {
       "id": "Q167",
