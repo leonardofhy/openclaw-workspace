@@ -82,12 +82,13 @@
       "type": "build",
       "track": "T3",
       "title": "Commitment Head Ablation Mock: ablate H00/H07/H01 and measure hallucination rate",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "commitment_head_ablation_mock.py: hallucination rate increases ≥20% when commitment heads ablated; 2/2 DoD pass",
       "created": "2026-03-24",
-      "due": null
+      "due": null,
+      "completed": "2026-03-25"
     },
     {
       "id": "Q164",
