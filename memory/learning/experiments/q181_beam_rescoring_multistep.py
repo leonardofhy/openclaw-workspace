@@ -95,12 +95,12 @@ def extract_multistep_and_frac(
         feats = audio_features
 
     tokenizer = get_tokenizer(multilingual=False)
-    sot_sequence = [tokenizer.sot, tokenizer.language_token, tokenizer.transcribe]
-    # some Whisper versions don't have language_token / transcribe; use simpler approach
+    # Use SOT token only for initial decode prompt
     try:
-        initial_tokens = torch.tensor([[tokenizer.sot]], dtype=torch.long)
+        sot_id = tokenizer.sot
     except Exception:
-        initial_tokens = torch.tensor([[50258]], dtype=torch.long)
+        sot_id = 50258
+    initial_tokens = torch.tensor([[sot_id]], dtype=torch.long)
 
     # capture cross-attn per step
     step_and_fracs = []
