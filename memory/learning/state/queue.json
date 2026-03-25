@@ -305,12 +305,13 @@
       "type": "build",
       "track": "T3",
       "title": "Q172v2: AND-frac Beam Rescoring via Multi-Step Decoder Rollout (fix single-step SOT proxy)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "AND-frac(native) > AND-frac(accented) by >=0.08; WER gap reduction >=15%; CPU <5min",
       "created": "2026-03-25",
-      "due": null
+      "due": null,
+      "completed": "2026-03-25"
     }
   ],
   "archived_count": 100,
