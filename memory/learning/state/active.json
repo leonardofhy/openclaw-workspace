@@ -29,25 +29,25 @@
     "learn_remaining_today": 5,
     "build_remaining_today": 4,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 1,
+    "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-25"
   },
   "stats": {
-    "total_cycles": 282,
+    "total_cycles": 283,
     "total_skips": 50,
     "papers_read_deep": 61,
     "papers_scanned": 50,
     "research_gaps": 25,
-    "paper_ideas": 571,
+    "paper_ideas": 591,
     "paper_pitches": 2,
     "code_artifacts": 124,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260325-1115",
-    "action": "build",
-    "summary": "Q169 MATS cover letter: gc(L) suppression = jailbreak signal, conflicting-objectives evasion argument, pre-deployment EM risk screen, 420 words."
+    "id": "c-20260325-1145",
+    "action": "ideate",
+    "summary": "20 ideas generated, 9 queued as Q172-Q180 (AND-frac extensions, audio safety, multilingual, scale analysis)."
   },
   "last_gc": "2026-03-22T13:16:38.633525+08:00",
   "self_improve_tickets": []
