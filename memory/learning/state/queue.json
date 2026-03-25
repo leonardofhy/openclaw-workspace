@@ -209,12 +209,13 @@
       "type": "build",
       "track": "T3",
       "title": "Commitment Entropy as Hallucination Predictor",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Logistic probe on commitment-head entropy → hallucination prediction. Compare vs perplexity/decode-confidence baselines.",
       "created": "2026-03-25",
-      "due": null
+      "due": null,
+      "completed": "2026-03-25"
     },
     {
       "id": "Q174",
