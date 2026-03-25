@@ -1,0 +1,71 @@
+{
+  "task": "Q181",
+  "model": "whisper-base",
+  "gc_layer": 4,
+  "n_steps_rollout": 8,
+  "n_native": 10,
+  "n_accented": 10,
+  "beam_width": 4,
+  "and_frac": {
+    "native_mean": 1.0027562737464906,
+    "accented_mean": 1.0013293266296386,
+    "gap": 0.0014269471168519843
+  },
+  "baseline": {
+    "wer_native": 0.034862186312675486,
+    "wer_accented": 0.27,
+    "wer_gap": 0.23513781368732453,
+    "afg": 0.0014269471168519843
+  },
+  "best_lambda": 0.5,
+  "rescored": {
+    "wer_native": 0.034862186312675486,
+    "wer_accented": 0.27,
+    "wer_gap": 0.23513781368732453,
+    "gap_reduction_pct": 0.0,
+    "afg": 0.0014269471168519843
+  },
+  "lambda_sweep": [
+    {
+      "lambda": 0.0,
+      "wer_native": 0.034862186312675486,
+      "wer_accented": 0.27,
+      "wer_gap": 0.23513781368732453,
+      "afg": 0.0014269471168519843
+    },
+    {
+      "lambda": 0.5,
+      "wer_native": 0.034862186312675486,
+      "wer_accented": 0.27,
+      "wer_gap": 0.23513781368732453,
+      "afg": 0.0014269471168519843
+    },
+    {
+      "lambda": 1.0,
+      "wer_native": 0.034862186312675486,
+      "wer_accented": 0.27,
+      "wer_gap": 0.23513781368732453,
+      "afg": 0.0014269471168519843
+    },
+    {
+      "lambda": 2.0,
+      "wer_native": 0.034862186312675486,
+      "wer_accented": 0.27,
+      "wer_gap": 0.23513781368732453,
+      "afg": 0.0014269471168519843
+    },
+    {
+      "lambda": 5.0,
+      "wer_native": 0.034862186312675486,
+      "wer_accented": 0.27,
+      "wer_gap": 0.23513781368732453,
+      "afg": 0.0014269471168519843
+    }
+  ],
+  "dod": {
+    "and_frac_gap_gte_0.08": false,
+    "wer_gap_reduction_gte_15pct": false,
+    "afg_reduces": true,
+    "cpu_only": true
+  }
+}
