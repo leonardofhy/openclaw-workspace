@@ -149,8 +149,8 @@ def compute_real_and_frac(audio: np.ndarray, model, n_steps: int = 8,
 
     # Register hooks on cross-attention of last decoder layer
     hooks = []
-    for layer in model.decoder.layers[-2:]:  # last 2 layers
-        h = layer.cross_attn.register_forward_hook(hook_fn)
+    for block in model.decoder.blocks[-2:]:  # last 2 blocks
+        h = block.cross_attn.register_forward_hook(hook_fn)
         hooks.append(h)
 
     try:
