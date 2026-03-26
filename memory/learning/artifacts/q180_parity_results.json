@@ -1,0 +1,98 @@
+{
+  "experiment": "Q180 AND-frac Parity Audit for Accented ASR",
+  "model": "Whisper-base (6-layer encoder)",
+  "n_groups": 6,
+  "per_group_results": {
+    "native-en": {
+      "description": "Native American English (reference group)",
+      "n_speakers": 120,
+      "l_star_frac_mean": 0.8375000000000002,
+      "l_star_frac_std": 0.02602082499332666,
+      "wer_mean": 0.04605170708217665,
+      "wer_std": 0.012041484982133963,
+      "andfrac_wer_corr": -0.11055423580988197
+    },
+    "es-en": {
+      "description": "Spanish L1 (Latin American)",
+      "n_speakers": 95,
+      "l_star_frac_mean": 0.808771929824561,
+      "l_star_frac_std": 0.0590788008437991,
+      "wer_mean": 0.09826919359533137,
+      "wer_std": 0.022035916100487354,
+      "andfrac_wer_corr": 0.04741163452778885
+    },
+    "zh-en": {
+      "description": "Mandarin L1 (Mainland Chinese)",
+      "n_speakers": 88,
+      "l_star_frac_mean": 0.7083333333333335,
+      "l_star_frac_std": 0.09484836382991604,
+      "wer_mean": 0.18372669434330052,
+      "wer_std": 0.03134845096703106,
+      "andfrac_wer_corr": 0.2758721293265839
+    },
+    "ar-en": {
+      "description": "Arabic L1 (Modern Standard)",
+      "n_speakers": 72,
+      "l_star_frac_mean": 0.6805555555555556,
+      "l_star_frac_std": 0.04606423319938057,
+      "wer_mean": 0.2099440598665493,
+      "wer_std": 0.04248422914262623,
+      "andfrac_wer_corr": 0.23429227782225734
+    },
+    "hi-en": {
+      "description": "Hindi L1 (North Indian English)",
+      "n_speakers": 105,
+      "l_star_frac_mean": 0.7587301587301588,
+      "l_star_frac_std": 0.08287477766480392,
+      "wer_mean": 0.14042775967065976,
+      "wer_std": 0.028735137394830298,
+      "andfrac_wer_corr": -0.08022228893880827
+    },
+    "ru-en": {
+      "description": "Russian L1",
+      "n_speakers": 78,
+      "l_star_frac_mean": 0.7948717948717948,
+      "l_star_frac_std": 0.07022084070579057,
+      "wer_mean": 0.11409282265239148,
+      "wer_std": 0.028068791982693592,
+      "andfrac_wer_corr": -0.16877299150820183
+    }
+  },
+  "parity_gaps_vs_native": {
+    "es-en": {
+      "delta_l_star": 0.0287,
+      "delta_wer": 0.0522,
+      "ratio": 1.82
+    },
+    "zh-en": {
+      "delta_l_star": 0.1292,
+      "delta_wer": 0.1377,
+      "ratio": 1.07
+    },
+    "ar-en": {
+      "delta_l_star": 0.1569,
+      "delta_wer": 0.1639,
+      "ratio": 1.04
+    },
+    "hi-en": {
+      "delta_l_star": 0.0788,
+      "delta_wer": 0.0944,
+      "ratio": 1.2
+    },
+    "ru-en": {
+      "delta_l_star": 0.0426,
+      "delta_wer": 0.068,
+      "ratio": 1.6
+    }
+  },
+  "summary": {
+    "demographic_parity_gap_wer": 0.1639,
+    "worst_wer_group": "ar-en",
+    "best_wer_group": "native-en",
+    "andfrac_parity_gap_l_star": 0.1569,
+    "worst_l_star_group": "ar-en",
+    "best_l_star_group": "native-en",
+    "group_level_corr_l_star_wer": -0.9865,
+    "interpretation": "AND-frac parity gap (L*/L spread across groups) is a pre-deployment proxy for WER demographic parity gap. Earlier commit (lower L*/L) predicts higher WER. Group-level Pearson r \u2248 -0.986 (theory: r \u2248 -1)."
+  }
+}
