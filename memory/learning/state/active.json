@@ -26,16 +26,16 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 3,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-26"
   },
   "stats": {
-    "total_cycles": 291,
+    "total_cycles": 292,
     "total_skips": 51,
-    "papers_read_deep": 62,
+    "papers_read_deep": 64,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 591,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-1545",
-    "action": "build",
-    "summary": "Q176 done: MATS proposal v0.5 \u2014 AND-frac/NIST AI RMF policy section. Parity gate \u0394L*/L>0.10. Grounded in Q180 (r=-0.986, 6 accent groups)."
+    "id": "c-20260326-1615",
+    "action": "learn",
+    "summary": "Read Power Steering + Schmidt RFP. Q182 (Jacobian SV x AND-frac build) + Q183 (Schmidt RFP outline) added to queue."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
