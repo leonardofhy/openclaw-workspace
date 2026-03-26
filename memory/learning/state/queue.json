@@ -43,12 +43,13 @@
       "type": "build",
       "track": "T3",
       "title": "Power Steering SVs at Listen Layer: Jacobian SV x AND-frac correlation",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Compute top Jacobian SV (J_{L*->final}) for Whisper-base on L2-ARCTIC samples; SV direction correlates with AND-frac gradient r>0.4; power steering at L* increases AND-frac >=0.05 for accented samples; CPU <5min",
       "created": "2026-03-26",
-      "due": null
+      "due": null,
+      "completed": "2026-03-26"
     },
     {
       "id": "Q183",
