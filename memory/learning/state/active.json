@@ -33,7 +33,7 @@
     "budget_reset_date": "2026-03-26"
   },
   "stats": {
-    "total_cycles": 296,
+    "total_cycles": 297,
     "total_skips": 51,
     "papers_read_deep": 64,
     "papers_scanned": 50,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-1845",
-    "action": "build",
-    "summary": "Q186 DONE: JALMBench v0 built (80 prompts, AUROC=1.00). AND-frac detects all 3 jailbreak categories. Saved to experiments/jalmBench_v0.py."
+    "id": "c-20260326-1915",
+    "action": "write",
+    "summary": "Q191 DONE: AND-frac unified NeurIPS workshop draft (~1650w): hallucination+jailbreak+fairness theory under one commitment mechanism. pitches/andfrac-unified-paper.md"
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []

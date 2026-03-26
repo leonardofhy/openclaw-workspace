@@ -154,12 +154,13 @@
       "type": "write",
       "track": "T3",
       "title": "AND-frac unified interpretability paper: NeurIPS workshop draft",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Synthesize Q162-Q182 artifacts into draft paper: AND-frac = commitment mechanism = unified hallucination+jailbreak theory; 4 sections (intro/method/results/discussion); 1500+ words; saved to pitches/andfrac-unified-paper.md",
       "created": "2026-03-26",
-      "due": null
+      "due": null,
+      "completed": "2026-03-26"
     }
   ],
   "archived_count": 122,
