@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-2015",
+    "id": "c-20260326-2045",
     "action": "skip",
-    "summary": "Build budget exhausted. 6 READY build tasks (Q184-Q190) waiting for tomorrow reset."
+    "summary": "Build budget exhausted (0 remaining). 6 READY build tasks waiting for tomorrow reset. No READY learn tasks either."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
