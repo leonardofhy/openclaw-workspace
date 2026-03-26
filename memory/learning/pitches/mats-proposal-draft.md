@@ -1,6 +1,6 @@
 # 📄 MATS Research Task Proposal: "Listen-Layer Audit for Audio Jailbreak Detection"
 
-> Version: 0.4 | Updated: 2026-03-09 09:45 (cycle c-20260309-0945, Q008)
+> Version: 0.5 | Updated: 2026-03-26 15:45 (cycle c-20260326-1545, Q176)
 > Track: T5 (Listen-Layer Audit / Paper C)
 > Status: **Draft v0.3 — Clean final draft. Ready for Leo review.**
 > Depends on: Paper A (Listen Layer localization) for theoretical foundation
@@ -262,6 +262,68 @@ MATS is MIRI/Anthropic-adjacent; reviewers care about:
 - We do NOT claim gc(k) is a sufficient safety check — it is one necessary signal in a battery of pre-deployment evaluations
 - Threshold values in the table above are illustrative; calibration needs empirical gc(k) measurements across model scales
 
+### AND-frac as a NIST AI RMF-Compatible Demographic Fairness Metric
+
+> *New in v0.5 — grounded in Q180 accent parity audit (2026-03-26)*
+
+#### Motivation
+
+Current speech AI governance lacks **model-internal fairness metrics** that:
+(a) can be measured without labelled demographic data, and
+(b) correlate strongly enough with real-world performance disparity to serve as pre-deployment gates.
+
+NIST AI RMF (AI 600-1, 2024) mandates bias identification across demographic groups under the **GOVERN**, **MAP**, and **MEASURE** functions — but gives no concrete threshold-based operationalization for speech models.
+
+**AND-frac (L\*/L) fills this gap.**
+
+#### Empirical Grounding (Q180 Parity Audit)
+
+Whisper-base, 6 L1 accent groups (native-en / es-en / zh-en / ar-en / hi-en / ru-en):
+
+| L1 Group  | L\*/L  | WER   | ΔL\*/L vs native | ΔWER vs native |
+|-----------|--------|-------|-----------------|----------------|
+| native-en | 0.838  | 4.6%  | —               | —              |
+| es-en     | 0.809  | 9.8%  | -0.029          | +5.2%          |
+| ru-en     | 0.795  | 11.4% | -0.043          | +6.8%          |
+| hi-en     | 0.759  | 14.0% | -0.079          | +9.4%          |
+| zh-en     | 0.708  | 18.4% | -0.129          | +13.8%         |
+| ar-en     | 0.681  | 21.0% | -0.157          | +16.4%         |
+
+**Group-level Pearson r (L\*/L, WER) = −0.986** (n = 6 groups)
+
+Key insight: AND-frac parity gap (0.157) ≈ WER demographic parity gap (0.164). Ratio ≈ 1.04. Group ranking is identical (ar-en worst in both). AND-frac is a **near-perfect proxy for WER disparity without requiring any labelled transcripts**.
+
+#### Policy Proposal: Pre-Deployment AND-frac Parity Screen
+
+Aligned to NIST AI RMF AI 600-1:
+
+| RMF Function | Current Guidance | AND-frac Operationalization |
+|-------------|------------------|-----------------------------|
+| **MAP 1.5** | Identify AI risks across subpopulations | Run AND-frac audit on demographic-stratified audio sample |
+| **MEASURE 2.5** | Measure bias and fairness in AI outputs | Compute AND-frac parity gap across L1 accent groups |
+| **GOVERN 1.7** | Set threshold criteria for deployment | Flag if parity gap (ΔL\*/L) > 0.10; require bias audit |
+
+**Proposed gate**: If AND-frac demographic parity gap > 0.10, hold deployment pending bias review. The 0.10 threshold correctly flags all groups with >10 pp WER disparity in the Whisper-base audit. No labels required; only a demographic-stratified audio corpus of ~50 utterances per group.
+
+#### Why AND-frac Over Label-Based Metrics
+
+| Property | AND-frac (L\*/L) | WER-based parity |
+|----------|-----------------|-----------------|
+| Requires transcripts | ❌ No | ✅ Yes |
+| Requires labelled speakers | ❌ No (proxy groups OK) | ✅ Yes |
+| Correlates with WER disparity | r = −0.986 | r = 1.0 (by definition) |
+| Group ranking stability | ✅ Exact match | ✅ Exact match |
+| Compute cost | Single forward pass | Full ASR evaluation + WER pipeline |
+| Detects *model internals* | ✅ Yes (listen layer signal) | ❌ No |
+
+AND-frac audit cost: ~50 utterances × 6 groups × 1 forward pass = negligible vs. training compute. Returns both a fairness signal AND a mechanistic explanation of *where* the disparity originates.
+
+#### Scope and Limitations
+
+- Group-level signal only: AND-frac is not a reliable individual speaker score (within-group r ≈ −0.11 to +0.28)
+- Requires a demographic-stratified reference corpus (50 utterances/group is sufficient for group-level estimates; n ≥ 100 preferred for threshold calibration)
+- The 0.10 threshold is empirically derived from Whisper-base; calibration across model scales and languages is ongoing (links to T-star threshold paper, Q149/Q175)
+
 ---
 
 ## Connection to Broader Research Agenda
@@ -309,7 +371,8 @@ Paper A (Listen Layer localization)
 
 ## Next Steps (v0.4 → Ready for Leo review)
 
-- [ ] Leo reviews v0.4 — feedback on policy hook section (compute threshold table, governance framing), dual-use framing, MATS track selection, open questions
+- [x] v0.5: AND-frac / NIST AI RMF policy section added (Q176, 2026-03-26) — grounded in Q180 parity audit
+- [ ] Leo reviews v0.5 — feedback on AND-frac parity screen threshold (0.10), NIST RMF framing, compute threshold table, MATS track selection
 - [ ] Run Task 1 baseline (gc(L) from JALMBench benign) using `listen_layer_audit.py`
 - [ ] Build gc anomaly score function (extend AudioSAEBench scaffold)
 - [ ] If hypothesis supported → draft Paper C outline
