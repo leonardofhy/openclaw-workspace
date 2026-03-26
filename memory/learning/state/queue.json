@@ -237,12 +237,13 @@
       "type": "build",
       "track": "T3",
       "title": "gc(k) as Epistemic Uncertainty Estimator",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Frame AND-frac as model-internal uncertainty signal. Compare to conformal prediction on WER calibration.",
       "created": "2026-03-25",
-      "due": null
+      "due": null,
+      "completed": "2026-03-26"
     },
     {
       "id": "Q176",

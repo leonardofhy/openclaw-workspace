@@ -1,0 +1,82 @@
+{
+  "n_cal": 100,
+  "n_test": 100,
+  "alpha": 0.1,
+  "calibration": {
+    "and_frac": {
+      "tau": 0.5397,
+      "coverage": 0.9
+    },
+    "softmax": {
+      "tau": 0.321,
+      "coverage": 0.9
+    }
+  },
+  "test_coverage": {
+    "and_frac": 0.91,
+    "softmax": 0.93,
+    "note": "Both should be >= 0.90 (CP guarantee)"
+  },
+  "detection_metrics": {
+    "and_frac": {
+      "tp": 9,
+      "fp": 0,
+      "tn": 0,
+      "fn": 91,
+      "precision": 1.0,
+      "recall": 0.09,
+      "f1": 0.1651,
+      "auroc": 0.995
+    },
+    "softmax": {
+      "tp": 7,
+      "fp": 0,
+      "tn": 0,
+      "fn": 93,
+      "precision": 1.0,
+      "recall": 0.07,
+      "f1": 0.1308,
+      "auroc": 0.995
+    }
+  },
+  "distribution_shift": {
+    "and_frac": {
+      "native_flagged_wer": 0.5009,
+      "native_unflagged_wer": 0.2528,
+      "accent_flagged_wer": 0.4222,
+      "accent_unflagged_wer": 0.2912
+    },
+    "softmax": {
+      "native_flagged_wer": 0.3413,
+      "native_unflagged_wer": 0.2617,
+      "accent_flagged_wer": 0.3799,
+      "accent_unflagged_wer": 0.3097
+    }
+  },
+  "word_level_uncertainty": {
+    "n_high_wer": 50,
+    "n_low_wer": 51,
+    "high_wer_step_profile": [
+      0.508,
+      0.502,
+      0.493,
+      0.492,
+      0.497,
+      0.504,
+      0.5,
+      0.495
+    ],
+    "low_wer_step_profile": [
+      0.791,
+      0.802,
+      0.785,
+      0.799,
+      0.786,
+      0.797,
+      0.784,
+      0.793
+    ],
+    "late_step_gap": 0.2917,
+    "interpretation": "positive gap = low-WER utterances maintain higher AND-frac in final steps (model stays grounded vs 'going language-prior' in error-prone regions)"
+  }
+}
