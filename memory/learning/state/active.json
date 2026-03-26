@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-2215",
-    "action": "reflect",
-    "summary": "Daily reflect: 10 builds today. AND-frac universal signal forming across hallucination/jailbreak/parity/multilingual. NeurIPS workshop draft done. 6 READY build tasks for tomorrow. Leo GPU approval + workshop target needed."
+    "id": "c-20260326-2245",
+    "action": "skip",
+    "summary": "Principled skip: build budget=0, all 6 READY tasks are build type, no READY learn tasks, ideate budget=0. 6 builds queued for tomorrow."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
