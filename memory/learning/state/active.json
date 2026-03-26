@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 4,
+    "build_remaining_today": 3,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-26"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-1515",
+    "id": "c-20260326-1545",
     "action": "build",
-    "summary": "Q180 done: AND-frac parity audit across 6 L1 accent groups. Group-level r(L*/L,WER)=-0.986. Parity gap 0.157 \u2248 WER gap 0.164. ar-en worst in both. Pre-deployment fairness screen validated."
+    "summary": "Q176 done: MATS proposal v0.5 \u2014 AND-frac/NIST AI RMF policy section. Parity gate \u0394L*/L>0.10. Grounded in Q180 (r=-0.986, 6 accent groups)."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []

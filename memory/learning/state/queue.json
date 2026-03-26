@@ -250,12 +250,13 @@
       "type": "write",
       "track": "T5",
       "title": "Pre-Deployment AND-frac Screen: MATS Policy Section",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Expand MATS proposal: AND-frac as NIST AI RMF-compatible metric for speech models.",
       "created": "2026-03-25",
-      "due": null
+      "due": null,
+      "completed": "2026-03-26"
     },
     {
       "id": "Q177",
