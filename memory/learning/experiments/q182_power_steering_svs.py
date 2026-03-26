@@ -134,7 +134,13 @@ def run_sample(model, sample_id: int) -> dict:
     # Whisper expects log-mel; use whisper.log_mel_spectrogram if available
     try:
         import whisper as whisper_pkg
-        mel = whisper_pkg.log_mel_spectrogram(audio).unsqueeze(0)  # (1, 80, T/2)
+        # Pad/trim to exactly 30s (480000 samples)
+        N_SAMPLES_30S = 480000
+        if len(audio) < N_SAMPLES_30S:
+            audio_padded = np.concatenate([audio, np.zeros(N_SAMPLES_30S - len(audio), dtype=np.float32)])
+        else:
+            audio_padded = audio[:N_SAMPLES_30S]
+        mel = whisper_pkg.log_mel_spectrogram(audio_padded).unsqueeze(0)  # (1, 80, 3000)
     except Exception:
         # Fallback: crude mel (won't match real Whisper, but structure is valid for grad tests)
         n_fft = 400
@@ -155,6 +161,11 @@ def run_sample(model, sample_id: int) -> dict:
             mel = torch.nn.functional.pad(mel, (0, target_T - T))
 
     mel = mel.to(torch.float32)
+    # Whisper encoder requires exactly (1, 80, 3000) — pad/trim
+    if mel.shape[-1] < 3000:
+        mel = torch.nn.functional.pad(mel, (0, 3000 - mel.shape[-1]))
+    elif mel.shape[-1] > 3000:
+        mel = mel[..., :3000]
     tokens = torch.tensor([[50258]], dtype=torch.long)  # SOT
 
     # ── Step 1: Baseline — compute L* (encoder output) and AND-frac ──────
