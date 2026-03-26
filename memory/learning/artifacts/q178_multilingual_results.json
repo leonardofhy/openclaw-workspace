@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "results": {
+    "en": {
+      "native": {
+        "l_star_mean": 4.7,
+        "l_star_over_L": 0.783,
+        "andfrac_at_lstar": 0.505,
+        "pre_lstar_auc": 0.741,
+        "l_star_std": 0.458
+      },
+      "accented": {
+        "l_star_mean": 4.14,
+        "l_star_over_L": 0.69,
+        "andfrac_at_lstar": 0.527,
+        "pre_lstar_auc": 0.729,
+        "l_star_std": 0.347
+      },
+      "native_accented_gap": 0.093
+    },
+    "es": {
+      "native": {
+        "l_star_mean": 4.48,
+        "l_star_over_L": 0.747,
+        "andfrac_at_lstar": 0.531,
+        "pre_lstar_auc": 0.743,
+        "l_star_std": 0.5
+      },
+      "accented": {
+        "l_star_mean": 3.98,
+        "l_star_over_L": 0.663,
+        "andfrac_at_lstar": 0.518,
+        "pre_lstar_auc": 0.749,
+        "l_star_std": 0.244
+      },
+      "native_accented_gap": 0.084
+    },
+    "zh": {
+      "native": {
+        "l_star_mean": 4.84,
+        "l_star_over_L": 0.807,
+        "andfrac_at_lstar": 0.503,
+        "pre_lstar_auc": 0.749,
+        "l_star_std": 0.367
+      },
+      "accented": {
+        "l_star_mean": 4.18,
+        "l_star_over_L": 0.697,
+        "andfrac_at_lstar": 0.532,
+        "pre_lstar_auc": 0.73,
+        "l_star_std": 0.433
+      },
+      "native_accented_gap": 0.11
+    },
+    "ar": {
+      "native": {
+        "l_star_mean": 4.14,
+        "l_star_over_L": 0.69,
+        "andfrac_at_lstar": 0.533,
+        "pre_lstar_auc": 0.737,
+        "l_star_std": 0.4
+      },
+      "accented": {
+        "l_star_mean": 3.92,
+        "l_star_over_L": 0.653,
+        "andfrac_at_lstar": 0.505,
+        "pre_lstar_auc": 0.745,
+        "l_star_std": 0.337
+      },
+      "native_accented_gap": 0.037
+    },
+    "hi": {
+      "native": {
+        "l_star_mean": 4.32,
+        "l_star_over_L": 0.72,
+        "andfrac_at_lstar": 0.529,
+        "pre_lstar_auc": 0.739,
+        "l_star_std": 0.466
+      },
+      "accented": {
+        "l_star_mean": 3.98,
+        "l_star_over_L": 0.663,
+        "andfrac_at_lstar": 0.513,
+        "pre_lstar_auc": 0.742,
+        "l_star_std": 0.14
+      },
+      "native_accented_gap": 0.057
+    }
+  }
+}
