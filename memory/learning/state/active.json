@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 10,
+    "build_remaining_today": 9,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-26"
   },
   "stats": {
-    "total_cycles": 286,
+    "total_cycles": 287,
     "total_skips": 51,
     "papers_read_deep": 62,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 591,
     "paper_pitches": 2,
-    "code_artifacts": 127,
+    "code_artifacts": 128,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260325-2215",
-    "action": "reflect",
-    "summary": "EOD digest: 8 builds + 2 learns + 9 new ideas. Paper A + MATS materials ready. 7 READY tasks for tomorrow."
+    "id": "c-20260326-1259",
+    "action": "build",
+    "summary": "Q174 done: probe-AND-frac dissociation confirmed. Flat probe acc (1.67pp range) vs steep AND-frac (+0.53). AND-gate = commitment, not feature detection."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
