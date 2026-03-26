@@ -23,6 +23,9 @@ SKILLS_DIR = ROOT / "skills"
 
 # Files that must run in isolation due to sys.modules side-effects
 ISOLATED_FILES = {
+    "skills/self-improve/scripts/test_learn.py",
+    "skills/hf-research/scripts/test_hf_research.py",
+    "skills/leo-diary/scripts/test_people_db.py",
     "skills/lib/test_common.py",
     "skills/shared/test_jsonl_store.py",
     "skills/system-scanner/scripts/test_scan.py",

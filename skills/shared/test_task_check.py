@@ -278,11 +278,12 @@ class TestMain:
 
     @patch.object(tc, "BOARD")
     def test_healthy_board_exits_0(self, mock_board):
+        today = date.today()
         mock_board.exists.return_value = True
-        mock_board.read_text.return_value = """\
+        mock_board.read_text.return_value = f"""\
 ## ACTIVE
 ### M-001 | Fresh task
-- **last_touched**: 2026-03-18
+- **last_touched**: {today.isoformat()}
 """
         with patch.object(sys, "argv", ["task-check.py", "--owner", "all"]):
             with pytest.raises(SystemExit) as exc_info:
