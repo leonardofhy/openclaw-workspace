@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-1915",
-    "action": "write",
-    "summary": "Q191 DONE: AND-frac unified NeurIPS workshop draft (~1650w): hallucination+jailbreak+fairness theory under one commitment mechanism. pitches/andfrac-unified-paper.md"
+    "id": "c-20260326-1945",
+    "action": "skip",
+    "summary": "Build budget exhausted. 6 READY build tasks (Q184-Q190) waiting for tomorrow reset."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
