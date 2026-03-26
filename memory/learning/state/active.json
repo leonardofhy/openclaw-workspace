@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-2315",
-    "action": "reflect",
-    "summary": "End-of-day reflect: 4 completions today, 6 build tasks queued for tomorrow."
+    "id": "c-20260326-2345",
+    "action": "skip",
+    "summary": "Principled skip: build budget exhausted, all READY tasks are build type. 6 build tasks ready for tomorrow."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
