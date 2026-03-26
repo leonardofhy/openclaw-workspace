@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 9,
+    "build_remaining_today": 8,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-26"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-1259",
+    "id": "c-20260326-1315",
     "action": "build",
-    "summary": "Q174 done: probe-AND-frac dissociation confirmed. Flat probe acc (1.67pp range) vs steep AND-frac (+0.53). AND-gate = commitment, not feature detection."
+    "summary": "Q175 done: AND-frac as conformal nonconformity score. AUROC=0.995, CP coverage \u2705. Late-step gap +0.29 = word-level uncertainty signal (novel)."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
