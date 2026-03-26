@@ -243,14 +243,15 @@ def run_sample(model, sample_id: int) -> dict:
         return logits[0, 0].detach()  # (vocab,)
 
     def Jt_u(u: torch.Tensor) -> torch.Tensor:
-        """Jᵀ @ u: grad of (u · J v) w.r.t. v at v=0."""
-        L_p = L_star_base.clone().detach().requires_grad_(True)
-        enc_p = encoder_out + (L_p - L_star_base)
+        """Jᵀ @ u: grad of (u · logits) w.r.t. L_p at L_p=L_star_base (fresh graph)."""
+        # Create completely fresh computation path each call
+        L_p = L_star_base.detach().clone().requires_grad_(True)
+        enc_p = encoder_out.detach() + (L_p - L_star_base.detach())
         logits = model.decoder(tokens, enc_p)  # (1, 1, vocab)
         scalar = (logits[0, 0] * u.detach()).sum()
-        scalar.backward()
-        g = L_p.grad[0].clone().detach()  # (D,)
-        return g
+        # Use autograd.grad (doesn't modify .grad attr, no retain_graph issues)
+        grads = torch.autograd.grad(scalar, [L_p])[0]
+        return grads[0].clone().detach()  # (D,)
 
     top_sv = power_iter_top_sv(J_v, Jt_u, D, n_iter=POWER_ITER)  # (D,)
 
