@@ -275,12 +275,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac Multilingual Generalization",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Test gc(k) on multilingual Whisper (es, zh, ar, hi). AND-frac cross-lingual prediction, L* stability.",
       "created": "2026-03-25",
-      "due": null
+      "due": null,
+      "completed": "2026-03-26"
     },
     {
       "id": "Q179",
