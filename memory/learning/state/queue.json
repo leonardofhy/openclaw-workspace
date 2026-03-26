@@ -301,12 +301,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac Parity Audit for Accented ASR",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "AND-frac disparity across L1 accent groups. Correlates with WER and demographic parity gap.",
       "created": "2026-03-25",
-      "due": null
+      "due": null,
+      "completed": "2026-03-26"
     },
     {
       "id": "Q181",
