@@ -96,6 +96,19 @@
 - **next_action**: 持續觀察 digest 品質；等 Leo 反饋調整 profile 權重
 - **cron_ids**: `df22eb11`（每小時蒐集, spark）, `76817b6d`（20:30 digest, g53s）
 
+### M-07 | LALM Knowledge Editing 研究（主力方向）
+- **owner**: MacBook
+- **priority**: P0
+- **created**: 2026-03-24
+- **last_touched**: 2026-03-24
+- **描述**: Knowledge Editing × Large Audio Language Models 交叉研究，每週一下午和智凱哥、彥廷 meeting
+- **phase**: Survey（Week 1-4）
+- **progress**: 研究地圖、閱讀路線圖（35 篇）、每日論文偵察工具已建立；dry-run 成功找到直接相關論文
+- **next_action**: 本週讀完 Phase 1 P0 papers（ROME, MEMIT, SALMONN, Qwen-Audio, multimodal KE survey）
+- **resources**: `memory/lalm-ke/` (landscape, reading-roadmap, daily-workflow, survey-notes-template)
+- **cron**: daily_scout.py (待設)
+- **meeting**: 每週一下午（智凱哥 + 彥廷）
+
 ## WAITING
 
 （無）

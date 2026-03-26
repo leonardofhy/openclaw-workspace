@@ -1,0 +1,138 @@
+{
+  "date": "2026-03-24",
+  "generated_at": "2026-03-24T15:03:47.664721+08:00",
+  "total_found": 185,
+  "shown": 10,
+  "papers": [
+    {
+      "rank": 1,
+      "title": "The Anatomy of an Edit: Mechanism-Guided Activation Steering for Knowledge Editing",
+      "url": "https://arxiv.org/abs/2603.20795",
+      "authors": "Yuan Cao, Mingyang Wang, Hinrich Sch\\\"utze",
+      "categories": [
+        "cs.CL"
+      ],
+      "abstract_snippet": "arXiv:2603.20795v1 Announce Type: new \nAbstract: Large language models (LLMs) are increasingly used as knowledge bases, but keeping them up to date requires targeted knowledge editing (KE). However, it remains unclear how edits are implemented inside the model once applied. In this work, we take a m",
+      "score": 36.0,
+      "arxiv_id": "2603.20795",
+      "source": "arxiv_rss"
+    },
+    {
+      "rank": 2,
+      "title": "A Framework for Low-Latency, LLM-driven Multimodal Interaction on the Pepper Robot",
+      "url": "https://arxiv.org/abs/2603.21013",
+      "authors": "Erich Studerus, Vivienne Jia Zhong, Stephan Vonschallen",
+      "categories": [
+        "cs.AI"
+      ],
+      "abstract_snippet": "arXiv:2603.21013v1 Announce Type: new \nAbstract: Despite recent advances in integrating Large Language Models (LLMs) into social robotics, two weaknesses persist. First, existing implementations on platforms like Pepper often rely on cascaded Speech-to-Text (STT)->LLM->Text-to-Speech (TTS) pipelines",
+      "score": 28.0,
+      "arxiv_id": "2603.21013",
+      "source": "arxiv_rss"
+    },
+    {
+      "rank": 3,
+      "title": "Multi-Task Instruction Tuning via Data Scheduling for Low-Resource Arabic AudioLLMs",
+      "url": "https://arxiv.org/abs/2601.12494",
+      "authors": "Hunzalah Hassan Bhatti, Firoj Alam, Shammur Absar Chowdhury",
+      "categories": [
+        "cs.SD"
+      ],
+      "abstract_snippet": "arXiv:2601.12494v2 Announce Type: replace \nAbstract: Audio large language models (LLMs) enable unified speech understanding and generation, but adapting them to linguistically complex and dialect-rich settings such as Arabic-English remains challenging. We present a controlled study of multi-task in",
+      "score": 26.0,
+      "arxiv_id": "2601.12494",
+      "source": "arxiv_rss"
+    },
+    {
+      "rank": 4,
+      "title": "Do LLMs Understand Collaborative Signals? Diagnosis and Repair",
+      "url": "https://arxiv.org/abs/2505.20730",
+      "authors": "Shahrooz Pouryousef, Ali Montazeralghaem",
+      "categories": [
+        "cs.IR"
+      ],
+      "abstract_snippet": "arXiv:2505.20730v4 Announce Type: replace \nAbstract: Collaborative information from user-item interactions is a fundamental source of signal in successful recommender systems. Recently, researchers have attempted to incorporate this knowledge into large language model-based recommender approaches (L",
+      "score": 23.0,
+      "arxiv_id": "2505.20730",
+      "source": "arxiv_rss"
+    },
+    {
+      "rank": 5,
+      "title": "KLDrive: Fine-Grained 3D Scene Reasoning for Autonomous Driving based on Knowledge Graph",
+      "url": "https://arxiv.org/abs/2603.21029",
+      "authors": "Ye Tian, Jingyi Zhang, Zihao Wang, Xiaoyuan Ren, Xiaofan Yu, Onat Gungor, Tajana Rosing",
+      "categories": [
+        "cs.AI"
+      ],
+      "abstract_snippet": "arXiv:2603.21029v1 Announce Type: new \nAbstract: Autonomous driving requires reliable reasoning over fine-grained 3D scene facts. Fine-grained question answering over multi-modal driving observations provides a natural way to evaluate this capability, yet existing perception pipelines and driving-or",
+      "score": 19.0,
+      "arxiv_id": "2603.21029",
+      "source": "arxiv_rss"
+    },
+    {
+      "rank": 6,
+      "title": "BubbleRAG: Evidence-Driven Retrieval-Augmented Generation for Black-Box Knowledge Graphs",
+      "url": "https://arxiv.org/abs/2603.20309",
+      "authors": "Duyi Pan, Tianao Lou, Xin Li, Haoze Song, Yiwen Wu, Mengyi Deng, Mingyu Yang, Wei Wang",
+      "categories": [
+        "cs.IR"
+      ],
+      "abstract_snippet": "arXiv:2603.20309v1 Announce Type: new \nAbstract: Large Language Models (LLMs) exhibit hallucinations in knowledge-intensive tasks. Graph-based retrieval augmented generation (RAG) has emerged as a promising solution, yet existing approaches suffer from fundamental recall and precision limitations wh",
+      "score": 19.0,
+      "arxiv_id": "2603.20309",
+      "source": "arxiv_rss"
+    },
+    {
+      "rank": 7,
+      "title": "Children's Intelligence Tests Pose Challenges for MLLMs? KidGym: A 2D Grid-Based Reasoning Benchmark for MLLMs",
+      "url": "https://arxiv.org/abs/2603.20209",
+      "authors": "Hengwei Ye, Yuanting Guan, Yuxuan Ge, Tianying Zhu, Zhenhan Guan, Yijia Zhong, Yijing Zhang, Han Zhang, Yingna Wu, Zheng Tian",
+      "categories": [
+        "cs.CL"
+      ],
+      "abstract_snippet": "arXiv:2603.20209v1 Announce Type: new \nAbstract: Multimodal Large Language Models (MLLMs) combine the linguistic strengths of LLMs with the ability to process multimodal data, enbaling them to address a broader range of visual tasks. Because MLLMs aim at more general, human-like competence than lang",
+      "score": 18.0,
+      "arxiv_id": "2603.20209",
+      "source": "arxiv_rss"
+    },
+    {
+      "rank": 8,
+      "title": "Code-MIE: A Code-style Model for Multimodal Information Extraction with Scene Graph and Entity Attribute Knowledge Enhancement",
+      "url": "https://arxiv.org/abs/2603.20781",
+      "authors": "Jiang Liu, Ge Qiu, Hao Fei, Dongdong Xie, Jinbo Li, Fei Li, Chong Teng, Donghong Ji",
+      "categories": [
+        "cs.CL"
+      ],
+      "abstract_snippet": "arXiv:2603.20781v1 Announce Type: new \nAbstract: With the rapid development of large language models (LLMs), more and more researchers have paid attention to information extraction based on LLMs. However, there are still some spaces to improve in the existing related methods. First, existing multimo",
+      "score": 18.0,
+      "arxiv_id": "2603.20781",
+      "source": "arxiv_rss"
+    },
+    {
+      "rank": 9,
+      "title": "Understanding Behavior Cloning with Action Quantization",
+      "url": "https://arxiv.org/abs/2603.20538",
+      "authors": "Haoqun Cao, Tengyang Xie",
+      "categories": [
+        "cs.LG"
+      ],
+      "abstract_snippet": "arXiv:2603.20538v1 Announce Type: new \nAbstract: Behavior cloning is a fundamental paradigm in machine learning, enabling policy learning from expert demonstrations across robotics, autonomous driving, and generative models. Autoregressive models like transformer have proven remarkably effective, fr",
+      "score": 18.0,
+      "arxiv_id": "2603.20538",
+      "source": "arxiv_rss"
+    },
+    {
+      "rank": 10,
+      "title": "Permutation-Consensus Listwise Judging for Robust Factuality Evaluation",
+      "url": "https://arxiv.org/abs/2603.20562",
+      "authors": "Tianyi Huang, Nathan Huang, Justin Tang, Wenqian Chen, Elsa Fan",
+      "categories": [
+        "cs.CL"
+      ],
+      "abstract_snippet": "arXiv:2603.20562v1 Announce Type: new \nAbstract: Large language models (LLMs) are now widely used as judges, yet their decisions can change under presentation choices that should be irrelevant. We study one such source of instability: candidate-order sensitivity in listwise factuality evaluation, wh",
+      "score": 17.0,
+      "arxiv_id": "2603.20562",
+      "source": "arxiv_rss"
+    }
+  ]
+}
