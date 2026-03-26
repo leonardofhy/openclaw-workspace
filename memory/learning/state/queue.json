@@ -55,12 +55,13 @@
       "type": "write",
       "track": "T5",
       "title": "Schmidt Sciences RFP 2026: Proposal Outline (deadline May 26)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Outline saved to pitches/schmidt-rfp-outline.md: AND-frac (detection) + Power Steering (mitigation) for audio deceptive behavior. 400+ words. Deadline May 26 noted.",
       "created": "2026-03-26",
-      "due": "2026-05-26"
+      "due": "2026-05-26",
+      "completed": "2026-03-26"
     }
   ],
   "archived_count": 122,
