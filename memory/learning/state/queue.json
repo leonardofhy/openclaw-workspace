@@ -93,12 +93,13 @@
       "type": "build",
       "track": "T5",
       "title": "JALMBench v0: audio jailbreak micro-benchmark (50 prompts)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "50 synthetic adversarial prompts × 3 categories (instruction-override, roleplay, payload-split); AND-frac detection AUROC >0.85; saved to experiments/jalmBench_v0.py; CPU <5min",
       "created": "2026-03-26",
-      "due": null
+      "due": null,
+      "completed": "2026-03-26"
     },
     {
       "id": "Q187",
