@@ -287,12 +287,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac Phase Transition Across Whisper Scale",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Measure AND-frac across Whisper {tiny,base,small,medium}. L* shift and phase transition with scale.",
       "created": "2026-03-25",
-      "due": null
+      "due": null,
+      "completed": "2026-03-26"
     },
     {
       "id": "Q180",
