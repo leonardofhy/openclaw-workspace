@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 8,
+    "build_remaining_today": 7,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-26"
   },
   "stats": {
-    "total_cycles": 287,
+    "total_cycles": 288,
     "total_skips": 51,
     "papers_read_deep": 62,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 591,
     "paper_pitches": 2,
-    "code_artifacts": 128,
+    "code_artifacts": 129,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-1315",
+    "id": "c-20260326-1345",
     "action": "build",
-    "summary": "Q175 done: AND-frac as conformal nonconformity score. AUROC=0.995, CP coverage \u2705. Late-step gap +0.29 = word-level uncertainty signal (novel)."
+    "summary": "Q177 done: AudioRedBench v0.1 scaffold. 5 attack categories \u00d7 10 prompts \u00d7 3 models. indirect_transfer shows highest AND-frac collapse (30%). Eval harness ready for real model integration."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []

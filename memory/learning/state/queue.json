@@ -262,12 +262,13 @@
       "type": "build",
       "track": "T5",
       "title": "AudioRedBench: Structured Audio Jailbreak Benchmark",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "5 attack categories × 10 prompts × 3 models benchmark + eval harness for audio jailbreak research.",
       "created": "2026-03-25",
-      "due": null
+      "due": null,
+      "completed": "2026-03-26"
     },
     {
       "id": "Q178",
