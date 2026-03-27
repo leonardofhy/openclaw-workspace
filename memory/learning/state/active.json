@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
-    "build_remaining_today": 0,
-    "reflect_remaining_today": 0,
-    "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-26"
+    "learn_remaining_today": 5,
+    "build_remaining_today": 8,
+    "reflect_remaining_today": 2,
+    "ideate_remaining_today": 1,
+    "budget_reset_date": "2026-03-27"
   },
   "stats": {
-    "total_cycles": 297,
+    "total_cycles": 299,
     "total_skips": 51,
     "papers_read_deep": 64,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 611,
     "paper_pitches": 2,
-    "code_artifacts": 136,
+    "code_artifacts": 138,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260326-2345",
-    "action": "skip",
-    "summary": "Principled skip: build budget exhausted, all READY tasks are build type. 6 build tasks ready for tomorrow."
+    "id": "c-20260327-0845",
+    "action": "build",
+    "summary": "Q185 DONE: Commitment head entropy early-warning monitor. Spike precursor rate 63.3% (DoD ≥60% ✅). Mean lead 9.9 steps before hallucination onset. 0.27s CPU."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []

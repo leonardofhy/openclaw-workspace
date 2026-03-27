@@ -1,0 +1,13 @@
+{
+  "task_id": "Q184",
+  "mode": "mock",
+  "n_segments": 200,
+  "pearson_r_and_frac": 0.9095,
+  "pearson_r_softmax_scaled": 0.0175,
+  "ece_and_frac": 0.064,
+  "ece_softmax_scaled": 0.1952,
+  "ece_delta": 0.1312,
+  "dod_pearson_pass": true,
+  "plot": "/home/leonardo/.openclaw/workspace/memory/learning/experiments/q184_ece_reliability.png",
+  "ts": "2026-03-27T08:18:27.638086"
+}

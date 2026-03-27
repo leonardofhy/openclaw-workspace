@@ -21,7 +21,7 @@
       "title": "News: Meta's Omnilingual MT for 1,600 Languages",
       "status": "blocked",
       "priority": 3,
-      "blocked_by": "ai.meta.com auth wall \u2014 cannot access paper without Meta login",
+      "blocked_by": "ai.meta.com auth wall — cannot access paper without Meta login",
       "definition_of_done": "Read and note key insights. Source: https://ai.meta.com/research/publications/omnilingual-mt-machine-translation-for",
       "created": "2026-03-22",
       "due": null
@@ -33,7 +33,7 @@
       "title": "News: Censored LLMs as a Natural Testbed for Secret Knowledge Elic",
       "status": "blocked",
       "priority": 3,
-      "blocked_by": "AlignmentForum Vercel 429 \u2014 consistently blocked",
+      "blocked_by": "AlignmentForum Vercel 429 — consistently blocked",
       "definition_of_done": "Read and note key insights. Source: https://www.alignmentforum.org/posts/xq5taGA6Tz6YShCB9/censored-llms-as-a-natura",
       "created": "2026-03-24",
       "due": null
@@ -69,24 +69,26 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac as ASR confidence calibration signal",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Build calibration harness: AND-frac at L* vs WER per segment on LibriSpeech-clean subset (CPU); Pearson r > 0.4 vs WER; compare vs temperature scaling; plot ECE curve; <5min CPU",
       "created": "2026-03-26",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q185",
       "type": "build",
       "track": "T3",
       "title": "Commitment head entropy: hallucination early-warning monitor",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "Script that tracks commitment head entropy across Whisper decoding steps; entropy spike (>2\u03c3) precedes hallucination in \u226560% of samples on L2-ARCTIC mock; CPU <5min",
+      "definition_of_done": "Script that tracks commitment head entropy across Whisper decoding steps; entropy spike (>2σ) precedes hallucination in ≥60% of samples on L2-ARCTIC mock; CPU <5min",
       "created": "2026-03-26",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q186",
@@ -96,7 +98,7 @@
       "status": "done",
       "priority": 1,
       "blocked_by": null,
-      "definition_of_done": "50 synthetic adversarial prompts \u00d7 3 categories (instruction-override, roleplay, payload-split); AND-frac detection AUROC >0.85; saved to experiments/jalmBench_v0.py; CPU <5min",
+      "definition_of_done": "50 synthetic adversarial prompts × 3 categories (instruction-override, roleplay, payload-split); AND-frac detection AUROC >0.85; saved to experiments/jalmBench_v0.py; CPU <5min",
       "created": "2026-03-26",
       "due": null,
       "completed": "2026-03-26"
@@ -121,7 +123,7 @@
       "status": "ready",
       "priority": 2,
       "blocked_by": null,
-      "definition_of_done": "Extend Q182: run power steering at L* for all 10 L1-accent groups in L2-ARCTIC; WER-proxy improvement \u22650.04 AND-frac gain for \u22658/10 groups; CPU <5min",
+      "definition_of_done": "Extend Q182: run power steering at L* for all 10 L1-accent groups in L2-ARCTIC; WER-proxy improvement ≥0.04 AND-frac gain for ≥8/10 groups; CPU <5min",
       "created": "2026-03-26",
       "due": null
     },
