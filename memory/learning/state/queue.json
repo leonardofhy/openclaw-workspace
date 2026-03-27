@@ -108,24 +108,26 @@
       "type": "build",
       "track": "T3",
       "title": "Whisper hallucination prediction via pre-generation AND-frac",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Compute AND-frac at L* before decoding for 60 L2-ARCTIC samples; correlate with ground-truth hallucination labels; AUROC >0.70; CPU <5min",
       "created": "2026-03-26",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q188",
       "type": "build",
       "track": "T3",
       "title": "Power steering multi-variety accent normalization (10 accent groups)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Extend Q182: run power steering at L* for all 10 L1-accent groups in L2-ARCTIC; WER-proxy improvement ≥0.04 AND-frac gain for ≥8/10 groups; CPU <5min",
       "created": "2026-03-26",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q189",
