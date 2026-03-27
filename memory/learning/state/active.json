@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260327-2115",
-    "action": "skip",
-    "summary": "Build budget=0, all 5 READY tasks are build type. Learn budget=4 but no READY read tasks (Q159/Q171 blocked). Ideate budget=0. Principled skip (2nd consecutive)."
+    "id": "c-20260327-2145",
+    "action": "learn",
+    "summary": "Bootstrap mediation analysis prep for Q194: validated Preacher-Hayes bootstrap test on synthetic data (38.8% proportion mediated). Implementation ready for build execution."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
