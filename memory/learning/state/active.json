@@ -28,7 +28,7 @@
   "budgets": {
     "learn_remaining_today": 3,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 2,
+    "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-27"
   },
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260327-2145",
-    "action": "learn",
-    "summary": "Bootstrap mediation analysis prep for Q194: validated Preacher-Hayes bootstrap test on synthetic data (38.8% proportion mediated). Implementation ready for build execution."
+    "id": "c-20260327-2215",
+    "action": "reflect",
+    "summary": "End-of-day reflect: 10 builds today. AND-frac narrative strong. Tomorrow Q194 mediation analysis = causal anchor for Paper A."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
