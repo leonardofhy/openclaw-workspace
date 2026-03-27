@@ -261,12 +261,13 @@
       "type": "write",
       "track": "T3",
       "title": "Related work grid: AND-frac vs probing/CAV/SAE/attention-rollout/logit-lens",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "3x8 comparison table + 400-word prose covering probing, CAV, SAE, attention rollout, logit lens, ROME; highlights AND-frac novelty",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q200",
