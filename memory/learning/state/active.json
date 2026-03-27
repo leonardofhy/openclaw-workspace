@@ -29,7 +29,7 @@
     "learn_remaining_today": 5,
     "build_remaining_today": 4,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 1,
+    "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-27"
   },
   "stats": {
@@ -38,16 +38,16 @@
     "papers_read_deep": 64,
     "papers_scanned": 50,
     "research_gaps": 25,
-    "paper_ideas": 611,
+    "paper_ideas": 631,
     "paper_pitches": 2,
     "code_artifacts": 141,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260327-1045",
-    "action": "build",
-    "summary": "Q190 DONE: AND-frac in GPT-2-small. 5/6 pass. L*=7, curve r=0.72 vs Whisper. Cross-modal universality supported."
+    "id": "c-20260327-1115",
+    "action": "ideate",
+    "summary": "20 ideas generated; Q192-Q201 added to queue (clustering, ablation, mediation, CI bands, theory section, jailbreak transfer, OOD shift, related work, acoustics, MATS demo)"
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
