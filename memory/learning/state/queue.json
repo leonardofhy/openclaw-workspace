@@ -233,12 +233,13 @@
       "type": "build",
       "track": "T5",
       "title": "Audio jailbreak AND-frac transfer: attack transferability vs AND-frac collapse rate",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Correlate JALMBench attack category AND-frac collapse rate with cross-category transfer; Pearson r reported; CPU <5min",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q198",
