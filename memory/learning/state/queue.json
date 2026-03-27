@@ -147,12 +147,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac in GPT-2-small: text LLM cross-modal replication",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Compute attention AND-gate pattern in GPT-2-small on WikiText-103 samples (100); find L* analog; compare curve shape to Whisper AND-frac; CPU <5min; novelty: first cross-modal AND-frac report",
       "created": "2026-03-26",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q191",
