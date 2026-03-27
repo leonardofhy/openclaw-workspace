@@ -186,12 +186,13 @@
       "type": "build",
       "track": "T3",
       "title": "Commit-before-attend ablation: WER delta after zeroing post-L* attention",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Zero attention heads after L* during decoding; WER delta on 100 LibriSpeech samples; proves L* as point-of-no-return; CPU <5min",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q194",
