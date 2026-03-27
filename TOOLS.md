@@ -175,6 +175,16 @@
 - **21:00 Daily Research Briefing**（isolated, g53s, 120s timeout）— 綜合新聞 + autodidact + artifacts → email
 - **23:30 Daily Growth Report**（isolated, g53s）— 每日成長量化，常規→#bot-logs，異常→#general
 
+### LALM-KE 每日文獻偵察
+- **Cron ID：** `7d14e10b`
+- **時間：** 每天 14:30 (Asia/Taipei)
+- **Model：** sonnet（isolated）
+- **流程：** daily_scout.py → paper_reader.py → report_generator.py → Discord DM
+- **腳本位置：** `skills/lalm-ke-scout/scripts/`
+- **輸出：** `memory/lalm-ke/daily/`、`memory/lalm-ke/paper-notes/`、`memory/lalm-ke/reports/`
+- **報告方式：** Discord DM（分段發送，>1800 字自動切分）+ 檔案存檔
+- **Profile：** `~/Workspace/leo-feed-digest/data/preferences_lalm_ke.json`（54 boost keywords）
+
 ### Deadline Watchdog（取代舊 one-shot cron jobs）
 - **位置**: `skills/deadline_watch.py`
 - **資料**: `memory/finance/deadlines.json`（11 個 deadlines）

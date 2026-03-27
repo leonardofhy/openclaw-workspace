@@ -28,13 +28,27 @@ _jsonl_mod = types.ModuleType("shared.jsonl_store")
 _jsonl_mod.find_workspace = MagicMock(return_value=MagicMock())
 _jsonl_mod.JsonlStore = MagicMock()
 
-sys.modules.setdefault("shared", _shared_pkg)
-sys.modules.setdefault("shared.jsonl_store", _jsonl_mod)
+# Save originals so we can restore after import (avoid poisoning batch runner)
+_orig_shared = sys.modules.get("shared")
+_orig_jsonl = sys.modules.get("shared.jsonl_store")
+
+sys.modules["shared"] = _shared_pkg
+sys.modules["shared.jsonl_store"] = _jsonl_mod
 
 # Ensure the scripts directory is on the path so `import learn` resolves.
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
 import learn  # noqa: E402  (must come after sys.modules manipulation)
+
+# Restore original modules so other test files in `skills/shared/` can collect
+if _orig_shared is not None:
+    sys.modules["shared"] = _orig_shared
+else:
+    del sys.modules["shared"]
+if _orig_jsonl is not None:
+    sys.modules["shared.jsonl_store"] = _orig_jsonl
+else:
+    del sys.modules["shared.jsonl_store"]
 
 # ---------------------------------------------------------------------------
 # Helpers

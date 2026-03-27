@@ -1,0 +1,70 @@
+{
+  "task": "Q172",
+  "model": "whisper-base",
+  "gc_layer": 4,
+  "n_native": 10,
+  "n_accented": 10,
+  "beam_width": 4,
+  "and_frac": {
+    "native_mean": 1.0000426530838014,
+    "accented_mean": 1.026881492137909,
+    "accent_gap": -0.026838839054107666,
+    "h3_passes": false
+  },
+  "baseline": {
+    "wer_native": 0.05,
+    "wer_accented": 0.25,
+    "wer_gap": 0.2,
+    "afg": 0.0
+  },
+  "best_lambda": 0.5,
+  "rescored": {
+    "wer_native": 0.0475,
+    "wer_accented": 0.25,
+    "wer_gap": 0.2025,
+    "gap_reduction_pct": -1.249999993750001,
+    "afg": 0.0
+  },
+  "lambda_sweep": [
+    {
+      "lambda": 0.0,
+      "wer_native": 0.05,
+      "wer_accented": 0.25,
+      "wer_gap": 0.2,
+      "afg": 0.0
+    },
+    {
+      "lambda": 0.5,
+      "wer_native": 0.0475,
+      "wer_accented": 0.25,
+      "wer_gap": 0.2025,
+      "afg": 0.0
+    },
+    {
+      "lambda": 1.0,
+      "wer_native": 0.045,
+      "wer_accented": 0.25,
+      "wer_gap": 0.20500000000000002,
+      "afg": 0.0
+    },
+    {
+      "lambda": 2.0,
+      "wer_native": 0.039999999999999994,
+      "wer_accented": 0.25,
+      "wer_gap": 0.21000000000000002,
+      "afg": 0.0
+    },
+    {
+      "lambda": 5.0,
+      "wer_native": 0.025,
+      "wer_accented": 0.25,
+      "wer_gap": 0.225,
+      "afg": 0.0
+    }
+  ],
+  "dod": {
+    "h3_and_frac_gap_gte_0.08": false,
+    "gap_reduction_gte_15pct": false,
+    "afg_reduces": true
+  }
+}

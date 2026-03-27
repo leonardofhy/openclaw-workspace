@@ -1,0 +1,46 @@
+{
+  "task": "Q166",
+  "model": "whisper-base",
+  "gc_layer": 4,
+  "alpha": 0.8,
+  "results": [
+    {
+      "sample_id": 0,
+      "and_frac_base": 1.6471,
+      "and_frac_steered": 1.7177,
+      "delta": 0.0705,
+      "passed": true
+    },
+    {
+      "sample_id": 1,
+      "and_frac_base": 1.7176,
+      "and_frac_steered": 1.7812,
+      "delta": 0.0636,
+      "passed": true
+    },
+    {
+      "sample_id": 2,
+      "and_frac_base": 1.6406,
+      "and_frac_steered": 1.7047,
+      "delta": 0.0641,
+      "passed": true
+    },
+    {
+      "sample_id": 3,
+      "and_frac_base": 1.5275,
+      "and_frac_steered": 1.6113,
+      "delta": 0.0839,
+      "passed": true
+    },
+    {
+      "sample_id": 4,
+      "and_frac_base": 1.5857,
+      "and_frac_steered": 1.6472,
+      "delta": 0.0615,
+      "passed": true
+    }
+  ],
+  "n_pass": 5,
+  "avg_delta": 0.0687,
+  "dod_passed": true
+}

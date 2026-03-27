@@ -1,0 +1,8 @@
+{
+  "task_id": "Q182",
+  "timestamp": "2026-03-26T16:49:38+08:00",
+  "n_samples": 5,
+  "n_passed": 0,
+  "mean_cos_sv_grad": 0.0172,
+  "mean_delta_and_frac": 0.0019,
+  "dod1_cos_sim_passed": 

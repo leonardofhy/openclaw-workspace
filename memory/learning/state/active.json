@@ -26,29 +26,29 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 1,
+    "reflect_remaining_today": 0,
     "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-23"
+    "budget_reset_date": "2026-03-26"
   },
   "stats": {
-    "total_cycles": 271,
-    "total_skips": 48,
-    "papers_read_deep": 61,
+    "total_cycles": 297,
+    "total_skips": 51,
+    "papers_read_deep": 64,
     "papers_scanned": 50,
     "research_gaps": 25,
-    "paper_ideas": 571,
+    "paper_ideas": 611,
     "paper_pitches": 2,
-    "code_artifacts": 112,
+    "code_artifacts": 136,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260323-2215",
-    "action": "reflect",
-    "summary": "End-of-day digest: 11 tasks completed, accent\u00d7AND-frac pathway theorized. Q162-Q170 queued for tomorrow."
+    "id": "c-20260326-2345",
+    "action": "skip",
+    "summary": "Principled skip: build budget exhausted, all READY tasks are build type. 6 build tasks ready for tomorrow."
   },
-  "last_gc": "2026-03-22T13:16:38.633525+08:00",
+  "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
 }

@@ -1,0 +1,281 @@
+{
+  "date": "2026-03-25",
+  "generated_at": "2026-03-25T14:30:28.924047+08:00",
+  "total_found": 256,
+  "shown": 20,
+  "papers": [
+    {
+      "rank": 1,
+      "title": "Localizing and Editing Knowledge in Large Audio-Language Models",
+      "url": "https://arxiv.org/abs/2603.14343v1",
+      "authors": "Sung Kyun Chung, Jiaheng Dong, Qiuchi Hu",
+      "categories": [
+        "cs.LG"
+      ],
+      "abstract_snippet": "Large Audio-Language Models (LALMs) have shown strong performance in speech understanding, making speech a natural interface for accessing factual information. Yet they are trained on static corpora and may encode incorrect facts. Existing model editing methods localize and update facts in text-only",
+      "score": 48.0,
+      "arxiv_id": "2603.14343",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 2,
+      "title": "SCENEBench: An Audio Understanding Benchmark Grounded in Assistive and Industrial Use Cases",
+      "url": "https://arxiv.org/abs/2603.09853v1",
+      "authors": "Laya Iyer, Angelina Wang, Sanmi Koyejo",
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "abstract_snippet": "Advances in large language models (LLMs) have enabled significant capabilities in audio processing, resulting in state-of-the-art models now known as Large Audio Language Models (LALMs). However, minimal work has been done to measure audio understanding beyond automatic speech recognition (ASR). Thi",
+      "score": 48.0,
+      "arxiv_id": "2603.09853",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 3,
+      "title": "Persuasion Tokens for Editing Factual Knowledge in LLMs",
+      "url": "https://arxiv.org/abs/2601.16781v2",
+      "authors": "Paul Youssef, Christin Seifert, Jörg Schlötterer",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "abstract_snippet": "In-context knowledge editing (IKE) is a promising technique for updating Large Language Models (LLMs) with new information. However, IKE relies on lengthy, fact-specific demonstrations which are costly to create and consume significant context window space. In this paper, we introduce persuasion tok",
+      "score": 46.0,
+      "arxiv_id": "2601.16781",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 4,
+      "title": "Latent Knowledge Scalpel: Precise and Massive Knowledge Editing for Large Language Models",
+      "url": "https://arxiv.org/abs/2508.03741v1",
+      "authors": "Xin Liu, Qiyang Song, Shaowen Xu",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "abstract_snippet": "Large Language Models (LLMs) often retain inaccurate or outdated information from pre-training, leading to incorrect predictions or biased outputs during inference. While existing model editing methods can address this challenge, they struggle with editing large amounts of factual information simult",
+      "score": 44.0,
+      "arxiv_id": "2508.03741",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 5,
+      "title": "Generalizable Multimodal Large Language Model Editing via Invariant Trajectory Learning",
+      "url": "https://arxiv.org/abs/2601.19700v2",
+      "authors": "Jiajie Su, Haoyuan Wang, Xiaohua Feng",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "abstract_snippet": "Knowledge editing emerges as a crucial technique for efficiently correcting incorrect or outdated knowledge in large language models (LLM). Existing editing methods rely on a rigid mapping from parameter or module modifications to output, which causes the generalization limitation in Multimodal LLM ",
+      "score": 43.0,
+      "arxiv_id": "2601.19700",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 6,
+      "title": "Retention analysis of edited knowledge after fine-tuning",
+      "url": "https://arxiv.org/abs/2507.14198v2",
+      "authors": "Fufang Wen, Shichang Zhang",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "abstract_snippet": "Large language models (LLMs) store vast amounts of knowledge, which often requires updates to correct factual errors, incorporate newly acquired information, or adapt model behavior. Model editing methods have emerged as efficient solutions for such updates, offering localized and precise knowledge ",
+      "score": 43.0,
+      "arxiv_id": "2507.14198",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 7,
+      "title": "Conflict-Resolving and Sharpness-Aware Minimization for Generalized Knowledge Editing with Multiple Updates",
+      "url": "https://arxiv.org/abs/2602.03696v1",
+      "authors": "Duy Nguyen, Hanqi Xiao, Archiki Prasad",
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "abstract_snippet": "Large language models (LLMs) rely on internal knowledge to solve many downstream tasks, making it crucial to keep them up to date. Since full retraining is expensive, prior work has explored efficient alternatives such as model editing and parameter-efficient fine-tuning. However, these approaches o",
+      "score": 42.0,
+      "arxiv_id": "2602.03696",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 8,
+      "title": "Toward Ultra-Long-Horizon Sequential Model Editing",
+      "url": "https://arxiv.org/abs/2602.02543v2",
+      "authors": "Mingda Liu, Zhenghan Zhu, Ze'an Miao",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "abstract_snippet": "Model editing has emerged as a practical approach for mitigating factual errors and outdated knowledge in large language models (LLMs). Among existing methods, the Locate-and-Edit (L&E) paradigm is the dominant framework: it locates MLP parameters implicated in expressing a target fact, and then per",
+      "score": 42.0,
+      "arxiv_id": "2602.02543",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 9,
+      "title": "REACT: Representation Extraction And Controllable Tuning to Overcome Overfitting in LLM Knowledge Editing",
+      "url": "https://arxiv.org/abs/2505.18933v1",
+      "authors": "Haitian Zhong, Yuhuan Liu, Ziyang Xu",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "abstract_snippet": "Large language model editing methods frequently suffer from overfitting, wherein factual updates can propagate beyond their intended scope, overemphasizing the edited target even when it's contextually inappropriate. To address this challenge, we introduce REACT (Representation Extraction And Contro",
+      "score": 42.0,
+      "arxiv_id": "2505.18933",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 10,
+      "title": "How Auditory Knowledge in LLM Backbones Shapes Audio Language Models: A Holistic Evaluation",
+      "url": "https://arxiv.org/abs/2603.19195v1",
+      "authors": "Ke-Han Lu, Szu-Wei Fu, Chao-Han Huck Yang",
+      "categories": [
+        "eess.AS",
+        "cs.CL",
+        "cs.SD"
+      ],
+      "abstract_snippet": "Large language models (LLMs) have been widely used as knowledge backbones of Large Audio Language Models (LALMs), yet how much auditory knowledge they encode through text-only pre-training and how this affects downstream performance remains unclear. We study this gap by comparing different LLMs unde",
+      "score": 40.0,
+      "arxiv_id": "2603.19195",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 11,
+      "title": "Unveiling Factual Recall Behaviors of Large Language Models through Knowledge Neurons",
+      "url": "https://arxiv.org/abs/2408.03247v3",
+      "authors": "Yifei Wang, Yuheng Chen, Wanting Wen",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "abstract_snippet": "In this paper, we investigate whether Large Language Models (LLMs) actively recall or retrieve their internal repositories of factual knowledge when faced with reasoning tasks. Through an analysis of LLMs' internal factual recall at each reasoning step via Knowledge Neurons, we reveal that LLMs fail",
+      "score": 39.0,
+      "arxiv_id": "2408.03247",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 12,
+      "title": "Edit Knowledge, Not Just Facts via Multi-Step Reasoning over Background Stories",
+      "url": "https://arxiv.org/abs/2602.02028v1",
+      "authors": "Ya Gao, Kalle Kujanpää, Pekka Marttinen",
+      "categories": [
+        "cs.AI"
+      ],
+      "abstract_snippet": "Enabling artificial intelligence systems, particularly large language models, to integrate new knowledge and flexibly apply it during reasoning remains a central challenge. Existing knowledge editing approaches emphasize atomic facts, improving factual recall but often failing to integrate new infor",
+      "score": 37.0,
+      "arxiv_id": "2602.02028",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 13,
+      "title": "Beyond Local Edits: Embedding-Virtualized Knowledge for Broader Evaluation and Preservation of Model Editing",
+      "url": "https://arxiv.org/abs/2602.01977v1",
+      "authors": "Shuainan Liu, Xuanang Chen, Ben He",
+      "categories": [
+        "cs.CL"
+      ],
+      "abstract_snippet": "Knowledge editing methods for large language models are commonly evaluated using predefined benchmarks that assess edited facts together with a limited set of related or neighboring knowledge. While effective, such evaluations remain confined to finite, dataset-bounded samples, leaving the broader i",
+      "score": 37.0,
+      "arxiv_id": "2602.01977",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 14,
+      "title": "Tracking the Limits of Knowledge Propagation: How LLMs Fail at Multi-Step Reasoning with Conflicting Knowledge",
+      "url": "https://arxiv.org/abs/2601.15495v1",
+      "authors": "Yiyang Feng, Zeming Chen, Haotian Wu",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "abstract_snippet": "A common solution for mitigating outdated or incorrect information in Large Language Models (LLMs) is to provide updated facts in-context or through knowledge editing. However, these methods introduce knowledge conflicts when the knowledge update fails to overwrite the model's parametric knowledge, ",
+      "score": 37.0,
+      "arxiv_id": "2601.15495",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 15,
+      "title": "The Anatomy of an Edit: Mechanism-Guided Activation Steering for Knowledge Editing",
+      "url": "https://arxiv.org/abs/2603.20795v1",
+      "authors": "Yuan Cao, Mingyang Wang, Hinrich Schütze",
+      "categories": [
+        "cs.CL"
+      ],
+      "abstract_snippet": "Large language models (LLMs) are increasingly used as knowledge bases, but keeping them up to date requires targeted knowledge editing (KE). However, it remains unclear how edits are implemented inside the model once applied. In this work, we take a mechanistic view of KE using neuron-level knowledg",
+      "score": 36.0,
+      "arxiv_id": "2603.20795",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 16,
+      "title": "Do All Autoregressive Transformers Remember Facts the Same Way? A Cross-Architecture Analysis of Recall Mechanisms",
+      "url": "https://arxiv.org/abs/2509.08778v1",
+      "authors": "Minyeong Choe, Haehyun Cho, Changho Seo",
+      "categories": [
+        "cs.CL"
+      ],
+      "abstract_snippet": "Understanding how Transformer-based language models store and retrieve factual associations is critical for improving interpretability and enabling targeted model editing. Prior work, primarily on GPT-style models, has identified MLP modules in early layers as key contributors to factual recall. How",
+      "score": 35.0,
+      "arxiv_id": "2509.08778",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 17,
+      "title": "MoEEdit: Efficient and Routing-Stable Knowledge Editing for Mixture-of-Experts LLMs",
+      "url": "https://arxiv.org/abs/2602.10965v1",
+      "authors": "Yupu Gu, Rongzhe Wei, Andy Zhu",
+      "categories": [
+        "cs.LG"
+      ],
+      "abstract_snippet": "Knowledge editing (KE) enables precise modifications to factual content in large language models (LLMs). Existing KE methods are largely designed for dense architectures, limiting their applicability to the increasingly prevalent sparse Mixture-of-Experts (MoE) models that underpin modern scalable L",
+      "score": 34.0,
+      "arxiv_id": "2602.10965",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 18,
+      "title": "Decoupled Reasoning with Implicit Fact Tokens (DRIFT): A Dual-Model Framework for Efficient Long-Context Inference",
+      "url": "https://arxiv.org/abs/2602.10021v1",
+      "authors": "Wenxuan Xie, Yujia Wang, Xin Tan",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "abstract_snippet": "The integration of extensive, dynamic knowledge into Large Language Models (LLMs) remains a significant challenge due to the inherent entanglement of factual data and reasoning patterns. Existing solutions, ranging from non-parametric Retrieval-Augmented Generation (RAG) to parametric knowledge edit",
+      "score": 34.0,
+      "arxiv_id": "2602.10021",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 19,
+      "title": "Diagnosing Model Editing via Knowledge Spectrum",
+      "url": "https://arxiv.org/abs/2509.17482v1",
+      "authors": "Tsung-Hsuan Pan, Chung-Chi Chen, Hen-Hsen Huang",
+      "categories": [
+        "cs.CL"
+      ],
+      "abstract_snippet": "Model editing, the process of efficiently modifying factual knowledge in pre-trained language models, is critical for maintaining their accuracy and relevance. However, existing editing methods often introduce unintended side effects, degrading model performance in unpredictable ways. While much res",
+      "score": 34.0,
+      "arxiv_id": "2509.17482",
+      "source": "arxiv_api"
+    },
+    {
+      "rank": 20,
+      "title": "Model Editing with Graph-Based External Memory",
+      "url": "https://arxiv.org/abs/2505.18343v2",
+      "authors": "Yash Kumar Atri, Ahmed Alaa, Thomas Hartvigsen",
+      "categories": [
+        "cs.CL"
+      ],
+      "abstract_snippet": "Large language models (LLMs) have revolutionized natural language processing, yet their practical utility is often limited by persistent issues of hallucinations and outdated parametric knowledge. Although post-training model editing offers a pathway for dynamic updates, existing methods frequently ",
+      "score": 34.0,
+      "arxiv_id": "2505.18343",
+      "source": "arxiv_api"
+    }
+  ]
+}
