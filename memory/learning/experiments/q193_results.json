@@ -1,0 +1,37 @@
+{
+  "task_id": "Q193",
+  "timestamp": "2026-03-27T13:17:17.480635",
+  "config": {
+    "n_samples": 20,
+    "n_tokens": 25,
+    "n_enc_layers": 12,
+    "l_star": 8
+  },
+  "wer_by_condition": {
+    "baseline": {
+      "clear_mean_wer": 1.1524114995609125e-12,
+      "noisy_mean_wer": 0.008741219273643575,
+      "overall_mean_wer": 0.004370609637397993
+    },
+    "post_l_star_zero": {
+      "clear_mean_wer": 4.832488065265039e-07,
+      "noisy_mean_wer": 1.1358121273169053,
+      "overall_mean_wer": 0.5679063052828559
+    },
+    "pre_l_star_zero": {
+      "clear_mean_wer": 0.0032849399030865367,
+      "noisy_mean_wer": 23.63392515215724,
+      "overall_mean_wer": 11.818605046030163
+    }
+  },
+  "deltas": {
+    "post_l_star": 0.56,
+    "pre_l_star": 11.81,
+    "asymmetry_ratio": 0.05
+  },
+  "dod": {
+    "dod1_post_delta_ge_15": false,
+    "dod2_ratio_ge_1_5": false,
+    "passed": false
+  }
+}
