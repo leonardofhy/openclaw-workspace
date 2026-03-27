@@ -173,12 +173,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac trajectory clustering: commitment archetypes",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Cluster AND-frac L-space curves for 500 Whisper samples → 3-4 archetypes; silhouette >0.4; CPU <5min",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q193",
