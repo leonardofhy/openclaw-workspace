@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260327-2045",
+    "id": "c-20260327-2115",
     "action": "skip",
-    "summary": "Build budget exhausted (0). All 5 READY tasks are build type. Learn budget=4 but no READY read tasks (Q159/Q171 blocked). Ideate budget=0. Principled skip."
+    "summary": "Build budget=0, all 5 READY tasks are build type. Learn budget=4 but no READY read tasks (Q159/Q171 blocked). Ideate budget=0. Principled skip (2nd consecutive)."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
