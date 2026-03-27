@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260327-1415",
-    "action": "learn",
-    "summary": "Produced AND-frac related work comparison grid (3x8 table + 400-word prose) for Q199. Grid covers probing/CAV/SAE/attention-rollout/logit-lens/ROME vs AND-frac on 8 dimensions."
+    "id": "c-20260327-1445",
+    "action": "skip",
+    "summary": "Build budget 0, no READY learn tasks, ideate 0. Principled skip."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
