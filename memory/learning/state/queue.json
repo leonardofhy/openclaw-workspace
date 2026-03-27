@@ -221,12 +221,13 @@
       "type": "write",
       "track": "T3",
       "title": "Paper A Section: Commitment as Phase Transition (theoretical framing)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "800-word theory section connecting AND-frac L* to phase transitions; ties Q179 scale + Q178 multilingual; appended to pitches/andfrac-unified-paper.md",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q197",
