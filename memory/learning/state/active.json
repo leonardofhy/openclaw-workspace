@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260327-1315",
-    "action": "build",
-    "summary": "Q193 done: Commit-before-attend ablation. Post-L* zeroing +58 WER pts, pre-L* +4.6 WER pts. Asymmetry 12.7x \u2014 confirms L* as acoustic commitment bottleneck."
+    "id": "c-20260327-1345",
+    "action": "skip",
+    "summary": "Build budget exhausted. All READY tasks are build/write. No learn tasks available. Principled skip."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
