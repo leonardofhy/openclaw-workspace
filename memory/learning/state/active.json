@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 6,
+    "build_remaining_today": 5,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-27"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260327-0945",
+    "id": "c-20260327-1015",
     "action": "build",
-    "summary": "Q188 DONE: Power steering 10-accent groups. 10/10 pass. \u0394AF=+0.055, cos(u1,\u2207g)=0.911. Universal Listen Layer structure across all 10 accent varieties."
+    "summary": "Q189 DONE: AND-frac drift monitor. Normal LR stable, aggressive LR fires alert (drop=0.616). 10/10 pass."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []

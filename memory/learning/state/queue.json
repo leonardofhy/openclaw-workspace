@@ -134,12 +134,13 @@
       "type": "build",
       "track": "T5",
       "title": "AND-frac drift monitor during Whisper fine-tuning (mock)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Simulate fine-tuning updates via gradient steps on mock data; track AND-frac at L* every 5 steps; detect collapse threshold; output alert when AND-frac drops >0.3; CPU <5min",
       "created": "2026-03-26",
-      "due": null
+      "due": null,
+      "completed": "2026-03-27"
     },
     {
       "id": "Q190",
