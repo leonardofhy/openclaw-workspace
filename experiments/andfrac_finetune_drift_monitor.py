@@ -14,9 +14,9 @@ import numpy as np
 
 # ─── Configuration ───────────────────────────────────────────────────────────
 LISTEN_LAYER = 4           # L* for Whisper-base (empirically established)
-N_HEADS = 6                # Whisper-base encoder heads
+N_HEADS = 8                # Whisper-base encoder heads
 D_MODEL = 512
-D_HEAD = D_MODEL // N_HEADS
+D_HEAD = D_MODEL // N_HEADS  # 64
 N_STEPS = 50               # Simulated fine-tuning steps
 LOG_EVERY = 5              # Log AND-frac every N steps
 COLLAPSE_THRESHOLD = 0.30  # Alert if AND-frac drops > this from baseline
