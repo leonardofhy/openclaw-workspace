@@ -82,12 +82,13 @@
       "type": "build",
       "track": "T3",
       "title": "Censored behavior x AND-frac: refusal vs commit mechanism in GPT-2-small",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Fine-tune GPT-2-small to refuse 10 patterns; compare AND-frac at L* for refused vs accepted; is commit suppressed for censored topics? CPU <5min",
       "created": "2026-03-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-28"
     },
     {
       "id": "Q206",

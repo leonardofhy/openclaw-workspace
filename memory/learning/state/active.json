@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 2,
+    "build_remaining_today": 1,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-28"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1215",
+    "id": "c-20260328-1245",
     "action": "build",
-    "summary": "Q204 done: Audio-RAVEL Cause=0.86 (pass), Isolate=0.39 (fail). Residual-stream downstream bleed expected; phoneme+speaker probes clean. Need projected steering for full isolation."
+    "summary": "Q205 done: Censored behavior x AND-frac shows Shifted mechanism (not Suppressed). AND-frac magnitude intact; commit direction shifts 0.925 cosine-dist; peak commit layer shifts L6→L8 for refused prompts."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []

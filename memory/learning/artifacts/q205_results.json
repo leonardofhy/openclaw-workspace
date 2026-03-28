@@ -1,0 +1,42 @@
+{
+  "n_refused_samples": 200,
+  "n_accepted_samples": 200,
+  "and_frac_accepted_Lstar": 0.2929,
+  "and_frac_refused_Lstar": 0.2933,
+  "suppression_score": -0.0004,
+  "commit_direction_shift": 0.9249,
+  "is_suppressed": false,
+  "is_shifted": true,
+  "mechanism": "Shifted",
+  "and_frac_accepted_profile": [
+    0.2921,
+    0.2875,
+    0.2983,
+    0.2921,
+    0.2908,
+    0.2996,
+    0.3033,
+    0.2929,
+    0.2996,
+    0.2921,
+    0.2983,
+    0.2992
+  ],
+  "and_frac_refused_profile": [
+    0.2958,
+    0.2946,
+    0.3008,
+    0.3,
+    0.2896,
+    0.3025,
+    0.3004,
+    0.2933,
+    0.3038,
+    0.3029,
+    0.3004,
+    0.2975
+  ],
+  "l_star": 7,
+  "peak_layer_accepted": 6,
+  "peak_layer_refused": 8
+}
