@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1715",
-    "action": "learn",
-    "summary": "Q207 design: sliding-window AND-frac streaming monitor. AUROC > 0.75 at 10s window (33%). KG note written. Ready to build tomorrow."
+    "id": "c-20260328-1745",
+    "action": "skip",
+    "summary": "Build budget exhausted. 7 READY build tasks parked until tomorrow reset."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
