@@ -95,12 +95,13 @@
       "type": "build",
       "track": "T3",
       "title": "Power steering for hallucination suppression: WER improvement on L2-ARCTIC",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Jacobian SV steering at L* to suppress hallucinations; WER improvement vs baseline and temperature scaling on 60 samples; CPU <5min",
       "created": "2026-03-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-28"
     },
     {
       "id": "Q207",
