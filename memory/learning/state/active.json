@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1415",
+    "id": "c-20260328-1445",
     "action": "skip",
-    "summary": "Build budget 0. All READY tasks are build-type. Ideate budget 0. No learn tasks. Principled skip."
+    "summary": "Build budget 0. All 7 READY tasks are build-type. Ideate budget 0. No learn tasks. Principled skip."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
