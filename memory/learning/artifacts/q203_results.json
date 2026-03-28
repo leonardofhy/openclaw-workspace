@@ -1,0 +1,39 @@
+{
+  "task": "Q203",
+  "config": {
+    "n_total": 500,
+    "n_cal": 250,
+    "n_test": 250,
+    "alpha": 0.1,
+    "wer_threshold": 0.05,
+    "l_star": 2
+  },
+  "calibration": {
+    "tau_and_frac": 0.4621,
+    "tau_softmax": 0.2686,
+    "error_rate_cal": 1.0
+  },
+  "results": {
+    "and_frac": {
+      "tau": 0.4621,
+      "coverage": 0.0,
+      "precision": 0.0,
+      "uncertain_frac": 0.112,
+      "included_frac": 0.888,
+      "auroc": 1.0,
+      "ece": 0.7372
+    },
+    "softmax": {
+      "tau": 0.2686,
+      "coverage": 0.0,
+      "precision": 0.0,
+      "uncertain_frac": 0.088,
+      "included_frac": 0.912,
+      "auroc": 1.0,
+      "ece": 0.8081
+    }
+  },
+  "dod": {
+    "coverage_pass": false,
+    "auroc_pass": true,
+    "ece_better_than_baseline": 
