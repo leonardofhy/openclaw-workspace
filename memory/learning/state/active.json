@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-2115",
+    "id": "c-20260328-2145",
     "action": "skip",
-    "summary": "Principled skip: build_budget=0; all 7 READY tasks are build-type; learn_budget=3 but no READY learn tasks; ideate=0; reflect not triggered (21:15, threshold 22:00)."
+    "summary": "Principled skip: build_budget=0; all 7 READY tasks are build-type; learn_budget=3 but no READY learn tasks; ideate=0; reflect not triggered (21:45, threshold 22:00)."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
