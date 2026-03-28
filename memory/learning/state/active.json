@@ -33,8 +33,8 @@
     "budget_reset_date": "2026-03-28"
   },
   "stats": {
-    "total_cycles": 319,
-    "total_skips": 54,
+    "total_cycles": 320,
+    "total_skips": 55,
     "papers_read_deep": 65,
     "papers_scanned": 50,
     "research_gaps": 25,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-2315",
+    "id": "c-20260328-2345",
     "action": "skip",
-    "summary": "Principled skip \u2014 build budget exhausted (5 builds done today). 7 READY build tasks await tomorrow reset."
+    "summary": "Principled skip \u2014 build budget 0, no READY learn tasks, all other budgets 0. 7 READY build tasks await tomorrow."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
