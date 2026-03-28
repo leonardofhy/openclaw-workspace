@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 7,
+    "build_remaining_today": 6,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-28"
   },
   "stats": {
-    "total_cycles": 310,
+    "total_cycles": 311,
     "total_skips": 52,
     "papers_read_deep": 65,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 631,
     "paper_pitches": 2,
-    "code_artifacts": 149,
+    "code_artifacts": 150,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-0915",
+    "id": "c-20260328-0945",
     "action": "build",
-    "summary": "Q198 done: AND-frac vs softmax OOD (LibriSpeech\u2192L2-ARCTIC). Spearman rho=-0.78 vs -0.51; AND-frac 3x more sensitive to shift; alarm threshold 97%TPR/0%FPR. Next: Q200 acoustic conditions or Q201 MATS demo."
+    "summary": "Q201 done: MATS demo end-to-end AND-frac safety detection. 5/5 correct (P=1.0 R=1.0 F1=1.0, 0 FP). Commitment layer L* detected automatically. Report → pitches/q201_mats_demo_report.json. T5 DoD: MVP safety probe ✅. Next: Q200 acoustic conditions."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []

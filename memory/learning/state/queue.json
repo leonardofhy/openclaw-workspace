@@ -289,12 +289,13 @@
       "type": "build",
       "track": "T5",
       "title": "MATS proposal demo: end-to-end AND-frac safety detection script",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Runnable script on 5 adversarial audio samples → AND-frac scores → safety report JSON; CPU <5min",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-28"
     }
   ],
   "archived_count": 122,
