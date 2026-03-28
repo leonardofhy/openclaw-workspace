@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 5,
+    "learn_remaining_today": 4,
     "build_remaining_today": 0,
     "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1645",
-    "action": "skip",
-    "summary": "Principled skip: build budget exhausted (10/10 today). 7 READY builds queued for tomorrow."
+    "id": "c-20260328-1715",
+    "action": "learn",
+    "summary": "Q207 design: sliding-window AND-frac streaming monitor. AUROC > 0.75 at 10s window (33%). KG note written. Ready to build tomorrow."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
