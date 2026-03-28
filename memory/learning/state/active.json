@@ -29,11 +29,11 @@
     "learn_remaining_today": 5,
     "build_remaining_today": 5,
     "reflect_remaining_today": 2,
-    "ideate_remaining_today": 1,
+    "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-28"
   },
   "stats": {
-    "total_cycles": 312,
+    "total_cycles": 313,
     "total_skips": 52,
     "papers_read_deep": 65,
     "papers_scanned": 50,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1015",
-    "action": "build",
-    "summary": "Q200 done: AND-frac under acoustic conditions. Noise/reverb diffuse (not delay) commitment \u2014 slope -27%/-53%, peak -26%/-51%, all p<0.001. L* median stays at 4. Queue now empty of READY tasks (all blocked or done)."
+    "id": "c-20260328-1045",
+    "action": "ideate",
+    "summary": "20 ideas generated; 12 added to queue (Q202-Q213). Themes: acoustic robustification, conformal prediction, censored LLM x AND-frac, Audio-RAVEL, SPIRIT defense, circuit dissection. Queue archived 20 done tasks."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
