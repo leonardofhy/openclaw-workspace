@@ -33,8 +33,8 @@
     "budget_reset_date": "2026-03-28"
   },
   "stats": {
-    "total_cycles": 316,
-    "total_skips": 52,
+    "total_cycles": 317,
+    "total_skips": 53,
     "papers_read_deep": 65,
     "papers_scanned": 50,
     "research_gaps": 25,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1815",
-    "action": "learn",
-    "summary": "Q208 impl spec: SPIRIT-style linear erasing at L* \u2014 compute jailbreak direction (mean-diff), project out via hook, measure AND-frac restoration + jailbreak suppression. Ready to build tomorrow."
+    "id": "c-20260328-1845",
+    "action": "skip",
+    "summary": "Principled skip: build budget=0, no READY learn tasks, ideate budget=0, no reflect trigger."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
