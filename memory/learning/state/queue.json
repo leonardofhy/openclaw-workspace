@@ -199,24 +199,26 @@
       "type": "build",
       "track": "T3",
       "title": "Causal mediation analysis: accent gap mediated by AND-frac at L*",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Bootstrap mediation test on 200 L2-ARCTIC samples; AND-frac accounts for >=30% of accent-WER gap; CPU <5min",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-28"
     },
     {
       "id": "Q195",
       "type": "build",
       "track": "T3",
       "title": "AND-frac bootstrap CI bands for paper figures",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Add 95% CI to AND-frac curves from Q179+Q178 via 1000 resamplings; publication-ready plots; CPU <5min",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-28"
     },
     {
       "id": "Q196",
@@ -249,12 +251,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac vs softmax under distribution shift (in-dist vs OOD)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "AND-frac at L* vs softmax on LibriSpeech-clean vs L2-ARCTIC OOD; AND-frac predicts WER delta better; Spearman rho >0.5; CPU <5min",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-28"
     },
     {
       "id": "Q199",
