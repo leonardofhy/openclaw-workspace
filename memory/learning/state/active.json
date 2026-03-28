@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1615",
-    "action": "reflect",
-    "summary": "Milestone reflect: 10 builds today. AND-frac/L* theme validated. 7 READY for tomorrow."
+    "id": "c-20260328-1645",
+    "action": "skip",
+    "summary": "Principled skip: build budget exhausted (10/10 today). 7 READY builds queued for tomorrow."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
