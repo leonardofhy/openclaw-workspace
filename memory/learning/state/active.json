@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 6,
+    "build_remaining_today": 5,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-28"
   },
   "stats": {
-    "total_cycles": 311,
+    "total_cycles": 312,
     "total_skips": 52,
     "papers_read_deep": 65,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 631,
     "paper_pitches": 2,
-    "code_artifacts": 150,
+    "code_artifacts": 151,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-0945",
+    "id": "c-20260328-1015",
     "action": "build",
-    "summary": "Q201 done: MATS demo end-to-end AND-frac safety detection. 5/5 correct (P=1.0 R=1.0 F1=1.0, 0 FP). Commitment layer L* detected automatically. Report → pitches/q201_mats_demo_report.json. T5 DoD: MVP safety probe ✅. Next: Q200 acoustic conditions."
+    "summary": "Q200 done: AND-frac under acoustic conditions. Noise/reverb diffuse (not delay) commitment \u2014 slope -27%/-53%, peak -26%/-51%, all p<0.001. L* median stays at 4. Queue now empty of READY tasks (all blocked or done)."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []

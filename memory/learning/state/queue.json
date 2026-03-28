@@ -277,12 +277,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac under acoustic conditions (clean/noisy/reverb): does noise delay L*?",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Augment 50 LibriSpeech samples with noise+reverb; compare L* position and AND-frac sharpness vs clean baseline; CPU <5min",
       "created": "2026-03-27",
-      "due": null
+      "due": null,
+      "completed": "2026-03-28"
     },
     {
       "id": "Q201",
