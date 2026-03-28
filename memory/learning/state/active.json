@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1745",
-    "action": "skip",
-    "summary": "Build budget exhausted. 7 READY build tasks parked until tomorrow reset."
+    "id": "c-20260328-1815",
+    "action": "learn",
+    "summary": "Q208 impl spec: SPIRIT-style linear erasing at L* \u2014 compute jailbreak direction (mean-diff), project out via hook, measure AND-frac restoration + jailbreak suppression. Ready to build tomorrow."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
