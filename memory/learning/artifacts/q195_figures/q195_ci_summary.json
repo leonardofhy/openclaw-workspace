@@ -1,0 +1,142 @@
+{
+  "tiny": {
+    "normal_ci_at_lstar": {
+      "mean": 0.3444,
+      "lo": 0.3338,
+      "hi": 0.3551,
+      "ci_width": 0.0213
+    },
+    "accented_ci_at_lstar": {
+      "mean": 0.2448,
+      "lo": 0.2355,
+      "hi": 0.2544,
+      "ci_width": 0.0189
+    }
+  },
+  "base": {
+    "normal_ci_at_lstar": {
+      "mean": 0.3539,
+      "lo": 0.3431,
+      "hi": 0.3649,
+      "ci_width": 0.0217
+    },
+    "accented_ci_at_lstar": {
+      "mean": 0.284,
+      "lo": 0.2718,
+      "hi": 0.2947,
+      "ci_width": 0.0229
+    }
+  },
+  "small": {
+    "normal_ci_at_lstar": {
+      "mean": 0.4972,
+      "lo": 0.4825,
+      "hi": 0.5127,
+      "ci_width": 0.0302
+    },
+    "accented_ci_at_lstar": {
+      "mean": 0.5062,
+      "lo": 0.487,
+      "hi": 0.5248,
+      "ci_width": 0.0379
+    }
+  },
+  "medium": {
+    "normal_ci_at_lstar": {
+      "mean": 0.4674,
+      "lo": 0.4547,
+      "hi": 0.4817,
+      "ci_width": 0.027
+    },
+    "accented_ci_at_lstar": {
+      "mean": 0.4053,
+      "lo": 0.39,
+      "hi": 0.4211,
+      "ci_width": 0.0311
+    }
+  },
+  "multilingual": {
+    "en": {
+      "native": {
+        "mean": 0.505,
+        "lo": 0.5008879186271792,
+        "hi": 0.5090220396866658,
+        "ci_width": 0.0081
+      },
+      "accented": {
+        "mean": 0.527,
+        "lo": 0.5225580780256293,
+        "hi": 0.531395403845956,
+        "ci_width": 0.0088
+      },
+      "gap": 0.093
+    },
+    "es": {
+      "native": {
+        "mean": 0.531,
+        "lo": 0.5262701855110231,
+        "hi": 0.5353640944045497,
+        "ci_width": 0.0091
+      },
+      "accented": {
+        "mean": 0.518,
+        "lo": 0.5139280949744239,
+        "hi": 0.5223360495124437,
+        "ci_width": 0.0084
+      },
+      "gap": 0.084
+    },
+    "zh": {
+      "native": {
+        "mean": 0.503,
+        "lo": 0.4987758436631103,
+        "hi": 0.5069555540504876,
+        "ci_width": 0.0082
+      },
+      "accented": {
+        "mean": 0.532,
+        "lo": 0.5280189119767762,
+        "hi": 0.5363969978124432,
+        "ci_width": 0.0084
+      },
+      "gap": 0.11
+    },
+    "ar": {
+      "native": {
+        "mean": 0.533,
+        "lo": 0.5287847205258988,
+        "hi": 0.5375961670623709,
+        "ci_width": 0.0088
+      },
+      "accented": {
+        "mean": 0.505,
+        "lo": 0.5007611422405011,
+        "hi": 0.5091114339682711,
+        "ci_width": 0.0084
+      },
+      "gap": 0.037
+    },
+    "hi": {
+      "native": {
+        "mean": 0.529,
+        "lo": 0.5246413741367542,
+        "hi": 0.5333709838752289,
+        "ci_width": 0.0087
+      },
+      "accented": {
+        "mean": 0.513,
+        "lo": 0.5087720219110694,
+        "hi": 0.5175215670655308,
+        "ci_width": 0.0087
+      },
+      "gap": 0.057
+    }
+  },
+  "bootstrap_config": {
+    "n_bootstrap": 1000,
+    "n_samples_per_cell": 50,
+    "alpha": 0.05,
+    "ci_level": "95%",
+    "method": "parametric_bootstrap_from_empirical_mean_std"
+  }
+}

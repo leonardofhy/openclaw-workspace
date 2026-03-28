@@ -1,0 +1,113 @@
+{
+  "task": "Q206",
+  "title": "Power Steering for Hallucination Suppression: WER on L2-ARCTIC",
+  "timestamp": "2026-03-28",
+  "config": {
+    "n_samples": 60,
+    "n_calib": 20,
+    "l_star": 8,
+    "alpha_grid": [
+      0.0,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.5
+    ],
+    "temp_scale": 1.2
+  },
+  "hall_dir_quality": 0.8331958882942644,
+  "and_frac": {
+    "before": 0.09375,
+    "after": 0.18050957078778854,
+    "delta": 0.08675957078778854,
+    "hallu_samples": 0.0,
+    "clean_samples": 0.16071428571428573
+  },
+  "results": {
+    "baseline": {
+      "alpha": 0.0,
+      "temperature": 1.0,
+      "mean_wer": 0.10874536537274389,
+      "std_wer": 0.06338053324518715,
+      "mean_cer": 0.06514186579151109,
+      "contamination": 0.05702169150945162,
+      "wer_hallu": 0.17687118920595118,
+      "wer_clean": 0.060084062634738686
+    },
+    "temp_scale": {
+      "alpha": 0.0,
+      "temperature": 1.2,
+      "mean_wer": 0.09876593457266461,
+      "std_wer": 0.05123224519148458,
+      "mean_cer": 0.06131121637803186,
+      "contamination": 0.05702169150945162,
+      "wer_hallu": 0.15434561150760073,
+      "wer_clean": 0.0590661653334245
+    },
+    "steer_a0.3": {
+      "alpha": 0.3,
+      "temperature": 1.0,
+      "mean_wer": 0.10678818559442739,
+      "std_wer": 0.06198246464820055,
+      "mean_cer": 0.06648209442374814,
+      "contamination": 0.04498647571052412,
+      "wer_hallu": 0.17646676354765742,
+      "wer_clean": 0.05701777277069165
+    },
+    "steer_a0.5": {
+      "alpha": 0.5,
+      "temperature": 1.0,
+      "mean_wer": 0.10607322035709309,
+      "std_wer": 0.0584956369843066,
+      "mean_cer": 0.061392754819324255,
+      "contamination": 0.03750680603846138,
+      "wer_hallu": 0.1712193126966365,
+      "wer_clean": 0.05954029725741918
+    },
+    "steer_a0.7": {
+      "alpha": 0.7,
+      "temperature": 1.0,
+      "mean_wer": 0.10151824995242811,
+      "std_wer": 0.06312409180773411,
+      "mean_cer": 0.06136888259026488,
+      "contamination": 0.030679296418762943,
+      "wer_hallu": 0.17336257596979568,
+      "wer_clean": 0.05020087422573701
+    },
+    "steer_a1.0": {
+      "alpha": 1.0,
+      "temperature": 1.0,
+      "mean_wer": 0.10416456541898195,
+      "std_wer": 0.059068356075257324,
+      "mean_cer": 0.06296533004977639,
+      "contamination": 0.02348264966447261,
+      "wer_hallu": 0.17072501253084124,
+      "wer_clean": 0.05662138891051101
+    },
+    "steer_a1.5": {
+      "alpha": 1.5,
+      "temperature": 1.0,
+      "mean_wer": 0.10439713525584238,
+      "std_wer": 0.05588614927998641,
+      "mean_cer": 0.06103938744933727,
+      "contamination": 0.024856088484582338,
+      "wer_hallu": 0.16677828815980875,
+      "wer_clean": 0.05983916889586639
+    }
+  },
+  "best_steering": {
+    "condition": "steer_a0.7",
+    "alpha": 0.7,
+    "wer": 0.10151824995242811,
+    "wer_improvement_vs_baseline_pct": 6.64590660534687,
+    "wer_improvement_vs_temp_scale_pct": -2.7867051445137245
+  },
+  "findings": {
+    "steering_beats_temp_scale": false,
+    "hallu_samples_gain_more": false,
+    "and_frac_restored": true,
+    "l_star_causal_evidence": true
+  },
+  "runtime_sec": 0.13914060592651367
+}
