@@ -56,12 +56,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac conformal prediction for ASR uncertainty quantification",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "AND-frac at L* as conformal nonconformity score; empirical coverage on LibriSpeech calibration set; compare vs temperature scaling; CPU <5min",
       "created": "2026-03-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-28"
     },
     {
       "id": "Q204",

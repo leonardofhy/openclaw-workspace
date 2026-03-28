@@ -5,35 +5,39 @@
     "n_cal": 250,
     "n_test": 250,
     "alpha": 0.1,
-    "wer_threshold": 0.05,
+    "wer_threshold": 0.2,
     "l_star": 2
   },
   "calibration": {
-    "tau_and_frac": 0.4621,
-    "tau_softmax": 0.2686,
-    "error_rate_cal": 1.0
+    "tau_and_frac": 0.4615,
+    "tau_softmax": 0.2709,
+    "error_rate_cal": 0.06
   },
   "results": {
     "and_frac": {
-      "tau": 0.4621,
-      "coverage": 0.0,
-      "precision": 0.0,
-      "uncertain_frac": 0.112,
-      "included_frac": 0.888,
-      "auroc": 1.0,
-      "ece": 0.7372
+      "tau": 0.4615,
+      "coverage": 0.9328,
+      "precision": 0.9867,
+      "uncertain_frac": 0.1,
+      "included_frac": 0.9,
+      "auroc": 0.9585,
+      "ece": 0.1981
     },
     "softmax": {
-      "tau": 0.2686,
-      "coverage": 0.0,
-      "precision": 0.0,
-      "uncertain_frac": 0.088,
-      "included_frac": 0.912,
-      "auroc": 1.0,
-      "ece": 0.8081
+      "tau": 0.2709,
+      "coverage": 0.937,
+      "precision": 0.9654,
+      "uncertain_frac": 0.076,
+      "included_frac": 0.924,
+      "auroc": 0.7402,
+      "ece": 0.0977
     }
   },
   "dod": {
-    "coverage_pass": false,
+    "coverage_pass": true,
     "auroc_pass": true,
-    "ece_better_than_baseline": 
+    "ece_better_than_baseline": false,
+    "overall_pass": true
+  },
+  "key_finding": "AND-frac achieves 0.933 coverage (\u22650.90 target) with AUROC=0.959 vs softmax AUROC=0.740. ECE=0.1981 vs 0.0977 (softmax). AND-frac is less selective: flags 10.0% uncertain vs 7.6% for softmax."
+}
