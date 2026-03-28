@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1315",
-    "action": "build",
-    "summary": "Q206 done: Power steering at L*=8, \u03b1=0.7. WER -6.6% (0.109\u21920.102). AND-frac restored +0.087. Temp-scale still marginally better overall but steering is mechanistically targeted at hallucination direction. Causal evidence for L* as intervention fork-point confirmed."
+    "id": "c-20260328-1415",
+    "action": "skip",
+    "summary": "Build budget 0. All READY tasks are build-type. Ideate budget 0. No learn tasks. Principled skip."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
