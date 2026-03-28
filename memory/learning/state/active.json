@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 5,
+    "build_remaining_today": 4,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-28"
@@ -40,14 +40,14 @@
     "research_gaps": 25,
     "paper_ideas": 631,
     "paper_pitches": 2,
-    "code_artifacts": 151,
+    "code_artifacts": 152,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1045",
-    "action": "ideate",
-    "summary": "20 ideas generated; 12 added to queue (Q202-Q213). Themes: acoustic robustification, conformal prediction, censored LLM x AND-frac, Audio-RAVEL, SPIRIT defense, circuit dissection. Queue archived 20 done tasks."
+    "id": "c-20260328-1115",
+    "action": "build",
+    "summary": "Q202 done: AND-frac acoustic restoration via power steering at L*. Noise/reverb degradation confirmed; restoration ratio \u22651.5x for all conditions. Script: q202_acoustic_restoration.py."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
