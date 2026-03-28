@@ -28,26 +28,26 @@
   "budgets": {
     "learn_remaining_today": 3,
     "build_remaining_today": 0,
-    "reflect_remaining_today": 0,
+    "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-27"
+    "budget_reset_date": "2026-03-28"
   },
   "stats": {
-    "total_cycles": 308,
-    "total_skips": 52,
+    "total_cycles": 317,
+    "total_skips": 53,
     "papers_read_deep": 65,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 631,
     "paper_pitches": 2,
-    "code_artifacts": 145,
+    "code_artifacts": 157,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260327-2315",
-    "action": "reflect",
-    "summary": "End-of-day reflect. 11 tasks done today. Paper A ~75% empirical. 5 READY builds queued for tomorrow (budget resets)."
+    "id": "c-20260328-1915",
+    "action": "skip",
+    "summary": "Principled skip: build budget=0, all READY tasks are build type. No READY learn tasks. Ideate budget=0."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
