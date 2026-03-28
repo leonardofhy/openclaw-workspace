@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 3,
+    "build_remaining_today": 2,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-28"
   },
   "stats": {
-    "total_cycles": 313,
+    "total_cycles": 314,
     "total_skips": 52,
     "papers_read_deep": 65,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 631,
     "paper_pitches": 2,
-    "code_artifacts": 154,
+    "code_artifacts": 156,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-1145",
+    "id": "c-20260328-1215",
     "action": "build",
-    "summary": "Q203 done: AND-frac conformal prediction. Coverage=0.933, AUROC=0.959 vs softmax 0.740. DoD met."
+    "summary": "Q204 done: Audio-RAVEL Cause=0.86 (pass), Isolate=0.39 (fail). Residual-stream downstream bleed expected; phoneme+speaker probes clean. Need projected steering for full isolation."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []

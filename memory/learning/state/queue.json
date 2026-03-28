@@ -69,12 +69,13 @@
       "type": "build",
       "track": "T3",
       "title": "Audio-RAVEL: Cause/Isolate two-score for AND-frac interventions at L*",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Adapt RAVEL two-score: Cause=steering changes target token; Isolate=no bleed to non-target; report (Cause,Isolate) pair on 100 LibriSpeech samples; CPU <5min",
       "created": "2026-03-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-28"
     },
     {
       "id": "Q205",
