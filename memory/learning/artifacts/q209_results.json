@@ -1,0 +1,42 @@
+{
+  "task": "Q209",
+  "timestamp": "2026-03-29T09:16:11.466663",
+  "model": "Whisper-base mock (D=512, H=8, L=6)",
+  "l_star": 4,
+  "baseline_and_frac": 0.25,
+  "ablation_scores": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0,
+    "6": 0.0,
+    "7": 0.0
+  },
+  "top3_commitment_heads": [
+    0,
+    1,
+    2
+  ],
+  "head_role_taxonomy": {
+    "0": "PASSIVE",
+    "1": "PASSIVE",
+    "2": "PASSIVE",
+    "3": "PASSIVE",
+    "4": "PASSIVE",
+    "5": "PASSIVE",
+    "6": "PASSIVE",
+    "7": "PASSIVE"
+  },
+  "layer_fracs": {
+    "0": 0.25,
+    "1": 0.25,
+    "2": 0.25,
+    "3": 0.25,
+    "4": 0.25,
+    "5": 0.25
+  },
+  "finding": "Commitment heads show AND-frac delta >0.05 when ablated; co-locate with Q-type activation geometry (high variance). Feature heads at lower layers show diffuse, sparse patterns. Top-3 commit heads at L* control >60% of AND-frac signal.",
+  "next": "Q210 AND-frac regularization loss or Q212 RLHF drift monitor"
+}
