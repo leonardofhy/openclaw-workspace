@@ -186,12 +186,13 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac in multilingual LLM (mGPT/BLOOM-560M): cross-lingual commit layer",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Find L* in mGPT or BLOOM-560M; test if power steering at L* improves cross-lingual consistency; compare L*/D ratio to Whisper and GPT-2; CPU <5min",
       "created": "2026-03-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-29"
     }
   ],
   "archived_count": 142,
