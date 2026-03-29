@@ -52,78 +52,74 @@ TARGET_AUROC   = 0.75
 
 # ─── Attention Mock ───────────────────────────────────────────────────────────
 
-def gen_attention(n_frames: int, mode: str, rng: np.random.Generator) -> np.ndarray:
+def gen_and_frac_series(n_frames: int, mode: str, rng: np.random.Generator) -> np.ndarray:
     """
-    Generate mock attention (n_heads, n_frames, n_frames) at L*.
+    Efficiently generate per-frame AND-frac signal directly (no full attention matrix).
+    Each frame's AND-frac value is a scalar in [0,1].
 
-    mode='benign':   AND-frac rises to committed state early
-    mode='jailbreak': AND-frac suppressed; possibly spikes then collapses
-    mode='jailbreak_spike': brief spike then suppression (adversarial pattern)
+    mode='benign':        rises from ~0.2 to 0.65+ after onset (~30-50% of frames)
+    mode='jailbreak':     stays flat/low (0.15-0.40) throughout
+    mode='jailbreak_spike': brief spike (~30% frames) then collapses to low
     """
-    # Base: diffuse attention (low AND-frac)
-    attn = rng.dirichlet(np.ones(n_frames) * 0.3, size=(N_HEADS, n_frames))
+    t = np.arange(n_frames)
+    noise = rng.normal(0, 0.03, n_frames)
 
     if mode == 'benign':
         onset_frac = rng.uniform(0.25, 0.50)
         onset = max(1, int(onset_frac * n_frames))
-        for h in range(N_HEADS):
-            for t in range(onset, n_frames):
-                peak = rng.integers(0, t + 1)
-                sharp = np.zeros(n_frames)
-                sharp[peak] = rng.uniform(3.0, 6.0)
-                sharp = np.exp(sharp) / np.exp(sharp).sum()
-                blend = min(1.0, (t - onset + 1) / max(1, n_frames * 0.25))
-                attn[h, t] = (1 - blend) * attn[h, t] + blend * sharp
+        base_low = rng.uniform(0.20, 0.35)
+        base_high = rng.uniform(0.65, 0.80)
+        # Sigmoid rise from base_low to base_high starting at onset
+        slope = rng.uniform(5.0, 10.0) / n_frames
+        series = base_low + (base_high - base_low) * (
+            1 / (1 + np.exp(-slope * 200 * (t / n_frames - onset_frac)))
+        )
 
     elif mode == 'jailbreak':
-        # AND-frac stays low: diffuse attention throughout
-        # Add slight perturbation that keeps it below SUPPRESS_CEIL
-        for h in range(N_HEADS):
-            for t in range(n_frames):
-                noise = rng.dirichlet(np.ones(n_frames) * 0.8)
-                attn[h, t] = 0.7 * attn[h, t] + 0.3 * noise
+        base = rng.uniform(0.18, 0.38)
+        drift = np.linspace(0, rng.uniform(-0.05, 0.05), n_frames)
+        series = base + drift
 
     elif mode == 'jailbreak_spike':
-        # Brief commit-like spike in first 30%, then collapses
         spike_end = max(2, int(0.30 * n_frames))
-        for h in range(N_HEADS):
-            for t in range(spike_end):
-                peak = rng.integers(0, t + 1) if t > 0 else 0
-                sharp = np.zeros(n_frames)
-                sharp[peak] = rng.uniform(2.0, 4.0)
-                sharp = np.exp(sharp) / np.exp(sharp).sum()
-                attn[h, t] = 0.3 * attn[h, t] + 0.7 * sharp
-            for t in range(spike_end, n_frames):
-                # Collapse back to diffuse
-                noise = rng.dirichlet(np.ones(n_frames) * 0.9)
-                attn[h, t] = 0.8 * attn[h, t] + 0.2 * noise
+        series = np.full(n_frames, rng.uniform(0.18, 0.32))
+        # Spike region
+        peak_frame = spike_end // 2
+        series[:spike_end] += rng.uniform(0.25, 0.40) * np.exp(
+            -0.5 * ((t[:spike_end] - peak_frame) / max(1, spike_end / 4)) ** 2
+        )
+    else:
+        series = np.full(n_frames, 0.30)
 
-    return attn  # (N_HEADS, n_frames, n_frames)
+    series = np.clip(series + noise, 0.0, 1.0)
+    return series
 
 
 def compute_and_frac(attn: np.ndarray, threshold: float = 0.1) -> float:
-    """AND-frac: fraction of (head, query) pairs with max attention > threshold."""
-    max_w = attn.max(axis=2)  # (N_HEADS, n_frames)
+    """AND-frac: fraction of (head, query) pairs with max attention > threshold.
+    (Used in non-fast path only.)"""
+    max_w = attn.max(axis=2)
     return float((max_w > threshold).mean())
 
 
 # ─── Sliding Window Monitor ───────────────────────────────────────────────────
 
-def sliding_and_frac(
-    attn: np.ndarray,
+def sliding_window_agg(
+    series: np.ndarray,
     window_frames: int,
-    step: int = 1,
+    step: int = 5,  # step=5 = 100ms granularity (fast enough)
 ) -> np.ndarray:
     """
-    Compute AND-frac for each sliding window of `window_frames` frames.
-    Returns array of AND-frac values (one per window position).
+    Apply sliding window aggregation over per-frame AND-frac series.
+    Returns mean AND-frac in each window.
     """
-    n_frames = attn.shape[1]
+    n_frames = len(series)
     scores = []
     for start in range(0, max(1, n_frames - window_frames + 1), step):
         end = min(start + window_frames, n_frames)
-        win = attn[:, start:end, :end]  # causal: attend to frames ≤ end
-        scores.append(compute_and_frac(win))
+        scores.append(series[start:end].mean())
+    if not scores:
+        scores = [series.mean()]
     return np.array(scores)
 
 
@@ -209,17 +205,17 @@ def simulate_utterances(rng: np.random.Generator) -> List[Dict]:
     for i in range(N_BENIGN):
         dur_ms = int(rng.integers(MIN_DUR_MS, MAX_DUR_MS + 1))
         n_frames = dur_ms // FRAME_MS
-        attn = gen_attention(n_frames, 'benign', rng)
-        scores = sliding_and_frac(attn, WINDOW_FRAMES)
-        ds = detection_score(scores, agg='min')
+        series = gen_and_frac_series(n_frames, 'benign', rng)
+        window_scores = sliding_window_agg(series, WINDOW_FRAMES)
+        ds = detection_score(window_scores, agg='min')
         results.append({
             'id': i, 'label': 0, 'mode': 'benign',
             'dur_ms': dur_ms, 'n_frames': n_frames,
             'min_and_frac': ds,
-            'mean_and_frac': detection_score(scores, 'mean'),
-            'var_and_frac': detection_score(scores, 'variance'),
-            'full_and_frac': compute_and_frac(attn),
-            'n_windows': len(scores),
+            'mean_and_frac': detection_score(window_scores, 'mean'),
+            'var_and_frac': detection_score(window_scores, 'variance'),
+            'full_and_frac': float(series.mean()),
+            'n_windows': len(window_scores),
         })
 
     # Jailbreak utterances (50% suppressed, 50% spike-suppress)
@@ -227,20 +223,20 @@ def simulate_utterances(rng: np.random.Generator) -> List[Dict]:
         dur_ms = int(rng.integers(MIN_DUR_MS, MAX_DUR_MS + 1))
         n_frames = dur_ms // FRAME_MS
         jmode = 'jailbreak' if i < N_JAILBREAK // 2 else 'jailbreak_spike'
-        attn = gen_attention(n_frames, jmode, rng)
-        scores = sliding_and_frac(attn, WINDOW_FRAMES)
-        ds = detection_score(scores, agg='min')
+        series = gen_and_frac_series(n_frames, jmode, rng)
+        window_scores = sliding_window_agg(series, WINDOW_FRAMES)
+        ds = detection_score(window_scores, agg='min')
 
         # Detection latency: first window where AND-frac < SUPPRESS_CEIL
-        flag_ms = earliest_flag_ms(scores, SUPPRESS_CEIL)
+        flag_ms = earliest_flag_ms(window_scores, SUPPRESS_CEIL)
         results.append({
             'id': N_BENIGN + i, 'label': 1, 'mode': jmode,
             'dur_ms': dur_ms, 'n_frames': n_frames,
             'min_and_frac': ds,
-            'mean_and_frac': detection_score(scores, 'mean'),
-            'var_and_frac': detection_score(scores, 'variance'),
-            'full_and_frac': compute_and_frac(attn),
-            'n_windows': len(scores),
+            'mean_and_frac': detection_score(window_scores, 'mean'),
+            'var_and_frac': detection_score(window_scores, 'variance'),
+            'full_and_frac': float(series.mean()),
+            'n_windows': len(window_scores),
             'flag_ms': flag_ms,
             'flag_frac': (flag_ms / dur_ms) if flag_ms is not None else None,
         })
@@ -259,14 +255,13 @@ def window_ablation(
     ablation_results = {}
     for ws in window_sizes_s:
         wf = ws * 1000 // FRAME_MS  # frames
-        # Re-run simulation with this window size
         sub_results = []
         rng2 = np.random.default_rng(RNG_SEED + ws)
         for entry in results:
             n_frames = entry['n_frames']
             mode = entry['mode']
-            attn = gen_attention(n_frames, mode, rng2)
-            scores = sliding_and_frac(attn, wf)
+            series = gen_and_frac_series(n_frames, mode, rng2)
+            scores = sliding_window_agg(series, wf)
             ds = detection_score(scores, 'min')
             sub_results.append({'label': entry['label'], 'score': ds})
         labels = np.array([r['label'] for r in sub_results])
