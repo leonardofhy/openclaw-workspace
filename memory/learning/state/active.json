@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
+    "learn_remaining_today": 2,
     "build_remaining_today": 0,
     "reflect_remaining_today": 1,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260329-2215",
-    "action": "reflect",
-    "summary": "End-of-day digest: 14 tasks done today. Build budget exhausted. L*/D universality confirmed. Tomorrow: Q220 real Whisper experiment first."
+    "id": "c-20260329-2245",
+    "action": "learn",
+    "summary": "Q220 design: censored-speech AND-frac experiment. H1 (L* shifts) vs H2 (magnitude drop) vs H3 (null). Stimuli design + analysis protocol ready. Tomorrow: run Q220 first."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
