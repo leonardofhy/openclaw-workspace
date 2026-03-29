@@ -160,24 +160,26 @@
       "type": "build",
       "track": "T3",
       "title": "AND-frac in CodeParrot-small: code LLM cross-modal commit pattern",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Compute AND-frac in CodeParrot-small on Python completions; find L* analog; compare curve shape to Q190 GPT-2 and Whisper; CPU <5min",
       "created": "2026-03-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-29"
     },
     {
       "id": "Q212",
       "type": "build",
       "track": "T5",
       "title": "AND-frac drift monitor for RLHF mock: alignment fine-tuning stability",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Simulate RLHF-style reward gradient steps on GPT-2; monitor AND-frac drift at L*; detect alignment collapse threshold; CPU <5min",
       "created": "2026-03-28",
-      "due": null
+      "due": null,
+      "completed": "2026-03-29"
     },
     {
       "id": "Q213",

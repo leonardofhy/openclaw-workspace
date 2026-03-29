@@ -1,0 +1,36 @@
+{
+  "experiment": "Q212",
+  "base_lstar": 7,
+  "base_andfrac": 0.6524196227156603,
+  "collapse_threshold": 0.35,
+  "results": {
+    "A_unconstrained": {
+      "label": "Unconstrained RLHF (\u03b2=0)",
+      "collapse_step": 54,
+      "final_andfrac_at_lstar": 0.49872707986334053,
+      "final_l_star": 4,
+      "delta_andfrac": -0.1536925428523198,
+      "l_star_drift_final": 3,
+      "stability": "COLLAPSE@step54"
+    },
+    "B_kl_regularized": {
+      "label": "KL-regularized RLHF (\u03b2=0.05)",
+      "collapse_step": null,
+      "final_andfrac_at_lstar": 0.5571348261170708,
+      "final_l_star": 6,
+      "delta_andfrac": -0.09528479659858957,
+      "l_star_drift_final": 1,
+      "stability": "STABLE"
+    },
+    "C_over_regularized": {
+      "label": "Over-regularized RLHF (\u03b2=0.5)",
+      "collapse_step": null,
+      "final_andfrac_at_lstar": 0.6318428957299207,
+      "final_l_star": 6,
+      "delta_andfrac": -0.020576726985739646,
+      "l_star_drift_final": 1,
+      "stability": "STABLE"
+    }
+  },
+  "key_finding": "KL regularization (\u03b2=0.05) preserves AND-frac@L* by \u0394=+0.058 vs unconstrained RLHF. AND-frac drift detects alignment collapse at step 54."
+}
