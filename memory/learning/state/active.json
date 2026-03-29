@@ -26,28 +26,28 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 3,
-    "build_remaining_today": 0,
-    "reflect_remaining_today": 0,
-    "ideate_remaining_today": 0,
-    "budget_reset_date": "2026-03-28"
+    "learn_remaining_today": 5,
+    "build_remaining_today": 8,
+    "reflect_remaining_today": 2,
+    "ideate_remaining_today": 1,
+    "budget_reset_date": "2026-03-29"
   },
   "stats": {
-    "total_cycles": 320,
+    "total_cycles": 322,
     "total_skips": 55,
     "papers_read_deep": 65,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 631,
     "paper_pitches": 2,
-    "code_artifacts": 157,
+    "code_artifacts": 160,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260328-2345",
-    "action": "skip",
-    "summary": "Principled skip \u2014 build budget 0, no READY learn tasks, all other budgets 0. 7 READY build tasks await tomorrow."
+    "id": "c-20260329-0845",
+    "action": "build",
+    "summary": "Q208 done: SPIRIT linear erasing at L*=8 for audio jailbreak defense. α=1.0 achieves AND-frac retention=100% + suppression=100% on JALMBench-v0 mock. Mean-diff direction estimation works as practical SPIRIT proxy."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
