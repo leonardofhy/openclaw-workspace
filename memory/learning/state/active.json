@@ -27,27 +27,27 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 8,
+    "build_remaining_today": 6,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 1,
     "budget_reset_date": "2026-03-29"
   },
   "stats": {
-    "total_cycles": 322,
+    "total_cycles": 323,
     "total_skips": 55,
     "papers_read_deep": 65,
     "papers_scanned": 50,
     "research_gaps": 25,
     "paper_ideas": 631,
     "paper_pitches": 2,
-    "code_artifacts": 160,
+    "code_artifacts": 161,
     "system_improvements": 7,
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260329-0845",
+    "id": "c-20260329-0945",
     "action": "build",
-    "summary": "Q208 done: SPIRIT linear erasing at L*=8 for audio jailbreak defense. α=1.0 achieves AND-frac retention=100% + suppression=100% on JALMBench-v0 mock. Mean-diff direction estimation works as practical SPIRIT proxy."
+    "summary": "Q210 done: AND-frac reg loss mock. Sharpness-max preserves L*=7 commit (0.365 vs 0.265 baseline). \u03bb sweep: 0.05\u20130.2 sweet spot. Dual-use: domain adaptation + safety fine-tuning."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
