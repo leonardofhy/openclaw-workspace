@@ -311,12 +311,13 @@
       "type": "read",
       "track": "T3",
       "title": "Read: RAVEL (representation disentanglement) paper — can we isolate speaker identity vs content at L* in Whisper?",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Notes: method summary, connection to AND-frac/L*, feasibility of Whisper application",
       "created": "2026-03-29",
-      "due": null
+      "due": null,
+      "completed": "2026-03-29"
     }
   ],
   "archived_count": 142,
