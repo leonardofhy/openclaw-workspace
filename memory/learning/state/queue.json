@@ -300,12 +300,13 @@
       "type": "design",
       "track": "T3",
       "title": "Design: AUDIT-ASR benchmark — annotate ASR failure types by AND-frac signature (hallucination/deletion/substitution)",
-      "status": "ready",
+      "status": "done",
       "priority": 3,
       "blocked_by": null,
       "definition_of_done": "Dataset spec written: error types, annotation schema, AND-frac features, evaluation protocol",
       "created": "2026-03-29",
-      "due": null
+      "due": null,
+      "completed": "2026-03-29"
     },
     {
       "id": "Q223",
