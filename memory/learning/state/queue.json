@@ -261,12 +261,13 @@
       "type": "build",
       "track": "T5",
       "title": "Build: SPIRIT-style linear erasure at L* for audio jailbreak suppression (project out jailbreak direction, measure AND-frac restoration)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Mock script: compute jailbreak direction via CAA, subtract at L*, measure AND-frac delta + jailbreak probe score",
       "created": "2026-03-29",
-      "due": null
+      "due": null,
+      "completed": "2026-03-29"
     },
     {
       "id": "Q220",

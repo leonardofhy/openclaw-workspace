@@ -1,0 +1,322 @@
+{
+  "task_id": "Q219",
+  "timestamp": "2026-03-29T13:17:29.116615",
+  "config": {
+    "N_LAYERS": 32,
+    "D_MODEL": 512,
+    "L_STAR": 21,
+    "L_STAR_ratio": 0.656,
+    "consistency_threshold": 0.8,
+    "jailbreak_strength": 3.0
+  },
+  "caa_cos_sim": 0.7175,
+  "lstar_results": {
+    "layer": 21,
+    "andf_benign_before": 0.0078,
+    "andf_jailbreak_before": 0.0703,
+    "andf_benign_after": 0.0098,
+    "andf_jailbreak_after": 0.0273,
+    "probe_before": 1.0,
+    "probe_after": 1.0
+  },
+  "andf_gap_before": -0.0625,
+  "andf_gap_after": -0.0175,
+  "andf_j_delta": -0.043,
+  "probe_drop": 0.0,
+  "interpretation": {
+    "caa_accurate": true,
+    "jailbreak_disrupts_commit": false,
+    "erasure_restores_andf": false,
+    "probe_suppressed": false
+  },
+  "layer_results": [
+    {
+      "layer": 0,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.0,
+      "probe_before": 0.5167,
+      "probe_after": 0.5167
+    },
+    {
+      "layer": 1,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.002,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.45,
+      "probe_after": 0.45
+    },
+    {
+      "layer": 2,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.0,
+      "probe_before": 0.4667,
+      "probe_after": 0.4667
+    },
+    {
+      "layer": 3,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.0,
+      "probe_before": 0.6167,
+      "probe_after": 0.6167
+    },
+    {
+      "layer": 4,
+      "andf_benign_before": 0.0039,
+      "andf_jailbreak_before": 0.002,
+      "andf_benign_after": 0.0059,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.4833,
+      "probe_after": 0.4833
+    },
+    {
+      "layer": 5,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.002,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.4167,
+      "probe_after": 0.4167
+    },
+    {
+      "layer": 6,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.0,
+      "probe_before": 0.4667,
+      "probe_after": 0.4667
+    },
+    {
+      "layer": 7,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.0,
+      "probe_before": 0.4667,
+      "probe_after": 0.4667
+    },
+    {
+      "layer": 8,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.002,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.5333,
+      "probe_after": 0.5333
+    },
+    {
+      "layer": 9,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.002,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.5333,
+      "probe_after": 0.5333
+    },
+    {
+      "layer": 10,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.002,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.7333,
+      "probe_after": 0.7333
+    },
+    {
+      "layer": 11,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.6,
+      "probe_after": 0.6
+    },
+    {
+      "layer": 12,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0039,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.0039,
+      "probe_before": 0.75,
+      "probe_after": 0.75
+    },
+    {
+      "layer": 13,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.0,
+      "probe_before": 0.75,
+      "probe_after": 0.75
+    },
+    {
+      "layer": 14,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.0,
+      "probe_before": 0.7833,
+      "probe_after": 0.7833
+    },
+    {
+      "layer": 15,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.0078,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.0059,
+      "probe_before": 0.9167,
+      "probe_after": 0.9167
+    },
+    {
+      "layer": 16,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0117,
+      "andf_benign_after": 0.0039,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.95,
+      "probe_after": 0.95
+    },
+    {
+      "layer": 17,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0293,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.0098,
+      "probe_before": 0.9833,
+      "probe_after": 0.9833
+    },
+    {
+      "layer": 18,
+      "andf_benign_before": 0.0039,
+      "andf_jailbreak_before": 0.0352,
+      "andf_benign_after": 0.0039,
+      "andf_jailbreak_after": 0.0176,
+      "probe_before": 0.9667,
+      "probe_after": 0.9667
+    },
+    {
+      "layer": 19,
+      "andf_benign_before": 0.0039,
+      "andf_jailbreak_before": 0.0566,
+      "andf_benign_after": 0.0039,
+      "andf_jailbreak_after": 0.0273,
+      "probe_before": 0.9833,
+      "probe_after": 0.9833
+    },
+    {
+      "layer": 20,
+      "andf_benign_before": 0.0078,
+      "andf_jailbreak_before": 0.0605,
+      "andf_benign_after": 0.0059,
+      "andf_jailbreak_after": 0.0332,
+      "probe_before": 0.9833,
+      "probe_after": 0.9833
+    },
+    {
+      "layer": 21,
+      "andf_benign_before": 0.0078,
+      "andf_jailbreak_before": 0.0703,
+      "andf_benign_after": 0.0098,
+      "andf_jailbreak_after": 0.0273,
+      "probe_before": 1.0,
+      "probe_after": 1.0
+    },
+    {
+      "layer": 22,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.0723,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.041,
+      "probe_before": 1.0,
+      "probe_after": 1.0
+    },
+    {
+      "layer": 23,
+      "andf_benign_before": 0.0078,
+      "andf_jailbreak_before": 0.0469,
+      "andf_benign_after": 0.0059,
+      "andf_jailbreak_after": 0.0273,
+      "probe_before": 1.0,
+      "probe_after": 1.0
+    },
+    {
+      "layer": 24,
+      "andf_benign_before": 0.0059,
+      "andf_jailbreak_before": 0.0273,
+      "andf_benign_after": 0.0059,
+      "andf_jailbreak_after": 0.0156,
+      "probe_before": 0.9833,
+      "probe_after": 0.9833
+    },
+    {
+      "layer": 25,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.0254,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.0098,
+      "probe_before": 0.9333,
+      "probe_after": 0.9333
+    },
+    {
+      "layer": 26,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0137,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.0137,
+      "probe_before": 0.9667,
+      "probe_after": 0.9667
+    },
+    {
+      "layer": 27,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0098,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.9333,
+      "probe_after": 0.9333
+    },
+    {
+      "layer": 28,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.0,
+      "probe_before": 0.8167,
+      "probe_after": 0.8167
+    },
+    {
+      "layer": 29,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.002,
+      "andf_benign_after": 0.0,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.6667,
+      "probe_after": 0.6667
+    },
+    {
+      "layer": 30,
+      "andf_benign_before": 0.002,
+      "andf_jailbreak_before": 0.0,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.0,
+      "probe_before": 0.8,
+      "probe_after": 0.8
+    },
+    {
+      "layer": 31,
+      "andf_benign_before": 0.0,
+      "andf_jailbreak_before": 0.002,
+      "andf_benign_after": 0.002,
+      "andf_jailbreak_after": 0.002,
+      "probe_before": 0.6167,
+      "probe_after": 0.6167
+    }
+  ]
+}
