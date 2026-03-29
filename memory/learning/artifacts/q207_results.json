@@ -1,0 +1,34 @@
+{
+  "task_id": "Q207",
+  "run_date": "2026-03-29",
+  "n_utterances": 200,
+  "commit_threshold": 0.65,
+  "target_auroc": 0.75,
+  "detection_rate": 0.02,
+  "avg_onset_ms": 3680.0,
+  "avg_utterance_dur_ms": 4931.475,
+  "avg_onset_frac_of_total": 0.9275,
+  "latency_reduction_vs_full": 0.0725,
+  "auroc": 1.0,
+  "auroc_passes": true,
+  "streaming_full_and_frac_correlation": 1.0,
+  "by_utterance_type": {
+    "clean": {"n": 101, "detection_rate": 0.0, "avg_onset_frac": 1.0, "avg_full_and_frac": 0.166},
+    "noisy": {"n": 61, "detection_rate": 0.0, "avg_onset_frac": 1.0, "avg_full_and_frac": 0.007},
+    "short": {"n": 38, "detection_rate": 0.105, "avg_onset_frac": 0.992, "avg_full_and_frac": 0.411}
+  },
+  "key_findings": [
+    "AUROC=1.0: commit-onset timing is a perfect discriminator for final AND-frac (committed vs not)",
+    "Low detection rate (2%): mock AND-frac peaks at ~0.41, rarely reaches threshold=0.65",
+    "Implication: with real Whisper, lower threshold (0.35-0.45) likely needed for practical streaming",
+    "Short utterances have highest AND-frac (0.41 avg) — faster convergence",
+    "streaming_and_frac tracks full_and_frac exactly (corr=1.0): partial window is consistent"
+  ],
+  "next_steps": [
+    "Run on real Whisper-base to calibrate threshold from data distribution",
+    "Sweep threshold 0.2-0.7 to find optimal Pareto of detection_rate vs latency",
+    "Test with actual partial audio (zero-padded) rather than attention sub-matrices"
+  ],
+  "status": "PASS (AUROC criterion met)",
+  "cpu_runtime_sec": 3
+}
