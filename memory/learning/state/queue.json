@@ -287,12 +287,13 @@
       "type": "write",
       "track": "T3",
       "title": "Write: cross-modal L*/D universality paper section (GPT-2=0.667, BLOOM=0.542, CodeParrot=0.500, Whisper TBD)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "200-word paper section with table + interpretation; saved to pitches/ or paper draft",
       "created": "2026-03-29",
-      "due": null
+      "due": null,
+      "completed": "2026-03-29"
     },
     {
       "id": "Q222",
