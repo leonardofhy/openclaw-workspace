@@ -1,0 +1,64 @@
+{
+  "schema": "daily-scheduler/meta-v2",
+  "date": "2026-03-29",
+  "gcal": {
+    "events": {
+      "P-0329-02": {
+        "gcal_event_id": "769obfq9mqfnskbmsfmbbs04s0",
+        "last_synced_hash": "78fede2f8aa6bcd12d001c199f4dd87edd922d7f",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-0329-04": {
+        "gcal_event_id": "tkkhfpvua11h9kqnlkn2j5h3sg",
+        "last_synced_hash": "afc04bba645f6fef475d072aa2e6c1b182fda159",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-0329-05": {
+        "gcal_event_id": "5nubig2vk1ldu5m3c6n3u59qvc",
+        "last_synced_hash": "ffa08b3bcaf28dc76fe39dbdf1a99fcd0bf302eb",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-0329-06": {
+        "gcal_event_id": "inc3japl97bs0r5cbo30dqs63g",
+        "last_synced_hash": "ed4bcd9df82ecd8100378fc9ab9f1c1745ba6605",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-0329-07": {
+        "gcal_event_id": "6i8in8l4c7nranpilp1eottlok",
+        "last_synced_hash": "01738d2782f125d827ae4fea06a69c6e3f3ac74a",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-0329-09": {
+        "gcal_event_id": "v492kb3k3jsou9tsnfv5k486cg",
+        "last_synced_hash": "d80b1d3778835138d89b9f6c684eb505998aef0f",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-0329-10": {
+        "gcal_event_id": "a0kt2c2tnqh84h3egdufrdul08",
+        "last_synced_hash": "8690c4aaad28fc0d08cc2f1c6f2154533506b25b",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      },
+      "P-0329-11": {
+        "gcal_event_id": "4av52eio4j8si8u4pb98s52mn4",
+        "last_synced_hash": "7597b6182f1c26a1e77db5cdcc87bc2ca98e145e",
+        "locked": false,
+        "changed_by_user": false,
+        "managed": true
+      }
+    }
+  }
+}
