@@ -212,12 +212,13 @@
       "type": "build",
       "track": "T3",
       "title": "Build: AND-frac drift monitor for Whisper fine-tuning (extend RLHF mock to encoder-decoder, detect collapse at commit layer)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "Script monitors AND-frac per gradient step on Whisper-base mock; detects collapse event, outputs plot",
       "created": "2026-03-29",
-      "due": null
+      "due": null,
+      "completed": "2026-03-29"
     },
     {
       "id": "Q216",
