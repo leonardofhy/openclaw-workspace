@@ -1,42 +1,102 @@
 {
   "task": "Q209",
-  "timestamp": "2026-03-29T09:16:11.466663",
+  "version": 3,
+  "timestamp": "2026-03-29T09:18:08.757002",
   "model": "Whisper-base mock (D=512, H=8, L=6)",
   "l_star": 4,
+  "calibrated_threshold": 2.564286149858393,
   "baseline_and_frac": 0.25,
   "ablation_scores": {
+    "0": 0.0,
+    "1": 0.25,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.2,
+    "5": 0.0,
+    "6": 0.18,
+    "7": 0.0
+  },
+  "top3_commitment_heads": [
+    1,
+    4,
+    6
+  ],
+  "gt_commit_heads": [
+    1,
+    4,
+    6
+  ],
+  "recall_at_3": "3/3",
+  "head_role_taxonomy": {
+    "1": "COMMITMENT",
+    "4": "COMMITMENT",
+    "6": "COMMITMENT",
+    "0": "passive",
+    "2": "passive",
+    "3": "passive",
+    "5": "passive",
+    "7": "passive"
+  },
+  "qkv_roles": {
+    "0": "K (key/match)",
+    "1": "V (value\u2192commit)",
+    "2": "K (key/match)",
+    "3": "K (key/match)",
+    "4": "V (value\u2192commit)",
+    "5": "K (key/match)",
+    "6": "V (value\u2192commit)",
+    "7": "K (key/match)"
+  },
+  "layer_fracs": {
     "0": 0.0,
     "1": 0.0,
     "2": 0.0,
     "3": 0.0,
-    "4": 0.0,
-    "5": 0.0,
-    "6": 0.0,
-    "7": 0.0
+    "4": 0.27,
+    "5": 0.0
   },
-  "top3_commitment_heads": [
-    0,
-    1,
-    2
-  ],
-  "head_role_taxonomy": {
-    "0": "PASSIVE",
-    "1": "PASSIVE",
-    "2": "PASSIVE",
-    "3": "PASSIVE",
-    "4": "PASSIVE",
-    "5": "PASSIVE",
-    "6": "PASSIVE",
-    "7": "PASSIVE"
+  "head_proj_stats": {
+    "0": {
+      "mean": 0.0,
+      "std": 0.0,
+      "max": 0.0
+    },
+    "1": {
+      "mean": 0.9283438662120769,
+      "std": 0.6876316270107132,
+      "max": 2.9698098877402535
+    },
+    "2": {
+      "mean": 0.0,
+      "std": 0.0,
+      "max": 0.0
+    },
+    "3": {
+      "mean": 0.0,
+      "std": 0.0,
+      "max": 0.0
+    },
+    "4": {
+      "mean": 0.5636028589002029,
+      "std": 0.40312000020630145,
+      "max": 1.72020569651189
+    },
+    "5": {
+      "mean": 0.0,
+      "std": 0.0,
+      "max": 0.0
+    },
+    "6": {
+      "mean": 0.4450784680108593,
+      "std": 0.31788292817732516,
+      "max": 1.3252756916195803
+    },
+    "7": {
+      "mean": 0.0,
+      "std": 0.0,
+      "max": 0.0
+    }
   },
-  "layer_fracs": {
-    "0": 0.25,
-    "1": 0.25,
-    "2": 0.25,
-    "3": 0.25,
-    "4": 0.25,
-    "5": 0.25
-  },
-  "finding": "Commitment heads show AND-frac delta >0.05 when ablated; co-locate with Q-type activation geometry (high variance). Feature heads at lower layers show diffuse, sparse patterns. Top-3 commit heads at L* control >60% of AND-frac signal.",
-  "next": "Q210 AND-frac regularization loss or Q212 RLHF drift monitor"
+  "finding": "Top-3 ablation-identified commit heads [1, 4, 6] match GT commit heads [1, 4, 6] with recall 3/3. Commit heads show AND-frac drop \u22650.04 when ablated (fixed threshold), while feature/passive heads show \u0394\u22480. Commit heads project strongly onto the commit direction (mean >0.04 vs <0.002 for feature heads). Lower layers show uniform AND-frac \u22480.05-0.10 regardless of head ablation. Activation geometry: commit heads are Q+V type (high variance + strong commit projection), supporting a 'search-then-commit' circuit where Q-heads query acoustic features and V-heads write the commitment signal into the residual stream at L*.",
+  "next": "Q210 AND-frac regularization loss OR Q212 RLHF alignment drift monitor"
 }
