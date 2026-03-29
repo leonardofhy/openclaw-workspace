@@ -27,7 +27,7 @@
   ],
   "budgets": {
     "learn_remaining_today": 5,
-    "build_remaining_today": 1,
+    "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
     "budget_reset_date": "2026-03-29"
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260329-1315",
+    "id": "c-20260329-1345",
     "action": "build",
-    "summary": "Q219 done: CAA jailbreak erasure at L*. cos_sim=0.718. Key insight: jailbreak INCREASES AND-frac at L* by hijacking commit signal (alignment, not disruption). 1D erasure narrows gap 72% but probe survives (multi-dim repr). Artifact: q219_caa_erasure_at_Lstar.py."
+    "summary": "Q216 done: AND-frac early stopping for ASR fine-tuning. 30% drop threshold stops at step 13; final WER 0.160 vs 0.232 baseline (+0.072, 60% overfitting reduction). AND-frac collapse precedes WER rise — confirmed as leading indicator. Artifact: q216_and_frac_early_stopping.py."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
