@@ -26,7 +26,7 @@
     }
   ],
   "budgets": {
-    "learn_remaining_today": 4,
+    "learn_remaining_today": 3,
     "build_remaining_today": 0,
     "reflect_remaining_today": 2,
     "ideate_remaining_today": 0,
@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260329-1515",
-    "action": "plan",
-    "summary": "Q222 done: Designed AUDIT-ASR benchmark spec. 5 error types (hallucination/deletion/substitution/insertion/repetition), 7 AND-frac features, 750-sample dataset, error-type prediction + controllability validation tasks. Implementation roadmap queued."
+    "id": "c-20260329-1545",
+    "action": "learn",
+    "summary": "Q217 prep: synthesized Q206 results + accent theory into KG implementation plan. Accent power-steering expected to beat temp-scale (distributional bias mechanism). Plan at kg/accent-power-steering-q217-plan.md."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
