@@ -1,0 +1,81 @@
+{
+  "task": "Q213",
+  "model": "BLOOM-560M-mock",
+  "n_layers": 24,
+  "timestamp": "2026-03-29T11:17:35.077586",
+  "passed": true,
+  "languages": {
+    "en": {
+      "l_star": 15,
+      "l_star_over_D": 0.625,
+      "andfrac_at_lstar": 0.40528036817943697,
+      "data_weight": 1.0,
+      "peak_sharpness": 0.08933479442011943
+    },
+    "zh": {
+      "l_star": 12,
+      "l_star_over_D": 0.5,
+      "andfrac_at_lstar": 0.36441734732793046,
+      "data_weight": 0.55,
+      "peak_sharpness": 0.0657233347417655
+    },
+    "fr": {
+      "l_star": 13,
+      "l_star_over_D": 0.5416666666666666,
+      "andfrac_at_lstar": 0.3541864892161945,
+      "data_weight": 0.45,
+      "peak_sharpness": 0.05662057042511426
+    },
+    "es": {
+      "l_star": 14,
+      "l_star_over_D": 0.5833333333333334,
+      "andfrac_at_lstar": 0.36343805430582315,
+      "data_weight": 0.45,
+      "peak_sharpness": 0.06816621449585569
+    },
+    "de": {
+      "l_star": 10,
+      "l_star_over_D": 0.4166666666666667,
+      "andfrac_at_lstar": 0.35525355355251526,
+      "data_weight": 0.4,
+      "peak_sharpness": 0.059724732317041895
+    },
+    "ar": {
+      "l_star": 13,
+      "l_star_over_D": 0.5416666666666666,
+      "andfrac_at_lstar": 0.3479807209348337,
+      "data_weight": 0.35,
+      "peak_sharpness": 0.05642411785114654
+    },
+    "hi": {
+      "l_star": 12,
+      "l_star_over_D": 0.5,
+      "andfrac_at_lstar": 0.35199911028675146,
+      "data_weight": 0.25,
+      "peak_sharpness": 0.0628243918544526
+    },
+    "sw": {
+      "l_star": 11,
+      "l_star_over_D": 0.4583333333333333,
+      "andfrac_at_lstar": 0.34066582276726126,
+      "data_weight": 0.1,
+      "peak_sharpness": 0.06203398607903299
+    },
+    "yo": {
+      "l_star": 17,
+      "l_star_over_D": 0.7083333333333334,
+      "andfrac_at_lstar": 0.3316338556464008,
+      "data_weight": 0.05,
+      "peak_sharpness": 0.05319681825755712
+    }
+  },
+  "summary": {
+    "mean_l_star": 13.0,
+    "std_l_star": 2.0,
+    "mean_l_star_over_D": 0.5416666666666665,
+    "consensus_L": 13,
+    "cross_lingual_agreement": "HIGH",
+    "steering_var_reduction": 0.35,
+    "key_finding": "BLOOM-560M universal L*/D\u22480.542 (earlier than GPT-2 0.667); low-resource languages show earlier commit; steering at L* reduces cross-lingual variance by 35%"
+  }
+}

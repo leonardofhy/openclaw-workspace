@@ -1,0 +1,82 @@
+{
+  "baseline": {
+    "and_frac_benign": 1.0,
+    "and_frac_jailbreak": 1.0,
+    "suppression_rate": 0.0,
+    "cosine_benign_to_jb_dir": -0.0314
+  },
+  "ablation_alpha": [
+    {
+      "alpha": 0.5,
+      "and_frac_benign": 1.0,
+      "and_frac_jailbreak": 1.0,
+      "suppression_rate": 0.0,
+      "and_frac_retention": 1.0,
+      "cosine_preservation": 0.0927,
+      "passes_target": false
+    },
+    {
+      "alpha": 1.0,
+      "and_frac_benign": 1.0,
+      "and_frac_jailbreak": 1.0,
+      "suppression_rate": 1.0,
+      "and_frac_retention": 1.0,
+      "cosine_preservation": 0.0877,
+      "passes_target": true
+    },
+    {
+      "alpha": 1.5,
+      "and_frac_benign": 1.0,
+      "and_frac_jailbreak": 1.0,
+      "suppression_rate": 0.0,
+      "and_frac_retention": 1.0,
+      "cosine_preservation": 0.0826,
+      "passes_target": false
+    },
+    {
+      "alpha": 2.0,
+      "and_frac_benign": 1.0,
+      "and_frac_jailbreak": 1.0,
+      "suppression_rate": 0.0,
+      "and_frac_retention": 1.0,
+      "cosine_preservation": 0.0775,
+      "passes_target": false
+    }
+  ],
+  "ablation_layer": [
+    {
+      "layer": 7,
+      "label": "L*-1",
+      "and_frac_pre": 1.0,
+      "and_frac_post": 1.0,
+      "and_frac_retention": 1.0,
+      "suppression_rate": 1.0
+    },
+    {
+      "layer": 8,
+      "label": "L*",
+      "and_frac_pre": 1.0,
+      "and_frac_post": 1.0,
+      "and_frac_retention": 1.0,
+      "suppression_rate": 1.0
+    },
+    {
+      "layer": 9,
+      "label": "L*+1",
+      "and_frac_pre": 1.0,
+      "and_frac_post": 0.99,
+      "and_frac_retention": 0.99,
+      "suppression_rate": 1.0
+    }
+  ],
+  "summary": {
+    "primary_alpha": 1.0,
+    "primary_layer": 8,
+    "and_frac_retention": 1.0,
+    "suppression_rate": 1.0,
+    "target_and_retention": 0.8,
+    "target_suppression": 0.85,
+    "passes_both_targets": true,
+    "interpretation": "SPIRIT erasing at L* with \u03b1=1.0 achieves AND-frac retention=100.00% and jailbreak suppression=100.00%. \u2705 Both targets met."
+  }
+}

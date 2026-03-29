@@ -1,0 +1,916 @@
+{
+  "experiment": "Q215",
+  "extends": "Q212",
+  "architecture": "Whisper-base (enc-decoder)",
+  "base": {
+    "l_star_enc": 4,
+    "l_star_dec": 4,
+    "l_star_cross": 3,
+    "base_af_enc": 0.68,
+    "base_af_dec": 0.63,
+    "base_af_cross": 0.55
+  },
+  "key_finding": "Encoder-decoder fine-tuning shows DIFFERENTIAL stream collapse: cross-attention collapses first (most fragile bridge), encoder most stable. KL penalty (\u03b2=0.05) prevents collapse in all streams. L*/D=0.667 symmetric across enc/dec, consistent with cross-modal universality. Cross-attn AND-frac is optimal real-time collapse sentinel.",
+  "results": {
+    "A_decoder_sft": {
+      "label": "Decoder-only SFT",
+      "collapse_events": {},
+      "final": {
+        "enc_af": 0.6899342830602248,
+        "dec_af": 0.5009090710643946,
+        "cross_af": 0.5041287456106323,
+        "enc_lstar": 4,
+        "dec_lstar": 5
+      },
+      "first_collapse_step": null,
+      "streams_collapsed": [],
+      "history_sparse": [
+        {
+          "step": 0,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.6272347139765763,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5629537707620139,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 10,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.567765019597072,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5518892895885049,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 20,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5353865657494943,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5423642117519784,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 30,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.518581150331124,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5355464480863972,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 40,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5091875973463332,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5289926342495428,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 50,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5027211846141146,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.523078391486742,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 60,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5031405849713697,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5192691162166356,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 70,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5019371044716758,
+            "l_star": 5,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5162407011470656,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 80,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5019189650632575,
+            "l_star": 5,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5134008938636405,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 90,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5010246109225739,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5115041920129917,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 100,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5018891010456158,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5098073808106216,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 110,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.4997052798679067,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5087746605868735,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 120,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.49862379683177127,
+            "l_star": 5,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5075160241020845,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 130,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5011935330157276,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5059524412859029,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 140,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5003552995501779,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5051007907470367,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        }
+      ]
+    },
+    "B_joint_sft": {
+      "label": "Joint SFT (enc+dec)",
+      "collapse_events": {},
+      "final": {
+        "enc_af": 0.5013687453057452,
+        "dec_af": 0.5009090710643946,
+        "cross_af": 0.49990736573052535,
+        "enc_lstar": 3,
+        "dec_lstar": 5
+      },
+      "first_collapse_step": null,
+      "streams_collapsed": [],
+      "history_sparse": [
+        {
+          "step": 0,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.6272347139765763,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5629537707620139,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 10,
+          "enc": {
+            "af": 0.6400677192103891,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.567765019597072,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5396685798968119,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 20,
+          "enc": {
+            "af": 0.603418914009476,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5353865657494943,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5238691488804581,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 30,
+          "enc": {
+            "af": 0.576376003583152,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.518581150331124,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5159334457926185,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 40,
+          "enc": {
+            "af": 0.5570577688469982,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5091875973463332,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5090020496710449,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 50,
+          "enc": {
+            "af": 0.5424069480007306,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5027211846141146,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5035379453992093,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 60,
+          "enc": {
+            "af": 0.5318836033954152,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5031405849713697,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5024554076756929,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 70,
+          "enc": {
+            "af": 0.524585975931224,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5019371044716758,
+            "l_star": 5,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5019577264854109,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 80,
+          "enc": {
+            "af": 0.5186876071631471,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5019189650632575,
+            "l_star": 5,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5010007676895343,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 90,
+          "enc": {
+            "af": 0.5129943126293658,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5010246109225739,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5013527769878748,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 100,
+          "enc": {
+            "af": 0.5089379162862643,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5018891010456158,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5013486663936132,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 110,
+          "enc": {
+            "af": 0.5070045184699336,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.4997052798679067,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5022009628623126,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 120,
+          "enc": {
+            "af": 0.5049084579558091,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.49862379683177127,
+            "l_star": 5,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5018567526241032,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 130,
+          "enc": {
+            "af": 0.5031462669450641,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5011935330157276,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.500467817281017,
+            "l_star": 2,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 140,
+          "enc": {
+            "af": 0.5015945508927645,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5003552995501779,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5004590878302602,
+            "l_star": 5,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        }
+      ]
+    },
+    "C_rlhf_kl": {
+      "label": "RLHF + KL (\u03b2=0.05)",
+      "collapse_events": {},
+      "final": {
+        "enc_af": 0.6183894556522552,
+        "dec_af": 0.5582712158675373,
+        "cross_af": 0.5338163816893295,
+        "enc_lstar": 4,
+        "dec_lstar": 4
+      },
+      "first_collapse_step": null,
+      "streams_collapsed": [],
+      "history_sparse": [
+        {
+          "step": 0,
+          "enc": {
+            "af": 0.6899342830602248,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.6272347139765763,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5629537707620139,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 10,
+          "enc": {
+            "af": 0.649648826737855,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5787387304208241,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5440199481275119,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 20,
+          "enc": {
+            "af": 0.6323600434131608,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.563297384441826,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.536265017036881,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 30,
+          "enc": {
+            "af": 0.6248639380781977,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5593893886401775,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5351951357052289,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 40,
+          "enc": {
+            "af": 0.621862888014878,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5577000416007575,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5334461168084338,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 50,
+          "enc": {
+            "af": 0.6204867146335371,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5559799971588605,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5320046928498653,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 60,
+          "enc": {
+            "af": 0.6198885868983602,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5583488403632155,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.533653910596472,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 70,
+          "enc": {
+            "af": 0.6200762687592299,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5580456739502638,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.534292302162407,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 80,
+          "enc": {
+            "af": 0.6197147180856138,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5585492915611474,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5340531067469274,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 90,
+          "enc": {
+            "af": 0.6185595996070989,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5579764973190485,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5347482779833866,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 100,
+          "enc": {
+            "af": 0.618080660968566,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5589045099916313,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5348280783663627,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 110,
+          "enc": {
+            "af": 0.618786240821478,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5572735951380166,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5356395880096888,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 120,
+          "enc": {
+            "af": 0.6185356482068268,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5565904519040838,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5350991196787515,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 130,
+          "enc": {
+            "af": 0.6182512748412888,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5589686733714919,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.5338130122481645,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        },
+        {
+          "step": 140,
+          "enc": {
+            "af": 0.6178316618209612,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "dec": {
+            "af": 0.5576158762252877,
+            "l_star": 4,
+            "collapsed": false
+          },
+          "cross": {
+            "af": 0.533967521755839,
+            "l_star": 3,
+            "collapsed": false
+          },
+          "any_collapsed": false
+        }
+      ]
+    }
+  }
+}
