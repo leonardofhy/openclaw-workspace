@@ -45,7 +45,7 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260329-1845",
+    "id": "c-20260329-1915",
     "action": "skip",
     "summary": "Build budget 0/10 exhausted. All 3 READY tasks (Q217/Q218/Q220) require build/experiment. No READY read tasks. Ideate budget 0. Principled skip."
   },
