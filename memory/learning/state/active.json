@@ -45,9 +45,9 @@
     "days_active": 11
   },
   "last_cycle": {
-    "id": "c-20260329-1545",
-    "action": "learn",
-    "summary": "Q217 prep: synthesized Q206 results + accent theory into KG implementation plan. Accent power-steering expected to beat temp-scale (distributional bias mechanism). Plan at kg/accent-power-steering-q217-plan.md."
+    "id": "c-20260329-1615",
+    "action": "skip",
+    "summary": "Build budget exhausted. All READY tasks (Q217/Q218/Q220) require build. No READY reads. Principled skip."
   },
   "last_gc": "2026-03-25T11:47:16.488784+08:00",
   "self_improve_tickets": []
