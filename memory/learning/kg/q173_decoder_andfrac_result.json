@@ -1,0 +1,84 @@
+{
+  "task_id": "Q173",
+  "run_date": "2026-03-30",
+  "encoder_reference": {
+    "l_star": 4,
+    "l_star_ratio": 0.8,
+    "max_andfrac": 0.71,
+    "profile": [
+      0.17,
+      0.22,
+      0.35,
+      0.48,
+      0.71,
+      0.52
+    ]
+  },
+  "decoder_self_attn": {
+    "l_star": 0,
+    "l_star_ratio": 0.0,
+    "max_andfrac": 0.0,
+    "neutral_profile": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sensitive_profile": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "delta_profile": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "decoder_cross_attn": {
+    "l_star": 0,
+    "l_star_ratio": 0.0,
+    "max_andfrac": 0.0,
+    "neutral_profile": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sensitive_profile": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "delta_profile": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "peak_sensitivity_layer": 0,
+    "peak_sensitivity_delta": 0.0
+  },
+  "l_star_alignment": {
+    "enc_ratio": 0.8,
+    "dec_ca_ratio": 0.0,
+    "ratio_gap": 0.8,
+    "aligned": false
+  },
+  "conclusion": "Decoder cross-attn L*=L0 (L*/D=0.000); encoder L*=L4 (L*/D=0.800); ratio_gap=0.800 (OFFSET); \u0394_sensitive_at_L*=0.0000"
+}
