@@ -1,179 +1,66 @@
 {
   "task": "Q220",
+  "timestamp": "2026-03-30T09:47:08.747975",
   "model": "whisper-base",
-  "n_samples_per_group": 10,
   "n_encoder_layers": 6,
-  "sensitive_peak_L_mean": 0.0,
-  "sensitive_peak_L_std": 0.0,
-  "neutral_peak_L_mean": 0.0,
-  "neutral_peak_L_std": 0.0,
-  "peak_L_delta": 0.0,
-  "peak_L_mannwhitney_p": 1.0,
-  "max_andfrac_sensitive": 1.0,
-  "max_andfrac_neutral": 1.0,
-  "max_andfrac_p": 1.0,
-  "sensitive_curves": [
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
+  "sensitive": {
+    "label": "sensitive",
+    "mean_andfrac": [
+      0.25,
+      0.25,
+      0.24999986979166663,
+      0.25,
+      0.2499998697916667,
+      0.25
     ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
+    "std_andfrac": [
+      0.0,
+      0.0,
+      3.9062499999631405e-07,
+      0.0,
+      3.9062499999631405e-07,
+      0.0
     ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
+    "l_star": 0,
+    "l_star_ratio": 0.0,
+    "peak_andfrac": 0.25,
+    "n_layers": 6,
+    "n_phrases": 10
+  },
+  "neutral": {
+    "label": "neutral",
+    "mean_andfrac": [
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25
     ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
+    "std_andfrac": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
     ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ]
-  ],
-  "neutral_curves": [
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ],
-    [
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0,
-      1.0
-    ]
-  ]
+    "l_star": 0,
+    "l_star_ratio": 0.0,
+    "peak_andfrac": 0.25,
+    "n_layers": 6,
+    "n_phrases": 10
+  },
+  "analysis": {
+    "l_star_shift": 0,
+    "l_star_ratio_shift": 0.0,
+    "peak_andfrac_delta": 0.0,
+    "ks_stat": 0.03333333333333333,
+    "ks_p_value": 0.9999999999987117,
+    "t_stat": -1.4263529576025396,
+    "t_p_value": 0.15640688684166423,
+    "significant_p05": false,
+    "interpretation": "L* stable \u2014 censorship (if any) in decoder not encoder"
+  },
+  "note": "IMPORTANT: This experiment uses text-seeded random mel spectrograms as audio proxies. Differences reflect hash-seeded noise patterns, not true acoustic content sensitivity. Real experiment requires actual audio recordings of sensitive vs neutral speech. This pilot establishes the measurement pipeline."
 }
