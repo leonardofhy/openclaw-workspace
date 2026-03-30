@@ -56,12 +56,13 @@
       "type": "experiment",
       "track": "T3",
       "title": "Experiment: Whisper decoder AND-frac — find decoder L* for content sensitivity (extends Q220)",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "AND-frac curves per decoder layer; identify decoder L*; compare to encoder L*/D=0.50; sensitivity vs neutral content delta",
       "created": "2026-03-30",
-      "due": null
+      "due": null,
+      "completed": "2026-03-30"
     },
     {
       "id": "Q174",

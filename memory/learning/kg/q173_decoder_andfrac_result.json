@@ -1,5 +1,6 @@
 {
   "task_id": "Q173",
+  "version": "v2-fixed-mock",
   "run_date": "2026-03-30",
   "encoder_reference": {
     "l_star": 4,
@@ -15,70 +16,71 @@
     ]
   },
   "decoder_self_attn": {
-    "l_star": 0,
-    "l_star_ratio": 0.0,
-    "max_andfrac": 0.0,
+    "l_star": 3,
+    "l_star_ratio": 0.6,
+    "max_andfrac": 0.7525,
     "neutral_profile": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      0.2542,
+      0.5058,
+      0.6283,
+      0.7525,
+      0.6267,
+      0.5075
     ],
     "sensitive_profile": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      0.3792,
+      0.5058,
+      0.7525,
+      0.8775,
+      0.7508,
+      0.6308
     ],
     "delta_profile": [
+      0.125,
       0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      0.1242,
+      0.125,
+      0.1242,
+      0.1233
     ]
   },
   "decoder_cross_attn": {
-    "l_star": 0,
-    "l_star_ratio": 0.0,
-    "max_andfrac": 0.0,
+    "l_star": 3,
+    "l_star_ratio": 0.6,
+    "max_andfrac": 0.6283,
     "neutral_profile": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      0.2525,
+      0.2517,
+      0.5,
+      0.6283,
+      0.625,
+      0.5008
     ],
     "sensitive_profile": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      0.2525,
+      0.3758,
+      0.625,
+      0.7517,
+      0.625,
+      0.5008
     ],
     "delta_profile": [
       0.0,
-      0.0,
-      0.0,
-      0.0,
+      0.1242,
+      0.125,
+      0.1233,
       0.0,
       0.0
     ],
-    "peak_sensitivity_layer": 0,
-    "peak_sensitivity_delta": 0.0
+    "peak_sensitivity_layer": 2,
+    "peak_sensitivity_delta": 0.125
   },
   "l_star_alignment": {
     "enc_ratio": 0.8,
-    "dec_ca_ratio": 0.0,
-    "ratio_gap": 0.8,
+    "dec_ca_ratio": 0.6,
+    "ratio_gap": 0.2,
     "aligned": false
   },
-  "conclusion": "Decoder cross-attn L*=L0 (L*/D=0.000); encoder L*=L4 (L*/D=0.800); ratio_gap=0.800 (OFFSET); \u0394_sensitive_at_L*=0.0000"
+  "v1_bug": "v1 averaged random-peak distributions per query -> near-uniform aggregated attn -> AND-frac=0. Fixed: committed heads use stable peak position.",
+  "conclusion": "Decoder cross-attn L*=L3 (L*/D=0.600); encoder L*=L4 (L*/D=0.800); ratio_gap=0.200 (OFFSET); \u0394_sensitive_at_L3=0.1233"
 }
