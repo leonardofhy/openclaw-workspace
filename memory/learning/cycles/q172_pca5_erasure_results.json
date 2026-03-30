@@ -1,0 +1,65 @@
+{
+  "task_id": "Q172",
+  "timestamp": "2026-03-30T10:47:07.736922",
+  "config": {
+    "N_LAYERS": 32,
+    "D_MODEL": 512,
+    "L_STAR": 21,
+    "L_STAR_ratio": 0.656,
+    "N_JAILBREAK_DIRS": 5,
+    "JAILBREAK_STRENGTH": 3.0,
+    "N_TRAIN": 50,
+    "N_TEST": 30
+  },
+  "baseline_auroc": 0.9478,
+  "caa_1d": {
+    "auroc": 0.9478,
+    "auroc_delta": 0.0,
+    "andf_j_delta": 0.002
+  },
+  "pca_k_results": {
+    "1": {
+      "auroc": 0.9489,
+      "auroc_delta": 0.0011,
+      "andf_j": 0.0098,
+      "andf_delta": 0.0
+    },
+    "2": {
+      "auroc": 0.9511,
+      "auroc_delta": 0.0033,
+      "andf_j": 0.0137,
+      "andf_delta": 0.0039
+    },
+    "3": {
+      "auroc": 0.9522,
+      "auroc_delta": 0.0044,
+      "andf_j": 0.0137,
+      "andf_delta": 0.0039
+    },
+    "4": {
+      "auroc": 0.9522,
+      "auroc_delta": 0.0044,
+      "andf_j": 0.0098,
+      "andf_delta": 0.0
+    },
+    "5": {
+      "auroc": 0.9533,
+      "auroc_delta": 0.0056,
+      "andf_j": 0.0117,
+      "andf_delta": 0.002
+    }
+  },
+  "true_subspace_coverage": {
+    "dir_1": 0.0073,
+    "dir_2": 0.0042,
+    "dir_3": 0.0008,
+    "dir_4": 0.0062,
+    "dir_5": 0.0052
+  },
+  "mean_true_coverage": 0.0047,
+  "conclusion": {
+    "pca5_vs_caa_delta": 0.0055,
+    "multi_dim_needed": false,
+    "best_k": 1
+  }
+}

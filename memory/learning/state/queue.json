@@ -43,12 +43,13 @@
       "type": "build",
       "track": "T5",
       "title": "Build: multi-dim jailbreak erasure at L* (PCA top-5 directions) — Q219 1D insufficient",
-      "status": "ready",
+      "status": "done",
       "priority": 1,
       "blocked_by": null,
       "definition_of_done": "PCA-5 erasure script; compare AUROC to 1D CAA; measure AND-frac delta; CPU <5min",
       "created": "2026-03-30",
-      "due": null
+      "due": null,
+      "completed": "2026-03-30"
     },
     {
       "id": "Q173",
