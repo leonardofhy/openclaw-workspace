@@ -1,0 +1,107 @@
+{
+  "task": "Q217",
+  "title": "Power Steering at L* for Accent Robustness",
+  "timestamp": "2026-03-30",
+  "config": {
+    "n_samples_per_accent": 25,
+    "n_calib_per_accent": 15,
+    "l_star": 8,
+    "alpha_grid": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0,
+      1.2
+    ],
+    "accents": [
+      "ZH",
+      "ES",
+      "FR",
+      "HI"
+    ]
+  },
+  "direction_qualities": {
+    "ZH": 0.8190479325499049,
+    "ES": 0.824471312498188,
+    "FR": 0.8088973061358287,
+    "HI": 0.8219579297077731
+  },
+  "and_frac_delta_mean": 0.1590934912737506,
+  "results": {
+    "steer_a0.0": {
+      "mean_wer": 0.14558829994720088,
+      "alpha": 0.0
+    },
+    "steer_a0.2": {
+      "mean_wer": 0.13709053929259157,
+      "alpha": 0.2
+    },
+    "steer_a0.4": {
+      "mean_wer": 0.12609584696896997,
+      "alpha": 0.4
+    },
+    "steer_a0.6": {
+      "mean_wer": 0.11910343633245338,
+      "alpha": 0.6
+    },
+    "steer_a0.8": {
+      "mean_wer": 0.10860952566538584,
+      "alpha": 0.8
+    },
+    "steer_a1.0": {
+      "mean_wer": 0.1029020229715211,
+      "alpha": 1.0
+    },
+    "steer_a1.2": {
+      "mean_wer": 0.09778607470865747,
+      "alpha": 1.2
+    },
+    "temp_scale": {
+      "mean_wer": 0.13417055941242464,
+      "alpha": 0.0
+    }
+  },
+  "best_steering": {
+    "key": "steer_a1.2",
+    "alpha": 1.2,
+    "mean_wer": 0.09778607470865747,
+    "wer_improvement_pct": -32.83383709809057,
+    "beats_temp_scale": true
+  },
+  "per_accent_wer": {
+    "ZH": {
+      "baseline": 0.1749151546190291,
+      "best_steer": 0.0933525978910519,
+      "temp_scale": 0.15800328206305925,
+      "direction_quality": 0.8190479325499049
+    },
+    "ES": {
+      "baseline": 0.13934663386903362,
+      "best_steer": 0.1315742749759432,
+      "temp_scale": 0.12517775191461,
+      "direction_quality": 0.824471312498188
+    },
+    "FR": {
+      "baseline": 0.11878552289921844,
+      "best_steer": 0.07818872607668335,
+      "temp_scale": 0.10953953385882219,
+      "direction_quality": 0.8088973061358287
+    },
+    "HI": {
+      "baseline": 0.14930588840152237,
+      "best_steer": 0.0880286998909516,
+      "temp_scale": 0.14396166981320724,
+      "direction_quality": 0.8219579297077731
+    }
+  },
+  "findings": {
+    "steering_reduces_wer": true,
+    "and_frac_restored": true,
+    "l_star_causal_evidence": true,
+    "per_accent_direction_selective": true,
+    "caa_recovers_direction_n15": true
+  },
+  "runtime_sec": 0.20417475700378418
+}

@@ -238,24 +238,26 @@
       "type": "build",
       "track": "T3",
       "title": "Build: power steering at L* for accent robustness (extend Q206 WER reduction to accented speech mock)",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "Mock accented-speech WER with/without steering; alpha sweep; AND-frac delta measured",
       "created": "2026-03-29",
-      "due": null
+      "due": null,
+      "completed": "2026-03-30"
     },
     {
       "id": "Q218",
       "type": "build",
       "track": "T3",
       "title": "Build: cross-architecture AND-frac comparison decoder-only (GPT-2) vs encoder-decoder (Whisper-base) — L*/D universality",
-      "status": "ready",
+      "status": "done",
       "priority": 2,
       "blocked_by": null,
       "definition_of_done": "AND-frac curves for both architectures; L*/D values tabulated; interpretation written",
       "created": "2026-03-29",
-      "due": null
+      "due": null,
+      "completed": "2026-03-30"
     },
     {
       "id": "Q219",

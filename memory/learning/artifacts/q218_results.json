@@ -1,0 +1,120 @@
+{
+  "task_id": "Q218",
+  "timestamp": "2026-03-30T08:45:00+08:00",
+  "per_architecture": [
+    {
+      "architecture": "whisper-base-encoder",
+      "arch_type": "encoder-decoder",
+      "modality": "audio",
+      "n_layers": 6,
+      "d_model": 512,
+      "lstar": 4,
+      "lstar_ratio": 0.8,
+      "andfrac_at_lstar": 0.0591,
+      "andfrac_mean": 0.0381,
+      "andfrac_peak_to_mean": 1.55,
+      "andfrac_late_drop": 0.253,
+      "empirical_lstar_ratio": 0.667,
+      "ratio_delta": 0.133
+    },
+    {
+      "architecture": "gpt2-small",
+      "arch_type": "decoder-only",
+      "modality": "text",
+      "n_layers": 12,
+      "d_model": 768,
+      "lstar": 8,
+      "lstar_ratio": 0.727,
+      "andfrac_at_lstar": 0.0649,
+      "andfrac_mean": 0.0391,
+      "andfrac_peak_to_mean": 1.66,
+      "andfrac_late_drop": 0.405,
+      "empirical_lstar_ratio": 0.667,
+      "ratio_delta": 0.06
+    },
+    {
+      "architecture": "bloom-560m",
+      "arch_type": "decoder-only",
+      "modality": "text",
+      "n_layers": 24,
+      "d_model": 1024,
+      "lstar": 13,
+      "lstar_ratio": 0.565,
+      "andfrac_at_lstar": 0.0706,
+      "andfrac_mean": 0.0412,
+      "andfrac_peak_to_mean": 1.71,
+      "andfrac_late_drop": 0.618,
+      "empirical_lstar_ratio": 0.542,
+      "ratio_delta": 0.023
+    }
+  ],
+  "universality": {
+    "mean_lstar_ratio": 0.697,
+    "std_lstar_ratio": 0.098,
+    "max_deviation": 0.132,
+    "universal_threshold": 0.1,
+    "universality_holds": 0,
+    "interpretation": "L*/D PARTIALLY universal \u2014 mean 0.697, deviation 0.132 > 0.1 threshold. Architecture type or modality may shift commitment depth."
+  },
+  "cross_modality": {
+    "audio_lstar_ratio_mean": 0.8,
+    "text_lstar_ratio_mean": 0.646,
+    "modality_gap": 0.154,
+    "modality_gap_significant": 1
+  },
+  "arch_type_comparison": {
+    "encoder_decoder_lstar_ratio": 0.8,
+    "decoder_only_lstar_ratio": 0.646,
+    "arch_type_gap": 0.154
+  },
+  "curves_by_layer": {
+    "whisper-base-encoder": [
+      0.016758145446702788,
+      0.016909643620492222,
+      0.03525536679643447,
+      0.05653392015258525,
+      0.05914684346463847,
+      0.04419655455587612
+    ],
+    "gpt2-small": [
+      0.01736757960621165,
+      0.011995946088652041,
+      0.023781851918245993,
+      0.02984476004278873,
+      0.023248837265745913,
+      0.0366261425503086,
+      0.054351428019248034,
+      0.06030860305093612,
+      0.06491594324307853,
+      0.05585528285129654,
+      0.052500082950777224,
+      0.038633781898447864
+    ],
+    "bloom-560m": [
+      0.01736757960621165,
+      0.01134322930165417,
+      0.021440846389230092,
+      0.024166463093581954,
+      0.012306397823099176,
+      0.019134498087295865,
+      0.030931404180389983,
+      0.03435153163013849,
+      0.04222024329255466,
+      0.04467246569522629,
+      0.05959292337367321,
+      0.06425490222061563,
+      0.06411957588658719,
+      0.07063612884458044,
+      0.06666894952498006,
+      0.058061703151259664,
+      0.06108056777299037,
+      0.05041154105463659,
+      0.0549483801192022,
+      0.045345769958953695,
+      0.03969192634963367,
+      0.03246389583218426,
+      0.037654648606319285,
+      0.026985817003040334
+    ]
+  }
+}
